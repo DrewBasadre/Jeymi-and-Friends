@@ -2,7 +2,7 @@ import * as SQLite from 'expo-sqlite';
 import { SEED_FLASHCARDS, SEED_MODULES, SEED_QUESTIONS } from './seed';
 
 const DATABASE_NAME = 'wais-next.db';
-const SCHEMA_VERSION = 1;
+const SCHEMA_VERSION = 2;
 
 let databasePromise: Promise<SQLite.SQLiteDatabase> | null = null;
 
@@ -44,6 +44,24 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
       assessment_version INTEGER NOT NULL,
       completed_at INTEGER NOT NULL,
       guardian_acknowledged_at INTEGER
+    );
+
+    CREATE TABLE IF NOT EXISTS adaptive_format_profiles (
+      student_id TEXT PRIMARY KEY NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+      initial_assessment_json TEXT NOT NULL,
+      current_default_format TEXT NOT NULL,
+      manual_override TEXT,
+      confidence REAL NOT NULL DEFAULT 0.2,
+      updated_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS format_history (
+      id TEXT PRIMARY KEY NOT NULL,
+      student_id TEXT NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+      attempted_at INTEGER NOT NULL,
+      format TEXT NOT NULL,
+      completed INTEGER NOT NULL,
+      score_percentage REAL NOT NULL
     );
 
     CREATE TABLE IF NOT EXISTS modules (
@@ -127,12 +145,103 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
       PRIMARY KEY (student_id, flashcard_id)
     );
 
+    CREATE TABLE IF NOT EXISTS review_items (
+      item_id TEXT PRIMARY KEY NOT NULL,
+      module_id TEXT NOT NULL,
+      module_version INTEGER NOT NULL,
+      concept_id TEXT NOT NULL,
+      type TEXT NOT NULL,
+      importance TEXT NOT NULL,
+      prompt TEXT NOT NULL,
+      answer TEXT NOT NULL,
+      formats_json TEXT NOT NULL,
+      authored_by TEXT NOT NULL,
+      tags_json TEXT NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS review_states (
+      student_id TEXT NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+      item_id TEXT NOT NULL REFERENCES review_items(item_id) ON DELETE CASCADE,
+      easiness_factor REAL NOT NULL DEFAULT 2.5,
+      interval_days INTEGER NOT NULL DEFAULT 0,
+      repetitions INTEGER NOT NULL DEFAULT 0,
+      due_date TEXT NOT NULL,
+      last_reviewed TEXT,
+      PRIMARY KEY (student_id, item_id)
+    );
+
+    CREATE TABLE IF NOT EXISTS review_events (
+      id TEXT PRIMARY KEY NOT NULL,
+      student_id TEXT NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+      item_id TEXT NOT NULL REFERENCES review_items(item_id) ON DELETE CASCADE,
+      quality INTEGER NOT NULL,
+      recalled INTEGER NOT NULL,
+      elapsed_seconds INTEGER NOT NULL,
+      reviewed_at INTEGER NOT NULL,
+      technique TEXT NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS custom_review_sets (
+      set_id TEXT PRIMARY KEY NOT NULL,
+      created_by TEXT NOT NULL,
+      title TEXT NOT NULL,
+      item_ids_json TEXT NOT NULL,
+      created_items_json TEXT NOT NULL,
+      visibility TEXT NOT NULL,
+      created_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS pomodoro_sessions (
+      session_id TEXT PRIMARY KEY NOT NULL,
+      student_id TEXT NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+      work_minutes INTEGER NOT NULL,
+      break_minutes INTEGER NOT NULL,
+      cycles_planned INTEGER NOT NULL,
+      queue_snapshot_json TEXT NOT NULL,
+      started_at TEXT NOT NULL,
+      completed_cycles INTEGER NOT NULL,
+      item_log_json TEXT NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS parent_digests (
+      digest_id TEXT PRIMARY KEY NOT NULL,
+      student_id TEXT NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+      week_start TEXT NOT NULL,
+      week_end TEXT NOT NULL,
+      payload_json TEXT NOT NULL,
+      generated_at INTEGER NOT NULL,
+      UNIQUE(student_id, week_start)
+    );
+
+    CREATE TABLE IF NOT EXISTS teacher_settings (
+      key TEXT PRIMARY KEY NOT NULL,
+      value TEXT NOT NULL,
+      updated_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS module_manifests (
+      module_id TEXT PRIMARY KEY NOT NULL,
+      version INTEGER NOT NULL,
+      source TEXT NOT NULL,
+      manifest_json TEXT NOT NULL,
+      verified_at INTEGER
+    );
+
     CREATE TABLE IF NOT EXISTS scanned_reports (
       report_id TEXT PRIMARY KEY NOT NULL,
       student_id TEXT NOT NULL,
       payload_json TEXT NOT NULL,
       schema_version INTEGER NOT NULL,
       scanned_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS scanned_report_parts (
+      report_id TEXT NOT NULL,
+      part INTEGER NOT NULL,
+      total_parts INTEGER NOT NULL,
+      payload_json TEXT NOT NULL,
+      scanned_at INTEGER NOT NULL,
+      PRIMARY KEY (report_id, part)
     );
 
     CREATE TABLE IF NOT EXISTS transfer_sessions (
@@ -181,20 +290,32 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
       ON progress(student_id, status);
     CREATE INDEX IF NOT EXISTS idx_reviews_due
       ON flashcard_reviews(student_id, due_at);
+    CREATE INDEX IF NOT EXISTS idx_review_states_due
+      ON review_states(student_id, due_date);
+    CREATE INDEX IF NOT EXISTS idx_review_events_student_time
+      ON review_events(student_id, reviewed_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_format_history_student_time
+      ON format_history(student_id, attempted_at DESC);
     CREATE INDEX IF NOT EXISTS idx_sync_due
       ON sync_queue(next_attempt_at);
 
     PRAGMA user_version = ${SCHEMA_VERSION};
   `);
+  await ensureColumn(
+    database,
+    'quiz_attempts',
+    'learning_format_used',
+    "TEXT NOT NULL DEFAULT 'text'",
+  );
+  await database.execAsync(`PRAGMA user_version = ${SCHEMA_VERSION};`);
 }
 
 async function seed(database: SQLite.SQLiteDatabase): Promise<void> {
   const row = await database.getFirstAsync<{ count: number }>('SELECT COUNT(*) AS count FROM modules');
-  if ((row?.count ?? 0) > 0) return;
-
-  await database.withTransactionAsync(async () => {
-    for (const module of SEED_MODULES) {
-      await database.runAsync(
+  if ((row?.count ?? 0) === 0) {
+    await database.withTransactionAsync(async () => {
+      for (const module of SEED_MODULES) {
+        await database.runAsync(
         `INSERT INTO modules (
           id, title, subject, grade_level, quarter, competency_code, summary, content,
           content_style_tags_json, local_asset_uri, remote_asset_path, package_sha256,
@@ -215,11 +336,11 @@ async function seed(database: SQLite.SQLiteDatabase): Promise<void> {
         module.packageSizeBytes,
         module.isTeacherCreated ? 1 : 0,
         module.updatedAt,
-      );
-    }
+        );
+      }
 
-    for (const question of SEED_QUESTIONS) {
-      await database.runAsync(
+      for (const question of SEED_QUESTIONS) {
+        await database.runAsync(
         `INSERT INTO quiz_questions (
           id, module_id, type, question_text, choices_json, correct_answer, topic_tag
         ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
@@ -230,11 +351,11 @@ async function seed(database: SQLite.SQLiteDatabase): Promise<void> {
         JSON.stringify(question.choices),
         question.correctAnswer,
         question.topicTag,
-      );
-    }
+        );
+      }
 
-    for (const flashcard of SEED_FLASHCARDS) {
-      await database.runAsync(
+      for (const flashcard of SEED_FLASHCARDS) {
+        await database.runAsync(
         `INSERT INTO flashcards (id, module_id, front, back, learning_style_tag)
          VALUES (?, ?, ?, ?, ?)`,
         flashcard.id,
@@ -242,9 +363,12 @@ async function seed(database: SQLite.SQLiteDatabase): Promise<void> {
         flashcard.front,
         flashcard.back,
         flashcard.learningStyleTag,
-      );
-    }
-  });
+        );
+      }
+    });
+  }
+  await seedReviewItems(database);
+  await seedBundledManifests(database);
 }
 
 export async function resetDatabaseForDevelopment(): Promise<void> {
@@ -254,12 +378,101 @@ export async function resetDatabaseForDevelopment(): Promise<void> {
     DELETE FROM quiz_attempts;
     DELETE FROM progress;
     DELETE FROM flashcard_reviews;
+    DELETE FROM review_events;
+    DELETE FROM review_states;
+    DELETE FROM custom_review_sets;
+    DELETE FROM pomodoro_sessions;
+    DELETE FROM parent_digests;
+    DELETE FROM format_history;
+    DELETE FROM adaptive_format_profiles;
     DELETE FROM learning_profiles;
     DELETE FROM privacy_consents;
     DELETE FROM scanned_reports;
+    DELETE FROM scanned_report_parts;
     DELETE FROM transfer_sessions;
     DELETE FROM sync_queue;
     DELETE FROM students;
   `);
 }
 
+async function seedReviewItems(database: SQLite.SQLiteDatabase): Promise<void> {
+  await database.execAsync(`
+    INSERT OR IGNORE INTO review_items (
+      item_id, module_id, module_version, concept_id, type, importance,
+      prompt, answer, formats_json, authored_by, tags_json
+    )
+    SELECT
+      f.id,
+      f.module_id,
+      1,
+      CASE
+        WHEN instr(f.id, '_') > 0 THEN f.module_id || ':' || f.id
+        ELSE f.module_id || ':review'
+      END,
+      'flashcard',
+      'core',
+      f.front,
+      f.back,
+      json_object('text', f.back),
+      'curriculum',
+      json_array(f.learning_style_tag)
+    FROM flashcards f;
+  `);
+}
+
+async function seedBundledManifests(
+  database: SQLite.SQLiteDatabase,
+): Promise<void> {
+  for (const module of SEED_MODULES) {
+    const reviewItems = SEED_FLASHCARDS.filter(
+      (card) => card.moduleId === module.id,
+    ).map((card) => ({
+      itemId: card.id,
+      moduleId: module.id,
+      moduleVersion: 1,
+      conceptId: `${module.id}:${card.id}`,
+      type: 'flashcard',
+      importance: 'core',
+      prompt: card.front,
+      answer: card.back,
+      formats: { text: card.back },
+      authoredBy: 'curriculum',
+      tags: [card.learningStyleTag],
+    }));
+    const manifest = {
+      moduleId: module.id,
+      version: 1,
+      source: 'bundled',
+      gradeLevel: module.gradeLevel,
+      subject: module.subject,
+      formats: { text: `${module.id}.txt` },
+      checksums: {},
+      quizId: `${module.id}-quiz1`,
+      reviewItems,
+    };
+    await database.runAsync(
+      `INSERT OR IGNORE INTO module_manifests
+       (module_id, version, source, manifest_json, verified_at)
+       VALUES (?, 1, 'bundled', ?, ?)`,
+      module.id,
+      JSON.stringify(manifest),
+      Date.now(),
+    );
+  }
+}
+
+async function ensureColumn(
+  database: SQLite.SQLiteDatabase,
+  table: string,
+  column: string,
+  definition: string,
+): Promise<void> {
+  const columns = await database.getAllAsync<{ name: string }>(
+    `PRAGMA table_info(${table})`,
+  );
+  if (!columns.some((item) => item.name === column)) {
+    await database.execAsync(
+      `ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`,
+    );
+  }
+}

@@ -8,12 +8,17 @@ import {
 } from '@/domain/learning';
 import {
   decodeQrPayload,
+  mergeQuizReportParts,
   type DecodedQrPayload,
   type LegacyQuizResult,
+  type QuizReport,
+  type QuizReportPart,
 } from '@/domain/qr';
 import type {
   DueFlashcard,
   FlashcardRating,
+  CurriculumModuleManifest,
+  LearningFormat,
   LearningModule,
   LearningProfile,
   MasteryLevel,
@@ -26,6 +31,13 @@ import type {
   TeacherLearnerRow,
 } from '@/domain/types';
 import { getDatabase } from './database';
+import {
+  getAdaptiveFormatProfile,
+  getStrugglingThreshold,
+  initializeAdaptiveFormatProfile,
+  recordFormatOutcome,
+  saveModuleManifest,
+} from './mvpRepository';
 
 type Db = SQLiteDatabase;
 
@@ -83,6 +95,7 @@ interface AttemptRow {
   duration_seconds: number;
   attempt_number: number;
   submitted_at: number;
+  learning_format_used: LearningFormat;
 }
 
 interface ResponseRow {
@@ -223,6 +236,7 @@ export async function saveLearningProfile(profile: LearningProfile): Promise<voi
     );
     await enqueueSync(database, 'learning_profile', profile.studentId, 'upsert', profile);
   });
+  await initializeAdaptiveFormatProfile(profile);
 }
 
 export async function getPrivacyConsent(studentId: string): Promise<PrivacyConsent | null> {
@@ -364,10 +378,20 @@ export async function saveReceivedModulePackage(input: {
   moduleId: string;
   displayName: string;
   fileUri: string;
+  mimeType?: 'application/pdf' | 'application/vnd.wais.module+json';
   sizeBytes: number;
   sha256: string;
+  manifest?: CurriculumModuleManifest;
 }): Promise<void> {
   const database = await getDatabase();
+  if (
+    input.manifest &&
+    !Object.values(input.manifest.checksums).includes(
+      `sha256:${input.sha256.toLocaleLowerCase()}`,
+    )
+  ) {
+    throw new Error('The received file does not match its module manifest.');
+  }
   const moduleId = input.moduleId.trim() || `pdf_${input.sha256.slice(0, 16)}`;
   await ensureModule(database, {
     id: moduleId,
@@ -383,12 +407,17 @@ export async function saveReceivedModulePackage(input: {
          package_size_bytes = ?,
          updated_at = ?
      WHERE id = ?`,
-    input.fileUri,
+    input.mimeType === 'application/vnd.wais.module+json'
+      ? null
+      : input.fileUri,
     input.sha256.toLocaleLowerCase(),
     input.sizeBytes,
     now(),
     moduleId,
   );
+  if (input.manifest) {
+    await saveModuleManifest(input.manifest, true);
+  }
 }
 
 export async function upsertCloudModule(module: LearningModule): Promise<void> {
@@ -458,10 +487,10 @@ export async function submitQuiz(args: {
   moduleId: string;
   responses: Array<Pick<QuestionResponse, 'questionId' | 'answer' | 'elapsedMs'>>;
   startedAt: number;
+  learningFormatUsed: LearningFormat;
 }): Promise<QuizAttempt> {
   const database = await getDatabase();
   const existing = await getAttempts(args.studentId, args.moduleId);
-  if (existing.length >= 2) return bestAttempt(existing);
 
   const questions = await getQuestions(args.moduleId);
   const responseById = new Map(args.responses.map((response) => [response.questionId, response]));
@@ -490,6 +519,7 @@ export async function submitQuiz(args: {
     durationSeconds: Math.max(0, Math.round((submittedAt - args.startedAt) / 1000)),
     attemptNumber: existing.length + 1,
     submittedAt,
+    learningFormatUsed: args.learningFormatUsed,
     responses,
   };
 
@@ -510,7 +540,15 @@ export async function submitQuiz(args: {
     await enqueueSync(database, 'quiz_attempt', attempt.id, 'upsert', attempt);
   });
 
-  return bestAttempt([...existing, attempt]);
+  await recordFormatOutcome({
+    studentId: args.studentId,
+    format: args.learningFormatUsed,
+    completed: true,
+    scorePercentage:
+      questions.length === 0 ? 0 : Math.round((score / questions.length) * 100),
+    attemptedAt: submittedAt,
+  });
+  return attempt;
 }
 
 export async function getAttempts(studentId: string, moduleId?: string): Promise<QuizAttempt[]> {
@@ -628,28 +666,77 @@ export async function reviewFlashcard(card: DueFlashcard, rating: FlashcardRatin
 
 export async function getTeacherDashboard(): Promise<TeacherDashboard> {
   const students = await listStudents();
+  const threshold = await getStrugglingThreshold();
   const learners: TeacherLearnerRow[] = [];
+  const latestPercentages: number[] = [];
   for (const student of students) {
     const dashboard = await getStudentDashboard(student.id);
+    const attempts = await getAttempts(student.id);
+    const latestByModule = new Map<string, QuizAttempt>();
+    for (const attempt of attempts) {
+      if (!latestByModule.has(attempt.moduleId)) {
+        latestByModule.set(attempt.moduleId, attempt);
+      }
+    }
+    const modulePercentages = [...latestByModule.values()].map(
+      (attempt) => (attempt.score / Math.max(1, attempt.totalItems)) * 100,
+    );
+    latestPercentages.push(...modulePercentages);
+    const averageScore =
+      modulePercentages.length === 0
+        ? 0
+        : Math.round(
+            (modulePercentages.reduce((sum, value) => sum + value, 0) /
+              modulePercentages.length) *
+              10,
+          ) / 10;
+    const latestScore =
+      attempts.length === 0
+        ? 0
+        : Math.round(
+            (attempts[0]!.score / Math.max(1, attempts[0]!.totalItems)) * 100,
+          );
+    const lastThree = attempts.slice(0, 3).map(
+      (attempt) => (attempt.score / Math.max(1, attempt.totalItems)) * 100,
+    );
+    const decliningTrend =
+      lastThree.length === 3 &&
+      lastThree[0]! < lastThree[1]! &&
+      lastThree[1]! < lastThree[2]!;
+    const belowThreshold = attempts.length > 0 && latestScore < threshold;
+    const adaptive = await getAdaptiveFormatProfile(student.id);
     learners.push({
       studentId: student.id,
       studentNumber: student.studentNumber,
       displayName: student.displayName,
       section: student.section,
-      averageScore: dashboard.averageScore,
+      averageScore,
       completedModules: dashboard.completedModules,
       totalAttempts: dashboard.totalAttempts,
       weakTopic: dashboard.weakTopic,
-      struggling: dashboard.totalAttempts > 0 && dashboard.averageScore < 70,
+      struggling: belowThreshold || decliningTrend,
+      strugglingReason: belowThreshold
+        ? `Latest score is below ${threshold}%`
+        : decliningTrend
+          ? 'Scores declined across the last 3 attempts'
+          : 'On track',
+      latestScore,
+      decliningTrend,
+      recommendedFormat: adaptive.currentDefaultFormat,
+      formatConfidence: adaptive.confidence,
     });
   }
   const leaderboard = [...learners].sort((a, b) => b.averageScore - a.averageScore);
-  const attempted = learners.filter((learner) => learner.totalAttempts > 0);
   return {
     classAverage:
-      attempted.length === 0
+      latestPercentages.length === 0
         ? 0
-        : Math.round((attempted.reduce((sum, learner) => sum + learner.averageScore, 0) / attempted.length) * 10) / 10,
+        : Math.round(
+            (latestPercentages.reduce((sum, value) => sum + value, 0) /
+              latestPercentages.length) *
+              10,
+          ) / 10,
+    strugglingThreshold: threshold,
     leaderboard,
     strugglingStudents: leaderboard.filter((learner) => learner.struggling),
     learners,
@@ -659,6 +746,17 @@ export async function getTeacherDashboard(): Promise<TeacherDashboard> {
 export async function importQrReport(raw: string): Promise<string> {
   const database = await getDatabase();
   const decoded = decodeQrPayload(raw);
+  if (decoded.kind === 'quiz_report') {
+    const report = await resolveQuizReportScan(database, decoded.data);
+    if (!report) {
+      const part = decoded.data as QuizReportPart;
+      return `Stored QR ${part.part} of ${part.totalParts}. Scan the remaining code${
+        part.totalParts - part.part === 1 ? '' : 's'
+      }.`;
+    }
+    await importMvpQuizReport(database, report);
+    return `Stored the ${report.moduleId} report for ${report.studentId}.`;
+  }
   if (decoded.kind === 'student_profile') {
     const profile = decoded.data;
     const student = await saveStudent({
@@ -703,6 +801,126 @@ export async function importQrReport(raw: string): Promise<string> {
   return `Imported ${decoded.data.quizAttempts.length} attempt(s) for ${decoded.data.displayName}.`;
 }
 
+async function resolveQuizReportScan(
+  database: Db,
+  data: QuizReport | QuizReportPart,
+): Promise<QuizReport | null> {
+  if (!('part' in data)) return data;
+  await database.runAsync(
+    `INSERT OR REPLACE INTO scanned_report_parts
+     (report_id, part, total_parts, payload_json, scanned_at)
+     VALUES (?, ?, ?, ?, ?)`,
+    data.reportId,
+    data.part,
+    data.totalParts,
+    JSON.stringify(data),
+    now(),
+  );
+  const rows = await database.getAllAsync<{ payload_json: string }>(
+    `SELECT payload_json FROM scanned_report_parts
+     WHERE report_id = ? ORDER BY part`,
+    data.reportId,
+  );
+  if (rows.length < data.totalParts) return null;
+  const report = mergeQuizReportParts(
+    rows.map((row) => JSON.parse(row.payload_json) as QuizReportPart),
+  );
+  await database.runAsync(
+    'DELETE FROM scanned_report_parts WHERE report_id = ?',
+    data.reportId,
+  );
+  return report;
+}
+
+async function importMvpQuizReport(
+  database: Db,
+  report: QuizReport,
+): Promise<void> {
+  let student = await getStudent(report.studentId);
+  if (!student) {
+    student = await saveStudent({
+      id: report.studentId,
+      studentNumber: report.studentId,
+      firstName: 'Student',
+      lastName: report.studentId.slice(-6),
+      middleInitial: '',
+      gradeLevel: 5,
+      section: 'Imported',
+      birthday: '',
+      pin: '1234',
+    });
+  }
+  await ensureModule(database, {
+    id: report.moduleId,
+    title: report.moduleId,
+    subject: 'ADDED_MATERIALS',
+    competencyCode: '',
+    gradeLevel: student.gradeLevel,
+  });
+  const questions = await getQuestions(report.moduleId);
+  const questionById = new Map(questions.map((question) => [question.id, question]));
+  const misses = new Map(
+    report.missedQuestions.map((item) => [item.questionId, item]),
+  );
+  const responses: QuestionResponse[] = report.timing.perQuestion.map((timing) => {
+    const miss = misses.get(timing.questionId);
+    return {
+      questionId: timing.questionId,
+      answer: miss?.chosenAnswer ?? '',
+      isCorrect: !miss,
+      elapsedMs: timing.timeSeconds * 1_000,
+    };
+  });
+  const topics = analyzeResponses(
+    responses.map((response) => ({
+      id: response.questionId,
+      topicTag:
+        questionById.get(response.questionId)?.topicTag ??
+        (response.isCorrect ? 'Demonstrated understanding' : 'Needs review'),
+    })),
+    responses,
+  );
+  const attempt: QuizAttempt = {
+    id: `attempt_${report.reportId}`,
+    studentId: student.id,
+    moduleId: report.moduleId,
+    score: report.score.correct,
+    totalItems: report.score.total,
+    weakTopic: topics.weakTopic,
+    strongTopic: topics.strongTopic,
+    masteryLevel: masteryFor(report.score.correct, report.score.total),
+    durationSeconds: report.timing.totalTimeSeconds,
+    attemptNumber: report.attemptNumber,
+    submittedAt: Date.parse(report.completedAt),
+    learningFormatUsed: report.learningFormatUsed,
+    responses,
+  };
+  await database.withTransactionAsync(async () => {
+    await insertAttempt(database, attempt, 'qr');
+    await database.runAsync(
+      `INSERT INTO progress (student_id, module_id, status, mastery_level, updated_at)
+       VALUES (?, ?, 'COMPLETED', ?, ?)
+       ON CONFLICT(student_id, module_id) DO UPDATE SET
+         status = 'COMPLETED',
+         mastery_level = excluded.mastery_level,
+         updated_at = excluded.updated_at`,
+      student.id,
+      report.moduleId,
+      attempt.masteryLevel,
+      attempt.submittedAt,
+    );
+    await database.runAsync(
+      `INSERT OR IGNORE INTO scanned_reports
+       (report_id, student_id, payload_json, schema_version, scanned_at)
+       VALUES (?, ?, ?, 10, ?)`,
+      report.reportId,
+      student.id,
+      JSON.stringify(report),
+      now(),
+    );
+  });
+}
+
 async function importQuizResult(
   database: Db,
   result: LegacyQuizResult,
@@ -729,6 +947,13 @@ async function importQuizResult(
     durationSeconds: result.durationSeconds,
     attemptNumber: result.attemptNumber,
     submittedAt: result.submittedAt,
+    learningFormatUsed:
+      decodedLearningFormat(
+        'learningStyleTag' in result
+          ? (result as LegacyQuizResult & { learningStyleTag?: string })
+              .learningStyleTag
+          : undefined,
+      ),
     responses,
   };
   await database.withTransactionAsync(async () => {
@@ -796,6 +1021,7 @@ async function importProgressExport(
         durationSeconds: item.durationSeconds,
         attemptNumber: item.attemptNumber,
         submittedAt: item.submittedAt,
+        learningFormatUsed: 'text',
         responses: [],
       },
       'qr',
@@ -927,8 +1153,9 @@ async function insertAttempt(database: Db, attempt: QuizAttempt, source: 'local'
   await database.runAsync(
     `INSERT OR IGNORE INTO quiz_attempts (
       id, student_id, module_id, score, total_items, weak_topic, strong_topic,
-      mastery_level, duration_seconds, attempt_number, submitted_at, source
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      mastery_level, duration_seconds, attempt_number, submitted_at, source,
+      learning_format_used
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     attempt.id,
     attempt.studentId,
     attempt.moduleId,
@@ -941,6 +1168,7 @@ async function insertAttempt(database: Db, attempt: QuizAttempt, source: 'local'
     attempt.attemptNumber,
     attempt.submittedAt,
     source,
+    attempt.learningFormatUsed,
   );
   for (const response of attempt.responses) {
     await database.runAsync(
@@ -1049,6 +1277,7 @@ function mapAttempt(row: AttemptRow, responses: ResponseRow[]): QuizAttempt {
     durationSeconds: row.duration_seconds,
     attemptNumber: row.attempt_number,
     submittedAt: row.submitted_at,
+    learningFormatUsed: row.learning_format_used ?? 'text',
     responses: responses.map((response) => ({
       questionId: response.question_id,
       answer: response.answer,
@@ -1056,6 +1285,13 @@ function mapAttempt(row: AttemptRow, responses: ResponseRow[]): QuizAttempt {
       elapsedMs: response.elapsed_ms,
     })),
   };
+}
+
+function decodedLearningFormat(value: string | undefined): LearningFormat {
+  if (value === 'auditory') return 'audio';
+  if (value === 'reading') return 'text';
+  if (value === 'visual' || value === 'kinesthetic') return value;
+  return 'text';
 }
 
 function bestAttempt(attempts: QuizAttempt[]): QuizAttempt {

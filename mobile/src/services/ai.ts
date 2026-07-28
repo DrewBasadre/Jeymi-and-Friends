@@ -2,19 +2,16 @@ import * as Network from 'expo-network';
 import type {
   AiSuggestion,
   DiagnosticInput,
-  LearningStyle,
-  Subject,
 } from '@/domain/types';
 import { requireSupabase } from './supabase';
 
 export interface LessonPlanInput {
   gradeLevel: number;
-  subject: Subject;
-  quarter: number;
-  competencyCode: string;
-  topic: string;
-  learningStyle: LearningStyle;
-  availableMaterials: string[];
+  subject: string;
+  recentClassPerformance: {
+    averagePercentage: number;
+    commonlyMissedTopics: string[];
+  };
 }
 
 export interface LessonPlanResult {
@@ -78,18 +75,17 @@ async function requireOnlineSession(
 }
 
 function offlineDiagnostic(input: DiagnosticInput): AiSuggestion {
-  const styleAction = {
+  const formatAction = {
     visual: 'Use a labeled diagram, color-coded example, and one worked model.',
-    auditory: 'Explain the idea aloud, then ask the learner to teach it back in their own words.',
-    reading: 'Provide a short checklist and let the learner write a two-sentence explanation.',
+    audio: 'Explain the idea aloud, then ask the learner to teach it back in their own words.',
+    text: 'Provide a short checklist and let the learner write a two-sentence explanation.',
     kinesthetic: 'Use familiar objects and let the learner demonstrate each step.',
-    balanced: 'Combine one visual model, a short explanation, and guided practice.',
-  }[input.learningStyleTag];
+  }[input.learningFormatUsed];
   return {
-    summary: `The learner is currently in the ${input.scoreBand.toLocaleLowerCase()} score band for ${input.competencyCode}.`,
+    summary: `The latest ${input.moduleId} pattern is ${input.timingPattern.replaceAll('-', ' ')}.`,
     actions: [
-      styleAction,
-      'Reteach the weakest topic with one worked example before independent practice.',
+      formatAction,
+      `Reteach ${input.missedQuestionTopics[0] ?? 'the weakest topic'} with one worked example before independent practice.`,
       'Use a five-item exit check and compare it with the previous attempt.',
     ],
     monitoringPlan: 'Check again after two short practice sessions; aim for at least four correct answers.',

@@ -36,6 +36,11 @@ import {
 } from '@/screens/StudentScreens';
 import { ReceiveTransferScreen } from '@/screens/TransferScreens';
 import {
+  CustomReviewSetsScreen,
+  ParentDigestScreen,
+  ReviewHubScreen,
+} from '@/screens/ReviewScreens';
+import {
   GurobotScreen,
   LearnerDetailScreen,
   RecordBookScreen,
@@ -210,6 +215,12 @@ export function RootNavigator() {
         <RootStack.Screen name="Quiz" component={QuizScreen} />
         <RootStack.Screen name="QuizResult" component={QuizResultScreen} />
         <RootStack.Screen name="Flashcards" component={FlashcardsScreen} />
+        <RootStack.Screen name="ReviewHub" component={ReviewHubScreen} />
+        <RootStack.Screen
+          name="CustomReviewSets"
+          component={CustomReviewSetsScreen}
+        />
+        <RootStack.Screen name="ParentDigest" component={ParentDigestScreen} />
         <RootStack.Screen name="QuizReport" component={QuizReportScreen} />
         <RootStack.Screen name="TeacherLogin" component={TeacherLoginScreen} />
         <RootStack.Screen name="TeacherTabs" component={TeacherTabNavigator} />

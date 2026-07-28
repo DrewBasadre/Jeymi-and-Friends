@@ -7,18 +7,15 @@ import {
   readJsonObject,
 } from '../_shared/http.ts';
 import { assertNoDirectIdentifiers } from '../_shared/privacy.ts';
+import { assertSafeEducationalOutput } from '../_shared/safety.ts';
 
-const SUBJECTS = new Set(['SCIENCE', 'MATH', 'ENGLISH', 'ADDED_MATERIALS']);
-const SCORE_BANDS = new Set(['LOW', 'DEVELOPING', 'PROFICIENT', 'ADVANCED']);
-const DURATION_BANDS = new Set(['FAST', 'EXPECTED', 'SLOW']);
-const TRENDS = new Set(['FIRST_ATTEMPT', 'IMPROVING', 'STEADY', 'DECLINING']);
-const STYLES = new Set([
-  'visual',
-  'auditory',
-  'reading',
-  'kinesthetic',
-  'balanced',
+const TIMING_PATTERNS = new Set([
+  'fast-and-wrong',
+  'slow-and-wrong',
+  'mixed',
+  'no-misses',
 ]);
+const FORMATS = new Set(['text', 'audio', 'visual', 'kinesthetic']);
 
 interface DiagnosticResult {
   summary: string;
@@ -46,6 +43,7 @@ Deno.serve(async (request) => {
         required: ['summary', 'actions', 'monitoringPlan'],
       },
     });
+    assertSafeEducationalOutput(result);
     return jsonResponse(result);
   } catch (error) {
     return errorResponse(error);
@@ -53,46 +51,26 @@ Deno.serve(async (request) => {
 });
 
 function validateDiagnostic(value: Record<string, unknown>) {
-  const gradeLevel = integer(value.gradeLevel, 'gradeLevel', 1, 12);
-  const subject = member(value.subject, 'subject', SUBJECTS);
-  const scoreBand = member(value.scoreBand, 'scoreBand', SCORE_BANDS);
-  const durationBand = member(
-    value.durationBand,
-    'durationBand',
-    DURATION_BANDS,
+  const timingPattern = member(
+    value.timingPattern,
+    'timingPattern',
+    TIMING_PATTERNS,
   );
-  const attemptTrend = member(value.attemptTrend, 'attemptTrend', TRENDS);
-  const learningStyleTag = member(
-    value.learningStyleTag,
-    'learningStyleTag',
-    STYLES,
+  const learningFormatUsed = member(
+    value.learningFormatUsed,
+    'learningFormatUsed',
+    FORMATS,
   );
-  if (
-    !Array.isArray(value.topicOutcomeCounts) ||
-    value.topicOutcomeCounts.length > 20
-  ) {
-    throw new HttpError(400, 'topicOutcomeCounts is invalid.');
-  }
-  const topicOutcomeCounts = value.topicOutcomeCounts.map((item) => {
-    if (!item || typeof item !== 'object' || Array.isArray(item)) {
-      throw new HttpError(400, 'Each topic outcome must be an object.');
-    }
-    const outcome = item as Record<string, unknown>;
-    return {
-      topic: text(outcome.topic, 'topic', 120),
-      correct: integer(outcome.correct, 'correct', 0, 500),
-      incorrect: integer(outcome.incorrect, 'incorrect', 0, 500),
-    };
-  });
   return {
-    gradeLevel,
-    subject,
-    competencyCode: text(value.competencyCode, 'competencyCode', 160),
-    scoreBand,
-    durationBand,
-    topicOutcomeCounts,
-    attemptTrend,
-    learningStyleTag,
+    moduleId: text(value.moduleId, 'moduleId', 160),
+    missedQuestionTopics: stringArray(
+      value.missedQuestionTopics,
+      'missedQuestionTopics',
+      30,
+      120,
+    ),
+    timingPattern,
+    learningFormatUsed,
   };
 }
 
@@ -110,14 +88,23 @@ function text(value: unknown, field: string, max: number): string {
   return value.trim();
 }
 
-function integer(
+function stringArray(
   value: unknown,
   field: string,
-  min: number,
-  max: number,
-): number {
-  if (!Number.isInteger(value) || (value as number) < min || (value as number) > max) {
-    throw new HttpError(400, `${field} must be an integer from ${min} to ${max}.`);
+  maxItems: number,
+  maxLength: number,
+): string[] {
+  if (
+    !Array.isArray(value) ||
+    value.length > maxItems ||
+    value.some(
+      (item) =>
+        typeof item !== 'string' ||
+        !item.trim() ||
+        item.length > maxLength,
+    )
+  ) {
+    throw new HttpError(400, `${field} is invalid.`);
   }
-  return value as number;
+  return value.map((item) => (item as string).trim());
 }

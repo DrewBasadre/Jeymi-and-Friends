@@ -10,11 +10,14 @@ export type RootStackParamList = {
   Quiz: { moduleId: string };
   QuizResult: { module: LearningModule; attempt: QuizAttempt };
   Flashcards: undefined;
+  ReviewHub: undefined;
+  CustomReviewSets: undefined;
+  ParentDigest: undefined;
   QuizReport: { moduleId: string; attemptId: string };
   TeacherLogin: undefined;
   TeacherTabs: undefined;
   LearnerDetail: { studentId: string };
-  Transfer: undefined;
+  Transfer: { setId?: string } | undefined;
   ReceiveTransfer: undefined;
 };
 

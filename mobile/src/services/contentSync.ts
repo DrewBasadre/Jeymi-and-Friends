@@ -2,6 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Network from 'expo-network';
 import { Directory, File, Paths } from 'expo-file-system';
 import { upsertCloudModule } from '@/data/repository';
+import { saveModuleManifest } from '@/data/mvpRepository';
+import { buildPdfManifest } from '@/domain/manifest';
 import type { LearningModule, LearningStyle, Subject } from '@/domain/types';
 import { sha256File } from './files';
 import { isSupabaseConfigured, requireSupabase } from './supabase';
@@ -78,6 +80,19 @@ export async function setupGradeDataset(
       const localAssetUri = await downloadPackage(row);
       if (localAssetUri) downloadedPackages += 1;
       await upsertCloudModule(mapCloudModule(row, localAssetUri));
+      if (row.storage_path && row.package_sha256) {
+        await saveModuleManifest(
+          buildPdfManifest({
+            moduleId: row.id,
+            fileName: row.storage_path.split('/').at(-1) ?? `${row.id}.pdf`,
+            sha256: row.package_sha256,
+            source: 'supabase-ota',
+            gradeLevel: row.grade_level,
+            subject: row.subject,
+          }),
+          localAssetUri !== null,
+        );
+      }
     }
     const result: DatasetSetupResult = {
       source: 'cloud',

@@ -339,7 +339,8 @@ class WaisNearbyModule : Module() {
         fileName = safeFileName(objectValue.optString("fileName", "wais-module.pdf")),
         mimeType = objectValue.optString("mimeType", "application/pdf"),
         sizeBytes = objectValue.optLong("sizeBytes", 0),
-        sha256 = objectValue.optString("sha256", "").lowercase(Locale.US)
+        sha256 = objectValue.optString("sha256", "").lowercase(Locale.US),
+        manifestJson = objectValue.optJSONObject("manifest")?.toString() ?: "{}"
       )
       incomingEndpoints[payloadId]?.let { endpointId ->
         finishIncomingIfReady(endpointId, payloadId)
@@ -382,7 +383,8 @@ class WaisNearbyModule : Module() {
             "fileUri" to Uri.fromFile(target).toString(),
             "mimeType" to metadata.mimeType,
             "sizeBytes" to target.length(),
-            "sha256" to actualHash
+            "sha256" to actualHash,
+            "manifestJson" to metadata.manifestJson
           )
         )
       }
@@ -521,5 +523,6 @@ private data class TransferMetadata(
   val fileName: String,
   val mimeType: String,
   val sizeBytes: Long,
-  val sha256: String
+  val sha256: String,
+  val manifestJson: String
 )

@@ -8,13 +8,18 @@ custom native code; it does not run in Expo Go.
 
 - Student learning-style assessment and personalized module ordering
 - Bundled offline Grade 5 dataset plus one-time Supabase dataset download
-- Offline SQLite progress, two-attempt quizzes, per-question timing, and QR reports
-- Offline flashcards with spaced-repetition scheduling
+- Offline SQLite progress, unlimited quiz attempts, per-question timing, and
+  validated multipart QR reports
+- Adaptive learning-format recommendations with student/parent overrides
+- Offline SM-2 review with active recall, retrieval quizzes, interleaving,
+  Pomodoro sessions, blurting, and custom review sets
+- Weekly parent digests with notification and in-app delivery
 - Offline OS text-to-speech and local PDF reading
 - Offline teacher QR scanning, record book, leaderboard, and support flags
 - Consent-gated Supabase profile/attempt sync with retry queue
 - Authenticated lesson-plan and de-identified diagnostic Edge Functions
-- Verified PDF transfer through Google Nearby Connections on Android and iOS
+- Canonical manifests and checksum-verified PDF/custom-set transfer through
+  Google Nearby Connections on Android and iOS
 - Legacy WAIS QR/data import compatibility documented in `../MIGRATION_AUDIT.md`
 
 ## Setup
@@ -29,7 +34,7 @@ Set `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` for cloud
 features. Apply `supabase/migrations/202607280001_initial_wais.sql`, deploy the
 three Edge Functions, and set `GEMINI_API_KEY` as an Edge Function secret. Promote
 teacher accounts to the `teacher` role through trusted administration; new auth
-accounts default to `student`.
+accounts default to `student`. Apply both migrations in filename order.
 
 ## Run And Build
 
@@ -69,6 +74,17 @@ package and configures iOS Bonjour/local-network declarations. Transfer uses an
 explicit code confirmation, app-private storage, SHA-256 verification, progress,
 cancellation, and metadata/PDF payload separation.
 
+Google Nearby Connections negotiates Bluetooth and local Wi-Fi transports
+internally. Its file-payload API reports progress but does not expose verified
+chunk offsets, so an interrupted file currently retries from the beginning.
+True chunk-level resume requires an application-level chunk protocol and remains
+the one transport constraint against the locked MVP specification.
+
+Weekly digests schedule an OS notification on the device holding the student
+profile when it is online and remain available in-app otherwise. Delivery to a
+separate parent phone requires parent-device token registration and configured
+push credentials, which are not present in this repository.
+
 Physical acceptance requires one Android and one iOS development build:
 
 1. Open **Offline module transfer** on the teacher device and choose a PDF.
@@ -86,6 +102,6 @@ Lightweight mode disables cloud controls while preserving every core learning
 workflow. Full mode adds downloads, cloud backup, AI, and a short cloud voice
 sample while on-device speech remains the baseline. AI requests require a
 Supabase session and reject direct identifier keys recursively. Student
-diagnostics use only score/duration bands, topic outcome counts, attempt trend,
-grade/subject/competency, and learning-style tag; the online call also requires
-guardian consent. Raw answers remain local.
+diagnostics send only module ID, missed-topic tags, a timing pattern, and the
+learning format used; the online call also requires guardian consent. Raw
+answers, student names, and student IDs remain local.

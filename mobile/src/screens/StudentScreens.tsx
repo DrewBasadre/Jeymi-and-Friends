@@ -26,6 +26,8 @@ import {
   Play,
   QrCode,
   RefreshCw,
+  ChevronLeft,
+  ChevronRight,
   Settings2,
   Sparkles,
   Volume2,
@@ -57,10 +59,17 @@ import {
   savePrivacyConsent,
   submitQuiz,
 } from '@/data/repository';
-import { encodeQuizReportV2 } from '@/domain/qr';
+import {
+  getAdaptiveFormatProfile,
+  getEffectiveLearningFormat,
+  setLearningFormatOverride,
+} from '@/data/mvpRepository';
+import { encodeQuizReportParts } from '@/domain/qr';
 import type {
+  AdaptiveFormatProfile,
   DueFlashcard,
   FlashcardRating,
+  LearningFormat,
   LearningModule,
   LearningProfile,
   QuestionResponse,
@@ -97,15 +106,18 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
   const mode = useSessionStore((state) => state.mode);
   const [dashboard, setDashboard] = useState<StudentDashboard | null>(null);
   const [profile, setProfile] = useState<LearningProfile | null>(null);
+  const [adaptive, setAdaptive] = useState<AdaptiveFormatProfile | null>(null);
 
   const load = useCallback(async () => {
     if (!student) return;
-    const [nextDashboard, nextProfile] = await Promise.all([
+    const [nextDashboard, nextProfile, nextAdaptive] = await Promise.all([
       getStudentDashboard(student.id),
       getLearningProfile(student.id),
+      getAdaptiveFormatProfile(student.id),
     ]);
     setDashboard(nextDashboard);
     setProfile(nextProfile);
+    setAdaptive(nextAdaptive);
   }, [student]);
 
   useFocusEffect(useCallback(() => void load(), [load]));
@@ -121,7 +133,13 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
       <Card accent={colors.indigo}>
         <Text style={styles.eyebrow}>LEARNING MATCH</Text>
         <Text style={styles.heroTitle}>
-          {profile ? `${capitalize(profile.primaryStyle)} learning` : 'Balanced learning'}
+          {adaptive
+            ? `${capitalize(
+                adaptive.manualOverride ?? adaptive.currentDefaultFormat,
+              )} format`
+            : profile
+              ? `${capitalize(profile.primaryStyle)} learning`
+              : 'Balanced learning'}
         </Text>
         <Text style={styles.body}>
           Lessons with matching formats appear first. This profile guides presentation, not ability.
@@ -145,9 +163,9 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
         <Text style={styles.focusValue}>{dashboard?.strongTopic ?? 'Loading...'}</Text>
       </Card>
       <PrimaryButton
-        label="Review flashcards"
+        label="Open study techniques"
         icon={Brain}
-        onPress={() => navigation.navigate('Flashcards')}
+        onPress={() => navigation.navigate('ReviewHub')}
       />
       <PrimaryButton
         label="Open modules"
@@ -328,6 +346,8 @@ export function QuizScreen({ navigation, route }: StackProps<'Quiz'>) {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [timings, setTimings] = useState<Record<string, number>>({});
   const [submitting, setSubmitting] = useState(false);
+  const [learningFormat, setLearningFormat] =
+    useState<LearningFormat>('text');
   const startedAt = useRef(Date.now());
   const questionStartedAt = useRef(Date.now());
 
@@ -338,7 +358,10 @@ export function QuizScreen({ navigation, route }: StackProps<'Quiz'>) {
         setQuestions(nextQuestions);
       },
     );
-  }, [route.params.moduleId]);
+    if (student) {
+      void getEffectiveLearningFormat(student.id).then(setLearningFormat);
+    }
+  }, [route.params.moduleId, student]);
 
   const question = questions[index];
   const selected = question ? answers[question.id] : undefined;
@@ -374,6 +397,7 @@ export function QuizScreen({ navigation, route }: StackProps<'Quiz'>) {
         moduleId: module.id,
         responses,
         startedAt: startedAt.current,
+        learningFormatUsed: learningFormat,
       });
       navigation.replace('QuizResult', { module, attempt });
     } catch (error) {
@@ -395,6 +419,16 @@ export function QuizScreen({ navigation, route }: StackProps<'Quiz'>) {
       />
       <View style={styles.progressTrack}>
         <View style={[styles.progressFill, { width: `${((index + 1) / questions.length) * 100}%` }]} />
+      </View>
+      <View style={styles.chipRow}>
+        {(['text', 'audio', 'visual', 'kinesthetic'] as const).map((format) => (
+          <Chip
+            key={format}
+            label={capitalize(format)}
+            selected={learningFormat === format}
+            onPress={() => setLearningFormat(format)}
+          />
+        ))}
       </View>
       <Card accent={subjectColor[module.subject]}>
         <View style={styles.timerLine}>
@@ -444,7 +478,9 @@ export function QuizResultScreen({ navigation, route }: StackProps<'QuizResult'>
             <Text style={styles.focusValue}>{attempt.weakTopic}</Text>
           </View>
         </View>
-        <Text style={styles.body}>Time: {formatDuration(attempt.durationSeconds)} - Attempt {attempt.attemptNumber} of 2</Text>
+        <Text style={styles.body}>
+          Time: {formatDuration(attempt.durationSeconds)} - Attempt {attempt.attemptNumber} - {capitalize(attempt.learningFormatUsed)}
+        </Text>
       </Card>
       <PrimaryButton
         label="Show report QR"
@@ -496,10 +532,10 @@ export function FlashcardsScreen({ navigation }: StackProps<'Flashcards'>) {
           {revealed ? (
             <View style={styles.ratingGrid}>
               {([
-                [1, 'Again'],
+                [0, 'Again'],
                 [2, 'Hard'],
-                [3, 'Good'],
-                [4, 'Easy'],
+                [4, 'Good'],
+                [5, 'Easy'],
               ] as const).map(([rating, label]) => (
                 <Pressable key={rating} style={styles.rating} onPress={() => void rate(rating)}>
                   <Text style={styles.ratingNumber}>{rating}</Text>
@@ -557,7 +593,8 @@ export function ReportsScreen({ navigation }: StudentTabProps<'Reports'>) {
 
 export function QuizReportScreen({ navigation, route }: StackProps<'QuizReport'>) {
   const student = useSessionStore((state) => state.student);
-  const [payload, setPayload] = useState('');
+  const [payloads, setPayloads] = useState<string[]>([]);
+  const [partIndex, setPartIndex] = useState(0);
   const [module, setModule] = useState<LearningModule | null>(null);
 
   useEffect(() => {
@@ -565,17 +602,17 @@ export function QuizReportScreen({ navigation, route }: StackProps<'QuizReport'>
     void Promise.all([
       getModule(route.params.moduleId),
       getAttempts(student.id, route.params.moduleId),
-      getLearningProfile(student.id),
-    ]).then(([nextModule, attempts, profile]) => {
+      getQuestions(route.params.moduleId),
+    ]).then(([nextModule, attempts, questions]) => {
       const attempt = attempts.find((item) => item.id === route.params.attemptId);
       if (!nextModule || !attempt) return;
       setModule(nextModule);
-      setPayload(
-        encodeQuizReportV2({
+      setPayloads(
+        encodeQuizReportParts({
           student,
           module: nextModule,
           attempt,
-          learningStyleTag: profile?.primaryStyle ?? 'balanced',
+          questions,
         }),
       );
     });
@@ -585,10 +622,36 @@ export function QuizReportScreen({ navigation, route }: StackProps<'QuizReport'>
     <Screen>
       <ScreenHeader title="Offline quiz report" subtitle={module?.title ?? 'Preparing report'} onBack={navigation.goBack} />
       <Card style={styles.qrCard}>
-        {payload ? <QRCode value={payload} size={260} ecl="L" /> : null}
+        {payloads[partIndex] ? (
+          <QRCode value={payloads[partIndex]} size={260} ecl="M" />
+        ) : null}
       </Card>
+      {payloads.length > 1 ? (
+        <Card>
+          <Text style={styles.focusValue}>
+            QR {partIndex + 1} of {payloads.length}
+          </Text>
+          <View style={styles.resultRow}>
+            <PrimaryButton
+              label="Previous"
+              icon={ChevronLeft}
+              tone="secondary"
+              disabled={partIndex === 0}
+              onPress={() => setPartIndex((value) => Math.max(0, value - 1))}
+            />
+            <PrimaryButton
+              label="Next"
+              icon={ChevronRight}
+              disabled={partIndex === payloads.length - 1}
+              onPress={() =>
+                setPartIndex((value) => Math.min(payloads.length - 1, value + 1))
+              }
+            />
+          </View>
+        </Card>
+      ) : null}
       <Text style={styles.qrNote}>
-        This QR includes the quiz score, total time, time per question, and learning-format tag. Show it only to the intended teacher.
+        Scan every numbered QR. Correct-answer details are omitted; only missed answers and timing for every question are included.
       </Text>
     </Screen>
   );
@@ -608,6 +671,7 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
   const [password, setPassword] = useState('');
   const [syncing, setSyncing] = useState(false);
   const [syncStatus, setSyncStatus] = useState('');
+  const [adaptive, setAdaptive] = useState<AdaptiveFormatProfile | null>(null);
 
   useEffect(() => {
     if (!student) return;
@@ -617,6 +681,7 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
       setCloudAllowed(consent.cloudSyncAllowed);
       setDiagnosticsAllowed(consent.aiDiagnosticsAllowed);
     });
+    void getAdaptiveFormatProfile(student.id).then(setAdaptive);
   }, [student]);
 
   if (!student) return null;
@@ -660,6 +725,36 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
         <Text style={styles.cardTitle}>{student.displayName}</Text>
         <ProfileLine label="Grade and section" value={`Grade ${student.gradeLevel} - ${student.section}`} />
         <ProfileLine label="Student number" value={student.studentNumber} />
+      </Card>
+      <Card>
+        <Text style={styles.cardTitle}>Default learning format</Text>
+        <Text style={styles.body}>
+          WAIS recommends {adaptive?.currentDefaultFormat ?? 'text'} from recent completed work. Choose a default at any time.
+        </Text>
+        <View style={styles.chipRow}>
+          {(['text', 'audio', 'visual', 'kinesthetic'] as const).map((format) => (
+            <Chip
+              key={format}
+              label={capitalize(format)}
+              selected={
+                (adaptive?.manualOverride ?? adaptive?.currentDefaultFormat) ===
+                format
+              }
+              onPress={() => {
+                void setLearningFormatOverride(student.id, format).then(
+                  setAdaptive,
+                );
+              }}
+            />
+          ))}
+          <Chip
+            label="Use recommendation"
+            selected={adaptive?.manualOverride === null}
+            onPress={() => {
+              void setLearningFormatOverride(student.id, null).then(setAdaptive);
+            }}
+          />
+        </View>
       </Card>
       <Card>
         <View style={styles.cardTitleRow}>
@@ -740,6 +835,11 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
         </View>
       </Card>
       <PrimaryButton
+        label="Parent weekly digest"
+        tone="secondary"
+        onPress={() => navigation.navigate('ParentDigest')}
+      />
+      <PrimaryButton
         label="Receive a module"
         tone="secondary"
         icon={Download}
@@ -800,7 +900,12 @@ const styles = StyleSheet.create({
   flex: { flex: 1 },
   fixedHeader: { paddingHorizontal: spacing.xl, paddingTop: spacing.xl, gap: spacing.md },
   listContent: { padding: spacing.xl, gap: spacing.md, paddingBottom: 40 },
-  chipRow: { gap: spacing.sm, paddingRight: spacing.xl },
+  chipRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.sm,
+    paddingRight: spacing.xl,
+  },
   metricGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
   eyebrow: { color: colors.indigo, fontSize: 12, fontWeight: '900' },
   heroTitle: { color: colors.ink, fontSize: 24, lineHeight: 30, fontWeight: '900' },

@@ -3,6 +3,8 @@ import {
   type EventSubscription,
 } from 'expo-modules-core';
 import type { TransferPackage } from '@/domain/types';
+import type { CurriculumModuleManifest } from '@/domain/types';
+import { parseModuleManifest } from '@/domain/manifest';
 
 export interface NearbyPeer {
   id: string;
@@ -36,9 +38,11 @@ export interface NearbyReceivedFile {
   moduleId: string;
   displayName: string;
   fileUri: string;
-  mimeType: 'application/pdf';
+  mimeType: TransferPackage['mimeType'];
   sizeBytes: number;
   sha256: string;
+  manifestJson: string;
+  manifest: CurriculumModuleManifest;
 }
 
 type WaisNearbyEvents = {
@@ -105,6 +109,7 @@ export const nearby = {
         mimeType: transferPackage.mimeType,
         sizeBytes: transferPackage.sizeBytes,
         sha256: transferPackage.sha256,
+        manifest: transferPackage.manifest,
       }),
       transferPackage.fileUri,
     );
@@ -133,7 +138,12 @@ export const nearby = {
   addReceivedFileListener(
     listener: (file: NearbyReceivedFile) => void,
   ): EventSubscription | null {
-    return nativeModule?.addListener('onFileReceived', listener) ?? null;
+    return (
+      nativeModule?.addListener('onFileReceived', (file) => {
+        const manifest = parseModuleManifest(JSON.parse(file.manifestJson));
+        listener({ ...file, manifest });
+      }) ?? null
+    );
   },
 
   async stop(): Promise<void> {

@@ -1,6 +1,11 @@
-import * as Crypto from 'expo-crypto';
 import { Directory, File, Paths } from 'expo-file-system';
-import type { TransferPackage } from '@/domain/types';
+import ReactNativeBlobUtil from 'react-native-blob-util';
+import type {
+  CustomReviewSet,
+  ReviewItem,
+  TransferPackage,
+} from '@/domain/types';
+import { buildPdfManifest } from '@/domain/manifest';
 
 const modulesDirectory = new Directory(Paths.document, 'modules');
 
@@ -22,14 +27,74 @@ export async function pickPdfPackage(): Promise<TransferPackage | null> {
     mimeType: 'application/pdf',
     sizeBytes: destination.size,
     sha256,
+    manifest: buildPdfManifest({
+      moduleId: `pdf_${sha256.slice(0, 16)}`,
+      fileName: source.name,
+      sha256,
+      source: 'teacher-bluetooth',
+      gradeLevel: 5,
+      subject: 'ADDED_MATERIALS',
+    }),
+  };
+}
+
+export async function buildReviewSetPackage(
+  set: CustomReviewSet,
+  availableItems: ReviewItem[],
+): Promise<TransferPackage> {
+  if (!modulesDirectory.exists) {
+    modulesDirectory.create({ intermediates: true, idempotent: true });
+  }
+  const selected = new Map(availableItems.map((item) => [item.itemId, item]));
+  const reviewItems = [
+    ...set.itemIds.flatMap((itemId) => {
+      const item = selected.get(itemId);
+      return item ? [item] : [];
+    }),
+    ...set.createdItems,
+  ];
+  const moduleId = `review_${set.setId}`;
+  const fileName = `${sanitizeName(set.title).replace(/\.pdf$/i, '')}.wais.json`;
+  const destination = new File(modulesDirectory, fileName);
+  if (!destination.exists) destination.create({ intermediates: true });
+  destination.write(
+    JSON.stringify({
+      packageType: 'wais-review-set',
+      set,
+      reviewItems,
+    }),
+  );
+  const sha256 = await sha256File(destination);
+  const manifest = {
+    moduleId,
+    version: 1,
+    source: 'teacher-bluetooth' as const,
+    gradeLevel: 5,
+    subject: 'ADDED_MATERIALS',
+    formats: { text: fileName },
+    checksums: { [fileName]: `sha256:${sha256}` },
+    quizId: `${moduleId}-quiz1`,
+    reviewItems: reviewItems.map((item) => ({
+      ...item,
+      moduleId,
+      moduleVersion: 1,
+    })),
+  };
+  return {
+    moduleId,
+    displayName: `${set.title}.wais.json`,
+    fileUri: destination.uri,
+    mimeType: 'application/vnd.wais.module+json',
+    sizeBytes: destination.size,
+    sha256,
+    manifest,
   };
 }
 
 export async function sha256File(file: File | string): Promise<string> {
   const target = typeof file === 'string' ? new File(file) : file;
-  const bytes = await target.arrayBuffer();
-  const digest = await Crypto.digest(Crypto.CryptoDigestAlgorithm.SHA256, bytes);
-  return [...new Uint8Array(digest)].map((value) => value.toString(16).padStart(2, '0')).join('');
+  const path = decodeURIComponent(target.uri.replace(/^file:\/\//, ''));
+  return (await ReactNativeBlobUtil.fs.hash(path, 'sha256')).toLocaleLowerCase();
 }
 
 export async function verifyPackage(fileUri: string, expectedSha256: string): Promise<boolean> {

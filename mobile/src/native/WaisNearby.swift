@@ -272,6 +272,7 @@ public final class WaisNearby: Module {
           "mimeType": metadata.mimeType,
           "sizeBytes": fileSize(target),
           "sha256": actualHash,
+          "manifestJson": metadata.manifestJSON,
         ]
       )
     } catch {
@@ -300,9 +301,22 @@ public final class WaisNearby: Module {
       fileName: object["fileName"] as? String ?? "wais-module.pdf",
       mimeType: object["mimeType"] as? String ?? "application/pdf",
       sizeBytes: (object["sizeBytes"] as? NSNumber)?.int64Value ?? 0,
-      sha256: (object["sha256"] as? String ?? "").lowercased()
+      sha256: (object["sha256"] as? String ?? "").lowercased(),
+      manifestJSON: jsonString(object["manifest"])
     )
     finishIncomingIfReady(payloadID: payloadID)
+  }
+
+  private func jsonString(_ value: Any?) -> String {
+    guard
+      let value,
+      JSONSerialization.isValidJSONObject(value),
+      let data = try? JSONSerialization.data(withJSONObject: value),
+      let result = String(data: data, encoding: .utf8)
+    else {
+      return "{}"
+    }
+    return result
   }
 
   private func sendTransferUpdate(
@@ -565,6 +579,7 @@ private struct TransferMetadata {
   let mimeType: String
   let sizeBytes: Int64
   let sha256: String
+  let manifestJSON: String
 }
 
 private struct IncomingResource {

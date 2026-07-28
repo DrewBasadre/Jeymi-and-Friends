@@ -108,6 +108,7 @@ export async function syncStudentData(studentId: string): Promise<SyncResult> {
             mastery_level: attempt.masteryLevel,
             duration_seconds: attempt.durationSeconds,
             attempt_number: attempt.attemptNumber,
+            learning_format_used: attempt.learningFormatUsed,
             weak_topic: attempt.weakTopic,
             strong_topic: attempt.strongTopic,
             response_timing: attempt.responses.map((response) => ({

@@ -6,6 +6,7 @@ import type {
   MasteryLevel,
   QuestionResponse,
 } from './types';
+import { updateSm2State } from './review';
 
 const STYLES: Array<Exclude<LearningStyle, 'balanced'>> = [
   'visual',
@@ -86,31 +87,19 @@ export function nextReview(
   current: { easeFactor: number; intervalDays: number; repetitions: number },
   reviewedAt = Date.now(),
 ): { easeFactor: number; intervalDays: number; repetitions: number; dueAt: number } {
-  const quality = rating + 1;
-  let repetitions = current.repetitions;
-  let intervalDays = current.intervalDays;
-  let easeFactor = current.easeFactor;
-
-  if (quality < 3) {
-    repetitions = 0;
-    intervalDays = 1;
-  } else {
-    repetitions += 1;
-    if (repetitions === 1) intervalDays = 1;
-    else if (repetitions === 2) intervalDays = 6;
-    else intervalDays = Math.max(1, Math.round(intervalDays * easeFactor));
-  }
-
-  easeFactor = Math.max(
-    1.3,
-    easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)),
+  const next = updateSm2State(
+    {
+      easinessFactor: current.easeFactor,
+      intervalDays: current.intervalDays,
+      repetitions: current.repetitions,
+    },
+    rating,
+    new Date(reviewedAt),
   );
-
   return {
-    easeFactor,
-    intervalDays,
-    repetitions,
-    dueAt: reviewedAt + intervalDays * 86_400_000,
+    easeFactor: next.easinessFactor,
+    intervalDays: next.intervalDays,
+    repetitions: next.repetitions,
+    dueAt: reviewedAt + next.intervalDays * 86_400_000,
   };
 }
-

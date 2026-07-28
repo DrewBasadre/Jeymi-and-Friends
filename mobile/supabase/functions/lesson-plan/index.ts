@@ -7,15 +7,7 @@ import {
   readJsonObject,
 } from '../_shared/http.ts';
 import { assertNoDirectIdentifiers } from '../_shared/privacy.ts';
-
-const SUBJECTS = new Set(['SCIENCE', 'MATH', 'ENGLISH', 'ADDED_MATERIALS']);
-const STYLES = new Set([
-  'visual',
-  'auditory',
-  'reading',
-  'kinesthetic',
-  'balanced',
-]);
+import { assertSafeEducationalOutput } from '../_shared/safety.ts';
 
 interface LessonPlan {
   title: string;
@@ -53,6 +45,7 @@ Deno.serve(async (request) => {
         ],
       },
     });
+    assertSafeEducationalOutput(result);
     return jsonResponse(result);
   } catch (error) {
     return errorResponse(error);
@@ -61,27 +54,31 @@ Deno.serve(async (request) => {
 
 function validateLessonInput(value: Record<string, unknown>) {
   const gradeLevel = integer(value.gradeLevel, 'gradeLevel', 1, 12);
-  const quarter = integer(value.quarter, 'quarter', 1, 4);
   const subject = text(value.subject, 'subject', 40);
-  const learningStyle = text(value.learningStyle, 'learningStyle', 30);
-  if (!SUBJECTS.has(subject)) throw new HttpError(400, 'subject is invalid.');
-  if (!STYLES.has(learningStyle)) {
-    throw new HttpError(400, 'learningStyle is invalid.');
+  const performance = value.recentClassPerformance;
+  if (!performance || typeof performance !== 'object' || Array.isArray(performance)) {
+    throw new HttpError(400, 'recentClassPerformance must be an object.');
   }
-  const availableMaterials = stringArray(
-    value.availableMaterials,
-    'availableMaterials',
+  const performanceRecord = performance as Record<string, unknown>;
+  const averagePercentage = integer(
+    performanceRecord.averagePercentage,
+    'averagePercentage',
+    0,
+    100,
+  );
+  const commonlyMissedTopics = stringArray(
+    performanceRecord.commonlyMissedTopics,
+    'commonlyMissedTopics',
     12,
-    80,
+    120,
   );
   return {
     gradeLevel,
     subject,
-    quarter,
-    competencyCode: text(value.competencyCode, 'competencyCode', 160),
-    topic: text(value.topic, 'topic', 160),
-    learningStyle,
-    availableMaterials,
+    recentClassPerformance: {
+      averagePercentage,
+      commonlyMissedTopics,
+    },
   };
 }
 

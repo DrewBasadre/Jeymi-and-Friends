@@ -25,6 +25,7 @@ import {
   Camera,
   CheckCircle2,
   FileUp,
+  PencilLine,
   QrCode,
   RefreshCw,
   Search,
@@ -45,13 +46,18 @@ import {
 } from '@/components/ui';
 import {
   getAttempts,
-  getLearningProfile,
   getModule,
   getPrivacyConsent,
+  getQuestions,
   getTeacherDashboard,
   importQrReport,
   listModules,
 } from '@/data/repository';
+import {
+  listCustomReviewSets,
+  listReviewItems,
+  setStrugglingThreshold,
+} from '@/data/mvpRepository';
 import type {
   AiSuggestion,
   DiagnosticInput,
@@ -65,7 +71,7 @@ import type {
   TeacherTabParamList,
 } from '@/navigation/types';
 import { generateDiagnostic, generateLessonPlan, type LessonPlanResult } from '@/services/ai';
-import { pickPdfPackage } from '@/services/files';
+import { buildReviewSetPackage, pickPdfPackage } from '@/services/files';
 import {
   nearby,
   type NearbyPeer,
@@ -102,6 +108,23 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
         <Metric label="Learners" value={dashboard?.learners.length ?? 0} tint={colors.emeraldTint} />
         <Metric label="Need support" value={dashboard?.strugglingStudents.length ?? 0} tint={colors.amberTint} />
       </View>
+      <Card>
+        <Text style={styles.fieldLabel}>Support threshold</Text>
+        <View style={styles.chipRow}>
+          {[50, 60, 70].map((value) => (
+            <Chip
+              key={value}
+              label={`${value}%`}
+              selected={dashboard?.strugglingThreshold === value}
+              onPress={() => {
+                void setStrugglingThreshold(value).then(() =>
+                  getTeacherDashboard().then(setDashboard),
+                );
+              }}
+            />
+          ))}
+        </View>
+      </Card>
       <Card accent={colors.emerald}>
         <View style={styles.headingRow}>
           <UsersRound size={22} color={colors.emerald} />
@@ -125,6 +148,12 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
           <EmptyState title="No scanned reports" body="Use the scanner to build the local class dashboard." />
         ) : null}
       </Card>
+      <PrimaryButton
+        label="Author review sets"
+        icon={PencilLine}
+        tone="secondary"
+        onPress={() => navigation.navigate('CustomReviewSets')}
+      />
       <PrimaryButton
         label="Distribute PDF modules"
         icon={Bluetooth}
@@ -182,6 +211,14 @@ export function RecordBookScreen({ navigation }: TeacherTabProps<'RecordBook'>) 
                 />
               </View>
               <Text style={styles.body}>Practice next: {item.weakTopic}</Text>
+              <Text style={styles.rowMeta}>
+                {item.recommendedFormat
+                  ? `${capitalize(item.recommendedFormat)} recommendation - ${Math.round(item.formatConfidence * 100)}% confidence`
+                  : 'Format recommendation pending'}
+              </Text>
+              {item.struggling ? (
+                <Text style={styles.error}>{item.strugglingReason}</Text>
+              ) : null}
             </Card>
           </Pressable>
         )}
@@ -270,19 +307,23 @@ export function GurobotScreen(): ReactElement {
   const [subject, setSubject] = useState<'SCIENCE' | 'MATH' | 'ENGLISH'>('SCIENCE');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<LessonPlanResult | null>(null);
+  const [draft, setDraft] = useState('');
 
   async function generate() {
     setLoading(true);
     try {
+      const dashboard = await getTeacherDashboard();
       setResult(
         await generateLessonPlan({
           gradeLevel: 5,
           subject,
-          quarter: 1,
-          competencyCode: 'Teacher-selected competency',
-          topic: topic.trim(),
-          learningStyle: 'balanced',
-          availableMaterials: ['paper', 'pencil', 'local objects'],
+          recentClassPerformance: {
+            averagePercentage: dashboard.classAverage,
+            commonlyMissedTopics: [
+              topic.trim(),
+              ...dashboard.strugglingStudents.map((item) => item.weakTopic),
+            ].filter(Boolean).slice(0, 8),
+          },
         }),
       );
     } catch (error) {
@@ -291,6 +332,27 @@ export function GurobotScreen(): ReactElement {
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    if (!result) return;
+    setDraft(
+      [
+        result.title,
+        '',
+        'Objectives',
+        ...result.objectives.map((item) => `- ${item}`),
+        '',
+        'Lesson flow',
+        ...result.lessonFlow.map((item) => `- ${item}`),
+        '',
+        'Assessment',
+        ...result.assessment.map((item) => `- ${item}`),
+        '',
+        'Remediation',
+        ...result.remediation.map((item) => `- ${item}`),
+      ].join('\n'),
+    );
+  }, [result]);
 
   return (
     <Screen>
@@ -335,11 +397,13 @@ export function GurobotScreen(): ReactElement {
       </Card>
       {result ? (
         <Card accent={colors.indigo}>
-          <Text style={styles.cardTitle}>{result.title}</Text>
-          <ResultSection label="Objectives" items={result.objectives} />
-          <ResultSection label="Lesson flow" items={result.lessonFlow} />
-          <ResultSection label="Assessment" items={result.assessment} />
-          <ResultSection label="Remediation" items={result.remediation} />
+          <Text style={styles.cardTitle}>Suggestion draft</Text>
+          <TextInput
+            value={draft}
+            onChangeText={setDraft}
+            style={[styles.input, styles.draftInput]}
+            multiline
+          />
         </Card>
       ) : null}
     </Screen>
@@ -350,6 +414,7 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
   const [learner, setLearner] = useState<TeacherLearnerRow | null>(null);
   const [suggestion, setSuggestion] = useState<AiSuggestion | null>(null);
   const [loading, setLoading] = useState(false);
+  const [suggestionDraft, setSuggestionDraft] = useState('');
 
   useEffect(() => {
     void getTeacherDashboard().then((dashboard) => {
@@ -360,30 +425,55 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
   async function analyze() {
     if (!learner) return;
     setLoading(true);
-    const [attempts, profile, modules, consent] = await Promise.all([
+    const [attempts, modules, consent] = await Promise.all([
       getAttempts(learner.studentId),
-      getLearningProfile(learner.studentId),
       listModules(learner.studentId),
       getPrivacyConsent(learner.studentId),
     ]);
     const latest = attempts[0];
     const module = latest ? modules.find((item) => item.id === latest.moduleId) : null;
+    const questions = latest ? await getQuestions(latest.moduleId) : [];
+    const questionById = new Map(questions.map((question) => [question.id, question]));
+    const missed = latest?.responses.filter((response) => !response.isCorrect) ?? [];
+    const averageMissSeconds =
+      missed.length === 0
+        ? 0
+        : missed.reduce((sum, response) => sum + response.elapsedMs / 1_000, 0) /
+          missed.length;
     const input: DiagnosticInput = {
-      gradeLevel: 5,
-      subject: module?.subject ?? 'ADDED_MATERIALS',
-      competencyCode: module?.competencyCode ?? 'General progress',
-      scoreBand: scoreBand(learner.averageScore),
-      durationBand: latest && latest.durationSeconds > 420 ? 'SLOW' : 'EXPECTED',
-      topicOutcomeCounts: latest
-        ? [
-            { topic: latest.strongTopic, correct: latest.score, incorrect: 0 },
-            { topic: latest.weakTopic, correct: 0, incorrect: Math.max(0, latest.totalItems - latest.score) },
-          ]
-        : [],
-      attemptTrend: attempts.length < 2 ? 'FIRST_ATTEMPT' : attempts[0]!.score >= attempts[1]!.score ? 'IMPROVING' : 'DECLINING',
-      learningStyleTag: profile?.primaryStyle ?? 'balanced',
+      moduleId: module?.id ?? latest?.moduleId ?? 'general-progress',
+      missedQuestionTopics: [
+        ...new Set(
+          missed.map(
+            (response) =>
+              questionById.get(response.questionId)?.topicTag ?? latest?.weakTopic ?? 'review',
+          ),
+        ),
+      ],
+      timingPattern:
+        missed.length === 0
+          ? 'no-misses'
+          : averageMissSeconds > 45
+            ? 'slow-and-wrong'
+            : averageMissSeconds < 15
+              ? 'fast-and-wrong'
+              : 'mixed',
+      learningFormatUsed: latest?.learningFormatUsed ?? 'text',
     };
-    setSuggestion(await generateDiagnostic(input, consent?.aiDiagnosticsAllowed === true));
+    const next = await generateDiagnostic(
+      input,
+      consent?.aiDiagnosticsAllowed === true,
+    );
+    setSuggestion(next);
+    setSuggestionDraft(
+      [
+        next.summary,
+        '',
+        ...next.actions.map((action) => `- ${action}`),
+        '',
+        `Monitoring: ${next.monitoringPlan}`,
+      ].join('\n'),
+    );
     setLoading(false);
   }
 
@@ -410,13 +500,15 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
           {suggestion ? (
             <Card accent={suggestion.source === 'edge' ? colors.indigo : colors.emerald}>
               <View style={styles.rowBetween}>
-                <Text style={styles.cardTitle}>Teaching suggestions</Text>
+                <Text style={styles.cardTitle}>Suggestion draft</Text>
                 <Chip label={suggestion.source === 'edge' ? 'Online AI' : 'Offline guide'} selected color={colors.emerald} />
               </View>
-              <Text style={styles.body}>{suggestion.summary}</Text>
-              {suggestion.actions.map((action) => <Text key={action} style={styles.bullet}>• {action}</Text>)}
-              <Text style={styles.fieldLabel}>Monitoring</Text>
-              <Text style={styles.body}>{suggestion.monitoringPlan}</Text>
+              <TextInput
+                value={suggestionDraft}
+                onChangeText={setSuggestionDraft}
+                style={[styles.input, styles.draftInput]}
+                multiline
+              />
               <View style={styles.privacyLine}>
                 <ShieldCheck size={18} color={colors.emerald} />
                 <Text style={styles.privacyText}>No name, student number, birthday, section, or raw answers were sent.</Text>
@@ -429,11 +521,22 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
   );
 }
 
-export function TransferScreen({ navigation }: StackProps<'Transfer'>) {
+export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
   const [transferPackage, setTransferPackage] = useState<TransferPackage | null>(null);
   const [peers, setPeers] = useState<NearbyPeer[]>([]);
   const [update, setUpdate] = useState<NearbyTransferUpdate | null>(null);
   const available = nearby.isAvailable();
+
+  useEffect(() => {
+    const setId = route.params?.setId;
+    if (!setId) return;
+    void Promise.all([listCustomReviewSets(), listReviewItems()]).then(
+      async ([sets, items]) => {
+        const set = sets.find((candidate) => candidate.setId === setId);
+        if (set) setTransferPackage(await buildReviewSetPackage(set, items));
+      },
+    );
+  }, [route.params?.setId]);
 
   useEffect(() => {
     const peerSubscription = nearby.addPeerListener(setPeers);
@@ -520,7 +623,7 @@ export function TransferScreen({ navigation }: StackProps<'Transfer'>) {
 
   return (
     <Screen>
-      <ScreenHeader title="Offline module transfer" subtitle="Teacher to student PDF packages" onBack={navigation.goBack} />
+      <ScreenHeader title="Offline module transfer" subtitle="Curriculum and review packages" onBack={navigation.goBack} />
       <Card accent={available ? colors.emerald : colors.amber}>
         <View style={styles.headingRow}>
           <Bluetooth size={25} color={available ? colors.emerald : colors.amber} />
@@ -539,6 +642,9 @@ export function TransferScreen({ navigation }: StackProps<'Transfer'>) {
         <Card>
           <Text style={styles.cardTitle}>{transferPackage.displayName}</Text>
           <Text style={styles.body}>{formatBytes(transferPackage.sizeBytes)}</Text>
+          <Text style={styles.rowMeta}>
+            {transferPackage.manifest.reviewItems.length} review item{transferPackage.manifest.reviewItems.length === 1 ? '' : 's'} - manifest v{transferPackage.manifest.version}
+          </Text>
           <Text style={styles.hash} numberOfLines={2}>SHA-256 {transferPackage.sha256}</Text>
         </Card>
       ) : null}
@@ -579,22 +685,6 @@ export function TransferScreen({ navigation }: StackProps<'Transfer'>) {
   );
 }
 
-function ResultSection({ label, items }: { label: string; items: string[] }) {
-  return (
-    <View style={styles.resultSection}>
-      <Text style={styles.fieldLabel}>{label}</Text>
-      {items.map((item) => <Text key={item} style={styles.bullet}>• {item}</Text>)}
-    </View>
-  );
-}
-
-function scoreBand(score: number): DiagnosticInput['scoreBand'] {
-  if (score >= 90) return 'ADVANCED';
-  if (score >= 80) return 'PROFICIENT';
-  if (score >= 60) return 'DEVELOPING';
-  return 'LOW';
-}
-
 function formatBytes(value: number): string {
   if (value < 1_024) return `${value} B`;
   if (value < 1_048_576) return `${(value / 1_024).toFixed(1)} KB`;
@@ -630,6 +720,7 @@ const styles = StyleSheet.create({
   fieldLabel: { color: colors.ink, fontSize: 14, lineHeight: 20, fontWeight: '800' },
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   input: { minHeight: 50, borderWidth: 1, borderColor: colors.outline, borderRadius: radius.md, color: colors.ink, backgroundColor: colors.surface, paddingHorizontal: spacing.lg, fontSize: 16 },
+  draftInput: { minHeight: 280, paddingVertical: spacing.md, textAlignVertical: 'top' },
   resultSection: { gap: spacing.sm, borderTopWidth: 1, borderTopColor: colors.outline, paddingTop: spacing.md },
   bullet: { color: colors.ink, fontSize: 15, lineHeight: 22 },
   privacyLine: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, backgroundColor: colors.emeraldTint, padding: spacing.md, borderRadius: radius.md },

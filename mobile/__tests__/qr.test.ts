@@ -1,7 +1,10 @@
 import { describe, expect, it } from '@jest/globals';
 import {
   decodeQrPayload,
+  encodeQuizReportParts,
   encodeQuizReportV2,
+  mergeQuizReportParts,
+  type QuizReportPart,
 } from '../src/domain/qr';
 import type { QuizAttempt, Student } from '../src/domain/types';
 
@@ -134,6 +137,7 @@ describe('WAIS QR compatibility', () => {
       durationSeconds: 12,
       attemptNumber: 1,
       submittedAt: 1_700_000_000_000,
+      learningFormatUsed: 'visual',
       responses: [
         {
           questionId: 'question-1',
@@ -164,6 +168,147 @@ describe('WAIS QR compatibility', () => {
         { questionId: 'question-1', isCorrect: true, elapsedMs: 12_000 },
       ]);
     }
+  });
+
+  it('encodes the locked report with timing for all questions and answers only for misses', () => {
+    const student: Student = {
+      id: 'student-1',
+      studentNumber: '2026-001',
+      firstName: 'Ari',
+      lastName: 'Santos',
+      middleInitial: '',
+      displayName: 'Ari Santos',
+      gradeLevel: 5,
+      section: 'Mabini',
+      birthday: '',
+      pin: '1234',
+      isArchived: false,
+    };
+    const attempt: QuizAttempt = {
+      id: 'attempt_36b8f84d-df4e-4d49-b662-bcde71a8764f',
+      studentId: student.id,
+      moduleId: 'math-1',
+      score: 1,
+      totalItems: 2,
+      weakTopic: 'Fractions',
+      strongTopic: 'Addition',
+      masteryLevel: 'BEGINNER',
+      durationSeconds: 25,
+      attemptNumber: 1,
+      submittedAt: 1_700_000_000_000,
+      learningFormatUsed: 'audio',
+      responses: [
+        { questionId: 'q1', answer: '5/8', isCorrect: true, elapsedMs: 10_000 },
+        { questionId: 'q2', answer: 'B', isCorrect: false, elapsedMs: 15_000 },
+      ],
+    };
+    const payloads = encodeQuizReportParts({
+      student,
+      module: { id: 'math-1' },
+      attempt,
+      questions: [
+        {
+          id: 'q1',
+          moduleId: 'math-1',
+          type: 'MULTIPLE_CHOICE',
+          questionText: 'Sensitive question text one',
+          choices: ['5/8', '1/8'],
+          correctAnswer: '5/8',
+          topicTag: 'Addition',
+        },
+        {
+          id: 'q2',
+          moduleId: 'math-1',
+          type: 'MULTIPLE_CHOICE',
+          questionText: 'Sensitive question text two',
+          choices: ['A', 'B'],
+          correctAnswer: 'A',
+          topicTag: 'Fractions',
+        },
+      ],
+    });
+
+    expect(payloads).toHaveLength(1);
+    expect(payloads[0]).not.toContain('Sensitive question text');
+    expect(payloads[0]).not.toContain('5/8');
+    const decoded = decodeQrPayload(payloads[0]!);
+    expect(decoded.kind).toBe('quiz_report');
+    if (decoded.kind !== 'quiz_report' || 'part' in decoded.data) {
+      throw new Error('Expected a complete MVP report.');
+    }
+    expect(decoded.data.timing.perQuestion).toHaveLength(2);
+    expect(decoded.data.missedQuestions).toEqual([
+      {
+        questionId: 'q2',
+        chosenAnswer: 'B',
+        correctAnswer: 'A',
+        timeSeconds: 15,
+      },
+    ]);
+  });
+
+  it('splits dense reports and merges every validated part', () => {
+    const student: Student = {
+      id: 'student-1',
+      studentNumber: '2026-001',
+      firstName: 'Ari',
+      lastName: 'Santos',
+      middleInitial: '',
+      displayName: 'Ari Santos',
+      gradeLevel: 5,
+      section: 'Mabini',
+      birthday: '',
+      pin: '1234',
+      isArchived: false,
+    };
+    const responses = Array.from({ length: 12 }, (_, index) => ({
+      questionId: `question-${index}`,
+      answer: `wrong-${index}`,
+      isCorrect: false,
+      elapsedMs: 20_000 + index,
+    }));
+    const attempt: QuizAttempt = {
+      id: 'attempt_36b8f84d-df4e-4d49-b662-bcde71a8764f',
+      studentId: student.id,
+      moduleId: 'math-1',
+      score: 0,
+      totalItems: responses.length,
+      weakTopic: 'Fractions',
+      strongTopic: '',
+      masteryLevel: 'BEGINNER',
+      durationSeconds: 240,
+      attemptNumber: 1,
+      submittedAt: 1_700_000_000_000,
+      learningFormatUsed: 'text',
+      responses,
+    };
+    const payloads = encodeQuizReportParts({
+      student,
+      module: { id: 'math-1' },
+      attempt,
+      questions: responses.map((response) => ({
+        id: response.questionId,
+        moduleId: 'math-1',
+        type: 'MULTIPLE_CHOICE',
+        questionText: 'Not encoded',
+        choices: ['right', response.answer],
+        correctAnswer: 'right',
+        topicTag: 'Fractions',
+      })),
+      maxPayloadCharacters: 900,
+    });
+
+    expect(payloads.length).toBeGreaterThan(1);
+    const parts = payloads.map((payload) => {
+      const decoded = decodeQrPayload(payload);
+      if (decoded.kind !== 'quiz_report' || !('part' in decoded.data)) {
+        throw new Error('Expected a multipart report.');
+      }
+      return decoded.data as QuizReportPart;
+    });
+    const merged = mergeQuizReportParts(parts);
+    expect(merged.timing.perQuestion).toHaveLength(12);
+    expect(merged.missedQuestions).toHaveLength(12);
   });
 
   it('rejects unknown payload types', () => {
