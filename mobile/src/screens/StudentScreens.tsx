@@ -349,6 +349,30 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
   );
 }
 
+/**
+ * Where a module came from. The data model only persists `isTeacherCreated`,
+ * so AI-generated modules are recognised by their content tags (teacher AI
+ * drafts carry an "ai"/"ai-assisted" tag). Curriculum is the default.
+ */
+type ModuleSourceKind = 'curriculum' | 'ai' | 'teacher';
+
+function moduleSource(module: LearningModule): ModuleSourceKind {
+  const tags = module.contentStyleTags.map((tag) => tag.toLowerCase());
+  if (tags.some((tag) => tag === 'ai' || tag === 'ai-assisted' || tag === 'ai-generated')) {
+    return 'ai';
+  }
+  return module.isTeacherCreated ? 'teacher' : 'curriculum';
+}
+
+const MODULE_SOURCE_META: Record<
+  ModuleSourceKind,
+  { label: string; color: string; tint: string }
+> = {
+  curriculum: { label: 'Curriculum', color: colors.secondary, tint: colors.secondaryTint },
+  ai: { label: 'AI-generated', color: colors.accentText, tint: colors.accentTint },
+  teacher: { label: 'Teacher-provided', color: colors.primary, tint: colors.primaryTint },
+};
+
 export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
   const student = useSessionStore((state) => state.student);
   const [modules, setModules] = useState<LearningModule[]>([]);
@@ -360,7 +384,12 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
     }, [student]),
   );
 
-  const filtered = filter === 'ALL' ? modules : modules.filter((module) => module.subject === filter);
+  // Filter by subject, then cluster by source so Curriculum, AI-generated, and
+  // Teacher-provided modules read as clearly separated groups (with the badges).
+  const sourceOrder: Record<ModuleSourceKind, number> = { curriculum: 0, ai: 1, teacher: 2 };
+  const filtered = (filter === 'ALL' ? modules : modules.filter((module) => module.subject === filter))
+    .slice()
+    .sort((a, b) => sourceOrder[moduleSource(a)] - sourceOrder[moduleSource(b)]);
   return (
     <Screen scroll={false} padded={false} style={styles.flex}>
       <View style={styles.fixedHeader}>
@@ -407,6 +436,17 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
                       {capitalize(item.subject.replace('_', ' ').toLocaleLowerCase())}
                     </Text>
                   </View>
+                  {(() => {
+                    const src = MODULE_SOURCE_META[moduleSource(item)];
+                    return (
+                      <View style={[styles.sourceBadge, { backgroundColor: src.tint }]}>
+                        <View style={[styles.sourceDot, { backgroundColor: src.color }]} />
+                        <Text style={[styles.sourceBadgeText, { color: src.color }]}>
+                          {src.label}
+                        </Text>
+                      </View>
+                    );
+                  })()}
                 </View>
                 <Text style={styles.moduleTitle} numberOfLines={2}>
                   {item.title}
@@ -1586,6 +1626,16 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   subjectTagText: { ...text.tiny, letterSpacing: 0.3 },
+  sourceBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    borderRadius: radius.round,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 4,
+  },
+  sourceDot: { width: 6, height: 6, borderRadius: radius.round },
+  sourceBadgeText: { ...text.tiny, letterSpacing: 0.2 },
   moduleTitle: { ...text.title, color: colors.ink, fontSize: 17, lineHeight: 22, marginTop: 2 },
   moduleCode: { ...text.caption, color: colors.inkSubtle, fontSize: 12, fontWeight: '600' },
   moduleSummary: { ...text.caption, color: colors.inkMuted, fontWeight: '500', lineHeight: 19, marginTop: spacing.xs },
