@@ -21,26 +21,34 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import {
   Bluetooth,
-  Bot,
   Camera,
   CheckCircle2,
+  FileText,
+  Layers,
   PencilLine,
   QrCode,
   RefreshCw,
   Search,
+  Sparkles,
+  TriangleAlert,
   Upload,
   UsersRound,
 } from 'lucide-react-native';
 import {
   Card,
+  CardHeader,
   Chip,
   EmptyState,
   Metric,
   PrimaryButton,
+  ProgressBar,
   Screen,
   ScreenHeader,
   SectionTitle,
+  Skeleton,
+  StatusBadge,
 } from '@/components/ui';
+import { MascotPanel } from '@/components/mascot';
 import {
   getActiveSection,
   getClassPerformanceReport,
@@ -73,7 +81,7 @@ import {
   type NearbyTransferUpdate,
   type NearbyVerificationRequest,
 } from '@/services/nearby';
-import { colors, radius, spacing } from '@/theme/tokens';
+import { colors, elevation, radius, spacing, text } from '@/theme/tokens';
 
 type TeacherTabProps<Route extends keyof TeacherTabParamList> = CompositeScreenProps<
   BottomTabScreenProps<TeacherTabParamList, Route>,
@@ -111,19 +119,28 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
   return (
     <Screen>
       <ScreenHeader
+        overline="Teacher"
         title={activeSection?.name ?? 'Class overview'}
         subtitle={
           activeSection
-            ? `Grade ${activeSection.gradeLevel} - calculated on this device.`
+            ? `Grade ${activeSection.gradeLevel} · calculated on this device.`
             : 'Choose an active section to begin.'
         }
-        action={<Chip label="Offline ready" color={colors.emerald} selected />}
+        action={<StatusBadge label="Offline ready" status="completed" />}
       />
-      <View style={styles.metricGrid}>
-        <Metric label="Class average" value={`${dashboard?.classAverage ?? 0}%`} tint={colors.indigoTint} />
-        <Metric label="Learners" value={dashboard?.learners.length ?? 0} tint={colors.emeraldTint} />
-        <Metric label="Need support" value={dashboard?.strugglingStudents.length ?? 0} tint={colors.amberTint} />
-      </View>
+      {!dashboard ? (
+        <View style={styles.metricGrid}>
+          <Skeleton width="47%" height={92} style={styles.metricSkeleton} />
+          <Skeleton width="47%" height={92} style={styles.metricSkeleton} />
+          <Skeleton width="47%" height={92} style={styles.metricSkeleton} />
+        </View>
+      ) : (
+        <View style={styles.metricGrid}>
+          <Metric label="Class average" value={`${dashboard.classAverage}%`} tint={colors.primaryTint} color={colors.primaryStrong} />
+          <Metric label="Learners" value={dashboard.learners.length} tint={colors.secondaryTint} color={colors.secondary} />
+          <Metric label="Need support" value={dashboard.strugglingStudents.length} tint={colors.warningTint} color={colors.warning} />
+        </View>
+      )}
       <Card>
         <Text style={styles.fieldLabel}>Support threshold</Text>
         <View style={styles.chipRow}>
@@ -139,92 +156,83 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
           ))}
         </View>
       </Card>
-      <Card accent={colors.emerald}>
-        <View style={styles.headingRow}>
-          <UsersRound size={22} color={colors.emerald} />
-          <SectionTitle>Active section leaderboard</SectionTitle>
-        </View>
-        {(dashboard?.leaderboard ?? []).slice(0, 5).map((learner, index) => (
-          <Pressable
-            key={learner.studentId}
-            style={styles.learnerRow}
-            onPress={() => navigation.navigate('LearnerDetail', { studentId: learner.studentId })}
-          >
-            <Text style={styles.rank}>{index + 1}</Text>
-            <View style={styles.flex}>
-              <Text style={styles.rowTitle}>{learner.displayName}</Text>
-              <Text style={styles.rowMeta}>{learner.section} - {learner.totalAttempts} attempts</Text>
-            </View>
-            <Text style={styles.rowScore}>{learner.averageScore}%</Text>
-          </Pressable>
-        ))}
+      <Card accent={colors.primary}>
+        <CardHeader icon={UsersRound} title="Active section leaderboard" color={colors.primary} />
         {!dashboard?.learners.length ? (
-          <EmptyState title="No rostered learners" body="Choose a section, then scan student profile QR codes." />
-        ) : null}
+          <EmptyState title="No rostered learners yet" body="Choose a section, then scan student profile QR codes to build your class." />
+        ) : (
+          (dashboard?.leaderboard ?? []).slice(0, 5).map((learner, index) => (
+            <Pressable
+              key={learner.studentId}
+              style={[styles.learnerRow, index === 0 && styles.learnerRowFirst]}
+              onPress={() => navigation.navigate('LearnerDetail', { studentId: learner.studentId })}
+            >
+              <View style={[styles.rank, index < 3 && styles.rankTop]}>
+                <Text style={[styles.rankText, index < 3 && styles.rankTextTop]}>{index + 1}</Text>
+              </View>
+              <View style={styles.flex}>
+                <Text style={styles.rowTitle}>{learner.displayName}</Text>
+                <Text style={styles.rowMeta}>{learner.section} · {learner.totalAttempts} attempts</Text>
+              </View>
+              <Text style={styles.rowScore}>{learner.averageScore}%</Text>
+            </Pressable>
+          ))
+        )}
       </Card>
       {classReport?.commonlyMissedConcepts.length ? (
-        <Card accent={colors.amber}>
-          <SectionTitle>Commonly missed concepts</SectionTitle>
+        <Card accent={colors.warning}>
+          <CardHeader icon={TriangleAlert} title="Commonly missed concepts" color={colors.warning} />
           {classReport.commonlyMissedConcepts.slice(0, 5).map((concept) => (
             <View key={concept.conceptId} style={styles.rowBetween}>
               <Text style={styles.rowTitle}>{concept.conceptId}</Text>
-              <Text style={styles.rowScore}>
-                {concept.percentOfClassMissing}%
-              </Text>
+              <Text style={styles.rowScoreWarn}>{concept.percentOfClassMissing}%</Text>
             </View>
           ))}
         </Card>
       ) : null}
       <Card>
-        <SectionTitle>Overall leaderboard</SectionTitle>
-        {(overallDashboard?.leaderboard ?? []).slice(0, 5).map(
-          (learner, index) => (
-            <Pressable
-              key={learner.studentId}
-              style={styles.learnerRow}
-              onPress={() =>
-                navigation.navigate('LearnerDetail', {
-                  studentId: learner.studentId,
-                })
-              }
-            >
-              <Text style={styles.rank}>{index + 1}</Text>
-              <View style={styles.flex}>
-                <Text style={styles.rowTitle}>{learner.displayName}</Text>
-                <Text style={styles.rowMeta}>{learner.section}</Text>
-              </View>
-              <Text style={styles.rowScore}>{learner.averageScore}%</Text>
-            </Pressable>
-          ),
-        )}
+        <CardHeader icon={Layers} title="Overall leaderboard" color={colors.secondary} />
+        {(overallDashboard?.leaderboard ?? []).slice(0, 5).map((learner, index) => (
+          <Pressable
+            key={learner.studentId}
+            style={[styles.learnerRow, index === 0 && styles.learnerRowFirst]}
+            onPress={() => navigation.navigate('LearnerDetail', { studentId: learner.studentId })}
+          >
+            <View style={[styles.rank, index < 3 && styles.rankTop]}>
+              <Text style={[styles.rankText, index < 3 && styles.rankTextTop]}>{index + 1}</Text>
+            </View>
+            <View style={styles.flex}>
+              <Text style={styles.rowTitle}>{learner.displayName}</Text>
+              <Text style={styles.rowMeta}>{learner.section}</Text>
+            </View>
+            <Text style={styles.rowScore}>{learner.averageScore}%</Text>
+          </Pressable>
+        ))}
         {!overallDashboard?.learners.length ? (
-          <Text style={styles.rowMeta}>
-            Learners appear here after joining a managed section.
-          </Text>
+          <Text style={styles.rowMeta}>Learners appear here after joining a managed section.</Text>
         ) : null}
       </Card>
       <PrimaryButton
-        label="Manage sections"
-        icon={UsersRound}
-        tone="secondary"
-        onPress={() => navigation.navigate('Sections')}
-      />
-      <PrimaryButton
         label="Create assignment QR"
         icon={QrCode}
-        tone="secondary"
         onPress={() => navigation.navigate('AssignmentBuilder')}
       />
       <PrimaryButton
+        label="Manage sections"
+        icon={UsersRound}
+        tone="ghost"
+        onPress={() => navigation.navigate('Sections')}
+      />
+      <PrimaryButton
         label="Author review sets"
-        icon={PencilLine}
-        tone="secondary"
+        icon={Layers}
+        tone="ghost"
         onPress={() => navigation.navigate('CustomReviewSets')}
       />
       <PrimaryButton
         label="Author Markdown module"
-        icon={Bluetooth}
-        tone="secondary"
+        icon={FileText}
+        tone="ghost"
         onPress={() => navigation.navigate('ModuleAuthor')}
       />
     </Screen>
@@ -264,12 +272,12 @@ export function RecordBookScreen({ navigation }: TeacherTabProps<'RecordBook'>) 
           }
         />
         <View style={styles.searchBox}>
-          <Search size={19} color={colors.inkMuted} />
+          <Search size={19} color={colors.inkSubtle} />
           <TextInput
             value={query}
             onChangeText={setQuery}
             placeholder="Find a learner"
-            placeholderTextColor={colors.inkMuted}
+            placeholderTextColor={colors.inkSubtle}
             style={styles.searchInput}
           />
         </View>
@@ -280,31 +288,31 @@ export function RecordBookScreen({ navigation }: TeacherTabProps<'RecordBook'>) 
         contentContainerStyle={styles.listContent}
         renderItem={({ item }) => (
           <Pressable onPress={() => navigation.navigate('LearnerDetail', { studentId: item.studentId })}>
-            <Card accent={item.struggling ? colors.amber : colors.emerald}>
+            <Card accent={item.struggling ? colors.warning : colors.success}>
               <View style={styles.rowBetween}>
                 <View style={styles.flex}>
                   <Text style={styles.rowTitle}>{item.displayName}</Text>
-                  <Text style={styles.rowMeta}>{item.studentNumber} - {item.section}</Text>
+                  <Text style={styles.rowMeta}>{item.studentNumber} · {item.section}</Text>
                 </View>
-                <Chip
-                  label={item.struggling ? 'Support' : `${item.averageScore}%`}
-                  color={item.struggling ? colors.amber : colors.emerald}
-                  selected
-                />
+                {item.struggling ? (
+                  <StatusBadge label="Needs support" status="inProgress" />
+                ) : (
+                  <Text style={styles.rowScore}>{item.averageScore}%</Text>
+                )}
               </View>
               <Text style={styles.body}>Practice next: {item.weakTopic}</Text>
               <Text style={styles.rowMeta}>
                 {item.recommendedFormat
-                  ? `${capitalize(item.recommendedFormat)} recommendation - ${Math.round(item.formatConfidence * 100)}% confidence`
+                  ? `${capitalize(item.recommendedFormat)} recommendation · ${Math.round(item.formatConfidence * 100)}% confidence`
                   : 'Format recommendation pending'}
               </Text>
               {item.struggling ? (
-                <Text style={styles.error}>{item.strugglingReason}</Text>
+                <Text style={styles.supportReason}>{item.strugglingReason}</Text>
               ) : null}
             </Card>
           </Pressable>
         )}
-        ListEmptyComponent={<EmptyState title="No matching learner" body="Scan a student profile or quiz report to add it." />}
+        ListEmptyComponent={<EmptyState title="No matching learner" body="Scan a student profile or quiz report to add them here." />}
       />
     </Screen>
   );
@@ -323,23 +331,28 @@ export function ScannerScreen(): ReactElement {
     try {
       setMessage(await importQrReport(payload));
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : 'This is not a valid WAIS report.');
+      setError(caught instanceof Error ? caught.message : 'This is not a valid Pavo report.');
     }
   }
 
   if (!permission) {
-    return <Screen><ScreenHeader title="QR scanner" /><Text style={styles.body}>Checking camera permission...</Text></Screen>;
+    return (
+      <Screen>
+        <ScreenHeader title="QR scanner" />
+        <Skeleton width="60%" height={16} />
+      </Screen>
+    );
   }
   if (!permission.granted) {
     return (
       <Screen>
         <ScreenHeader title="QR scanner" subtitle="Reports are decoded and stored locally." />
-        <Card>
-          <Camera size={32} color={colors.indigo} />
-          <Text style={styles.cardTitle}>Camera permission</Text>
-          <Text style={styles.body}>WAIS needs the camera only while scanning a classroom QR code.</Text>
-          <PrimaryButton label="Allow camera" onPress={() => void requestPermission()} />
-        </Card>
+        <MascotPanel
+          expression="encouraging"
+          title="Let Pavo see the QR"
+          body="The camera is used only while scanning a classroom QR code — nothing leaves this device."
+        />
+        <PrimaryButton label="Allow camera" icon={Camera} onPress={() => void requestPermission()} />
       </Screen>
     );
   }
@@ -356,21 +369,30 @@ export function ScannerScreen(): ReactElement {
           barcodeScannerSettings={{ barcodeTypes: ['qr'] }}
           onBarcodeScanned={active ? ({ data }) => void handlePayload(data) : undefined}
         />
-        <View style={styles.scanTarget} />
+        <View style={styles.scanOverlay} pointerEvents="none">
+          <View style={styles.scanTarget} />
+          <Text style={styles.scanHint}>Point at a Pavo QR code</Text>
+        </View>
       </View>
       <View style={styles.scanResult}>
         {message ? (
-          <Card accent={colors.emerald}>
-            <CheckCircle2 size={24} color={colors.emerald} />
-            <Text style={styles.rowTitle}>{message}</Text>
+          <Card accent={colors.success}>
+            <View style={styles.rowInline}>
+              <CheckCircle2 size={22} color={colors.success} />
+              <Text style={styles.rowTitle}>{message}</Text>
+            </View>
           </Card>
         ) : null}
-        {error ? <Text style={styles.error}>{error}</Text> : null}
+        {error ? (
+          <View style={styles.errorNote}>
+            <TriangleAlert size={16} color={colors.error} />
+            <Text style={styles.error}>{error}</Text>
+          </View>
+        ) : null}
         {!active ? (
           <PrimaryButton
             label="Scan another"
             icon={RefreshCw}
-            tone="secondary"
             onPress={() => {
               setMessage('');
               setError('');
@@ -383,25 +405,36 @@ export function ScannerScreen(): ReactElement {
   );
 }
 
-export function GurobotScreen(): ReactElement {
+export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): ReactElement {
   return (
     <Screen>
-      <ScreenHeader
-        title="AI assist"
-        subtitle="Reserved for a later online build."
+      <ScreenHeader overline="Assist" title="Gurobot" subtitle="Your future teaching co-pilot." />
+      <MascotPanel
+        expression="idle"
+        title="Coming soon"
+        body="AI lesson help is on the way. For now, everything you author stays fully offline and private on this device."
       />
-      <Card accent={colors.amber}>
-        <Bot size={30} color={colors.amber} />
-        <Text style={styles.cardTitle}>AI assist coming soon</Text>
+      <Card accent={colors.secondary}>
+        <CardHeader
+          icon={Sparkles}
+          color={colors.secondary}
+          title="What Gurobot will do"
+          action={<StatusBadge label="Planned" status="notStarted" />}
+        />
         <Text style={styles.body}>
-          Manual module authoring is fully available offline. No lesson content
-          or student data leaves this device in the current Android build.
+          Draft modules from a topic, suggest quiz questions, and summarize class
+          performance — all opt-in. No lesson content or student data leaves this
+          device today.
         </Text>
+      </Card>
+      <Card>
+        <CardHeader icon={PencilLine} title="Available now" color={colors.primary} />
+        <Text style={styles.body}>Author lessons and review sets by hand — fully offline.</Text>
         <PrimaryButton
-          label="AI assist coming soon"
-          icon={Bot}
-          disabled
-          onPress={() => undefined}
+          label="Author a module"
+          icon={FileText}
+          tone="ghost"
+          onPress={() => navigation.navigate('ModuleAuthor')}
         />
       </Card>
     </Screen>
@@ -429,9 +462,9 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
       {report ? (
         <>
           <View style={styles.metricGrid}>
-            <Metric label="Average" value={`${report.averageScorePercentage}%`} tint={colors.indigoTint} />
-            <Metric label="Attempts" value={report.quizHistory.length} tint={colors.emeraldTint} />
-            <Metric label="Trend" value={capitalize(report.trend)} tint={colors.amberTint} />
+            <Metric label="Average" value={`${report.averageScorePercentage}%`} tint={colors.primaryTint} color={colors.primaryStrong} />
+            <Metric label="Attempts" value={report.quizHistory.length} tint={colors.secondaryTint} color={colors.secondary} />
+            <Metric label="Trend" value={capitalize(report.trend)} tint={colors.accentTint} color={colors.accentText} />
           </View>
           <Card>
             <Text style={styles.fieldLabel}>Current learning format</Text>
@@ -439,8 +472,8 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
               {capitalize(report.profile.currentLearningFormat)}
             </Text>
           </Card>
-          <Card accent={colors.amber}>
-            <SectionTitle>Struggling concepts</SectionTitle>
+          <Card accent={colors.warning}>
+            <CardHeader icon={TriangleAlert} title="Struggling concepts" color={colors.warning} />
             {report.strugglingConcepts.slice(0, 5).map((concept) => (
               <View key={concept.conceptId} style={styles.rowBetween}>
                 <View style={styles.flex}>
@@ -450,7 +483,7 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
                     {concept.attempts === 1 ? 'attempt' : 'attempts'}
                   </Text>
                 </View>
-                <Chip label={`${concept.missCount} misses`} color={colors.amber} />
+                <Chip label={`${concept.missCount} misses`} color={colors.warning} />
               </View>
             ))}
             {!report.strugglingConcepts.length ? (
@@ -458,20 +491,19 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
             ) : null}
           </Card>
           <Card>
-            <SectionTitle>Quiz history</SectionTitle>
+            <CardHeader icon={FileText} title="Quiz history" color={colors.secondary} />
             {report.quizHistory.slice(0, 10).map((attempt) => (
               <View key={attempt.id} style={styles.rowBetween}>
                 <View style={styles.flex}>
-                  <Text style={styles.rowTitle}>{attempt.moduleId}</Text>
+                  <Text style={styles.rowTitle}>
+                    {new Date(attempt.submittedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </Text>
                   <Text style={styles.rowMeta}>
-                    {new Date(attempt.submittedAt).toLocaleDateString()}
+                    {attempt.score}/{attempt.totalItems} correct
                   </Text>
                 </View>
                 <Text style={styles.rowScore}>
-                  {Math.round(
-                    (attempt.score / Math.max(1, attempt.totalItems)) * 100,
-                  )}
-                  %
+                  {Math.round((attempt.score / Math.max(1, attempt.totalItems)) * 100)}%
                 </Text>
               </View>
             ))}
@@ -479,14 +511,8 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
               <Text style={styles.rowMeta}>No quiz reports scanned yet.</Text>
             ) : null}
           </Card>
-          <PrimaryButton
-            label="AI approach plan coming soon"
-            icon={Bot}
-            disabled
-            onPress={() => undefined}
-          />
         </>
-      ) : <EmptyState title="Learner not found" body="Scan the learner’s report again." />}
+      ) : <EmptyState title="Learner not found" body="Scan the learner's report again to view their progress." />}
     </Screen>
   );
 }
@@ -629,27 +655,24 @@ export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
   return (
     <Screen>
       <ScreenHeader title="Offline module transfer" subtitle="Curriculum and review packages" onBack={navigation.goBack} />
-      <Card accent={available ? colors.emerald : colors.amber}>
-        <View style={styles.headingRow}>
-          <Bluetooth size={25} color={available ? colors.emerald : colors.amber} />
-          <View style={styles.flex}>
-            <Text style={styles.cardTitle}>{available ? 'Nearby is ready' : 'Development build required'}</Text>
-            <Text style={styles.body}>
-              {available
-                ? 'Nearby Connections can use Bluetooth and local Wi-Fi without internet.'
-                : 'Module inspection works here; device-to-device transfer requires the native Nearby module on physical devices.'}
-            </Text>
-          </View>
-        </View>
+      <Card accent={available ? colors.success : colors.warning}>
+        <CardHeader
+          icon={Bluetooth}
+          color={available ? colors.success : colors.warning}
+          title={available ? 'Nearby is ready' : 'Development build required'}
+        />
+        <Text style={styles.body}>
+          {available
+            ? 'Nearby Connections can use Bluetooth and local Wi-Fi without internet.'
+            : 'Module inspection works here; device-to-device transfer requires the native Nearby module on physical devices.'}
+        </Text>
       </Card>
       {transferPackage ? (
-        <Card>
+        <Card accent={colors.primary}>
           <Text style={styles.cardTitle}>{transferPackage.displayName}</Text>
-          <Text style={styles.body}>{formatBytes(transferPackage.sizeBytes)}</Text>
-          <Text style={styles.rowMeta}>
-            Markdown + {transferPackage.manifest.assets.length} image asset
-            {transferPackage.manifest.assets.length === 1 ? '' : 's'} - manifest v
-            {transferPackage.manifest.version}
+          <Text style={styles.body}>
+            {formatBytes(transferPackage.sizeBytes)} · {transferPackage.manifest.assets.length} image asset
+            {transferPackage.manifest.assets.length === 1 ? '' : 's'} · manifest v{transferPackage.manifest.version}
           </Text>
           <Text style={styles.hash} numberOfLines={2}>SHA-256 {transferPackage.sha256}</Text>
         </Card>
@@ -657,7 +680,7 @@ export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
         <PrimaryButton
           label="Author a Markdown module"
           icon={PencilLine}
-          tone="secondary"
+          tone="ghost"
           onPress={() => navigation.replace('ModuleAuthor')}
         />
       )}
@@ -670,12 +693,19 @@ export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
       {peers.map((peer) => (
         <Card key={peer.id}>
           <View style={styles.rowBetween}>
-            <Text style={styles.rowTitle}>{peer.name}</Text>
-            <PrimaryButton
-              label={peer.connected ? 'Send' : 'Connect'}
-              disabled={!transferPackage}
-              onPress={() => void pairOrSend(peer)}
-            />
+            <View style={styles.rowInline}>
+              <View style={styles.peerDot} />
+              <Text style={styles.rowTitle}>{peer.name}</Text>
+            </View>
+            <View style={styles.peerAction}>
+              <PrimaryButton
+                label={peer.connected ? 'Send' : 'Connect'}
+                size="sm"
+                icon={peer.connected ? Upload : Bluetooth}
+                disabled={!transferPackage}
+                onPress={() => void pairOrSend(peer)}
+              />
+            </View>
           </View>
         </Card>
       ))}
@@ -683,13 +713,23 @@ export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
         <Card
           accent={
             update.status === 'complete'
-              ? colors.emerald
+              ? colors.success
               : update.status === 'failed'
-                ? colors.danger
-                : colors.indigo
+                ? colors.error
+                : colors.primary
           }
         >
-          <Text style={styles.rowTitle}>{capitalize(update.status)}</Text>
+          <StatusBadge
+            label={capitalize(update.status)}
+            status={
+              update.status === 'complete'
+                ? 'completed'
+                : update.status === 'failed' || update.status === 'cancelled'
+                  ? 'notStarted'
+                  : 'inProgress'
+            }
+          />
+          <ProgressBar value={update.totalBytes > 0 ? update.bytesTransferred / update.totalBytes : 0} />
           <Text style={styles.body}>{formatBytes(update.bytesTransferred)} of {formatBytes(update.totalBytes)}</Text>
           {update.errorMessage ? <Text style={styles.error}>{update.errorMessage}</Text> : null}
           {update.status === 'queued' || update.status === 'transferring' ? (
@@ -723,34 +763,81 @@ function capitalize(value: string): string {
 }
 
 const styles = StyleSheet.create({
-  flex: { flex: 1 },
+  flex: { flex: 1, minWidth: 0 },
   fixedHeader: { paddingHorizontal: spacing.xl, paddingTop: spacing.xl, gap: spacing.md },
-  listContent: { padding: spacing.xl, gap: spacing.md, paddingBottom: 40 },
+  listContent: { padding: spacing.xl, gap: spacing.md, paddingBottom: spacing.huge },
   metricGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
-  headingRow: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.md },
-  cardTitle: { color: colors.ink, fontSize: 19, lineHeight: 25, fontWeight: '800' },
-  body: { color: colors.inkMuted, fontSize: 15, lineHeight: 22 },
-  learnerRow: { minHeight: 58, flexDirection: 'row', alignItems: 'center', gap: spacing.md, borderTopWidth: 1, borderTopColor: colors.outline },
-  rank: { width: 28, color: colors.indigo, fontSize: 18, fontWeight: '900' },
-  rowTitle: { color: colors.ink, fontSize: 16, lineHeight: 22, fontWeight: '800' },
-  rowMeta: { color: colors.inkMuted, fontSize: 13, lineHeight: 18 },
-  rowScore: { color: colors.emerald, fontSize: 17, fontWeight: '900' },
+  metricSkeleton: { borderRadius: radius.lg, flexGrow: 1 },
+  cardTitle: { ...text.title, color: colors.ink },
+  body: { ...text.body, color: colors.inkMuted, fontSize: 15 },
+  learnerRow: {
+    minHeight: 56,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    borderTopWidth: 1,
+    borderTopColor: colors.outline,
+    paddingTop: spacing.sm,
+    marginTop: spacing.xs,
+  },
+  learnerRowFirst: { borderTopWidth: 0, marginTop: 0, paddingTop: spacing.xs },
+  rank: {
+    width: 30,
+    height: 30,
+    borderRadius: radius.round,
+    backgroundColor: colors.surfaceMuted,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rankTop: { backgroundColor: colors.primaryTint },
+  rankText: { ...text.caption, fontWeight: '800', color: colors.inkMuted },
+  rankTextTop: { color: colors.primary },
+  rowTitle: { ...text.bodyStrong, color: colors.ink },
+  rowMeta: { ...text.caption, color: colors.inkMuted },
+  rowScore: { ...text.title, color: colors.success },
+  rowScoreWarn: { ...text.title, color: colors.warning },
   rowBetween: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.md },
-  searchBox: { minHeight: 48, borderWidth: 1, borderColor: colors.outline, borderRadius: radius.md, backgroundColor: colors.surface, paddingHorizontal: spacing.md, flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  rowInline: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, flexShrink: 1 },
+  searchBox: {
+    minHeight: 50,
+    borderWidth: 1,
+    borderColor: colors.outline,
+    borderRadius: radius.md,
+    backgroundColor: colors.surface,
+    paddingHorizontal: spacing.md,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
   searchInput: { flex: 1, color: colors.ink, fontSize: 16 },
-  scannerScreen: { padding: 0 },
+  scannerScreen: { padding: 0, gap: 0 },
   scannerHeader: { paddingHorizontal: spacing.xl, paddingTop: spacing.xl },
   cameraFrame: { flex: 1, minHeight: 340, overflow: 'hidden', backgroundColor: colors.black },
-  scanTarget: { position: 'absolute', alignSelf: 'center', top: '22%', width: 230, height: 230, borderWidth: 3, borderColor: colors.white, borderRadius: radius.md },
+  scanOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center', gap: spacing.lg },
+  scanTarget: { width: 236, height: 236, borderWidth: 3, borderColor: colors.white, borderRadius: radius.xl },
+  scanHint: { ...text.label, color: colors.white, backgroundColor: 'rgba(15,42,40,0.55)', paddingHorizontal: spacing.md, paddingVertical: 6, borderRadius: radius.round, overflow: 'hidden' },
   scanResult: { padding: spacing.xl, gap: spacing.md, backgroundColor: colors.background },
-  error: { color: colors.danger, fontSize: 14, lineHeight: 20, fontWeight: '700' },
-  fieldLabel: { color: colors.ink, fontSize: 14, lineHeight: 20, fontWeight: '800' },
+  error: { flex: 1, color: colors.error, ...text.label, fontWeight: '700' },
+  errorNote: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    backgroundColor: colors.errorTint,
+    borderRadius: radius.md,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.md,
+  },
+  supportReason: {
+    ...text.caption,
+    color: colors.warning,
+    backgroundColor: colors.warningTint,
+    borderRadius: radius.sm,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+  },
+  fieldLabel: { ...text.label, color: colors.ink, fontWeight: '800' },
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  input: { minHeight: 50, borderWidth: 1, borderColor: colors.outline, borderRadius: radius.md, color: colors.ink, backgroundColor: colors.surface, paddingHorizontal: spacing.lg, fontSize: 16 },
-  draftInput: { minHeight: 280, paddingVertical: spacing.md, textAlignVertical: 'top' },
-  resultSection: { gap: spacing.sm, borderTopWidth: 1, borderTopColor: colors.outline, paddingTop: spacing.md },
-  bullet: { color: colors.ink, fontSize: 15, lineHeight: 22 },
-  privacyLine: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, backgroundColor: colors.emeraldTint, padding: spacing.md, borderRadius: radius.md },
-  privacyText: { flex: 1, color: colors.ink, fontSize: 12, lineHeight: 18, fontWeight: '700' },
-  hash: { color: colors.inkMuted, fontSize: 11, lineHeight: 16, fontFamily: 'monospace' },
+  peerDot: { width: 10, height: 10, borderRadius: radius.round, backgroundColor: colors.success },
+  peerAction: { minWidth: 116 },
+  hash: { color: colors.inkSubtle, fontSize: 11, lineHeight: 16, fontFamily: 'monospace' },
 });

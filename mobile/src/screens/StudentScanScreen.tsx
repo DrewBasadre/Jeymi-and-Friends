@@ -7,6 +7,8 @@ import { CameraView, useCameraPermissions } from 'expo-camera';
 import { Camera, CheckCircle2, RefreshCw } from 'lucide-react-native';
 import {
   Card,
+  CardHeader,
+  EmptyState,
   PrimaryButton,
   Screen,
   ScreenHeader,
@@ -17,7 +19,7 @@ import type {
   StudentTabParamList,
 } from '@/navigation/types';
 import { useSessionStore } from '@/store/session';
-import { colors, radius, spacing } from '@/theme/tokens';
+import { colors, radius, spacing, text } from '@/theme/tokens';
 
 type Props = CompositeScreenProps<
   BottomTabScreenProps<StudentTabParamList, 'StudentScan'>,
@@ -49,7 +51,7 @@ export function StudentScanScreen(_props: Props) {
       setError(
         caught instanceof Error
           ? caught.message
-          : 'This is not a valid WAIS assignment.',
+          : 'This is not a valid Pavo assignment.',
       );
     }
   }
@@ -70,18 +72,18 @@ export function StudentScanScreen(_props: Props) {
           title="Scan assignment"
           subtitle="Assignment QR codes are saved only on this device."
         />
-        <Card>
-          <Camera size={32} color={colors.indigo} />
-          <Text style={styles.cardTitle}>Camera permission</Text>
-          <Text style={styles.body}>
-            WAIS needs the camera only while scanning your teacher's assignment
-            QR.
-          </Text>
-          <PrimaryButton
-            label="Allow camera"
-            onPress={() => void requestPermission()}
-          />
-        </Card>
+        <EmptyState
+          title="Camera permission"
+          body="Pavo needs the camera only while scanning your teacher's assignment QR."
+          expression="encouraging"
+          action={
+            <PrimaryButton
+              label="Allow camera"
+              icon={Camera}
+              onPress={() => void requestPermission()}
+            />
+          }
+        />
       </Screen>
     );
   }
@@ -103,13 +105,18 @@ export function StudentScanScreen(_props: Props) {
             active ? ({ data }) => void handlePayload(data) : undefined
           }
         />
-        <View style={styles.scanTarget} />
+        <View style={styles.reticleOverlay} pointerEvents="none">
+          <View style={styles.scanTarget} />
+        </View>
       </View>
       <View style={styles.result}>
         {message ? (
-          <Card accent={colors.emerald}>
-            <CheckCircle2 size={24} color={colors.emerald} />
-            <Text style={styles.cardTitle}>{message}</Text>
+          <Card accent={colors.success}>
+            <CardHeader
+              icon={CheckCircle2}
+              title={message}
+              color={colors.success}
+            />
           </Card>
         ) : null}
         {error ? <Text style={styles.error}>{error}</Text> : null}
@@ -141,39 +148,36 @@ const styles = StyleSheet.create({
     minHeight: 320,
     marginHorizontal: spacing.lg,
     overflow: 'hidden',
-    borderRadius: radius.md,
+    borderRadius: radius.lg,
     backgroundColor: colors.ink,
   },
-  scanTarget: {
+  reticleOverlay: {
     position: 'absolute',
-    width: 230,
-    height: 230,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  scanTarget: {
+    width: '64%',
+    aspectRatio: 1,
     borderWidth: 3,
     borderColor: colors.white,
-    borderRadius: radius.md,
-    alignSelf: 'center',
-    top: '20%',
+    borderRadius: radius.lg,
   },
   result: {
     padding: spacing.lg,
     gap: spacing.md,
   },
-  cardTitle: {
-    color: colors.ink,
-    fontSize: 17,
-    lineHeight: 23,
-    fontWeight: '800',
-  },
   body: {
+    ...text.body,
     color: colors.inkMuted,
-    fontSize: 15,
-    lineHeight: 22,
   },
   error: {
-    color: colors.coral,
-    fontSize: 14,
-    lineHeight: 20,
-    fontWeight: '700',
+    ...text.label,
+    color: colors.error,
     textAlign: 'center',
   },
 });

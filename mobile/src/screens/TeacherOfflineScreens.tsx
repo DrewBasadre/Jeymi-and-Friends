@@ -2,15 +2,24 @@ import { useCallback, useMemo, useState } from 'react';
 import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { CalendarPlus, CheckCircle2, Plus, QrCode } from 'lucide-react-native';
+import {
+  CalendarPlus,
+  CheckCircle2,
+  ClipboardList,
+  Plus,
+  QrCode,
+  Users,
+} from 'lucide-react-native';
 import QRCode from 'react-native-qrcode-svg';
 import {
   Card,
+  CardHeader,
   Chip,
   EmptyState,
   PrimaryButton,
   Screen,
   ScreenHeader,
+  StatusBadge,
 } from '@/components/ui';
 import {
   createSection,
@@ -22,7 +31,7 @@ import {
 import { encodeAssignmentQr } from '@/domain/qr';
 import type { AssignmentTask, Section, TeacherProfile } from '@/domain/types';
 import type { RootStackParamList } from '@/navigation/types';
-import { colors, radius, spacing } from '@/theme/tokens';
+import { colors, radius, spacing, text } from '@/theme/tokens';
 
 type SectionsProps = NativeStackScreenProps<RootStackParamList, 'Sections'>;
 type AssignmentProps = NativeStackScreenProps<
@@ -79,6 +88,7 @@ export function SectionsScreen({ navigation }: SectionsProps) {
         onBack={navigation.goBack}
       />
       <Card>
+        <CardHeader icon={Users} title="New section" />
         <Text style={styles.fieldLabel}>Section name</Text>
         <TextInput
           value={name}
@@ -115,7 +125,7 @@ export function SectionsScreen({ navigation }: SectionsProps) {
             void setActiveSection(section.sectionId).then(load);
           }}
         >
-          <Card accent={section.isActive ? colors.emerald : colors.outline}>
+          <Card accent={section.isActive ? colors.success : colors.outline}>
             <View style={styles.rowBetween}>
               <View style={styles.flex}>
                 <Text style={styles.cardTitle}>{section.name}</Text>
@@ -125,7 +135,7 @@ export function SectionsScreen({ navigation }: SectionsProps) {
                 </Text>
               </View>
               {section.isActive ? (
-                <Chip label="Active" selected color={colors.emerald} />
+                <StatusBadge label="Active" status="completed" />
               ) : (
                 <Text style={styles.actionText}>Make active</Text>
               )}
@@ -207,6 +217,7 @@ export function AssignmentBuilderScreen({ navigation }: AssignmentProps) {
         onBack={navigation.goBack}
       />
       <Card>
+        <CardHeader icon={ClipboardList} title="New task" />
         <Text style={styles.fieldLabel}>Task type</Text>
         <View style={styles.chipRow}>
           <Chip
@@ -261,13 +272,13 @@ export function AssignmentBuilderScreen({ navigation }: AssignmentProps) {
                 {task.type === 'module' ? 'Module' : 'Quiz'} · due {task.dueDate}
               </Text>
             </View>
-            <CheckCircle2 size={22} color={colors.emerald} />
+            <CheckCircle2 size={22} color={colors.success} />
           </View>
         </Card>
       ))}
       {payload ? (
         <Card style={styles.qrCard}>
-          <QrCode size={24} color={colors.indigo} />
+          <QrCode size={24} color={colors.primary} />
           <Text style={styles.cardTitle}>{section.name}</Text>
           <QRCode value={payload} size={250} ecl="M" />
           <Text style={styles.body}>
@@ -288,11 +299,11 @@ function defaultDueDate(): string {
 const styles = StyleSheet.create({
   flex: { flex: 1 },
   fieldLabel: {
+    ...text.label,
     color: colors.ink,
-    fontSize: 13,
-    fontWeight: '800',
   },
   input: {
+    ...text.body,
     minHeight: 50,
     borderRadius: radius.md,
     borderWidth: 1,
@@ -300,18 +311,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     color: colors.ink,
     paddingHorizontal: spacing.lg,
-    fontSize: 16,
   },
   cardTitle: {
+    ...text.title,
     color: colors.ink,
-    fontSize: 18,
-    lineHeight: 24,
-    fontWeight: '800',
   },
   body: {
+    ...text.caption,
     color: colors.inkMuted,
-    fontSize: 14,
-    lineHeight: 21,
   },
   rowBetween: {
     flexDirection: 'row',
@@ -325,9 +332,8 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
   },
   actionText: {
-    color: colors.indigo,
-    fontSize: 13,
-    fontWeight: '800',
+    ...text.label,
+    color: colors.primary,
   },
   qrCard: {
     alignItems: 'center',

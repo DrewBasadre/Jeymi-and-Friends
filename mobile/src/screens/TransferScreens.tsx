@@ -9,11 +9,13 @@ import {
 } from 'lucide-react-native';
 import {
   Card,
-  Chip,
+  CardHeader,
   PrimaryButton,
   Screen,
   ScreenHeader,
+  StatusBadge,
 } from '@/components/ui';
+import { MascotPanel } from '@/components/mascot';
 import { saveReceivedModulePackage } from '@/data/repository';
 import type { RootStackParamList } from '@/navigation/types';
 import {
@@ -23,7 +25,7 @@ import {
   type NearbyVerificationRequest,
 } from '@/services/nearby';
 import { useSessionStore } from '@/store/session';
-import { colors, spacing } from '@/theme/tokens';
+import { colors, elevation, text } from '@/theme/tokens';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ReceiveTransfer'>;
 
@@ -80,7 +82,7 @@ export function ReceiveTransferScreen({ navigation }: Props) {
 
   async function startReceiving() {
     try {
-      await nearby.advertise(`Student ${student?.firstName ?? 'WAIS'}`);
+      await nearby.advertise(`Student ${student?.firstName ?? 'Pavo'}`);
       setAdvertising(true);
     } catch (error) {
       Alert.alert(
@@ -99,22 +101,15 @@ export function ReceiveTransferScreen({ navigation }: Props) {
         subtitle="Keep this screen open while the Markdown package arrives."
         onBack={navigation.goBack}
       />
-      <Card accent={available ? colors.emerald : colors.amber}>
-        <View style={styles.headingRow}>
-          <Bluetooth
-            size={25}
-            color={available ? colors.emerald : colors.amber}
-          />
-          <View style={styles.flex}>
-            <Text style={styles.cardTitle}>
-              {available ? 'Offline nearby transfer' : 'Development build required'}
-            </Text>
-            <Text style={styles.body}>
-              Transfer uses encrypted Nearby Connections over Bluetooth and
-              local Wi-Fi. It does not need internet.
-            </Text>
-          </View>
-        </View>
+      <Card accent={available ? colors.success : colors.warning}>
+        <CardHeader
+          icon={Bluetooth}
+          title={
+            available ? 'Offline nearby transfer' : 'Development build required'
+          }
+          subtitle="Transfer uses encrypted Nearby Connections over Bluetooth and local Wi-Fi. It does not need internet."
+          color={available ? colors.success : colors.warning}
+        />
       </Card>
       <PrimaryButton
         label={advertising ? 'Waiting for teacher...' : 'Make this device visible'}
@@ -122,30 +117,51 @@ export function ReceiveTransferScreen({ navigation }: Props) {
         disabled={!available || advertising}
         onPress={() => void startReceiving()}
       />
+      {!connection && !received ? (
+        <MascotPanel
+          title={advertising ? 'Listening for a teacher…' : 'Ready when you are'}
+          body={
+            advertising
+              ? 'Keep this screen open — the module will arrive automatically.'
+              : 'Make this device visible so a nearby teacher can send you a module.'
+          }
+          expression={advertising ? 'encouraging' : 'idle'}
+        />
+      ) : null}
       {connection ? (
         <Card>
-          <View style={styles.statusRow}>
-            <Text style={styles.rowTitle}>Connection</Text>
-            <Chip
-              label={capitalize(connection.state)}
-              color={
-                connection.state === 'connected'
-                  ? colors.emerald
-                  : colors.indigo
-              }
-              selected
-            />
-          </View>
+          <CardHeader
+            icon={Radio}
+            title="Connection"
+            color={
+              connection.state === 'connected'
+                ? colors.success
+                : colors.secondary
+            }
+            action={
+              <StatusBadge
+                label={capitalize(connection.state)}
+                status={
+                  connection.state === 'connected'
+                    ? 'completed'
+                    : 'inProgress'
+                }
+              />
+            }
+          />
           {connection.errorMessage ? (
             <Text style={styles.error}>{connection.errorMessage}</Text>
           ) : null}
         </Card>
       ) : null}
       {received ? (
-        <Card accent={colors.emerald}>
-          <CheckCircle2 size={28} color={colors.emerald} />
-          <Text style={styles.cardTitle}>Module saved</Text>
-          <Text style={styles.rowTitle}>{received.displayName}</Text>
+        <Card accent={colors.success} style={styles.successCard}>
+          <CardHeader
+            icon={CheckCircle2}
+            title="Module saved"
+            subtitle={received.displayName}
+            color={colors.success}
+          />
           <Text style={styles.body}>
             {formatBytes(received.sizeBytes)} verified with SHA-256 and added
             to this device.
@@ -171,35 +187,7 @@ function capitalize(value: string): string {
 }
 
 const styles = StyleSheet.create({
-  flex: { flex: 1 },
-  headingRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: spacing.md,
-  },
-  statusRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: spacing.md,
-  },
-  cardTitle: {
-    color: colors.ink,
-    fontSize: 19,
-    lineHeight: 25,
-    fontWeight: '800',
-  },
-  rowTitle: {
-    color: colors.ink,
-    fontSize: 16,
-    lineHeight: 22,
-    fontWeight: '800',
-  },
-  body: { color: colors.inkMuted, fontSize: 15, lineHeight: 22 },
-  error: {
-    color: colors.danger,
-    fontSize: 14,
-    lineHeight: 20,
-    fontWeight: '700',
-  },
+  successCard: { ...elevation.e2 },
+  body: { ...text.body, color: colors.inkMuted },
+  error: { ...text.label, color: colors.error },
 });

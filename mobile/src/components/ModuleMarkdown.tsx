@@ -10,7 +10,7 @@ import Markdown, {
   MarkdownIt,
   type RenderRules,
 } from 'react-native-markdown-display';
-import { colors, spacing } from '@/theme/tokens';
+import { colors, radius, spacing, text } from '@/theme/tokens';
 
 const markdownParser = MarkdownIt({
   html: false,
@@ -148,31 +148,25 @@ function resolveLocalImage(
 
 const markdownStyles = StyleSheet.create({
   body: {
+    ...text.body,
     color: colors.ink,
-    fontSize: 17,
     lineHeight: 28,
   },
   heading1: {
+    ...text.h1,
     color: colors.ink,
-    fontSize: 27,
-    fontWeight: '800',
-    lineHeight: 34,
     marginBottom: spacing.md,
     marginTop: spacing.sm,
   },
   heading2: {
+    ...text.h2,
     color: colors.ink,
-    fontSize: 22,
-    fontWeight: '800',
-    lineHeight: 29,
     marginBottom: spacing.sm,
     marginTop: spacing.lg,
   },
   heading3: {
+    ...text.title,
     color: colors.ink,
-    fontSize: 19,
-    fontWeight: '700',
-    lineHeight: 26,
     marginBottom: spacing.xs,
     marginTop: spacing.md,
   },
@@ -187,26 +181,32 @@ const markdownStyles = StyleSheet.create({
   },
   blockquote: {
     backgroundColor: colors.surfaceMuted,
-    borderLeftColor: colors.indigo,
+    borderLeftColor: colors.primary,
     borderLeftWidth: 4,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
   },
+  // Tappable "recall term" — a filled pill so students can tell it is
+  // interactive; kept distinct from real links (which stay underlined).
   code_inline: {
-    backgroundColor: colors.surfaceMuted,
-    color: colors.indigo,
-    fontWeight: '800',
-    paddingHorizontal: 3,
-    textDecorationLine: 'underline',
+    backgroundColor: colors.primaryTint,
+    color: colors.primary,
+    fontWeight: '700',
+    borderRadius: radius.sm,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
   },
   fence: {
     backgroundColor: colors.surfaceMuted,
     borderColor: colors.outline,
+    borderWidth: 1,
+    borderRadius: radius.md,
     color: colors.ink,
     fontFamily: 'monospace',
+    padding: spacing.md,
   },
   link: {
-    color: colors.indigo,
+    color: colors.secondary,
     textDecorationLine: 'underline',
   },
 });
@@ -215,22 +215,23 @@ const styles = StyleSheet.create({
   image: {
     alignSelf: 'stretch',
     backgroundColor: colors.surfaceMuted,
-    borderRadius: 6,
-    height: 240,
-    marginBottom: spacing.md,
+    borderRadius: radius.md,
     width: '100%',
+    aspectRatio: 4 / 3,
+    maxHeight: 420,
+    marginBottom: spacing.md,
   },
   unavailableImage: {
     backgroundColor: colors.surfaceMuted,
     borderColor: colors.outline,
-    borderRadius: 6,
+    borderRadius: radius.md,
     borderWidth: 1,
     marginBottom: spacing.md,
     padding: spacing.md,
   },
   unavailableText: {
+    ...text.label,
     color: colors.inkMuted,
-    fontSize: 14,
-    lineHeight: 20,
+    fontWeight: '400',
   },
 });

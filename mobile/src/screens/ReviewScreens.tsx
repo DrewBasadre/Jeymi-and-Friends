@@ -4,6 +4,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
   Brain,
   CalendarDays,
+  Check,
   CheckCircle2,
   ListChecks,
   Pause,
@@ -15,13 +16,16 @@ import {
 } from 'lucide-react-native';
 import {
   Card,
+  CardHeader,
   Chip,
   EmptyState,
   Metric,
   PrimaryButton,
   Screen,
   ScreenHeader,
+  SectionTitle,
 } from '@/components/ui';
+import { MascotPanel } from '@/components/mascot';
 import {
   createPomodoroForStudent,
   generateParentDigest,
@@ -44,7 +48,7 @@ import type {
 import type { RootStackParamList } from '@/navigation/types';
 import { useSessionStore } from '@/store/session';
 import { deliverParentDigest, type DigestDelivery } from '@/services/parentDigest';
-import { colors, radius, spacing } from '@/theme/tokens';
+import { colors, radius, spacing, text } from '@/theme/tokens';
 
 type ReviewProps = NativeStackScreenProps<RootStackParamList, 'ReviewHub'>;
 type CustomProps = NativeStackScreenProps<RootStackParamList, 'CustomReviewSets'>;
@@ -247,6 +251,7 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
         subtitle={`${items.length} review item${items.length === 1 ? '' : 's'} due`}
         onBack={navigation.goBack}
       />
+      <SectionTitle>Technique</SectionTitle>
       <View style={styles.chipRow}>
         {TECHNIQUES.map((option) => (
           <Chip
@@ -257,6 +262,8 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
           />
         ))}
       </View>
+
+      <SectionTitle>Review sets</SectionTitle>
       <PrimaryButton
         label="Custom review sets"
         icon={PencilLine}
@@ -287,17 +294,15 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
         </View>
       ) : null}
 
+      <SectionTitle>Focus timer</SectionTitle>
       {!pomodoro ? (
         <Card accent={colors.coral}>
-          <View style={styles.headingRow}>
-            <Timer size={24} color={colors.coral} />
-            <View style={styles.flex}>
-              <Text style={styles.cardTitle}>Study timer</Text>
-              <Text style={styles.body}>
-                Run timed work and break cycles with any technique.
-              </Text>
-            </View>
-          </View>
+          <CardHeader
+            icon={Timer}
+            title="Study timer"
+            subtitle="Run timed work and break cycles with any technique."
+            color={colors.coral}
+          />
           <Text style={styles.label}>Work</Text>
           <View style={styles.chipRow}>
             {[15, 25, 35].map((minutes) => (
@@ -336,25 +341,17 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
       ) : null}
 
       {pomodoro ? (
-        <Card accent={timerPhase === 'work' ? colors.coral : colors.emerald}>
-          <View style={styles.metricRow}>
-            <Metric
-              label={timerPhase === 'work' ? 'Work time' : 'Break time'}
-              value={formatClock(secondsLeft)}
-              tint={
-                timerPhase === 'work'
-                  ? colors.coralTint
-                  : colors.emeraldTint
-              }
-            />
-            <Metric
-              label="Cycle"
-              value={`${Math.min(
-                pomodoro.cyclesPlanned,
-                pomodoro.completedCycles + 1,
-              )}/${pomodoro.cyclesPlanned}`}
-              tint={colors.indigoTint}
-            />
+        <Card accent={timerPhase === 'work' ? colors.coral : colors.success}>
+          <View style={styles.timerBlock}>
+            <Text style={styles.timerPhaseLabel}>
+              {timerPhase === 'work' ? 'Work time' : 'Break time'}
+            </Text>
+            <Text style={styles.timerTime}>{formatClock(secondsLeft)}</Text>
+            <Text style={styles.timerCycle}>
+              Cycle{' '}
+              {Math.min(pomodoro.cyclesPlanned, pomodoro.completedCycles + 1)} of{' '}
+              {pomodoro.cyclesPlanned}
+            </Text>
           </View>
           <View style={styles.timerActions}>
             <PrimaryButton
@@ -373,10 +370,10 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
         </Card>
       ) : null}
 
+      <SectionTitle>Review</SectionTitle>
       {retrievalResult !== null ? (
-        <Card accent={colors.emerald}>
-          <CheckCircle2 size={30} color={colors.emerald} />
-          <Text style={styles.cardTitle}>Retrieval complete</Text>
+        <Card accent={colors.success}>
+          <CardHeader icon={CheckCircle2} title="Retrieval complete" color={colors.success} />
           <Text style={styles.scoreText}>{retrievalResult}/{queue.length}</Text>
           {queue.map((item) => (
             <View key={item.itemId} style={styles.answerReview}>
@@ -389,7 +386,7 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
       ) : !current ? (
         <EmptyState title="Review complete" body="The next due items will appear here automatically." />
       ) : current ? (
-        <Card accent={technique === 'blurting' ? colors.amber : colors.indigo}>
+        <Card accent={technique === 'blurting' ? colors.accent : colors.primary}>
           <View style={styles.rowBetween}>
             <Chip label={friendlyConcept(current)} />
             <Text style={styles.counter}>{index + 1}/{queue.length}</Text>
@@ -418,7 +415,7 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
             </>
           ) : technique === 'retrieval-quiz' ? (
             <>
-              <ListChecks size={28} color={colors.indigo} />
+              <ListChecks size={28} color={colors.primary} />
               <Text style={styles.prompt}>{current.prompt}</Text>
               <TextInput
                 value={writtenAnswer}
@@ -435,7 +432,7 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
             </>
           ) : (
             <>
-              <Brain size={28} color={colors.indigo} />
+              <Brain size={28} color={colors.primary} />
               <Text style={styles.prompt}>{current.prompt}</Text>
               {revealed ? <Text style={styles.answer}>{current.answer}</Text> : null}
               {!revealed ? (
@@ -519,13 +516,15 @@ export function CustomReviewSetsScreen({ navigation }: CustomProps) {
     <Screen>
       <ScreenHeader title="Custom review sets" onBack={navigation.goBack} />
       <Card>
-        <Text style={styles.cardTitle}>New set</Text>
+        <CardHeader icon={PencilLine} title="New set" />
         <TextInput value={title} onChangeText={setTitle} style={styles.input} placeholder="Set title" placeholderTextColor={colors.inkMuted} />
         <Text style={styles.label}>Pick local items</Text>
         <View style={styles.selectionList}>
           {items.slice(0, 12).map((item) => (
             <Pressable key={item.itemId} style={styles.selectionRow} onPress={() => toggleItem(item.itemId)}>
-              <View style={[styles.checkbox, selected.has(item.itemId) && styles.checkboxActive]} />
+              <View style={[styles.checkbox, selected.has(item.itemId) && styles.checkboxActive]}>
+                {selected.has(item.itemId) ? <Check size={14} color={colors.white} /> : null}
+              </View>
               <View style={styles.flex}>
                 <Text style={styles.smallTitle}>{item.prompt}</Text>
                 <Text style={styles.meta}>{friendlyConcept(item)}</Text>
@@ -533,6 +532,9 @@ export function CustomReviewSetsScreen({ navigation }: CustomProps) {
             </Pressable>
           ))}
         </View>
+        {items.length > 12 ? (
+          <Text style={styles.meta}>Showing first 12 of {items.length}</Text>
+        ) : null}
         <Text style={styles.label}>Author one item</Text>
         <TextInput value={prompt} onChangeText={setPrompt} style={styles.input} placeholder="Prompt" placeholderTextColor={colors.inkMuted} />
         <TextInput value={answer} onChangeText={setAnswer} style={styles.input} placeholder="Answer" placeholderTextColor={colors.inkMuted} />
@@ -545,11 +547,13 @@ export function CustomReviewSetsScreen({ navigation }: CustomProps) {
         <PrimaryButton label="Save review set" icon={Plus} onPress={() => void save()} />
       </Card>
       {sets.map((set) => (
-        <Card key={set.setId} accent={colors.emerald}>
-          <Text style={styles.cardTitle}>{set.title}</Text>
-          <Text style={styles.body}>
-            {set.itemIds.length + set.createdItems.length} item{set.itemIds.length + set.createdItems.length === 1 ? '' : 's'}
-          </Text>
+        <Card key={set.setId} accent={colors.success}>
+          <CardHeader
+            icon={ListChecks}
+            title={set.title}
+            subtitle={`${set.itemIds.length + set.createdItems.length} item${set.itemIds.length + set.createdItems.length === 1 ? '' : 's'}`}
+            color={colors.success}
+          />
           <Chip label={set.visibility === 'private' ? 'Private' : 'Shared to class'} />
           <PrimaryButton
             label="Share nearby"
@@ -581,23 +585,22 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
       <ScreenHeader title="Parent weekly digest" onBack={navigation.goBack} />
       {digest ? (
         <>
-          <Card accent={colors.emerald}>
-            <View style={styles.headingRow}>
-              <CalendarDays size={25} color={colors.emerald} />
-              <View style={styles.flex}>
-                <Text style={styles.cardTitle}>{digest.weekStart} to {digest.weekEnd}</Text>
-                <Text style={styles.body}>{digest.summary}</Text>
-                <Text style={styles.meta}>
-                  {delivery === 'notification'
-                    ? 'Parent notification delivered'
-                    : 'Saved for in-app viewing'}
-                </Text>
-              </View>
-            </View>
+          <Card accent={colors.success}>
+            <CardHeader
+              icon={CalendarDays}
+              title={`${digest.weekStart} to ${digest.weekEnd}`}
+              subtitle={digest.summary}
+              color={colors.success}
+            />
+            <Text style={styles.meta}>
+              {delivery === 'notification'
+                ? 'Parent notification delivered'
+                : 'Saved for in-app viewing'}
+            </Text>
           </Card>
           <View style={styles.metricRow}>
-            <Metric label="Modules" value={digest.modulesCompleted.length} tint={colors.indigoTint} />
-            <Metric label="Time trend" value={capitalize(digest.timeTrend.replaceAll('-', ' '))} tint={colors.amberTint} />
+            <Metric label="Modules" value={digest.modulesCompleted.length} tint={colors.primaryTint} />
+            <Metric label="Time trend" value={capitalize(digest.timeTrend.replaceAll('-', ' '))} tint={colors.accentTint} />
           </View>
           <Card>
             <Text style={styles.label}>Home reinforcement</Text>
@@ -605,7 +608,11 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
           </Card>
         </>
       ) : (
-        <EmptyState title="Preparing digest" body="Weekly activity is being summarized locally." />
+        <MascotPanel
+          title="Preparing digest"
+          body="Weekly activity is being summarized locally."
+          expression="encouraging"
+        />
       )}
     </Screen>
   );
@@ -617,15 +624,21 @@ function RatingRow({
   onGrade(quality: 0 | 1 | 2 | 3 | 4 | 5): void;
 }) {
   return (
-    <View style={styles.ratingRow}>
+    <View style={styles.ratingGrid}>
       {([
-        [0, 'Forgot'],
-        [2, 'Hard'],
-        [4, 'Recalled'],
-        [5, 'Easy'],
-      ] as const).map(([quality, label]) => (
-        <Pressable key={quality} style={styles.rating} onPress={() => onGrade(quality)}>
-          <Text style={styles.ratingValue}>{quality}</Text>
+        [0, 'Again', colors.coral],
+        [2, 'Hard', colors.accent],
+        [4, 'Good', colors.secondary],
+        [5, 'Easy', colors.success],
+      ] as const).map(([quality, label, tint]) => (
+        <Pressable
+          key={quality}
+          accessibilityRole="button"
+          accessibilityLabel={`Rate ${label}`}
+          style={styles.rating}
+          onPress={() => onGrade(quality)}
+        >
+          <View style={[styles.ratingDot, { backgroundColor: tint }]} />
           <Text style={styles.ratingLabel}>{label}</Text>
         </Pressable>
       ))}
@@ -652,15 +665,18 @@ function friendlyConcept(item: ReviewItem): string {
 const styles = StyleSheet.create({
   flex: { flex: 1 },
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  headingRow: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.md },
   rowBetween: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.md },
   metricRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
   timerActions: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  cardTitle: { color: colors.ink, fontSize: 19, lineHeight: 25, fontWeight: '800' },
-  prompt: { color: colors.ink, fontSize: 22, lineHeight: 30, fontWeight: '800' },
-  answer: { color: colors.emerald, fontSize: 17, lineHeight: 25, fontWeight: '800' },
-  body: { color: colors.inkMuted, fontSize: 15, lineHeight: 22 },
-  counter: { color: colors.inkMuted, fontSize: 14, fontWeight: '800' },
+  timerBlock: { alignItems: 'center', gap: spacing.xs, paddingVertical: spacing.md },
+  timerPhaseLabel: { ...text.overline, color: colors.inkMuted },
+  timerTime: { color: colors.ink, ...text.display, fontSize: 56, lineHeight: 62 },
+  timerCycle: { ...text.label, color: colors.inkMuted },
+  cardTitle: { color: colors.ink, ...text.title },
+  prompt: { color: colors.ink, ...text.h2 },
+  answer: { color: colors.success, ...text.bodyStrong },
+  body: { color: colors.inkMuted, ...text.body },
+  counter: { color: colors.inkMuted, ...text.caption, fontWeight: '800' },
   input: {
     minHeight: 50,
     borderWidth: 1,
@@ -670,13 +686,14 @@ const styles = StyleSheet.create({
     color: colors.ink,
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.md,
-    fontSize: 16,
+    ...text.body,
   },
   multiline: { minHeight: 130, textAlignVertical: 'top' },
-  ratingRow: { flexDirection: 'row', gap: spacing.sm },
+  ratingGrid: { flexDirection: 'row', gap: spacing.sm },
   rating: {
     flex: 1,
-    minHeight: 70,
+    minHeight: 74,
+    gap: spacing.sm,
     borderWidth: 1,
     borderColor: colors.outline,
     borderRadius: radius.md,
@@ -684,15 +701,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  ratingValue: { color: colors.indigo, fontSize: 19, fontWeight: '900' },
-  ratingLabel: { color: colors.inkMuted, fontSize: 10, fontWeight: '800' },
-  scoreText: { color: colors.ink, fontSize: 42, fontWeight: '900' },
+  ratingDot: { width: 16, height: 16, borderRadius: radius.round },
+  ratingLabel: { color: colors.ink, ...text.label, fontWeight: '800' },
+  scoreText: { color: colors.ink, ...text.display },
   answerReview: { borderTopWidth: 1, borderTopColor: colors.outline, paddingTop: spacing.md, gap: spacing.xs },
-  label: { color: colors.ink, fontSize: 14, fontWeight: '800' },
+  label: { color: colors.ink, ...text.label, fontWeight: '700' },
   selectionList: { borderWidth: 1, borderColor: colors.outline, borderRadius: radius.md, overflow: 'hidden' },
   selectionRow: { minHeight: 58, flexDirection: 'row', alignItems: 'center', gap: spacing.md, padding: spacing.md, borderBottomWidth: 1, borderBottomColor: colors.outline },
-  checkbox: { width: 20, height: 20, borderRadius: radius.sm, borderWidth: 2, borderColor: colors.outline },
-  checkboxActive: { borderWidth: 6, borderColor: colors.indigo },
-  smallTitle: { color: colors.ink, fontSize: 14, lineHeight: 19, fontWeight: '800' },
-  meta: { color: colors.inkMuted, fontSize: 12, lineHeight: 17 },
+  checkbox: {
+    width: 22,
+    height: 22,
+    borderRadius: radius.sm,
+    borderWidth: 2,
+    borderColor: colors.outline,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkboxActive: { backgroundColor: colors.primary, borderColor: colors.primary },
+  smallTitle: { color: colors.ink, ...text.label, fontWeight: '800' },
+  meta: { color: colors.inkMuted, ...text.caption },
 });

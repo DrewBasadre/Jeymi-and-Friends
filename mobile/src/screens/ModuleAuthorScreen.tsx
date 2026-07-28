@@ -11,17 +11,22 @@ import {
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import * as Crypto from 'expo-crypto';
 import {
+  BookOpen,
   Bot,
   FileImage,
+  FileText,
+  ListChecks,
   PackageCheck,
   Plus,
 } from 'lucide-react-native';
 import {
   Card,
+  CardHeader,
   Chip,
   PrimaryButton,
   Screen,
   ScreenHeader,
+  StatusBadge,
 } from '@/components/ui';
 import {
   getTeacherProfile,
@@ -40,7 +45,7 @@ import {
   pickAndProcessModuleImages,
   type TeacherModuleImage,
 } from '@/services/modulePackages';
-import { colors, radius, spacing } from '@/theme/tokens';
+import { colors, radius, spacing, text } from '@/theme/tokens';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ModuleAuthor'>;
 
@@ -169,6 +174,7 @@ export function ModuleAuthorScreen({ navigation }: Props) {
         onBack={navigation.goBack}
       />
       <Card>
+        <CardHeader icon={FileText} title="Module details" />
         <Field label="Module title" value={title} onChangeText={setTitle} />
         <Field
           label="Grade level"
@@ -190,25 +196,20 @@ export function ModuleAuthorScreen({ navigation }: Props) {
       </Card>
 
       <Card>
-        <Bot size={26} color={colors.inkMuted} />
-        <Text style={styles.label}>AI assist coming soon</Text>
-        <Text style={styles.helper}>
-          This Android build uses manual authoring only.
-        </Text>
-        <PrimaryButton
-          label="AI assist coming soon"
+        <CardHeader
           icon={Bot}
-          disabled
-          onPress={() => undefined}
+          title="AI assist"
+          subtitle="This Android build uses manual authoring only."
+          action={<StatusBadge label="Planned" status="locked" />}
         />
       </Card>
 
       <Card>
-        <Text style={styles.label}>Review items</Text>
-        <Text style={styles.helper}>
-          Set the concept and importance here. WAIS will not infer either on the
-          student device.
-        </Text>
+        <CardHeader
+          icon={ListChecks}
+          title="Review items"
+          subtitle="Set the concept and importance here. Pavo will not infer either on the student device."
+        />
         <Field
           label="Concept ID"
           value={conceptId}
@@ -266,7 +267,7 @@ export function ModuleAuthorScreen({ navigation }: Props) {
       </Card>
 
       <Card>
-        <Text style={styles.label}>Lesson Markdown</Text>
+        <CardHeader icon={BookOpen} title="Lesson Markdown" />
         <TextInput
           autoCapitalize="sentences"
           multiline
@@ -329,38 +330,34 @@ function Field({
 const styles = StyleSheet.create({
   field: { gap: spacing.xs },
   label: {
+    ...text.label,
     color: colors.ink,
-    fontSize: 14,
-    fontWeight: '800',
   },
   input: {
-    backgroundColor: colors.background,
+    ...text.body,
+    backgroundColor: colors.surface,
     borderColor: colors.outline,
     borderRadius: radius.md,
     borderWidth: 1,
     color: colors.ink,
-    fontSize: 16,
     minHeight: 48,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
   },
   multiline: { minHeight: 82, textAlignVertical: 'top' },
   helper: {
+    ...text.caption,
     color: colors.inkMuted,
-    fontSize: 13,
-    lineHeight: 19,
   },
   reviewItem: {
-    borderTopWidth: 1,
-    borderTopColor: colors.outline,
-    paddingTop: spacing.md,
+    backgroundColor: colors.surfaceMuted,
+    borderRadius: radius.md,
+    padding: spacing.md,
     gap: spacing.xs,
   },
   reviewTitle: {
+    ...text.bodyStrong,
     color: colors.ink,
-    fontSize: 15,
-    lineHeight: 21,
-    fontWeight: '800',
   },
   editor: {
     fontFamily: 'monospace',
@@ -385,8 +382,7 @@ const styles = StyleSheet.create({
     width: 120,
   },
   imageName: {
+    ...text.caption,
     color: colors.inkMuted,
-    fontSize: 11,
-    lineHeight: 15,
   },
 });
