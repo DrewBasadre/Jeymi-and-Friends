@@ -10,7 +10,7 @@ import Markdown, {
   MarkdownIt,
   type RenderRules,
 } from 'react-native-markdown-display';
-import { colors, spacing } from '@/theme/tokens';
+import { colors, radius, spacing, text } from '@/theme/tokens';
 
 const markdownParser = MarkdownIt({
   html: false,
@@ -146,67 +146,98 @@ function resolveLocalImage(
   return file.exists ? file.uri : null;
 }
 
+/**
+ * Lesson typography. Reading is the core act of this app, so the body is set
+ * a notch larger and more open than UI text — a comfortable measure and a
+ * generous line height do more for comprehension than any decoration.
+ */
 const markdownStyles = StyleSheet.create({
   body: {
-    color: colors.ink,
+    ...text.body,
     fontSize: 17,
-    lineHeight: 28,
+    color: colors.ink,
+    lineHeight: 29,
   },
   heading1: {
+    ...text.h1,
     color: colors.ink,
-    fontSize: 27,
-    fontWeight: '800',
-    lineHeight: 34,
     marginBottom: spacing.md,
     marginTop: spacing.sm,
   },
   heading2: {
+    ...text.h2,
     color: colors.ink,
-    fontSize: 22,
-    fontWeight: '800',
-    lineHeight: 29,
     marginBottom: spacing.sm,
-    marginTop: spacing.lg,
+    marginTop: spacing.xl,
   },
   heading3: {
+    ...text.title,
     color: colors.ink,
-    fontSize: 19,
-    fontWeight: '700',
-    lineHeight: 26,
+    marginBottom: spacing.xs,
+    marginTop: spacing.lg,
+  },
+  heading4: {
+    ...text.bodyStrong,
+    color: colors.inkMuted,
     marginBottom: spacing.xs,
     marginTop: spacing.md,
   },
   paragraph: {
     marginBottom: spacing.md,
   },
+  strong: { fontWeight: '800', color: colors.ink },
+  em: { fontStyle: 'italic', color: colors.ink },
   bullet_list: {
     marginBottom: spacing.md,
   },
   ordered_list: {
     marginBottom: spacing.md,
   },
+  list_item: { marginBottom: spacing.xs },
+  bullet_list_icon: { color: colors.primary, marginRight: spacing.sm },
+  ordered_list_icon: { color: colors.primary, fontWeight: '800', marginRight: spacing.sm },
+  hr: { backgroundColor: colors.hairline, height: 1, marginVertical: spacing.lg },
   blockquote: {
-    backgroundColor: colors.surfaceMuted,
-    borderLeftColor: colors.indigo,
+    backgroundColor: colors.primaryTint,
+    borderLeftColor: colors.primary,
     borderLeftWidth: 4,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
+    borderRadius: radius.sm,
+    marginVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.md,
   },
+  table: {
+    borderColor: colors.outline,
+    borderWidth: 1,
+    borderRadius: radius.md,
+    marginVertical: spacing.md,
+    overflow: 'hidden',
+  },
+  thead: { backgroundColor: colors.surfaceMuted },
+  th: { ...text.caption, color: colors.ink, padding: spacing.sm },
+  tr: { borderBottomWidth: 1, borderColor: colors.hairline },
+  td: { ...text.bodySm, color: colors.inkMuted, padding: spacing.sm },
+  // Tappable "recall term" — a filled pill so students can tell it is
+  // interactive; kept distinct from real links (which stay underlined).
   code_inline: {
-    backgroundColor: colors.surfaceMuted,
-    color: colors.indigo,
-    fontWeight: '800',
-    paddingHorizontal: 3,
-    textDecorationLine: 'underline',
+    backgroundColor: colors.primaryTint,
+    color: colors.primary,
+    fontWeight: '700',
+    borderRadius: radius.sm,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
   },
   fence: {
     backgroundColor: colors.surfaceMuted,
     borderColor: colors.outline,
+    borderWidth: 1,
+    borderRadius: radius.md,
     color: colors.ink,
     fontFamily: 'monospace',
+    padding: spacing.md,
   },
   link: {
-    color: colors.indigo,
+    color: colors.secondary,
     textDecorationLine: 'underline',
   },
 });
@@ -215,22 +246,23 @@ const styles = StyleSheet.create({
   image: {
     alignSelf: 'stretch',
     backgroundColor: colors.surfaceMuted,
-    borderRadius: 6,
-    height: 240,
-    marginBottom: spacing.md,
+    borderRadius: radius.md,
     width: '100%',
+    aspectRatio: 4 / 3,
+    maxHeight: 420,
+    marginBottom: spacing.md,
   },
   unavailableImage: {
     backgroundColor: colors.surfaceMuted,
     borderColor: colors.outline,
-    borderRadius: 6,
+    borderRadius: radius.md,
     borderWidth: 1,
     marginBottom: spacing.md,
     padding: spacing.md,
   },
   unavailableText: {
+    ...text.label,
     color: colors.inkMuted,
-    fontSize: 14,
-    lineHeight: 20,
+    fontWeight: '400',
   },
 });

@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -57,19 +58,20 @@ fun SplashScreen(onFinished: () -> Unit) {
                 verticalArrangement = Arrangement.Center,
                 modifier = Modifier.padding(32.dp)
             ) {
-                AsyncImage(
-                    model = ImageRequest.Builder(context)
-                        .data(R.raw.splash_animation)
-                        .build(),
-                    imageLoader = imageLoader,
-                    contentDescription = "Loading animation",
-                    modifier = Modifier.size(240.dp)
-                )
+                Box(
+                    modifier = Modifier
+                        .size(200.dp)
+                        .clip(androidx.compose.foundation.shape.CircleShape)
+                        .background(Indigo100),
+                    contentAlignment = Alignment.Center
+                ) {
+                    PeacockPhase(phase = 5, size = 168.dp)
+                }
 
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
-                    text = "WAIS",
+                    text = "Pavo",
                     style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.Bold,
                     color = Indigo900

@@ -192,16 +192,18 @@ fun OfflineBadge(modifier: Modifier = Modifier) {
 @Composable
 fun AppBrandHeader(modifier: Modifier = Modifier) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
-        androidx.compose.foundation.Image(
-            painter = androidx.compose.ui.res.painterResource(id = com.pangarap.learninghub.R.mipmap.ic_launcher),
-            contentDescription = "WAIS Logo",
+        Box(
             modifier = Modifier
-                .size(80.dp)
-                .clip(RoundedCornerShape(20.dp))
-        )
+                .size(112.dp)
+                .clip(CircleShape)
+                .background(Indigo100),
+            contentAlignment = Alignment.Center
+        ) {
+            PeacockPhase(phase = 5, size = 92.dp)
+        }
         Spacer(Modifier.height(SpacingMd))
-        Text("WAIS", style = MaterialTheme.typography.headlineLarge, fontWeight = FontWeight.Bold, color = Indigo900)
-        Text("Offline-First Grade 5 Learning", style = MaterialTheme.typography.bodyMedium, color = OnSurfaceVariant)
+        Text("Pavo", style = MaterialTheme.typography.headlineLarge, fontWeight = FontWeight.Bold, color = Indigo900)
+        Text("Your friendly learning buddy — online or offline", style = MaterialTheme.typography.bodyMedium, color = OnSurfaceVariant)
     }
 }
 

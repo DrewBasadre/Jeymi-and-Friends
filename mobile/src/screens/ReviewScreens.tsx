@@ -1,32 +1,63 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  Alert,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  type TextInputProps,
+  View,
+} from 'react-native';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type { CompositeScreenProps } from '@react-navigation/native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
+  BookOpen,
   Brain,
-  CalendarDays,
+  Check,
   CheckCircle2,
+  ChevronRight,
+  Clock3,
+  Layers,
   Lightbulb,
   ListChecks,
   Pause,
   PencilLine,
   Play,
   Plus,
+  Share2,
+  Shuffle,
+  Sparkles,
   Square,
+  Target,
   Timer,
+  type LucideIcon,
 } from 'lucide-react-native';
 import {
+  Callout,
   Card,
+  CardHeader,
   Chip,
+  Divider,
   EmptyState,
-  Metric,
+  GradientView,
+  HeroCard,
+  IconPlate,
+  ListRow,
   PrimaryButton,
+  ProgressBar,
+  RingProgress,
+  Row,
   Screen,
   ScreenHeader,
+  SectionHeader,
+  StatTile,
+  TileGrid,
+  useCompactViewport,
 } from '@/components/ui';
 import { ActivityWeek, MiniBarChart } from '@/components/ProgressCharts';
 import { ParentPinPrompt } from '@/components/ParentPinPrompt';
+import { MascotPanel } from '@/components/mascot';
 import {
   createPomodoroForStudent,
   generateParentDigest,
@@ -52,7 +83,15 @@ import type {
 } from '@/navigation/types';
 import { useSessionStore } from '@/store/session';
 import { deliverParentDigest, type DigestDelivery } from '@/services/parentDigest';
-import { colors, radius, spacing } from '@/theme/tokens';
+import {
+  colors,
+  elevation,
+  gradients,
+  radius,
+  spacing,
+  text,
+} from '@/theme/tokens';
+import { capitalize, formatDate } from '@/utils/format';
 
 type ReviewProps = NativeStackScreenProps<RootStackParamList, 'ReviewHub'>;
 type StudyProps = CompositeScreenProps<
@@ -62,11 +101,57 @@ type StudyProps = CompositeScreenProps<
 type CustomProps = NativeStackScreenProps<RootStackParamList, 'CustomReviewSets'>;
 type DigestProps = NativeStackScreenProps<RootStackParamList, 'ParentDigest'>;
 
-const TECHNIQUES: Array<{ key: StudyTechnique; label: string }> = [
-  { key: 'active-recall', label: 'Recall' },
-  { key: 'retrieval-quiz', label: 'Retrieval quiz' },
-  { key: 'interleaved', label: 'Interleaved' },
+type TechniqueMeta = {
+  key: StudyTechnique;
+  label: string;
+  icon: LucideIcon;
+  color: string;
+  /** One line on why the technique works — the evidence, not the marketing. */
+  why: string;
+  /** One line on how to run it inside this app, right now. */
+  how: string;
+  action: string;
+};
+
+const TECHNIQUES: TechniqueMeta[] = [
+  {
+    key: 'active-recall',
+    label: 'Active recall',
+    icon: Brain,
+    color: colors.primary,
+    why: 'Pulling an answer out of memory strengthens it far more than reading it again.',
+    how: 'Read the prompt, answer it in your head, then reveal the reference and rate how well you knew it.',
+    action: 'Practice recall',
+  },
+  {
+    key: 'retrieval-quiz',
+    label: 'Retrieval quiz',
+    icon: ListChecks,
+    color: colors.secondary,
+    why: 'Writing an answer with no cues gives you an honest measure of what you actually know.',
+    how: 'Type an answer for every due item, then submit the whole set for a scored breakdown.',
+    action: 'Start a quiz',
+  },
+  {
+    key: 'interleaved',
+    label: 'Interleaved practice',
+    icon: Shuffle,
+    color: colors.accentText,
+    why: 'Mixing topics forces you to choose the right method — the part a test really measures.',
+    how: 'Work the queue in the mixed order it arrives; resist the urge to group by subject.',
+    action: 'Mix the queue',
+  },
 ];
+
+const IMPORTANCE_OPTIONS: Array<{ value: ReviewImportance; label: string }> = [
+  { value: 'core', label: 'Core' },
+  { value: 'supplementary', label: 'Supplementary' },
+  { value: 'stretch', label: 'Stretch' },
+];
+
+/* ────────────────────────────────────────────────────────────────────────
+   Review hub — the study-techniques heart of the app
+   ──────────────────────────────────────────────────────────────────────── */
 
 export function ReviewHubScreen({ navigation }: ReviewProps) {
   return (
@@ -93,6 +178,7 @@ function ReviewExperience({
   onOpenSets(): void;
 }) {
   const student = useSessionStore((state) => state.student);
+  const compact = useCompactViewport();
   const [technique, setTechnique] = useState<StudyTechnique>('active-recall');
   const [items, setItems] = useState<DueReviewItem[]>([]);
   const [sets, setSets] = useState<CustomReviewSet[]>([]);
@@ -274,194 +360,354 @@ function ReviewExperience({
     return <EmptyState title="Student sign-in required" body="Sign in to open the review queue." />;
   }
 
+  const activeTechnique =
+    TECHNIQUES.find((option) => option.key === technique) ?? TECHNIQUES[0]!;
+  const activeSet = sets.find((set) => set.setId === activeSetId) ?? null;
+  const reviewed = Math.min(index, queue.length);
+  const sessionProgress = queue.length > 0 ? reviewed / queue.length : 0;
+  const phaseSeconds = pomodoro
+    ? (timerPhase === 'work' ? pomodoro.workMinutes : pomodoro.breakMinutes) * 60
+    : 0;
+  const phaseProgress =
+    phaseSeconds > 0 ? (phaseSeconds - secondsLeft) / phaseSeconds : 0;
+
   return (
     <Screen>
       <ScreenHeader
-        title="Study techniques"
-        subtitle={`${items.length} review item${items.length === 1 ? '' : 's'} due`}
+        overline="Study techniques"
+        title="Review hub"
+        subtitle="Evidence-based practice, built around what you are due to revisit."
         onBack={onBack}
       />
-      <View style={styles.chipRow}>
-        {TECHNIQUES.map((option) => (
-          <Chip
-            key={option.key}
-            label={option.label}
-            selected={technique === option.key}
-            onPress={() => changeTechnique(option.key)}
-          />
-        ))}
-      </View>
-      <PrimaryButton
-        label="Custom review sets"
-        icon={PencilLine}
-        tone="secondary"
-        onPress={onOpenSets}
+
+      <HeroCard>
+        <Row align="flex-start" gap={spacing.lg}>
+          <View style={styles.flex}>
+            <Text style={styles.heroEyebrow}>DUE TODAY</Text>
+            <Text style={[styles.heroNumber, compact && styles.heroNumberCompact]}>
+              {items.length}
+            </Text>
+            <Text style={styles.heroBody}>
+              {items.length === 0
+                ? 'Nothing is scheduled right now — finish a lesson and new items will appear here.'
+                : `${items.length === 1 ? 'Item' : 'Items'} scheduled to return just before you would forget them.`}
+            </Text>
+          </View>
+          <RingProgress
+            value={sessionProgress}
+            size={compact ? 78 : 92}
+            color={colors.accent}
+            accessibilityLabel={`Session progress: ${reviewed} of ${queue.length} reviewed`}
+          >
+            <Text style={styles.ringValue}>{reviewed}</Text>
+            <Text style={styles.ringLabel}>of {queue.length}</Text>
+          </RingProgress>
+        </Row>
+        <View style={styles.heroRule} />
+        <Row wrap gap={spacing.sm}>
+          <HeroPill icon={activeTechnique.icon} label={activeTechnique.label} />
+          <HeroPill icon={Layers} label={activeSet ? activeSet.title : 'All due items'} />
+        </Row>
+      </HeroCard>
+
+      <SectionHeader
+        title="Study techniques"
+        caption="Pick the one that fits this session — each changes how the queue is presented."
       />
-      {sets.length > 0 ? (
-        <View style={styles.chipRow}>
-          <Chip
-            label="All due"
-            selected={activeSetId === null}
-            onPress={() => {
-              setActiveSetId(null);
-              setIndex(0);
-            }}
-          />
-          {sets.map((set) => (
+      {TECHNIQUES.map((option) => (
+        <TechniqueCard
+          key={option.key}
+          option={option}
+          selected={technique === option.key}
+          onPress={() => changeTechnique(option.key)}
+        />
+      ))}
+
+      <SectionHeader
+        title="Review sets"
+        caption="Group the items you keep forgetting."
+        actionLabel="Manage"
+        onAction={onOpenSets}
+      />
+      <Card>
+        <CardHeader
+          icon={Layers}
+          title="Custom review sets"
+          subtitle="Narrow the queue to one topic"
+          color={colors.accentText}
+        />
+        <Text style={styles.rationale}>
+          Practicing a single tricky topic in one block is how you close a specific gap — the
+          mixed queue is better once the gap is closed.
+        </Text>
+        <View style={styles.howBlock}>
+          <Text style={styles.howLabel}>How to use it here</Text>
+          <Text style={styles.howBody}>
+            Choose a set below to filter today's queue, or build a new one from your own prompts.
+          </Text>
+        </View>
+        {sets.length > 0 ? (
+          <View style={styles.chipRow}>
             <Chip
-              key={set.setId}
-              label={set.title}
-              selected={activeSetId === set.setId}
+              label="All due"
+              selected={activeSetId === null}
               onPress={() => {
-                setActiveSetId(set.setId);
+                setActiveSetId(null);
                 setIndex(0);
               }}
             />
-          ))}
-        </View>
-      ) : null}
+            {sets.map((set) => (
+              <Chip
+                key={set.setId}
+                label={set.title}
+                selected={activeSetId === set.setId}
+                onPress={() => {
+                  setActiveSetId(set.setId);
+                  setIndex(0);
+                }}
+              />
+            ))}
+          </View>
+        ) : (
+          <Text style={styles.helper}>
+            You have no sets yet — the queue is showing everything that is due.
+          </Text>
+        )}
+          <PrimaryButton
+            label="Custom review sets"
+            icon={PencilLine}
+            tone="secondary"
+            onPress={onOpenSets}
+        />
+      </Card>
 
+      <SectionHeader
+        title="Focus timer"
+        caption="Short timed blocks with real breaks between them."
+      />
       {!pomodoro ? (
-        <Card accent={colors.coral}>
-          <View style={styles.headingRow}>
-            <Timer size={24} color={colors.coral} />
-            <View style={styles.flex}>
-              <Text style={styles.cardTitle}>Study timer</Text>
-              <Text style={styles.body}>
-                Run timed work and break cycles with any technique.
-              </Text>
+        <Card>
+          <CardHeader
+            icon={Timer}
+            title="Study timer"
+            subtitle="Work and break cycles, paired with any technique"
+            color={colors.coral}
+          />
+          <Text style={styles.rationale}>
+            Attention fades long before motivation does — a fixed block, then a real break, keeps
+            the second half of a session as sharp as the first.
+          </Text>
+          <View style={styles.howBlock}>
+            <Text style={styles.howLabel}>How to use it here</Text>
+            <Text style={styles.howBody}>
+              Set the block length, then review as normal — each graded item is logged against
+              the session.
+            </Text>
+          </View>
+          <Divider />
+          <View style={styles.field}>
+            <Text style={styles.fieldLabel}>Work</Text>
+            <View style={styles.chipRow}>
+              {[15, 25, 35].map((minutes) => (
+                <Chip
+                  key={minutes}
+                  label={`${minutes} min`}
+                  selected={workMinutes === minutes}
+                  onPress={() => setWorkMinutes(minutes)}
+                />
+              ))}
             </View>
           </View>
-          <Text style={styles.label}>Work</Text>
-          <View style={styles.chipRow}>
-            {[15, 25, 35].map((minutes) => (
-              <Chip
-                key={minutes}
-                label={`${minutes} min`}
-                selected={workMinutes === minutes}
-                onPress={() => setWorkMinutes(minutes)}
-              />
-            ))}
+          <View style={styles.field}>
+            <Text style={styles.fieldLabel}>Break</Text>
+            <View style={styles.chipRow}>
+              {[5, 10, 15].map((minutes) => (
+                <Chip
+                  key={minutes}
+                  label={`${minutes} min`}
+                  selected={breakMinutes === minutes}
+                  onPress={() => setBreakMinutes(minutes)}
+                />
+              ))}
+            </View>
           </View>
-          <Text style={styles.label}>Break</Text>
-          <View style={styles.chipRow}>
-            {[5, 10, 15].map((minutes) => (
-              <Chip
-                key={minutes}
-                label={`${minutes} min break`}
-                selected={breakMinutes === minutes}
-                onPress={() => setBreakMinutes(minutes)}
-              />
-            ))}
-          </View>
-          <Text style={styles.label}>Cycles</Text>
-          <View style={styles.chipRow}>
-            {[1, 2, 4].map((cycles) => (
-              <Chip
-                key={cycles}
-                label={`${cycles}`}
-                selected={cyclesPlanned === cycles}
-                onPress={() => setCyclesPlanned(cycles)}
-              />
-            ))}
+          <View style={styles.field}>
+            <Text style={styles.fieldLabel}>Cycles</Text>
+            <View style={styles.chipRow}>
+              {[1, 2, 4].map((cycles) => (
+                <Chip
+                  key={cycles}
+                  label={`${cycles} ${cycles === 1 ? 'cycle' : 'cycles'}`}
+                  selected={cyclesPlanned === cycles}
+                  onPress={() => setCyclesPlanned(cycles)}
+                />
+              ))}
+            </View>
           </View>
           <PrimaryButton label="Start timer" icon={Timer} onPress={() => void startPomodoro()} />
         </Card>
-      ) : null}
-
-      {pomodoro ? (
-        <Card accent={timerPhase === 'work' ? colors.coral : colors.emerald}>
-          <View style={styles.metricRow}>
-            <Metric
-              label={timerPhase === 'work' ? 'Work time' : 'Break time'}
-              value={formatClock(secondsLeft)}
-              tint={
-                timerPhase === 'work'
-                  ? colors.coralTint
-                  : colors.emeraldTint
-              }
-            />
-            <Metric
-              label="Cycle"
-              value={`${Math.min(
-                pomodoro.cyclesPlanned,
-                pomodoro.completedCycles + 1,
-              )}/${pomodoro.cyclesPlanned}`}
-              tint={colors.indigoTint}
-            />
-          </View>
-          <View style={styles.timerActions}>
-            <PrimaryButton
-              label={timerRunning ? 'Pause' : 'Resume'}
-              icon={timerRunning ? Pause : Play}
-              tone="secondary"
-              onPress={() => setTimerRunning((value) => !value)}
-            />
-            <PrimaryButton
-              label="End timer"
-              icon={Square}
-              tone="danger"
-              onPress={stopPomodoro}
-            />
-          </View>
-        </Card>
-      ) : null}
-
-      {retrievalResult !== null ? (
-        <Card accent={colors.emerald}>
-          <CheckCircle2 size={30} color={colors.emerald} />
-          <Text style={styles.cardTitle}>Retrieval complete</Text>
-          <Text style={styles.scoreText}>{retrievalResult}/{queue.length}</Text>
-          {queue.map((item) => (
-            <View key={item.itemId} style={styles.answerReview}>
-              <Text style={styles.prompt}>{item.prompt}</Text>
-              <Text style={styles.body}>Your answer: {retrievalAnswers[item.itemId]}</Text>
-              <Text style={styles.answer}>Reference: {item.answer}</Text>
+      ) : (
+        <GradientView ramp={gradients.night} style={styles.timerCard}>
+          <Row align="center" gap={spacing.lg}>
+            <RingProgress
+              value={phaseProgress}
+              size={compact ? 84 : 96}
+              color={timerPhase === 'work' ? colors.accent : colors.gradientStart}
+              accessibilityLabel={`${timerPhase === 'work' ? 'Work' : 'Break'} phase progress`}
+            >
+              <Clock3 size={22} color={colors.onBrandMuted} />
+            </RingProgress>
+            <View style={styles.flex}>
+              <Text style={styles.heroEyebrow}>
+                {timerPhase === 'work' ? 'WORK TIME' : 'BREAK TIME'}
+              </Text>
+              <Text style={styles.timerClock}>{formatClock(secondsLeft)}</Text>
+              <Text style={styles.heroBody}>
+                Cycle {Math.min(pomodoro.cyclesPlanned, pomodoro.completedCycles + 1)} of{' '}
+                {pomodoro.cyclesPlanned}
+                {timerRunning ? '' : ' — paused'}
+              </Text>
             </View>
-          ))}
+          </Row>
+          <View style={styles.heroRule} />
+          <View style={styles.timerActions}>
+            <View style={styles.flex}>
+              <PrimaryButton
+                label={timerRunning ? 'Pause' : 'Resume'}
+                icon={timerRunning ? Pause : Play}
+                tone="secondary"
+                onPress={() => setTimerRunning((value) => !value)}
+              />
+            </View>
+            <View style={styles.flex}>
+              <PrimaryButton
+                label="End timer"
+                icon={Square}
+                tone="danger"
+                onPress={stopPomodoro}
+              />
+            </View>
+          </View>
+        </GradientView>
+      )}
+
+      <SectionHeader
+        title="Your queue"
+        caption={
+          queue.length > 0
+            ? `${activeTechnique.label} · ${queue.length} ${queue.length === 1 ? 'item' : 'items'} in this session`
+            : 'Nothing waiting in this session'
+        }
+      />
+      {retrievalResult !== null ? (
+        <Card accent={colors.success}>
+          <CardHeader
+            icon={CheckCircle2}
+            title="Retrieval complete"
+            subtitle="Every answer has been graded and rescheduled"
+            color={colors.success}
+          />
+          <Row align="center" gap={spacing.md}>
+            <Text style={styles.scoreText}>
+              {retrievalResult}
+              <Text style={styles.scoreTotal}>/{queue.length}</Text>
+            </Text>
+            <View style={styles.flex}>
+              <ProgressBar
+                value={queue.length > 0 ? retrievalResult / queue.length : 0}
+                height={10}
+                accessibilityLabel={`Scored ${retrievalResult} of ${queue.length}`}
+              />
+              <Text style={styles.helper}>Correct on the first attempt</Text>
+            </View>
+          </Row>
+          {queue.map((item, position) => {
+            const given = retrievalAnswers[item.itemId] ?? '';
+            const matched =
+              given.trim().toLocaleLowerCase() === item.answer.trim().toLocaleLowerCase();
+            return (
+              <View key={item.itemId} style={styles.answerReview}>
+                {position > 0 ? <Divider style={styles.reviewDivider} /> : null}
+                <Text style={styles.reviewPrompt}>{item.prompt}</Text>
+                <Text style={styles.reviewGiven}>Your answer: {given || '—'}</Text>
+                <Text style={[styles.reviewReference, matched && styles.reviewReferenceOk]}>
+                  Reference: {item.answer}
+                </Text>
+              </View>
+            );
+          })}
         </Card>
       ) : !current ? (
-        <EmptyState title="Review complete" body="The next due items will appear here automatically." />
-      ) : current ? (
-        <Card accent={colors.indigo}>
+        <EmptyState
+          expression="happy"
+          title="Review complete"
+          body="The next due items will appear here automatically — spacing them out is what makes them stick."
+        />
+      ) : (
+        <Card accent={activeTechnique.color}>
           <View style={styles.rowBetween}>
-            <Chip label={friendlyConcept(current)} />
-            <Text style={styles.counter}>{index + 1}/{queue.length}</Text>
+            <Chip label={friendlyConcept(current)} size="sm" />
+            <Text style={styles.counter}>
+              {index + 1} / {queue.length}
+            </Text>
           </View>
+          <ProgressBar
+            value={queue.length > 0 ? (index + 1) / queue.length : 0}
+            height={6}
+            accessibilityLabel={`Item ${index + 1} of ${queue.length}`}
+          />
           {technique === 'retrieval-quiz' ? (
             <>
-              <ListChecks size={28} color={colors.indigo} />
+              <Text style={styles.promptEyebrow}>ANSWER FROM MEMORY</Text>
               <Text style={styles.prompt}>{current.prompt}</Text>
-              <TextInput
+              <Field
+                label="Your answer"
                 value={writtenAnswer}
                 onChangeText={setWrittenAnswer}
-                style={styles.input}
                 placeholder="Type your answer"
-                placeholderTextColor={colors.inkMuted}
+                hint="Answers are scored once the whole set is submitted."
               />
               <PrimaryButton
                 label={index === queue.length - 1 ? 'Submit full set' : 'Next item'}
+                icon={index === queue.length - 1 ? CheckCircle2 : ChevronRight}
                 disabled={!writtenAnswer.trim()}
                 onPress={() => void nextRetrieval()}
               />
             </>
           ) : (
             <>
-              <Brain size={28} color={colors.indigo} />
+              <Text style={styles.promptEyebrow}>
+                {technique === 'interleaved' ? 'MIXED QUEUE' : 'RECALL THIS'}
+              </Text>
               <Text style={styles.prompt}>{current.prompt}</Text>
-              {revealed ? <Text style={styles.answer}>{current.answer}</Text> : null}
+              {revealed ? (
+                <Callout
+                  icon={BookOpen}
+                  tone="success"
+                  title="Reference answer"
+                  body={current.answer}
+                />
+              ) : null}
               {!revealed ? (
-                <PrimaryButton label="Reveal answer" onPress={() => setRevealed(true)} />
+                <PrimaryButton
+                  label="Reveal answer"
+                  icon={Sparkles}
+                  onPress={() => setRevealed(true)}
+                />
               ) : (
                 <RatingRow onGrade={(quality) => void grade(quality)} />
               )}
             </>
           )}
         </Card>
-      ) : null}
+      )}
     </Screen>
   );
 }
+
+/* ────────────────────────────────────────────────────────────────────────
+   Custom review sets
+   ──────────────────────────────────────────────────────────────────────── */
 
 export function CustomReviewSetsScreen({ navigation }: CustomProps) {
   const student = useSessionStore((state) => state.student);
@@ -527,52 +773,195 @@ export function CustomReviewSetsScreen({ navigation }: CustomProps) {
     await load();
   }
 
+  const visibleItems = items.slice(0, 12);
+
   return (
     <Screen>
-      <ScreenHeader title="Custom review sets" onBack={navigation.goBack} />
-      <Card>
-        <Text style={styles.cardTitle}>New set</Text>
-        <TextInput value={title} onChangeText={setTitle} style={styles.input} placeholder="Set title" placeholderTextColor={colors.inkMuted} />
-        <Text style={styles.label}>Pick local items</Text>
-        <View style={styles.selectionList}>
-          {items.slice(0, 12).map((item) => (
-            <Pressable key={item.itemId} style={styles.selectionRow} onPress={() => toggleItem(item.itemId)}>
-              <View style={[styles.checkbox, selected.has(item.itemId) && styles.checkboxActive]} />
-              <View style={styles.flex}>
-                <Text style={styles.smallTitle}>{item.prompt}</Text>
-                <Text style={styles.meta}>{friendlyConcept(item)}</Text>
+      <ScreenHeader
+        overline="Review sets"
+        title="Custom review sets"
+        subtitle="Build a focused queue from the prompts you keep getting wrong."
+        onBack={navigation.goBack}
+      />
+
+      <Callout
+        icon={Lightbulb}
+        tone="info"
+        title="A good set is small and specific"
+        body="Six to ten prompts on one topic beats a long mixed list — you can finish it in a sitting, and the queue stays honest."
+      />
+
+      <SectionHeader
+        title="Your sets"
+        caption={
+          sets.length > 0
+            ? `${sets.length} ${sets.length === 1 ? 'set' : 'sets'} saved on this device`
+            : 'Nothing saved yet'
+        }
+      />
+      {sets.length === 0 ? (
+        <EmptyState
+          title="No sets yet"
+          body="Name a set below, tick the prompts you want in it, and it will appear here."
+        />
+      ) : (
+        <Card>
+          {sets.map((set, position) => {
+            const count = set.itemIds.length + set.createdItems.length;
+            return (
+              <View key={set.setId}>
+                {position > 0 ? <Divider style={styles.reviewDivider} /> : null}
+                <ListRow
+                  icon={ListChecks}
+                  color={colors.success}
+                  title={set.title}
+                  subtitle={`${count} ${count === 1 ? 'item' : 'items'} · ${
+                    set.visibility === 'private' ? 'Private' : 'Shared to class'
+                  } · Created ${formatDate(set.createdAt)}`}
+                  trailing={
+                    <PrimaryButton
+                      label="Share"
+                      icon={Share2}
+                      tone="ghost"
+                      size="sm"
+                      onPress={() => navigation.navigate('Transfer', { setId: set.setId })}
+                    />
+                  }
+                />
               </View>
-            </Pressable>
-          ))}
-        </View>
-        <Text style={styles.label}>Author one item</Text>
-        <TextInput value={prompt} onChangeText={setPrompt} style={styles.input} placeholder="Prompt" placeholderTextColor={colors.inkMuted} />
-        <TextInput value={answer} onChangeText={setAnswer} style={styles.input} placeholder="Answer" placeholderTextColor={colors.inkMuted} />
-        <TextInput value={conceptId} onChangeText={setConceptId} style={styles.input} placeholder="Concept ID" placeholderTextColor={colors.inkMuted} autoCapitalize="none" />
-        <View style={styles.chipRow}>
-          {(['core', 'supplementary', 'stretch'] as const).map((value) => (
-            <Chip key={value} label={capitalize(value)} selected={importance === value} onPress={() => setImportance(value)} />
-          ))}
-        </View>
-        <PrimaryButton label="Save review set" icon={Plus} onPress={() => void save()} />
-      </Card>
-      {sets.map((set) => (
-        <Card key={set.setId} accent={colors.emerald}>
-          <Text style={styles.cardTitle}>{set.title}</Text>
-          <Text style={styles.body}>
-            {set.itemIds.length + set.createdItems.length} item{set.itemIds.length + set.createdItems.length === 1 ? '' : 's'}
-          </Text>
-          <Chip label={set.visibility === 'private' ? 'Private' : 'Shared to class'} />
-          <PrimaryButton
-            label="Share nearby"
-            tone="secondary"
-            onPress={() => navigation.navigate('Transfer', { setId: set.setId })}
-          />
+            );
+          })}
         </Card>
-      ))}
+      )}
+
+      <SectionHeader
+        title="New set"
+        caption="Name it, choose existing prompts, and optionally write one of your own."
+      />
+      <Card>
+        <CardHeader
+          icon={PencilLine}
+          title="Set details"
+          subtitle="Step 1 of 3"
+          color={colors.primary}
+        />
+        <Field
+          label="Set title"
+          value={title}
+          onChangeText={setTitle}
+          placeholder="Photosynthesis — tricky terms"
+          hint="Required. Shown as a filter chip in the review hub."
+        />
+      </Card>
+
+      <Card>
+        <CardHeader
+          icon={ListChecks}
+          title="Pick existing prompts"
+          subtitle="Step 2 of 3"
+          color={colors.secondary}
+        />
+        {visibleItems.length === 0 ? (
+          <Text style={styles.helper}>
+            No review items are stored on this device yet — write one below instead.
+          </Text>
+        ) : (
+          <View style={styles.selectionList}>
+            {visibleItems.map((item, position) => {
+              const checked = selected.has(item.itemId);
+              return (
+                <Pressable
+                  key={item.itemId}
+                  accessibilityRole="checkbox"
+                  accessibilityState={{ checked }}
+                  accessibilityLabel={item.prompt}
+                  onPress={() => toggleItem(item.itemId)}
+                  style={({ pressed }) => [
+                    styles.selectionRow,
+                    position === visibleItems.length - 1 && styles.selectionRowLast,
+                    checked && styles.selectionRowActive,
+                    pressed && styles.pressedSoft,
+                  ]}
+                >
+                  <View style={[styles.checkbox, checked && styles.checkboxActive]}>
+                    {checked ? <Check size={14} color={colors.onBrand} /> : null}
+                  </View>
+                  <View style={styles.flex}>
+                    <Text style={styles.selectionTitle} numberOfLines={2}>
+                      {item.prompt}
+                    </Text>
+                    <Text style={styles.helper} numberOfLines={1}>
+                      {friendlyConcept(item)}
+                    </Text>
+                  </View>
+                </Pressable>
+              );
+            })}
+          </View>
+        )}
+        <Row gap={spacing.sm} wrap>
+          <Text style={styles.helper}>
+            {selected.size} selected
+            {items.length > visibleItems.length
+              ? ` · Showing the first ${visibleItems.length} of ${items.length}`
+              : ''}
+          </Text>
+        </Row>
+      </Card>
+
+      <Card>
+        <CardHeader
+          icon={Plus}
+          title="Write your own prompt"
+          subtitle="Step 3 of 3 — optional"
+          color={colors.accentText}
+        />
+        <Text style={styles.helper}>
+          Fill in all three fields to add one authored item to this set.
+        </Text>
+        <Field
+          label="Prompt"
+          value={prompt}
+          onChangeText={setPrompt}
+          placeholder="What does chlorophyll absorb?"
+        />
+        <Field
+          label="Answer"
+          value={answer}
+          onChangeText={setAnswer}
+          placeholder="Light energy, mostly red and blue"
+        />
+        <Field
+          label="Concept ID"
+          value={conceptId}
+          onChangeText={setConceptId}
+          placeholder="photosynthesis-basics"
+          autoCapitalize="none"
+          hint="Lowercase with hyphens — it groups related prompts together."
+        />
+        <View style={styles.field}>
+          <Text style={styles.fieldLabel}>Importance</Text>
+          <View style={styles.chipRow}>
+            {IMPORTANCE_OPTIONS.map((option) => (
+              <Chip
+                key={option.value}
+                label={option.label}
+                selected={importance === option.value}
+                onPress={() => setImportance(option.value)}
+              />
+            ))}
+          </View>
+        </View>
+      </Card>
+
+      <PrimaryButton label="Save review set" icon={Plus} onPress={() => void save()} />
     </Screen>
   );
 }
+
+/* ────────────────────────────────────────────────────────────────────────
+   Parent weekly digest — reads like a printed report
+   ──────────────────────────────────────────────────────────────────────── */
 
 export function ParentDigestScreen({ navigation }: DigestProps) {
   const student = useSessionStore((state) => state.student);
@@ -592,33 +981,80 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
   return (
     <>
       <Screen>
-        <ScreenHeader title="Parent weekly digest" onBack={navigation.goBack} />
+        <ScreenHeader
+          overline="Weekly report"
+          title="Parent digest"
+          subtitle="A plain-language summary of the week, prepared on this device."
+          onBack={navigation.goBack}
+        />
+
         {digest ? (
           <>
-            <Card accent={colors.emerald}>
-              <View style={styles.headingRow}>
-                <CalendarDays size={25} color={colors.emerald} />
-                <View style={styles.flex}>
-                  <Text style={styles.cardTitle}>
-                    Week of {formatDigestDate(digest.weekOf)}
-                  </Text>
-                  <Text style={styles.meta}>
-                    {delivery === 'notification'
-                      ? 'Parent notification delivered'
-                      : 'Saved for in-app viewing'}
-                  </Text>
-                </View>
-              </View>
+            <Card style={styles.reportHead}>
+              <GradientView ramp={gradients.brand} style={styles.reportRule} />
+              <Text style={styles.reportEyebrow}>PAVO WEEKLY LEARNING REPORT</Text>
+              <Text style={styles.reportTitle}>
+                Week of {formatDigestDate(digest.weekOf)}
+              </Text>
+              <Text style={styles.reportFor}>
+                Prepared for the parent or guardian of{' '}
+                {student?.displayName ?? 'this learner'}
+              </Text>
+              <Divider />
+              <Row wrap gap={spacing.sm}>
+                <Chip
+                  size="sm"
+                  label={
+                    delivery === 'notification'
+                      ? 'Notification delivered'
+                      : 'Saved for in-app viewing'
+                  }
+                />
+                <Chip
+                  size="sm"
+                  label={`Generated ${formatDate(digest.generatedAt)}`}
+                />
+              </Row>
             </Card>
-            <View style={styles.metricRow}>
-              <Metric label="Modules completed" value={digest.summary.modulesCompleted} tint={colors.indigoTint} />
-              <Metric label="Quizzes taken" value={digest.summary.quizzesTaken} tint={colors.amberTint} />
-              <Metric label="Average score" value={`${Math.round(digest.summary.averageScorePercentage)}%`} tint={colors.emeraldTint} />
-              <Metric label="Reviews" value={digest.summary.flashcardsReviewed} tint={colors.coralTint} />
-            </View>
+
+            <SectionHeader
+              title="The week at a glance"
+              caption="Drawn from work completed on this device."
+            />
+            <TileGrid>
+              <StatTile
+                icon={BookOpen}
+                label="Modules completed"
+                value={digest.summary.modulesCompleted}
+                footnote="Finished this week"
+                color={colors.primary}
+              />
+              <StatTile
+                icon={ListChecks}
+                label="Quizzes taken"
+                value={digest.summary.quizzesTaken}
+                footnote={`${digest.summary.trend} from last week`}
+                color={colors.secondary}
+              />
+              <StatTile
+                icon={Target}
+                label="Average score"
+                value={`${Math.round(digest.summary.averageScorePercentage)}%`}
+                footnote="Across this week's quizzes"
+                color={colors.accentText}
+              />
+              <StatTile
+                icon={Brain}
+                label="Reviews"
+                value={digest.summary.flashcardsReviewed}
+                footnote="Recall items completed"
+                color={colors.success}
+              />
+            </TileGrid>
+
+            <SectionHeader title="Quiz score trend" />
             <Card>
-              <Text style={styles.cardTitle}>Quiz score trend</Text>
-              <Text style={styles.body}>
+              <Text style={styles.reportBody}>
                 Performance is {digest.summary.trend} compared with last week.
               </Text>
               <MiniBarChart
@@ -629,9 +1065,10 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
                 suffix="%"
               />
             </Card>
+
+            <SectionHeader title="Engagement" />
             <Card>
-              <Text style={styles.cardTitle}>Engagement</Text>
-              <Text style={styles.body}>
+              <Text style={styles.reportBody}>
                 Active on {digest.summary.engagementDaysActive} of 7 days.
               </Text>
               <ActivityWeek
@@ -641,37 +1078,53 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
                 }))}
               />
             </Card>
+
+            <SectionHeader title="Top struggling concepts" />
             <Card>
-              <Text style={styles.cardTitle}>Top struggling concepts</Text>
               {digest.summary.topStrugglingConcepts.length > 0 ? (
-                digest.summary.topStrugglingConcepts.map((concept) => (
-                  <View key={concept.conceptId} style={styles.rowBetween}>
-                    <Text style={styles.body}>{friendlyConceptName(concept.conceptId)}</Text>
-                    <Chip label={`${concept.missCount} missed`} color={colors.coral} />
+                digest.summary.topStrugglingConcepts.map((concept, index) => (
+                  <View key={concept.conceptId}>
+                    {index > 0 ? <Divider style={styles.reviewDivider} /> : null}
+                    <ListRow
+                      icon={Target}
+                      color={colors.warning}
+                      title={friendlyConceptName(concept.conceptId)}
+                      subtitle={`${concept.missCount} missed response${concept.missCount === 1 ? '' : 's'}`}
+                    />
                   </View>
                 ))
               ) : (
-                <Text style={styles.body}>No repeatedly missed concepts this week.</Text>
+                <Text style={styles.reportBody}>
+                  No repeatedly missed concepts this week.
+                </Text>
               )}
             </Card>
-            <Card accent={colors.amber}>
-              <View style={styles.headingRow}>
-                <Lightbulb size={24} color={colors.amber} />
-                <View style={styles.flex}>
-                  <Text style={styles.cardTitle}>Weekly insight</Text>
-                  <Text style={styles.body}>{digest.insightNote}</Text>
-                </View>
-              </View>
+
+            <SectionHeader title="Weekly insight" />
+            <Card accent={colors.accent}>
+              <CardHeader
+                icon={Lightbulb}
+                title="One useful next step"
+                subtitle="Generated deterministically from local activity"
+                color={colors.accentText}
+              />
+              <Text style={styles.reportBody}>{digest.insightNote}</Text>
             </Card>
+
+            <Text style={styles.reportFooter}>
+              This report was generated on this device from the past week of
+              activity. No account or internet connection is required to read it.
+            </Text>
           </>
         ) : (
-          <EmptyState
+          <MascotPanel
             title={authorized ? 'Preparing digest' : 'Parent access required'}
             body={
               authorized
                 ? 'Weekly activity is being summarized locally.'
                 : 'Enter or create the parent PIN to open this digest.'
             }
+            expression="encouraging"
           />
         )}
       </Screen>
@@ -688,24 +1141,137 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
   );
 }
 
+/* ────────────────────────────────────────────────────────────────────────
+   Local building blocks
+   ──────────────────────────────────────────────────────────────────────── */
+
+function HeroPill({ icon: Icon, label }: { icon: LucideIcon; label: string }) {
+  return (
+    <View style={styles.heroPill}>
+      <Icon size={13} color={colors.onBrand} />
+      <Text style={styles.heroPillText} numberOfLines={1}>
+        {label}
+      </Text>
+    </View>
+  );
+}
+
+function TechniqueCard({
+  option,
+  selected,
+  onPress,
+}: {
+  option: TechniqueMeta;
+  selected: boolean;
+  onPress: () => void;
+}) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ selected }}
+      accessibilityLabel={`${option.label}. ${option.why}`}
+      accessibilityHint="Switches this review session to the technique"
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.techniqueCard,
+        selected && { borderColor: option.color, borderWidth: 1.5 },
+        pressed && styles.pressedSoft,
+      ]}
+    >
+      <View style={styles.techniqueTop}>
+        <IconPlate icon={option.icon} color={option.color} size={44} />
+        <View style={styles.flex}>
+          <Text style={styles.techniqueTitle}>{option.label}</Text>
+          <Text style={styles.rationale}>{option.why}</Text>
+        </View>
+        {selected ? <CheckCircle2 size={20} color={option.color} /> : null}
+      </View>
+      <View style={styles.howBlock}>
+        <Text style={styles.howLabel}>How to use it here</Text>
+        <Text style={styles.howBody}>{option.how}</Text>
+      </View>
+      <View style={styles.cardAction}>
+        <Text style={[styles.cardActionText, { color: option.color }]}>
+          {selected ? 'Active in this session' : option.action}
+        </Text>
+        <ChevronRight size={18} color={option.color} />
+      </View>
+    </Pressable>
+  );
+}
+
+function Field({
+  label,
+  value,
+  onChangeText,
+  placeholder,
+  hint,
+  multiline,
+  autoCapitalize,
+}: {
+  label: string;
+  value: string;
+  onChangeText: (value: string) => void;
+  placeholder?: string;
+  hint?: string;
+  multiline?: boolean;
+  autoCapitalize?: TextInputProps['autoCapitalize'];
+}) {
+  const [focused, setFocused] = useState(false);
+  return (
+    <View style={styles.field}>
+      <Text style={styles.fieldLabel}>{label}</Text>
+      <TextInput
+        accessibilityLabel={label}
+        value={value}
+        onChangeText={onChangeText}
+        placeholder={placeholder}
+        placeholderTextColor={colors.inkSubtle}
+        multiline={multiline}
+        autoCapitalize={autoCapitalize}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        style={[
+          styles.input,
+          multiline && styles.multiline,
+          focused && styles.inputFocused,
+        ]}
+      />
+      {hint ? <Text style={styles.helper}>{hint}</Text> : null}
+    </View>
+  );
+}
+
 function RatingRow({
   onGrade,
 }: {
   onGrade(quality: 0 | 1 | 2 | 3 | 4 | 5): void;
 }) {
   return (
-    <View style={styles.ratingRow}>
-      {([
-        [0, 'Forgot'],
-        [2, 'Hard'],
-        [4, 'Recalled'],
-        [5, 'Easy'],
-      ] as const).map(([quality, label]) => (
-        <Pressable key={quality} style={styles.rating} onPress={() => onGrade(quality)}>
-          <Text style={styles.ratingValue}>{quality}</Text>
-          <Text style={styles.ratingLabel}>{label}</Text>
-        </Pressable>
-      ))}
+    <View style={styles.ratingBlock}>
+      <Text style={styles.fieldLabel}>How well did you recall it?</Text>
+      <View style={styles.ratingGrid}>
+        {(
+          [
+            [0, 'Again', colors.coral],
+            [2, 'Hard', colors.accent],
+            [4, 'Good', colors.secondary],
+            [5, 'Easy', colors.success],
+          ] as const
+        ).map(([quality, label, tint]) => (
+          <Pressable
+            key={quality}
+            accessibilityRole="button"
+            accessibilityLabel={`Rate ${label}`}
+            accessibilityHint="Schedules when this item returns"
+            style={({ pressed }) => [styles.rating, pressed && styles.ratingPressed]}
+            onPress={() => onGrade(quality)}
+          >
+            <View style={[styles.ratingDot, { backgroundColor: tint }]} />
+            <Text style={styles.ratingLabel}>{label}</Text>
+          </Pressable>
+        ))}
+      </View>
     </View>
   );
 }
@@ -713,10 +1279,6 @@ function RatingRow({
 function formatClock(seconds: number): string {
   const minutes = Math.floor(seconds / 60);
   return `${minutes}:${String(seconds % 60).padStart(2, '0')}`;
-}
-
-function capitalize(value: string): string {
-  return value ? `${value[0]?.toLocaleUpperCase()}${value.slice(1)}` : value;
 }
 
 function friendlyConcept(item: ReviewItem): string {
@@ -745,20 +1307,120 @@ function formatDigestDate(value: string): string {
 }
 
 const styles = StyleSheet.create({
-  flex: { flex: 1 },
+  flex: { flex: 1, minWidth: 0 },
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  headingRow: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.md },
-  rowBetween: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.md },
-  metricRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
-  timerActions: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  cardTitle: { color: colors.ink, fontSize: 19, lineHeight: 25, fontWeight: '800' },
-  prompt: { color: colors.ink, fontSize: 22, lineHeight: 30, fontWeight: '800' },
-  answer: { color: colors.emerald, fontSize: 17, lineHeight: 25, fontWeight: '800' },
-  body: { color: colors.inkMuted, fontSize: 15, lineHeight: 22 },
-  counter: { color: colors.inkMuted, fontSize: 14, fontWeight: '800' },
-  input: {
-    minHeight: 50,
+  rowBetween: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.md,
+  },
+  pressedSoft: { opacity: 0.75 },
+
+  // Hero
+  heroEyebrow: { ...text.overline, color: colors.onBrandMuted },
+  heroNumber: { ...text.hero, color: colors.onBrand, marginTop: 2 },
+  heroNumberCompact: { fontSize: 34, lineHeight: 40 },
+  heroBody: { ...text.bodySm, color: colors.onBrandMuted, marginTop: spacing.xs },
+  heroRule: { height: 1, backgroundColor: colors.onBrandLine },
+  heroPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    maxWidth: '100%',
+    backgroundColor: colors.onBrandSurface,
+    borderRadius: radius.round,
+    paddingHorizontal: spacing.md,
+    paddingVertical: 6,
+  },
+  heroPillText: { ...text.caption, color: colors.onBrand, flexShrink: 1 },
+  ringValue: { ...text.title, color: colors.onBrand },
+  ringLabel: { ...text.tiny, color: colors.onBrandMuted },
+
+  // Technique cards
+  techniqueCard: {
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
     borderWidth: 1,
+    borderColor: colors.outline,
+    padding: spacing.lg,
+    gap: spacing.md,
+    ...elevation.e1,
+  },
+  techniqueTop: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.md },
+  techniqueTitle: { ...text.title, color: colors.ink },
+  rationale: { ...text.bodySm, color: colors.inkMuted, marginTop: 2 },
+  howBlock: {
+    backgroundColor: colors.surfaceMuted,
+    borderRadius: radius.md,
+    padding: spacing.md,
+    gap: 2,
+  },
+  howLabel: { ...text.overline, color: colors.inkSubtle, fontSize: 11 },
+  howBody: { ...text.caption, color: colors.inkMuted, fontWeight: '500', lineHeight: 19 },
+  cardAction: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingTop: spacing.md,
+    borderTopWidth: 1,
+    borderTopColor: colors.hairline,
+  },
+  cardActionText: { ...text.label, fontWeight: '800' },
+
+  // Focus timer
+  timerCard: {
+    borderRadius: radius.xl,
+    padding: spacing.xl,
+    gap: spacing.lg,
+    ...elevation.e2,
+  },
+  timerClock: {
+    ...text.hero,
+    color: colors.onBrand,
+    fontVariant: ['tabular-nums'],
+    marginTop: 2,
+  },
+  timerActions: { flexDirection: 'row', gap: spacing.md },
+
+  // Queue
+  counter: { ...text.caption, color: colors.inkMuted, fontWeight: '800' },
+  promptEyebrow: { ...text.overline, color: colors.inkSubtle, marginTop: spacing.xs },
+  prompt: { ...text.h2, color: colors.ink },
+  scoreText: { ...text.display, color: colors.ink },
+  scoreTotal: { ...text.title, color: colors.inkMuted },
+  answerReview: { gap: 2 },
+  reviewDivider: { marginVertical: spacing.sm },
+  reviewPrompt: { ...text.bodyStrong, color: colors.ink },
+  reviewGiven: { ...text.bodySm, color: colors.inkMuted },
+  reviewReference: { ...text.bodySm, color: colors.inkMuted, fontWeight: '700' },
+  reviewReferenceOk: { color: colors.success },
+
+  // Ratings
+  ratingBlock: { gap: spacing.sm },
+  ratingGrid: { flexDirection: 'row', gap: spacing.sm },
+  rating: {
+    flex: 1,
+    minHeight: 74,
+    gap: spacing.sm,
+    borderWidth: 1,
+    borderColor: colors.outline,
+    borderRadius: radius.md,
+    backgroundColor: colors.surface,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  ratingPressed: { backgroundColor: colors.surfaceMuted },
+  ratingDot: { width: 14, height: 14, borderRadius: radius.round },
+  ratingLabel: { ...text.label, color: colors.ink, fontWeight: '800' },
+
+  // Forms
+  field: { gap: spacing.sm },
+  fieldLabel: { ...text.label, color: colors.ink, fontWeight: '700' },
+  helper: { ...text.caption, color: colors.inkMuted, fontWeight: '500' },
+  input: {
+    minHeight: 52,
+    borderWidth: 1.5,
     borderColor: colors.outline,
     borderRadius: radius.md,
     backgroundColor: colors.surface,
@@ -767,27 +1429,56 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md,
     fontSize: 16,
   },
-  multiline: { minHeight: 130, textAlignVertical: 'top' },
-  ratingRow: { flexDirection: 'row', gap: spacing.sm },
-  rating: {
-    flex: 1,
-    minHeight: 70,
+  inputFocused: {
+    borderColor: colors.primary,
+  },
+  multiline: { minHeight: 132, textAlignVertical: 'top' },
+
+  // Item picker
+  selectionList: {
     borderWidth: 1,
     borderColor: colors.outline,
     borderRadius: radius.md,
+    overflow: 'hidden',
+  },
+  selectionRow: {
+    minHeight: 56,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.md,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.hairline,
     backgroundColor: colors.surface,
+  },
+  selectionRowLast: { borderBottomWidth: 0 },
+  selectionRowActive: { backgroundColor: colors.primaryTint },
+  selectionTitle: { ...text.label, color: colors.ink, fontWeight: '700' },
+  checkbox: {
+    width: 24,
+    height: 24,
+    borderRadius: radius.xs,
+    borderWidth: 2,
+    borderColor: colors.outlineStrong,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  ratingValue: { color: colors.indigo, fontSize: 19, fontWeight: '900' },
-  ratingLabel: { color: colors.inkMuted, fontSize: 10, fontWeight: '800' },
-  scoreText: { color: colors.ink, fontSize: 42, fontWeight: '900' },
-  answerReview: { borderTopWidth: 1, borderTopColor: colors.outline, paddingTop: spacing.md, gap: spacing.xs },
-  label: { color: colors.ink, fontSize: 14, fontWeight: '800' },
-  selectionList: { borderWidth: 1, borderColor: colors.outline, borderRadius: radius.md, overflow: 'hidden' },
-  selectionRow: { minHeight: 58, flexDirection: 'row', alignItems: 'center', gap: spacing.md, padding: spacing.md, borderBottomWidth: 1, borderBottomColor: colors.outline },
-  checkbox: { width: 20, height: 20, borderRadius: radius.sm, borderWidth: 2, borderColor: colors.outline },
-  checkboxActive: { borderWidth: 6, borderColor: colors.indigo },
-  smallTitle: { color: colors.ink, fontSize: 14, lineHeight: 19, fontWeight: '800' },
-  meta: { color: colors.inkMuted, fontSize: 12, lineHeight: 17 },
+  checkboxActive: { backgroundColor: colors.primary, borderColor: colors.primary },
+
+  // Parent digest
+  reportHead: { gap: spacing.md, paddingVertical: spacing.xl },
+  reportRule: { width: 56, height: 5, borderRadius: radius.round },
+  reportEyebrow: { ...text.overline, color: colors.inkSubtle },
+  reportTitle: { ...text.h1, color: colors.ink },
+  reportFor: { ...text.bodySm, color: colors.inkMuted },
+  reportBody: { ...text.body, color: colors.inkMuted, lineHeight: 26 },
+  reportFooter: {
+    ...text.caption,
+    color: colors.inkSubtle,
+    fontWeight: '500',
+    textAlign: 'center',
+    paddingHorizontal: spacing.lg,
+    marginTop: spacing.xs,
+  },
 });

@@ -2,18 +2,28 @@ import { useEffect, useRef, useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
-  Bluetooth,
   CheckCircle2,
   Download,
   Radio,
+  ShieldCheck,
+  Smartphone,
+  TriangleAlert,
+  WifiOff,
+  type LucideIcon,
 } from 'lucide-react-native';
 import {
+  Callout,
   Card,
-  Chip,
+  CardHeader,
+  Divider,
+  HeroCard,
   PrimaryButton,
+  ProgressBar,
   Screen,
   ScreenHeader,
+  StatusBadge,
 } from '@/components/ui';
+import { MascotPanel } from '@/components/mascot';
 import { saveReceivedModulePackage } from '@/data/repository';
 import type { RootStackParamList } from '@/navigation/types';
 import {
@@ -23,9 +33,27 @@ import {
   type NearbyVerificationRequest,
 } from '@/services/nearby';
 import { useSessionStore } from '@/store/session';
-import { colors, spacing } from '@/theme/tokens';
+import { capitalize, formatDate } from '@/utils/format';
+import {
+  colors,
+  elevation,
+  gradients,
+  radius,
+  spacing,
+  text,
+} from '@/theme/tokens';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ReceiveTransfer'>;
+
+/** The receive flow, expressed as the sequence a learner actually sees. */
+type Phase =
+  | 'unavailable'
+  | 'idle'
+  | 'waiting'
+  | 'connecting'
+  | 'receiving'
+  | 'done'
+  | 'failed';
 
 export function ReceiveTransferScreen({ navigation }: Props) {
   const student = useSessionStore((state) => state.student);
@@ -95,7 +123,7 @@ export function ReceiveTransferScreen({ navigation }: Props) {
   async function startReceiving() {
     try {
       setStartError('');
-      await nearby.advertise(`Student ${student?.firstName ?? 'WAIS'}`);
+      await nearby.advertise(`Student ${student?.firstName ?? 'Pavo'}`);
       setAdvertising(true);
     } catch (error) {
       setStartError(
@@ -106,99 +134,339 @@ export function ReceiveTransferScreen({ navigation }: Props) {
     }
   }
 
+  const phase = derivePhase({ available, advertising, connection, received });
+  const stage = STAGE[phase];
+  const stepIndex = STEP_INDEX[phase];
+
   return (
     <Screen>
       <ScreenHeader
+        overline="Nearby transfer"
         title="Receive a module"
-        subtitle="Keep this screen open while the Markdown package arrives."
+        subtitle="Keep this screen open while the lesson package arrives."
         onBack={navigation.goBack}
       />
-      <Card accent={available ? colors.emerald : colors.amber}>
-        <View style={styles.headingRow}>
-          <Bluetooth
-            size={25}
-            color={available ? colors.emerald : colors.amber}
-          />
+
+      <HeroCard ramp={phase === 'failed' ? gradients.night : gradients.hero}>
+        <View style={styles.heroTop}>
           <View style={styles.flex}>
-            <Text style={styles.cardTitle}>
-              {available ? 'Offline nearby transfer' : 'Development build required'}
-            </Text>
-            <Text style={styles.body}>
-              Transfer uses encrypted Nearby Connections over Bluetooth and
-              local Wi-Fi. It does not need internet.
-            </Text>
+            <Text style={styles.heroOverline}>{stage.overline.toUpperCase()}</Text>
+            <Text style={styles.heroTitle}>{stage.title}</Text>
+          </View>
+          <View style={styles.heroPlate}>
+            <stage.icon size={22} color={colors.onBrand} />
           </View>
         </View>
-      </Card>
-      <Card accent={advertising ? colors.indigo : colors.amber}>
-        <View style={styles.headingRow}>
-          {advertising ? (
-            <Radio size={25} color={colors.indigo} />
-          ) : (
-            <Download size={25} color={colors.amber} />
-          )}
-          <View style={styles.flex}>
-            <Text style={styles.cardTitle}>
-              {ingesting
-                ? 'Checking and adding module...'
-                : advertising
-                  ? 'Visible and waiting'
-                  : available
-                    ? 'Starting nearby receive...'
-                    : 'Nearby receive unavailable'}
-            </Text>
-            <Text style={styles.body}>
-              {advertising
-                ? 'A teacher device can now find this student automatically.'
-                : startError || 'WAIS starts listening when this screen opens.'}
-            </Text>
-          </View>
-        </View>
-        {startError ? (
-          <PrimaryButton
-            label="Try again"
-            tone="secondary"
-            onPress={() => void startReceiving()}
+        <Text style={styles.heroBody}>{stage.body}</Text>
+        <View style={styles.heroProgress}>
+          <ProgressBar
+            value={stage.progress}
+            height={8}
+            trackColor={colors.onBrandLine}
+            ramp={phase === 'failed' ? [colors.error, colors.error] : gradients.gold}
+            accessibilityLabel={`Transfer progress — ${stage.title}`}
           />
-        ) : null}
-      </Card>
-      {connection ? (
-        <Card>
-          <View style={styles.statusRow}>
-            <Text style={styles.rowTitle}>Connection</Text>
-            <Chip
-              label={capitalize(connection.state)}
-              color={
-                connection.state === 'connected'
-                  ? colors.emerald
-                  : colors.indigo
-              }
-              selected
-            />
-          </View>
-          {connection.errorMessage ? (
-            <Text style={styles.error}>{connection.errorMessage}</Text>
-          ) : null}
-        </Card>
+          <Text style={styles.heroMeta}>
+            {stepIndex > 0
+              ? `Step ${stepIndex} of 3 — ${stage.overline}`
+              : stage.overline}
+          </Text>
+        </View>
+      </HeroCard>
+
+      {!available ? (
+        <Callout
+          icon={WifiOff}
+          tone="warning"
+          title="Development build required"
+          body="Nearby transfer needs a custom development build on a physical device. The rest of this screen is a preview."
+        />
       ) : null}
+
+      {connection?.errorMessage ? (
+        <Callout
+          icon={TriangleAlert}
+          tone="error"
+          title="Connection problem"
+          body={connection.errorMessage}
+        />
+      ) : phase === 'failed' ? (
+        <Callout
+          icon={TriangleAlert}
+          tone="error"
+          title="Transfer did not finish"
+          body="The nearby device disconnected before the module arrived — ask your teacher to send it again."
+        />
+      ) : null}
+
+      <Card>
+        <CardHeader
+          icon={Radio}
+          title="How it arrives"
+          subtitle="Three short steps — Pavo handles the rest."
+          color={colors.secondary}
+          action={
+            connection ? (
+              <StatusBadge
+                label={capitalize(connection.state)}
+                status={
+                  connection.state === 'connected' ? 'completed' : 'inProgress'
+                }
+              />
+            ) : null
+          }
+        />
+        <Divider />
+        <StepRow
+          index={1}
+          label="Make this device visible"
+          caption="Your teacher's device can then find you."
+          state={stepState(1, stepIndex)}
+        />
+        <StepRow
+          index={2}
+          label="Confirm the matching code"
+          caption="Both screens show the same short code."
+          state={stepState(2, stepIndex)}
+        />
+        <StepRow
+          index={3}
+          label="Receive and verify"
+          caption="The package is checked with SHA-256 before it is saved."
+          state={stepState(3, stepIndex)}
+        />
+      </Card>
+      <PrimaryButton
+        label={
+          ingesting
+            ? 'Checking and adding module...'
+            : advertising
+              ? 'Waiting for teacher...'
+              : startError
+                ? 'Try again'
+                : 'Starting nearby receive...'
+        }
+        icon={advertising ? Radio : Download}
+        disabled={!available || advertising || ingesting}
+        onPress={() => void startReceiving()}
+      />
+
+      {startError ? (
+        <Callout
+          icon={TriangleAlert}
+          tone="warning"
+          title="Nearby receive did not start"
+          body={startError}
+        />
+      ) : null}
+
+      {phase === 'idle' || phase === 'unavailable' ? (
+        <MascotPanel
+          title="Ready when you are"
+          body="Pavo starts nearby receiving automatically. Keep this screen open while a teacher sends the module."
+          expression="idle"
+        />
+      ) : null}
+
       {received ? (
-        <Card accent={colors.emerald}>
-          <CheckCircle2 size={28} color={colors.emerald} />
-          <Text style={styles.cardTitle}>
-            Received: {received.displayName.replace(/\.wais-module$/i, '')}
-          </Text>
-          <Text style={styles.body}>
-            {formatBytes(received.sizeBytes)} verified with SHA-256 and added
-            to this device.
-          </Text>
+        <Card accent={colors.success} style={styles.successCard}>
+          <CardHeader
+            icon={CheckCircle2}
+            title={`Received: ${received.displayName.replace(/\.wais-module$/i, '')}`}
+            subtitle="Verified and saved to this device"
+            color={colors.success}
+          />
+          <Divider />
+          <DetailLine label="Subject" value={formatSubject(received.manifest.subject)} />
+          <DetailLine label="Grade level" value={`Grade ${received.manifest.gradeLevel}`} />
+          <DetailLine label="Version" value={`Version ${received.manifest.version}`} />
+          <DetailLine label="Package size" value={formatBytes(received.sizeBytes)} />
+          <DetailLine label="Received" value={formatDate(Date.now())} />
+          <Callout
+            icon={ShieldCheck}
+            tone="success"
+            title="Checksum verified"
+            body="The package matched its SHA-256 fingerprint, so nothing was altered in transit."
+          />
           <PrimaryButton
             label="Open modules"
             onPress={() => navigation.replace('StudentTabs')}
           />
         </Card>
       ) : null}
+
+      <Callout
+        icon={ShieldCheck}
+        tone="info"
+        title="Works without internet"
+        body="Transfers run over encrypted Nearby connections — Bluetooth and local Wi-Fi only, never the open network."
+      />
     </Screen>
   );
+}
+
+/* ── Local pieces ──────────────────────────────────────────────────────── */
+
+function StepRow({
+  index,
+  label,
+  caption,
+  state,
+}: {
+  index: number;
+  label: string;
+  caption: string;
+  state: 'done' | 'active' | 'pending';
+}) {
+  const done = state === 'done';
+  const active = state === 'active';
+  return (
+    <View
+      style={styles.step}
+      accessible
+      accessibilityRole="text"
+      accessibilityLabel={`Step ${index} of 3. ${label}. ${caption}`}
+      accessibilityState={{ selected: active, disabled: state === 'pending' }}
+    >
+      <View
+        style={[
+          styles.stepPlate,
+          done && styles.stepPlateDone,
+          active && styles.stepPlateActive,
+        ]}
+      >
+        {done ? (
+          <CheckCircle2 size={18} color={colors.success} />
+        ) : (
+          <Text style={[styles.stepIndex, active && styles.stepIndexActive]}>
+            {index}
+          </Text>
+        )}
+      </View>
+      <View style={styles.flex}>
+        <Text
+          style={[styles.stepLabel, state === 'pending' && styles.stepLabelPending]}
+        >
+          {label}
+        </Text>
+        <Text style={styles.stepCaption}>{caption}</Text>
+      </View>
+    </View>
+  );
+}
+
+function DetailLine({ label, value }: { label: string; value: string }) {
+  return (
+    <View style={styles.detailLine}>
+      <Text style={styles.detailLabel}>{label}</Text>
+      <Text style={styles.detailValue} numberOfLines={1}>
+        {value}
+      </Text>
+    </View>
+  );
+}
+
+/* ── Derivations (presentation only) ───────────────────────────────────── */
+
+function derivePhase({
+  available,
+  advertising,
+  connection,
+  received,
+}: {
+  available: boolean;
+  advertising: boolean;
+  connection: NearbyConnectionUpdate | null;
+  received: NearbyReceivedFile | null;
+}): Phase {
+  if (received) return 'done';
+  if (
+    connection?.state === 'failed' ||
+    connection?.state === 'rejected' ||
+    connection?.state === 'disconnected'
+  ) {
+    return 'failed';
+  }
+  if (connection?.state === 'connected') return 'receiving';
+  if (connection?.state === 'connecting') return 'connecting';
+  if (advertising) return 'waiting';
+  if (!available) return 'unavailable';
+  return 'idle';
+}
+
+const STAGE: Record<
+  Phase,
+  { overline: string; title: string; body: string; icon: LucideIcon; progress: number }
+> = {
+  unavailable: {
+    overline: 'Preview',
+    title: 'Transfer is unavailable here',
+    body: 'This build cannot open a nearby channel — the steps below show what happens on a real device.',
+    icon: WifiOff,
+    progress: 0,
+  },
+  idle: {
+    overline: 'Not started',
+    title: 'Ready to receive',
+    body: 'Make this device visible and a nearby teacher can send you a lesson package.',
+    icon: Smartphone,
+    progress: 0,
+  },
+  waiting: {
+    overline: 'Waiting',
+    title: 'Listening for A teacher',
+    body: 'This device is visible nearby — keep the screen open until the module arrives.',
+    icon: Radio,
+    progress: 0.25,
+  },
+  connecting: {
+    overline: 'Connecting',
+    title: 'Confirming the connection',
+    body: 'Check that the short code on this screen matches the one on your teacher’s device.',
+    icon: Radio,
+    progress: 0.5,
+  },
+  receiving: {
+    overline: 'Receiving',
+    title: 'The module is arriving',
+    body: 'Stay on this screen — Pavo is copying and verifying the package right now.',
+    icon: Download,
+    progress: 0.75,
+  },
+  done: {
+    overline: 'Complete',
+    title: 'Module saved to this device',
+    body: 'It is verified and stored offline — you can open it any time, with or without a signal.',
+    icon: CheckCircle2,
+    progress: 1,
+  },
+  failed: {
+    overline: 'Interrupted',
+    title: 'The transfer stopped',
+    body: 'Nothing was saved. Move the devices closer together and ask your teacher to send it again.',
+    icon: TriangleAlert,
+    progress: 0.5,
+  },
+};
+
+const STEP_INDEX: Record<Phase, number> = {
+  unavailable: 0,
+  idle: 0,
+  waiting: 1,
+  connecting: 2,
+  receiving: 3,
+  done: 3,
+  failed: 0,
+};
+
+function stepState(step: number, current: number): 'done' | 'active' | 'pending' {
+  if (current > step) return 'done';
+  if (current === step) return 'active';
+  return 'pending';
+}
+
+function formatSubject(subject: string): string {
+  return capitalize(subject.replace(/_/g, ' ').toLocaleLowerCase());
 }
 
 function formatBytes(value: number): string {
@@ -207,40 +475,59 @@ function formatBytes(value: number): string {
   return `${(value / 1_048_576).toFixed(1)} MB`;
 }
 
-function capitalize(value: string): string {
-  return value ? `${value[0]?.toLocaleUpperCase()}${value.slice(1)}` : value;
-}
-
 const styles = StyleSheet.create({
-  flex: { flex: 1 },
-  headingRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: spacing.md,
+  flex: { flex: 1, minWidth: 0 },
+
+  heroTop: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.md },
+  heroOverline: { ...text.overline, color: colors.onBrandSubtle },
+  heroTitle: { ...text.h2, color: colors.onBrand, marginTop: 2 },
+  heroBody: { ...text.bodySm, color: colors.onBrandMuted },
+  heroPlate: {
+    width: 44,
+    height: 44,
+    borderRadius: radius.md,
+    backgroundColor: colors.onBrandSurface,
+    borderWidth: 1,
+    borderColor: colors.onBrandLine,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  statusRow: {
+  heroProgress: { gap: spacing.sm },
+  heroMeta: { ...text.caption, color: colors.onBrandSubtle, fontWeight: '700' },
+
+  step: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    minHeight: 44,
+    paddingVertical: spacing.xs,
+  },
+  stepPlate: {
+    width: 34,
+    height: 34,
+    borderRadius: radius.round,
+    borderWidth: 1.5,
+    borderColor: colors.outline,
+    backgroundColor: colors.surfaceMuted,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  stepPlateDone: { backgroundColor: colors.successTint, borderColor: colors.successTint },
+  stepPlateActive: { backgroundColor: colors.primaryTint, borderColor: colors.primary },
+  stepIndex: { ...text.caption, color: colors.inkSubtle, fontWeight: '800' },
+  stepIndexActive: { color: colors.primary },
+  stepLabel: { ...text.bodyStrong, color: colors.ink },
+  stepLabelPending: { color: colors.inkMuted },
+  stepCaption: { ...text.caption, color: colors.inkMuted, fontWeight: '500', marginTop: 1 },
+
+  detailLine: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: spacing.md,
   },
-  cardTitle: {
-    color: colors.ink,
-    fontSize: 19,
-    lineHeight: 25,
-    fontWeight: '800',
-  },
-  rowTitle: {
-    color: colors.ink,
-    fontSize: 16,
-    lineHeight: 22,
-    fontWeight: '800',
-  },
-  body: { color: colors.inkMuted, fontSize: 15, lineHeight: 22 },
-  error: {
-    color: colors.danger,
-    fontSize: 14,
-    lineHeight: 20,
-    fontWeight: '700',
-  },
+  detailLabel: { ...text.caption, color: colors.inkMuted, fontWeight: '600' },
+  detailValue: { ...text.bodyStrong, color: colors.ink, flexShrink: 1 },
+
+  successCard: { ...elevation.e2 },
 });

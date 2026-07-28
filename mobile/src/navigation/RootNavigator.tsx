@@ -17,7 +17,10 @@ import {
   type LucideIcon,
 } from 'lucide-react-native';
 import type { ComponentProps } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
+  LandingScreen,
   LearningAssessmentScreen,
   RoleScreen,
   StudentLoginScreen,
@@ -54,10 +57,11 @@ import {
   RecordBookScreen,
   ScannerScreen,
   TeacherHomeScreen,
+  TeacherProfileScreen,
   TransferScreen,
 } from '@/screens/TeacherScreens';
 import { useSessionStore } from '@/store/session';
-import { colors } from '@/theme/tokens';
+import { colors, elevation, layout, radius } from '@/theme/tokens';
 import type {
   RootStackParamList,
   StudentTabParamList,
@@ -71,12 +75,12 @@ const TeacherTabs = createBottomTabNavigator<TeacherTabParamList>();
 const navigationTheme: Theme = {
   dark: false,
   colors: {
-    primary: colors.indigo,
+    primary: colors.primary,
     background: colors.background,
     card: colors.surface,
     text: colors.ink,
     border: colors.outline,
-    notification: colors.coral,
+    notification: colors.accent,
   },
   fonts: {
     regular: { fontFamily: 'System', fontWeight: '400' },
@@ -86,39 +90,71 @@ const navigationTheme: Theme = {
   },
 };
 
-const tabScreenOptions = {
-  headerShown: false,
-  tabBarActiveTintColor: colors.indigo,
-  tabBarInactiveTintColor: colors.inkMuted,
-  tabBarHideOnKeyboard: true,
-  tabBarLabelStyle: {
-    fontSize: 12,
-    fontWeight: '700' as const,
-  },
-  tabBarStyle: {
-    height: 66,
-    paddingTop: 7,
-    paddingBottom: 8,
-    borderTopColor: colors.outline,
-    backgroundColor: colors.surface,
-  },
-};
+function useTabScreenOptions() {
+  const insets = useSafeAreaInsets();
+  return {
+    headerShown: false,
+    tabBarActiveTintColor: colors.primary,
+    tabBarInactiveTintColor: colors.inkSubtle,
+    tabBarHideOnKeyboard: true,
+    tabBarLabelStyle: {
+      fontSize: 11,
+      fontWeight: '700' as const,
+      letterSpacing: 0.1,
+      marginTop: 3,
+    },
+    tabBarItemStyle: { paddingTop: 8 },
+    tabBarStyle: {
+      height: layout.tabBarHeight + insets.bottom,
+      paddingTop: 8,
+      paddingBottom: Math.max(insets.bottom, 8),
+      borderTopWidth: StyleSheet.hairlineWidth,
+      borderTopColor: colors.outline,
+      backgroundColor: colors.surface,
+      // Lifts the bar off the content so long lists scroll "under" it.
+      ...elevation.e2,
+    },
+  } as const;
+}
 
+/**
+ * Tab icon with a tinted pill behind the active item — the smallest possible
+ * cue that reads as "you are here" without adding chrome.
+ */
 function TabIcon({
   icon: Icon,
   color,
   size,
+  focused,
 }: {
   icon: LucideIcon;
   color: string;
   size: number;
+  focused: boolean;
 }) {
-  return <Icon color={color} size={size} strokeWidth={2.2} />;
+  return (
+    <View style={[tabStyles.iconWrap, focused && tabStyles.iconWrapActive]}>
+      <Icon color={color} size={size - 1} strokeWidth={focused ? 2.6 : 2.05} />
+    </View>
+  );
 }
 
+const tabStyles = StyleSheet.create({
+  iconWrap: {
+    width: 50,
+    height: 30,
+    borderRadius: radius.round,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+  iconWrapActive: { backgroundColor: colors.primaryTint },
+});
+
 function StudentTabNavigator() {
+  const screenOptions = useTabScreenOptions();
   return (
-    <StudentTabs.Navigator screenOptions={tabScreenOptions}>
+    <StudentTabs.Navigator screenOptions={screenOptions}>
       <StudentTabs.Screen
         name="StudentHome"
         component={StudentHomeScreen}
@@ -174,8 +210,9 @@ function StudentTabNavigator() {
 }
 
 function TeacherTabNavigator() {
+  const screenOptions = useTabScreenOptions();
   return (
-    <TeacherTabs.Navigator screenOptions={tabScreenOptions}>
+    <TeacherTabs.Navigator screenOptions={screenOptions}>
       <TeacherTabs.Screen
         name="TeacherHome"
         component={TeacherHomeScreen}
@@ -204,8 +241,16 @@ function TeacherTabNavigator() {
         name="Gurobot"
         component={GurobotScreen}
         options={{
-          title: 'Gurobot',
+          title: 'Assist',
           tabBarIcon: (props) => <TabIcon icon={Bot} {...props} />,
+        }}
+      />
+      <TeacherTabs.Screen
+        name="TeacherProfile"
+        component={TeacherProfileScreen}
+        options={{
+          title: 'Profile',
+          tabBarIcon: (props) => <TabIcon icon={UserRound} {...props} />,
         }}
       />
     </TeacherTabs.Navigator>
@@ -216,7 +261,7 @@ export function RootNavigator() {
   const student = useSessionStore((state) => state.student);
   const initialRouteName: keyof RootStackParamList = student
     ? 'StudentTabs'
-    : 'Role';
+    : 'Landing';
 
   return (
     <NavigationContainer theme={navigationTheme}>
@@ -225,8 +270,10 @@ export function RootNavigator() {
         screenOptions={{
           headerShown: false,
           contentStyle: { backgroundColor: colors.background },
+          animation: 'slide_from_right',
         }}
       >
+        <RootStack.Screen name="Landing" component={LandingScreen} />
         <RootStack.Screen name="Role" component={RoleScreen} />
         <RootStack.Screen name="StudentLogin" component={StudentLoginScreen} />
         <RootStack.Screen name="StudentSetup" component={StudentSetupScreen} />
