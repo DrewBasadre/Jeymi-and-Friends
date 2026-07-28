@@ -1,0 +1,6 @@
+## Copy this file to local.properties for local Android builds.
+## Do not commit local.properties; it may contain machine-specific SDK paths
+## and private API keys.
+
+sdk.dir=/path/to/Android/sdk
+GEMINI_API_KEY=

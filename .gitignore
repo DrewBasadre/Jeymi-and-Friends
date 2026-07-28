@@ -1,0 +1,13 @@
+.gradle/
+build/
+app/build/
+local.properties
+*.iml
+.idea/
+.kotlin/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+emulator*.log
+*.apk
+*.aab
