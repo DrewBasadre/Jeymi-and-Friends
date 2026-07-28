@@ -77,14 +77,19 @@ export function PeacockPhase({
   accessibilityLabel?: string;
 }) {
   const cfg = PHASES[phase];
+  // Integer size keeps the flat-fill pixel art on a whole-pixel grid, and
+  // shapeRendering="crispEdges" is the RN-SVG equivalent of image-rendering:
+  // pixelated — it suppresses anti-aliasing seams between adjacent rects.
+  const dimension = Math.max(1, Math.round(size));
   return (
     <Svg
-      width={size}
-      height={size}
+      width={dimension}
+      height={dimension}
       viewBox="0 0 64 64"
       accessibilityRole="image"
       accessibilityLabel={accessibilityLabel ?? `Pavo the peacock, phase ${phase} of 5`}
     >
+      <G shapeRendering="crispEdges">
       {/* Tail fan (behind the body) */}
       {cfg.feathers.map((f, i) => (
         <Feather key={i} angle={f.angle} length={f.length} ocelli={cfg.ocelli} />
@@ -145,6 +150,7 @@ export function PeacockPhase({
       <Rect x={30} y={31} width={4} height={2} fill={GOLD} />
       <Rect x={31} y={33} width={2} height={1} fill={GOLD_DEEP} />
       <Rect x={30} y={34} width={4} height={1} fill={cfg.bodyShade} />
+      </G>
     </Svg>
   );
 }

@@ -1,4 +1,12 @@
-import { type PropsWithChildren, type ReactNode, useEffect, useRef, useState } from 'react';
+import {
+  Children,
+  type PropsWithChildren,
+  type ReactNode,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from 'react';
 import {
   AccessibilityInfo,
   ActivityIndicator,
@@ -12,24 +20,60 @@ import {
   useWindowDimensions,
   View,
   type ViewStyle,
+  type StyleProp,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
+import Svg, {
+  Circle,
+  Defs,
+  LinearGradient,
+  Rect,
+  Stop,
+} from 'react-native-svg';
 import * as Haptics from 'expo-haptics';
-import { ArrowLeft, type LucideIcon } from 'lucide-react-native';
-import { colors, elevation, radius, spacing, statusPalette, text } from '@/theme/tokens';
+import { ArrowLeft, ChevronRight, type LucideIcon } from 'lucide-react-native';
+import {
+  colors,
+  elevation,
+  gradients,
+  layout,
+  radius,
+  spacing,
+  statusPalette,
+  text,
+} from '@/theme/tokens';
 import { MascotPanel } from './mascot';
+
+/* ────────────────────────────────────────────────────────────────────────
+   Layout
+   ──────────────────────────────────────────────────────────────────────── */
 
 export function Screen({
   children,
   scroll = true,
   style,
   edges = true,
-}: PropsWithChildren<{ scroll?: boolean; style?: ViewStyle; edges?: boolean }>) {
+  /** Adds clearance so the last element never sits under a tab bar. */
+  bottomClearance = false,
+  /**
+   * Set false when the screen hosts its own scroller (a FlatList with its own
+   * content padding) — otherwise the gutter is applied twice.
+   */
+  padded = true,
+}: PropsWithChildren<{
+  scroll?: boolean;
+  style?: ViewStyle;
+  edges?: boolean;
+  bottomClearance?: boolean;
+  padded?: boolean;
+}>) {
   const insets = useSafeAreaInsets();
   const pad = {
     paddingTop: edges ? insets.top + spacing.md : spacing.xl,
-    paddingBottom: (edges ? insets.bottom : 0) + spacing.huge,
+    paddingBottom:
+      (edges ? insets.bottom : 0) +
+      (bottomClearance ? layout.tabBarClearance : spacing.huge),
+    ...(padded ? null : { paddingHorizontal: 0 }),
   };
   if (!scroll)
     return (
@@ -61,6 +105,129 @@ export function useResponsiveColumns(phoneColumns = 1): number {
   if (width >= 360) return phoneColumns;
   return 1;
 }
+
+/** True on narrow phones, where two-up rows and big numerals need to shrink. */
+export function useCompactViewport(): boolean {
+  const { width } = useWindowDimensions();
+  return width < 380;
+}
+
+export function Divider({ style }: { style?: ViewStyle }) {
+  return <View style={[styles.divider, style]} />;
+}
+
+/**
+ * Fixed-column grid for tiles. Deliberately chunks children into explicit rows
+ * instead of relying on `flexWrap`: a wrapping row of `flex: 1` items gives
+ * unpredictable heights and can overlap the next section.
+ */
+export function TileGrid({
+  children,
+  columns = 2,
+  gap = spacing.md,
+}: PropsWithChildren<{ columns?: number; gap?: number }>) {
+  const items = Children.toArray(children).filter(Boolean);
+  const rows: ReactNode[][] = [];
+  for (let index = 0; index < items.length; index += columns) {
+    rows.push(items.slice(index, index + columns));
+  }
+  return (
+    <View style={{ gap }}>
+      {rows.map((row, rowIndex) => (
+        <View key={rowIndex} style={{ flexDirection: 'row', gap }}>
+          {row.map((child, cellIndex) => (
+            <View key={cellIndex} style={styles.tileCell}>
+              {child}
+            </View>
+          ))}
+          {/* Pad a short final row so its tiles keep their column width. */}
+          {Array.from({ length: columns - row.length }, (_, padIndex) => (
+            <View key={`pad-${padIndex}`} style={styles.tileCell} />
+          ))}
+        </View>
+      ))}
+    </View>
+  );
+}
+
+export function Row({
+  children,
+  gap = spacing.md,
+  align = 'center',
+  wrap = false,
+  style,
+}: PropsWithChildren<{
+  gap?: number;
+  align?: ViewStyle['alignItems'];
+  wrap?: boolean;
+  style?: ViewStyle;
+}>) {
+  return (
+    <View
+      style={[
+        { flexDirection: 'row', alignItems: align, gap },
+        wrap && { flexWrap: 'wrap' },
+        style,
+      ]}
+    >
+      {children}
+    </View>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────────────
+   Gradient surface — drawn with react-native-svg (no extra dependency)
+   ──────────────────────────────────────────────────────────────────────── */
+
+export function GradientView({
+  ramp = gradients.brand,
+  style,
+  diagonal = true,
+  children,
+}: PropsWithChildren<{
+  ramp?: readonly [string, string] | readonly string[];
+  style?: StyleProp<ViewStyle>;
+  /** Diagonal ramps feel richer on large surfaces; flat ones on thin bars. */
+  diagonal?: boolean;
+  children?: ReactNode;
+}>) {
+  const [size, setSize] = useState({ w: 0, h: 0 });
+  const gradientId = `pv-grad-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
+  const [from, to] = [ramp[0] ?? colors.primary, ramp[1] ?? colors.secondary];
+  return (
+    <View
+      style={[styles.gradientHost, style]}
+      onLayout={(e) =>
+        setSize({ w: e.nativeEvent.layout.width, h: e.nativeEvent.layout.height })
+      }
+    >
+      {size.w > 0 && size.h > 0 ? (
+        <View style={StyleSheet.absoluteFill} pointerEvents="none">
+          <Svg width={size.w} height={size.h}>
+            <Defs>
+              <LinearGradient
+                id={gradientId}
+                x1="0"
+                y1="0"
+                x2={diagonal ? '1' : '1'}
+                y2={diagonal ? '1' : '0'}
+              >
+                <Stop offset="0" stopColor={from} />
+                <Stop offset="1" stopColor={to} />
+              </LinearGradient>
+            </Defs>
+            <Rect width={size.w} height={size.h} fill={`url(#${gradientId})`} />
+          </Svg>
+        </View>
+      ) : null}
+      {children}
+    </View>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────────────
+   Headers & section structure
+   ──────────────────────────────────────────────────────────────────────── */
 
 export function ScreenHeader({
   title,
@@ -94,6 +261,46 @@ export function SectionTitle({ children, style }: PropsWithChildren<{ style?: Te
   return <Text style={[styles.sectionTitle, style]}>{children}</Text>;
 }
 
+/**
+ * Section divider with an optional trailing link — gives long screens a clear
+ * editorial rhythm instead of an undifferentiated stack of cards.
+ */
+export function SectionHeader({
+  title,
+  caption,
+  actionLabel,
+  onAction,
+}: {
+  title: string;
+  caption?: string;
+  actionLabel?: string;
+  onAction?: () => void;
+}) {
+  return (
+    <View style={styles.sectionHeader}>
+      <View style={styles.flex}>
+        <Text style={styles.sectionTitle}>{title}</Text>
+        {caption ? <Text style={styles.sectionCaption}>{caption}</Text> : null}
+      </View>
+      {actionLabel && onAction ? (
+        <Pressable
+          accessibilityRole="button"
+          onPress={onAction}
+          hitSlop={8}
+          style={({ pressed }) => [styles.sectionAction, pressed && styles.pressedSoft]}
+        >
+          <Text style={styles.sectionActionText}>{actionLabel}</Text>
+          <ChevronRight size={16} color={colors.primary} />
+        </Pressable>
+      ) : null}
+    </View>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────────────
+   Surfaces
+   ──────────────────────────────────────────────────────────────────────── */
+
 export function Card({
   children,
   style,
@@ -121,6 +328,72 @@ export function Card({
   );
 }
 
+/**
+ * Card that responds to touch with a subtle scale — the single micro-interaction
+ * that makes a list of cards feel like a product rather than a page.
+ */
+export function PressableScale({
+  onPress,
+  children,
+  style,
+  accessibilityLabel,
+  accessibilityHint,
+  haptic = true,
+  disabled,
+}: PropsWithChildren<{
+  onPress: () => void;
+  style?: ViewStyle;
+  accessibilityLabel?: string;
+  accessibilityHint?: string;
+  haptic?: boolean;
+  disabled?: boolean;
+}>) {
+  const scale = useRef(new Animated.Value(1)).current;
+  const to = (value: number) =>
+    Animated.spring(scale, {
+      toValue: value,
+      useNativeDriver: true,
+      speed: 40,
+      bounciness: 4,
+    }).start();
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
+      disabled={disabled}
+      onPressIn={() => to(0.975)}
+      onPressOut={() => to(1)}
+      onPress={() => {
+        if (haptic) void Haptics.selectionAsync().catch(() => {});
+        onPress();
+      }}
+      style={style}
+    >
+      <Animated.View style={{ transform: [{ scale }], flex: style ? 1 : undefined }}>
+        {children}
+      </Animated.View>
+    </Pressable>
+  );
+}
+
+/**
+ * Full-bleed gradient hero. Used once per screen at most — it is the anchor
+ * that makes the rest of the layout read as calm.
+ */
+export function HeroCard({
+  children,
+  ramp = gradients.hero,
+  style,
+}: PropsWithChildren<{ ramp?: readonly string[]; style?: StyleProp<ViewStyle> }>) {
+  return (
+    <GradientView ramp={ramp} style={[styles.hero, style]}>
+      <View style={styles.heroSheen} pointerEvents="none" />
+      {children}
+    </GradientView>
+  );
+}
+
 export function CardHeader({
   icon: Icon,
   title,
@@ -136,11 +409,7 @@ export function CardHeader({
 }) {
   return (
     <View style={styles.cardHeader}>
-      {Icon ? (
-        <View style={[styles.cardHeaderIcon, { backgroundColor: withTint(color) }]}>
-          <Icon size={20} color={color} />
-        </View>
-      ) : null}
+      {Icon ? <IconPlate icon={Icon} color={color} /> : null}
       <View style={styles.flex}>
         <Text style={styles.cardTitle}>{title}</Text>
         {subtitle ? <Text style={styles.cardSubtitle}>{subtitle}</Text> : null}
@@ -149,6 +418,71 @@ export function CardHeader({
     </View>
   );
 }
+
+/** Tinted square that holds a subject or section icon. */
+export function IconPlate({
+  icon: Icon,
+  color = colors.primary,
+  size = 40,
+  tint,
+}: {
+  icon: LucideIcon;
+  color?: string;
+  size?: number;
+  tint?: string;
+}) {
+  return (
+    <View
+      style={[
+        styles.iconPlate,
+        {
+          width: size,
+          height: size,
+          borderRadius: size >= 44 ? radius.lg : radius.md,
+          backgroundColor: tint ?? withTint(color),
+        },
+      ]}
+    >
+      <Icon size={Math.round(size * 0.5)} color={color} />
+    </View>
+  );
+}
+
+/** Inline notice inside a screen — info, success, caution, error. */
+export function Callout({
+  icon: Icon,
+  title,
+  body,
+  tone = 'info',
+  action,
+}: {
+  icon?: LucideIcon;
+  title: string;
+  body?: string;
+  tone?: 'info' | 'success' | 'warning' | 'error';
+  action?: ReactNode;
+}) {
+  const palette = {
+    info: { bg: colors.secondaryTint, fg: colors.secondary },
+    success: { bg: colors.successTint, fg: colors.success },
+    warning: { bg: colors.warningTint, fg: colors.warning },
+    error: { bg: colors.errorTint, fg: colors.error },
+  }[tone];
+  return (
+    <View style={[styles.callout, { backgroundColor: palette.bg }]}>
+      {Icon ? <Icon size={20} color={palette.fg} /> : null}
+      <View style={styles.flex}>
+        <Text style={[styles.calloutTitle, { color: palette.fg }]}>{title}</Text>
+        {body ? <Text style={styles.calloutBody}>{body}</Text> : null}
+      </View>
+      {action}
+    </View>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────────────
+   Controls
+   ──────────────────────────────────────────────────────────────────────── */
 
 type ButtonTone = 'primary' | 'secondary' | 'danger' | 'ghost' | 'accent';
 
@@ -173,7 +507,7 @@ export function PrimaryButton({
 }) {
   const filled = tone === 'primary' || tone === 'danger';
   const accent = tone === 'accent';
-  const fg = filled || accent ? colors.white : tone === 'ghost' ? colors.primary : colors.primary;
+  const fg = filled || accent ? colors.white : colors.primary;
 
   return (
     <Pressable
@@ -186,6 +520,7 @@ export function PrimaryButton({
       }}
       style={({ pressed }) => [
         styles.button,
+        filled && !disabled && !loading ? elevation.e1 : null,
         size === 'sm' && styles.buttonSm,
         tone === 'secondary' && styles.buttonSecondary,
         tone === 'ghost' && styles.buttonGhost,
@@ -231,6 +566,7 @@ export function IconButton({
     <Pressable
       accessibilityLabel={label}
       accessibilityRole="button"
+      accessibilityState={{ selected: !!active }}
       onPress={onPress}
       style={({ pressed }) => [
         styles.iconButton,
@@ -249,12 +585,14 @@ export function Chip({
   onPress,
   color = colors.primary,
   icon: Icon,
+  size = 'md',
 }: {
   label: string;
   selected?: boolean;
   onPress?: () => void;
   color?: string;
   icon?: LucideIcon;
+  size?: 'sm' | 'md';
 }) {
   return (
     <Pressable
@@ -262,17 +600,155 @@ export function Chip({
       accessibilityState={onPress ? { selected: !!selected } : undefined}
       onPress={onPress}
       disabled={!onPress}
-      style={[
+      style={({ pressed }) => [
         styles.chip,
+        size === 'sm' && styles.chipSm,
         !onPress && styles.chipStatic,
         selected ? { backgroundColor: color, borderColor: color } : null,
+        pressed && onPress ? styles.pressedSoft : null,
       ]}
     >
-      {Icon ? <Icon size={14} color={selected ? colors.white : colors.inkMuted} /> : null}
-      <Text style={[styles.chipText, selected && styles.chipTextSelected]}>{label}</Text>
+      {Icon ? (
+        <Icon size={size === 'sm' ? 13 : 14} color={selected ? colors.white : colors.inkMuted} />
+      ) : null}
+      <Text
+        style={[
+          styles.chipText,
+          size === 'sm' && styles.chipTextSm,
+          selected && styles.chipTextSelected,
+        ]}
+      >
+        {label}
+      </Text>
     </Pressable>
   );
 }
+
+/** Two-or-more option switch. Replaces the ad-hoc segmented rows in screens. */
+export function SegmentedControl<T extends string>({
+  options,
+  value,
+  onChange,
+}: {
+  options: { value: T; label: string }[];
+  value: T;
+  onChange: (value: T) => void;
+}) {
+  return (
+    <View style={styles.segmented} accessibilityRole="tablist">
+      {options.map((option) => {
+        const active = option.value === value;
+        return (
+          <Pressable
+            key={option.value}
+            accessibilityRole="tab"
+            accessibilityState={{ selected: active }}
+            style={[styles.segment, active && styles.segmentActive]}
+            onPress={() => {
+              void Haptics.selectionAsync().catch(() => {});
+              onChange(option.value);
+            }}
+          >
+            <Text style={[styles.segmentText, active && styles.segmentTextActive]} numberOfLines={1}>
+              {option.label}
+            </Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
+/** Tappable row: icon plate → title/subtitle → chevron. */
+export function ListRow({
+  icon: Icon,
+  title,
+  subtitle,
+  color = colors.primary,
+  onPress,
+  trailing,
+}: {
+  icon?: LucideIcon;
+  title: string;
+  subtitle?: string;
+  color?: string;
+  onPress?: () => void;
+  trailing?: ReactNode;
+}) {
+  const content = (
+    <View style={styles.listRow}>
+      {Icon ? <IconPlate icon={Icon} color={color} size={38} /> : null}
+      <View style={styles.flex}>
+        <Text style={styles.listRowTitle} numberOfLines={1}>
+          {title}
+        </Text>
+        {subtitle ? (
+          <Text style={styles.listRowSubtitle} numberOfLines={2}>
+            {subtitle}
+          </Text>
+        ) : null}
+      </View>
+      {trailing ?? (onPress ? <ChevronRight size={18} color={colors.inkSubtle} /> : null)}
+    </View>
+  );
+  if (!onPress) return content;
+  return (
+    <PressableScale onPress={onPress} accessibilityLabel={title}>
+      {content}
+    </PressableScale>
+  );
+}
+
+/**
+ * Square quick-action tile. A grid of these gives the home screen an obvious
+ * "what can I do right now" answer without another wall of buttons.
+ */
+export function ActionTile({
+  icon: Icon,
+  label,
+  caption,
+  color = colors.primary,
+  onPress,
+  badge,
+}: {
+  icon: LucideIcon;
+  label: string;
+  caption?: string;
+  color?: string;
+  onPress: () => void;
+  badge?: string | number;
+}) {
+  return (
+    <PressableScale
+      onPress={onPress}
+      accessibilityLabel={caption ? `${label}. ${caption}` : label}
+      style={styles.actionTileHost}
+    >
+      <View style={styles.actionTile}>
+        <View style={styles.actionTileTop}>
+          <IconPlate icon={Icon} color={color} size={38} />
+          {badge !== undefined && badge !== null && `${badge}` !== '0' ? (
+            <View style={styles.actionBadge}>
+              <Text style={styles.actionBadgeText}>{badge}</Text>
+            </View>
+          ) : null}
+        </View>
+        <Text style={styles.actionLabel} numberOfLines={1}>
+          {label}
+        </Text>
+        {caption ? (
+          <Text style={styles.actionCaption} numberOfLines={1}>
+            {caption}
+          </Text>
+        ) : null}
+      </View>
+    </PressableScale>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────────────
+   Status, data display
+   ──────────────────────────────────────────────────────────────────────── */
 
 export function StatusBadge({
   label,
@@ -309,18 +785,62 @@ export function Metric({
   );
 }
 
+/**
+ * Metric with an icon plate and optional footnote — the richer sibling of
+ * `Metric`, for the four-up stat grids on home and class dashboards.
+ */
+export function StatTile({
+  icon: Icon,
+  label,
+  value,
+  footnote,
+  color = colors.primary,
+  tint,
+}: {
+  icon?: LucideIcon;
+  label: string;
+  value: string | number;
+  footnote?: string;
+  color?: string;
+  tint?: string;
+}) {
+  return (
+    <View style={styles.statTile}>
+      <View style={styles.statTileTop}>
+        {Icon ? <IconPlate icon={Icon} color={color} size={32} tint={tint} /> : null}
+        <Text style={styles.statLabel} numberOfLines={2}>
+          {label}
+        </Text>
+      </View>
+      <Text style={[styles.statValue, { color }]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
+        {value}
+      </Text>
+      {footnote ? (
+        <Text style={styles.statFootnote} numberOfLines={1}>
+          {footnote}
+        </Text>
+      ) : null}
+    </View>
+  );
+}
+
 /** Peacock teal→ocean-blue progress bar (value 0..1). */
 export function ProgressBar({
   value,
   height = 10,
   trackColor = colors.surfaceSunken,
+  ramp = gradients.brand,
+  accessibilityLabel,
 }: {
   value: number;
   height?: number;
   trackColor?: string;
+  ramp?: readonly string[];
+  accessibilityLabel?: string;
 }) {
   const [w, setW] = useState(0);
   const anim = useRef(new Animated.Value(clamp01(value))).current;
+  const gradientId = `pv-progress-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
   useEffect(() => {
     Animated.timing(anim, {
       toValue: clamp01(value),
@@ -335,24 +855,121 @@ export function ProgressBar({
       style={[styles.progressTrack, { height, borderRadius: height, backgroundColor: trackColor }]}
       onLayout={(e) => setW(e.nativeEvent.layout.width)}
       accessibilityRole="progressbar"
+      accessibilityLabel={accessibilityLabel}
       accessibilityValue={{ min: 0, max: 100, now: Math.round(clamp01(value) * 100) }}
     >
-      <Animated.View style={{ width: fillW, height }}>
+      {/* overflow:hidden matters — without it the full-width SVG child paints
+          past the animated width and the bar always looks 100% full. */}
+      <Animated.View style={{ width: fillW, height, overflow: 'hidden' }}>
         {w > 0 ? (
           <Svg width={w} height={height}>
             <Defs>
-              <LinearGradient id="pv-progress" x1="0" y1="0" x2="1" y2="0">
-                <Stop offset="0" stopColor={colors.gradientStart} />
-                <Stop offset="1" stopColor={colors.gradientEnd} />
+              <LinearGradient id={gradientId} x1="0" y1="0" x2="1" y2="0">
+                <Stop offset="0" stopColor={ramp[0] ?? colors.gradientStart} />
+                <Stop offset="1" stopColor={ramp[1] ?? colors.gradientEnd} />
               </LinearGradient>
             </Defs>
-            <Rect width={w} height={height} rx={height / 2} fill="url(#pv-progress)" />
+            <Rect width={w} height={height} rx={height / 2} fill={`url(#${gradientId})`} />
           </Svg>
         ) : null}
       </Animated.View>
     </View>
   );
 }
+
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+
+/**
+ * Circular progress ring with a value in the middle. Used for the learner's
+ * level and for mastery read-outs — a compact, celebratory shape that a bar
+ * cannot give you.
+ */
+export function RingProgress({
+  value,
+  size = 92,
+  thickness = 9,
+  color = colors.accent,
+  trackColor = colors.onBrandLine,
+  children,
+  accessibilityLabel,
+}: PropsWithChildren<{
+  value: number;
+  size?: number;
+  thickness?: number;
+  color?: string;
+  trackColor?: string;
+  accessibilityLabel?: string;
+}>) {
+  const r = (size - thickness) / 2;
+  const circumference = 2 * Math.PI * r;
+  const anim = useRef(new Animated.Value(0)).current;
+  const target = clamp01(value);
+
+  useEffect(() => {
+    let cancelled = false;
+    void AccessibilityInfo.isReduceMotionEnabled().then((reduce) => {
+      if (cancelled) return;
+      if (reduce) {
+        anim.setValue(target);
+        return;
+      }
+      Animated.timing(anim, {
+        toValue: target,
+        duration: 700,
+        easing: Easing.out(Easing.cubic),
+        useNativeDriver: false,
+      }).start();
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [anim, target]);
+
+  const offset = anim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [circumference, 0],
+  });
+
+  return (
+    <View
+      style={{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }}
+      accessibilityRole="progressbar"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityValue={{ min: 0, max: 100, now: Math.round(target * 100) }}
+    >
+      <Svg width={size} height={size} style={StyleSheet.absoluteFill}>
+        <Circle
+          cx={size / 2}
+          cy={size / 2}
+          r={r}
+          stroke={trackColor}
+          strokeWidth={thickness}
+          fill="none"
+        />
+        <AnimatedCircle
+          cx={size / 2}
+          cy={size / 2}
+          r={r}
+          stroke={color}
+          strokeWidth={thickness}
+          strokeLinecap="round"
+          fill="none"
+          strokeDasharray={`${circumference} ${circumference}`}
+          strokeDashoffset={offset}
+          // Start the sweep at 12 o'clock rather than 3 o'clock.
+          originX={size / 2}
+          originY={size / 2}
+          rotation={-90}
+        />
+      </Svg>
+      {children}
+    </View>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────────────
+   Loading & empty
+   ──────────────────────────────────────────────────────────────────────── */
 
 /** Shimmering placeholder block used while data loads. */
 export function Skeleton({
@@ -436,9 +1053,11 @@ function withTint(color: string) {
     [colors.primary]: colors.primaryTint,
     [colors.secondary]: colors.secondaryTint,
     [colors.accent]: colors.accentTint,
+    [colors.accentText]: colors.accentTint,
     [colors.success]: colors.successTint,
     [colors.warning]: colors.warningTint,
     [colors.error]: colors.errorTint,
+    [colors.coral]: colors.coralTint,
     [colors.math]: colors.accentTint,
   };
   return map[color] ?? colors.primaryTint;
@@ -451,20 +1070,52 @@ function clamp01(v: number) {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   screenContent: {
-    paddingHorizontal: spacing.xl,
+    paddingHorizontal: layout.gutter,
     gap: spacing.lg,
     width: '100%',
-    maxWidth: 760,
+    maxWidth: layout.maxContentWidth,
     alignSelf: 'center',
   },
+  flex: { flex: 1, minWidth: 0 },
+  divider: { height: 1, backgroundColor: colors.hairline },
+  tileCell: { flex: 1, minWidth: 0 },
+
   header: { marginBottom: spacing.xs },
   headerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   headerText: { flex: 1, minWidth: 0 },
-  flex: { flex: 1, minWidth: 0 },
   overline: { ...text.overline, color: colors.primary, marginBottom: 2 },
   title: { ...text.h1, color: colors.ink },
   subtitle: { ...text.body, color: colors.inkMuted, marginTop: 2 },
-  sectionTitle: { ...text.h2, color: colors.ink, marginTop: spacing.xs },
+
+  sectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    gap: spacing.md,
+    marginTop: spacing.xs,
+  },
+  sectionTitle: { ...text.h2, color: colors.ink },
+  sectionCaption: { ...text.caption, color: colors.inkMuted, fontWeight: '500', marginTop: 2 },
+  sectionAction: { flexDirection: 'row', alignItems: 'center', gap: 2, paddingBottom: 2 },
+  sectionActionText: { ...text.label, color: colors.primary, fontWeight: '800' },
+  pressedSoft: { opacity: 0.6 },
+
+  gradientHost: { overflow: 'hidden' },
+  hero: {
+    borderRadius: radius.xxl,
+    padding: spacing.xl,
+    gap: spacing.lg,
+    ...elevation.e2,
+  },
+  heroSheen: {
+    position: 'absolute',
+    top: -70,
+    right: -50,
+    width: 190,
+    height: 190,
+    borderRadius: radius.round,
+    backgroundColor: colors.sheen,
+  },
+
   card: {
     backgroundColor: colors.surface,
     borderRadius: radius.lg,
@@ -474,15 +1125,20 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   cardHeader: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  cardHeaderIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: radius.md,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   cardTitle: { ...text.title, color: colors.ink },
-  cardSubtitle: { ...text.caption, color: colors.inkMuted, marginTop: 1 },
+  cardSubtitle: { ...text.caption, color: colors.inkMuted, fontWeight: '500', marginTop: 1 },
+  iconPlate: { alignItems: 'center', justifyContent: 'center' },
+
+  callout: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.md,
+    borderRadius: radius.lg,
+    padding: spacing.lg,
+  },
+  calloutTitle: { ...text.label, fontWeight: '800' },
+  calloutBody: { ...text.caption, color: colors.inkMuted, fontWeight: '500', marginTop: 2 },
+
   button: {
     minHeight: 54,
     borderRadius: radius.lg,
@@ -494,7 +1150,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: spacing.sm,
   },
-  buttonSm: { minHeight: 42, paddingVertical: spacing.sm, paddingHorizontal: spacing.md, borderRadius: radius.md },
+  buttonSm: {
+    minHeight: 42,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+    borderRadius: radius.md,
+  },
   buttonSecondary: { backgroundColor: colors.surface, borderColor: colors.primary, borderWidth: 1.5 },
   buttonGhost: { backgroundColor: colors.primaryTint },
   buttonDanger: { backgroundColor: colors.error },
@@ -504,6 +1165,7 @@ const styles = StyleSheet.create({
   buttonText: { ...text.bodyStrong, color: colors.white, fontWeight: '800', textAlign: 'center' },
   buttonTextSm: { fontSize: 14, lineHeight: 18 },
   buttonTextOutline: { color: colors.primary },
+
   iconButton: {
     width: 48,
     height: 48,
@@ -515,6 +1177,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   iconButtonActive: { backgroundColor: colors.primary, borderColor: colors.primary },
+
   chip: {
     minHeight: 38,
     flexDirection: 'row',
@@ -527,9 +1190,61 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
   },
+  chipSm: { minHeight: 30, paddingHorizontal: spacing.sm + 2, paddingVertical: 4 },
   chipStatic: { backgroundColor: colors.surfaceMuted, borderColor: 'transparent' },
   chipText: { ...text.label, color: colors.inkMuted },
+  chipTextSm: { ...text.tiny, letterSpacing: 0.2 },
   chipTextSelected: { color: colors.white },
+
+  segmented: {
+    flexDirection: 'row',
+    backgroundColor: colors.surfaceMuted,
+    borderRadius: radius.md,
+    padding: 4,
+    gap: 4,
+  },
+  segment: {
+    flex: 1,
+    minHeight: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: spacing.sm,
+    borderRadius: radius.sm + 1,
+  },
+  segmentActive: { backgroundColor: colors.surface, ...elevation.e0 },
+  segmentText: { ...text.label, color: colors.inkMuted, fontWeight: '700' },
+  segmentTextActive: { color: colors.primary, fontWeight: '800' },
+
+  listRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, paddingVertical: spacing.xs },
+  listRowTitle: { ...text.bodyStrong, color: colors.ink },
+  listRowSubtitle: { ...text.caption, color: colors.inkMuted, fontWeight: '500', marginTop: 1 },
+
+  actionTileHost: { flex: 1, minWidth: 0 },
+  actionTile: {
+    flex: 1,
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    borderColor: colors.outline,
+    padding: spacing.md,
+    gap: spacing.xs,
+    minHeight: 108,
+    ...elevation.e0,
+  },
+  actionTileTop: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' },
+  actionBadge: {
+    minWidth: 22,
+    height: 22,
+    borderRadius: radius.round,
+    paddingHorizontal: 6,
+    backgroundColor: colors.accent,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  actionBadgeText: { ...text.tiny, color: colors.white, fontWeight: '800' },
+  actionLabel: { ...text.bodyStrong, color: colors.ink, marginTop: spacing.xs },
+  actionCaption: { ...text.caption, color: colors.inkMuted, fontWeight: '500' },
+
   badge: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -541,6 +1256,7 @@ const styles = StyleSheet.create({
   },
   badgeDot: { width: 7, height: 7, borderRadius: radius.round },
   badgeText: { ...text.caption, fontWeight: '800' },
+
   metric: {
     flex: 1,
     minWidth: 138,
@@ -550,7 +1266,26 @@ const styles = StyleSheet.create({
   },
   metricValue: { ...text.metric, color: colors.ink },
   metricLabel: { ...text.caption, color: colors.inkMuted },
+
+  statTile: {
+    flex: 1,
+    minWidth: 0,
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    borderColor: colors.outline,
+    padding: spacing.md,
+    gap: spacing.xs,
+    ...elevation.e0,
+  },
+  // Reserve two label lines so values stay on a common baseline across a row.
+  statTileTop: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.sm, minHeight: 36 },
+  statLabel: { ...text.caption, color: colors.inkMuted, flex: 1, fontWeight: '600', paddingTop: 2 },
+  statValue: { ...text.metric, marginTop: spacing.xs },
+  statFootnote: { ...text.tiny, color: colors.inkSubtle, fontWeight: '600' },
+
   progressTrack: { width: '100%', overflow: 'hidden' },
+
   empty: { paddingVertical: spacing.lg, alignItems: 'center', gap: spacing.md },
   emptyAction: { alignSelf: 'stretch', paddingHorizontal: spacing.xl },
   loadingScreen: {

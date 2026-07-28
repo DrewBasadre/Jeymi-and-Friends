@@ -16,7 +16,7 @@ import {
   type LucideIcon,
 } from 'lucide-react-native';
 import type { ComponentProps } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   LandingScreen,
@@ -58,7 +58,7 @@ import {
   TransferScreen,
 } from '@/screens/TeacherScreens';
 import { useSessionStore } from '@/store/session';
-import { colors } from '@/theme/tokens';
+import { colors, elevation, layout, radius } from '@/theme/tokens';
 import type {
   RootStackParamList,
   StudentTabParamList,
@@ -72,12 +72,12 @@ const TeacherTabs = createBottomTabNavigator<TeacherTabParamList>();
 const navigationTheme: Theme = {
   dark: false,
   colors: {
-    primary: colors.indigo,
+    primary: colors.primary,
     background: colors.background,
     card: colors.surface,
     text: colors.ink,
     border: colors.outline,
-    notification: colors.coral,
+    notification: colors.accent,
   },
   fonts: {
     regular: { fontFamily: 'System', fontWeight: '400' },
@@ -97,19 +97,27 @@ function useTabScreenOptions() {
     tabBarLabelStyle: {
       fontSize: 11,
       fontWeight: '700' as const,
-      marginTop: 2,
+      letterSpacing: 0.1,
+      marginTop: 3,
     },
     tabBarItemStyle: { paddingTop: 8 },
     tabBarStyle: {
-      height: 60 + insets.bottom,
-      paddingTop: 6,
+      height: layout.tabBarHeight + insets.bottom,
+      paddingTop: 8,
       paddingBottom: Math.max(insets.bottom, 8),
+      borderTopWidth: StyleSheet.hairlineWidth,
       borderTopColor: colors.outline,
       backgroundColor: colors.surface,
+      // Lifts the bar off the content so long lists scroll "under" it.
+      ...elevation.e2,
     },
   } as const;
 }
 
+/**
+ * Tab icon with a tinted pill behind the active item — the smallest possible
+ * cue that reads as "you are here" without adding chrome.
+ */
 function TabIcon({
   icon: Icon,
   color,
@@ -122,20 +130,23 @@ function TabIcon({
   focused: boolean;
 }) {
   return (
-    <View
-      style={{
-        width: 44,
-        height: 30,
-        borderRadius: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: focused ? colors.primaryTint : 'transparent',
-      }}
-    >
-      <Icon color={color} size={size} strokeWidth={focused ? 2.6 : 2.1} />
+    <View style={[tabStyles.iconWrap, focused && tabStyles.iconWrapActive]}>
+      <Icon color={color} size={size - 1} strokeWidth={focused ? 2.6 : 2.05} />
     </View>
   );
 }
+
+const tabStyles = StyleSheet.create({
+  iconWrap: {
+    width: 50,
+    height: 30,
+    borderRadius: radius.round,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+  iconWrapActive: { backgroundColor: colors.primaryTint },
+});
 
 function StudentTabNavigator() {
   const screenOptions = useTabScreenOptions();
@@ -240,6 +251,7 @@ export function RootNavigator() {
         screenOptions={{
           headerShown: false,
           contentStyle: { backgroundColor: colors.background },
+          animation: 'slide_from_right',
         }}
       >
         <RootStack.Screen name="Landing" component={LandingScreen} />

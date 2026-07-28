@@ -146,11 +146,17 @@ function resolveLocalImage(
   return file.exists ? file.uri : null;
 }
 
+/**
+ * Lesson typography. Reading is the core act of this app, so the body is set
+ * a notch larger and more open than UI text — a comfortable measure and a
+ * generous line height do more for comprehension than any decoration.
+ */
 const markdownStyles = StyleSheet.create({
   body: {
     ...text.body,
+    fontSize: 17,
     color: colors.ink,
-    lineHeight: 28,
+    lineHeight: 29,
   },
   heading1: {
     ...text.h1,
@@ -162,30 +168,55 @@ const markdownStyles = StyleSheet.create({
     ...text.h2,
     color: colors.ink,
     marginBottom: spacing.sm,
-    marginTop: spacing.lg,
+    marginTop: spacing.xl,
   },
   heading3: {
     ...text.title,
     color: colors.ink,
+    marginBottom: spacing.xs,
+    marginTop: spacing.lg,
+  },
+  heading4: {
+    ...text.bodyStrong,
+    color: colors.inkMuted,
     marginBottom: spacing.xs,
     marginTop: spacing.md,
   },
   paragraph: {
     marginBottom: spacing.md,
   },
+  strong: { fontWeight: '800', color: colors.ink },
+  em: { fontStyle: 'italic', color: colors.ink },
   bullet_list: {
     marginBottom: spacing.md,
   },
   ordered_list: {
     marginBottom: spacing.md,
   },
+  list_item: { marginBottom: spacing.xs },
+  bullet_list_icon: { color: colors.primary, marginRight: spacing.sm },
+  ordered_list_icon: { color: colors.primary, fontWeight: '800', marginRight: spacing.sm },
+  hr: { backgroundColor: colors.hairline, height: 1, marginVertical: spacing.lg },
   blockquote: {
-    backgroundColor: colors.surfaceMuted,
+    backgroundColor: colors.primaryTint,
     borderLeftColor: colors.primary,
     borderLeftWidth: 4,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
+    borderRadius: radius.sm,
+    marginVertical: spacing.sm,
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.md,
   },
+  table: {
+    borderColor: colors.outline,
+    borderWidth: 1,
+    borderRadius: radius.md,
+    marginVertical: spacing.md,
+    overflow: 'hidden',
+  },
+  thead: { backgroundColor: colors.surfaceMuted },
+  th: { ...text.caption, color: colors.ink, padding: spacing.sm },
+  tr: { borderBottomWidth: 1, borderColor: colors.hairline },
+  td: { ...text.bodySm, color: colors.inkMuted, padding: spacing.sm },
   // Tappable "recall term" — a filled pill so students can tell it is
   // interactive; kept distinct from real links (which stay underlined).
   code_inline: {

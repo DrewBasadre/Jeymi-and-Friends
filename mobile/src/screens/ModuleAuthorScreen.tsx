@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import type { ComponentProps } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import {
   Alert,
   Image,
@@ -13,19 +13,27 @@ import * as Crypto from 'expo-crypto';
 import {
   BookOpen,
   Bot,
+  CheckCircle2,
   FileImage,
   FileText,
   ListChecks,
   PackageCheck,
   Plus,
+  TriangleAlert,
+  Type,
 } from 'lucide-react-native';
 import {
+  Callout,
   Card,
   CardHeader,
   Chip,
+  Divider,
   PrimaryButton,
+  Row,
   Screen,
   ScreenHeader,
+  SectionHeader,
+  StatTile,
   StatusBadge,
 } from '@/components/ui';
 import {
@@ -45,7 +53,7 @@ import {
   pickAndProcessModuleImages,
   type TeacherModuleImage,
 } from '@/services/modulePackages';
-import { colors, radius, spacing, text } from '@/theme/tokens';
+import { colors, radius, spacing, subjectColor, text } from '@/theme/tokens';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ModuleAuthor'>;
 
@@ -55,6 +63,14 @@ const SUBJECTS: Subject[] = [
   'ENGLISH',
   'ADDED_MATERIALS',
 ];
+
+const REVIEW_TYPES: ReviewItemType[] = [
+  'flashcard',
+  'quiz-question',
+  'concept-summary',
+];
+
+const IMPORTANCES: ReviewImportance[] = ['core', 'supplementary', 'stretch'];
 
 export function ModuleAuthorScreen({ navigation }: Props) {
   const [title, setTitle] = useState('');
@@ -166,118 +182,96 @@ export function ModuleAuthorScreen({ navigation }: Props) {
     }
   }
 
+  // ── Live summary (presentation only — mirrors the checks in buildAndShare)
+  const parsedGrade = Number(gradeLevel);
+  const gradeValid =
+    Number.isInteger(parsedGrade) && parsedGrade >= 1 && parsedGrade <= 12;
+  const wordCount = useMemo(
+    () => markdown.trim().split(/\s+/).filter(Boolean).length,
+    [markdown],
+  );
+  const missing = [
+    !title.trim() ? 'a title' : null,
+    !markdown.trim() ? 'a Markdown lesson' : null,
+    !gradeValid ? 'a grade level from 1 to 12' : null,
+  ].filter((entry): entry is string => entry !== null);
+  const canAddReviewItem =
+    !!conceptId.trim() && !!prompt.trim() && !!answer.trim();
+
   return (
     <Screen>
       <ScreenHeader
+        overline="Teacher tools"
         title="Author module"
-        subtitle="Markdown and local WebP photos"
+        subtitle="Write in markdown, attach local photos, and share it device to device."
         onBack={navigation.goBack}
       />
+
+      <SectionHeader
+        title="Module details"
+        caption="How the lesson is label={led} on a student's device"
+      />
       <Card>
-        <CardHeader icon={FileText} title="Module details" />
-        <Field label="Module title" value={title} onChangeText={setTitle} />
+        <CardHeader
+          icon={FileText}
+          title="Identity"
+          subtitle="Title, grade level, and subject"
+        />
+        <Divider />
+        <Field
+          label="Module title"
+          helper="Shown on the student's module card — keep it short and specific."
+          value={title}
+          onChangeText={setTitle}
+          placeholder="Example: subtracting fractions"
+        />
         <Field
           label="Grade level"
+          helper="A whole number from 1 to 12."
+          invalid={gradeLevel.length > 0 && !gradeValid}
+          invalidHelper="Enter a whole number between 1 and 12."
           value={gradeLevel}
           onChangeText={setGradeLevel}
           keyboardType="number-pad"
         />
-        <Text style={styles.label}>Subject</Text>
-        <View style={styles.chips}>
+        <FieldGroup
+          label="Subject"
+          helper="Sets the colour and grouping students see."
+        >
           {SUBJECTS.map((option) => (
             <Chip
               key={option}
-              label={option.replace('_', ' ')}
+              label={toTitleCase(option)}
+              color={subjectColor[option]}
               selected={subject === option}
               onPress={() => setSubject(option)}
             />
           ))}
-        </View>
+        </FieldGroup>
       </Card>
 
+      <SectionHeader
+        title="Lesson content"
+        caption="Markdown is stored offline and rendered on the student device"
+      />
       <Card>
         <CardHeader
-          icon={Bot}
-          title="AI assist"
-          subtitle="This Android build uses manual authoring only."
-          action={<StatusBadge label="Planned" status="locked" />}
-        />
-      </Card>
-
-      <Card>
-        <CardHeader
-          icon={ListChecks}
-          title="Review items"
-          subtitle="Set the concept and importance here. Pavo will not infer either on the student device."
-        />
-        <Field
-          label="Concept ID"
-          value={conceptId}
-          onChangeText={setConceptId}
-          autoCapitalize="none"
-          placeholder="Example: fraction-subtraction"
-        />
-        <Text style={styles.label}>Item type</Text>
-        <View style={styles.chips}>
-          {(
-            [
-              'flashcard',
-              'quiz-question',
-              'concept-summary',
-            ] as ReviewItemType[]
-          ).map((option) => (
-            <Chip
-              key={option}
-              label={option.replace('-', ' ')}
-              selected={reviewType === option}
-              onPress={() => setReviewType(option)}
+          icon={BookOpen}
+          title="Lesson markdown"
+          subtitle={`${wordCount} word${wordCount === 1 ? '' : 's'}`}
+          action={
+            <StatusBadge
+              label={markdown.trim() ? 'Drafted' : 'Empty'}
+              status={markdown.trim() ? 'inProgress' : 'notStarted'}
             />
-          ))}
-        </View>
-        <Text style={styles.label}>Importance</Text>
-        <View style={styles.chips}>
-          {(['core', 'supplementary', 'stretch'] as ReviewImportance[]).map(
-            (option) => (
-              <Chip
-                key={option}
-                label={option}
-                selected={importance === option}
-                onPress={() => setImportance(option)}
-              />
-            ),
-          )}
-        </View>
-        <Field label="Prompt" value={prompt} onChangeText={setPrompt} multiline />
-        <Field label="Answer" value={answer} onChangeText={setAnswer} multiline />
-        <PrimaryButton
-          label="Add review item"
-          icon={Plus}
-          tone="secondary"
-          disabled={!conceptId.trim() || !prompt.trim() || !answer.trim()}
-          onPress={addReviewItem}
+          }
         />
-        {reviewItems.map((item) => (
-          <View key={item.itemId} style={styles.reviewItem}>
-            <Text style={styles.reviewTitle}>{item.prompt}</Text>
-            <Text style={styles.helper}>
-              {item.conceptId} · {item.type} · {item.importance}
-            </Text>
-          </View>
-        ))}
-      </Card>
-
-      <Card>
-        <CardHeader icon={BookOpen} title="Lesson Markdown" />
-        <TextInput
-          autoCapitalize="sentences"
-          multiline
-          onChangeText={setMarkdown}
-          placeholder="# Lesson title"
-          placeholderTextColor={colors.inkMuted}
-          style={[styles.input, styles.editor]}
-          textAlignVertical="top"
-          value={markdown}
-        />
+        <Divider />
+        <Editor value={markdown} onChangeText={setMarkdown} />
+        <Text style={styles.helper}>
+          Headings, lists and emphasis are supported — images you attach are
+          appended as Markdown automatically.
+        </Text>
         <PrimaryButton
           label="Attach photos as WebP"
           icon={FileImage}
@@ -286,83 +280,344 @@ export function ModuleAuthorScreen({ navigation }: Props) {
           onPress={() => void addPhotos()}
         />
         {images.length ? (
-          <View style={styles.imageGrid}>
-            {images.map((image) => (
-              <View key={image.packagePath} style={styles.imageItem}>
-                <Image source={{ uri: image.fileUri }} style={styles.image} />
-                <Text numberOfLines={2} style={styles.imageName}>
-                  {image.packagePath}
-                </Text>
-              </View>
-            ))}
-          </View>
+          <>
+            <Divider />
+            <Text style={styles.groupLabel}>
+              {images.length} attached photo{images.length === 1 ? '' : 's'}
+            </Text>
+            <View style={styles.imageGrid}>
+              {images.map((image) => (
+                <View key={image.packagePath} style={styles.imageItem}>
+                  <Image
+                    source={{ uri: image.fileUri }}
+                    style={styles.image}
+                    accessibilityLabel={`Attached photo ${image.packagePath}`}
+                  />
+                  <Text numberOfLines={2} style={styles.imageName}>
+                    {image.packagePath}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          </>
         ) : null}
       </Card>
 
-      <PrimaryButton
-        label="Build and share module"
-        icon={PackageCheck}
-        loading={busy}
-        onPress={() => void buildAndShare()}
+      <SectionHeader
+        title="Review items"
+        caption="Flashcards and checks that feed the student's review queue"
       />
+      <Card>
+        <CardHeader
+          icon={ListChecks}
+          title="Add an item"
+          subtitle="Pavo never infers the concept or importance on the student device — set both here."
+          color={colors.secondary}
+        />
+        <Divider />
+        <Field
+          label="Concept ID"
+          helper="A stable, lowercase key that groups related items."
+          value={conceptId}
+          onChangeText={setConceptId}
+          autoCapitalize="none"
+          placeholder="Example: fraction-subtraction"
+        />
+        <FieldGroup
+          label="Item type"
+          helper="How the item is presented during review."
+        >
+          {REVIEW_TYPES.map((option) => (
+            <Chip
+              key={option}
+              label={toTitleCase(option)}
+              selected={reviewType === option}
+              onPress={() => setReviewType(option)}
+            />
+          ))}
+        </FieldGroup>
+        <FieldGroup
+          label="Importance"
+          helper="Core items are scheduled first when review time is short."
+        >
+          {IMPORTANCES.map((option) => (
+            <Chip
+              key={option}
+              label={toTitleCase(option)}
+              selected={importance === option}
+              onPress={() => setImportance(option)}
+            />
+          ))}
+        </FieldGroup>
+        <Field
+          label="Prompt"
+          helper="The question the student sees first."
+          value={prompt}
+          onChangeText={setPrompt}
+          multiline
+        />
+        <Field
+          label="Answer"
+          helper="The response Pavo reveals or checks against."
+          value={answer}
+          onChangeText={setAnswer}
+          multiline
+        />
+        <PrimaryButton
+          label="Add review item"
+          icon={Plus}
+          tone="secondary"
+          disabled={!canAddReviewItem}
+          onPress={addReviewItem}
+        />
+      </Card>
+
+      {reviewItems.length ? (
+        <Card>
+          <CardHeader
+            icon={ListChecks}
+            title="Items in this module"
+            subtitle={`${reviewItems.length} item${
+              reviewItems.length === 1 ? '' : 's'
+            } will ship with the package`}
+            color={colors.success}
+          />
+          <Divider />
+          {reviewItems.map((item) => (
+            <View key={item.itemId} style={styles.reviewItem}>
+              <Text style={styles.reviewTitle} numberOfLines={3}>
+                {item.prompt}
+              </Text>
+              <Row gap={spacing.xs} wrap>
+                <Chip label={item.conceptId} size="sm" />
+                <Chip label={toTitleCase(item.type)} size="sm" />
+                <Chip label={toTitleCase(item.importance)} size="sm" />
+              </Row>
+            </View>
+          ))}
+        </Card>
+      ) : null}
+
+      <Card>
+        <CardHeader
+          icon={Bot}
+          title="AI assist"
+          subtitle="This build uses manual authoring only — drafting help is planned."
+          color={colors.inkSubtle}
+          action={<StatusBadge label="Planned" status="locked" />}
+        />
+      </Card>
+
+      <SectionHeader
+        title="Publish"
+        caption="Package the module, then hand it to a nearby device"
+      />
+      <Card>
+        <CardHeader
+          icon={PackageCheck}
+          title={title.trim() || 'Untitled module'}
+          subtitle={`${toTitleCase(subject)} · ${
+            gradeValid ? `Grade ${parsedGrade}` : 'Grade level not set'
+          }`}
+        />
+        <Divider />
+        <Row gap={spacing.sm} align="stretch" wrap>
+          <StatTile icon={Type} label="Words" value={wordCount} />
+          <StatTile
+            icon={FileImage}
+            label="Photos"
+            value={images.length}
+            color={colors.secondary}
+          />
+          <StatTile
+            icon={ListChecks}
+            label="Review items"
+            value={reviewItems.length}
+            color={colors.success}
+          />
+        </Row>
+        {missing.length ? (
+          <Callout
+            icon={TriangleAlert}
+            tone="warning"
+            title="Almost ready"
+            body={`Still needed — ${formatList(missing)}.`}
+          />
+        ) : (
+          <Callout
+            icon={CheckCircle2}
+            tone="success"
+            title="Ready to build"
+            body="Everything required is in place — build the package to share it."
+          />
+        )}
+        <PrimaryButton
+          label="Build and share module"
+          icon={PackageCheck}
+          loading={busy}
+          onPress={() => void buildAndShare()}
+        />
+      </Card>
     </Screen>
   );
 }
 
+/* ── Form primitives ───────────────────────────────────────────────────── */
+
 function Field({
   label,
+  helper,
+  invalid,
+  invalidHelper,
   ...props
 }: {
   label: string;
+  helper?: string;
+  invalid?: boolean;
+  invalidHelper?: string;
 } & ComponentProps<typeof TextInput>) {
+  const [focused, setFocused] = useState(false);
   return (
     <View style={styles.field}>
-      <Text style={styles.label}>{label}</Text>
+      <Text style={styles.groupLabel}>{label}</Text>
       <TextInput
+        accessibilityLabel={label}
         {...props}
-        placeholderTextColor={colors.inkMuted}
-        style={[styles.input, props.multiline && styles.multiline]}
+        onFocus={(event) => {
+          setFocused(true);
+          props.onFocus?.(event);
+        }}
+        onBlur={(event) => {
+          setFocused(false);
+          props.onBlur?.(event);
+        }}
+        placeholderTextColor={colors.inkSubtle}
+        style={[
+          styles.input,
+          props.multiline && styles.multiline,
+          focused && styles.inputFocused,
+          invalid && styles.inputInvalid,
+        ]}
       />
+      {invalid && invalidHelper ? (
+        <Text style={styles.helperError}>{invalidHelper}</Text>
+      ) : helper ? (
+        <Text style={styles.helper}>{helper}</Text>
+      ) : null}
     </View>
   );
 }
 
+/** A label={led} row of chips — the non-text sibling of `Field`. */
+function FieldGroup({
+  label,
+  helper,
+  children,
+}: {
+  label: string;
+  helper?: string;
+  children: ReactNode;
+}) {
+  return (
+    <View style={styles.field}>
+      <Text style={styles.groupLabel}>{label}</Text>
+      <View style={styles.chips}>{children}</View>
+      {helper ? <Text style={styles.helper}>{helper}</Text> : null}
+    </View>
+  );
+}
+
+function Editor({
+  value,
+  onChangeText,
+}: {
+  value: string;
+  onChangeText: (next: string) => void;
+}) {
+  const [focused, setFocused] = useState(false);
+  return (
+    <TextInput
+      accessibilityLabel="Lesson Markdown"
+      autoCapitalize="sentences"
+      multiline
+      onChangeText={onChangeText}
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
+      placeholder="# Lesson title"
+      placeholderTextColor={colors.inkSubtle}
+      style={[styles.input, styles.editor, focused && styles.inputFocused]}
+      textAlignVertical="top"
+      value={value}
+    />
+  );
+}
+
+/* ── Text helpers ──────────────────────────────────────────────────────── */
+
+function toTitleCase(value: string): string {
+  return value
+    .replace(/[_-]+/g, ' ')
+    .toLocaleLowerCase()
+    .split(' ')
+    .filter(Boolean)
+    .map((word) => `${word[0]?.toLocaleUpperCase() ?? ''}${word.slice(1)}`)
+    .join(' ');
+}
+
+function formatList(entries: string[]): string {
+  if (entries.length <= 1) return entries[0] ?? '';
+  return `${entries.slice(0, -1).join(', ')} and ${entries[entries.length - 1]}`;
+}
+
 const styles = StyleSheet.create({
   field: { gap: spacing.xs },
-  label: {
+  groupLabel: {
     ...text.label,
     color: colors.ink,
+    fontWeight: '700',
   },
   input: {
     ...text.body,
     backgroundColor: colors.surface,
     borderColor: colors.outline,
     borderRadius: radius.md,
-    borderWidth: 1,
+    borderWidth: 1.5,
     color: colors.ink,
-    minHeight: 48,
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
+    minHeight: 52,
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.md,
   },
+  inputFocused: {
+    borderColor: colors.primary,
+    backgroundColor: colors.surface,
+  },
+  inputInvalid: { borderColor: colors.error },
   multiline: { minHeight: 82, textAlignVertical: 'top' },
+  editor: {
+    fontFamily: 'monospace',
+    minHeight: 320,
+    textAlignVertical: 'top',
+    backgroundColor: colors.surfaceMuted,
+  },
   helper: {
     ...text.caption,
     color: colors.inkMuted,
+    fontWeight: '500',
+  },
+  helperError: {
+    ...text.caption,
+    color: colors.error,
+    fontWeight: '600',
   },
   reviewItem: {
     backgroundColor: colors.surfaceMuted,
     borderRadius: radius.md,
     padding: spacing.md,
-    gap: spacing.xs,
+    gap: spacing.sm,
   },
   reviewTitle: {
     ...text.bodyStrong,
     color: colors.ink,
-  },
-  editor: {
-    fontFamily: 'monospace',
-    minHeight: 320,
-    textAlignVertical: 'top',
   },
   chips: {
     flexDirection: 'row',
@@ -384,5 +639,6 @@ const styles = StyleSheet.create({
   imageName: {
     ...text.caption,
     color: colors.inkMuted,
+    fontWeight: '500',
   },
 });
