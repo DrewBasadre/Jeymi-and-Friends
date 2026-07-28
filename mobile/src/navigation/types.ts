@@ -40,4 +40,5 @@ export type TeacherTabParamList = {
   RecordBook: undefined;
   Scanner: undefined;
   Gurobot: undefined;
+  TeacherProfile: undefined;
 };

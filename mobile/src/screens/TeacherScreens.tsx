@@ -80,8 +80,10 @@ import {
   getClassPerformanceReport,
   getStudentPerformanceReport,
   getTeacherDashboard,
+  getTeacherProfile,
   importQrReport,
 } from '@/data/repository';
+import { useSessionStore } from '@/store/session';
 import {
   listCustomReviewSets,
   listReviewItems,
@@ -94,6 +96,7 @@ import type {
   StudentPerformanceReport,
   TeacherDashboard,
   TeacherLearnerRow,
+  TeacherProfile,
   TransferPackage,
 } from '@/domain/types';
 import type {
@@ -884,14 +887,166 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
 
       <View style={styles.signOutRow}>
         <PrimaryButton
-          label="Sign out"
-          icon={LogOut}
-          tone="danger"
+          label="Author a review set"
+          icon={Layers}
+          tone="ghost"
           size="sm"
-          onPress={() => navigation.getParent()?.navigate('Landing')}
+          onPress={() => navigation.navigate('CustomReviewSets')}
         />
       </View>
     </Screen>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────────────
+   Teacher profile
+   ──────────────────────────────────────────────────────────────────────── */
+
+export function TeacherProfileScreen({ navigation }: TeacherTabProps<'TeacherProfile'>) {
+  const mode = useSessionStore((state) => state.mode);
+  const modeReason = useSessionStore((state) => state.modeReason);
+  const setMode = useSessionStore((state) => state.setMode);
+  const signOut = useSessionStore((state) => state.signOut);
+  const [profile, setProfile] = useState<TeacherProfile | null>(null);
+  const [section, setSection] = useState<Section | null>(null);
+  const [dashboard, setDashboard] = useState<TeacherDashboard | null>(null);
+
+  const load = useCallback(async () => {
+    const [nextProfile, nextSection] = await Promise.all([
+      getTeacherProfile(),
+      getActiveSection(),
+    ]);
+    setProfile(nextProfile);
+    setSection(nextSection);
+    if (nextSection) setDashboard(await getTeacherDashboard(nextSection.sectionId));
+    else setDashboard(null);
+  }, []);
+
+  useFocusEffect(useCallback(() => void load(), [load]));
+
+  const name = profile?.name ?? 'Teacher';
+
+  return (
+    <Screen bottomClearance>
+      <ScreenHeader overline="Account" title="Profile" subtitle={profile?.facultyId ?? 'Faculty'} />
+
+      <Card>
+        <View style={styles.profileHead}>
+          <View style={styles.profileAvatar}>
+            <Text style={styles.profileAvatarText}>{initials(name)}</Text>
+          </View>
+          <View style={styles.flexMin}>
+            <Text style={styles.profileName} numberOfLines={1}>
+              {name}
+            </Text>
+            <Text style={styles.body}>
+              {section ? `Teacher · ${section.name}` : 'Teacher'}
+            </Text>
+          </View>
+        </View>
+        <Divider style={styles.rowDivider} />
+        <InfoLine label="Faculty ID" value={profile?.facultyId ?? '—'} />
+        {profile ? (
+          <>
+            <Divider style={styles.rowDivider} />
+            <InfoLine label="Member since" value={formatDate(profile.createdAt)} />
+          </>
+        ) : null}
+      </Card>
+
+      <Card>
+        <CardHeader
+          icon={UsersRound}
+          title="Active section"
+          subtitle={section ? `Grade ${section.gradeLevel}` : 'No active section'}
+          color={colors.secondary}
+        />
+        {section ? (
+          <Row gap={spacing.md}>
+            <StatTile
+              icon={UsersRound}
+              label="Learners"
+              value={section?.roster.length ?? 0}
+              color={colors.secondary}
+            />
+            <StatTile
+              icon={Trophy}
+              label="Class average"
+              value={`${Math.round(dashboard?.classAverage ?? 0)}%`}
+              color={colors.primary}
+            />
+          </Row>
+        ) : (
+          <Text style={styles.body}>
+            Open Sections to create a class, then scan student profile QR codes to build your roster.
+          </Text>
+        )}
+        <PrimaryButton
+          label="Manage sections"
+          icon={UsersRound}
+          tone="ghost"
+          size="sm"
+          onPress={() => navigation.navigate('Sections')}
+        />
+      </Card>
+
+      <Card>
+        <CardHeader icon={Send} title="Device mode" subtitle={modeReason} color={colors.primary} />
+        <SegmentedControl
+          value={mode}
+          onChange={(next) => void setMode(next)}
+          options={[
+            { value: 'lightweight', label: 'Offline light' },
+            { value: 'full', label: 'Full' },
+          ]}
+        />
+      </Card>
+
+      <SectionHeader title="Teaching tools" />
+      <Card>
+        <ListRow
+          icon={PencilLine}
+          title="Author a module"
+          subtitle="Write a lesson and package it for transfer"
+          onPress={() => navigation.navigate('ModuleAuthor')}
+        />
+        <Divider style={styles.rowDivider} />
+        <ListRow
+          icon={Layers}
+          title="Author review sets"
+          subtitle="Build custom flashcard and drill sets"
+          color={colors.secondary}
+          onPress={() => navigation.navigate('CustomReviewSets')}
+        />
+        <Divider style={styles.rowDivider} />
+        <ListRow
+          icon={Send}
+          title="Send to a nearby device"
+          subtitle="Hand a module to a learner without internet"
+          color={colors.accentText}
+          onPress={() => navigation.navigate('Transfer')}
+        />
+      </Card>
+
+      <View style={styles.signOutRow}>
+        <PrimaryButton
+          label="Sign out"
+          tone="danger"
+          size="sm"
+          icon={LogOut}
+          onPress={() => void signOut().then(() => navigation.getParent()?.navigate('Landing'))}
+        />
+      </View>
+    </Screen>
+  );
+}
+
+function InfoLine({ label, value }: { label: string; value: string }) {
+  return (
+    <View style={styles.infoLine}>
+      <Text style={styles.infoLabel}>{label}</Text>
+      <Text style={styles.infoValue}>{value}</Text>
+    </View>
   );
 }
 
@@ -1541,6 +1696,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   avatarText: { ...text.title, color: colors.onBrand, fontWeight: '800' },
+
+  // Teacher profile
+  flexMin: { flex: 1, minWidth: 0 },
+  profileHead: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  profileAvatar: {
+    width: 56,
+    height: 56,
+    borderRadius: radius.round,
+    backgroundColor: colors.primaryTint,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  profileAvatarText: { ...text.title, color: colors.primary, fontWeight: '800' },
+  profileName: { ...text.h2, color: colors.ink },
+  infoLine: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.md },
+  infoLabel: { ...text.overline, color: colors.inkMuted, letterSpacing: 0.4, fontSize: 11 },
+  infoValue: { ...text.bodyStrong, color: colors.ink },
 
   // Shared rows
   body: { ...text.bodySm, color: colors.inkMuted },

@@ -55,6 +55,7 @@ import {
   RecordBookScreen,
   ScannerScreen,
   TeacherHomeScreen,
+  TeacherProfileScreen,
   TransferScreen,
 } from '@/screens/TeacherScreens';
 import { useSessionStore } from '@/store/session';
@@ -232,6 +233,14 @@ function TeacherTabNavigator() {
         options={{
           title: 'Assist',
           tabBarIcon: (props) => <TabIcon icon={Bot} {...props} />,
+        }}
+      />
+      <TeacherTabs.Screen
+        name="TeacherProfile"
+        component={TeacherProfileScreen}
+        options={{
+          title: 'Profile',
+          tabBarIcon: (props) => <TabIcon icon={UserRound} {...props} />,
         }}
       />
     </TeacherTabs.Navigator>
