@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-science-04-light-mirrors-and-lenses",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:b5563dd869a8041bfc97d488fb8f25faeea8d492e5e6393f60437bded65e4d75",
+    "lesson.md": "sha256:c016140d4b9ba4f28c2d1a97fe60a78ff719c7cdd24b3f6a8c717f359793678a",
     "g10-science-04-light-mirrors-and-lenses-quiz.json": "sha256:83c87f6c5b51f5ec2d1d37077efded7a2c7639ea0121a47a9f1658d6976bc1cf",
-    "images/concept-guide.webp": "sha256:ecbac799a805c44a9e5a490837328a73ac789cbc8ca91d231485a5184824aba2",
-    "images/worked-example.webp": "sha256:0a1f8e1b73612a41e8847175fc64d8dc5348db3230f94bf944ed0ce2bcae03fd"
+    "images/concept-guide.webp": "sha256:2e6683a1161901953a898c23ee6de787c0c75d2f9abee1f7b12f24b4098a584c",
+    "images/worked-example.webp": "sha256:8bec42be5624b58d722661fe1b63eb8c87b54ba9fb24827a1718e839ae201e14"
   },
   "quizId": "g10-science-04-light-mirrors-and-lenses-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-science-04-light-mirrors-and-lenses",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-science-04-light-mirrors-and-lenses",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-science-04-light-mirrors-and-lenses",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-science-04-light-mirrors-and-lenses",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-science-04-light-mirrors-and-lenses",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

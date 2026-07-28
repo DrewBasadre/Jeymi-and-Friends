@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-math-01-whole-number-operations",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:a48c6c6e64a0ba454d6a8dce472e861fae15c24811a9c3b5797ed735cc61d518",
+    "lesson.md": "sha256:969f7bd02db3d1115ead455d92bd3b0b816f6997cbdbb15039e8201152385ce5",
     "g5-math-01-whole-number-operations-quiz.json": "sha256:7af59c3bc1c9d37357f357b3a8ac7ea470518a98acf1b03c975384a7bfe9dadb",
-    "images/concept-guide.webp": "sha256:a247af701b63a100131de0bc41e441a9a7f37254587193ac105180fce5e39076",
-    "images/worked-example.webp": "sha256:d46d0300df5ec5176ffc4d3f0a649cce40bc1771dffb6c0250316f22421fa246"
+    "images/concept-guide.webp": "sha256:9b1d90a9111a0c0d2abea80fdf3c3b7e4852122e5eba8d1d6266abeb25a1dc0c",
+    "images/worked-example.webp": "sha256:24fc70c13637d84a06c0f645fc933b0b5d18e8a7a3b133ea244b413bc306f83d"
   },
   "quizId": "g5-math-01-whole-number-operations-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-math-01-whole-number-operations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-math-01-whole-number-operations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-math-01-whole-number-operations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-math-01-whole-number-operations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-math-01-whole-number-operations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

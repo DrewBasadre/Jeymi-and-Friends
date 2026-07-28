@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-math-05-flat-and-solid-shapes",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:fdbe3def976e94aa6b4bccc469c5f19b39889af0e3fc109cf02a3b13baa0e5b5",
+    "lesson.md": "sha256:fdf1cfb190cdbde626adaa6420ea707fd6384133698f67a982693847f14e12f2",
     "g1-math-05-flat-and-solid-shapes-quiz.json": "sha256:c300ed46452f167d43651d57209b01320e9d5fbef79a819f37e68ee062eb14e0",
-    "images/concept-guide.webp": "sha256:f22a1747603add4b0ac8088281aa632728ad572103551918b2e05544036bdbc6",
-    "images/worked-example.webp": "sha256:91972fff33c85b669edf277c4a0b3d23aca73ecae0fb08f034bfd4d3fcb1bd30"
+    "images/concept-guide.webp": "sha256:5e5504fa61fbff68740f4da2fae1f6163b522e40966b2a6dd6f45a2d4514a122",
+    "images/worked-example.webp": "sha256:6b1017de5f2cf7b1fb0ae45f1f6c78e4228b409aa63c337b299b8977c26ce0a8"
   },
   "quizId": "g1-math-05-flat-and-solid-shapes-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-math-05-flat-and-solid-shapes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-math-05-flat-and-solid-shapes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-math-05-flat-and-solid-shapes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-math-05-flat-and-solid-shapes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-math-05-flat-and-solid-shapes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-math-06-statistics-and-correlation",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:4165fb910f10fdd9da565ea306ca4a28a8b4856046019836ffbe00f67e7bdef4",
+    "lesson.md": "sha256:d877c2384236ca948b6e9ed95518bb7b8247f354ea39b6cbc147448df785c3b0",
     "g9-math-06-statistics-and-correlation-quiz.json": "sha256:f31575a2e9b46a3daa75f8f9763261205d2e11f75f4bc20b88916171203783fd",
-    "images/concept-guide.webp": "sha256:0ad59d30d20e2d237bf90d0b73419495f141a48c9552828fd81a267515fe42c2",
-    "images/worked-example.webp": "sha256:90c88680cb3c82a14c6f93c280f1b13920447d95cb5c71195075c6a9df629f86"
+    "images/concept-guide.webp": "sha256:f386a733e565f9afa9a97fbe07c5b177f85c68810495c8b2c0f6ce160fc95135",
+    "images/worked-example.webp": "sha256:bfbaa32285f4afd5b54b681fb131015a5aea68cb0a48699262305d4c96658293"
   },
   "quizId": "g9-math-06-statistics-and-correlation-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-math-06-statistics-and-correlation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-math-06-statistics-and-correlation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-math-06-statistics-and-correlation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-math-06-statistics-and-correlation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-math-06-statistics-and-correlation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

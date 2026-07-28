@@ -1,26 +1,26 @@
 # Changelog
 
-All notable changes to WAIS are summarized here in a public-facing format.
+All notable changes to PAVO are summarized here in a public-facing format.
 
 ## Unreleased
 
 - Added a repository README with the app overview, capabilities, setup steps,
   demo access, and public release notes.
-- Reworked project documentation so it describes WAIS as a product and codebase
+- Reworked project documentation so it describes PAVO as a product and codebase
   rather than only as internal revision notes.
 - Cleaned the design system document to remove stale internal generator
-  references and align terminology with the WAIS rebrand.
+  references and align terminology with the PAVO rebrand.
 - Removed tracked local Kotlin compiler error output and local VS Code settings.
 - Expanded `.gitignore` to keep local IDE, emulator, package, and Kotlin build
   artifacts out of the public tree.
 - Added `local.properties.example` for local SDK and Gemini API key setup.
-- Renamed the Gradle root project from `LearningHubPH` to `WAIS`.
-- Updated user-facing QR error text from LearningHub wording to WAIS wording.
+- Renamed the Gradle root project from `LearningHubPH` to `PAVO`.
+- Updated user-facing QR error text from LearningHub wording to PAVO wording.
 - Stopped pre-filling the teacher password field and applied password masking.
 
 ## 1.0.0 - 2026-04-26
 
-- Rebranded the app to WAIS.
+- Rebranded the app to PAVO.
 - Added the animated splash screen and updated app icon assets.
 - Added reusable Compose design atoms for branded headers, profile rows,
   attempts, analysis cards, assessment cards, and subject navigation.

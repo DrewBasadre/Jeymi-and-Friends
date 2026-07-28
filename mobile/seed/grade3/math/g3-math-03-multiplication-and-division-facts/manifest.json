@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-math-03-multiplication-and-division-facts",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:19ef7719bf4710b7f392e6248d58b36441b84bb2f34630090ef66f733f5e02a3",
+    "lesson.md": "sha256:d12617d981d2fd7ce6f5b6493fa2c972c29b03812475169e25a1612004b9191b",
     "g3-math-03-multiplication-and-division-facts-quiz.json": "sha256:a3e12aa9711d39886d9d9a8e541b5a08a74b3edcc644bc25190867a8b0a353f6",
-    "images/concept-guide.webp": "sha256:60c56fae60f046d6efaeee4a9e863d3607ca35caf8f5764f007f8fb93dfd03c8",
-    "images/worked-example.webp": "sha256:50d4e0b064579d9effb3b33cd85710cdd3f68a3bf92c6a07f1a9222437c9fe51"
+    "images/concept-guide.webp": "sha256:434e2670db1356712e12fd2fa79db4af393f5e49f86ac30fec94e2eb25904ca8",
+    "images/worked-example.webp": "sha256:bbc3894272d6263e93458a08cf5193419a93203b4ff689b20fbfb2a764d9af09"
   },
   "quizId": "g3-math-03-multiplication-and-division-facts-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-math-03-multiplication-and-division-facts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-math-03-multiplication-and-division-facts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-math-03-multiplication-and-division-facts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-math-03-multiplication-and-division-facts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-math-03-multiplication-and-division-facts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

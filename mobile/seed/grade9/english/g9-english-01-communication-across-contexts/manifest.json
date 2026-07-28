@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-english-01-communication-across-contexts",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:d70b912394cbf6707b4759e6be57ded7bd20f0959f785abed26d0409d97ae87b",
+    "lesson.md": "sha256:f42c0ab0601f6cd3feb1b22c24478bb6c31eaa2832ebf529d7f58c1de8289d44",
     "g9-english-01-communication-across-contexts-quiz.json": "sha256:feafd9289bed6f333f4d115ae0a8217ed066daaeaab2d0e223186c9ab2efcef9",
-    "images/concept-guide.webp": "sha256:51815e80a802cc40d172fe82c4f1bd5550e36223cb7aa8373e3510490e70676e",
-    "images/worked-example.webp": "sha256:31c68411e1059e247133ee275f7bab49f83b086aaf7d7e2e7f53c4cd7434cace"
+    "images/concept-guide.webp": "sha256:2d327f3ea70ea8a4ec25609fff89ebd075152dbb67ff710becdf424a005be2bb",
+    "images/worked-example.webp": "sha256:3147340bbcd23eda3a7caf04217e70a9c9e1dda94da886cf027f04eb32eab4d8"
   },
   "quizId": "g9-english-01-communication-across-contexts-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-english-01-communication-across-contexts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-english-01-communication-across-contexts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-english-01-communication-across-contexts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-english-01-communication-across-contexts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-english-01-communication-across-contexts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

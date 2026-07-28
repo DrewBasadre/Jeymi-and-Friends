@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-science-06-weather-today",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:f34cedf81fa339ec91dc7b0faa7e1013adca84d12fdc0014e783e3754d60a135",
+    "lesson.md": "sha256:384c04d885f49420926ce0bc8e6e2a6e8369bb770fd6948247ffd12f352b2e56",
     "g1-science-06-weather-today-quiz.json": "sha256:0021e48d6d8589e333f69fddcf4a46180645e3613251709b7ce645fd938a8883",
-    "images/concept-guide.webp": "sha256:309a8313c3134bab9332f9670749ffbb9703b10bb4642d2b6cdaa34704cfa1c6",
-    "images/worked-example.webp": "sha256:a0f1c4c69d1427dd13a9c97bb252460214ad1caa669034f2f4f5ded667049dcd"
+    "images/concept-guide.webp": "sha256:b51d3d954dbc81ad50e1c2045048e3d02b6ff549b4dfc944270102afd4bf0fc0",
+    "images/worked-example.webp": "sha256:b69868399859a0e33607c7a70c578da859577a7ed9ba020d709e68713bef8d2c"
   },
   "quizId": "g1-science-06-weather-today-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-science-06-weather-today",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-science-06-weather-today",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-science-06-weather-today",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-science-06-weather-today",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-science-06-weather-today",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

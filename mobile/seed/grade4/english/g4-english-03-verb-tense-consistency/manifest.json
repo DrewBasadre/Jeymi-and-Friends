@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-english-03-verb-tense-consistency",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:6074b735e9880094bb55bdd8bf8f514cdd4a4e42d3798dda3b24bab2b55fbcd3",
+    "lesson.md": "sha256:f65c3797ad87a45bd299b607461464f65b6067fc54db0ea338656234a26eb85f",
     "g4-english-03-verb-tense-consistency-quiz.json": "sha256:e0be5d4edadf35d07c895d2b76eefa2900fbf35efb26f97d57e4d7f4aae58a5b",
-    "images/concept-guide.webp": "sha256:43d00bec6b9a66f73d3e0c5174cc4a61e5d001742aba9d728cbbb10756adeff7",
-    "images/worked-example.webp": "sha256:51799ef19115152d25c501215b739bacde72136e97a95f69b57649c4477fa583"
+    "images/concept-guide.webp": "sha256:e9394fe418f2d8684a5523e8e6f0312a25abbc14bbd5dbeaf81e49b9f4253630",
+    "images/worked-example.webp": "sha256:db955d44e5356a6c9052c9bdcbd2df114ee8daf217577c53b728d01f3c31812b"
   },
   "quizId": "g4-english-03-verb-tense-consistency-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-english-03-verb-tense-consistency",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-english-03-verb-tense-consistency",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-english-03-verb-tense-consistency",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-english-03-verb-tense-consistency",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-english-03-verb-tense-consistency",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

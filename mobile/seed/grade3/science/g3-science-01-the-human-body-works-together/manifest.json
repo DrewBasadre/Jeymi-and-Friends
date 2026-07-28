@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-science-01-the-human-body-works-together",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:f06cbb5a3ba0a6bfbc209ae75f00b6be8a3ef8eaa41d118148dd07cd6e5d61ef",
+    "lesson.md": "sha256:af9cbef27774b9da5f9a83b40d5fcfee7f7eb0768d01610b73d382fe108cc006",
     "g3-science-01-the-human-body-works-together-quiz.json": "sha256:b1691d1ff8848050bdb0f729d915cdf48ce9ae58929793e72ebe2c0931459c68",
-    "images/concept-guide.webp": "sha256:d5292d1aea66bf0cd0a1165d96f3aeb7912e5c424b547b54235522cba3276db4",
-    "images/worked-example.webp": "sha256:0b38f8822df86c6266bbcaf14701eea924b2327fd1cf726b70253269a1051862"
+    "images/concept-guide.webp": "sha256:19ae3b7e644d2f57025af711247708b0a3fc8d3a47aeaadd091761f38c6b546a",
+    "images/worked-example.webp": "sha256:ca496bfb462052c59b92190f4f8208c95487be06de1766ea2fde0e21eec35f8c"
   },
   "quizId": "g3-science-01-the-human-body-works-together-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-science-01-the-human-body-works-together",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-science-01-the-human-body-works-together",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-science-01-the-human-body-works-together",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-science-01-the-human-body-works-together",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-science-01-the-human-body-works-together",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

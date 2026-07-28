@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-science-01-cell-division-and-organization",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:7da2f1e06789cd34475cdb3a4a7b8606769c0716a49782f4f3400f4bfa4268e7",
+    "lesson.md": "sha256:65bf31549e8664f73e18131631a017fd78ba14cb17f93a58975c2a9366536c34",
     "g9-science-01-cell-division-and-organization-quiz.json": "sha256:aaa93e57d07598261d4afa3e46c5bcd182f760b4392a718607938a8d386e2b47",
-    "images/concept-guide.webp": "sha256:193bdebf1e995291bb9cfc196e138920b1fe74d9674a63fffc785e1323f3a445",
-    "images/worked-example.webp": "sha256:95116c778b760eba3fd7ae894db79007ce5c4bdeb296e6595486651bb79ea435"
+    "images/concept-guide.webp": "sha256:f1bf4c5b023e9d295cfc1f4e6a1b5d30c47c991643997e7e8d91970211e520d6",
+    "images/worked-example.webp": "sha256:dcb3807d1c0ae3156e41ab5bbf352fb537d895c6f6ad1c78082b54420e69d3a3"
   },
   "quizId": "g9-science-01-cell-division-and-organization-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-science-01-cell-division-and-organization",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-science-01-cell-division-and-organization",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-science-01-cell-division-and-organization",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-science-01-cell-division-and-organization",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-science-01-cell-division-and-organization",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

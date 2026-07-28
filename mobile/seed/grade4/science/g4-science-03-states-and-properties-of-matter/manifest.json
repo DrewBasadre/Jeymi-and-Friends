@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-science-03-states-and-properties-of-matter",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:060d2ebdf856f5ba11a13ce3e36d19bfe28d9c944edecc863a4fefdb7f0d6d0c",
+    "lesson.md": "sha256:f2a08650d66204f7f07813b6be74350d0c2ea47e23a6455407a75d7f94019952",
     "g4-science-03-states-and-properties-of-matter-quiz.json": "sha256:00be13cc8f41dd6150cb054dbd70166cf4c1718e1c747b4e1b859c52caebf1b6",
-    "images/concept-guide.webp": "sha256:6e528f42e409696392a360cee9c2dc1560fd28f1c8d6a9cff1e6a8e9aaff8302",
-    "images/worked-example.webp": "sha256:29e8401ef3af3ead337eead471a4c527e59e4701425c458f0ea039cadc657153"
+    "images/concept-guide.webp": "sha256:735265f6b1c3d0c65f3f0eb4de0d2e6f0d12d92d0da1d0f4bb815e380ca8ba2a",
+    "images/worked-example.webp": "sha256:8c8420257becf67cace185cf0ab7a3a491467088666dc853e743cec492323bdf"
   },
   "quizId": "g4-science-03-states-and-properties-of-matter-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-science-03-states-and-properties-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-science-03-states-and-properties-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-science-03-states-and-properties-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-science-03-states-and-properties-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-science-03-states-and-properties-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-english-02-nouns-and-pronouns",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:79cc16cbdc366b1efaf45c784b0ce790d5200c30c4e08bb2ef4043b132a23a8b",
+    "lesson.md": "sha256:b6c401029974e06e01e6c31eeb2c24747cfc89ad6146ea27a52a4d819a2d2ebe",
     "g3-english-02-nouns-and-pronouns-quiz.json": "sha256:00774c8ff3fe951ecc8c741f2d28f12f8779a6809e85b429e73003ea29133a76",
-    "images/concept-guide.webp": "sha256:f33809fa158e2e76d1fcb9266f4f6527361b9772612aeb5e2230ccd709f81c8e",
-    "images/worked-example.webp": "sha256:9a6ca4bfd62034d5932a835acb614a4ded320c12060f232846108059539f63a5"
+    "images/concept-guide.webp": "sha256:3c80920e223827e0e207ec21ccc79f57f27298715fc9c6f9ee470154a5807551",
+    "images/worked-example.webp": "sha256:4a9d84488c58cea8eafbd226c70808d9cd873386746437885ba2ce364260c101"
   },
   "quizId": "g3-english-02-nouns-and-pronouns-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-english-02-nouns-and-pronouns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-english-02-nouns-and-pronouns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-english-02-nouns-and-pronouns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-english-02-nouns-and-pronouns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-english-02-nouns-and-pronouns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-math-01-sequences-and-series",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:52ff7b3046da0685c2459b8a61d05de7e53e5a33178e037092455e96e119914a",
+    "lesson.md": "sha256:83a8bca9e35307c57bc38968e0d1f493102f0c9b90115f150c7cccb62f67c67b",
     "g10-math-01-sequences-and-series-quiz.json": "sha256:8a0e08d7525dd8463196204744e09fc9218a5585464e37b9238e09b0490dfa43",
-    "images/concept-guide.webp": "sha256:3eb90a8bfe60fea0a16dd5d979a46108b58d50e0805a2973571419614fda43fd",
-    "images/worked-example.webp": "sha256:020a551fab2d7594ab4e4d831b4f6b9ea3a3ed743117b3bb65ca506dcafbceaf"
+    "images/concept-guide.webp": "sha256:c8736241a667ebeb0a8c0a7a6b5b7c461744f7cb476a1b663c97e4e2576f54ee",
+    "images/worked-example.webp": "sha256:c9a3da34c813108e1e2adb9cbc05dd73974f2c2cf004d6efd972feee17a823a1"
   },
   "quizId": "g10-math-01-sequences-and-series-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-math-01-sequences-and-series",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-math-01-sequences-and-series",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-math-01-sequences-and-series",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-math-01-sequences-and-series",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-math-01-sequences-and-series",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

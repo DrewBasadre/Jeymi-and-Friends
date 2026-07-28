@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-science-02-cells-and-microscopy",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:730a14bfa46d9c5a6d84a8761622eb9c440650a4e3d79a16e6a2f606c70b5d2f",
+    "lesson.md": "sha256:3d2e12349b2ab4a34cdb021b61f7b42a10d3fa79dc7bc2fecf4d424409c3d8dd",
     "g7-science-02-cells-and-microscopy-quiz.json": "sha256:a09f429eb9b5d4aab7e17758acd2444c3f0e39eccee5ad6b283f5d08f6cda37c",
-    "images/concept-guide.webp": "sha256:8d2924ae759678aa94dab4db4f1e3c92dd0edf7a584f5d6b30ac32c9be8de215",
-    "images/worked-example.webp": "sha256:5e79d577690e7133a17d3fc078a11438b10bdb409c07f40b7453d9769828c964"
+    "images/concept-guide.webp": "sha256:688cb05e24cc8830162d8eccdc222bb7a803ebde6be8686f69cdd49c8665c011",
+    "images/worked-example.webp": "sha256:c04d70fdb744b51487e2211aa6e2fb71867d7743bfc0ee680b2a9e3d6bac9bc5"
   },
   "quizId": "g7-science-02-cells-and-microscopy-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-science-02-cells-and-microscopy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-science-02-cells-and-microscopy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-science-02-cells-and-microscopy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-science-02-cells-and-microscopy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-science-02-cells-and-microscopy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

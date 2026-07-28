@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-math-06-statistics-and-data-interpretation",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:3f3ec2e853d1717ba6899cfe473a98593743243d1661f77f59d446b80381577b",
+    "lesson.md": "sha256:5b2c480c9a41f8d84926b6a56ae0c6f270f83fc6736b98f5b175497406011a32",
     "g6-math-06-statistics-and-data-interpretation-quiz.json": "sha256:168be2a88976501973e0904cd3293b35acaa888cd81bdf9adb637f917b699723",
-    "images/concept-guide.webp": "sha256:6e37ff85eb4679290339c82cf7f49857e73d4fe5b83fcb218bad7210066b1da6",
-    "images/worked-example.webp": "sha256:9ae9d3c986fb27f0be6af88c4571e28f23b1eb774946687126dacf0dbcb55a50"
+    "images/concept-guide.webp": "sha256:29d5b2e2a821a8f7b745be191013a96f52728f0d451c0aa84d2140d3b2e9bc09",
+    "images/worked-example.webp": "sha256:2c992509d45b79aaa444ef7c87093e5ebdee4df3d7d84eea0db404df7edd0c78"
   },
   "quizId": "g6-math-06-statistics-and-data-interpretation-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-math-06-statistics-and-data-interpretation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-math-06-statistics-and-data-interpretation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-math-06-statistics-and-data-interpretation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-math-06-statistics-and-data-interpretation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-math-06-statistics-and-data-interpretation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

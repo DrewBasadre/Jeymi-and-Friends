@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-math-04-coordinate-and-analytic-geometry",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:1ece6e7ec34bee410bef050136b7b2da30799874f721ad026dd4f13f6ee53863",
+    "lesson.md": "sha256:b607f80df27a2a0897e5bd3fbacd999cc2e48ac1d7297f6130486a3f67bb26b1",
     "g10-math-04-coordinate-and-analytic-geometry-quiz.json": "sha256:8603652f6c3b9545f53f287ef6e02a4b56d541c92d8f030e6b9a4a690a71ba6e",
-    "images/concept-guide.webp": "sha256:963ecf91e8a07a1fda6b8db6071435c67ccbe7f49d0a579349c5b5e39daeb75c",
-    "images/worked-example.webp": "sha256:e2f0646900aff0166fcd3c944999dc0041c67e0cf3f176f50722c721fa0458c5"
+    "images/concept-guide.webp": "sha256:4e043e62886b5ccdfd668b014759f22f76347549bfad8a2575379b59eb0d141c",
+    "images/worked-example.webp": "sha256:c9a9c6e9de2d686c58c87e99ec798ea879c45bf1dd741e4f805a48361af9fdfd"
   },
   "quizId": "g10-math-04-coordinate-and-analytic-geometry-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-math-04-coordinate-and-analytic-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-math-04-coordinate-and-analytic-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-math-04-coordinate-and-analytic-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-math-04-coordinate-and-analytic-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-math-04-coordinate-and-analytic-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

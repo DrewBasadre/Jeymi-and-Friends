@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-science-06-biotechnology-and-society",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:4cca387736488d76eaac81854eba8cb85ea78b356df8ca19440f07655a82e5b7",
+    "lesson.md": "sha256:0ad3e5406f85c94809479244c7ebdd31f98c9f656e172e350048cd0fe39b2c22",
     "g10-science-06-biotechnology-and-society-quiz.json": "sha256:f02c7e5dabd600abe0ffcca8cbd53df46e8e901c0d6d4b6bc479c496857207a1",
-    "images/concept-guide.webp": "sha256:cf1e1255173175b9df4e73624360e9840d22bc355c7730c7d2d4726a691a287a",
-    "images/worked-example.webp": "sha256:0d8ee0253cf47a91d5c5327c65168c16632ad408ed00fd3b0bde7a65c82631ac"
+    "images/concept-guide.webp": "sha256:97d2db26b4ddd36df6df2b127ec6e1b411595ece36da9f07e465420bfff400f6",
+    "images/worked-example.webp": "sha256:e2ba085d990998efa117cfc8ac11859e49e2394a23bfbf92457f12b779f9bca3"
   },
   "quizId": "g10-science-06-biotechnology-and-society-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-science-06-biotechnology-and-society",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-science-06-biotechnology-and-society",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-science-06-biotechnology-and-society",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-science-06-biotechnology-and-society",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-science-06-biotechnology-and-society",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

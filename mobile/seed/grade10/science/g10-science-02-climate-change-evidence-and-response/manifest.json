@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-science-02-climate-change-evidence-and-response",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:b22605ac76c00cc5ed5fb971a763d1aaa394d2848fc3c47bb2c3f0b5857132e6",
+    "lesson.md": "sha256:51f234b9afd0ea3231d138f02d1720d5b2a9d16b3e001f9483430351774c7fef",
     "g10-science-02-climate-change-evidence-and-response-quiz.json": "sha256:398daba9ecff0d61500f91c0c1e0fe8cde09771e89205b906660b0d58f8daa74",
-    "images/concept-guide.webp": "sha256:924179fdce42373ffe89d2f76659853e91fa24410e268a4408f5f5c804c34aa0",
-    "images/worked-example.webp": "sha256:9bbe95260c510db8b8c7f64ff767f52eec8da171b5728b832030bcef2bf74130"
+    "images/concept-guide.webp": "sha256:350e4157b9208d4b43080120a3bc844f3e40cd1298fe629a69dd7c39585570eb",
+    "images/worked-example.webp": "sha256:10cf7f373906de3a333aa7f22c22d8114d5a2465b4dd123b17914481f6b4bc55"
   },
   "quizId": "g10-science-02-climate-change-evidence-and-response-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-science-02-climate-change-evidence-and-response",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-science-02-climate-change-evidence-and-response",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-science-02-climate-change-evidence-and-response",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-science-02-climate-change-evidence-and-response",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-science-02-climate-change-evidence-and-response",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

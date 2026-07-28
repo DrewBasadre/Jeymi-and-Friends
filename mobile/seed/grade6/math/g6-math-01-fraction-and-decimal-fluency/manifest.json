@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-math-01-fraction-and-decimal-fluency",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:1ce6f120d9b402df3cc35650b1544acb657a82c153ce35ed90263e487716cfc9",
+    "lesson.md": "sha256:5a411ba64f64f1db8fee25ddc555a953a4ffaf48a7080e2a0cf3c00af7d8b5da",
     "g6-math-01-fraction-and-decimal-fluency-quiz.json": "sha256:f6db25c7cc82ca1571fcbf726b786daafd07752d05b4096c3b8e33e2014ef367",
-    "images/concept-guide.webp": "sha256:3a23c0a1170774fee276c6c8c5bfe606f6e4893d56db3baa0197c836b72769b7",
-    "images/worked-example.webp": "sha256:b142d370d369437b54e1e2202d74bcad7776b43bd10d477a2cc64e12ee6af2f4"
+    "images/concept-guide.webp": "sha256:53e05f7e5b1291a4b172bd8abdbf6daef3b2560ea2ae6c2c7edf4484582861c0",
+    "images/worked-example.webp": "sha256:34427de14f8b46bce668936afba0bd1bd5245365220698c1b35d6b926d471cef"
   },
   "quizId": "g6-math-01-fraction-and-decimal-fluency-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-math-01-fraction-and-decimal-fluency",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-math-01-fraction-and-decimal-fluency",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-math-01-fraction-and-decimal-fluency",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-math-01-fraction-and-decimal-fluency",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-math-01-fraction-and-decimal-fluency",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

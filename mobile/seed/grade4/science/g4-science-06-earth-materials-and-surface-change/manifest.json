@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-science-06-earth-materials-and-surface-change",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:578773abb8b8b17c75a6ba03adbc3a4de2bd189477ebccc189e8a6b383eb2014",
+    "lesson.md": "sha256:1d2b9d5ca68becd3ed2bdbe443fb4f8da9d54aad0cd7855bfbb87a8abbb38856",
     "g4-science-06-earth-materials-and-surface-change-quiz.json": "sha256:02264ae39acd04d22e46a8fae3197af9efd48fe3be4d7bd0eb2c4027a72f9bbb",
-    "images/concept-guide.webp": "sha256:82f06f85d76297f48efda71f35d1bfbbbca6b89b699c88769294c7c2fdda2ba2",
-    "images/worked-example.webp": "sha256:37f5b29c8f46fb154381d6842cec245fb380be222e6a8cb0d381976e9bdca41c"
+    "images/concept-guide.webp": "sha256:41fbcddc8ce71d1461691065af5ee6c9238283c2848d343fec2d41f162ef5922",
+    "images/worked-example.webp": "sha256:02ab732f110d40ea48325289cbd9c8e2524b2ca781a01d37638a2e664ea44cd8"
   },
   "quizId": "g4-science-06-earth-materials-and-surface-change-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-science-06-earth-materials-and-surface-change",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-science-06-earth-materials-and-surface-change",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-science-06-earth-materials-and-surface-change",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-science-06-earth-materials-and-surface-change",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-science-06-earth-materials-and-surface-change",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

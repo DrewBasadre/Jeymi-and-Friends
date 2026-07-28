@@ -1,13 +1,13 @@
-# WAIS Project Documentation
+# PAVO Project Documentation
 
-WAIS is an offline-first Android learning hub for elementary classrooms. It
+PAVO is an offline-first Android learning hub for elementary classrooms. It
 started as LearningHub PH and has since been rebranded around QR-based classroom
 sync, local learning modules, teacher analytics, and Gurobot-assisted lesson
 support.
 
 ## Product Purpose
 
-WAIS helps classrooms keep learning activity moving even when devices are not
+PAVO helps classrooms keep learning activity moving even when devices are not
 always online. Students can read lessons, take quizzes, and generate QR payloads
 for their work. Teachers can scan those payloads into a local record book,
 review performance patterns, and create additional lessons with Gemini or an
@@ -39,7 +39,7 @@ From the bottom navigation they can open modules, QR tools, or their profile.
 
 The module library is organized around Science, Math, English, and Added
 Materials. A module can be opened as a digital lesson. After the lesson is read,
-quiz access is enabled. Students may take up to two quiz attempts, and WAIS uses
+quiz access is enabled. Students may take up to two quiz attempts, and PAVO uses
 the better attempt for score display and QR export.
 
 Student QR tools support:
@@ -76,7 +76,7 @@ inserted into the module list as additional materials.
 ## Gurobot And AI Behavior
 
 `GurobotRepository` uses `BuildConfig.GEMINI_API_KEY` and calls Gemini 2.5 Flash
-through the Gemini REST API. If the key is blank or the request fails, WAIS
+through the Gemini REST API. If the key is blank or the request fails, PAVO
 returns offline lesson drafts and offline teaching suggestions.
 
 Gurobot can:
@@ -120,7 +120,7 @@ to the local module library.
 
 ## Architecture
 
-WAIS uses a single Android app module with a simple repository architecture.
+PAVO uses a single Android app module with a simple repository architecture.
 
 - UI: Jetpack Compose screens in `ui/screens`.
 - State: `LearningHubViewModel` exposes flows and calls repositories.
@@ -158,7 +158,7 @@ Room schema versions 1, 2, and 3 are exported under `app/schemas`.
 
 ## Build And Configuration
 
-WAIS builds with:
+PAVO builds with:
 
 - Android Gradle Plugin 8.7.3
 - Kotlin 2.2.21
@@ -219,7 +219,7 @@ The commit history shows a fast prototype-to-demo progression:
   sharing, and Gurobot revamp work.
 - `3d1ef0a` tightened the generated curriculum services.
 - `041a1f0` polished the module library and dashboard UI.
-- `5e5986d` rebranded the app to WAIS and added the splash animation and app
+- `5e5986d` rebranded the app to PAVO and added the splash animation and app
   icon assets.
 
 For a public launch where commit history will be reviewed, publish from a

@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-science-06-climate-systems-and-human-activity",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:3b28d5e2c41a0742a4d0883e4c169ac55abbe7763f2252bc45eb3422179b7a3a",
+    "lesson.md": "sha256:d1335f548510226884d27a16482df89a1992857299c764a1f449c71197682921",
     "g9-science-06-climate-systems-and-human-activity-quiz.json": "sha256:b9dca972cedeebc823889b78334ee074890730550a4c3ad300271f40af124d76",
-    "images/concept-guide.webp": "sha256:68900593ce685a4bc91883e5eb232d0c50ca83bb3718dd9c880af8de8a2710a8",
-    "images/worked-example.webp": "sha256:523920cf2bad840a8ec8027eed0c7d5b22ddbe94c62548fe8e3fba9e71caa058"
+    "images/concept-guide.webp": "sha256:c2cf5117c5918e1d561f573500f183814e85265f6ce13df4aa705bb4f6f00d2e",
+    "images/worked-example.webp": "sha256:904dbb00f4102e5398c5589c2b9dd75a64b6d291206094d0acdeafc8c72c33e1"
   },
   "quizId": "g9-science-06-climate-systems-and-human-activity-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-science-06-climate-systems-and-human-activity",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-science-06-climate-systems-and-human-activity",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-science-06-climate-systems-and-human-activity",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-science-06-climate-systems-and-human-activity",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-science-06-climate-systems-and-human-activity",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

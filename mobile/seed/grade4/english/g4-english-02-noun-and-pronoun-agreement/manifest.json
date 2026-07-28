@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-english-02-noun-and-pronoun-agreement",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:b99915a479ebef49e0b45b7f3283e04be5fddbac18fb7c975e6b3f2744913353",
+    "lesson.md": "sha256:d1266c7b9e3af01aeb80e040079ca1c20d689cfd99e677651041a56b6f1c6cd2",
     "g4-english-02-noun-and-pronoun-agreement-quiz.json": "sha256:38fc21614883d70911a86ef7c4614be49ee0d723a9235634ca5337a6437084fb",
-    "images/concept-guide.webp": "sha256:23949214f90c23dfd9b2b3c4100e0dcdae11dd5465abd6c2be1afa5969787154",
-    "images/worked-example.webp": "sha256:5fff2afc7268f2c58a70aca9ef84b17985682d32b06a9d667d50117ed5d88aea"
+    "images/concept-guide.webp": "sha256:7da473f45b7fb0a4afebde1fffa40a5d1e59b0bb6465d1b4e7ddb9a2612e1959",
+    "images/worked-example.webp": "sha256:783907b7daac9c1f0fef679fa938f884361b1d4d96d0b3aa95314d000c8398bd"
   },
   "quizId": "g4-english-02-noun-and-pronoun-agreement-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-english-02-noun-and-pronoun-agreement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-english-02-noun-and-pronoun-agreement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-english-02-noun-and-pronoun-agreement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-english-02-noun-and-pronoun-agreement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-english-02-noun-and-pronoun-agreement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-math-02-ratios-rates-and-percent",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:3543b29c72b07024796d414a786578597865503eb9ec00dc243fdddc56675b4f",
+    "lesson.md": "sha256:45600d6df32238f2105dc0acc243dd168825e738d2eeae01ff94c5a124ba8fcf",
     "g6-math-02-ratios-rates-and-percent-quiz.json": "sha256:3085bc61be45b9f0701b9d0f04a90c004461f78a5e06d3757abb1aa14eb343ff",
-    "images/concept-guide.webp": "sha256:42d5bfce58870d47f5fc434a8c243c15aa29e4b678a0fd5aab55618be46ae769",
-    "images/worked-example.webp": "sha256:57cf89703628f6857d48095845b5fd57dbdd1e6ee4091d30c0c25b9a9e8811c9"
+    "images/concept-guide.webp": "sha256:40002d8433980adc1a209a762edba76169f922ebbd1899f1d76db9ed6e5db888",
+    "images/worked-example.webp": "sha256:8b2ffe73edf318f7885579afd576511cbf3e8d8b6f65463ccf81d1bd7c16c503"
   },
   "quizId": "g6-math-02-ratios-rates-and-percent-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-math-02-ratios-rates-and-percent",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-math-02-ratios-rates-and-percent",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-math-02-ratios-rates-and-percent",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-math-02-ratios-rates-and-percent",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-math-02-ratios-rates-and-percent",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-science-05-biodiversity-and-conservation",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:4e824782650dfe2dbcd7a08865df481e4ac386a465f688321e536f71919d6fe1",
+    "lesson.md": "sha256:3fb6390d97bdb4c187db7a39803f698a9418f31b6fba3cab1da038b999eb9869",
     "g10-science-05-biodiversity-and-conservation-quiz.json": "sha256:e9105fac20a74b13fd03bc6229701f8ccb1d7d14c5e4e5ff77c9186ca94e2444",
-    "images/concept-guide.webp": "sha256:0b7b15becc76d1ae974ff81a45315c324ac94f959bb47167829cc9c4446d7d43",
-    "images/worked-example.webp": "sha256:1f6890d012c6ac67cb014d68207b86239363e076f1c0051dc7e10d748a80d31d"
+    "images/concept-guide.webp": "sha256:fc441c7e13fd97ebe3fe0b16846265ff5f488e0c69d400ef0df362d02da6d2d6",
+    "images/worked-example.webp": "sha256:fc7eda02d3de15979a091aac55dec025088dcc4ac3562810c05ceab97e971e7e"
   },
   "quizId": "g10-science-05-biodiversity-and-conservation-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-science-05-biodiversity-and-conservation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-science-05-biodiversity-and-conservation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-science-05-biodiversity-and-conservation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-science-05-biodiversity-and-conservation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-science-05-biodiversity-and-conservation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-math-01-factoring-algebraic-expressions",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:53407710ccd8cb67c4a19a6d0bb7b17656c1e8b31f2bbb535b2c557a0fbccd41",
+    "lesson.md": "sha256:5d3b46939f00fbc82e26716038a046a02b4086c9824e39b9d79cc5756f0e04fe",
     "g8-math-01-factoring-algebraic-expressions-quiz.json": "sha256:b2c150fd4a683348ab48579746937a90c305ce6fc7b3f9d024082ea2ecfa713d",
-    "images/concept-guide.webp": "sha256:05593577f7f50e1be8374b7922ea4eeddf986fd3144d4775538fc40e03a62eaa",
-    "images/worked-example.webp": "sha256:5818e32c0d0a8a6e737b7bd5df90d2034be481044901931b41bd6a583dd7eaba"
+    "images/concept-guide.webp": "sha256:0f0fcf00a2e76980f02ea52814db891a621eea2f49f20e99e602239ed1e37f3c",
+    "images/worked-example.webp": "sha256:b532f30541328fea822da348a1fe45875ff84cbb5ad5c2321f3a5d8d32586ed4"
   },
   "quizId": "g8-math-01-factoring-algebraic-expressions-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-math-01-factoring-algebraic-expressions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-math-01-factoring-algebraic-expressions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-math-01-factoring-algebraic-expressions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-math-01-factoring-algebraic-expressions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-math-01-factoring-algebraic-expressions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

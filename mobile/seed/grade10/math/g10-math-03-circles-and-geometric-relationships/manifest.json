@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-math-03-circles-and-geometric-relationships",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:7dc2ffb2da913289d09ea2e062e462ea812dc15dddabb197fd29eb39f86a643f",
+    "lesson.md": "sha256:98206befaad3f6c4ef115ab17b394ccc44bacd25ace826d488be9cc226b7e053",
     "g10-math-03-circles-and-geometric-relationships-quiz.json": "sha256:c7bf58d793c79162dbfc9f14a90237094d24f03d8d721893fd322cffe41daabe",
-    "images/concept-guide.webp": "sha256:a0729d5891b2e13c0888e646ec5bc982455e7344a7a4428b3dd01ced57ab9795",
-    "images/worked-example.webp": "sha256:221023ff9bec4cef71f7fb0781a49661835235883b023f3b143b5c044c24354e"
+    "images/concept-guide.webp": "sha256:3647e82b24b6862ab845f4ebd3ad7ba642b07ba8136581a90e78f5e222089698",
+    "images/worked-example.webp": "sha256:8d735f26282e90e3c05db185753fa5d117ff8317eeb2a1703274bb7f3acbee4f"
   },
   "quizId": "g10-math-03-circles-and-geometric-relationships-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-math-03-circles-and-geometric-relationships",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-math-03-circles-and-geometric-relationships",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-math-03-circles-and-geometric-relationships",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-math-03-circles-and-geometric-relationships",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-math-03-circles-and-geometric-relationships",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

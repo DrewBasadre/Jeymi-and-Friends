@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-science-04-particles-and-changes-of-matter",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:ab12ce9873633b4e3b41643ee81d014ea574d1afec2f94914667ab0671c6605d",
+    "lesson.md": "sha256:1096d8e1b8fa88d182ec2a1336a9135f4a53400016c65fa62c590c83945b3db7",
     "g7-science-04-particles-and-changes-of-matter-quiz.json": "sha256:ddc6bbb32947775b24deba37154358cad464bc986b802d6614bfbcbe563309f6",
-    "images/concept-guide.webp": "sha256:6989789a505a272fb1f51603355e72ed4cc6d98623a45936bc60bc62a78132f0",
-    "images/worked-example.webp": "sha256:83b0bc7ff5d7ab121dee0dafac2c883e68d6a3e4b55fd66f26306ae0f05f6b86"
+    "images/concept-guide.webp": "sha256:888688a9a4e938de7efe11b34b28c6a73add896d95cb58ab2a26e9766b5eedb5",
+    "images/worked-example.webp": "sha256:eeb7aba58161c612d82e623575bf42d36b339178b3209c4bfed934e77b341b8f"
   },
   "quizId": "g7-science-04-particles-and-changes-of-matter-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-science-04-particles-and-changes-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-science-04-particles-and-changes-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-science-04-particles-and-changes-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-science-04-particles-and-changes-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-science-04-particles-and-changes-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

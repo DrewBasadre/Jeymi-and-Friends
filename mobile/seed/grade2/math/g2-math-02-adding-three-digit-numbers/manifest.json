@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-math-02-adding-three-digit-numbers",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:8d16002df8292bf30989d7aba2535d419fd4304e214afde4c0c731c607b37127",
+    "lesson.md": "sha256:475503b89e13c3e466bc44960ba6866df94480cd777a95d090e34f9e7e29fd97",
     "g2-math-02-adding-three-digit-numbers-quiz.json": "sha256:d162cbab4690634e95afa2fcde9e2d178dae1b8d0769d0e51febd53b5b350a8f",
-    "images/concept-guide.webp": "sha256:0495aad102e5fcd88060bcbca493a42e9dbe5fae6be860fa94d054fc044a3c4d",
-    "images/worked-example.webp": "sha256:05e9307236e1e1a27e104959cdb7840acff5e81f6a8a9a26f5499099ccaf8c88"
+    "images/concept-guide.webp": "sha256:178caef671e1efce417bdb65351643785f8293ef229e642fd61260a81afd8722",
+    "images/worked-example.webp": "sha256:ffcc9c608488428f981057b1447e9af0fa0c8b673db95136b38b4d99142c299a"
   },
   "quizId": "g2-math-02-adding-three-digit-numbers-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-math-02-adding-three-digit-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-math-02-adding-three-digit-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-math-02-adding-three-digit-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-math-02-adding-three-digit-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-math-02-adding-three-digit-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

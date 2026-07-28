@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-english-01-world-literature-and-context",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:b69c072dba47093643b00133a80118971d8026ac5ce56890f6415cc6a2fd8a8f",
+    "lesson.md": "sha256:5297a7bca4559e75a68dbdd3c40bff15e49a30d2a29aedbe6683407c1a3fa2dc",
     "g10-english-01-world-literature-and-context-quiz.json": "sha256:0c9ef969eeafe18151c9fd350376a93cd5b7b161cd98f1b832a06d29faffd1ba",
-    "images/concept-guide.webp": "sha256:3759ecbb2df5f6e67b01245f9d996354457e45fa6e7953cad4724570ed7df58c",
-    "images/worked-example.webp": "sha256:ce2c3d9a1ba93faa73574654c9880172bbd33de66d01484e588682085f3d217d"
+    "images/concept-guide.webp": "sha256:1cff1d9f1110e6eb7797eccb3b5f9c104d3ac6dad78831c1b5561fc94c98066f",
+    "images/worked-example.webp": "sha256:ff5d51afb793e61bfe7dc22ab79e28102dfc4709419e463c14718f5ef1eeddbf"
   },
   "quizId": "g10-english-01-world-literature-and-context-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-english-01-world-literature-and-context",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-english-01-world-literature-and-context",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-english-01-world-literature-and-context",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-english-01-world-literature-and-context",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-english-01-world-literature-and-context",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

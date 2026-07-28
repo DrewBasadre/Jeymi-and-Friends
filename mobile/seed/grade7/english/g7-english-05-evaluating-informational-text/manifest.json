@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-english-05-evaluating-informational-text",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:0cec31c381bfde7cbea66414a1b2c854de4beb9e3d15d44082f4d6d161876701",
+    "lesson.md": "sha256:791520d6b5eb7cced990eab9c440cfdcfc10e1d235e62f3782c81de1918979e6",
     "g7-english-05-evaluating-informational-text-quiz.json": "sha256:2c08bf9bd362ccd6c31de945656fb606ff4c037cbfcc633445ed1fd989676ff9",
-    "images/concept-guide.webp": "sha256:397133445ee61ccbbf0ba6b80e61cd19d1bd9593afbe9f010f5c19843af4e110",
-    "images/worked-example.webp": "sha256:58736f2fff9d5c94c3e2da5da0b4dae5bc133c96696acb6ec75a7ac6dbd90f0b"
+    "images/concept-guide.webp": "sha256:57509ffe58edb50e2a8bc0d6cdbaade51a8e3d34ef0367eaf626d196e1d220a6",
+    "images/worked-example.webp": "sha256:1a859faccd825fb0c49e755b6c41545f09a7290890096b206921132f7f16f878"
   },
   "quizId": "g7-english-05-evaluating-informational-text-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-english-05-evaluating-informational-text",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-english-05-evaluating-informational-text",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-english-05-evaluating-informational-text",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-english-05-evaluating-informational-text",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-english-05-evaluating-informational-text",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

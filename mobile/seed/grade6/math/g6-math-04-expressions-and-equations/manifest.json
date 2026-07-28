@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-math-04-expressions-and-equations",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:ba9554ef68f3f14bf0c4ec22a786c575e8bd12435567fef6bfed0e77448d1a7e",
+    "lesson.md": "sha256:312a3df0ceded2fcc53c1d8a4f1c7fb9f7de411e4c72bf73196886f4fbe9319c",
     "g6-math-04-expressions-and-equations-quiz.json": "sha256:8317b33cbbf4a69406b69f6b3094e660074085f8c62f985b5158a1fffc46d3a9",
-    "images/concept-guide.webp": "sha256:744455269ddc273ee288c1aa03a5b7b2da3f9e9482810e3b3a7911e935567f57",
-    "images/worked-example.webp": "sha256:c334987307077581eaeb6eb0ef3f6dd3017012aaed0a6bddfc3ad06b54fb7bce"
+    "images/concept-guide.webp": "sha256:2f0302485a54c56aa2d6f7378a5c101d36cd498711d4fcbd1594ab9b17580f65",
+    "images/worked-example.webp": "sha256:5dda73b09781f13bc9f34238a4445ed1f58c4cedb949c652c3baf3370fee814a"
   },
   "quizId": "g6-math-04-expressions-and-equations-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-math-04-expressions-and-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-math-04-expressions-and-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-math-04-expressions-and-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-math-04-expressions-and-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-math-04-expressions-and-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

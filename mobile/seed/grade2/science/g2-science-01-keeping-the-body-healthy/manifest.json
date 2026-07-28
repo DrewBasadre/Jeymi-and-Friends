@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-science-01-keeping-the-body-healthy",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:8c64d357709b189177d11dd261a03ecea780679b68354dcb269e9da2c618f3b0",
+    "lesson.md": "sha256:bc11e19737341875b20aa100457e41e4d14b53069eb3009b16be357222d114fe",
     "g2-science-01-keeping-the-body-healthy-quiz.json": "sha256:2e723b128e8c194ef63a28fe68564c962fd9048ea486eb422dc4db96c6a46f8e",
-    "images/concept-guide.webp": "sha256:fb3aa25f31ba19f87a8326dce8bfb8a73d5da02d4f4e448f7c4bcd9e403c6b93",
-    "images/worked-example.webp": "sha256:2221b697641a136f868d753c726d63af8410a61f30953c93cb8a8e05e200a15b"
+    "images/concept-guide.webp": "sha256:13feaf38e0745bd391d43050af3a04507cc0d5625dacc3e37732f95635ba61a8",
+    "images/worked-example.webp": "sha256:148694f811bc50b6719d8c1dd6e0050e88840643ceb1917fcd08b729ba128a3e"
   },
   "quizId": "g2-science-01-keeping-the-body-healthy-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-science-01-keeping-the-body-healthy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-science-01-keeping-the-body-healthy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-science-01-keeping-the-body-healthy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-science-01-keeping-the-body-healthy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-science-01-keeping-the-body-healthy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

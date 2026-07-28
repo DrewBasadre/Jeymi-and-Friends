@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-english-03-perfect-and-progressive-verbs",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:d7fd7394b587df7583d372880b99177eb69fb956c9f6463e1467b268d52f7c2c",
+    "lesson.md": "sha256:b3154a2f396d9ee3a2b4dc99a47fe9de12d9d5b60a434f066445d1826ec03ce6",
     "g5-english-03-perfect-and-progressive-verbs-quiz.json": "sha256:d8f4343548388d2c56fb37338c585326d3ec180af15100fe4a173273d3d82cda",
-    "images/concept-guide.webp": "sha256:585f6f5a0e10d305a0705b2c00bad35caf627cca7d71b6812651e3046dc78373",
-    "images/worked-example.webp": "sha256:c9fea65f28bde9f794c7962d6cbeabd33115eaec6e684158eaa8843860ca62a9"
+    "images/concept-guide.webp": "sha256:97d5027e7648822031fcf083f5c95ca75e549194a79843d568149ed59a7b01e8",
+    "images/worked-example.webp": "sha256:db9110535841a75bce38a14bb4035fe2cfd7e9f887595245c63a38bd0ec4b32e"
   },
   "quizId": "g5-english-03-perfect-and-progressive-verbs-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-english-03-perfect-and-progressive-verbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-english-03-perfect-and-progressive-verbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-english-03-perfect-and-progressive-verbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-english-03-perfect-and-progressive-verbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-english-03-perfect-and-progressive-verbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

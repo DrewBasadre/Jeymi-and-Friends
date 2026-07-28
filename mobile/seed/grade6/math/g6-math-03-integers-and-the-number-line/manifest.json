@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-math-03-integers-and-the-number-line",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:58a6ae22e56b8129d7dd99d8170a8e6acf912bf622b1af9e248039258adbbeff",
+    "lesson.md": "sha256:d32870ecc8c4a6fc907a45dda9fa20eb70f0854c34db51a128247214cb701e4d",
     "g6-math-03-integers-and-the-number-line-quiz.json": "sha256:9354356242e48b1fe988e8a1387382fe51d510016622ce996091b5ba18e05551",
-    "images/concept-guide.webp": "sha256:271eb3038bd85661281ad87af9f9c6f30c5c8813395355855d76762698cdd006",
-    "images/worked-example.webp": "sha256:44af37a101da066d2834b90ed3763ccca9104fc8ac5888b47fc20904de74cf61"
+    "images/concept-guide.webp": "sha256:5107d12aade940c144d99eb4f78e45ab4a5fe139e499dce44082ee4e80613080",
+    "images/worked-example.webp": "sha256:0ba846670ed1449c867a36fb69c119d414c8757d63cbb484a21b2cf7f9a935ed"
   },
   "quizId": "g6-math-03-integers-and-the-number-line-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-math-03-integers-and-the-number-line",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-math-03-integers-and-the-number-line",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-math-03-integers-and-the-number-line",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-math-03-integers-and-the-number-line",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-math-03-integers-and-the-number-line",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

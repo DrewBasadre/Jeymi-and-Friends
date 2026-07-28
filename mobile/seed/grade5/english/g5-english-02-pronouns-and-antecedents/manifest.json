@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-english-02-pronouns-and-antecedents",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:fa51b0a0ea75831430c8e0162e810f53519975f76084f5e067f72d0351fe6057",
+    "lesson.md": "sha256:5b6cb5eac4729ff6e43c3a40c656421d61fb8346b6eae937d756b5bef1adccae",
     "g5-english-02-pronouns-and-antecedents-quiz.json": "sha256:68b4aba46dde29563ccc42aac3631075da9334cb1452db32fdfe6d62e426570c",
-    "images/concept-guide.webp": "sha256:1f77cc13345898ba9fc7d7a23897395c03d0593d4c5f92ac328abbf5646ebdc1",
-    "images/worked-example.webp": "sha256:21dabcc56925a8174d49469b4ba9b77e6b7ee47a856bb807d28e3fa599f0504c"
+    "images/concept-guide.webp": "sha256:ae7d4f047dbfa048ed26b51280190d11179c41e5ca3c507240d1e12b7101798e",
+    "images/worked-example.webp": "sha256:5cec2f404c2483ec715d1c69019c1017a00d1dc0ab4019cb913ce04e37f0c5b2"
   },
   "quizId": "g5-english-02-pronouns-and-antecedents-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-english-02-pronouns-and-antecedents",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-english-02-pronouns-and-antecedents",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-english-02-pronouns-and-antecedents",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-english-02-pronouns-and-antecedents",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-english-02-pronouns-and-antecedents",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

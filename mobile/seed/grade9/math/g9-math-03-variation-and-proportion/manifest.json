@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-math-03-variation-and-proportion",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:169a05f7f3748b4d7caa6900874f446666415000cdff03fbf2bb6a8b8c342af6",
+    "lesson.md": "sha256:73ccfed9205ccb55c30c8c415404c204521269ceaaf987ef4b4de49f6c9d9b6e",
     "g9-math-03-variation-and-proportion-quiz.json": "sha256:1004d9bca2dd4d6a2d6ccdceed6aab336d359712123e3b03dd93c9031c38de6f",
-    "images/concept-guide.webp": "sha256:a15b7ab60eca30c2f4ccdfb24f0cd1815986698afcb84afbab5598ef13bb30dc",
-    "images/worked-example.webp": "sha256:03741558fae5323cb5eca97904090e0102f9f9d5eb31b5112c7ea52d5ac8a4d2"
+    "images/concept-guide.webp": "sha256:758b34cbfb0ad7b4f5aa6bd66c74dd142f7443153e3f774da6f82c1eb8f21789",
+    "images/worked-example.webp": "sha256:048f37ddb3d6c5d9651c4ec9ba3de0b8ba2929f879717da4f22cf1799c489172"
   },
   "quizId": "g9-math-03-variation-and-proportion-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-math-03-variation-and-proportion",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-math-03-variation-and-proportion",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-math-03-variation-and-proportion",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-math-03-variation-and-proportion",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-math-03-variation-and-proportion",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

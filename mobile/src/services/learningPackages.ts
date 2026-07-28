@@ -35,7 +35,7 @@ export async function buildLearningPackage(
   );
   const file = new File(
     packageDirectory,
-    `${safeTitle}-${manifest.packageId.slice(-8)}.wais-module`,
+    `${safeTitle}-${manifest.packageId.slice(-8)}.pavo-module`,
   );
   if (file.exists) file.delete();
   file.create({ intermediates: true });
@@ -44,7 +44,7 @@ export async function buildLearningPackage(
     moduleId: manifest.packageId,
     displayName: manifest.title,
     fileUri: file.uri,
-    mimeType: 'application/vnd.wais.study-package+zip',
+    mimeType: 'application/vnd.pavo.study-package+zip',
     sizeBytes: file.size,
     sha256: await sha256File(file),
     manifest,
@@ -70,8 +70,8 @@ export async function inspectLearningPackage(
     fileUri: file.uri,
     mimeType:
       manifest.contentCategory === 'teacherModule'
-        ? 'application/vnd.wais.module+zip'
-        : 'application/vnd.wais.study-package+zip',
+        ? 'application/vnd.pavo.module+zip'
+        : 'application/vnd.pavo.study-package+zip',
     sizeBytes: file.size,
     sha256: await sha256File(file),
     manifest,

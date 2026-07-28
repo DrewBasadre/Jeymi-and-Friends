@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-math-01-quadratic-expressions-and-equations",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:afde3f532c2764ec3545da57465bae754ba0d57f24713edc2507220b30263a07",
+    "lesson.md": "sha256:d1f6ee4345a59c968f884f14a1073449a7bc11799bf922c44c76df5b17e22fe7",
     "g9-math-01-quadratic-expressions-and-equations-quiz.json": "sha256:53a3fdfa5e40a2992f3b281a34c2781efecda4be681e1564ebccbf98d8c43f97",
-    "images/concept-guide.webp": "sha256:8bf4f00419e0b1176a19bd3e3f39ba6580a511f77aa706e2b21ffe99246decab",
-    "images/worked-example.webp": "sha256:cc6f4851a12cf9552ec46593b8dc5c956e1f65f56b2e97b30afeb71d35ae9be1"
+    "images/concept-guide.webp": "sha256:e3dd90fe6bea95f3593e29848daa3811936b3e294e6b3d608b7d77fee642c193",
+    "images/worked-example.webp": "sha256:c3d8fb0dcbaee48b6f4658920c90e82e9cf97d6908ef64248214d35b40b28dfd"
   },
   "quizId": "g9-math-01-quadratic-expressions-and-equations-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-math-01-quadratic-expressions-and-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-math-01-quadratic-expressions-and-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-math-01-quadratic-expressions-and-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-math-01-quadratic-expressions-and-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-math-01-quadratic-expressions-and-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

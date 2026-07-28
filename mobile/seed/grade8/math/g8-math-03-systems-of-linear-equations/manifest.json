@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-math-03-systems-of-linear-equations",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:85f3c29438501542ae0604cd5f59cc4a5a8c95e1139ed7a9c94d1430de628bfc",
+    "lesson.md": "sha256:50284bde3d9ecb3b62f2d002582c9e39d27277f8d5dd58f2eeeae0b9a317291b",
     "g8-math-03-systems-of-linear-equations-quiz.json": "sha256:f46d06df95ccc9aea1e257a3950b0fb52051c9f9fc78e35bade4467d7d8e9ca6",
-    "images/concept-guide.webp": "sha256:07adcc0141fc9de1ade90547fbe214942c5d2713334b44a6589c04644e4da649",
-    "images/worked-example.webp": "sha256:893adabf6241c5cf6501ba76eccbf14fe75838bf192a8352adc1095f7241eedc"
+    "images/concept-guide.webp": "sha256:a0b8752cd767c5511e646ea946fb808967e7b7f72654917c4e7fbfbc5bb6252e",
+    "images/worked-example.webp": "sha256:86a7e104b330d1f13aba20e04d7d5193fe460b5d32e20f6a7852a6b42ce61cc7"
   },
   "quizId": "g8-math-03-systems-of-linear-equations-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-math-03-systems-of-linear-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-math-03-systems-of-linear-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-math-03-systems-of-linear-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-math-03-systems-of-linear-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-math-03-systems-of-linear-equations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

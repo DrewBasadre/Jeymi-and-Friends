@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-science-02-genetics-and-evolution",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:ef888e1d2b4bda07e8fea96ced0c6da26b2744f4aa54e6c7887bdc200fc96872",
+    "lesson.md": "sha256:2e90703fed1b77797ff65e75146dbf49b30b8bdf337c85c4ef7b33b25bb7db0c",
     "g9-science-02-genetics-and-evolution-quiz.json": "sha256:93c9dac7c70037d93f9feab87fec234ce8af849de547035ada685efffe242858",
-    "images/concept-guide.webp": "sha256:fad7afdf9a905d6a5ad7e9a07b5fce40798baebc501cdd8350c2160bf2808964",
-    "images/worked-example.webp": "sha256:ed67847642c5f6b87c246be373b142e83e7cf36c718341faa9f8e31414763107"
+    "images/concept-guide.webp": "sha256:b3efa7d21702c6dbf1169ee2b5c0f6ce759753cc0a5d944907f08bbc0f9b8433",
+    "images/worked-example.webp": "sha256:e96ff174609045c3f0fe674af2ea2294a4a3aec54549ac7938f628d14cd4c348"
   },
   "quizId": "g9-science-02-genetics-and-evolution-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-science-02-genetics-and-evolution",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-science-02-genetics-and-evolution",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-science-02-genetics-and-evolution",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-science-02-genetics-and-evolution",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-science-02-genetics-and-evolution",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

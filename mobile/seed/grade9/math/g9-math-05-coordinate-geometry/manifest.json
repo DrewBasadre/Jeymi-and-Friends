@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-math-05-coordinate-geometry",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:9a5490ce3bc008eb35d839941a95cb118dc4e4a411a508ea03ca7322b1e87264",
+    "lesson.md": "sha256:b1a55864bff301de5856d61e36628a41760b42cf08d4120bbf51dee666d17683",
     "g9-math-05-coordinate-geometry-quiz.json": "sha256:326a389cdedcab43feb8a449109db38df60526e116ad5ddc3fa72cbe54437300",
-    "images/concept-guide.webp": "sha256:79256ef488313ea546378792ea69ccd00f804561769f2e14e05a78c15c8beb4e",
-    "images/worked-example.webp": "sha256:1ddbe0888700c1bbe9e3210900e92e471efee6349091ae4c405c8c31530b4633"
+    "images/concept-guide.webp": "sha256:087dca69bcbc27be118cfdef0c44b77814708b9fe5a41b4f170ccd65f5befcd7",
+    "images/worked-example.webp": "sha256:5d45fc40a0eafb909ff3a658aaee9fdbcb916e6782066d0e1ef257654effef63"
   },
   "quizId": "g9-math-05-coordinate-geometry-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-math-05-coordinate-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-math-05-coordinate-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-math-05-coordinate-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-math-05-coordinate-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-math-05-coordinate-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

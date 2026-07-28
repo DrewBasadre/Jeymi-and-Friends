@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-science-01-scientific-inquiry-and-measurement",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:e215ec782366a8938e99f37040797982a11ee872a088fbc9be1c978cadd1bd2f",
+    "lesson.md": "sha256:5937afc7f1b97c78c7df5532434375f101a7e95243e832f87a570469a500198e",
     "g7-science-01-scientific-inquiry-and-measurement-quiz.json": "sha256:46f26b320636bdbd4b58b92117559ebaf6f21b2ab784ee5377df1225b27b3f7c",
-    "images/concept-guide.webp": "sha256:7c30f5e22771055929bac51d2f73d47e281f0ce0c45756f33ac58bff608b3222",
-    "images/worked-example.webp": "sha256:c42ffc6cc5117d4b93a3b9c849581ff47a4dd664537ac0516e3acc349d80e729"
+    "images/concept-guide.webp": "sha256:1f57d86f88c1c42790233d1938d6181b8e948978806abea6a3e3a801ef763cdf",
+    "images/worked-example.webp": "sha256:a4f6a01bb4595fa0c5d233e927321b6ffe43878c062f06bf081fb22d4dfdebaf"
   },
   "quizId": "g7-science-01-scientific-inquiry-and-measurement-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-science-01-scientific-inquiry-and-measurement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-science-01-scientific-inquiry-and-measurement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-science-01-scientific-inquiry-and-measurement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-science-01-scientific-inquiry-and-measurement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-science-01-scientific-inquiry-and-measurement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

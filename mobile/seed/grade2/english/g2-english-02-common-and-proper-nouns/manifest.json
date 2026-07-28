@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-english-02-common-and-proper-nouns",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:ea62e8fc50370a65b8165180121e8a76d9473c90ebf82917c03bab3749c988b3",
+    "lesson.md": "sha256:135f27dd22c0f342094cd731b2f1adf434dd6d78dc770fd5e0f7519e1e9ebf7c",
     "g2-english-02-common-and-proper-nouns-quiz.json": "sha256:82e0c56a198adb148313db657898131beb4b6b4d02989f55495f4f6924238fd1",
-    "images/concept-guide.webp": "sha256:9f83a9888cdb16dc7034754d1cbf5bfc204b3879618d430d798175c0ec0effbd",
-    "images/worked-example.webp": "sha256:6f4370a672b2585a0aafd62eefce63548268b677b9b028c65eef4506ae4532b9"
+    "images/concept-guide.webp": "sha256:b4ccc6da9f500e8e50c0c7bc639d1c6aceb87d3665380600f850c1baaa9a8f68",
+    "images/worked-example.webp": "sha256:cd240cc9e0ab434861ba3edc89866eb89175190df4c478181ab407882abb5052"
   },
   "quizId": "g2-english-02-common-and-proper-nouns-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-english-02-common-and-proper-nouns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-english-02-common-and-proper-nouns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-english-02-common-and-proper-nouns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-english-02-common-and-proper-nouns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-english-02-common-and-proper-nouns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-english-04-precise-adjectives-and-adverbs",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:523a11eda2c34a4e431ea7c23416f55f34e80685acf9055ac71c7aff1e452f40",
+    "lesson.md": "sha256:565a5aef09ee5395c14941f4ccd42e020bc173c77df7108c5277416657a4b4b4",
     "g4-english-04-precise-adjectives-and-adverbs-quiz.json": "sha256:b13582e4addab6b54f10cdc12bbfed9f015310c89a2a4f897ccf2fa9bd050425",
-    "images/concept-guide.webp": "sha256:99a3acbef0eb628d7c5c24ebf894d66410b384e8e87b56248f211390933046b1",
-    "images/worked-example.webp": "sha256:8672c9d3b8f23cc4f0e9ef9ac58c793803a09212ec7cb05bcde41cd09b83a851"
+    "images/concept-guide.webp": "sha256:4d20fb61e47665df681bdbafc29802e6b868165c6555e31ed4e0b44a93f2848e",
+    "images/worked-example.webp": "sha256:8422e93a26a1d8ce02109ad8ae5affe7d7bffd60e497bfe234fcb07a12860f0f"
   },
   "quizId": "g4-english-04-precise-adjectives-and-adverbs-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-english-04-precise-adjectives-and-adverbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-english-04-precise-adjectives-and-adverbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-english-04-precise-adjectives-and-adverbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-english-04-precise-adjectives-and-adverbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-english-04-precise-adjectives-and-adverbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

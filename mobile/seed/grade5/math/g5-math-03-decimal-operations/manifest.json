@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-math-03-decimal-operations",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:596560bd5e4036551c2c0ff933116c46a04bfa6ca9e4020a1c49f13f3f35f591",
+    "lesson.md": "sha256:2c461c1ef19b1a87ebef66898afc9e825967f821d6fac69c286449a7e5fcd262",
     "g5-math-03-decimal-operations-quiz.json": "sha256:7aea5abb74426c933cf6730c84f75a9f4ce5a89f9134a15a112deba15e974cb5",
-    "images/concept-guide.webp": "sha256:602ef5c44450c90acc6b692ac5aa8e012b5e7460755436bf508c71b1fad9cba2",
-    "images/worked-example.webp": "sha256:8c5c8c300a6b2ee095cf238336a868db736d8c967ac86eb6a044299495aed724"
+    "images/concept-guide.webp": "sha256:c7f2fe38d6b31ebca7c7d1b98ad38b6da2b2153ad63c391ee20e2585ab788e3f",
+    "images/worked-example.webp": "sha256:b8cbb00852f47e023716fc346fdb2d93d53fd98e95c1aeec0301688b57bf4daf"
   },
   "quizId": "g5-math-03-decimal-operations-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-math-03-decimal-operations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-math-03-decimal-operations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-math-03-decimal-operations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-math-03-decimal-operations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-math-03-decimal-operations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

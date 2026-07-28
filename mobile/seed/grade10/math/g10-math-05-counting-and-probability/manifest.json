@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-math-05-counting-and-probability",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:d531f5137199e1c1f762d532f612a1e93dd41ee4ce55fb2a2a0fbe494155d0db",
+    "lesson.md": "sha256:5e3c9c6df573bf6b212bd64536e2c3bc3c7ff2cc0f4df7d40b0e09c70d544c39",
     "g10-math-05-counting-and-probability-quiz.json": "sha256:5f258d8fe3d2e19676ee864d1889bb235e13f78a288c105559512c279bb429c7",
-    "images/concept-guide.webp": "sha256:794d5fb017cbc779a12652791e986a9000748d870b4e0cd236249f3bd0433946",
-    "images/worked-example.webp": "sha256:0565f0e8562c2c23b3823aa3b4a457634c37a57b6eb045abf69a7bb165c1d5f7"
+    "images/concept-guide.webp": "sha256:2099ec192ef3ab979e3f2fa70f4353bee249e76a6fe6d614634b36cb95c71f76",
+    "images/worked-example.webp": "sha256:f2bad2c9bf0004cd46c28043af1cb03590c07d2243901ababcd0ee6dd0c8f8fe"
   },
   "quizId": "g10-math-05-counting-and-probability-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-math-05-counting-and-probability",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-math-05-counting-and-probability",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-math-05-counting-and-probability",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-math-05-counting-and-probability",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-math-05-counting-and-probability",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-science-01-major-organ-systems",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:246a73716ab6cffe75e385ce1727a009a1e845f6f0832c591f029270403e4610",
+    "lesson.md": "sha256:952853587a96eadc408d02202924501fbc06723b5c66a9e2c1d8c7f7664feebd",
     "g4-science-01-major-organ-systems-quiz.json": "sha256:a91fc8e8e22a4677a7c3489c661f9d95a03a68278414533844b00e9082397e39",
-    "images/concept-guide.webp": "sha256:423b70f4b7e0eb8bb20dfe322cda863112ce1b7ea491fd4521bcfacd17a8054b",
-    "images/worked-example.webp": "sha256:897b715ce82c85421de80dc0d9fea91d67f5948fcdefd9b167e8d6a50877a059"
+    "images/concept-guide.webp": "sha256:416013e4f4660345a798b8f61a43587d0aa2198dfbab1bbda88e458ae3765936",
+    "images/worked-example.webp": "sha256:390912d4d66164be8fbbce6c15d0688c26f9bfbac9536f622d1e01674a778153"
   },
   "quizId": "g4-science-01-major-organ-systems-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-science-01-major-organ-systems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-science-01-major-organ-systems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-science-01-major-organ-systems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-science-01-major-organ-systems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-science-01-major-organ-systems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

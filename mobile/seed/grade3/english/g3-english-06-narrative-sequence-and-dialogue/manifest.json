@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-english-06-narrative-sequence-and-dialogue",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:cfea6f58415dd5671835b39b9ccb4bb7efe47f125b6529c3b1f09c7d94088b98",
+    "lesson.md": "sha256:c0150eb2cdaadb3a57060d8fabac00abdf264d0b50766c0458bd0532e5300fa7",
     "g3-english-06-narrative-sequence-and-dialogue-quiz.json": "sha256:1e6aa6deb28b80b55b350b8134b3029e59a9a0ac8393e3050952ef87351e33af",
-    "images/concept-guide.webp": "sha256:ab641f67d3ea383edb59c3b57a0dfb9419bd55b6185d9d6157db7574326d46b0",
-    "images/worked-example.webp": "sha256:5a33c0af3e0693da5d35e7f1aff8d97f8614eb7f34a886f3a5594521b92720ea"
+    "images/concept-guide.webp": "sha256:3217c8ff79b69865b91448d661984c8b886d32d63007d881c09b76230a1fc965",
+    "images/worked-example.webp": "sha256:bb358496d53f0216de48d647b704ce513c8adec2ad4718cb8a3f0081c030d9a1"
   },
   "quizId": "g3-english-06-narrative-sequence-and-dialogue-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-english-06-narrative-sequence-and-dialogue",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-english-06-narrative-sequence-and-dialogue",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-english-06-narrative-sequence-and-dialogue",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-english-06-narrative-sequence-and-dialogue",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-english-06-narrative-sequence-and-dialogue",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

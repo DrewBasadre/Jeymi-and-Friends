@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-math-01-numbers-to-100",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:a9296d781f46b4479a994a43ea13ca6529ea0c16375bd34f484a2e64195a4fab",
+    "lesson.md": "sha256:70e533a4755f1ac5e007b0392af5aca0d3250c005b462d8fa0ccd73e31c3b1df",
     "g1-math-01-numbers-to-100-quiz.json": "sha256:89b873134e1d18da37e491b93f1032a560cfb6536317056c4739539fa812474b",
-    "images/concept-guide.webp": "sha256:cc33f433855224d24b0a6beb9db7d05e1ce5d00c74b2d83f5562a72cb61a7383",
-    "images/worked-example.webp": "sha256:b690e6de9c8b3543e49098b65b719f4bf052351832efeeeaa9fe0fc28d8e1df5"
+    "images/concept-guide.webp": "sha256:470747cdb73911e14cadab9ade064ecd6fde8fdd3868ce04938ac2ab4c8c3bd8",
+    "images/worked-example.webp": "sha256:48cb4a3a9783f41adc5ca1c3c5dce56888dd36354e8f552776b03cb0cfc2d486"
   },
   "quizId": "g1-math-01-numbers-to-100-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-math-01-numbers-to-100",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-math-01-numbers-to-100",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-math-01-numbers-to-100",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-math-01-numbers-to-100",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-math-01-numbers-to-100",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-english-05-multimodal-and-digital-texts",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:5b65c68fa2d6777a2e917647302bc99beb55e9acabdfd032976e6b486e9c7bab",
+    "lesson.md": "sha256:73fcf1b4aaa78ac89b2f133f2097db80954eb36ec76a5973c703641250ff657b",
     "g10-english-05-multimodal-and-digital-texts-quiz.json": "sha256:a7aadf1416e48f3fe6cc068523ab8c48f8c1f9df4690cce9cde518303773c222",
-    "images/concept-guide.webp": "sha256:66f5a68b7c203ed261948bea69c3aa73212b8e3974eb9b549355cd7025d5b1d0",
-    "images/worked-example.webp": "sha256:887e652729187b498e6a9335d1a7dddc0a191f8ffc09228d726e171bd1aefa41"
+    "images/concept-guide.webp": "sha256:1c11e2f4c7b559a93f516637b8659e3571c8bc542a6ee8709903c6657a642993",
+    "images/worked-example.webp": "sha256:e40c386850e856cf377dc014bd08208e71657ede0981b4fb23eb6d450decb803"
   },
   "quizId": "g10-english-05-multimodal-and-digital-texts-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-english-05-multimodal-and-digital-texts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-english-05-multimodal-and-digital-texts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-english-05-multimodal-and-digital-texts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-english-05-multimodal-and-digital-texts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-english-05-multimodal-and-digital-texts",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

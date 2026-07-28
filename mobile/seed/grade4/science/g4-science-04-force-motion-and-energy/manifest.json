@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-science-04-force-motion-and-energy",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:aeeb3c5d75230a94962e47fb2acfe845a67bc89c34ec12f567ed6a411c263546",
+    "lesson.md": "sha256:72c13c6bfd262f0619cd09c3e57c38f485763eeac75b448db8dc515f47d2bc24",
     "g4-science-04-force-motion-and-energy-quiz.json": "sha256:c00a7ab6b8ffe2ea5d922ff0deca99ce8a9b246967dc2ca4965c97af21db58c2",
-    "images/concept-guide.webp": "sha256:f6a5f1585fc3a922518564bcaf994abaf33eca7f75d86d435593d037c5920fc4",
-    "images/worked-example.webp": "sha256:ed091058cc483625ad759c1fdc9b540eaa78799d427333dcca1a12da07f45b20"
+    "images/concept-guide.webp": "sha256:66ee870a99ac07784ac58ac83f07c6956d316eb7371963aa1e8c86cd7f9d23ca",
+    "images/worked-example.webp": "sha256:3b016f57b7cf8504716a687ad49385094eb1bb05fd43134661002ba3b647dfd4"
   },
   "quizId": "g4-science-04-force-motion-and-energy-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-science-04-force-motion-and-energy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-science-04-force-motion-and-energy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-science-04-force-motion-and-energy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-science-04-force-motion-and-energy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-science-04-force-motion-and-energy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

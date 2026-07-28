@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-math-05-geometry-and-surface-area",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:4a0e35899190c39eeaac6466cb2f0cc3f2bcb9286e368506c61a23f42bcdca5a",
+    "lesson.md": "sha256:0d711a697be4e11cf13ad8d019f69db504b8a900b1096a2225e0d6a6113e11f8",
     "g6-math-05-geometry-and-surface-area-quiz.json": "sha256:8f9bb64530a4470939ce67e07f13535d8ca5b3d5ac2643bbbbb1162d70c7bb20",
-    "images/concept-guide.webp": "sha256:d893b9af3f549dd0f1726b93bf1bae52d90e79b993ae261c9daae7762f860740",
-    "images/worked-example.webp": "sha256:54db314f31a4c61c26005aca9a78196560370de0f7a4a3e200c641170dd0cbe9"
+    "images/concept-guide.webp": "sha256:f59c8741a760fb0e2e1acf742e8f8b09a8a1e6661bd85d25469adc3e54527e85",
+    "images/worked-example.webp": "sha256:9eaa07b3f04175f76bcd7747c7f94f62ad262f1b4b5e8dab03f50833ce611543"
   },
   "quizId": "g6-math-05-geometry-and-surface-area-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-math-05-geometry-and-surface-area",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-math-05-geometry-and-surface-area",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-math-05-geometry-and-surface-area",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-math-05-geometry-and-surface-area",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-math-05-geometry-and-surface-area",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

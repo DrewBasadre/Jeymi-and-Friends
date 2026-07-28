@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-math-06-statistics-and-sampling",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:0e1cbd64f62a8161da8e7e9ee243ef94aeb063b66caecc5e9f78b265400272f9",
+    "lesson.md": "sha256:b48796f8b57ce935efc9b123abef7b0c7ea480e3b996badcbdd403f4ae2fcf6e",
     "g7-math-06-statistics-and-sampling-quiz.json": "sha256:e1df1a3292c2bb6e2adf8a2d9b9bdef7e1314345a5b4454b88ef31cb2f5a79a3",
-    "images/concept-guide.webp": "sha256:f9f22227c3d56af3378daf11e38fe446a7dcaef05f541a9bf6ab4e7e73c907bf",
-    "images/worked-example.webp": "sha256:0d6fb9825ac39af300cf97bc6f200c0914836268307288dc42227a7115d542ce"
+    "images/concept-guide.webp": "sha256:28355574f7ecaf3356d45ea377b87ab566df8e8557a294dd72e19ce34caaaa59",
+    "images/worked-example.webp": "sha256:b4e37ff8faddfd8898ff065976a3e13615ddd97cbe49b37a508f4a717c01e90c"
   },
   "quizId": "g7-math-06-statistics-and-sampling-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-math-06-statistics-and-sampling",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-math-06-statistics-and-sampling",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-math-06-statistics-and-sampling",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-math-06-statistics-and-sampling",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-math-06-statistics-and-sampling",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

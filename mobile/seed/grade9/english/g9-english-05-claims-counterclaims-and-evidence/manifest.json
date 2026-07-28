@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-english-05-claims-counterclaims-and-evidence",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:40b8dec8327b128c98599e80128112a94bb4e0755ca271387255efe8c8181475",
+    "lesson.md": "sha256:c41aac9b9319570c87a515e1d643c16915521b2dee65f810ac7753a7f4620a7a",
     "g9-english-05-claims-counterclaims-and-evidence-quiz.json": "sha256:186c6a5096293a4d4814caad10e39afa65b1ae508c6d2e3e7d9aa45e855a88e1",
-    "images/concept-guide.webp": "sha256:1c69052635c6d585a25ebd21731cf2634d9aff0dd0e26f13748423da7c84120b",
-    "images/worked-example.webp": "sha256:e9df91769b88773226d268400309982063ab303bcb6ca944e8a49f86be7e0bac"
+    "images/concept-guide.webp": "sha256:f1d6f3e6d96579294a7122f6d09626b63a663973253fdec38f216ef2834b2a7e",
+    "images/worked-example.webp": "sha256:06d591518180ec3154f4458048f81ea8e66140be9ad49a98a69147427a8cfe2b"
   },
   "quizId": "g9-english-05-claims-counterclaims-and-evidence-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-english-05-claims-counterclaims-and-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-english-05-claims-counterclaims-and-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-english-05-claims-counterclaims-and-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-english-05-claims-counterclaims-and-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-english-05-claims-counterclaims-and-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

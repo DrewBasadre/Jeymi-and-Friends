@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-english-01-using-context-clues",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:85b62d4272f7ad5dafaa1a45cc2e2a244032ca0ac125cd4a9495bd3f9e08738d",
+    "lesson.md": "sha256:1171a23b1ab6df9d4562b858dbb958df2da72ce5629b03819b3c503153db9037",
     "g3-english-01-using-context-clues-quiz.json": "sha256:95db5b6c5019b20f1c7f9c8ba09cc1e2e5df16d014ff3a9066d7e8e36dae20b6",
-    "images/concept-guide.webp": "sha256:17c4d747da5b1e82e7c90b473c48c227f634387a1ab7011bb2cace20cacd862b",
-    "images/worked-example.webp": "sha256:1718f91182fe5b815f8ba92212cb673b7bcac0c39b77355b2a0ef71a626077fe"
+    "images/concept-guide.webp": "sha256:3c6182b8e2e257563b719f36dfc2ca0d76adb57fc302f499c36b28b8e0db3d73",
+    "images/worked-example.webp": "sha256:f0f28e7f76f9866123943bc40b5c273038b4ba1379646bc2eefe1696f0b46fba"
   },
   "quizId": "g3-english-01-using-context-clues-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-english-01-using-context-clues",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-english-01-using-context-clues",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-english-01-using-context-clues",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-english-01-using-context-clues",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-english-01-using-context-clues",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

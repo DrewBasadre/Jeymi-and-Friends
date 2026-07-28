@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-math-04-linear-equations-and-inequalities",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:70182ad5505fa270ae3faef3277e55b3a21f85289927d00cf7b5d82307023002",
+    "lesson.md": "sha256:6fea66f72064bb4cc48a084a326159fb93de189a46afba903281feeb2b0794bc",
     "g7-math-04-linear-equations-and-inequalities-quiz.json": "sha256:08b0fe6890cc7937171e18742eac7e0ba64987e60db7c2afc8801979a001802c",
-    "images/concept-guide.webp": "sha256:cc2b78b08974ed19a229107820554d14b6c92cf5f30bc58e2006e27110a937c1",
-    "images/worked-example.webp": "sha256:1c95e592285ac5804da0d83a007c38c058b2018785560df41066ebd041d5435a"
+    "images/concept-guide.webp": "sha256:6988d5c46ea4a89829f88d99756fbf003225fea81facfa17e561c15e711dbcc0",
+    "images/worked-example.webp": "sha256:2e8c7009e983ce905115208ee61928ad3a02ec91b947f1da5983b75db612390b"
   },
   "quizId": "g7-math-04-linear-equations-and-inequalities-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-math-04-linear-equations-and-inequalities",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-math-04-linear-equations-and-inequalities",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-math-04-linear-equations-and-inequalities",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-math-04-linear-equations-and-inequalities",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-math-04-linear-equations-and-inequalities",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-science-06-weather-and-seasons",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:70b24a3bc878b0ec2cffda8e6e3702218b4e93ebbc759a7749d96e08d74b482b",
+    "lesson.md": "sha256:1e83ac6b038c299e5fb58fccd0fd7cdd468638353e9afaa05149b6f6a907c5d5",
     "g2-science-06-weather-and-seasons-quiz.json": "sha256:6ba29d178e1c79a008cb977f70220ef5b857ce2289715575a235e9db84cbee64",
-    "images/concept-guide.webp": "sha256:944b19339074a1e370640355e13c1009eef2b8f9ba3bd88507f7f142aa5d306b",
-    "images/worked-example.webp": "sha256:02946eb81c11608b6f780a1614e6cd42aca7f1d8f0e255910c8e3166c5569ee3"
+    "images/concept-guide.webp": "sha256:363234317360486e0690d33c266f041070880415b7461b98b15925aeafd87765",
+    "images/worked-example.webp": "sha256:51c4df5d9c2aaaf99666e5ec8934419ff5ee4f11b6735a26aa0753b350bcd87e"
   },
   "quizId": "g2-science-06-weather-and-seasons-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-science-06-weather-and-seasons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-science-06-weather-and-seasons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-science-06-weather-and-seasons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-science-06-weather-and-seasons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-science-06-weather-and-seasons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

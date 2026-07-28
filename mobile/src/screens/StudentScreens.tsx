@@ -1348,6 +1348,8 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
         </View>
         <Divider />
         <ProfileLine label="Student number" value={student.studentNumber} />
+        <ProfileLine label="Parent or guardian" value={student.parentName} />
+        <ProfileLine label="Parent mobile" value={student.parentPhone} />
       </Card>
 
       <Card style={styles.qrCard}>
@@ -1368,7 +1370,7 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
           color={colors.primary}
         />
         <Text style={styles.body}>
-          WAIS recommends {adaptive?.currentDefaultFormat ?? 'text'} from
+          PAVO recommends {adaptive?.currentDefaultFormat ?? 'text'} from
           recent completed work. A parent PIN is required to change this visible
           default.
         </Text>

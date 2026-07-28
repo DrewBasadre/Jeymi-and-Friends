@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-math-02-integers-and-rational-numbers",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:c3b4d15c5fea756d355d7a16ff8c0db72dd786b4b84e8f659d2035c9fe5655c3",
+    "lesson.md": "sha256:87d821d3e4ec5fb5dcfa27957b6095c1295f98b263d18246ad493811e421b177",
     "g7-math-02-integers-and-rational-numbers-quiz.json": "sha256:8f34474c99c5b8dc95eed8c6f75eae144a25e158214069f750bd4424296c33fb",
-    "images/concept-guide.webp": "sha256:e3ea90c5c6d5948a73accdb0ccdbd9674d38853890d4259aced9a08e017db885",
-    "images/worked-example.webp": "sha256:dcb394b907c3f55e3846c86aca9b65add285f4903dd1fe90f40dc4bcab899115"
+    "images/concept-guide.webp": "sha256:98fae576e5ef708d891c57cac5bb539cbe10a4bc119916cbaf4d425088438c64",
+    "images/worked-example.webp": "sha256:e493eaf1a2535c854451b3329afb1e63881b23608372fc12919e431c27907ba5"
   },
   "quizId": "g7-math-02-integers-and-rational-numbers-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-math-02-integers-and-rational-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-math-02-integers-and-rational-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-math-02-integers-and-rational-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-math-02-integers-and-rational-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-math-02-integers-and-rational-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

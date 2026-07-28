@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-math-04-ratios-and-percent-foundations",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:c650b4dd647916e198d984f4d73e7dbb7fa14f285ea798bb0a96e45647e31319",
+    "lesson.md": "sha256:989b42c9d99fbf81dcf7067a7f7d830452ca949304d04beb52c301b75dd7086b",
     "g5-math-04-ratios-and-percent-foundations-quiz.json": "sha256:dea0746b25d48abd550fa7ee4a544836d8be992186ed2a4a41cae4b0b7deb1e0",
-    "images/concept-guide.webp": "sha256:cab50263fbd15f001c8eca37175dcc8fb48242546967a71c94e48e73ac122172",
-    "images/worked-example.webp": "sha256:cfb2132dc2fb956dc4442e738c947c84032ce2e1037208374d66c0e4904a9eff"
+    "images/concept-guide.webp": "sha256:9c107b0bf1021cec673e210be8591335c319ef94bd4aa56641fc7553337ecb52",
+    "images/worked-example.webp": "sha256:c148db8da825ad4b59bd8e90b6260709cf6de5d42319b12b4ab6da56de01019d"
   },
   "quizId": "g5-math-04-ratios-and-percent-foundations-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-math-04-ratios-and-percent-foundations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-math-04-ratios-and-percent-foundations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-math-04-ratios-and-percent-foundations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-math-04-ratios-and-percent-foundations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-math-04-ratios-and-percent-foundations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

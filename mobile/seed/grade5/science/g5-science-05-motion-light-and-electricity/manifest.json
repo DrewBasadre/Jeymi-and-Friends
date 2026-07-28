@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-science-05-motion-light-and-electricity",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:57ef433186b21d9c6d978dfc3bae6aed38c4e9ea1df2370d8f3de5a47ac46f96",
+    "lesson.md": "sha256:b69464425d052c8a8fd2853f9fb5caebb19d790025e6c847de1fd966c1313725",
     "g5-science-05-motion-light-and-electricity-quiz.json": "sha256:aa279db16f0c47460c5b6f8bf068e78abd890a025650b65e8e8c628c810300d2",
-    "images/concept-guide.webp": "sha256:476b343184d3c0fa08a7807782030d1b99c28bb0de4f07690915bc41fd364940",
-    "images/worked-example.webp": "sha256:318c9864a8d2d1ae97b43e0432c93413c9eef8f209ffe49264caeac65198ad35"
+    "images/concept-guide.webp": "sha256:956709e8190a3dd4d0e11354419d4262ac64389600f1371d3bbaf2b90e473b34",
+    "images/worked-example.webp": "sha256:6dd423779523cb783a33cd84a6cea8e7f250c24adff2d0f0074bb06600c1ea94"
   },
   "quizId": "g5-science-05-motion-light-and-electricity-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-science-05-motion-light-and-electricity",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-science-05-motion-light-and-electricity",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-science-05-motion-light-and-electricity",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-science-05-motion-light-and-electricity",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-science-05-motion-light-and-electricity",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

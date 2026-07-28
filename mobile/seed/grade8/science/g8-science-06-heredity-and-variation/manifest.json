@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-science-06-heredity-and-variation",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:bc8d10184acbf11dc0a4f89ad1723b63b07f2ac29da1ad9367914f5f5639aa39",
+    "lesson.md": "sha256:7f54b1bbf3e60ca27809bc05db047c2b4d6edb2cc11ceae608f479eaf1baaf1c",
     "g8-science-06-heredity-and-variation-quiz.json": "sha256:7055a6b36ae452c22c53d5de7ec19dc970d642d3811db9aff27e279d109ab0c3",
-    "images/concept-guide.webp": "sha256:e75055e217bafb8ebea3abd8fa6fe2e4c4755696e26ce068817350b69efbb13a",
-    "images/worked-example.webp": "sha256:7f876b646a3f6ab77f32b02c393170ad00f755df1626f745f6e29a5bde19e246"
+    "images/concept-guide.webp": "sha256:08890898026dea86f1d45135f90a72ea77735b2c5b38ca6c3b961587599e30e0",
+    "images/worked-example.webp": "sha256:186f3fae55261d961ce3918513b85ac41581b4adab16caf1427d5334f708592d"
   },
   "quizId": "g8-science-06-heredity-and-variation-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-science-06-heredity-and-variation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-science-06-heredity-and-variation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-science-06-heredity-and-variation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-science-06-heredity-and-variation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-science-06-heredity-and-variation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

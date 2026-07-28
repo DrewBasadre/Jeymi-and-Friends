@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-english-05-kinds-of-sentences",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:07213368eb73e8fe2f31a6dc2ed0a2aa8f0ace37b2012ff95cf702f36006105b",
+    "lesson.md": "sha256:b9cd73b5490ab3ea51366c76bc1d7b1d0fad02e99db34a2b40f0cdeb917d9513",
     "g2-english-05-kinds-of-sentences-quiz.json": "sha256:4fedda1fee2e6da44ef46f3fb76b921451b151efc7c62fc010459f2dac9e7695",
-    "images/concept-guide.webp": "sha256:12da22b2be063ab68725a8c5d754d6a7664d978ebcf1a6b98ad4c877e0db13bb",
-    "images/worked-example.webp": "sha256:ea8ddfa67b6d0bdb0fa74b9aac7ea0d97d9d282209d1d2693d529a492ded975d"
+    "images/concept-guide.webp": "sha256:6d811e6ca097a455aa0c18fd8f853293d288d19cd1d282bc0e642e0d227d31e4",
+    "images/worked-example.webp": "sha256:b82325249ce1cd7f6f4acc8e15832dd4ffe6fe6d6885a8f556db2628bb5bc941"
   },
   "quizId": "g2-english-05-kinds-of-sentences-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-english-05-kinds-of-sentences",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-english-05-kinds-of-sentences",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-english-05-kinds-of-sentences",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-english-05-kinds-of-sentences",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-english-05-kinds-of-sentences",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

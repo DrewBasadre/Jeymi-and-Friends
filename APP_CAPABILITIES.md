@@ -1,7 +1,7 @@
-# WAIS App Capabilities
+# PAVO App Capabilities
 
 This document inventories the current Android application in
-[`mobile`](./mobile). WAIS is offline-first: core student, parent, teacher,
+[`mobile`](./mobile). PAVO is offline-first: core student, parent, teacher,
 reporting, authoring, and transfer workflows run without a server or runtime AI.
 
 ## Bundled Curriculum
@@ -15,13 +15,14 @@ reporting, authoring, and transfer workflows run without a server or runtime AI.
 - Two module-specific WebP diagrams or teaching aids per module
 - 360 total bundled visual assets, each within the 1080-pixel cap
 - Five-question quiz and five structured review items per module
-- Static manifests, Markdown, quiz JSON, images, and `.wais-module` archives
+- Static manifests, Markdown, quiz JSON, images, and `.pavo-module` archives
 - Honest demo labeling rather than a claim of official curriculum text
 
 ## Student Setup And Profile
 
 - Parent-guided profile registration
-- Grade, section, birthday, student number, and local sign-in PIN
+- Grade, section, birthday, student number, parent or guardian name, parent
+  mobile number, and local sign-in PIN
 - Learning-style assessment and adaptive format recommendation
 - Text, audio, visual, and kinesthetic default formats
 - Automatic installation of the selected grade's 18-module library
@@ -41,7 +42,7 @@ reporting, authoring, and transfer workflows run without a server or runtime AI.
 - Module-library completion progress
 - Seven-day quiz-attempt chart
 - Seven-day average-score trend chart
-- Deterministic WAIS buddy encouragement based on local progress
+- Deterministic PAVO buddy encouragement based on local progress
 - Dedicated Home, Modules, Study, Scan, Reports, and Profile tabs
 
 ## Lessons And Modules
@@ -92,7 +93,7 @@ reporting, authoring, and transfer workflows run without a server or runtime AI.
 - Per-question and total attempt timing
 - Unlimited attempts with attempt numbering
 - Mastery, strong-topic, weak-topic, and full answer breakdown
-- Deterministic WAIS buddy feedback after each quiz
+- Deterministic PAVO buddy feedback after each quiz
 - Offline quiz-report QR generation
 - Automatic multipart report QRs for larger payloads
 - Timing included for every question
@@ -143,6 +144,11 @@ reporting, authoring, and transfer workflows run without a server or runtime AI.
 - Configurable struggling threshold
 - Learner support flags for low latest score or declining trend
 - Learner quiz history, completed modules, weak topics, and format recommendation
+- Parent or guardian contact details visible on each learner profile
+- Teacher-to-parent message composer below the learner's AI approach plan
+- SMS recipient confirmation, 320-character limit, validation, disabled and
+  sending states, and an in-page completion receipt
+- Explicit demo SMS transport that performs no network request or real delivery
 - Camera-based profile and quiz-report scanning
 - Multipart report assembly
 - Offline diagnostic suggestions
@@ -150,7 +156,8 @@ reporting, authoring, and transfer workflows run without a server or runtime AI.
 - Local image selection, WebP conversion, and size limiting
 - Review-item authoring with concept and importance metadata
 - Custom review-set sharing
-- No active AI generation path
+- Privacy-minimized AI generation for learner intervention approaches, class
+  summaries, lesson plans, modules, reviewers, and quizzes when online
 
 ## Android Nearby Transfer
 
@@ -197,6 +204,8 @@ reporting, authoring, and transfer workflows run without a server or runtime AI.
   a new transfer.
 - Separate-parent-device delivery is not implemented; the digest is local with a
   same-device notification fallback.
+- Teacher-to-parent SMS delivery is simulated in the MVP; the complete
+  interaction is present, but no telecom provider is connected.
 - `supabase-ota` is reserved in the manifest schema but OTA delivery is not
   active.
 - Pavo generation requires a deployed `pavo-companion` Edge Function,

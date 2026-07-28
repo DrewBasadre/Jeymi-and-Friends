@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-science-04-chemical-bonding-and-reactions",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:555727e2a1e88f240ca00433940c266b6484341857acfd6d100f00a37aec1e8c",
+    "lesson.md": "sha256:c9dd49343e2098033ad7b3d610bfa62db3b412666ad7a7fea3865b7d9bc08565",
     "g9-science-04-chemical-bonding-and-reactions-quiz.json": "sha256:4458f0e94f240434b0cf03fa8742f5b0997cb913e10a44b87ce6ab489d5e3bc0",
-    "images/concept-guide.webp": "sha256:33d50c4fc2e5a5f715af293971a76ab55d7a5a710bb74e27f5830105c4e3024d",
-    "images/worked-example.webp": "sha256:98327edac3ff2303dc03aa80f9b9b2113a50be821e167733607faae7aad61538"
+    "images/concept-guide.webp": "sha256:60e1a82726bb5e605bfcbdd4378b6fe483066183b96cd2894419637a9c51bb4f",
+    "images/worked-example.webp": "sha256:a045624063cc72bc910bce93eb3f2739d3adb60fdb3614acd703839d3c6b21e1"
   },
   "quizId": "g9-science-04-chemical-bonding-and-reactions-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-science-04-chemical-bonding-and-reactions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-science-04-chemical-bonding-and-reactions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-science-04-chemical-bonding-and-reactions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-science-04-chemical-bonding-and-reactions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-science-04-chemical-bonding-and-reactions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

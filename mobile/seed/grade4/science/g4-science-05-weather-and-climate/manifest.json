@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-science-05-weather-and-climate",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:110a865f6ce5e6e12fc95722eacdd3420940cc5c68acc35158bf87cc604c2f61",
+    "lesson.md": "sha256:b075a171852b490206d317c1a239fa5d2bfbc99ea3953b0067009be48b8ac9c5",
     "g4-science-05-weather-and-climate-quiz.json": "sha256:9f6ba8a9db29da6bdf0eb611256f4b64f48ad7ae7c90cb3f2527273bb89ef7f9",
-    "images/concept-guide.webp": "sha256:0576557ce604506f22f429c78dca6814403e57840de2db9dbe6479aec2ed9299",
-    "images/worked-example.webp": "sha256:3daa99e1c381a446e0a5f4d4dd59fa8de85bb6647a597df4908c761f3f6bc228"
+    "images/concept-guide.webp": "sha256:89481f3a022db45b3ae129991287549baf3d6e55def545164602cfe89bbe2973",
+    "images/worked-example.webp": "sha256:c919c180669d79417257e712cbb94a4ee94ba6fe1b3178c889eed0a5743ba553"
   },
   "quizId": "g4-science-05-weather-and-climate-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-science-05-weather-and-climate",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-science-05-weather-and-climate",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-science-05-weather-and-climate",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-science-05-weather-and-climate",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-science-05-weather-and-climate",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-science-05-motion-and-forces",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:47cb4219e708ef3a313632b2eb15acbb522c263255eb5e39edce2b4847a049f5",
+    "lesson.md": "sha256:9dc6a3721c9aec08e39a73de87d68b25ba6b7c128a74ec0b2d0a233aaa98f957",
     "g7-science-05-motion-and-forces-quiz.json": "sha256:2b7a1d20ac219590fe7cd3fcfec089de932d1abe76ccb610414dae100a5abcc2",
-    "images/concept-guide.webp": "sha256:9b5af554c6cc649c7bf9dfe89365d1a1cbc2de005ddec73bbc55f99d0ec2754e",
-    "images/worked-example.webp": "sha256:cd1a1c10b728475a8cc954c2ebdef67fb22667dabe0fb66045f883d893e5a47f"
+    "images/concept-guide.webp": "sha256:279ca43bf28d9d0116cd4bb23b98185a64e97ba31515a43db03a62028493ee30",
+    "images/worked-example.webp": "sha256:641d00bac62afe92525d0216bd5ae63146535b7a0e9cdb6888e6ca55f7baaec8"
   },
   "quizId": "g7-science-05-motion-and-forces-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-science-05-motion-and-forces",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-science-05-motion-and-forces",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-science-05-motion-and-forces",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-science-05-motion-and-forces",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-science-05-motion-and-forces",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

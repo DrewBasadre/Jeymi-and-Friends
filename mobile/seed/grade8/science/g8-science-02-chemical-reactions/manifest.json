@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-science-02-chemical-reactions",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:ad9e59210649adc637d4ab05f930ab6eae1995964c03f025177b51086782f743",
+    "lesson.md": "sha256:5d84dcfc5944d626bfc8fa5c1f4ba5338caa1d132ea3da183428d6071b160f4e",
     "g8-science-02-chemical-reactions-quiz.json": "sha256:9c1ca3f10036e06c46e23b7102ff9728c2ef5372dfcf769bfe2ecea775f8570a",
-    "images/concept-guide.webp": "sha256:fef6a1e355416664f8c344f3f6468175271d8dbfe3956d3acea1a88a57a84be9",
-    "images/worked-example.webp": "sha256:55999165602bf53b6cb11f261bf37b61958654b5fd81a5c9cc7d0e6f21aa44db"
+    "images/concept-guide.webp": "sha256:452bc2cf6b46f38ed9b0918368d60136c3227b7871bbd8ae0f16f10729915c14",
+    "images/worked-example.webp": "sha256:19e8d7184634c829fe9271e54de9d80477d81e6606b208efb959ba8b1d7a931c"
   },
   "quizId": "g8-science-02-chemical-reactions-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-science-02-chemical-reactions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-science-02-chemical-reactions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-science-02-chemical-reactions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-science-02-chemical-reactions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-science-02-chemical-reactions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

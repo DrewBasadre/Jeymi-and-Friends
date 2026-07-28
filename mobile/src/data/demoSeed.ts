@@ -30,6 +30,8 @@ interface DemoLearner {
   studentNumber: string;
   firstName: string;
   lastName: string;
+  parentName: string;
+  parentPhone: string;
   pin: string;
   // correct answers out of 5, for [science, math, english]
   scores: [number, number, number];
@@ -137,14 +139,14 @@ const MODULES: Array<{
 ];
 
 const LEARNERS: DemoLearner[] = [
-  { key: 'maria', studentNumber: '2026-001', firstName: 'Maria', lastName: 'Santos', pin: '1234', scores: [5, 5, 4] },
-  { key: 'josefa', studentNumber: '2026-002', firstName: 'Josefa', lastName: 'Reyes', pin: '2222', scores: [5, 4, 4] },
-  { key: 'andres', studentNumber: '2026-003', firstName: 'Andres', lastName: 'Bonifacio', pin: '3333', scores: [4, 4, 3] },
-  { key: 'gabriela', studentNumber: '2026-004', firstName: 'Gabriela', lastName: 'Silang', pin: '4444', scores: [4, 3, 4] },
-  { key: 'emilio', studentNumber: '2026-005', firstName: 'Emilio', lastName: 'Aguinaldo', pin: '5555', scores: [3, 3, 3] },
-  { key: 'apolinario', studentNumber: '2026-006', firstName: 'Apolinario', lastName: 'Mabini', pin: '6666', scores: [3, 2, 3] },
-  { key: 'melchora', studentNumber: '2026-007', firstName: 'Melchora', lastName: 'Aquino', pin: '7777', scores: [2, 2, 1] },
-  { key: 'diego', studentNumber: '2026-008', firstName: 'Diego', lastName: 'Silang', pin: '8888', scores: [1, 2, 1] },
+  { key: 'maria', studentNumber: '2026-001', firstName: 'Maria', lastName: 'Santos', parentName: 'Ana Santos', parentPhone: '+63 917 555 0101', pin: '1234', scores: [5, 5, 4] },
+  { key: 'josefa', studentNumber: '2026-002', firstName: 'Josefa', lastName: 'Reyes', parentName: 'Ramon Reyes', parentPhone: '+63 917 555 0102', pin: '2222', scores: [5, 4, 4] },
+  { key: 'andres', studentNumber: '2026-003', firstName: 'Andres', lastName: 'Bonifacio', parentName: 'Elena Bonifacio', parentPhone: '+63 917 555 0103', pin: '3333', scores: [4, 4, 3] },
+  { key: 'gabriela', studentNumber: '2026-004', firstName: 'Gabriela', lastName: 'Silang', parentName: 'Miguel Silang', parentPhone: '+63 917 555 0104', pin: '4444', scores: [4, 3, 4] },
+  { key: 'emilio', studentNumber: '2026-005', firstName: 'Emilio', lastName: 'Aguinaldo', parentName: 'Trinidad Aguinaldo', parentPhone: '+63 917 555 0105', pin: '5555', scores: [3, 3, 3] },
+  { key: 'apolinario', studentNumber: '2026-006', firstName: 'Apolinario', lastName: 'Mabini', parentName: 'Dionisia Mabini', parentPhone: '+63 917 555 0106', pin: '6666', scores: [3, 2, 3] },
+  { key: 'melchora', studentNumber: '2026-007', firstName: 'Melchora', lastName: 'Aquino', parentName: 'Catalina Aquino', parentPhone: '+63 917 555 0107', pin: '7777', scores: [2, 2, 1] },
+  { key: 'diego', studentNumber: '2026-008', firstName: 'Diego', lastName: 'Silang', parentName: 'Nicolasa Silang', parentPhone: '+63 917 555 0108', pin: '8888', scores: [1, 2, 1] },
 ];
 
 const GRADED_MODULES = ['demo_sci_ecosystems', 'demo_math_fractions', 'demo_eng_grammar'] as const;
@@ -252,6 +254,8 @@ export async function seedDemoData(): Promise<{ studentNumber: string; pin: stri
       firstName: learner.firstName,
       lastName: learner.lastName,
       middleInitial: '',
+      parentName: learner.parentName,
+      parentPhone: learner.parentPhone,
       gradeLevel: 5,
       section: SECTION_NAME,
       birthday: '',

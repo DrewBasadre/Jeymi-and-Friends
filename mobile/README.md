@@ -1,6 +1,6 @@
-# WAIS Android
+# PAVO Android
 
-WAIS is an Android-first Expo React Native application for offline classroom
+PAVO is an Android-first Expo React Native application for offline classroom
 learning. React Native renders the interface, Expo SQLite stores student and
 teacher data, and a Kotlin Expo module provides Google Nearby Connections
 module transfer.
@@ -20,7 +20,7 @@ analysis use a secured Supabase Edge Function when internet access is available.
 - Multiple-choice, fill-in-the-blank, and identification quizzes
 - Per-question timing, result breakdowns, mastery, and unlimited attempts
 - Home charts for module completion, deadlines, attempts, and score trends
-- Deterministic WAIS buddy feedback after quizzes and on Home
+- Deterministic PAVO buddy feedback after quizzes and on Home
 - Active recall, SM-2 spaced repetition, retrieval practice, interleaving,
   custom review sets, and Pomodoro sessions
 - Parent-PIN-protected default-format editing and weekly digest access
@@ -34,7 +34,7 @@ analysis use a secured Supabase Edge Function when internet access is available.
 
 ## Module Packages
 
-A `.wais-module` file is a bounded ZIP archive containing:
+A `.pavo-module` file is a bounded ZIP archive containing:
 
 - `manifest.json`
 - one local Markdown lesson
@@ -91,7 +91,7 @@ shipped app.
 
 ## Native Android Transport
 
-`modules/wais-nearby/android` uses Google Nearby Connections with
+`modules/pavo-nearby/android` uses Google Nearby Connections with
 `P2P_POINT_TO_POINT`. Connection verification exchanges a pairing code and
 module metadata. Nearby selects Bluetooth, BLE, and local Wi-Fi as available.
 The app validates source, manifest, archive limits, and SHA-256 checksums before

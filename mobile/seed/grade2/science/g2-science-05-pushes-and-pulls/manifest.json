@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-science-05-pushes-and-pulls",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:d5fc8f2411e6f506f4ac852ec39314f26814bb73b5d1608a534ff156cee36aed",
+    "lesson.md": "sha256:0f02dd33b4812e231b5284a46de9a59e46a7cc0085cd9054da282ad911e1832c",
     "g2-science-05-pushes-and-pulls-quiz.json": "sha256:ae2f36d558d85cd3d4ba05674ac9433b196ee3d56b09e0ece9cc12e6fcecb621",
-    "images/concept-guide.webp": "sha256:0b89919fdad29b6b20ccbe220a9e2941ec34752f60fec05f6a90334eb783e766",
-    "images/worked-example.webp": "sha256:41593077656f9ce4c4179f3d8da6191ebbc86e25302567f944c533811c8165c0"
+    "images/concept-guide.webp": "sha256:88eaa9154a91f5e653dd910f0091282c6a03529da135e574237d9c8154667990",
+    "images/worked-example.webp": "sha256:61603e3614906d4654723b6ad9432ad7fab8d57bcbdffd47df723c5492fb4413"
   },
   "quizId": "g2-science-05-pushes-and-pulls-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-science-05-pushes-and-pulls",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-science-05-pushes-and-pulls",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-science-05-pushes-and-pulls",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-science-05-pushes-and-pulls",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-science-05-pushes-and-pulls",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

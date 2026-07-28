@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-science-04-solids-liquids-and-gases",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:332ebb3412e46d7b9f97bae9be445515f5d19e26e62a644886ab27454ea51909",
+    "lesson.md": "sha256:0cc0eb5375cdaf84fb01b4908effb3eb3d83e4e11555f92d4635bffcf7a4d7fe",
     "g2-science-04-solids-liquids-and-gases-quiz.json": "sha256:c19e3618e162890ec15f271e0e27b7e2c4b6cbbebe3e76588863272408bff46f",
-    "images/concept-guide.webp": "sha256:51339ad9d9dc2545e6f02084e26a83d0b796b1f581164569667b988c5f559779",
-    "images/worked-example.webp": "sha256:354c387bb07c16a76fc97b1564111a0a87f14b0084e18a3c661a5fdb59a296fc"
+    "images/concept-guide.webp": "sha256:e0d3bf8e947db17d925916d87433fab3e623affd75db380c269c761d0e0998de",
+    "images/worked-example.webp": "sha256:0672247c249031998ec6276c59c7512ec60917b5f7ed6badc843b7e476977946"
   },
   "quizId": "g2-science-04-solids-liquids-and-gases-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-science-04-solids-liquids-and-gases",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-science-04-solids-liquids-and-gases",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-science-04-solids-liquids-and-gases",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-science-04-solids-liquids-and-gases",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-science-04-solids-liquids-and-gases",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

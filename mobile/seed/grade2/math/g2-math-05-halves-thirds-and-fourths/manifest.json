@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-math-05-halves-thirds-and-fourths",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:aa467c817fadd6b17db165a6e0b5eb3d4a34d634bb913dc36e1b654fbbc83dc9",
+    "lesson.md": "sha256:79a78537dde62c4bcceadb092fdccc245fb3628e566aa329d9a30f1db275d29f",
     "g2-math-05-halves-thirds-and-fourths-quiz.json": "sha256:3f6d3f8db5143131ce7de4ca72c9c04274824ff1eb05ba86127880472137b35a",
-    "images/concept-guide.webp": "sha256:7f3f86f1146f73b8b01846422554edd7d4016812426ef2a065292de6c86cd2e5",
-    "images/worked-example.webp": "sha256:e1afb5efaa956dacc0117ed9bad198261c08dbca44bd404e421e10fd0f6a7938"
+    "images/concept-guide.webp": "sha256:9df96cdd2050c2b74930c5137ac67aa3af2b4a08d93f72bce0b87dc5be1b7daf",
+    "images/worked-example.webp": "sha256:6849bd27b9b24d52d904fb3fea07eadf0d2510e3bd89dfe0019db1fceffa740a"
   },
   "quizId": "g2-math-05-halves-thirds-and-fourths-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-math-05-halves-thirds-and-fourths",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-math-05-halves-thirds-and-fourths",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-math-05-halves-thirds-and-fourths",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-math-05-halves-thirds-and-fourths",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-math-05-halves-thirds-and-fourths",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

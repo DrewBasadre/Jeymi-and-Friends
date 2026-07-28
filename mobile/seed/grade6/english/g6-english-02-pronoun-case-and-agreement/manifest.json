@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-english-02-pronoun-case-and-agreement",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:91d9b167662fcd99f0127af50f91e809679902f7035284b8b4c776bdad8e7550",
+    "lesson.md": "sha256:7dbfdf2de7e0b04b2c0c276ff6d06166f7b4c555bd1ee8df0afb317a515cc258",
     "g6-english-02-pronoun-case-and-agreement-quiz.json": "sha256:05987ce0e74195b5e341e1ba118c0ac2a0678838eae3cae21c16029b92007cd5",
-    "images/concept-guide.webp": "sha256:5e40801c928381ce97edc6e24dfc8f7513fd3dd4a18e48cbd8c41f2dc827f218",
-    "images/worked-example.webp": "sha256:f1d1d9167e5642dccb82b5be251848db996517c34068cebc4a6e50508a8f095b"
+    "images/concept-guide.webp": "sha256:2f27ba6001f08d8c9b997e4b53ed5ee5cbb28d624ee03926a12ec57986a07564",
+    "images/worked-example.webp": "sha256:fc7424d1393dab1951a10a0eaa8ef42e94fb0886c22db83169abb27fc896af44"
   },
   "quizId": "g6-english-02-pronoun-case-and-agreement-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-english-02-pronoun-case-and-agreement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-english-02-pronoun-case-and-agreement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-english-02-pronoun-case-and-agreement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-english-02-pronoun-case-and-agreement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-english-02-pronoun-case-and-agreement",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

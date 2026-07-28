@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-science-04-energy-transformation-and-circuits",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:405a408831fca164d88a316d02839c74895bbdcd77d74f83802b2adfb63634c8",
+    "lesson.md": "sha256:7f6eaa3fb4413cea556a3fb6047c4dd35849b4f9f30da2772d9133ed04f02cb8",
     "g6-science-04-energy-transformation-and-circuits-quiz.json": "sha256:fcd3a51b97764ceafda58fa1194f296d8d596cede13068355089c7e2fa2d0d60",
-    "images/concept-guide.webp": "sha256:b23aa33f11d8320cc25afbe6ac4f7e0179db4a4e7ee9fcd71c6e16a9cf56f763",
-    "images/worked-example.webp": "sha256:a21201320250b5dfdff1bdf5ca9385236758a93c3c31de4f6240ca1c1934cb37"
+    "images/concept-guide.webp": "sha256:7561a3eb66092433243d3ec6c37c51a368129ea21b3621acd07819029854a6f3",
+    "images/worked-example.webp": "sha256:9365f5f40a0333680cc44f55115fa17eb1be2b0a5f1cdf4f1d1b3b64eb038bea"
   },
   "quizId": "g6-science-04-energy-transformation-and-circuits-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-science-04-energy-transformation-and-circuits",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-science-04-energy-transformation-and-circuits",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-science-04-energy-transformation-and-circuits",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-science-04-energy-transformation-and-circuits",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-science-04-energy-transformation-and-circuits",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -3,7 +3,7 @@ import * as Device from 'expo-device';
 import { Platform } from 'react-native';
 import type { AppMode } from '@/domain/types';
 
-const MODE_OVERRIDE_KEY = 'wais.modeOverride';
+const MODE_OVERRIDE_KEY = 'pavo.modeOverride';
 const LIGHTWEIGHT_MEMORY_THRESHOLD = 384 * 1024 * 1024;
 
 export interface DeviceCapability {

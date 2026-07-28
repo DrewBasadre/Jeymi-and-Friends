@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-math-06-financial-planning-and-models",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:1ec39b427e40697535b118400ec7310a3b66b1a35acfc9930d839492a0cd8959",
+    "lesson.md": "sha256:d70dfdcb007ac45523fcfe649d807748c4209b2b014ae9c053bdc8297338914e",
     "g10-math-06-financial-planning-and-models-quiz.json": "sha256:4c1b5c5d53648b585848ea6d51aecb884c5a0c4d544eedf263cc2e1ec66bd395",
-    "images/concept-guide.webp": "sha256:f6def9f66931669417aa9a1eddbc08938a0b5cfec10321ed3709cd7d2d994e8f",
-    "images/worked-example.webp": "sha256:9c63b4c172f2881773dbda60afc6dbb75f296d47d4ca3f8e75d35acef4470f3e"
+    "images/concept-guide.webp": "sha256:b6503d17a848dbdb6fe3608373ed6161bc804d1dec6e86fbd1e5273bbd08f5cc",
+    "images/worked-example.webp": "sha256:c2bb89052e418d475d5411fbbdedee6557f90246bfa01747cf7ba7255f5c36cf"
   },
   "quizId": "g10-math-06-financial-planning-and-models-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-math-06-financial-planning-and-models",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-math-06-financial-planning-and-models",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-math-06-financial-planning-and-models",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-math-06-financial-planning-and-models",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-math-06-financial-planning-and-models",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

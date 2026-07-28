@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-math-04-geometry-and-transformations",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:2d7bf6a06f9b7d0b4f29c2167600f6473c804d7bf445be1d3fd0ca1c06f532d3",
+    "lesson.md": "sha256:b4b18cdfff9d93003a3ec2cbc9103cf1ee953d646a0a5399dc496f83b5f4be20",
     "g8-math-04-geometry-and-transformations-quiz.json": "sha256:32c01f905ea0782735768efd6ca72e0b472098e04fe8984502b43e396c712d39",
-    "images/concept-guide.webp": "sha256:9545a7d0d5d6d69cd9862105d606b2b7608ee9c4e3121ba3183c1ff45033f815",
-    "images/worked-example.webp": "sha256:ed0b84692b6fcdc27f62b0448c7a537c45d19ac8297660c9f0f6caa86323d918"
+    "images/concept-guide.webp": "sha256:518664357450142c5058edf135d8d985678e5d79f2ebb57f898dc7803594cca0",
+    "images/worked-example.webp": "sha256:12126007165af9f06decfc4d2a82db52020dc33e002bc7085bf35799926d8d0a"
   },
   "quizId": "g8-math-04-geometry-and-transformations-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-math-04-geometry-and-transformations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-math-04-geometry-and-transformations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-math-04-geometry-and-transformations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-math-04-geometry-and-transformations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-math-04-geometry-and-transformations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,4 +1,4 @@
-# WAIS Backend Setup Decisions
+# PAVO Backend Setup Decisions
 
 Online-mode infrastructure is intentionally not finalized until the project
 owner confirms the decisions below. The app continues to use bundled content
@@ -27,7 +27,7 @@ back to the bundled dataset. No project ID or credential is hardcoded.
   de-identified student-performance patterns.
 
 The existing client contract continues to call protected Supabase Edge
-Functions. The functions remain inactive until `WAIS_AI_PROVIDER` is explicitly
+Functions. The functions remain inactive until `PAVO_AI_PROVIDER` is explicitly
 set, and provider credentials and model names belong only in Edge Function
 secrets.
 

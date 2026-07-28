@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-english-05-citing-text-evidence",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:349156c795aa14fad5cda619ca5f3abebcdf43f3b9729fe66200a890cdd6d63d",
+    "lesson.md": "sha256:80041e5785e6516307a7155818071c98c3f7d0df4d0ec050d88cee9577fd7e53",
     "g6-english-05-citing-text-evidence-quiz.json": "sha256:87b051fb8efb248ce98dd5f89ed417145bfc32fcb7031dae02ca3e95de8e51c9",
-    "images/concept-guide.webp": "sha256:fd40ac8ee2708cd6ff8cfc5d4de78d31b20922031e2d9fb44bbe9049a1def75f",
-    "images/worked-example.webp": "sha256:83955d4a61cdb707f7d78cbe3cfea1d49d94ad728af98bd0c19e5a7cc9efdb0c"
+    "images/concept-guide.webp": "sha256:7fe290938d5e4f6b1a50a9fd5326d209a0c4e75549723b5d16bafe26fa775a95",
+    "images/worked-example.webp": "sha256:b015583a833b632d1f11f7bf812ed707b3e5859a23e71d94f586eba6bfd61798"
   },
   "quizId": "g6-english-05-citing-text-evidence-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-english-05-citing-text-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-english-05-citing-text-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-english-05-citing-text-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-english-05-citing-text-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-english-05-citing-text-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-math-01-sets-and-real-world-classification",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:4317004b3955e2b7010077d8af1308a574f7c9c9d8b016c55f550c5bc647e011",
+    "lesson.md": "sha256:cfbdfef61468943146f36702713f8bc383593008beb443cbba448daac2c8d9b1",
     "g7-math-01-sets-and-real-world-classification-quiz.json": "sha256:0705b83fee2a4d225c928429543f3203ccfc5f2ee24816405c9791bcca89b9a0",
-    "images/concept-guide.webp": "sha256:1b6479cc666cd0f4f5cdc897507ca58690f56c5f09b4f1ce8449b2637c55d381",
-    "images/worked-example.webp": "sha256:94fb638998ad255f67b9860ed1c20037643b9495c9148a962ae0b5620a759f43"
+    "images/concept-guide.webp": "sha256:b96436ca6783a3545d4d067278c63ed04d330f7a2008ae78063cdf4b0025642e",
+    "images/worked-example.webp": "sha256:29ade4045868f1e80f1375e3659aacd1dcbb1654e0eb99ca03146f8a920638ea"
   },
   "quizId": "g7-math-01-sets-and-real-world-classification-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-math-01-sets-and-real-world-classification",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-math-01-sets-and-real-world-classification",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-math-01-sets-and-real-world-classification",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-math-01-sets-and-real-world-classification",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-math-01-sets-and-real-world-classification",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

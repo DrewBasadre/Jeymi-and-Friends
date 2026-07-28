@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-english-06-argument-and-research-basics",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:67ac168463c83fe162c5bb3152ca630be533d868244b807a381e6d102b63d2c4",
+    "lesson.md": "sha256:66e0066828369055f22ecc91052ed7214cb83a7f0c72e1e89d6fef93a6542633",
     "g6-english-06-argument-and-research-basics-quiz.json": "sha256:2c9882ec8abf62764185f5a9515f5c5708a604359e2b0a20618d04923278c5f0",
-    "images/concept-guide.webp": "sha256:a13984f5fb3d5137b2a76f5a747c107d364f803375b5771134584e09fbff3f57",
-    "images/worked-example.webp": "sha256:c7e369d531c90e12c743463627b6bac964b7ff1c2254057194bd47e87b4514a4"
+    "images/concept-guide.webp": "sha256:8ab8a62ec2d91388c5091649cff4a0e45b0fac4d4d0c5d3a362c58120b71e5a9",
+    "images/worked-example.webp": "sha256:9ad203679c57d0a996d3ec6b5581ddec03cd9e29d7c8bae68c637f583221cb6a"
   },
   "quizId": "g6-english-06-argument-and-research-basics-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-english-06-argument-and-research-basics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-english-06-argument-and-research-basics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-english-06-argument-and-research-basics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-english-06-argument-and-research-basics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-english-06-argument-and-research-basics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

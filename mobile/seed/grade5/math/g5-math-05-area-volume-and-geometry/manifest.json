@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-math-05-area-volume-and-geometry",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:cf47aabc43dbd764e5ed35faa05f2f937a9c0ea61ffac511f05e5ddcc423653a",
+    "lesson.md": "sha256:d3b12625a0c290604693e1aab29f265aef72374d7b22907512dd82935e11fa80",
     "g5-math-05-area-volume-and-geometry-quiz.json": "sha256:f039cef33a331ebaf9ff4993bef648dc2410f98d7908e47810b2d0b501cedce8",
-    "images/concept-guide.webp": "sha256:81663ef4b351349b59addf7e77bee7112e993ba46f3955a9dfadfb6a63ad43e1",
-    "images/worked-example.webp": "sha256:33185cd4560825271456bdc7d5de1639df37746ecc7183c41f194d83482f8576"
+    "images/concept-guide.webp": "sha256:b3b63c93a87fde84032addcfe9a43ea4b4f3ec1fc494cef22da2ec64bab22cf1",
+    "images/worked-example.webp": "sha256:bbfeb1c6d3da45f5c0b12018b10c344eb0c45f92d185e612e29e0270d0ed88a1"
   },
   "quizId": "g5-math-05-area-volume-and-geometry-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-math-05-area-volume-and-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-math-05-area-volume-and-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-math-05-area-volume-and-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-math-05-area-volume-and-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-math-05-area-volume-and-geometry",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

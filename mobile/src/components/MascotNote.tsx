@@ -9,7 +9,7 @@ export function MascotNote({ message }: { message: string }) {
         <Bot size={24} color={colors.indigo} />
       </View>
       <View style={styles.text}>
-        <Text style={styles.label}>WAIS buddy</Text>
+        <Text style={styles.label}>PAVO buddy</Text>
         <Text style={styles.message}>{message}</Text>
       </View>
     </View>

@@ -45,7 +45,7 @@ export interface NearbyReceivedFile {
   manifest: LearningPackageManifest;
 }
 
-type WaisNearbyEvents = {
+type PavoNearbyEvents = {
   onPeersChanged: (event: { peers: NearbyPeer[] }) => void;
   onVerificationCode: (event: NearbyVerificationRequest) => void;
   onConnectionStateChanged: (event: NearbyConnectionUpdate) => void;
@@ -53,10 +53,10 @@ type WaisNearbyEvents = {
   onFileReceived: (event: NearbyReceivedFile) => void;
 };
 
-interface WaisNearbyModule {
-  addListener<EventName extends keyof WaisNearbyEvents>(
+interface PavoNearbyModule {
+  addListener<EventName extends keyof PavoNearbyEvents>(
     eventName: EventName,
-    listener: WaisNearbyEvents[EventName],
+    listener: PavoNearbyEvents[EventName],
   ): EventSubscription;
   isAvailable(): boolean;
   requestPermissions(): Promise<unknown>;
@@ -71,7 +71,7 @@ interface WaisNearbyModule {
   cancelTransfer(transferId: string): Promise<void>;
 }
 
-const nativeModule = requireOptionalNativeModule<WaisNearbyModule>('WaisNearby');
+const nativeModule = requireOptionalNativeModule<PavoNearbyModule>('PavoNearby');
 
 export const nearby = {
   isAvailable(): boolean {

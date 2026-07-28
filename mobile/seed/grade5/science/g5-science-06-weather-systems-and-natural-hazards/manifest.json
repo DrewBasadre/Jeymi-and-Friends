@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-science-06-weather-systems-and-natural-hazards",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:18b802d7fdce8e9001432ae356a9ae88d2c97058b29e4bd450fb50a1e8fdae95",
+    "lesson.md": "sha256:8c38ea4c7e5205f144a1521fe0146b5956eb317b32c7fe9d395e8f5c14a6c669",
     "g5-science-06-weather-systems-and-natural-hazards-quiz.json": "sha256:69ebf37734a2583d4325d517f153e30330630ff55a2471a38eacb2dee6bc1bd6",
-    "images/concept-guide.webp": "sha256:4ec1cac4cadfa419e9e5d770905b8725316e9ced543baec1953b56acb766cf02",
-    "images/worked-example.webp": "sha256:3026f44c3a8544f9436ff1c2a7e7548b0e9a5da222f2d8dd36f5ef8ea967026c"
+    "images/concept-guide.webp": "sha256:7eca357ef16f8f593a5696f9643bd4602d1a948dff557fc1003d426da3d41110",
+    "images/worked-example.webp": "sha256:d4de30c719236a1238ecd367efea8f405e3f55b3aec3e2dad509c6ef8b8994cf"
   },
   "quizId": "g5-science-06-weather-systems-and-natural-hazards-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-science-06-weather-systems-and-natural-hazards",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-science-06-weather-systems-and-natural-hazards",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-science-06-weather-systems-and-natural-hazards",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-science-06-weather-systems-and-natural-hazards",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-science-06-weather-systems-and-natural-hazards",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

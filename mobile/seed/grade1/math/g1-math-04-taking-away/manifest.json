@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-math-04-taking-away",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:e803da8de3b2d2fc97f270f6d71e29d387d62520ef9f9f2e0964e2b01f42a1f6",
+    "lesson.md": "sha256:b693604654296fea55ce475b29cf7d044a574d44deab7cd3ead125c5595174a8",
     "g1-math-04-taking-away-quiz.json": "sha256:5121030c2035dcb7e6e321b8d6337e0071d108736a2367f04c26df01b8f2d0ca",
-    "images/concept-guide.webp": "sha256:a9721411422fe7aa1aedd18c528685b5c20bb37795cad4578046ffc7b33cf9e4",
-    "images/worked-example.webp": "sha256:16dc2ed13b7d1e54aec823dd0c29a64dedcc8933ebbce64a90d4b5bd788d6a0f"
+    "images/concept-guide.webp": "sha256:d0ebdd8f7a56bbc2c19629f7952bbb77fe488f66145e3cde86e5c966d74bfcba",
+    "images/worked-example.webp": "sha256:8341a0a3a1e5c459bba8debdabaa6ff120aa1797c77b80e00214cd72ff4be41a"
   },
   "quizId": "g1-math-04-taking-away-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-math-04-taking-away",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-math-04-taking-away",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-math-04-taking-away",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-math-04-taking-away",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-math-04-taking-away",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

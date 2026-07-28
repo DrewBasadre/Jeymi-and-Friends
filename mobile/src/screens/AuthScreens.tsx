@@ -259,6 +259,8 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
   const [studentNumber, setStudentNumber] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [parentName, setParentName] = useState('');
+  const [parentPhone, setParentPhone] = useState('');
   const [gradeLevel, setGradeLevel] = useState('');
   const [section, setSection] = useState('');
   const [pin, setPin] = useState('');
@@ -274,6 +276,8 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
           firstName,
           lastName,
           middleInitial: '',
+          parentName,
+          parentPhone,
           gradeLevel: Number(gradeLevel),
           section,
           birthday: '',
@@ -296,6 +300,8 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
     studentNumber.trim() &&
       firstName.trim() &&
       lastName.trim() &&
+      parentName.trim() &&
+      parentPhone.trim().length >= 7 &&
       Number.isInteger(parsedGrade) &&
       parsedGrade >= 1 &&
       parsedGrade <= 10 &&
@@ -334,6 +340,32 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
           onChangeText={setLastName}
           autoCapitalize="words"
           placeholder="Last name"
+        />
+      </Card>
+
+      <Card>
+        <CardHeader
+          icon={UsersRound}
+          color={colors.accentText}
+          title="Parent contact"
+          subtitle="Your teacher can use this number for school updates."
+        />
+        <Field
+          label="Parent or guardian name"
+          value={parentName}
+          onChangeText={setParentName}
+          autoCapitalize="words"
+          placeholder="Juan Santos"
+        />
+        <Field
+          label="Mobile number"
+          value={parentPhone}
+          onChangeText={setParentPhone}
+          keyboardType="phone-pad"
+          autoComplete="tel"
+          textContentType="telephoneNumber"
+          placeholder="+63 917 123 4567"
+          hint="Shared with the teacher only through your profile QR."
         />
       </Card>
 

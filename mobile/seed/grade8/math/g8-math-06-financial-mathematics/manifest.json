@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-math-06-financial-mathematics",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:db7c83acef7020d8975bb58be136cd2a98bd7f11b8806719216eced61c568556",
+    "lesson.md": "sha256:68f764ac623a85ae8d87cd71746f90ad0441ea10dae4856538bac645215598a2",
     "g8-math-06-financial-mathematics-quiz.json": "sha256:1a00bd1dd81f6d4321fc455f140c8cf75966e4114543330efa58c120e0411d70",
-    "images/concept-guide.webp": "sha256:de3241fa2830748aafe8d1702b3f4ba7e8255f71fdf74baa560c851321f817aa",
-    "images/worked-example.webp": "sha256:f0a714a01360ce1aa5862fd8936dd924e3e315db412fd5124eab09f044d9f99d"
+    "images/concept-guide.webp": "sha256:0d89827475038519e6d20c5f4b1991cb910277ca190c29d67efa722ed293d360",
+    "images/worked-example.webp": "sha256:f91d681e2a77104c2a93f19fcd6112c98c2d7e90f2e093d7b74de52b6915a2ba"
   },
   "quizId": "g8-math-06-financial-mathematics-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-math-06-financial-mathematics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-math-06-financial-mathematics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-math-06-financial-mathematics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-math-06-financial-mathematics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-math-06-financial-mathematics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

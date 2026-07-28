@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-science-03-electricity-and-magnetism",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:73b9c26f99770a8664ad37268331bac1240b0ff8906df252d91005323e20d7d3",
+    "lesson.md": "sha256:6c56f846777f9e8f3ff1af729fdcd6da4f23afdc41f2abd476dec77ed791e4f1",
     "g10-science-03-electricity-and-magnetism-quiz.json": "sha256:0605353cbc301c71a455d1de89b7c4d904cfeb3ee21a96aed59b75328c3616d8",
-    "images/concept-guide.webp": "sha256:a344689e40194e77f1a103d44fe2f507eb0b5c826a71b60874f739faa6c88773",
-    "images/worked-example.webp": "sha256:0b236285a3ccbd2969cfa7097f66768080d3c2572f1fc573a5bf4d067614ae4f"
+    "images/concept-guide.webp": "sha256:df7ded7143c19b6e45c2b641a89fe258e68a47719d1847ae0aeb32ec9737b55a",
+    "images/worked-example.webp": "sha256:cb571288a4d60442a5a235e6649e0b3062ef8d98fff8deb7f60c8f3f0a250cde"
   },
   "quizId": "g10-science-03-electricity-and-magnetism-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-science-03-electricity-and-magnetism",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-science-03-electricity-and-magnetism",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-science-03-electricity-and-magnetism",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-science-03-electricity-and-magnetism",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-science-03-electricity-and-magnetism",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

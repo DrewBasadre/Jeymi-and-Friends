@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-math-05-geometry-of-polygons",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:083b708578be481bc139702ada5855c0a6049dd03655efd240b68e3637d5c9ee",
+    "lesson.md": "sha256:a5178ec10020a5fd5576a3ebb83e91472efe74872413a5325ed176b70d591e17",
     "g7-math-05-geometry-of-polygons-quiz.json": "sha256:269fb3a872e1dcfc32e1dd469652dacb77f094fbe3ad5944ceb479d2023a8b64",
-    "images/concept-guide.webp": "sha256:7fa1441acdac890d302a1aed5afb60d7885809c980f9a5e390bceac5213e4095",
-    "images/worked-example.webp": "sha256:172c62010746054e7247162c2f1231c8bd2ea7ef2647850fa88413ba4b73f973"
+    "images/concept-guide.webp": "sha256:54191e19f3eb7d427ebe0fc18f18642a8d91998cfb786f7708aea14d5e441349",
+    "images/worked-example.webp": "sha256:3663ad712491884862d6d9e2056204f5370b2bae4d9bca0ed4758fb3dccceb6e"
   },
   "quizId": "g7-math-05-geometry-of-polygons-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-math-05-geometry-of-polygons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-math-05-geometry-of-polygons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-math-05-geometry-of-polygons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-math-05-geometry-of-polygons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-math-05-geometry-of-polygons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

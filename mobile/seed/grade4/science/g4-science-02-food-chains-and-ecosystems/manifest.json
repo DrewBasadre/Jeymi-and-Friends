@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-science-02-food-chains-and-ecosystems",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:3347a789d60f62cb9bf6503fb14db00a7bf684f2f8e39e8171edec07237b4c8e",
+    "lesson.md": "sha256:34dc6e0e8aca521c59a938300cd7b57461b631f480fa93ffe3699a1c4c874b36",
     "g4-science-02-food-chains-and-ecosystems-quiz.json": "sha256:4b81f8072ed40eeddf2a82796dada8d6ac730fddcadc0a54c80d5732fad32185",
-    "images/concept-guide.webp": "sha256:18234fb05d6d14713fb1e9e877f5b0beb2c79ea2a92d0793472d866e4e8d8bd1",
-    "images/worked-example.webp": "sha256:ff27bfdc709f7340366b1aa3f1ecd3334d590d2005c4aee6c9b36e5da4f7c902"
+    "images/concept-guide.webp": "sha256:7285f96ddc3da6359ab670c750ba39a4e288c58fc6be8d085d88261d552c60f1",
+    "images/worked-example.webp": "sha256:c4e971318d1dab570165d5f1217761f362c6e7ee6f6428d68a106a17bcffdeb5"
   },
   "quizId": "g4-science-02-food-chains-and-ecosystems-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-science-02-food-chains-and-ecosystems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-science-02-food-chains-and-ecosystems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-science-02-food-chains-and-ecosystems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-science-02-food-chains-and-ecosystems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-science-02-food-chains-and-ecosystems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

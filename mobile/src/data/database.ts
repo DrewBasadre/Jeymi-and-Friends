@@ -1,8 +1,8 @@
 import * as SQLite from 'expo-sqlite';
 import { removeLegacyAddedMaterialsDemoFiles } from '@/services/modulePackages';
 
-const DATABASE_NAME = 'wais-next.db';
-const SCHEMA_VERSION = 6;
+const DATABASE_NAME = 'pavo-next.db';
+const SCHEMA_VERSION = 7;
 
 let databasePromise: Promise<SQLite.SQLiteDatabase> | null = null;
 
@@ -28,6 +28,8 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
       last_name TEXT NOT NULL,
       middle_initial TEXT NOT NULL DEFAULT '',
       display_name TEXT NOT NULL,
+      parent_name TEXT NOT NULL DEFAULT '',
+      parent_phone TEXT NOT NULL DEFAULT '',
       grade_level INTEGER NOT NULL,
       section TEXT NOT NULL,
       birthday TEXT NOT NULL DEFAULT '',
@@ -356,6 +358,18 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
     'quiz_attempts',
     'learning_format_used',
     "TEXT NOT NULL DEFAULT 'text'",
+  );
+  await ensureColumn(
+    database,
+    'students',
+    'parent_name',
+    "TEXT NOT NULL DEFAULT ''",
+  );
+  await ensureColumn(
+    database,
+    'students',
+    'parent_phone',
+    "TEXT NOT NULL DEFAULT ''",
   );
   await ensureColumn(database, 'quiz_attempts', 'quiz_id', "TEXT NOT NULL DEFAULT ''");
   await ensureColumn(

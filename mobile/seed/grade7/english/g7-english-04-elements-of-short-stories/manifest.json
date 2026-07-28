@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-english-04-elements-of-short-stories",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:53d3f7dafac68a8cac7ae67edbe318219b0e76af1a517e53210f0d37a554d598",
+    "lesson.md": "sha256:404e4679a3433a73b3999ca4e2672119fd3ae5088336b6480133bc684d98c86e",
     "g7-english-04-elements-of-short-stories-quiz.json": "sha256:dee5bc91ec5cf12c1811e9c0bfb80c79e3dbe276eb53ed05bb9fc1c6f4950331",
-    "images/concept-guide.webp": "sha256:33a5c06198373ace05bdf99d5b6f4c0970c9f618c5618fea0b5928a18fbcb8b5",
-    "images/worked-example.webp": "sha256:8959b7526bd0b435efc47be6a2e856d3dabcbf4a42d30f73310e6a1d5d9282e3"
+    "images/concept-guide.webp": "sha256:cc9934e1e978856f1ef19e566ff39d8177cfc317754910d3c719ca47ee340f7d",
+    "images/worked-example.webp": "sha256:413d01e5cc3ca9b7c263f69b1189567644fbfd07ad5af5e6c52fe5b149421c98"
   },
   "quizId": "g7-english-04-elements-of-short-stories-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-english-04-elements-of-short-stories",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-english-04-elements-of-short-stories",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-english-04-elements-of-short-stories",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-english-04-elements-of-short-stories",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-english-04-elements-of-short-stories",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-english-04-action-words",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:a6076b3e8db57cc8fa3a907f1657c67eaeb96847eae76b732f5c3341440316c6",
+    "lesson.md": "sha256:5b0a7afa37c3bda142931493fe8d550ed74060892f69c731e4f6fcd2b5b0fb4e",
     "g1-english-04-action-words-quiz.json": "sha256:2cb6a1f02bccc0593d9bc898f65b28f4c0bb6aca071835747b444eca02b84026",
-    "images/concept-guide.webp": "sha256:6e86e067f68271351fcbad3e9663ebd4ec6952aeb6ff43335179c6864a3dd6a2",
-    "images/worked-example.webp": "sha256:d6c1e9fafb073f5f2a42ef587c09b8494f4a3d797f5b86219996d6b0b3268419"
+    "images/concept-guide.webp": "sha256:c03f85aa34853fc40b7f92bf3a498f2f0cedf0a4958bfb7003b65b50f82ffb0e",
+    "images/worked-example.webp": "sha256:efb1152e161aab334cdb782ae0606c1d92b1470607094e8d3be3553f6d236714"
   },
   "quizId": "g1-english-04-action-words-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-english-04-action-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-english-04-action-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-english-04-action-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-english-04-action-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-english-04-action-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

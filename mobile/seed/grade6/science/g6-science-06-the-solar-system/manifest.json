@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-science-06-the-solar-system",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:8dee22b3a9c25b76ca97fbafd949fba529c8e9e3480ba828364aa156351dde3e",
+    "lesson.md": "sha256:fa8c1494354fef22ee0092a1c78ae87a7ff461925745c065e8d6981667e2a0b6",
     "g6-science-06-the-solar-system-quiz.json": "sha256:4039dd7156053485b2580e65341d03486b2dc9218aedf8eb00b400a5026248ae",
-    "images/concept-guide.webp": "sha256:9f53b6f3836ecb026a9ef69ba68ef7a169dc4da8319ed10d7a8204d8438ba736",
-    "images/worked-example.webp": "sha256:371bc34b11061bf5b69b9ebab1eb1d287ee90261975036945e44a05cf053b707"
+    "images/concept-guide.webp": "sha256:645d99c27e6ffee9ba0683dbb0e8f7fb37625d36e48266c14e745b38c142aed8",
+    "images/worked-example.webp": "sha256:0a1fb4896ee0dc4c1dba58b4281f67e31fd3b6ee12088fcc8869296eef8d21a8"
   },
   "quizId": "g6-science-06-the-solar-system-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-science-06-the-solar-system",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-science-06-the-solar-system",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-science-06-the-solar-system",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-science-06-the-solar-system",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-science-06-the-solar-system",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

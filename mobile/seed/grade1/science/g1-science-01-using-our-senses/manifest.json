@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-science-01-using-our-senses",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:41a097bd2d278ca2d32b31a4a215f31ece9d9caf6fb206a5edebd2d8490fad6c",
+    "lesson.md": "sha256:637ee946f4ffa1a1e270b04702b4d178ea45165f2566afd63ada12f62ffff770",
     "g1-science-01-using-our-senses-quiz.json": "sha256:0e2ceb82a91064f6f4d2e3b0ec5464a2611d51b91d523e0c50751725348fb7f4",
-    "images/concept-guide.webp": "sha256:f1647748e97251bfe068ee90e48d8afcefaf9c6081bbb4cafa300ce76282574a",
-    "images/worked-example.webp": "sha256:60fcc29dc075c69612d5c65549c3d21d4807fd12bb81c7d24e8356ae99f46e8a"
+    "images/concept-guide.webp": "sha256:18ef12a3471d80069e9bc2324146fd8057ac2a09762b4544e4539c1f165fd9f7",
+    "images/worked-example.webp": "sha256:74ed3fbd151932717b269d3ae0a7cdbfaffaf8d42359250c6b271c101d8b0c06"
   },
   "quizId": "g1-science-01-using-our-senses-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-science-01-using-our-senses",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-science-01-using-our-senses",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-science-01-using-our-senses",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-science-01-using-our-senses",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-science-01-using-our-senses",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

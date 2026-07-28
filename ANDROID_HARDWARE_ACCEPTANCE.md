@@ -1,4 +1,4 @@
-# WAIS Android Hardware Acceptance
+# PAVO Android Hardware Acceptance
 
 The automated suite and Android emulator cover schemas, persistence, rendering,
 navigation, QR generation, report aggregation, and native compilation. Complete
@@ -43,4 +43,4 @@ the checks below on two physical Android devices before a classroom release.
 
 - No internet connection is required for any check above.
 - No Supabase, OTA, or callable AI request should appear in device logs.
-- Both devices must use the same current WAIS Android build.
+- Both devices must use the same current PAVO Android build.

@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-math-05-lines-angles-and-polygons",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:c65080a10cb56554ffb754ca507c2153e5e629489800edc8ba64ed8a46829de4",
+    "lesson.md": "sha256:71f8f1566ff0397ccce25749a89de20e87a6b73c6df6caaef5299fde41694c7b",
     "g3-math-05-lines-angles-and-polygons-quiz.json": "sha256:0deec040268fe0b6700761c14404b7ce40beccc6dcd5dd21322f230027bc06da",
-    "images/concept-guide.webp": "sha256:84bd874d8ed17a4afc5b2b66a73e88a148f2c5b384c6c3a2d7889827e8336916",
-    "images/worked-example.webp": "sha256:dd7f1e1266b44302a0838df4f48a57211eb41ffc87dcb9b26e4d30f3507511fa"
+    "images/concept-guide.webp": "sha256:d7ce52fa517b981b9b9d51098347417f2da49941ddc1cac996d167b0921c87ce",
+    "images/worked-example.webp": "sha256:415da0c210cb11733a2a8a001dfe949b9341e6004998bf22cc70ced56d67df32"
   },
   "quizId": "g3-math-05-lines-angles-and-polygons-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-math-05-lines-angles-and-polygons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-math-05-lines-angles-and-polygons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-math-05-lines-angles-and-polygons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-math-05-lines-angles-and-polygons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-math-05-lines-angles-and-polygons",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-science-05-motion-in-one-dimension",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:02dca626d4f6ea26237a1a2128dd5eca3b196e09c9ec3b8b4583853797cd0246",
+    "lesson.md": "sha256:05a35e534e623945c478cced495239b2439216ebfc9288d52992942208b3b943",
     "g9-science-05-motion-in-one-dimension-quiz.json": "sha256:c81f32d63a219bc858dc537fce0c9e165563a22869a8fce61552c6242ff300b9",
-    "images/concept-guide.webp": "sha256:f7a3290123faff40d91d8c9f876d321f984c7983552956b908af2eaaf6d6883c",
-    "images/worked-example.webp": "sha256:4339b8016618e4127f1df7f363e9c125d6cac500e9804225407e309560cead59"
+    "images/concept-guide.webp": "sha256:e38d39847a1d8031e0806214001e155fa03e5e6a30ccc849e9c01b5353f88992",
+    "images/worked-example.webp": "sha256:b59ec9eceb5a1302867ed17be4405084cb86d90ffe9034f8f685d2a5045750eb"
   },
   "quizId": "g9-science-05-motion-in-one-dimension-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-science-05-motion-in-one-dimension",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-science-05-motion-in-one-dimension",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-science-05-motion-in-one-dimension",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-science-05-motion-in-one-dimension",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-science-05-motion-in-one-dimension",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

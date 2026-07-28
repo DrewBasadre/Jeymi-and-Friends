@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-science-05-motion-and-simple-machines",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:524702a13443b9d504d918d1a61f65c237b55a8daefb11aed430bd36b30cb8d4",
+    "lesson.md": "sha256:8ce0b1b4af2e46b826b9ed4328e8cc7d136a5ace818cb4998d268890c88d003b",
     "g3-science-05-motion-and-simple-machines-quiz.json": "sha256:4e703a384114186b3237574b640c42fa1f5088a1758174bc40aa1799843bf0ca",
-    "images/concept-guide.webp": "sha256:3f15e31be46d2f963edb204798f83c1604bb7ed9b7a50f05d0d01fc9fb19d56a",
-    "images/worked-example.webp": "sha256:40c33405ed18ebd68076ad3403aa0cbdb9c5991e876cd39f633cf520bef11095"
+    "images/concept-guide.webp": "sha256:ef0a0351311217feb1fa0b22b76f95b7c661ffaf159ab56e1334f7db4d1d3694",
+    "images/worked-example.webp": "sha256:0274e6c3c01386fdf083e20882e64f65499c878b5d3d5116bb8b5e24851475d9"
   },
   "quizId": "g3-science-05-motion-and-simple-machines-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-science-05-motion-and-simple-machines",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-science-05-motion-and-simple-machines",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-science-05-motion-and-simple-machines",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-science-05-motion-and-simple-machines",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-science-05-motion-and-simple-machines",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

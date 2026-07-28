@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-science-03-living-and-nonliving-things",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:fb65ef3880a734c6f05bc56663cf38678ec9a48e0cd3a63ff78a75407767532e",
+    "lesson.md": "sha256:d8c9cd61623ca7c507a8481801dd9fb34a04f8b10cf5c74c6096f675b18d0ff7",
     "g1-science-03-living-and-nonliving-things-quiz.json": "sha256:5039edd5988ca10ef8e4cac97fd9e5ed2fe066065339e719bfeca5adfc1f561c",
-    "images/concept-guide.webp": "sha256:bb6c0aa1199ab9f7fcf20b5de84ad1f419924a2dd65240bcc0f4c189783bfe39",
-    "images/worked-example.webp": "sha256:9fa7c3a8d10f42784f0fceef04bf58cf385d3c9b6971768ba60a4aa4c31d2dee"
+    "images/concept-guide.webp": "sha256:4f19eeacdd22312bc2659909aea5df0bf28462f45c9761b777630c8a544902d5",
+    "images/worked-example.webp": "sha256:d8ca991d1643acc63eb6a4bd51896d9cabec0f657a718b2c2745d49e14516731"
   },
   "quizId": "g1-science-03-living-and-nonliving-things-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-science-03-living-and-nonliving-things",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-science-03-living-and-nonliving-things",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-science-03-living-and-nonliving-things",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-science-03-living-and-nonliving-things",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-science-03-living-and-nonliving-things",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

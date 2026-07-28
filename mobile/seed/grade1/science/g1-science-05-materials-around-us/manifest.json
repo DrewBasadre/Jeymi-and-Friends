@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-science-05-materials-around-us",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:1bf797decafaa0944ee37669a78faec856d6a56b55f25b4ae00a43c1aadb9a68",
+    "lesson.md": "sha256:e36d5c4600703222cbdcf8b951bba9242db9233b44d1b8fd0a0e198a97df5a95",
     "g1-science-05-materials-around-us-quiz.json": "sha256:f16b9cde77866a3d51121d65c40aefc2da72b9709e78957655502429fa57ca21",
-    "images/concept-guide.webp": "sha256:2c9c1d93e7bc915ba7079b399dbd95abbddc9f739f1b3523de4715e04dded5d8",
-    "images/worked-example.webp": "sha256:1e1afc345eb4dab199effa6189f992522dcc2aae6970789bb3c1b8ea22fe94fa"
+    "images/concept-guide.webp": "sha256:ceddb4c8aec8767c27ac63c51ec9fa927e03f9bc7f2119aa7e9a91e89f3c5a8f",
+    "images/worked-example.webp": "sha256:fe7ef2a5f4f6f3274b85387cfaba0385aa95d64ec12d5665033d03b3330d294f"
   },
   "quizId": "g1-science-05-materials-around-us-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-science-05-materials-around-us",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-science-05-materials-around-us",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-science-05-materials-around-us",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-science-05-materials-around-us",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-science-05-materials-around-us",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-math-02-multiplication-strategies",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:31f488da3c4abb25fc9fe5197cf0a70d04c68c55134960fadec794e1ee718928",
+    "lesson.md": "sha256:ce8503c9568c7cfa7c94a443b5a65d857b6e74aa721f1b7dc2f386358cb40995",
     "g4-math-02-multiplication-strategies-quiz.json": "sha256:7f3214be2baf02cf5acda6a3cdfe8a2b056712e305d1d407b20fca1fb5dee488",
-    "images/concept-guide.webp": "sha256:f7a202c64b7f7846198d057f3585fba67e4afb370145721b289e6213a19c1587",
-    "images/worked-example.webp": "sha256:eb8d5b226f40693221566cf7da960539ab23e30cb847f62c8c10d9c624c723df"
+    "images/concept-guide.webp": "sha256:bd3fb5fb86b97d5694f4fe4466da5b380c2ee0336887109d89afa0d3f1d154d1",
+    "images/worked-example.webp": "sha256:917d373baf46967ede5b10950fc33bde6301e932852f28f0ea014d957d85665a"
   },
   "quizId": "g4-math-02-multiplication-strategies-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-math-02-multiplication-strategies",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-math-02-multiplication-strategies",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-math-02-multiplication-strategies",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-math-02-multiplication-strategies",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-math-02-multiplication-strategies",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

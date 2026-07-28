@@ -430,14 +430,14 @@ async function generateModule(grade, subject, number, topic) {
   await writeFile(path.join(moduleDir, markdownPath), markdown);
   await writeFile(path.join(moduleDir, quizPath), `${JSON.stringify(quiz, null, 2)}\n`);
   await writeFile(path.join(moduleDir, 'manifest.json'), manifestBytes);
-  await writeFile(path.join(moduleDir, `${moduleId}.wais-module`), archive);
+  await writeFile(path.join(moduleDir, `${moduleId}.pavo-module`), archive);
   registry.push({
     grade,
     subject,
     title,
     moduleId,
     relativeArchive: path
-      .relative(path.join(ROOT, 'src', 'seed'), path.join(moduleDir, `${moduleId}.wais-module`))
+      .relative(path.join(ROOT, 'src', 'seed'), path.join(moduleDir, `${moduleId}.pavo-module`))
       .split(path.sep)
       .join('/'),
   });
@@ -466,7 +466,7 @@ function buildMarkdown({
         : `Ask: What assumptions does the model make, and what evidence would strengthen the conclusion?`;
   return `# ${title}
 
-> WAIS demo content aligned to MATATAG Quarter 1 learning goals. This is an original classroom learning aid, not official curriculum text.
+> PAVO demo content aligned to MATATAG Quarter 1 learning goals. This is an original classroom learning aid, not official curriculum text.
 
 ## Learning goal
 
@@ -576,7 +576,7 @@ function buildReviewItems({
   example,
   activity,
 }) {
-  const authoredBy = 'curriculum:wais-demo-q1';
+  const authoredBy = 'curriculum:pavo-demo-q1';
   const base = {
     moduleId,
     moduleVersion: 1,
@@ -692,7 +692,7 @@ async function renderTeachingAid({
     ${headlineText}
     ${bodyText}
     ${subjectGraphic}
-    <text x="54" y="510" class="footer">WAIS • Grade ${grade} • MATATAG-aligned demo content</text>
+    <text x="54" y="510" class="footer">PAVO • Grade ${grade} • MATATAG-aligned demo content</text>
     <style>
       .eyebrow { font: 700 14px Arial, sans-serif; fill: #FFFFFF; letter-spacing: 1px; }
       .title { font: 800 30px Arial, sans-serif; fill: #111827; }

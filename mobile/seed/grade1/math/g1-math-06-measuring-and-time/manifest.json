@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-math-06-measuring-and-time",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:f3f8b8669e94dde41be9e97b6df269253ec5c2967404e325c9cb939ff9fa775e",
+    "lesson.md": "sha256:4318912809e4f808678213427b91bd02b9fd564ba4efea1d0e407d3272d12ae7",
     "g1-math-06-measuring-and-time-quiz.json": "sha256:7e00be04f62c10c081ef2d1b1f653de786f7c3fc1f5d351c57eb54eac736497e",
-    "images/concept-guide.webp": "sha256:9abc905f5ec2dcd508f8acd7bd532b9837c8ea128a499d460600b38bcadfbfd9",
-    "images/worked-example.webp": "sha256:8397615f626508c9851f577abb0b4983e4c23274401e0fce4cf9af26a487c174"
+    "images/concept-guide.webp": "sha256:2e1e71268251cefed91054ead07c72c9efd0cebe267a8ac9d976d618f90e3850",
+    "images/worked-example.webp": "sha256:5183f60e7cbc7cd5334841c25c4c54d29d0460ccfd4cd0f531e13ddb899761f3"
   },
   "quizId": "g1-math-06-measuring-and-time-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-math-06-measuring-and-time",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-math-06-measuring-and-time",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-math-06-measuring-and-time",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-math-06-measuring-and-time",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-math-06-measuring-and-time",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

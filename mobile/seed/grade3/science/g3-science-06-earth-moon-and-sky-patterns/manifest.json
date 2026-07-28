@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-science-06-earth-moon-and-sky-patterns",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:b1432f511ed9db336678f28d1958dad0e1e2449640d1113f8af1b5cb5afb3877",
+    "lesson.md": "sha256:2200ff9422ac67da0d9820608fa0e00a70f44f33e0b3a8154e52517dae37c3fa",
     "g3-science-06-earth-moon-and-sky-patterns-quiz.json": "sha256:99ba0d0cf8a630aee0175b575aac904b4311d4f300b118f90ed65be7abf9c461",
-    "images/concept-guide.webp": "sha256:51aef5af61ce735c452068ecedce489b8689066c935077ee4dbc8ef599df71e2",
-    "images/worked-example.webp": "sha256:bce793b799b4a1a449997b8cc249760c2c2ba7c05f5b4b21a3a104adbdbce24b"
+    "images/concept-guide.webp": "sha256:896c92cefa8975330ccafb032230e9e92b6d0e092815d9fa846796ad1e34411e",
+    "images/worked-example.webp": "sha256:6cec4a7c4acd6e90b06534b3efb4cb4e6272656614dcffadbe759bb197d5b298"
   },
   "quizId": "g3-science-06-earth-moon-and-sky-patterns-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-science-06-earth-moon-and-sky-patterns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-science-06-earth-moon-and-sky-patterns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-science-06-earth-moon-and-sky-patterns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-science-06-earth-moon-and-sky-patterns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-science-06-earth-moon-and-sky-patterns",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

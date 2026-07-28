@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-science-06-earth-structure-and-geologic-processes",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:1ac65796c56f496a7b32f9807277e0c987a865f3e8971c52444aeb2a6f920545",
+    "lesson.md": "sha256:abab4cd273fdce9724354a416834b612adfd8f2af3158029ec637fad626c4132",
     "g7-science-06-earth-structure-and-geologic-processes-quiz.json": "sha256:2d63d195714880c80c43b57eab87daa77e576cc54d14dbd949b56ad37a8511df",
-    "images/concept-guide.webp": "sha256:0507f1d90e738aa8df3272433146ee2295af0fecf08cedc1d6e7ea8fcf621bad",
-    "images/worked-example.webp": "sha256:a2d66d12691cd03a31212d0f266447de1334a211eacd08ee0baf3c73620a87af"
+    "images/concept-guide.webp": "sha256:dd0cae40301e9b6364f4546f028fb77c4d61764945d0f1bc1b5f21623559774b",
+    "images/worked-example.webp": "sha256:e5910862c96bc62fd9a6041fda47ccd1295cc124e98cd189c839d659f454fd72"
   },
   "quizId": "g7-science-06-earth-structure-and-geologic-processes-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-science-06-earth-structure-and-geologic-processes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-science-06-earth-structure-and-geologic-processes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-science-06-earth-structure-and-geologic-processes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-science-06-earth-structure-and-geologic-processes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-science-06-earth-structure-and-geologic-processes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-english-04-research-questions-and-sources",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:54bd29669b2bf2d379e28aea235cca7cabf5e39a682e1a85ebe00018a4fae63b",
+    "lesson.md": "sha256:6c6f3dbd302338d7a1292088f7b307b751eef8600d65c8b41ade2043a45e5cfd",
     "g9-english-04-research-questions-and-sources-quiz.json": "sha256:a4e56fb5ae1ab49e7fde0aeabe93a6c1e566924b2e699ebd3b2daf7d6d8c75ba",
-    "images/concept-guide.webp": "sha256:e6d75de6c830554995f88b04d91d043e96701574cc0223aa99b66acdf7c540cd",
-    "images/worked-example.webp": "sha256:27ea882a5776dc641e6eae0d8eb8eb442e9123e1bc55c64db79a1236d45b39ab"
+    "images/concept-guide.webp": "sha256:5be5fb0affe3afc53180fc53038c4fc0120668a3fc85b796335d8dd0b190d7e7",
+    "images/worked-example.webp": "sha256:0d3ba40c4cb290e774354576696485819c487858ec5947192f1691adaf54b977"
   },
   "quizId": "g9-english-04-research-questions-and-sources-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-english-04-research-questions-and-sources",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-english-04-research-questions-and-sources",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-english-04-research-questions-and-sources",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-english-04-research-questions-and-sources",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-english-04-research-questions-and-sources",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

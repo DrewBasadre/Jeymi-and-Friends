@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-math-02-polynomial-functions",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:bbac1822c7aedeabaed829cbc16782c266be9a6c73157f7111754fe9e7a08254",
+    "lesson.md": "sha256:a8728c798f70105b70a65f4af3537e13a863372d66c9472fb91972a339ab5275",
     "g10-math-02-polynomial-functions-quiz.json": "sha256:9dc66cbd08f7093e14cb374c2a574c56f28c731a66504d7cf66c51d192a20563",
-    "images/concept-guide.webp": "sha256:041265eabe40f1c2374f3f212fefafa2e97c0156fe4c573e21b296b7d4108e6a",
-    "images/worked-example.webp": "sha256:76ca762f6b778c2173d58d598ead708dbaf7832924d7ddd41d9f9c8ee3c52860"
+    "images/concept-guide.webp": "sha256:a91766ce33f1016e2b447162f6f68feae04679e5320018c150e5236116df26c5",
+    "images/worked-example.webp": "sha256:0b2539080459228dec60e96ab4fe20b0b7147910b31a27c1c46a3b6f00e8672f"
   },
   "quizId": "g10-math-02-polynomial-functions-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-math-02-polynomial-functions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-math-02-polynomial-functions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-math-02-polynomial-functions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-math-02-polynomial-functions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-math-02-polynomial-functions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

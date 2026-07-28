@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-english-04-adjectives-and-adverbs",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:e9626944685cadbb5bdac1d608d678d6603df7a6dcb6c9abf47e5fd1dc4a87e1",
+    "lesson.md": "sha256:157f53b9047c4319ac3f7c09ae300c61229da0264053ddd7ccd5f01bf888c036",
     "g3-english-04-adjectives-and-adverbs-quiz.json": "sha256:d8548393155b845d695856319451bca863e04e0a7abf65c7f9538fb004b1f414",
-    "images/concept-guide.webp": "sha256:3d5d9f1100d7efdc31f2877ddc56daa4e02e34f8cce90d52d602328df2982566",
-    "images/worked-example.webp": "sha256:61519ac064e8ab6901166defca55e47bd55d6fa83dab9e6be584c4ecc12acbce"
+    "images/concept-guide.webp": "sha256:20e43f41a96eaf9104777711fc792e74799bb1bf04545614ec4b6eb74272249a",
+    "images/worked-example.webp": "sha256:9cb76b422ce179c0ae581c24988c42121233677358aa262c86b54efd03d3630a"
   },
   "quizId": "g3-english-04-adjectives-and-adverbs-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-english-04-adjectives-and-adverbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-english-04-adjectives-and-adverbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-english-04-adjectives-and-adverbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-english-04-adjectives-and-adverbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-english-04-adjectives-and-adverbs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

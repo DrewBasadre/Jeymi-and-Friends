@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-english-06-characters-and-setting",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:771f5e32e326a705e8c8d89986cb7aaceada21781ed56d0b7df8b282c1903530",
+    "lesson.md": "sha256:07560d22ea7ea5c3f9167d30d5a98bcef78c3f5ebf99ae15e75e5e67bdd6e789",
     "g2-english-06-characters-and-setting-quiz.json": "sha256:1da0deee5bb8c225b0e517cfe7444963b03c0cd6f2c9e793888bdd48423f86a1",
-    "images/concept-guide.webp": "sha256:306e8292d72a9bfa0c32aa17aca3d854e05d36019948859e91b964306043d055",
-    "images/worked-example.webp": "sha256:ac71096ca378b05590b9353c355db09b5e5625f1af0871bc43f8700c77b6e770"
+    "images/concept-guide.webp": "sha256:023df7844f71553e99020137bc6d467eaa20e3b5322c2962d5329e815b9c043f",
+    "images/worked-example.webp": "sha256:e5a23be23cd19896686173e16f7a03d2bc2bff6480f1e554206c153a4f22ad40"
   },
   "quizId": "g2-english-06-characters-and-setting-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-english-06-characters-and-setting",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-english-06-characters-and-setting",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-english-06-characters-and-setting",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-english-06-characters-and-setting",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-english-06-characters-and-setting",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

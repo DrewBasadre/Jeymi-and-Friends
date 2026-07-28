@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-english-03-present-and-past-actions",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:f226a6639acbadcfb60a94468af828f0731dc77a6e80dee607ecc0206cdb7217",
+    "lesson.md": "sha256:74ca2c9acf8c15c2086e03f6b3cc58c356dcc635fa639492bd4816ac3693f846",
     "g2-english-03-present-and-past-actions-quiz.json": "sha256:8252d223f8ff36e541209af565ccf5cf0dc71c7d6f093e622742679fc6b2b59f",
-    "images/concept-guide.webp": "sha256:a8acfff1552c51bd8639f42f1abfaff839c098e5a482ab28a26cc9ea0a335efa",
-    "images/worked-example.webp": "sha256:b24ba3abf137d25ecaff7a91741dfa93f324b21d8873be0f7db6d01b1e038cbc"
+    "images/concept-guide.webp": "sha256:1825ffa2a2e4c595da6f326acaf174f6a3aba987eb427ae3e8ce544eabee42c5",
+    "images/worked-example.webp": "sha256:f14c7103770fdc801894314f958f92b2b324c12e6191f36d9743131e403314a7"
   },
   "quizId": "g2-english-03-present-and-past-actions-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-english-03-present-and-past-actions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-english-03-present-and-past-actions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-english-03-present-and-past-actions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-english-03-present-and-past-actions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-english-03-present-and-past-actions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

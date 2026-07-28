@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-math-04-equivalent-fractions",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:ded227af5c7dd5306344478736aba81e5ed023791989f2ea3d59817ce690dc60",
+    "lesson.md": "sha256:3ec7b8b5339fe3c010bc9b7c77fab3b2455ced72d63a5b7b80c1ca0749d4976e",
     "g4-math-04-equivalent-fractions-quiz.json": "sha256:5c8e1a2cc1d9e60bec2a626d8ee5f21a9db8970712d13396bb34132dea006d22",
-    "images/concept-guide.webp": "sha256:9384591cd02bedd103570f6a116172dfb647e87e27b1a9efe83c27d69a7202f5",
-    "images/worked-example.webp": "sha256:ca25541cc23a43b8e9772785f120cf66004c92ae8a25984ad0bee996c2a135c6"
+    "images/concept-guide.webp": "sha256:c7578b7069c6c56abb8ac1cb200d1dd5a4b912069f3e035e74dbdbbfd2e5a490",
+    "images/worked-example.webp": "sha256:d0d193519829a74337b7b64de9f567b99b2fb2137f99aaa6cd44c6067418f446"
   },
   "quizId": "g4-math-04-equivalent-fractions-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-math-04-equivalent-fractions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-math-04-equivalent-fractions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-math-04-equivalent-fractions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-math-04-equivalent-fractions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-math-04-equivalent-fractions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

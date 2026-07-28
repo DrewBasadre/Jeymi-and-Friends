@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-math-06-length-time-and-money",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:a4c86d1a658d7a2a9116ca315aa9ac7115ff5aa8ea54879d19d04777a18a5a93",
+    "lesson.md": "sha256:108a8e1022e472335c62df1917c75ef8206af3cf8a0bbe6f80d22c3910728b91",
     "g2-math-06-length-time-and-money-quiz.json": "sha256:36acf5d7ceb7c98ce8ed8ebd1255a8d8831b8f8b00e8836b8f37e230c100cf59",
-    "images/concept-guide.webp": "sha256:f6e2d32f65cd54f0e2a9841d4499d77e3f2ccd3a73e00d0da69eb01393fcfda8",
-    "images/worked-example.webp": "sha256:fe6db5a9ed144937c99caf5239b24f24d02b755b247c37fd226afca8afb396ca"
+    "images/concept-guide.webp": "sha256:8d16e4a3e2ee25dfec3344aeec2a600573e4a87223cbb0340d726119218ceefa",
+    "images/worked-example.webp": "sha256:3d3d1ecc48c98c22a2905f3fcc3ca221f3094d63f920288addb7ace0ef717773"
   },
   "quizId": "g2-math-06-length-time-and-money-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-math-06-length-time-and-money",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-math-06-length-time-and-money",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-math-06-length-time-and-money",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-math-06-length-time-and-money",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-math-06-length-time-and-money",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

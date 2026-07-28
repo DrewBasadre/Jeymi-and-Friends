@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-science-03-ecosystem-dynamics",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:ff4da9e60990da92c4c3d20d6afae6391b7d3a5bab863de6f4fa578404d33917",
+    "lesson.md": "sha256:b70bb9384a08b079778ee189449c6efd9d9dd22cd20b4acd5e276e40a50fa2b0",
     "g9-science-03-ecosystem-dynamics-quiz.json": "sha256:e9abf84324dec445fbe5c9f39d2bf820ac982573b84959038528d1e698c550eb",
-    "images/concept-guide.webp": "sha256:d917788d387828a855cc798e4a0bd7be76f305eb542498e718721e543353f3ff",
-    "images/worked-example.webp": "sha256:9f311fb0a35728780b7a354247b4475ac6aef9fcd81d49181949492192208cca"
+    "images/concept-guide.webp": "sha256:5565c74ee604919150e977a0354b7a9ceb5a1c0d5620f1ea9c2591ccc8df0f82",
+    "images/worked-example.webp": "sha256:dabdc2d3dc1053c22b4a94fe0c873b08b388a5d76c7a770a45060c9cefed8120"
   },
   "quizId": "g9-science-03-ecosystem-dynamics-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-science-03-ecosystem-dynamics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-science-03-ecosystem-dynamics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-science-03-ecosystem-dynamics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-science-03-ecosystem-dynamics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-science-03-ecosystem-dynamics",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-science-04-changes-in-matter",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:d1ccf2a1dc8c97fa575e29d7a349d3e26a9862f3219c549cc3c3ac09d65d602b",
+    "lesson.md": "sha256:1e3612d188904284cfec305ef28d453c0caeef7b9284876c5716439f8dfca98f",
     "g3-science-04-changes-in-matter-quiz.json": "sha256:1501aea48332ac6dcc0c6dd04b3938ce04c9ef307bfb9fc4eb2b1375694c50bc",
-    "images/concept-guide.webp": "sha256:16eea39d5894c0029be742c8474e96a1aeb5aac3efc97a9d8df4f48abe6f3063",
-    "images/worked-example.webp": "sha256:a46b2d7affd9756a4fece1ac9bf0b6013ced519587d75adeaa949eb53bf069c0"
+    "images/concept-guide.webp": "sha256:ebedd229a6eef91b8e126ebf40768206ca777b1ede173d85a119abd886e54138",
+    "images/worked-example.webp": "sha256:3286149aa4db183bd9eee5a81e0b109e416a11b54440cb9b4fe530b1db357551"
   },
   "quizId": "g3-science-04-changes-in-matter-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-science-04-changes-in-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-science-04-changes-in-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-science-04-changes-in-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-science-04-changes-in-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-science-04-changes-in-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

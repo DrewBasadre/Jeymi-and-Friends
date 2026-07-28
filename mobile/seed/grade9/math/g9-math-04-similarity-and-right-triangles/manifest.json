@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-math-04-similarity-and-right-triangles",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:7e7c17224095e853742c346bff06bea3e53808141bad67c11e89690ecb9ef795",
+    "lesson.md": "sha256:68b8bf0e39dd95e79817902082b3f147d09cfda652554ffa2e7cf9fec2b22b7b",
     "g9-math-04-similarity-and-right-triangles-quiz.json": "sha256:3dd8b5174bf64ac7d2ad9d14d5f3d627e068d5452386aa247ad692bd61ebfb42",
-    "images/concept-guide.webp": "sha256:879a15f2af8288cc81e0f82e1970ea6890273aee60372bbb98265d04194b3dea",
-    "images/worked-example.webp": "sha256:097acbefe5b297931581b83b84872a4a87e75d30addd1de37f17f68f01748af9"
+    "images/concept-guide.webp": "sha256:e311ea6dd134dc9df566115682306cf6a7a5fa05ed48836c8f3c60bb32fbb170",
+    "images/worked-example.webp": "sha256:5c21107fbd70739959b55e066c7e82f76c77100643d58f9d58f5ae5bb318d77a"
   },
   "quizId": "g9-math-04-similarity-and-right-triangles-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-math-04-similarity-and-right-triangles",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-math-04-similarity-and-right-triangles",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-math-04-similarity-and-right-triangles",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-math-04-similarity-and-right-triangles",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-math-04-similarity-and-right-triangles",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

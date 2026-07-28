@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-science-03-animal-groups-and-adaptations",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:50e5a31e626c553a2d72d86345bf0bd317ed32b80a87e1bcc8d029d0fa961e0d",
+    "lesson.md": "sha256:aee17efc7fa5229efccd4a5a612365f91826859d7d39da6a710edfdb431dd9b9",
     "g3-science-03-animal-groups-and-adaptations-quiz.json": "sha256:9d963e0ed21bdb34c2213f4faf06c3301185dc76c5f291d091df65aa4cdf7f28",
-    "images/concept-guide.webp": "sha256:e4b1645bce2354d19e9f38591a13d1de7fea5007620e7ed8974165d4b6777a8c",
-    "images/worked-example.webp": "sha256:71be55bf32950fc74f0a862f34c6f557d59a4b74434810e6ffac187e0b977935"
+    "images/concept-guide.webp": "sha256:d91f933050b4597b40c8a4448c338346910db539cfa5d11ac66a9823cba3ad8e",
+    "images/worked-example.webp": "sha256:f5c5e3a5ea2c3854683e41ce7705bc12a4408857ca0cf00c88d6f02917450181"
   },
   "quizId": "g3-science-03-animal-groups-and-adaptations-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-science-03-animal-groups-and-adaptations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-science-03-animal-groups-and-adaptations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-science-03-animal-groups-and-adaptations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-science-03-animal-groups-and-adaptations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-science-03-animal-groups-and-adaptations",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

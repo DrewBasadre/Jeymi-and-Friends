@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-english-03-naming-words",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:5967df30a0d1ddb334417c2f0161a8e4d9a9e6abd918e459f82509b66d72ee01",
+    "lesson.md": "sha256:18bdf24f316764145fde41bff32067cc317e510476d05b7f3edf066696c44b91",
     "g1-english-03-naming-words-quiz.json": "sha256:6c2ce1c04efcfeb6d36ecd7836b73c404a32f513b45303cc64e5e665769890ff",
-    "images/concept-guide.webp": "sha256:be6313e70fcf340589e2c23b8c1221e6b1429c4a84b1b7f75e1f33f666e61616",
-    "images/worked-example.webp": "sha256:8e3b1ecf17709418744d388155d449466e116602bb31e04a112f3915852e3edf"
+    "images/concept-guide.webp": "sha256:42c8d24220e8c196224b16908ce8eef414d0fa3dd8b3157db623dab1e7d291f8",
+    "images/worked-example.webp": "sha256:0a6628f47e1f1df49113622e364455af3dea7dbe971a07b432d3e6a6e6ee65e9"
   },
   "quizId": "g1-english-03-naming-words-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-english-03-naming-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-english-03-naming-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-english-03-naming-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-english-03-naming-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-english-03-naming-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

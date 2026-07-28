@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-science-01-atomic-structure-and-the-periodic-table",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:f9d09c5b19aae8271e9a56b42442ec4dfc1991d2313cc8205010f540316e00ff",
+    "lesson.md": "sha256:e3500d34f71e41d000863ed2f080a2f448e8d0254db12a2709cb0d82a834765c",
     "g8-science-01-atomic-structure-and-the-periodic-table-quiz.json": "sha256:7e7552caba01b4a37e97f0d25fc7c95a472bee582fcc0a80de825af4c2e0eca7",
-    "images/concept-guide.webp": "sha256:a1d33d90734ef206226b576ba7e5f5d194f87aac680a3a8b8fe06d10f6ce1db9",
-    "images/worked-example.webp": "sha256:886f18900c98365c17f53174f027f2812df3cc43491134b5a86d500604df8925"
+    "images/concept-guide.webp": "sha256:40ba280925f6c8d913680124151daa11b0e2c07612ed5bbe12576627c7eef4c9",
+    "images/worked-example.webp": "sha256:48e0983f56ec6c88abe94d767bc7863af44cc0e35d395dcedfc8b5ecbf298215"
   },
   "quizId": "g8-science-01-atomic-structure-and-the-periodic-table-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-science-01-atomic-structure-and-the-periodic-table",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-science-01-atomic-structure-and-the-periodic-table",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-science-01-atomic-structure-and-the-periodic-table",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-science-01-atomic-structure-and-the-periodic-table",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-science-01-atomic-structure-and-the-periodic-table",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

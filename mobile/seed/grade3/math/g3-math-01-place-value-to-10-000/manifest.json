@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-math-01-place-value-to-10-000",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:3a97161592cce7cd45f40dab166b13093d157f745d678ca355fa4487e9254089",
+    "lesson.md": "sha256:0fe80a6f4ae4de9cabfd3f19c572ee6924e008e98a141e699929c306ce8c416f",
     "g3-math-01-place-value-to-10-000-quiz.json": "sha256:50cadf183a8816ed2705e4643a856b35fb4a19c17ce9b749f518d5b5d3b68b16",
-    "images/concept-guide.webp": "sha256:b4f2ad6f76cbd08d647de920bc9eadf492e1ec20bb280468bc765c0a10947a78",
-    "images/worked-example.webp": "sha256:937f88d334916a2290aa7474b22037a2655afe0670826be32869e09b84144673"
+    "images/concept-guide.webp": "sha256:4b7743f51367db68b361d5c9b5052d0013df2135673992af7c7822c14da72101",
+    "images/worked-example.webp": "sha256:e8ab02e52fa5ba7d46f9931c5b6b52ef3db74722ee638d9f3b07d1e249010c70"
   },
   "quizId": "g3-math-01-place-value-to-10-000-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-math-01-place-value-to-10-000",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-math-01-place-value-to-10-000",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-math-01-place-value-to-10-000",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-math-01-place-value-to-10-000",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-math-01-place-value-to-10-000",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

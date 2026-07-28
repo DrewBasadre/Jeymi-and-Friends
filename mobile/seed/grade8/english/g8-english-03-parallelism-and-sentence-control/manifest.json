@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-english-03-parallelism-and-sentence-control",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:8d264e4546d6dc15ee2e13418a05f3495f3fbacc7bb146ddefe436d5c227ad5a",
+    "lesson.md": "sha256:50e7cbab9b17a4b0a801f5653a696a7502e89bf4e5e8459e4c0e9e0e10ecf53a",
     "g8-english-03-parallelism-and-sentence-control-quiz.json": "sha256:06de234be65e7d77991ddaa40b5d35e0970d3bdae7aa1956032169d36ba760fe",
-    "images/concept-guide.webp": "sha256:1f8292da61258d8aa2d96d29bff261ad0ee64d4ef53e5a11e8e1099f18743e2e",
-    "images/worked-example.webp": "sha256:395aa97ceabec10d333c8ba6e16e7471659810d95551471e1aef51e477504005"
+    "images/concept-guide.webp": "sha256:c56512f4719b592897a91a9790274fa1a5c0f11eebab1cbe7d093913f1d709d1",
+    "images/worked-example.webp": "sha256:3549c888c10152666fb418c73378ab493475ed13fee7aec3edca7d25a1b1f281"
   },
   "quizId": "g8-english-03-parallelism-and-sentence-control-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-english-03-parallelism-and-sentence-control",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-english-03-parallelism-and-sentence-control",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-english-03-parallelism-and-sentence-control",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-english-03-parallelism-and-sentence-control",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-english-03-parallelism-and-sentence-control",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

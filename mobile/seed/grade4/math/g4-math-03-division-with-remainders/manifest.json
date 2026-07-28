@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-math-03-division-with-remainders",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:f24a4ccb4f2cfb7137700f702ec63aeb067d87bbfb640330d99354a4e1a41c34",
+    "lesson.md": "sha256:29920afa59846946f976c14096a736cde2a1cbb84621a6a0aa68b92079f26776",
     "g4-math-03-division-with-remainders-quiz.json": "sha256:5f5ce6bd0971780ddf657c27771ccab7539642b084cc803aca3aac4cc2f0b188",
-    "images/concept-guide.webp": "sha256:47c494cd2a098ca56cee1f0a7cbd3bdc41bfe5ae029b19b4c3ab628d1dc25ca3",
-    "images/worked-example.webp": "sha256:335549d998a76d822f143fce1f5dc36b8017de3cdf2455669e66b0d327cf67ed"
+    "images/concept-guide.webp": "sha256:da4eafa79bea207e23fdc8ae04f05340b09889de8a791e432ee19edfe3e912c6",
+    "images/worked-example.webp": "sha256:57875942bd8e7dff1dfedd18f5b6c34010eeb4fc2cba1448f348acd2441ff822"
   },
   "quizId": "g4-math-03-division-with-remainders-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-math-03-division-with-remainders",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-math-03-division-with-remainders",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-math-03-division-with-remainders",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-math-03-division-with-remainders",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-math-03-division-with-remainders",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

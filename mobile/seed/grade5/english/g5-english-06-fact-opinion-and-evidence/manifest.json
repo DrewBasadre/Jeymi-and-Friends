@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-english-06-fact-opinion-and-evidence",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:4bb1003a9e45b3ea00560622ef059dc14bff155d107f3e160a6e060fb37a03d7",
+    "lesson.md": "sha256:85513deb1d2ff42ce7434f1f8057e87522e97ade27e3e1554c0e3d934f7c5a53",
     "g5-english-06-fact-opinion-and-evidence-quiz.json": "sha256:a7977190146881aecc58a595b5285c52c2d86bfd159ec86f1bb1455a5c881321",
-    "images/concept-guide.webp": "sha256:e4612a411feb8c66a131f58a121f17d25d53bcf11fe427c93dafeb1325e38f8a",
-    "images/worked-example.webp": "sha256:ec282654a3f032950fecdc09aabd16a0505f025b0cfc4390d753b88faa76b028"
+    "images/concept-guide.webp": "sha256:bda6a551494673bfa4ea5885444da447349a9dd6cb0b5a7696c8846f7439f479",
+    "images/worked-example.webp": "sha256:8aa5e693871565fa9b4e0d633087533e5ef17160353aa6b0e26efb2a4b355c40"
   },
   "quizId": "g5-english-06-fact-opinion-and-evidence-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-english-06-fact-opinion-and-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-english-06-fact-opinion-and-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-english-06-fact-opinion-and-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-english-06-fact-opinion-and-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-english-06-fact-opinion-and-evidence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-science-02-cycles-in-ecosystems",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:86ff9c06fe6e154e6851ca606357a2a069873e975e69b30b441f86097f3ec1a9",
+    "lesson.md": "sha256:b0bb4a9b926c091fc43255fac31af48d0df2414990c17520c6d86093132d4e69",
     "g6-science-02-cycles-in-ecosystems-quiz.json": "sha256:1c344cbb8562b5d01b5472b51d7d38439ac64c7a04384a267cd3048956ac6cb7",
-    "images/concept-guide.webp": "sha256:5a2e5cd74fdbb2dc7c98d5b1ffdb7470416c99a4b4b7735f99dcb38f1d349b24",
-    "images/worked-example.webp": "sha256:132d8b447f5c48720cfc20f4c35022b02fa8cd729d4d913b1a649999bb9fac14"
+    "images/concept-guide.webp": "sha256:24c656771f732bacc748e18bf3de97d803469941f8d935036fe435f23f6d1a97",
+    "images/worked-example.webp": "sha256:ad7f8c8da2bb18351c92c8f7f26e052ee6850f24e93c2f26c3dded1dbc8f7818"
   },
   "quizId": "g6-science-02-cycles-in-ecosystems-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-science-02-cycles-in-ecosystems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-science-02-cycles-in-ecosystems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-science-02-cycles-in-ecosystems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-science-02-cycles-in-ecosystems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-science-02-cycles-in-ecosystems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

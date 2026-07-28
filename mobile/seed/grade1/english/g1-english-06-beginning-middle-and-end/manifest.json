@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-english-06-beginning-middle-and-end",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:a58a182a668a87dc7331e99028c2f822f6f8cc28e7cf3175c48012d297b80e8f",
+    "lesson.md": "sha256:bc6591c3245101ce1856df230f48fc8b7dba863f2500a4786158846c1289634f",
     "g1-english-06-beginning-middle-and-end-quiz.json": "sha256:59107bb708a6c12ff7870d01295507e2fb9a7a5779321fc3b5a235de25c794e7",
-    "images/concept-guide.webp": "sha256:165039af208797d8ee9780940c7e553c219dd2f0d3f27f7a41736e3c457796c9",
-    "images/worked-example.webp": "sha256:f26c0ad42a5f1b4156432a6d9c755bbc561c5b9bc14d9a84b28fb4e8c873f44e"
+    "images/concept-guide.webp": "sha256:4909fb12cb2cb6e8fdbf518a603232ca9eec94aa5344dd3e90296652d3d84a54",
+    "images/worked-example.webp": "sha256:ee6abbfead7bd790ba2c85e910f1beeabf66d28515bb32756430fab70844df4d"
   },
   "quizId": "g1-english-06-beginning-middle-and-end-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-english-06-beginning-middle-and-end",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-english-06-beginning-middle-and-end",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-english-06-beginning-middle-and-end",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-english-06-beginning-middle-and-end",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-english-06-beginning-middle-and-end",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

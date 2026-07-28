@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-english-05-comparing-sources",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:63e02eb5b339d492e6cbe3e4d129db28ba627019595b0ea1e31970349129cdee",
+    "lesson.md": "sha256:a4d8c59ee99049044379416857c2e072dd26a658e14f4054a10d7f25e7cd1937",
     "g8-english-05-comparing-sources-quiz.json": "sha256:755a67758b5da4c2ff079c9be16c26d823aa5dd3432a17acca145faa66436745",
-    "images/concept-guide.webp": "sha256:543c2d10dd4f233d65274083f2a7326a1700924d263f46d129de8d6b0feeaf0b",
-    "images/worked-example.webp": "sha256:802eeece10387b9267b9816c42091bc7ad5925176f63c6b536332676e65a3cb5"
+    "images/concept-guide.webp": "sha256:25b8e9204b283a3a420baffd17c37a6872d5858f8a19c6c5c3ba9aa8b74b2947",
+    "images/worked-example.webp": "sha256:7fc0b0b3c3f48b68a8a915441d62fe81fc32ac1dce5155e545bf2eea233c816b"
   },
   "quizId": "g8-english-05-comparing-sources-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-english-05-comparing-sources",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-english-05-comparing-sources",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-english-05-comparing-sources",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-english-05-comparing-sources",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-english-05-comparing-sources",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-english-03-advanced-argumentation",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:4e523b8314854192f55da04dbfd8d11a953fe80ce8c304c67f4f5d622ffd7e88",
+    "lesson.md": "sha256:580822934857972d38c53111a2a6669db8726cf9af0889e19c272acda3d78bb0",
     "g10-english-03-advanced-argumentation-quiz.json": "sha256:ac31199357435a6dbba9c18218cd4288923b340bf56083eeefa2aa1add66b8da",
-    "images/concept-guide.webp": "sha256:6efc42f2805db1915d4f6606d39247c44ebebf7e4519c6a2a6c4f8d25fa42161",
-    "images/worked-example.webp": "sha256:9546d9fe6a27e57ee78f147fc4ac206b50e50cf316b75528ad318add27ab4074"
+    "images/concept-guide.webp": "sha256:0d64ba73aa30bff48bd52cc9accbec20c2ce9e0a1d9597ba566d185b2a5208fc",
+    "images/worked-example.webp": "sha256:430b00a80abb0a954cb8d11750c434f33961a5ef4cffd80230da494f200cbb76"
   },
   "quizId": "g10-english-03-advanced-argumentation-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-english-03-advanced-argumentation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-english-03-advanced-argumentation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-english-03-advanced-argumentation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-english-03-advanced-argumentation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-english-03-advanced-argumentation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -19,6 +19,8 @@ export const profileQrSchema = z.object({
   name: z.string().min(1).max(200),
   studentNumber: z.string().min(1).max(80),
   section: z.string().min(1).max(160),
+  parentName: z.string().max(160).optional(),
+  parentPhone: z.string().max(32).optional(),
   currentLearningFormat: z.enum(['text', 'audio', 'visual', 'kinesthetic']),
 });
 
@@ -163,7 +165,7 @@ export function decodeQrPayload(raw: string): DecodedQrPayload {
   }
   const object = value as Record<string, unknown>;
   if (object.schemaVersion !== '1.0') {
-    throw new Error('Unsupported WAIS QR schema version.');
+    throw new Error('Unsupported PAVO QR schema version.');
   }
   if (object.qrType === 'profile') {
     return { kind: 'profile', data: profileQrSchema.parse(object) };
@@ -178,7 +180,7 @@ export function decodeQrPayload(raw: string): DecodedQrPayload {
         : quizReportSchema.parse(object);
     return { kind: 'quizReport', data };
   }
-  throw new Error('Unsupported WAIS QR type.');
+  throw new Error('Unsupported PAVO QR type.');
 }
 
 export function encodeProfileQr(args: {
@@ -196,6 +198,8 @@ export function encodeProfileQr(args: {
         args.student.gradeLevel,
         args.student.section,
       ),
+      parentName: args.student.parentName,
+      parentPhone: args.student.parentPhone,
       currentLearningFormat: args.currentLearningFormat,
     }),
   );

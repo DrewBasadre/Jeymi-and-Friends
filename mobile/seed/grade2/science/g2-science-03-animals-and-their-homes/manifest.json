@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-science-03-animals-and-their-homes",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:eeef8bae4ac96f6ec840b53b668daa05c59c86a2e2671efcdd9a0640b546507b",
+    "lesson.md": "sha256:585f9400762b1578f5828c1b29aef5b3e17edd17892662b8bad2aefe84092a02",
     "g2-science-03-animals-and-their-homes-quiz.json": "sha256:f5633dd39cf33de2a797ca686b6716ada2d9c421e4fed06159218bd5bc06574f",
-    "images/concept-guide.webp": "sha256:184712ab0a4fd74e6ebbcfd4d6477132c83fd7179d82e516ebd94b67488ca76c",
-    "images/worked-example.webp": "sha256:f3c812c977b33935d88fc989bf48486788e7d062871c20dc7d145db3b7d82e2d"
+    "images/concept-guide.webp": "sha256:f6a8d7a826ea5e1c220c2633ce7fc5a6ccd067a3c324559ba92f4e9786c1012d",
+    "images/worked-example.webp": "sha256:40678f01b5c564b5d1183fce9c196a52981da36f52e28657669dd41abdd25129"
   },
   "quizId": "g2-science-03-animals-and-their-homes-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-science-03-animals-and-their-homes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-science-03-animals-and-their-homes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-science-03-animals-and-their-homes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-science-03-animals-and-their-homes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-science-03-animals-and-their-homes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

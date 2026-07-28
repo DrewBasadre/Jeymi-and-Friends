@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-math-01-whole-numbers-to-millions",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:fe6b9663f8ed3038cc2d844923e75a5a5a298fcf88f977ae0f8e61797d50e6a9",
+    "lesson.md": "sha256:801217add3decb3ae5861d05cba6eac6a94297016105c79d0d1c12d460e4fad2",
     "g4-math-01-whole-numbers-to-millions-quiz.json": "sha256:55060ee89990def6dbf892916e0e2fd7c8481e6d656014ced30ebcccdf6d3ae6",
-    "images/concept-guide.webp": "sha256:eee1b54c73e86fdc63eeee0ddbc72a4de08967821bbfd48d4a63951c84e5a154",
-    "images/worked-example.webp": "sha256:a6deebe7307399962ccd0640ee8541e9c196b515f3312cbbbc0cdffb7a767b21"
+    "images/concept-guide.webp": "sha256:8e3e11b83d338f71cefc3ca861af0fa895bbc1851be3fdfe454a65638e884963",
+    "images/worked-example.webp": "sha256:f27d66b017dc4018bf7983510b0aab95e53686336f71fa18127ee665fc12b051"
   },
   "quizId": "g4-math-01-whole-numbers-to-millions-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-math-01-whole-numbers-to-millions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-math-01-whole-numbers-to-millions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-math-01-whole-numbers-to-millions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-math-01-whole-numbers-to-millions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-math-01-whole-numbers-to-millions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

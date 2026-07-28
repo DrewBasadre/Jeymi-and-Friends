@@ -64,6 +64,8 @@ interface StudentRow {
   last_name: string;
   middle_initial: string;
   display_name: string;
+  parent_name: string;
+  parent_phone: string;
   grade_level: number;
   section: string;
   birthday: string;
@@ -137,7 +139,11 @@ const now = () => Date.now();
 const id = (prefix: string) => `${prefix}_${Crypto.randomUUID()}`;
 
 export async function saveStudent(
-  input: Omit<Student, 'id' | 'displayName' | 'isArchived'> & { id?: string },
+  input: Omit<
+    Student,
+    'id' | 'displayName' | 'isArchived' | 'parentName' | 'parentPhone'
+  > &
+    Partial<Pick<Student, 'parentName' | 'parentPhone'>> & { id?: string },
 ): Promise<Student> {
   const database = await getDatabase();
   const studentId = input.id?.trim() || id('student');
@@ -145,14 +151,17 @@ export async function saveStudent(
   await database.runAsync(
     `INSERT INTO students (
       id, student_number, first_name, last_name, middle_initial, display_name,
-      grade_level, section, birthday, pin, is_archived, updated_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?)
+      parent_name, parent_phone, grade_level, section, birthday, pin,
+      is_archived, updated_at
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?)
     ON CONFLICT(id) DO UPDATE SET
       student_number = excluded.student_number,
       first_name = excluded.first_name,
       last_name = excluded.last_name,
       middle_initial = excluded.middle_initial,
       display_name = excluded.display_name,
+      parent_name = excluded.parent_name,
+      parent_phone = excluded.parent_phone,
       grade_level = excluded.grade_level,
       section = excluded.section,
       birthday = excluded.birthday,
@@ -164,6 +173,8 @@ export async function saveStudent(
     input.lastName.trim(),
     input.middleInitial.trim().slice(0, 1),
     displayName,
+    input.parentName?.trim() ?? '',
+    input.parentPhone?.trim() ?? '',
     input.gradeLevel,
     input.section.trim(),
     input.birthday.trim(),
@@ -178,6 +189,8 @@ export async function saveStudent(
     lastName: input.lastName.trim(),
     middleInitial: input.middleInitial.trim().slice(0, 1),
     displayName,
+    parentName: input.parentName?.trim() ?? '',
+    parentPhone: input.parentPhone?.trim() ?? '',
     gradeLevel: input.gradeLevel,
     section: input.section.trim(),
     birthday: input.birthday.trim(),
@@ -286,9 +299,9 @@ export async function saveReceivedModulePackage(input: {
   displayName: string;
   fileUri: string;
   mimeType?:
-    | 'application/vnd.wais.module+zip'
-    | 'application/vnd.wais.review-set+json'
-    | 'application/vnd.wais.study-package+zip';
+    | 'application/vnd.pavo.module+zip'
+    | 'application/vnd.pavo.review-set+json'
+    | 'application/vnd.pavo.study-package+zip';
   sizeBytes: number;
   sha256: string;
   manifest?: CurriculumModuleManifest;
@@ -340,7 +353,7 @@ async function saveModulePackage(input: {
     `module_${installed.archiveSha256.slice(0, 16)}`;
   await ensureModule(database, {
     id: moduleId,
-    title: input.displayName.replace(/\.wais-module$/i, ''),
+    title: input.displayName.replace(/\.pavo-module$/i, ''),
     subject: manifest.subject,
     competencyCode: input.competencyCode,
     gradeLevel: manifest.gradeLevel,
@@ -359,7 +372,7 @@ async function saveModulePackage(input: {
          is_teacher_created = ?,
          updated_at = ?
      WHERE id = ?`,
-    input.displayName.replace(/\.wais-module$/i, ''),
+    input.displayName.replace(/\.pavo-module$/i, ''),
     normalizeSubject(manifest.subject),
     manifest.gradeLevel,
     markdownSummary(installed.markdown),
@@ -734,6 +747,8 @@ export async function getStudentPerformanceReport(
       name: student.displayName,
       studentNumber: student.studentNumber,
       section: student.section,
+      parentName: student.parentName,
+      parentPhone: student.parentPhone,
       currentLearningFormat:
         adaptive.manualOverride ?? adaptive.currentDefaultFormat,
     },
@@ -899,6 +914,8 @@ export async function importQrReport(raw: string): Promise<string> {
       firstName: name.firstName,
       lastName: name.lastName,
       middleInitial: '',
+      parentName: profile.parentName ?? '',
+      parentPhone: profile.parentPhone ?? '',
       gradeLevel: activeSection.gradeLevel,
       section: activeSection.name,
       birthday: '',
@@ -1351,6 +1368,8 @@ function mapStudent(row: StudentRow): Student {
     lastName: row.last_name,
     middleInitial: row.middle_initial,
     displayName: row.display_name,
+    parentName: row.parent_name,
+    parentPhone: row.parent_phone,
     gradeLevel: row.grade_level,
     section: row.section,
     birthday: row.birthday,

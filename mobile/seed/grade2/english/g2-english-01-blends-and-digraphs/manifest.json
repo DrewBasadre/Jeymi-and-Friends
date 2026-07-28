@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-english-01-blends-and-digraphs",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:7578bcba749ff082b371a7daf10010af86f960d8453e0896c4850ca3b66e36b2",
+    "lesson.md": "sha256:34e220491a296599a8cb71f57ba0b2dc6b42160b68cd3bd7243562fd6db35c5f",
     "g2-english-01-blends-and-digraphs-quiz.json": "sha256:63d9a1b56a51d9f5fec0db01193192cbfa958455519187ecd0f599eaa0128904",
-    "images/concept-guide.webp": "sha256:4acef2c6a988772fdbdd7423a809c9f3873c1293267745543567ac47292259d1",
-    "images/worked-example.webp": "sha256:70a43113e90e23b81a9a0fdbaf00ea32c2902a27c9cdfb15ec1ddf8e160b9140"
+    "images/concept-guide.webp": "sha256:3a80860ce5a39e035a1b023ded5335595b24a3f3abb27f4f92dae91857b52538",
+    "images/worked-example.webp": "sha256:77053b4679bdc79970ef20131a22fa1eb730f641c2eeb629a4785536cf74f8e9"
   },
   "quizId": "g2-english-01-blends-and-digraphs-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-english-01-blends-and-digraphs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-english-01-blends-and-digraphs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-english-01-blends-and-digraphs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-english-01-blends-and-digraphs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-english-01-blends-and-digraphs",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

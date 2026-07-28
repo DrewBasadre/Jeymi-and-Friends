@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-science-01-plate-tectonics-and-earth-history",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:d88e7bb95118daae7873730611d39d7cdb0b8fc7b4407b0638685cb284ca4de7",
+    "lesson.md": "sha256:04b0d832e5b7bd4ce274d26961e2859c41af4c285bb1e8d30a26cf5192800917",
     "g10-science-01-plate-tectonics-and-earth-history-quiz.json": "sha256:8f3562e6c1fac2d1a6171c8e4ebd6def96b508ba3015aac1658db91ec33df549",
-    "images/concept-guide.webp": "sha256:7750c59e68c5b8ddedaeb5ce5c4dba77bfbba8b6cf3613ccde6025969084f035",
-    "images/worked-example.webp": "sha256:3248f0854b7507eadac0b78165f9904d164ff4474a1400108b3de18701aeca2d"
+    "images/concept-guide.webp": "sha256:1e954148a5dd03919b6582ceefceed1fb3b216b234aca43c41f5122684d6e512",
+    "images/worked-example.webp": "sha256:941090811743904eb9b3afc132ad7acdef49f66195e8b3f77ac48d6be52f4ba0"
   },
   "quizId": "g10-science-01-plate-tectonics-and-earth-history-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-science-01-plate-tectonics-and-earth-history",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-science-01-plate-tectonics-and-earth-history",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-science-01-plate-tectonics-and-earth-history",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-science-01-plate-tectonics-and-earth-history",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-science-01-plate-tectonics-and-earth-history",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

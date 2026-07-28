@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-english-01-denotation-and-connotation",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:2fdb415353aba02f087b89781b34368548352384d8ab4663dae43773abceef3d",
+    "lesson.md": "sha256:d108f8ecd7cf1f3a44d10ef0d16b65765592a9180b628f909fed54e8755e9480",
     "g5-english-01-denotation-and-connotation-quiz.json": "sha256:e1fde1e03e00d8eca1b03e08fc52e130a39244b214b9e9cc6bf3e6ae20151e41",
-    "images/concept-guide.webp": "sha256:b49ac53e40c43c76891e62b2519824b8d3019df265b757cd84fc430da436f2dd",
-    "images/worked-example.webp": "sha256:4b533b9a3f7f23bfef018b6c4de78d028601684a3ea52af32e10b2fd65358378"
+    "images/concept-guide.webp": "sha256:bc0c558e94dd837f6a46f84c829518d5da74cc993c162d54f08202b3bfef6022",
+    "images/worked-example.webp": "sha256:6430374cc864474d7862d7301020c8583549eb89a684833f5069ff0ab560814e"
   },
   "quizId": "g5-english-01-denotation-and-connotation-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-english-01-denotation-and-connotation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-english-01-denotation-and-connotation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-english-01-denotation-and-connotation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-english-01-denotation-and-connotation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-english-01-denotation-and-connotation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

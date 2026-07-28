@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-math-03-joining-to-add",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:d4465405e94242beb3b13165b36dee55a5f7ba59dbd8e21dd30bba401ef68eaf",
+    "lesson.md": "sha256:da751a016e58a1341be577dfe66f2c01fd6cd62f67b7dc4afc972cc291fe0908",
     "g1-math-03-joining-to-add-quiz.json": "sha256:c14572b208b16b77e3940b1007fc9bac7432542c83bdb5b83c446493c20eca44",
-    "images/concept-guide.webp": "sha256:1c59cb1ad808db7cf6d992f799a8898388847e969d45df10fe76db9d7743ad8c",
-    "images/worked-example.webp": "sha256:cd7d672e21a3b1d018ed811a0c362db95b873d4c39482401bed1a4d8ab028b86"
+    "images/concept-guide.webp": "sha256:34f7b9aa1041b63c57fa16474d883719bc5cab72008dd6c31c78d04b7da7ec7a",
+    "images/worked-example.webp": "sha256:d27df1a0bca9d234424de8e8c6b4e627834f72d60b8bf39cb91ba45f4cdc2f24"
   },
   "quizId": "g1-math-03-joining-to-add-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-math-03-joining-to-add",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-math-03-joining-to-add",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-math-03-joining-to-add",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-math-03-joining-to-add",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-math-03-joining-to-add",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

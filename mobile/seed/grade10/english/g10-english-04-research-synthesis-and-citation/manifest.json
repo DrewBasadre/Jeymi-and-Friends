@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-english-04-research-synthesis-and-citation",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:73dd373f9281ca8924e6464438d906db589a5230bd6cf99dfa1511a39921b57f",
+    "lesson.md": "sha256:a6077d06389011a773739e1ba097444c0f2adc56883370c252cd2d111b5d8f97",
     "g10-english-04-research-synthesis-and-citation-quiz.json": "sha256:0701c4d4d12d9f59e892f687b208604ad27abf8a2f2b1078ab8353852c4024d8",
-    "images/concept-guide.webp": "sha256:376cc36974b7bad10589885a7dfee465dcddbebf286d9189a695a21185874361",
-    "images/worked-example.webp": "sha256:b81c0b3961035e11ec512025dcdff2ba1efa2e976227498a86e3bdb5d575285a"
+    "images/concept-guide.webp": "sha256:275324c4e9154c481fb5a2d14a204befbe4d74f2dbcc7afe08981d09bc805c8c",
+    "images/worked-example.webp": "sha256:0f0ea74af1b691cd0ee62bde5199e94cd3dc2154975ef107d7c2a05aabc1cecb"
   },
   "quizId": "g10-english-04-research-synthesis-and-citation-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-english-04-research-synthesis-and-citation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-english-04-research-synthesis-and-citation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-english-04-research-synthesis-and-citation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-english-04-research-synthesis-and-citation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-english-04-research-synthesis-and-citation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,18 +1,18 @@
 {
   "expo": {
-    "name": "WAIS",
-    "slug": "wais",
-    "scheme": "wais",
+    "name": "PAVO",
+    "slug": "pavo",
+    "scheme": "pavo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "plugins": [
-      "./plugins/withWaisNearby",
+      "./plugins/withPavoNearby",
       [
         "expo-camera",
         {
-          "cameraPermission": "Allow WAIS to scan classroom QR reports and module codes.",
+          "cameraPermission": "Allow PAVO to scan classroom QR reports and module codes.",
           "recordAudioAndroid": false,
           "barcodeScannerEnabled": true
         }
@@ -43,16 +43,16 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "org.wais.learninghub",
+      "bundleIdentifier": "org.pavo.learninghub",
       "infoPlist": {
-        "NSBluetoothAlwaysUsageDescription": "WAIS uses nearby connectivity to transfer offline lesson packages between teachers and students.",
-        "NSLocalNetworkUsageDescription": "WAIS uses the local network for fast offline lesson package transfers.",
+        "NSBluetoothAlwaysUsageDescription": "PAVO uses nearby connectivity to transfer offline lesson packages between teachers and students.",
+        "NSLocalNetworkUsageDescription": "PAVO uses the local network for fast offline lesson package transfers.",
         "UIFileSharingEnabled": true,
         "LSSupportsOpeningDocumentsInPlace": true
       }
     },
     "android": {
-      "package": "org.wais.learninghub",
+      "package": "org.pavo.learninghub",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",

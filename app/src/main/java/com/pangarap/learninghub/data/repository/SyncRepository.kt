@@ -150,7 +150,7 @@ class SyncRepository(private val db: LearningHubDatabase) {
 
     fun formatQrPayload(rawJson: String): String {
         val payload = normalizeQrPayload(rawJson)
-            ?: return "This QR code does not contain a valid WAIS QR payload."
+            ?: return "This QR code does not contain a valid PAVO QR payload."
         return try {
             when (payloadType(payload)) {
                 "student_profile" -> json.decodeFromString<StudentProfileQr>(payload).let {
@@ -199,10 +199,10 @@ class SyncRepository(private val db: LearningHubDatabase) {
                     Weak Topics: ${it.weakTopics.ifEmpty { listOf("None yet") }.joinToString()}
                     """.trimIndent()
                 }
-                else -> "Unsupported WAIS QR payload."
+                else -> "Unsupported PAVO QR payload."
             }
         } catch (error: Exception) {
-            "This QR code does not contain a valid WAIS QR payload."
+            "This QR code does not contain a valid PAVO QR payload."
         }
     }
 
@@ -212,7 +212,7 @@ class SyncRepository(private val db: LearningHubDatabase) {
 
     suspend fun importTeacherScan(rawJson: String): String {
         val payload = normalizeQrPayload(rawJson)
-            ?: return "Import failed: paste, scan, or upload a valid WAIS QR JSON."
+            ?: return "Import failed: paste, scan, or upload a valid PAVO QR JSON."
         return try {
             when (payloadType(payload)) {
                 "student_profile" -> importStudentProfile(payload)
@@ -221,7 +221,7 @@ class SyncRepository(private val db: LearningHubDatabase) {
                 else -> "Import failed: QR JSON is not a supported teacher scan payload."
             }
         } catch (error: Exception) {
-            "Import failed: paste or scan a valid WAIS QR JSON."
+            "Import failed: paste or scan a valid PAVO QR JSON."
         }
     }
 

@@ -67,7 +67,7 @@ function validateEntry(file: UnzipFileInfo): void {
     throw new Error(`Unsupported file in module archive: ${file.name}`);
   }
   if (file.originalSize > limit) {
-    throw new Error(`${file.name} is too large for a WAIS module.`);
+    throw new Error(`${file.name} is too large for a PAVO module.`);
   }
 }
 

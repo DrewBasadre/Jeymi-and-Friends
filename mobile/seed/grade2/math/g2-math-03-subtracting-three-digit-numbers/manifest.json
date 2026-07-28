@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-math-03-subtracting-three-digit-numbers",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:630449edfe688093c80cdb5e3a5b89792b4d76c45bf6cdef99d4b64592ad1498",
+    "lesson.md": "sha256:7156670e93b00b47560b242f673c2c3b0818cf743884a5ee291b915eaee19324",
     "g2-math-03-subtracting-three-digit-numbers-quiz.json": "sha256:972232df52574616798268121e99f0aaa372f6ff3863a8df451e2bf4bedb4686",
-    "images/concept-guide.webp": "sha256:74156d22f30144f64469917dc600f6c3ee844e765c7f3417a14fc4ea91360b86",
-    "images/worked-example.webp": "sha256:73bdf939f188269162751601d5ef1a21f9b7cbb3710ab99c1d6a4a5ce89a52de"
+    "images/concept-guide.webp": "sha256:8cf145ce3f6f553a1fe1192214ac1bfc0f4e71f79d8d114b00fe5cad332a18df",
+    "images/worked-example.webp": "sha256:5af62dfeb5574d86d36bb129d113440c4eee84b745b5181dfbb452fc302949e0"
   },
   "quizId": "g2-math-03-subtracting-three-digit-numbers-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-math-03-subtracting-three-digit-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-math-03-subtracting-three-digit-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-math-03-subtracting-three-digit-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-math-03-subtracting-three-digit-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-math-03-subtracting-three-digit-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

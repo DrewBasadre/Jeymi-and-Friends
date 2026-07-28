@@ -297,7 +297,7 @@ export function ReceiveTransferScreen({ navigation }: Props) {
         <Card accent={colors.success} style={styles.successCard}>
           <CardHeader
             icon={CheckCircle2}
-            title={`Received: ${received.displayName.replace(/\.wais-module$/i, '')}`}
+            title={`Received: ${received.displayName.replace(/\.pavo-module$/i, '')}`}
             subtitle="Verified and saved to this device"
             color={colors.success}
           />

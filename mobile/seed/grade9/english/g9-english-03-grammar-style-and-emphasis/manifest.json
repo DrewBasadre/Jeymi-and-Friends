@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-english-03-grammar-style-and-emphasis",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:5819d246c7bf7df495babb8f87c15e55baf8c2e0b158814422f0f171c4e20a79",
+    "lesson.md": "sha256:d436a39ae56f076be3c6e800f3b5242a868e17e51e44db08e807e677ccb4ae59",
     "g9-english-03-grammar-style-and-emphasis-quiz.json": "sha256:2b53f8f92e91841e507cd3ce584d4ab133b7b7e6e039ac33205fb85f2ae9e19b",
-    "images/concept-guide.webp": "sha256:435ba8a3a76ac00998f3ecdd00b96908a72cc4eaa99aa5ef349dcd60f6065606",
-    "images/worked-example.webp": "sha256:db9bb295b96f5130a9ccc60d37c8a65fdb81b1e3cab4170faf68282c19724a55"
+    "images/concept-guide.webp": "sha256:5bb84b4add70cb4d31e050c7b623987a518c24899a572c5680c79a76eaf6dd6f",
+    "images/worked-example.webp": "sha256:0c180366c80ea5bd40c9f9934788fa1b52076802b08ffd8bf59309d6bdb8031d"
   },
   "quizId": "g9-english-03-grammar-style-and-emphasis-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-english-03-grammar-style-and-emphasis",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-english-03-grammar-style-and-emphasis",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-english-03-grammar-style-and-emphasis",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-english-03-grammar-style-and-emphasis",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-english-03-grammar-style-and-emphasis",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

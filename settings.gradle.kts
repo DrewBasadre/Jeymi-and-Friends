@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "WAIS"
+rootProject.name = "PAVO"
 include(":app")

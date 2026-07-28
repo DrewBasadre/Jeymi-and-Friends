@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-science-03-properties-and-separation-of-matter",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:c6a487609aec60dd789df3e9c17e427ed88407bbcdffda6db30007e71f7a90eb",
+    "lesson.md": "sha256:1e092f1eeaf23191771c8d6b8a99648e0d79b80528ba20b95fb31bae5ca75c3e",
     "g6-science-03-properties-and-separation-of-matter-quiz.json": "sha256:04da7f4a76bf792a123b26f8f4b60a8a9ab2f40aa70318d151f04bb9290183d9",
-    "images/concept-guide.webp": "sha256:51e0924a97602ee9f316403fab1608f7c55dec7a9618ff0977978661979e708a",
-    "images/worked-example.webp": "sha256:ee8a782e1ea1a938a6d05f06d16892bdc1bd2e2637ca724d77b67276b99ae6a7"
+    "images/concept-guide.webp": "sha256:d0c5e55469e8a951f01ec631407c8fcc839b65dab1814afe07f91987c406c253",
+    "images/worked-example.webp": "sha256:c65758253801c4f927152aa8584e81509fd5d282274111eee0b97fa5eb966c08"
   },
   "quizId": "g6-science-03-properties-and-separation-of-matter-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-science-03-properties-and-separation-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-science-03-properties-and-separation-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-science-03-properties-and-separation-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-science-03-properties-and-separation-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-science-03-properties-and-separation-of-matter",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

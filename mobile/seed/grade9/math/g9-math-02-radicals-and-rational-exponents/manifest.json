@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-math-02-radicals-and-rational-exponents",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:776643977c2eb31ad4e464bcd814fc80c608f37363d908d74c048eaff6795704",
+    "lesson.md": "sha256:6e261e6661483861b4864c9d968b74b8594bb57f4a5a4860ddef9a6be3555507",
     "g9-math-02-radicals-and-rational-exponents-quiz.json": "sha256:ec7356a4be33bcf8586af0e04087fab71a0f5513e49bc3a01dcfdfa2dc642b6a",
-    "images/concept-guide.webp": "sha256:183305db52a0caf84e4920d670ab6328423bc480ac713a03cdbc95f3c752304b",
-    "images/worked-example.webp": "sha256:e73d7465db4a48f26b5a91686d75691f42df7e2f47788416cd3077cd5951a333"
+    "images/concept-guide.webp": "sha256:2bdc59d919c2dd4253abdfc03723fb6dfcf36b0eaf1b7dc85a27eefbb661c366",
+    "images/worked-example.webp": "sha256:2353e9e0283b991f12be4762e0bbb4d55ea5becf77de2f0afe5509c6a6c42a51"
   },
   "quizId": "g9-math-02-radicals-and-rational-exponents-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-math-02-radicals-and-rational-exponents",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-math-02-radicals-and-rational-exponents",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-math-02-radicals-and-rational-exponents",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-math-02-radicals-and-rational-exponents",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-math-02-radicals-and-rational-exponents",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

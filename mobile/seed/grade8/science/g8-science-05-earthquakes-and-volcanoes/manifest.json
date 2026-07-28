@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-science-05-earthquakes-and-volcanoes",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:81f4e7a1c8bc7ec3c2d2be8a0843e4c2ea31702dc212083b57514882a0006c2b",
+    "lesson.md": "sha256:187e0654d34189db8645fb4d3ea270c5f53a644269a12e6f85b3d6ed1bc6a588",
     "g8-science-05-earthquakes-and-volcanoes-quiz.json": "sha256:8522ec29437eb9df07c58c549000b45f42413a3f4e72e975a3d0ee92b6fc6c10",
-    "images/concept-guide.webp": "sha256:15fb6c41ca02702428b9bdea77b5a2ea4035b355e250d881aa220a58f8d70e17",
-    "images/worked-example.webp": "sha256:ed7a177bddea0f7683532d10f69a98f88e15fc9d65a220329bacf57e9bc952b3"
+    "images/concept-guide.webp": "sha256:9caf5500a312006e73fe4ca1eec9fc63c6e17213dd2a55ea550aacf15c0a1868",
+    "images/worked-example.webp": "sha256:c4d550785e9db6381cacc39a3191037a0c5ef9906fe53401453a594062962a90"
   },
   "quizId": "g8-science-05-earthquakes-and-volcanoes-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-science-05-earthquakes-and-volcanoes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-science-05-earthquakes-and-volcanoes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-science-05-earthquakes-and-volcanoes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-science-05-earthquakes-and-volcanoes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-science-05-earthquakes-and-volcanoes",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

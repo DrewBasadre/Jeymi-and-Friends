@@ -1,4 +1,4 @@
-# WAIS React Native Migration Audit
+# PAVO React Native Migration Audit
 
 Audit date: 2026-07-28
 
@@ -8,7 +8,7 @@ model, and the decisions that must be closed before migration code starts.
 
 ## Executive Summary
 
-The current WAIS application is a native Android app written in Kotlin and
+The current PAVO application is a native Android app written in Kotlin and
 Jetpack Compose. It is not a WebView hybrid and contains no JavaScript business
 logic to port. The migration will therefore translate Kotlin domain and
 repository behavior into TypeScript while preserving the existing Room and QR
@@ -53,7 +53,7 @@ The existing Android baseline was checked before any migration work:
 
 ### Architecture
 
-WAIS is a single Android application module:
+PAVO is a single Android application module:
 
 - UI: Jetpack Compose screens and shared components.
 - Navigation: Navigation Compose routes in `LearningHubNav.kt`.
@@ -136,7 +136,7 @@ feature is a generic Android share sheet.
 ### PDF Size Check
 
 There are zero PDF files in this repository. The existing modules are text
-records seeded into Room. No WAIS/Grade 5 PDF package was found in the common
+records seeded into Room. No PAVO/Grade 5 PDF package was found in the common
 project and download locations, so an actual target-package throughput test
 cannot yet be performed.
 
@@ -161,7 +161,7 @@ pairing, and file payload transfer, wrapped in local Expo native modules for
 Android and iOS. Keep QR for small reports and compatibility. Do not build a
 BLE-only PDF path.
 
-This is not final until representative WAIS PDF sizes are supplied and transfer
+This is not final until representative PAVO PDF sizes are supplied and transfer
 time is measured on physical low-end Android and iOS devices.
 
 Primary references:
@@ -459,7 +459,7 @@ Primary references:
 Migration implementation is intentionally paused until these inputs are
 acknowledged:
 
-1. Supply representative WAIS PDF module packages for size measurement and
+1. Supply representative PAVO PDF module packages for size measurement and
    approve Google Nearby Connections as the preferred transfer layer, or select
    the app-managed local Wi-Fi alternative.
 2. Approve the minimized, Edge-Function-only AI data boundary and assign the

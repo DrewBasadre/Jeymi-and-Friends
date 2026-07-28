@@ -16,6 +16,8 @@ const student: Student = {
   lastName: 'Santos',
   middleInitial: '',
   displayName: 'Ari Santos',
+  parentName: 'Maya Santos',
+  parentPhone: '+63 917 555 0199',
   gradeLevel: 4,
   section: 'Grade 4 - Sampaguita',
   birthday: '',
@@ -23,7 +25,7 @@ const student: Student = {
   isArchived: false,
 };
 
-describe('WAIS canonical QR envelopes', () => {
+describe('PAVO canonical QR envelopes', () => {
   it('round-trips the persistent student profile envelope', () => {
     const payload = encodeProfileQr({
       student,
@@ -37,6 +39,8 @@ describe('WAIS canonical QR envelopes', () => {
       schemaVersion: '1.0',
       qrType: 'profile',
       studentId: 'student-1',
+      parentName: 'Maya Santos',
+      parentPhone: '+63 917 555 0199',
       currentLearningFormat: 'audio',
     });
   });
@@ -159,15 +163,15 @@ describe('WAIS canonical QR envelopes', () => {
   it('rejects legacy and unknown envelopes before parsing payload details', () => {
     expect(() =>
       decodeQrPayload(JSON.stringify({ payloadType: 'student_profile' })),
-    ).toThrow('Unsupported WAIS QR schema version');
+    ).toThrow('Unsupported PAVO QR schema version');
     expect(() =>
       decodeQrPayload(
         JSON.stringify({
           schemaVersion: '1.0',
-          qrType: 'not-wais',
+          qrType: 'not-pavo',
         }),
       ),
-    ).toThrow('Unsupported WAIS QR type');
+    ).toThrow('Unsupported PAVO QR type');
   });
 });
 

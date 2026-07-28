@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-science-03-ecosystem-relationships",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:c44a7d0812253ed71e05fd8be0ff1fbf65ac44f40bb887cbe89859adc21d3233",
+    "lesson.md": "sha256:adbc5046b2cec7022c5cc519f3bb88b6f71d7274a912363c2400193e6861285e",
     "g5-science-03-ecosystem-relationships-quiz.json": "sha256:8c9dea4e6daeb6ecc82a00cfb8abbe99f488df93f147d6c720ea19f59ac3d48b",
-    "images/concept-guide.webp": "sha256:0127e77675e5aeb74d2f62659a985a15c21773008eb5a2235d0b18464ca57a91",
-    "images/worked-example.webp": "sha256:a0c906374d1cad17799b09f0eed2e4e73c3b729c2a901b17259b73d54ebb3a1c"
+    "images/concept-guide.webp": "sha256:b6724883bb741175edc92f4ea97505ab5c7e36db2bd896663be2871aa3fb587d",
+    "images/worked-example.webp": "sha256:955fc6fab8a8212820240fc7c1752280416794d3ec94afa84c3c9ace81b83930"
   },
   "quizId": "g5-science-03-ecosystem-relationships-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-science-03-ecosystem-relationships",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-science-03-ecosystem-relationships",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-science-03-ecosystem-relationships",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-science-03-ecosystem-relationships",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-science-03-ecosystem-relationships",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

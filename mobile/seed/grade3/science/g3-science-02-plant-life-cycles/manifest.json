@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-science-02-plant-life-cycles",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:116da2c25e8fe2bc8c439e360006b667bd86b908b82ad1abc7719e5bba093aba",
+    "lesson.md": "sha256:b3f4c866e750ae1c0e2cdebd40bc8c9988699d39c22f4d297411d1f2652ddad6",
     "g3-science-02-plant-life-cycles-quiz.json": "sha256:4d6fb83eaf94a5440ecad54f9576cd30c8ab12a7803a6165ca5e71c55d01fff9",
-    "images/concept-guide.webp": "sha256:18419e8abdf8780d738327741d1997e2e9c0bf9e4c7b7d75a98c5ef30067f04a",
-    "images/worked-example.webp": "sha256:ccf373d73b5ffb33d1bbb765af231afc5379d68323ba8d5a9ff669ce2bfd07df"
+    "images/concept-guide.webp": "sha256:d362303151edb5e4ad529e3c0903b2c2057afe886343b09bc8a807b10cea50db",
+    "images/worked-example.webp": "sha256:507ecc5d2eab1f96ee72dde668dec1a0dd2a25300cd39bd20480ffbdfdc01fbf"
   },
   "quizId": "g3-science-02-plant-life-cycles-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-science-02-plant-life-cycles",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-science-02-plant-life-cycles",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-science-02-plant-life-cycles",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-science-02-plant-life-cycles",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-science-02-plant-life-cycles",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

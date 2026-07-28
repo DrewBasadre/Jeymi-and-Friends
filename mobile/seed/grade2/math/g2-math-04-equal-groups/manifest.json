@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-math-04-equal-groups",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:80fd68885cb022a3aeaba3b3668fad62fb5d18a2ac21817f51070a31172d5844",
+    "lesson.md": "sha256:fb6f3782bb4524ebad48830ad1e80d0cf8ed46a46b3d171ccdea83af19415497",
     "g2-math-04-equal-groups-quiz.json": "sha256:a17f4a8133a35d45ac1056149b2d0de792ed91e6057f310f22aa847f59f1bbf9",
-    "images/concept-guide.webp": "sha256:3c101c8c1646b17b01b0680ff46b3f92a7805aecdc5a781d2ebcf55162b35db1",
-    "images/worked-example.webp": "sha256:94b51b632232779a7adcbf7cfdcef2cd3fd1b65a35d642f8f9d97a167577f434"
+    "images/concept-guide.webp": "sha256:bc61df4c8e7e29d2006b2df2795acbf338069cdee56400b146fe78277c6a03c5",
+    "images/worked-example.webp": "sha256:713fa4a761918fc0766edec2b9ef30c7429918afacbe1ba4bf2adebb0c7a7425"
   },
   "quizId": "g2-math-04-equal-groups-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-math-04-equal-groups",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-math-04-equal-groups",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-math-04-equal-groups",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-math-04-equal-groups",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-math-04-equal-groups",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

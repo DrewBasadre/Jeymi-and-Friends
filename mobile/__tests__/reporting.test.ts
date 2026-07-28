@@ -45,6 +45,8 @@ function report(args: {
       name: args.studentId,
       studentNumber: args.studentId,
       section: 'Emerald',
+      parentName: 'Sample Parent',
+      parentPhone: '+63 917 555 0100',
       currentLearningFormat: args.format ?? 'text',
     },
     quizHistory: [attempt(args.latestScore ?? 8, 3, args.studentId)],

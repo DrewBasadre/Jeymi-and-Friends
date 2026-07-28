@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-english-02-critical-reading-and-ideology",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:dc27a945b2cc67df7b9d029ad17741045e6ad527c71c157ca4e954e998713d95",
+    "lesson.md": "sha256:5c049b8aec17d4f21dcf1c94f8ee3bca79e99d5ffeeaeb54542a6f7af485aff3",
     "g10-english-02-critical-reading-and-ideology-quiz.json": "sha256:3922be06b633af4bfdd1d4d3c1957a2e095f17a02de7a79c5105dd96d2841dbf",
-    "images/concept-guide.webp": "sha256:aba4add30e1531c19473f742f986690d27713bc8ef78c1cb6f98e7a326afdedd",
-    "images/worked-example.webp": "sha256:818f89afb7314d98db246673e0deb14e58391ae52176c1925d67db599cd7a253"
+    "images/concept-guide.webp": "sha256:6dedb84020486901a5736cde2c557a5f7944984c307887c91eac79bbf28a0300",
+    "images/worked-example.webp": "sha256:79664f83cf4c52daa2d9c260286ba8ad8a2eb731b2a75267b6de74c81db6b3f9"
   },
   "quizId": "g10-english-02-critical-reading-and-ideology-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-english-02-critical-reading-and-ideology",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-english-02-critical-reading-and-ideology",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-english-02-critical-reading-and-ideology",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-english-02-critical-reading-and-ideology",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-english-02-critical-reading-and-ideology",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

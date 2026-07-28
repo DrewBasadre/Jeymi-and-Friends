@@ -1,6 +1,7 @@
 {
   "moduleId": "g2-english-04-describing-words",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 2,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:a9df409e2dfcd032b9889f03a8bf4bbfb3adce01b7a416251b9042491377f5b8",
+    "lesson.md": "sha256:e40f57c8ab1bec3e3217cd9520a404fafe4d2afe2f1364dbdfcd120c6749d768",
     "g2-english-04-describing-words-quiz.json": "sha256:c44507152bdc78401aadaf50b20ed4cb5f862cc125f2dc1a400786bf523efebb",
-    "images/concept-guide.webp": "sha256:017fa5b4282df1959acb1b819210cbbec9c97a2843af0ed94806287f5506b033",
-    "images/worked-example.webp": "sha256:b20c0d7adf7ce9fe949eefbcba2dc113f9e34894ab9a68087367389980fb028c"
+    "images/concept-guide.webp": "sha256:1590fcbd3b31b311d6a024d7ab2c10777fc18323ee4f9195ba05934bb70859f3",
+    "images/worked-example.webp": "sha256:9dc6fb4c385256c93140c5f271d20ca78f763dc659a01849b73acac52568e515"
   },
   "quizId": "g2-english-04-describing-words-quiz",
   "reviewItems": [
     {
       "moduleId": "g2-english-04-describing-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g2-english-04-describing-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g2-english-04-describing-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g2-english-04-describing-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g2-english-04-describing-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

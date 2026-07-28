@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-math-02-linear-equations-in-two-variables",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:175c19a307c07b437ddeb7bbf071d9afd95c0458c3c76bbd6e2d314333d54331",
+    "lesson.md": "sha256:bedaa0a85d32742201dec90daa283de7247e01a5edb51783184735bb6cc45c31",
     "g8-math-02-linear-equations-in-two-variables-quiz.json": "sha256:d1c50e11b21b7dc88738ce614036771791958c962f3ffac093e0833b0850857d",
-    "images/concept-guide.webp": "sha256:40be0a27622765d09dee18846056600df5f36f203ba8004f6ffe2d883d08d05c",
-    "images/worked-example.webp": "sha256:d38e3181ae4541f83d7c0463d46d990a5c3b02ee80bf05304f29a5faef4ef4b7"
+    "images/concept-guide.webp": "sha256:65eb19ff5096afb59b401451459b8b9687964e65eadcbf9020a8ea68ca202467",
+    "images/worked-example.webp": "sha256:ad5f01a6682df96ed1fb071644daddd3fdbdb826bed22c4404b63af9ab14a3b9"
   },
   "quizId": "g8-math-02-linear-equations-in-two-variables-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-math-02-linear-equations-in-two-variables",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-math-02-linear-equations-in-two-variables",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-math-02-linear-equations-in-two-variables",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-math-02-linear-equations-in-two-variables",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-math-02-linear-equations-in-two-variables",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

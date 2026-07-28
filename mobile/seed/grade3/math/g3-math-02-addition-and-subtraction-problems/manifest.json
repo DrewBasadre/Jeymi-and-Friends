@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-math-02-addition-and-subtraction-problems",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:5cbe595c5151f9450916dd6bef9f07b38775d2eb2b2637b927ba4fc86d0048e6",
+    "lesson.md": "sha256:626d14f7d7efb38bced98f0c28b1ae42dd350c8233ce91cdb6c92e5ea1c95ce7",
     "g3-math-02-addition-and-subtraction-problems-quiz.json": "sha256:c481e0c68c9ebd1543f9a89cf4b99c754755631d39eaa5761286d3f0009816cf",
-    "images/concept-guide.webp": "sha256:ed7d7bc28a68c9ea6e3ff35648a5ac1a23bc0450be43bf935a056a2a1d1f9fa0",
-    "images/worked-example.webp": "sha256:e2b2b2c41faaa588fa0a0cc9dc866ae267718f14d28497703f17764c39e2351b"
+    "images/concept-guide.webp": "sha256:21285613612b58c5aa06e0f95dcc9861c51c047b4d245e7638727e97b329c015",
+    "images/worked-example.webp": "sha256:7bcf793bd6be0ff98255648083e4d6d45cf4fc35eafa53b82d6de180d46a7fa7"
   },
   "quizId": "g3-math-02-addition-and-subtraction-problems-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-math-02-addition-and-subtraction-problems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-math-02-addition-and-subtraction-problems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-math-02-addition-and-subtraction-problems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-math-02-addition-and-subtraction-problems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-math-02-addition-and-subtraction-problems",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-science-04-what-living-things-need",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:5b9d4b1dfd0a9138f3a1b079c1fd20a852307283ab97fdb1a2aa5c273242a2ff",
+    "lesson.md": "sha256:e06ae975b8ea01dd5656a3c4f6ae52cbd9240d803bc34d56ad66a127638b6a3b",
     "g1-science-04-what-living-things-need-quiz.json": "sha256:daa687ab6204ec362f4f79d2448661131cca34a7482dd6854460579f3fda8ab3",
-    "images/concept-guide.webp": "sha256:11d79ca51662c7f9d0f75145fec9abc56ff64c65cd02f7eaa3578cb8e3efea50",
-    "images/worked-example.webp": "sha256:1d9dc975e144403b2513d23df1800c92110a1417f3a98f8c72974bb843ef04c2"
+    "images/concept-guide.webp": "sha256:576312ae2fd48fd1eff70e1e8fb2eb6dd99a8f2114386fec733fd0544e727973",
+    "images/worked-example.webp": "sha256:8d90206dd6190345b7a3062a8acc70a4156cabbc5bbefe5f0017f686cc5e4efc"
   },
   "quizId": "g1-science-04-what-living-things-need-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-science-04-what-living-things-need",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-science-04-what-living-things-need",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-science-04-what-living-things-need",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-science-04-what-living-things-need",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-science-04-what-living-things-need",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-english-04-theme-and-literary-interpretation",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:ce870d81a02117706147e6fb01d452f310478a266fb8ec12663d1867115f2e8a",
+    "lesson.md": "sha256:9a3971e273f4cfa8479e6e09ffca340f2a5074d7460524fb9d4a6f9e9765e6e1",
     "g8-english-04-theme-and-literary-interpretation-quiz.json": "sha256:2e227b1eda5b0f433d271420bc2b86f3f6903619956101da92569dd9a3e13c3d",
-    "images/concept-guide.webp": "sha256:745f84300660effedb536d186a62cf10697b2ebf8d381ebeaece7ed16a7e0e87",
-    "images/worked-example.webp": "sha256:b7c00956870b833e5705ed720782d98fa89886ebfce21abcd0c222370558e9a6"
+    "images/concept-guide.webp": "sha256:0858c524051ac72e959f093bdb9a394447584ba7779750e211dd57502a46f0a2",
+    "images/worked-example.webp": "sha256:bad2a3493408fff78b7ecdc4661648fa95ef9765f4b8e02805e4545cea9af8b5"
   },
   "quizId": "g8-english-04-theme-and-literary-interpretation-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-english-04-theme-and-literary-interpretation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-english-04-theme-and-literary-interpretation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-english-04-theme-and-literary-interpretation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-english-04-theme-and-literary-interpretation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-english-04-theme-and-literary-interpretation",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

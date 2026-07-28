@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-science-02-reproduction-and-growth",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:35cb363c3a8051419e2eb734bea043af3b96340b1162f93077be1287f8686db7",
+    "lesson.md": "sha256:a8ada31a4c966591c798e5c76311801382d5b88c482b9f7ce64d627440d5d17c",
     "g5-science-02-reproduction-and-growth-quiz.json": "sha256:88adf4492f4669a3413cd3869f86e39341c77982c453f3aabc40ff6e05e5774c",
-    "images/concept-guide.webp": "sha256:2ae45d48bbb4e567f2a548aa2e06c40fe3c1954630b03fa31b1ca558e7d59427",
-    "images/worked-example.webp": "sha256:df3877da575b4e6fc6c6d9d33f3eca1b7fcc922faa920ef81d4928953735814b"
+    "images/concept-guide.webp": "sha256:905777352b590f7bd1cbd684ee2f0b21223264fe1960e98c78a0488acfb4682c",
+    "images/worked-example.webp": "sha256:66ea4383d85cd1d6fcfb7d74fdb2aed62e72ab252ec1727dc5bd93ce6a1e5c7e"
   },
   "quizId": "g5-science-02-reproduction-and-growth-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-science-02-reproduction-and-growth",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-science-02-reproduction-and-growth",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-science-02-reproduction-and-growth",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-science-02-reproduction-and-growth",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-science-02-reproduction-and-growth",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

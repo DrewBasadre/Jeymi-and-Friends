@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-english-06-writing-an-evidence-based-response",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:dc5c0d67de67e05ad5b2b835054fcf08f8ac2b64a1cfde258f1d05c6ef6469c8",
+    "lesson.md": "sha256:4a10ce35ac101c7b9a15e5e2ac2acf17341c3384ca4df5f7423da0796923ade2",
     "g8-english-06-writing-an-evidence-based-response-quiz.json": "sha256:10575fbf5ae6ed6f005e60907e8f931658dd0c9244339a827c17e2a8b3a8c556",
-    "images/concept-guide.webp": "sha256:2d5004913cdcd3ccfc40da41c804b773f3e8b9ae5168985a3d53b93412d17c2f",
-    "images/worked-example.webp": "sha256:a20bc167acce2fb9bdaa523e1a0bd77b54bf5917e72d3058bb2ea7b1786f5fd7"
+    "images/concept-guide.webp": "sha256:2d63e5227b3f9896ceedeebe85585084db9fabccf2451a7b775bbf564c84a0dc",
+    "images/worked-example.webp": "sha256:66e12cfd57e2783d406a17c4376d86b5b48695b10c4d61f99379c48bfc11564c"
   },
   "quizId": "g8-english-06-writing-an-evidence-based-response-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-english-06-writing-an-evidence-based-response",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-english-06-writing-an-evidence-based-response",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-english-06-writing-an-evidence-based-response",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-english-06-writing-an-evidence-based-response",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-english-06-writing-an-evidence-based-response",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

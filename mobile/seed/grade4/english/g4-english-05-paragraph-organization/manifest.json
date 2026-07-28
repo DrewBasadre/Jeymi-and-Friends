@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-english-05-paragraph-organization",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:ead6d59eada6bffa8b7d50840d33ed40dff520fa307d22f5dec9662a75b54487",
+    "lesson.md": "sha256:ade86bd4e962a835bd93387a7430f6061f4236f7c2fa22ffe63dfce664617de5",
     "g4-english-05-paragraph-organization-quiz.json": "sha256:76cd0f9252a10af52cd8d684820e6d1308eede1be7513157d87f593b51c3d56b",
-    "images/concept-guide.webp": "sha256:f91cc434d8c1975aadd379bb9dbddf767966298fadd8985f23e493b0a91a09a9",
-    "images/worked-example.webp": "sha256:e00749eda71d15421dbaf525968039fad8d96905c02d9764f868ce77baeec14d"
+    "images/concept-guide.webp": "sha256:614c2e9a90acf0b4a220577ac9000a87e64f1d07c83041e576a8ca1097a5b801",
+    "images/worked-example.webp": "sha256:1f145ab5f181268ce50d5546b80db14c759132133fea98f207484675dd515de9"
   },
   "quizId": "g4-english-05-paragraph-organization-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-english-05-paragraph-organization",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-english-05-paragraph-organization",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-english-05-paragraph-organization",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-english-05-paragraph-organization",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-english-05-paragraph-organization",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

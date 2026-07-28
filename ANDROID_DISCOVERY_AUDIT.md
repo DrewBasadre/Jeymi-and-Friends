@@ -1,4 +1,4 @@
-# WAIS Android Discovery Audit
+# PAVO Android Discovery Audit
 
 Date: 2026-07-28
 
@@ -15,7 +15,7 @@ described in the unified student and teacher specification.
 - Local persistence lives in an Expo SQLite database implemented by
   `mobile/src/data/database.ts`, `repository.ts`, and `mvpRepository.ts`.
 - Android proximity transport is a native Expo module written in Kotlin at
-  `mobile/modules/wais-nearby/android`. TypeScript calls it through
+  `mobile/modules/pavo-nearby/android`. TypeScript calls it through
   `mobile/src/services/nearby.ts`.
 - Native Markdown rendering uses `react-native-markdown-display`; raw HTML is
   disabled and package images resolve from local files.
@@ -29,7 +29,7 @@ described in the unified student and teacher specification.
   Wi-Fi for bulk payload delivery.
 - Connection verification, file metadata, progress events, SHA-256 package
   verification, cancellation, and offset-based retry state are present.
-- The transfer artifact is a `.wais-module` ZIP containing `manifest.json`,
+- The transfer artifact is a `.pavo-module` ZIP containing `manifest.json`,
   Markdown, and local assets.
 - Two-device discovery, interrupted transfer, and resume still require an
   Android device or emulator acceptance run.

@@ -1,6 +1,6 @@
 # Atomic Structure and the Periodic Table
 
-> WAIS demo content aligned to MATATAG Quarter 1 learning goals. This is an original classroom learning aid, not official curriculum text.
+> PAVO demo content aligned to MATATAG Quarter 1 learning goals. This is an original classroom learning aid, not official curriculum text.
 
 ## Learning goal
 

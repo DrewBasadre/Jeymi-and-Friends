@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-english-06-reading-informational-text",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:2b6f160358ffa06cce75596c435ded0bd342c8c62f4e99cdad154b7acedc52a3",
+    "lesson.md": "sha256:6e16c033af2041be190efb242a7728cbedc16618807c25fd6acdc9385476994a",
     "g4-english-06-reading-informational-text-quiz.json": "sha256:63b4207567892a0760bac895176cb4c0636fe5e865f870921d289df97482f58c",
-    "images/concept-guide.webp": "sha256:a596411f8ac60abc4b61bad77998abd07d7e5c642517326fda7aabed9f65d215",
-    "images/worked-example.webp": "sha256:881b476adacbb175c55b2419fe8f90e8caad21626f9d64a9a48c13ae6bde69b0"
+    "images/concept-guide.webp": "sha256:006f40b06e643502dc5677ebee2944a7fa2c8f239cf48399b3695788b4bc2dec",
+    "images/worked-example.webp": "sha256:17ed4c43180a32091fee533f4676ae6b57b3df52e1847e2d478e250e614195c4"
   },
   "quizId": "g4-english-06-reading-informational-text-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-english-06-reading-informational-text",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-english-06-reading-informational-text",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-english-06-reading-informational-text",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-english-06-reading-informational-text",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-english-06-reading-informational-text",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

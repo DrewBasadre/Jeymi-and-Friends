@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-english-03-grammar-for-clear-meaning",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:9232ef3682cf417fe723f840b4ad7cf134a23846dc98174d3298183d59d71a6f",
+    "lesson.md": "sha256:8b37e90b01dd757403da4c06e0de224709e529066915f608e13f3db0e08a887e",
     "g7-english-03-grammar-for-clear-meaning-quiz.json": "sha256:0216a29be02ac4de1d05c130777d4ad7a6ffedab4aefa326a852a507a59c9078",
-    "images/concept-guide.webp": "sha256:95553549961471f3e5243553a8026a2c93b44eef9014d3411dd54ed4e053a43c",
-    "images/worked-example.webp": "sha256:4061cd35d9a6322ed3be80a4d139dc1a5dd0bed5868f9db3122b0ce5457a9ea9"
+    "images/concept-guide.webp": "sha256:dd13abec0b17c8a37e278bb2aa4b7a0009d6851493bd3dab47b72992c115bb54",
+    "images/worked-example.webp": "sha256:24a3705959cd80c3b0a6faf3c9bcad50c0c6c8dd4d972c1449a17950aaad9f11"
   },
   "quizId": "g7-english-03-grammar-for-clear-meaning-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-english-03-grammar-for-clear-meaning",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-english-03-grammar-for-clear-meaning",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-english-03-grammar-for-clear-meaning",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-english-03-grammar-for-clear-meaning",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-english-03-grammar-for-clear-meaning",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

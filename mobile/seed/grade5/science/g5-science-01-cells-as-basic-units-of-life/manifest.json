@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-science-01-cells-as-basic-units-of-life",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:cb4a58f488d6f48603e3fdddcf4310a72709bb421f9aaf9683bcedd2741bd5b1",
+    "lesson.md": "sha256:0c73ff3cb504c51d7f69918c9be4b361be4ae1b117f469fcd52d05d746d226c3",
     "g5-science-01-cells-as-basic-units-of-life-quiz.json": "sha256:92848c7562e44e2bd9fe71ab6a15b56f933346e629f34509bc469d48f72d9696",
-    "images/concept-guide.webp": "sha256:20f55e9e06c75c45697efde34bef96434c876b8b148d4932b9ea3a2156eca0b9",
-    "images/worked-example.webp": "sha256:5092ac655620c7f0c5e19b87e13e564e4a3fa2f4e4bc20fb304c0822341d8062"
+    "images/concept-guide.webp": "sha256:f1930d72a0c57fffc6b49bdc0bbf5900841e697631f89eafb2fdcca2c31d7a08",
+    "images/worked-example.webp": "sha256:bc222e91ca9ca754a60f29c3e381091f2a58c3ca7d3332719ace5e6940e58404"
   },
   "quizId": "g5-science-01-cells-as-basic-units-of-life-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-science-01-cells-as-basic-units-of-life",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-science-01-cells-as-basic-units-of-life",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-science-01-cells-as-basic-units-of-life",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-science-01-cells-as-basic-units-of-life",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-science-01-cells-as-basic-units-of-life",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

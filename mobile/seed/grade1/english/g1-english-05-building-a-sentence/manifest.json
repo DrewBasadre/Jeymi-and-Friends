@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-english-05-building-a-sentence",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:088f76bde4fc27cee95917532b86069a53440e5d2f154ac8722eacd4acd57b75",
+    "lesson.md": "sha256:82d96e449e21f334b3933dc09455849df089e683bb930ab2a34ad0211b4916a2",
     "g1-english-05-building-a-sentence-quiz.json": "sha256:a55dca25ec709e6156ebcf0f42d31b16c5bc07dfb7dd5f75ac0dfbafa9438629",
-    "images/concept-guide.webp": "sha256:145e81354fe69e5d175bab8086590bd46363654bfc695d7fb1fa6cd6c0f1c3fa",
-    "images/worked-example.webp": "sha256:0172882525a8b427c016f355358e096ce342bc3970ee0eaffc02fe47744bfdce"
+    "images/concept-guide.webp": "sha256:3949b5f86261d3d2245786c4d0beb7f8b6af15cabac5919a5e97cccc1ee0d46d",
+    "images/worked-example.webp": "sha256:10f8c73694905753b99e32f7f9c359544d10149af7e6864fe08604cf17e97086"
   },
   "quizId": "g1-english-05-building-a-sentence-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-english-05-building-a-sentence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-english-05-building-a-sentence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-english-05-building-a-sentence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-english-05-building-a-sentence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-english-05-building-a-sentence",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

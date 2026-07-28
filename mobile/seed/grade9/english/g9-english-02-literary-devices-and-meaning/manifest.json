@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-english-02-literary-devices-and-meaning",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:4d8cbc6caded52279e5ba4fed382e7d58398cc75ab184168489edf2c6e31d811",
+    "lesson.md": "sha256:9b8ec4003015809097441983d1d0ab794be5369da2562a83115f02785be80db9",
     "g9-english-02-literary-devices-and-meaning-quiz.json": "sha256:e0bb516a531ffca10338b8343bae1b5f83bc2003f6ca8e60d97b98c7e1c48e76",
-    "images/concept-guide.webp": "sha256:8ca84a430a7e64fb0ae3faa2697999699f2060a4f7c78f3578b17d9496528df4",
-    "images/worked-example.webp": "sha256:d5c9da8afc311bf8ac965ff3858a15d8fe45ac8e16fb9a3c9c3cf2049c02b5af"
+    "images/concept-guide.webp": "sha256:a57499ec8c0890606541d0a00d198c8d0717a272601fd6905440ea768a2711b3",
+    "images/worked-example.webp": "sha256:76730f1be6115d56645a6f287e919bd4409ea6ec10f34abc541490afc812316e"
   },
   "quizId": "g9-english-02-literary-devices-and-meaning-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-english-02-literary-devices-and-meaning",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-english-02-literary-devices-and-meaning",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-english-02-literary-devices-and-meaning",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-english-02-literary-devices-and-meaning",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-english-02-literary-devices-and-meaning",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

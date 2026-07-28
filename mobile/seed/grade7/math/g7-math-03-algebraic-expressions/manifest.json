@@ -1,6 +1,7 @@
 {
   "moduleId": "g7-math-03-algebraic-expressions",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 7,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:993dc7a38ab2f60faa3935f5858534898bd233f11e911b96b2b0ef42cdd68f1c",
+    "lesson.md": "sha256:5963fc8062391a605921fec1494d4c1326027b99aaf1f2c55c3d89d4a18fe42d",
     "g7-math-03-algebraic-expressions-quiz.json": "sha256:aad8d256f13601b4f416d7c6ccb160d88df4a80d4ace7fa1a54534b9cbf6e584",
-    "images/concept-guide.webp": "sha256:ae64cbbcad3ca95aa6d06922ae09aefd6e998292eb53ba64bd1f74adbc22d124",
-    "images/worked-example.webp": "sha256:44fc26b77220ae65f8e1d17dc0e0b976c46821223416a28aa96b53a0edc6afa4"
+    "images/concept-guide.webp": "sha256:7f58b65884ef1fee95e4f39890737e90436c6d843eacea956122855c9da18024",
+    "images/worked-example.webp": "sha256:71ec4a1af3a8696e7cd470e700d1a58f7030b6ec51ab2f8ac828ecba0fa0c6b7"
   },
   "quizId": "g7-math-03-algebraic-expressions-quiz",
   "reviewItems": [
     {
       "moduleId": "g7-math-03-algebraic-expressions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g7-math-03-algebraic-expressions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g7-math-03-algebraic-expressions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g7-math-03-algebraic-expressions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g7-math-03-algebraic-expressions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

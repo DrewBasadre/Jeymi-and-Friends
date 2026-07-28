@@ -9,7 +9,7 @@ import {
   type SeedProvisionProgress,
 } from '@/services/seedBundles';
 
-const SESSION_KEY = 'wais.studentSession';
+const SESSION_KEY = 'pavo.studentSession';
 
 interface SessionState {
   ready: boolean;

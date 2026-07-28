@@ -30,9 +30,9 @@ import type {
 } from '@/domain/types';
 
 const modulesDirectory = new Directory(Paths.document, 'modules');
-const authoringDirectory = new Directory(Paths.cache, 'wais-authoring');
+const authoringDirectory = new Directory(Paths.cache, 'pavo-authoring');
 const MANIFEST_PATH = 'manifest.json';
-const LEGACY_ADDED_MATERIALS_DEMO = /^(?:image|markdown)-demo-[a-z0-9]+(?:-v\d+)?(?:\.wais-module)?$/i;
+const LEGACY_ADDED_MATERIALS_DEMO = /^(?:image|markdown)-demo-[a-z0-9]+(?:-v\d+)?(?:\.pavo-module)?$/i;
 
 export interface TeacherModuleImage {
   packagePath: string;
@@ -113,7 +113,7 @@ export async function buildTeacherModulePackage(
   draft: TeacherModuleDraft,
 ): Promise<
   TransferPackage & {
-    mimeType: 'application/vnd.wais.module+zip';
+    mimeType: 'application/vnd.pavo.module+zip';
     manifest: CurriculumModuleManifest;
   }
 > {
@@ -167,7 +167,7 @@ export async function buildTeacherModulePackage(
   const archive = zipSync(entries, { level: 6 });
 
   ensureDirectory(modulesDirectory);
-  const archiveFile = new File(modulesDirectory, `${moduleId}.wais-module`);
+  const archiveFile = new File(modulesDirectory, `${moduleId}.pavo-module`);
   if (!archiveFile.exists) archiveFile.create({ intermediates: true });
   archiveFile.write(archive);
   const archiveSha256 = await sha256File(archiveFile);
@@ -175,7 +175,7 @@ export async function buildTeacherModulePackage(
     moduleId,
     displayName: draft.title,
     fileUri: archiveFile.uri,
-    mimeType: 'application/vnd.wais.module+zip',
+    mimeType: 'application/vnd.pavo.module+zip',
     sizeBytes: archiveFile.size,
     sha256: archiveSha256,
     manifest,
@@ -195,7 +195,7 @@ export async function inspectModulePackage(
     moduleId: manifest.moduleId,
     displayName: displayName?.trim() || manifest.moduleId,
     fileUri: archiveFile.uri,
-    mimeType: 'application/vnd.wais.module+zip',
+    mimeType: 'application/vnd.pavo.module+zip',
     sizeBytes: archiveFile.size,
     sha256: await sha256File(archiveFile),
     manifest,

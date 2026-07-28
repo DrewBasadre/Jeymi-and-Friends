@@ -1,6 +1,7 @@
 {
   "moduleId": "g10-english-06-speaking-for-public-audiences",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 10,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:cc762c8290172d8bf1871705a0da04c507b1bdf0afe26d57d97400d872fadbfc",
+    "lesson.md": "sha256:062fb44c8232cb4af3e663158713ff632f3f4c0f77228c40b714d12398cfb9a1",
     "g10-english-06-speaking-for-public-audiences-quiz.json": "sha256:b9884d99fda8899de6794376221ed85dd83eb6d2ac3fe9f10fa30d4872fc9192",
-    "images/concept-guide.webp": "sha256:4c276ac7f1cea58b25a80085b239d5455519f84ecf451ba13d39e2a02b32b8a4",
-    "images/worked-example.webp": "sha256:076f1851877804ca6a1a6c7286868bbc7f66d349e801f894c3635ccd2fa0083c"
+    "images/concept-guide.webp": "sha256:e8005391f6e372d52f1510dedcdadf9a2391bffc0c926aae2d8b6ffb926a5d77",
+    "images/worked-example.webp": "sha256:d015b3a5e789d89aac886552cb81cb42b72f5d27b5376c13768c2c72b526958e"
   },
   "quizId": "g10-english-06-speaking-for-public-audiences-quiz",
   "reviewItems": [
     {
       "moduleId": "g10-english-06-speaking-for-public-audiences",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g10-english-06-speaking-for-public-audiences",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g10-english-06-speaking-for-public-audiences",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g10-english-06-speaking-for-public-audiences",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g10-english-06-speaking-for-public-audiences",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

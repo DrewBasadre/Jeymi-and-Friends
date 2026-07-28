@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-science-02-parts-of-the-body",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:4329801b864c3a2e1812d0aaeb2d5ce636b8cfd77f1651d55e49c9f1d6cca4bd",
+    "lesson.md": "sha256:c330a7c88dbb67401f58ee000d8d4cd29d00a8dd21d02c71d7079a0ee2ad8cf5",
     "g1-science-02-parts-of-the-body-quiz.json": "sha256:ea4475586db649c2fa2d788fccfe4d2768bc9d9b59c6d64c46efbc4fd9bbb3ca",
-    "images/concept-guide.webp": "sha256:9c571640901899fc3be31435306fef95304e14f06c58d952941407e54827cf9e",
-    "images/worked-example.webp": "sha256:f1f8f8a31cb1fa5ac379ef74d0a50cdc457d26da28b64f2212c1df0e484a975f"
+    "images/concept-guide.webp": "sha256:1da6c9a634322eed8c55d64ed08d7950bbf2f7725db0a549baf81d0c035072b6",
+    "images/worked-example.webp": "sha256:ba983b6fbdb960a5b58d51b3f36226cf4b3f0410dec4d3b8454479a54d96973b"
   },
   "quizId": "g1-science-02-parts-of-the-body-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-science-02-parts-of-the-body",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-science-02-parts-of-the-body",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-science-02-parts-of-the-body",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-science-02-parts-of-the-body",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-science-02-parts-of-the-body",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

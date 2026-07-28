@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-math-02-comparing-numbers",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:7a01527a88d4a8ab3d5831f9b34b4d00a3d94ffea29f005d8827a5f299a1efae",
+    "lesson.md": "sha256:644338157973f91fb00d7c65621aeb0c9409b6ab5d40d1002d2026587eeeed4c",
     "g1-math-02-comparing-numbers-quiz.json": "sha256:6c82da1469304daca9307d6dba1bc6dede16bec7c9356474fe391b482c1d65dc",
-    "images/concept-guide.webp": "sha256:2e2919769a07d288cba765479dd186f89bcef3820cbe6b7babe41ad3f1cda81c",
-    "images/worked-example.webp": "sha256:53fb416988f6d15cac9611ece241c87949bdaa7bcd47d8ca74355fdaaed8a930"
+    "images/concept-guide.webp": "sha256:ba19b221c6aee4649cec27884dbfc10a8afd8f8f0b6a3b3e24bb804ac422ba38",
+    "images/worked-example.webp": "sha256:f71eeae535dc02f76b7e95090a8e303aba1bd51e897fb1b3b44643b2dc9d2539"
   },
   "quizId": "g1-math-02-comparing-numbers-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-math-02-comparing-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-math-02-comparing-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-math-02-comparing-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-math-02-comparing-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-math-02-comparing-numbers",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

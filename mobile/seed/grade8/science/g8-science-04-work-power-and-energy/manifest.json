@@ -1,6 +1,7 @@
 {
   "moduleId": "g8-science-04-work-power-and-energy",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 8,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:6652ae870c981e24ccefeae57c17248ff576e64fc7ed497c6bc0c8b4ef704b7f",
+    "lesson.md": "sha256:eb44190826db563686a409daa8456e0920589b62d67ffcce3bfb4ba68f59bfde",
     "g8-science-04-work-power-and-energy-quiz.json": "sha256:3d4fa1c055346b43c33eaa66819b3aa60147db9ece33ffa0859ef2976ba183fe",
-    "images/concept-guide.webp": "sha256:d12b19768462053875fa84d1db60bf14c547f8bc16b24860cc51ea0f546f079c",
-    "images/worked-example.webp": "sha256:0083d4dfd2b5601294c8e16f718d7a2c78fb7541994d4c90dace4c8752aa77b2"
+    "images/concept-guide.webp": "sha256:4b9d0a571b36020f99d8990375150fc8c6023fd7b486f18b1b7478edbdc22eaa",
+    "images/worked-example.webp": "sha256:0f00ee44b6f83f34a6adf2b03e662fbfc2d140f807b70414994d0d2a421b22d6"
   },
   "quizId": "g8-science-04-work-power-and-energy-quiz",
   "reviewItems": [
     {
       "moduleId": "g8-science-04-work-power-and-energy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g8-science-04-work-power-and-energy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g8-science-04-work-power-and-energy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g8-science-04-work-power-and-energy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g8-science-04-work-power-and-energy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-english-05-informational-text-structures",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:e9afc1b3f81cb23bdd55aeaeecea1d7e103d0ee5cf6f3eb83d71634a128b4303",
+    "lesson.md": "sha256:5dd06bf52b7e4b79236d6feac91e2a07d9858f1dcf64545cd6d975144c5cc305",
     "g5-english-05-informational-text-structures-quiz.json": "sha256:7beb089b198c720c1b940423127c19ba46d09a74d3bda6507e4c8f4279d97e87",
-    "images/concept-guide.webp": "sha256:6f1b66521a81286d20bce35f0b7822f024910eaac4c48d2738d8755dc5a52faf",
-    "images/worked-example.webp": "sha256:2a6137197de1549e2fe701708402ccf9ae6516c2507323aee702f37b9c19fd07"
+    "images/concept-guide.webp": "sha256:69454505404d7ab6ac03e726c9b27c0021d618ccbd2a83c21d22ecdad18ad8bc",
+    "images/worked-example.webp": "sha256:a9094dd2c6f3a3b735f7b2b99aa0bdee122f1abbfe7ffaa557c0a11bf9a4c1b6"
   },
   "quizId": "g5-english-05-informational-text-structures-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-english-05-informational-text-structures",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-english-05-informational-text-structures",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-english-05-informational-text-structures",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-english-05-informational-text-structures",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-english-05-informational-text-structures",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

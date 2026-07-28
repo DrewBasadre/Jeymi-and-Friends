@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-math-04-fractions-on-a-number-line",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:a86ba1f2ec7bf36dca8984fdb7a2626e3e25454ccc2f6549dbfdb43018069e67",
+    "lesson.md": "sha256:8da2be0bbf89272fce474c4aba004c7bf6f5eabb1afa1a0917d12af12b52cd61",
     "g3-math-04-fractions-on-a-number-line-quiz.json": "sha256:a6aa7d41361e48060a49148e68c37a270e87d0cd257522c1b08f4b202170a4ad",
-    "images/concept-guide.webp": "sha256:de3cb94d5b95f8f01413dd4f0e2080260d8a216aa723d6c75c9319389413e375",
-    "images/worked-example.webp": "sha256:02c6b01b103ad454feb86184ccfbed3528eff2ad5e9f2bd9d3fa5f8ff2c7ce5d"
+    "images/concept-guide.webp": "sha256:babe78d73c3476f8db1e548a45022a56c9f70a41a2a6bd8beb71a8cde136578f",
+    "images/worked-example.webp": "sha256:f6860312d16945d136e07edeaeb596ef506a0c8fffaa91141294b77e3a6d3d05"
   },
   "quizId": "g3-math-04-fractions-on-a-number-line-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-math-04-fractions-on-a-number-line",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-math-04-fractions-on-a-number-line",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-math-04-fractions-on-a-number-line",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-math-04-fractions-on-a-number-line",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-math-04-fractions-on-a-number-line",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

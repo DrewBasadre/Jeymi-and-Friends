@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-english-05-writing-a-clear-paragraph",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:c8b5064da8e53e4d4109bba958fb118d894d892b21b526121e17ddd138574bf7",
+    "lesson.md": "sha256:faa0c81f645ec8dc40bc1300dd3f26e6864dfe6761fae771778404a6208bdde3",
     "g3-english-05-writing-a-clear-paragraph-quiz.json": "sha256:f6bf7381fb8d541506a2b030f8fd9ecbc1bf53a38016809fe240e2c5dc81525d",
-    "images/concept-guide.webp": "sha256:08b981d6669f74b9c6b8b44bd29d3368b15897ed6bdae5aa2dca7852c660cc38",
-    "images/worked-example.webp": "sha256:8d8ea89e96978fdd36fe2e932802499e36c59e5e5dd8add2034fdd23c45d4e83"
+    "images/concept-guide.webp": "sha256:960f245316356849d5e5a5035a0b61b563900a1a4267ca204e3fe088328baa16",
+    "images/worked-example.webp": "sha256:f196fa9b78021b5120450dd1cb217497b46fb89456b1c1068ea87cd00ce1ad37"
   },
   "quizId": "g3-english-05-writing-a-clear-paragraph-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-english-05-writing-a-clear-paragraph",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-english-05-writing-a-clear-paragraph",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-english-05-writing-a-clear-paragraph",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-english-05-writing-a-clear-paragraph",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-english-05-writing-a-clear-paragraph",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g9-english-06-media-and-information-literacy",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 9,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:01b288e8b00d16e42eebdac7ad399d14b0f4730841a1a7ca1dc3ceb210387443",
+    "lesson.md": "sha256:108657cbc0bccd28c7d3aad2e6911fb40b7573768f27cd9f9ea4d7af02c31edf",
     "g9-english-06-media-and-information-literacy-quiz.json": "sha256:11e540f67b8a147f5565de2a7066e3c088691d8f3fbe1fbd0cc2cad98de95bc7",
-    "images/concept-guide.webp": "sha256:9ece7226b5b1a41a97ef8faad08994fb79ac8ec8a2565baa439e6da7702f3353",
-    "images/worked-example.webp": "sha256:b0a3272d751705809c665aa48e868a1588e94189c801e662cb62a03c0dfa4c71"
+    "images/concept-guide.webp": "sha256:b5ef8d8c9a8a113f7c27647ee48a2c359e08d8d4b270d998b87283d38336f764",
+    "images/worked-example.webp": "sha256:358300951bc6d153ea583a9589c3f3c2ea22cfbd070482002e5aaed87882a2b5"
   },
   "quizId": "g9-english-06-media-and-information-literacy-quiz",
   "reviewItems": [
     {
       "moduleId": "g9-english-06-media-and-information-literacy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g9-english-06-media-and-information-literacy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g9-english-06-media-and-information-literacy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g9-english-06-media-and-information-literacy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g9-english-06-media-and-information-literacy",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

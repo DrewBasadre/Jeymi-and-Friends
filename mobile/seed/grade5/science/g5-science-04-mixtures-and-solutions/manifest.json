@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-science-04-mixtures-and-solutions",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:4ffe7187e12e3fb599c1eecd43b3c739ffa4fca79b19f750cc4653ad96a32632",
+    "lesson.md": "sha256:f8c8b865154a6d22548651d4aaa505149393bfe0b3e4895eaa2f6b0a59f1aaaa",
     "g5-science-04-mixtures-and-solutions-quiz.json": "sha256:b2fc2aff7d64bef974f85fcd098a99b8a31886c88a6493bfe73f4c140fdaf03f",
-    "images/concept-guide.webp": "sha256:0feed6a18f39d723c5dec223e9bee2405926bafb8c384c0f038ef6524d5f1c50",
-    "images/worked-example.webp": "sha256:dc9bbe1365890b88fbe013dcd57ccb839e7e27fad60f334034d0efebd497e573"
+    "images/concept-guide.webp": "sha256:85403e879456dbe213aad959c1857527f1fc5f40144ccf9373631da8445e36b8",
+    "images/worked-example.webp": "sha256:ba5436f36b50b63a521ddf33d1a81121336ece2222288c4dabc5a814bad79fe5"
   },
   "quizId": "g5-science-04-mixtures-and-solutions-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-science-04-mixtures-and-solutions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-science-04-mixtures-and-solutions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-science-04-mixtures-and-solutions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-science-04-mixtures-and-solutions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-science-04-mixtures-and-solutions",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

@@ -1,6 +1,7 @@
 {
   "moduleId": "g5-math-06-data-and-probability",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 5,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:cf5fb9a555393569e5871e8a494d8200684beb245019330b1804d3a617d1d002",
+    "lesson.md": "sha256:4aeb34e6e4968da4f39448eee451b76e23f1a560da3f0c9307a70194cbdb225d",
     "g5-math-06-data-and-probability-quiz.json": "sha256:76378c9b8cf564428530545ebefcc0f2638a18835c3725d5d28b9479182cceac",
-    "images/concept-guide.webp": "sha256:2195d28337547a65eb1788518aefdbc958b5feb0d0b5cac9beddef99854e2c6e",
-    "images/worked-example.webp": "sha256:7305f085a259e342eba9b564c7fcae8bc5c09796b2579a69e8bd092c9d45224c"
+    "images/concept-guide.webp": "sha256:e1aba89266f0287330348229a252957e7504706e73b1c266a9d8eb3f8dc9f01c",
+    "images/worked-example.webp": "sha256:ad8e679d77d703557d7dde62f232208813e75e703db1fc07abbd40a92aff9d37"
   },
   "quizId": "g5-math-06-data-and-probability-quiz",
   "reviewItems": [
     {
       "moduleId": "g5-math-06-data-and-probability",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g5-math-06-data-and-probability",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g5-math-06-data-and-probability",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g5-math-06-data-and-probability",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g5-math-06-data-and-probability",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

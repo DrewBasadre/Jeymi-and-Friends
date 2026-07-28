@@ -1,6 +1,7 @@
 {
   "moduleId": "g3-math-06-measurement-and-data-displays",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 3,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:9f3aeb4d94eefaa4dac25dd8c32eca69fb8affc9796bc8ec2428070aa256dfd8",
+    "lesson.md": "sha256:45a9017f6441786a8f4bba9374014afa61358075418ee9b88c46e23026a2a8f2",
     "g3-math-06-measurement-and-data-displays-quiz.json": "sha256:39e28cc9e0dbe12fea25bf0196c7a83a972c1c9f093f092259fb59271fa5cc45",
-    "images/concept-guide.webp": "sha256:989589087876821a208aff81272806809ac60e2e248abc8b39cbee2507f092e1",
-    "images/worked-example.webp": "sha256:2738fe380a96bd9c99f820196f2335bc35796031d5bf1ebf265baf83595baa23"
+    "images/concept-guide.webp": "sha256:c27cfd179391505432ad128f1a06837d20699621d941a5e73dde4e16537fb1a4",
+    "images/worked-example.webp": "sha256:f055e6efadeb2cc128e4e440780da53c6b0d2757516a68c37373f64821bfb9d8"
   },
   "quizId": "g3-math-06-measurement-and-data-displays-quiz",
   "reviewItems": [
     {
       "moduleId": "g3-math-06-measurement-and-data-displays",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g3-math-06-measurement-and-data-displays",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g3-math-06-measurement-and-data-displays",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g3-math-06-measurement-and-data-displays",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g3-math-06-measurement-and-data-displays",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

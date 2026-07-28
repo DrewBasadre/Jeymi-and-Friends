@@ -17,6 +17,8 @@ export interface Student {
   lastName: string;
   middleInitial: string;
   displayName: string;
+  parentName: string;
+  parentPhone: string;
   gradeLevel: number;
   section: string;
   birthday: string;
@@ -429,6 +431,8 @@ export interface StudentPerformanceReport {
     name: string;
     studentNumber: string;
     section: string;
+    parentName: string;
+    parentPhone: string;
     currentLearningFormat: LearningFormat;
   };
   quizHistory: QuizAttempt[];
@@ -514,9 +518,9 @@ export interface TransferPackage {
   displayName: string;
   fileUri: string;
   mimeType:
-    | 'application/vnd.wais.module+zip'
-    | 'application/vnd.wais.review-set+json'
-    | 'application/vnd.wais.study-package+zip';
+    | 'application/vnd.pavo.module+zip'
+    | 'application/vnd.pavo.review-set+json'
+    | 'application/vnd.pavo.study-package+zip';
   sizeBytes: number;
   sha256: string;
   manifest: LearningPackageManifest;

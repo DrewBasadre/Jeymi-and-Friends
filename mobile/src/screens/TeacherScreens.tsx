@@ -32,7 +32,9 @@ import {
   History,
   Layers,
   LogOut,
+  MessageSquareText,
   Minus,
+  Phone,
   Plus,
   PencilLine,
   QrCode,
@@ -127,6 +129,11 @@ import type {
 import { buildReviewSetPackage } from '@/services/files';
 import { askPavo, isCompanionConfigured } from '@/services/companion';
 import { useConnectivity } from '@/services/connectivity';
+import {
+  PARENT_SMS_CHARACTER_LIMIT,
+  sendParentSmsDemo,
+  type ParentSmsReceipt,
+} from '@/services/parentMessaging';
 import {
   buildLearningPackage,
   inspectLearningPackage,
@@ -1614,6 +1621,9 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
   const [report, setReport] = useState<StudentPerformanceReport | null>(null);
   const [insight, setInsight] = useState<CompanionResponse | null>(null);
   const [insightLoading, setInsightLoading] = useState(false);
+  const [parentMessage, setParentMessage] = useState('');
+  const [smsSending, setSmsSending] = useState(false);
+  const [smsReceipt, setSmsReceipt] = useState<ParentSmsReceipt | null>(null);
   const compact = useCompactViewport();
   const connectivity = useConnectivity();
 
@@ -1691,6 +1701,32 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
     }
   }
 
+  async function sendParentMessage() {
+    if (!report) return;
+    setSmsSending(true);
+    try {
+      const receipt = await sendParentSmsDemo({
+        studentId: report.studentId,
+        parentName: report.profile.parentName,
+        parentPhone: report.profile.parentPhone,
+        message: parentMessage,
+      });
+      setSmsReceipt(receipt);
+      setParentMessage('');
+      Alert.alert(
+        'Demo SMS prepared',
+        `The messaging flow completed for ${receipt.recipientName}. No real SMS was sent in this demo.`,
+      );
+    } catch (error) {
+      Alert.alert(
+        'Message not sent',
+        error instanceof Error ? error.message : 'Check the message and try again.',
+      );
+    } finally {
+      setSmsSending(false);
+    }
+  }
+
   return (
     <Screen>
       <ScreenHeader
@@ -1731,6 +1767,21 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
           <HeroStat label="Trend" value={capitalize(report.trend)} />
         </View>
       </HeroCard>
+
+      <SectionHeader title="Student and parent" caption="Contact shared from the learner profile" />
+      <Card>
+        <InfoLine label="Student number" value={report.profile.studentNumber} />
+        <Divider />
+        <InfoLine
+          label="Parent or guardian"
+          value={report.profile.parentName || 'Not provided'}
+        />
+        <Divider />
+        <InfoLine
+          label="Mobile number"
+          value={report.profile.parentPhone || 'Not provided'}
+        />
+      </Card>
 
       <TileGrid>
         <StatTile
@@ -1815,6 +1866,73 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
         onPress={() => void generateStudentInsight()}
       />
       {insight ? <AiReportCard result={insight} /> : null}
+
+      <SectionHeader
+        title="Message parent"
+        caption="Prepare a direct progress update"
+      />
+      <Card accent={colors.secondary}>
+        <CardHeader
+          icon={MessageSquareText}
+          title={report.profile.parentName || 'Parent contact unavailable'}
+          subtitle={report.profile.parentPhone || 'Add contact details through the student profile QR'}
+          color={colors.secondary}
+        />
+        <Callout
+          icon={ShieldCheck}
+          title="Demo messaging"
+          body="This screen simulates an SMS provider. It completes the full send flow but does not contact a real phone number."
+          tone="info"
+        />
+        <TextInput
+          value={parentMessage}
+          onChangeText={(value) => {
+            setParentMessage(value);
+            setSmsReceipt(null);
+          }}
+          accessibilityLabel="Message to parent or guardian"
+          placeholder={`Write a progress update for ${report.profile.parentName || 'the parent'}...`}
+          placeholderTextColor={colors.inkSubtle}
+          selectionColor={colors.primary}
+          multiline
+          maxLength={PARENT_SMS_CHARACTER_LIMIT}
+          textAlignVertical="top"
+          style={styles.parentMessageInput}
+        />
+        <View style={styles.messageFooter}>
+          <View style={styles.messageRecipient}>
+            <Phone size={14} color={colors.inkMuted} />
+            <Text style={styles.messageRecipientText} numberOfLines={1}>
+              {report.profile.parentPhone || 'No mobile number'}
+            </Text>
+          </View>
+          <Text style={styles.characterCount}>
+            {parentMessage.length}/{PARENT_SMS_CHARACTER_LIMIT}
+          </Text>
+        </View>
+        <PrimaryButton
+          label={smsSending ? 'Sending demo...' : 'Send demo SMS'}
+          icon={Send}
+          loading={smsSending}
+          disabled={
+            smsSending ||
+            !parentMessage.trim() ||
+            !report.profile.parentName ||
+            !report.profile.parentPhone
+          }
+          onPress={() => void sendParentMessage()}
+        />
+        {smsReceipt ? (
+          <Callout
+            icon={CheckCircle2}
+            title="Demo send completed"
+            body={`Simulated for ${smsReceipt.recipientName} at ${new Date(
+              smsReceipt.sentAt,
+            ).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}.`}
+            tone="success"
+          />
+        ) : null}
+      </Card>
 
       <SectionHeader title="Module breakdown" caption="Averages per module on this device" />
       {modules.length ? (
@@ -2472,6 +2590,39 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   missPillText: { ...text.caption, color: colors.warning, fontWeight: '800' },
+  parentMessageInput: {
+    minHeight: 132,
+    maxHeight: 220,
+    borderWidth: 1.5,
+    borderColor: colors.outline,
+    borderRadius: radius.md,
+    backgroundColor: colors.surface,
+    color: colors.ink,
+    padding: spacing.md,
+    fontSize: 16,
+    lineHeight: 23,
+  },
+  messageFooter: {
+    minHeight: 24,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.md,
+  },
+  messageRecipient: {
+    flex: 1,
+    minWidth: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+  },
+  messageRecipientText: {
+    ...text.caption,
+    color: colors.inkMuted,
+    fontWeight: '600',
+    flex: 1,
+  },
+  characterCount: { ...text.caption, color: colors.inkSubtle, fontWeight: '700' },
   historyRow: {
     minHeight: 52,
     flexDirection: 'row',

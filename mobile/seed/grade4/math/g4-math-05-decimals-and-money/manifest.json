@@ -1,6 +1,7 @@
 {
   "moduleId": "g4-math-05-decimals-and-money",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 4,
   "subject": "MATH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:31c42a3ce0017edff0dab05ae03649ee1af16656c33b5b5c716037202f1eecf6",
+    "lesson.md": "sha256:2f8d42ad62f7b4a24c2afd198eb439a35a57059cbe54ee08dc485dfa5b8491c1",
     "g4-math-05-decimals-and-money-quiz.json": "sha256:90f699a8ea4719dd4295cb22b49982f96c415df158399823dd0257ef3f2fa645",
-    "images/concept-guide.webp": "sha256:c50fd3c8f0ac10c0b107c5f787c0639ef1a722880db7757c5b190c75ff5c088f",
-    "images/worked-example.webp": "sha256:faa0b2142fdbddd4e726211b819aa1cfabb5b48eab94b16667b7fa0b3efef31d"
+    "images/concept-guide.webp": "sha256:214ca3319158c8df6b07d868564e96fbe69b97306bf863b0a9e3977a570dca71",
+    "images/worked-example.webp": "sha256:49d1d289829f62a579efd1679eb02688de3ab96ceb97ad6462d9e3e7a686348e"
   },
   "quizId": "g4-math-05-decimals-and-money-quiz",
   "reviewItems": [
     {
       "moduleId": "g4-math-05-decimals-and-money",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g4-math-05-decimals-and-money",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g4-math-05-decimals-and-money",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g4-math-05-decimals-and-money",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g4-math-05-decimals-and-money",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

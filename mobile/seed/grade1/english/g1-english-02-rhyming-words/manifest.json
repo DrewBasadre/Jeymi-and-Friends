@@ -1,6 +1,7 @@
 {
   "moduleId": "g1-english-02-rhyming-words",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 1,
   "subject": "ENGLISH",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:bf56d6601eec53e19107bcbe7e2f81b8f8bc4cba54a55805d1ddb718f4aa011a",
+    "lesson.md": "sha256:a5401b78bc3ab08c53921b9e06a7130a37ed5a78343dc7baf491160a1044f9b7",
     "g1-english-02-rhyming-words-quiz.json": "sha256:afac5632158cb0707a4e33eb9181522ff4804a40720b194f0da7b43ece410223",
-    "images/concept-guide.webp": "sha256:e654d625682b8a22d0723cf8a239a242b399d60ff318488e5a0055dcc3bdb522",
-    "images/worked-example.webp": "sha256:43bcfdc33a16813f1b6d35f2bdb2bf6ad86773d19bf785d9c4d4ae973a114389"
+    "images/concept-guide.webp": "sha256:2457a0d2ecd4387c9a005ac714ee8064ac867dd16f0ddf07fc6425069306e541",
+    "images/worked-example.webp": "sha256:1a29c078006833a5158c8e54fbe273c85fdd54a21f6b2c10eae0d5a8bf9778e9"
   },
   "quizId": "g1-english-02-rhyming-words-quiz",
   "reviewItems": [
     {
       "moduleId": "g1-english-02-rhyming-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g1-english-02-rhyming-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g1-english-02-rhyming-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g1-english-02-rhyming-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g1-english-02-rhyming-words",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",

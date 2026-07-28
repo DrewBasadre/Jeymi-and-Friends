@@ -1,6 +1,7 @@
 {
   "moduleId": "g6-science-01-organ-systems-and-homeostasis",
   "version": 1,
+  "contentCategory": "teacherModule",
   "source": "seed-bundle",
   "gradeLevel": 6,
   "subject": "SCIENCE",
@@ -12,17 +13,17 @@
     "images/worked-example.webp"
   ],
   "checksums": {
-    "lesson.md": "sha256:3ed3ebb362119e5b318c82b04ead14f2338e013c51504a5367cb6d3d7190a6a5",
+    "lesson.md": "sha256:81b1178c73e91d8c8163a02c7232c55f914da8fef11e72a34ce34c72b4e7c7d4",
     "g6-science-01-organ-systems-and-homeostasis-quiz.json": "sha256:81816330d79dc7748e2a87e99d974dfc390c1ca04ce299b67e5d7a71afca6c7a",
-    "images/concept-guide.webp": "sha256:42b07f129aa039c891638654f037afb10e139d8e1c42c80f583cb1bc21a9bd99",
-    "images/worked-example.webp": "sha256:3d0f0052d334ac7c01e640fb60b578f91ff3ca875c41cb92c3035c87aad1aae4"
+    "images/concept-guide.webp": "sha256:d7a9fc9656c7ac4e94aa52fd0d74d4308f3ee68c4d43521c7cfbc21cc22018b2",
+    "images/worked-example.webp": "sha256:74758adcc4c131937c9cee1cc41816bbc4351a4adab854f578604406adaaec4a"
   },
   "quizId": "g6-science-01-organ-systems-and-homeostasis-quiz",
   "reviewItems": [
     {
       "moduleId": "g6-science-01-organ-systems-and-homeostasis",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -42,7 +43,7 @@
     {
       "moduleId": "g6-science-01-organ-systems-and-homeostasis",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -62,7 +63,7 @@
     {
       "moduleId": "g6-science-01-organ-systems-and-homeostasis",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -81,7 +82,7 @@
     {
       "moduleId": "g6-science-01-organ-systems-and-homeostasis",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
@@ -100,7 +101,7 @@
     {
       "moduleId": "g6-science-01-organ-systems-and-homeostasis",
       "moduleVersion": 1,
-      "authoredBy": "curriculum:wais-demo-q1",
+      "authoredBy": "curriculum:pavo-demo-q1",
       "tags": [
         "demo",
         "matatag-aligned",
