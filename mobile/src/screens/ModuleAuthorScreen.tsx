@@ -40,6 +40,7 @@ import {
   getTeacherProfile,
   saveReceivedModulePackage,
 } from '@/data/repository';
+import { buildTeacherCompanionRequest } from '@/domain/companion';
 import type {
   ReviewImportance,
   ReviewItem,
@@ -47,6 +48,8 @@ import type {
   Subject,
 } from '@/domain/types';
 import type { RootStackParamList } from '@/navigation/types';
+import { askPavo, isCompanionConfigured } from '@/services/companion';
+import { useConnectivity } from '@/services/connectivity';
 import {
   buildTeacherModulePackage,
   markdownImageSnippet,
@@ -90,6 +93,8 @@ export function ModuleAuthorScreen({ navigation }: Props) {
   const [answer, setAnswer] = useState('');
   const [reviewItems, setReviewItems] = useState<ReviewItem[]>([]);
   const [busy, setBusy] = useState(false);
+  const [aiBusy, setAiBusy] = useState(false);
+  const connectivity = useConnectivity();
 
   useEffect(() => {
     void getTeacherProfile().then((profile) => {
@@ -179,6 +184,67 @@ export function ModuleAuthorScreen({ navigation }: Props) {
       );
     } finally {
       setBusy(false);
+    }
+  }
+
+  async function draftWithAi() {
+    if (!title.trim()) {
+      Alert.alert('Add a topic', 'Enter a module title before asking for a draft.');
+      return;
+    }
+    if (connectivity !== 'online' || !isCompanionConfigured()) {
+      Alert.alert('Internet required', 'Connect to use inline AI assist.');
+      return;
+    }
+    setAiBusy(true);
+    try {
+      const result = await askPavo(
+        buildTeacherCompanionRequest({
+          intent: 'teacher_author_module',
+          gradeLevel: Number(gradeLevel) || 5,
+          question: `Draft an editable ${subject} module titled "${title}". Include clear explanations, examples, and a short practice check.`,
+        }),
+      );
+      setMarkdown(
+        [
+          `# ${result.title}`,
+          '',
+          result.summary,
+          '',
+          ...result.sections.flatMap((section) => [
+            `## ${section.heading}`,
+            '',
+            section.body,
+            '',
+          ]),
+          '## Next step',
+          '',
+          result.nextStep,
+        ].join('\n'),
+      );
+      const moduleKey = `draft_${Crypto.randomUUID()}`;
+      setReviewItems(
+        result.flashcards.map((card, index) => ({
+          itemId: `${moduleKey}_card_${index + 1}`,
+          moduleId: '',
+          moduleVersion: 1,
+          conceptId: `ai-draft-${index + 1}`,
+          type: 'flashcard',
+          importance: 'core',
+          prompt: card.front,
+          answer: card.back,
+          formats: { text: card.back },
+          authoredBy: `teacher:${teacherId}`,
+          tags: ['ai-assisted'],
+        })),
+      );
+    } catch (error) {
+      Alert.alert(
+        'Draft unavailable',
+        error instanceof Error ? error.message : 'Try again.',
+      );
+    } finally {
+      setAiBusy(false);
     }
   }
 
@@ -402,9 +468,20 @@ export function ModuleAuthorScreen({ navigation }: Props) {
         <CardHeader
           icon={Bot}
           title="AI assist"
-          subtitle="This build uses manual authoring only — drafting help is planned."
-          color={colors.inkSubtle}
-          action={<StatusBadge label="Planned" status="locked" />}
+          subtitle="Draft directly into these editable fields."
+          color={colors.accentText}
+          action={
+            <StatusBadge
+              label={connectivity === 'online' ? 'Online' : 'Offline'}
+              status={connectivity === 'online' ? 'completed' : 'notStarted'}
+            />
+          }
+        />
+        <PrimaryButton
+          label={aiBusy ? 'Drafting module...' : 'Draft from title with AI'}
+          icon={Bot}
+          disabled={aiBusy}
+          onPress={() => void draftWithAi()}
         />
       </Card>
 

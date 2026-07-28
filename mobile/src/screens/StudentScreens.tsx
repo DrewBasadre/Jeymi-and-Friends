@@ -22,6 +22,7 @@ import {
   Download,
   Flame,
   Layers,
+  PackageOpen,
   LogOut,
   Play,
   QrCode,
@@ -50,6 +51,7 @@ import {
   EmptyState,
   IconButton,
   IconPlate,
+  ListRow,
   PressableScale,
   PrimaryButton,
   ProgressBar,
@@ -69,12 +71,13 @@ import { MiniBarChart } from '@/components/ProgressCharts';
 import { Celebrate, MascotPanel } from '@/components/mascot';
 import { LearnerHero } from '@/components/LearnerHero';
 import { MilestoneStrip } from '@/components/Milestones';
-import { formatDeadline } from '@/utils/format';
+import { formatDate, formatDeadline } from '@/utils/format';
 import {
   getAttempts,
   getDueFlashcards,
   getModule,
   getQuestions,
+  getQuizAttemptLogs,
   getStudentDashboard,
   listStudentTasks,
   listModules,
@@ -82,6 +85,7 @@ import {
   reviewFlashcard,
   submitQuiz,
 } from '@/data/repository';
+import { listLearningPackages } from '@/data/learningRepository';
 import {
   getAdaptiveFormatProfile,
   getEffectiveLearningFormat,
@@ -107,9 +111,11 @@ import type {
   LearningModule,
   QuestionResponse,
   QuizAttempt,
+  QuizAttemptLog,
   QuizQuestion,
   StudentDashboard,
   StudentTask,
+  StoredLearningPackage,
   Subject,
 } from '@/domain/types';
 import type {
@@ -999,13 +1005,21 @@ export function ReportsScreen({ navigation }: StudentTabProps<'Reports'>) {
   const student = useSessionStore((state) => state.student);
   const [attempts, setAttempts] = useState<QuizAttempt[]>([]);
   const [modules, setModules] = useState<LearningModule[]>([]);
+  const [teacherQuizzes, setTeacherQuizzes] = useState<
+    StoredLearningPackage[]
+  >([]);
 
   useFocusEffect(
     useCallback(() => {
       if (!student) return;
-      void Promise.all([getAttempts(student.id), listModules(student.id)]).then(([nextAttempts, nextModules]) => {
+      void Promise.all([
+        getAttempts(student.id),
+        listModules(student.id),
+        listLearningPackages(`student:${student.id}`, 'teacherQuiz'),
+      ]).then(([nextAttempts, nextModules, nextTeacherQuizzes]) => {
         setAttempts(nextAttempts);
         setModules(nextModules);
+        setTeacherQuizzes(nextTeacherQuizzes);
       });
     }, [student]),
   );
@@ -1013,12 +1027,38 @@ export function ReportsScreen({ navigation }: StudentTabProps<'Reports'>) {
   return (
     <Screen>
       <ScreenHeader
-        overline="Offline sharing"
-        title="My reports"
-        subtitle="QR reports can be scanned without internet."
+        overline="Progress"
+        title="My Quiz History"
+        subtitle="Review every attempt, your timing, and the answers to revisit."
       />
+      {teacherQuizzes.length > 0 ? (
+        <>
+          <SectionHeader
+            title="Teacher assigned quizzes"
+            caption="Standalone quizzes received on this device"
+          />
+          <Card>
+            {teacherQuizzes.map((item, index) => (
+              <View key={item.packageId}>
+                {index > 0 ? <Divider style={styles.rowDivider} /> : null}
+                <ListRow
+                  icon={PackageOpen}
+                  title={item.title}
+                  subtitle={`${item.manifest.quiz?.questions.length ?? 0} questions · Teacher issued`}
+                  color={colors.secondary}
+                  onPress={() =>
+                    navigation.navigate('LearningPackage', {
+                      packageId: item.packageId,
+                    })
+                  }
+                />
+              </View>
+            ))}
+          </Card>
+        </>
+      ) : null}
       {attempts.length === 0 ? (
-        <EmptyState title="No reports yet" body="Complete a quiz to create your first offline report." />
+        <EmptyState title="No attempts yet" body="Complete a quiz to create your first local attempt log." />
       ) : (
         attempts.map((attempt) => {
           const module = modules.find((item) => item.id === attempt.moduleId);
@@ -1040,16 +1080,142 @@ export function ReportsScreen({ navigation }: StudentTabProps<'Reports'>) {
                 }
               />
               <ProgressBar value={percent / 100} height={8} />
-              <PrimaryButton
-                label="Open QR"
-                tone="ghost"
-                size="sm"
-                icon={QrCode}
-                onPress={() => navigation.navigate('QuizReport', { moduleId: attempt.moduleId, attemptId: attempt.id })}
-              />
+              <View style={styles.resultRow}>
+                <View style={styles.flex}>
+                  <PrimaryButton
+                    label="Review attempt"
+                    tone="secondary"
+                    size="sm"
+                    icon={Target}
+                    onPress={() =>
+                      navigation.navigate('QuizAttemptHistory', {
+                        attemptLogId: attempt.id,
+                      })
+                    }
+                  />
+                </View>
+                <View style={styles.flex}>
+                  <PrimaryButton
+                    label="Open QR"
+                    tone="ghost"
+                    size="sm"
+                    icon={QrCode}
+                    onPress={() =>
+                      navigation.navigate('QuizReport', {
+                        moduleId: attempt.moduleId,
+                        attemptId: attempt.id,
+                      })
+                    }
+                  />
+                </View>
+              </View>
             </Card>
           );
         })
+      )}
+    </Screen>
+  );
+}
+
+export function QuizAttemptHistoryScreen({
+  navigation,
+  route,
+}: StackProps<'QuizAttemptHistory'>) {
+  const student = useSessionStore((state) => state.student);
+  const [attempt, setAttempt] = useState<QuizAttemptLog | null>(null);
+  const [module, setModule] = useState<LearningModule | null>(null);
+
+  useEffect(() => {
+    if (!student) return;
+    void getQuizAttemptLogs(student.id).then(async (logs) => {
+      const next = logs.find(
+        (item) => item.attemptLogId === route.params.attemptLogId,
+      );
+      setAttempt(next ?? null);
+      if (next) setModule(await getModule(next.moduleId));
+    });
+  }, [route.params.attemptLogId, student]);
+
+  if (!attempt) {
+    return (
+      <Screen>
+        <ScreenHeader title="Quiz attempt" onBack={navigation.goBack} />
+        <EmptyState
+          title="Attempt unavailable"
+          body="This quiz log is not stored on this device."
+        />
+      </Screen>
+    );
+  }
+
+  return (
+    <Screen>
+      <ScreenHeader
+        overline={`Attempt #${attempt.attemptNumber}`}
+        title={module?.title ?? 'Quiz attempt'}
+        subtitle={`${formatDate(attempt.completedAt)} · ${formatDuration(
+          attempt.timing.totalTimeSeconds,
+        )}`}
+        onBack={navigation.goBack}
+      />
+      <Card accent={colors.primary}>
+        <CardHeader
+          icon={Trophy}
+          title={`${attempt.score.percentage}%`}
+          subtitle={`${attempt.score.correct} of ${attempt.score.total} correct`}
+          color={colors.primary}
+          action={
+            <StatusBadge
+              label={attempt.score.percentage >= 80 ? 'Strong' : 'Keep practising'}
+              status={
+                attempt.score.percentage >= 80
+                  ? 'completed'
+                  : 'inProgress'
+              }
+            />
+          }
+        />
+        <ProgressBar value={attempt.score.percentage / 100} />
+      </Card>
+
+      <SectionHeader
+        title="Questions to revisit"
+        caption={
+          attempt.missedQuestions.length
+            ? `${attempt.missedQuestions.length} missed question${
+                attempt.missedQuestions.length === 1 ? '' : 's'
+              }`
+            : 'A perfect attempt'
+        }
+      />
+      {attempt.missedQuestions.length === 0 ? (
+        <Callout
+          icon={CheckCircle2}
+          title="Everything was correct"
+          body="You can still revisit the lesson before your next attempt."
+          tone="success"
+        />
+      ) : (
+        attempt.missedQuestions.map((question, index) => (
+          <Card key={question.questionId} accent={colors.warning}>
+            <CardHeader
+              icon={Target}
+              title={`${index + 1}. ${question.questionText}`}
+              subtitle={`${question.timeSeconds}s on this question`}
+              color={colors.warning}
+            />
+            <View style={styles.answerReview}>
+              <Text style={styles.answerReviewLabel}>Your answer</Text>
+              <Text style={styles.answerReviewWrong}>
+                {question.chosenAnswer || 'No answer'}
+              </Text>
+            </View>
+            <View style={styles.answerReview}>
+              <Text style={styles.answerReviewLabel}>Correct answer</Text>
+              <Text style={styles.correctAnswer}>{question.correctAnswer}</Text>
+            </View>
+          </Card>
+        ))
       )}
     </Screen>
   );
@@ -1515,6 +1681,9 @@ const styles = StyleSheet.create({
   resultRow: { flexDirection: 'row', gap: spacing.md },
   breakdownTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.md },
   correctAnswer: { ...text.bodySm, color: colors.success, fontWeight: '700' },
+  answerReview: { gap: spacing.xs },
+  answerReviewLabel: { ...text.overline, color: colors.inkMuted },
+  answerReviewWrong: { ...text.bodySm, color: colors.error, fontWeight: '700' },
 
   // Flashcards
   flashcard: {

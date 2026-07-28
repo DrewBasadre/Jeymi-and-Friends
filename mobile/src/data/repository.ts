@@ -31,6 +31,7 @@ import type {
   MasteryLevel,
   QuestionResponse,
   QuizAttempt,
+  QuizAttemptLog,
   QuizQuestion,
   Section,
   StrugglingConcept,
@@ -101,6 +102,7 @@ interface AttemptRow {
   id: string;
   student_id: string;
   module_id: string;
+  quiz_id: string;
   score: number;
   total_items: number;
   weak_topic: string;
@@ -117,6 +119,8 @@ interface ResponseRow {
   answer: string;
   is_correct: number;
   elapsed_ms: number;
+  question_text: string;
+  correct_answer: string;
 }
 
 interface ProfileRow {
@@ -282,7 +286,8 @@ export async function saveReceivedModulePackage(input: {
   fileUri: string;
   mimeType?:
     | 'application/vnd.wais.module+zip'
-    | 'application/vnd.wais.review-set+json';
+    | 'application/vnd.wais.review-set+json'
+    | 'application/vnd.wais.study-package+zip';
   sizeBytes: number;
   sha256: string;
   manifest?: CurriculumModuleManifest;
@@ -446,6 +451,8 @@ export async function submitQuiz(args: {
       answer,
       isCorrect: answer.toLocaleLowerCase() === question.correctAnswer.trim().toLocaleLowerCase(),
       elapsedMs: Math.max(0, response?.elapsedMs ?? 0),
+      questionText: question.questionText,
+      correctAnswer: question.correctAnswer,
     };
   });
   const score = responses.filter((response) => response.isCorrect).length;
@@ -455,6 +462,7 @@ export async function submitQuiz(args: {
     id: id('attempt'),
     studentId: args.studentId,
     moduleId: args.moduleId,
+    quizId: `${args.moduleId}-quiz1`,
     score,
     totalItems: questions.length,
     weakTopic: topics.weakTopic,
@@ -509,12 +517,52 @@ export async function getAttempts(studentId: string, moduleId?: string): Promise
   const attempts: QuizAttempt[] = [];
   for (const row of rows) {
     const responseRows = await database.getAllAsync<ResponseRow>(
-      'SELECT question_id, answer, is_correct, elapsed_ms FROM question_responses WHERE attempt_id = ?',
+      `SELECT question_id, answer, is_correct, elapsed_ms, question_text,
+              correct_answer
+       FROM question_responses WHERE attempt_id = ?`,
       row.id,
     );
     attempts.push(mapAttempt(row, responseRows));
   }
   return attempts;
+}
+
+export async function getQuizAttemptLogs(
+  studentId: string,
+): Promise<QuizAttemptLog[]> {
+  const attempts = await getAttempts(studentId);
+  return attempts.map((attempt) => ({
+    attemptLogId: attempt.id,
+    studentId: attempt.studentId,
+    moduleId: attempt.moduleId,
+    quizId: attempt.quizId || `${attempt.moduleId}-quiz1`,
+    attemptNumber: attempt.attemptNumber,
+    completedAt: new Date(attempt.submittedAt).toISOString(),
+    score: {
+      correct: attempt.score,
+      total: attempt.totalItems,
+      percentage:
+        attempt.totalItems > 0
+          ? Math.round((attempt.score / attempt.totalItems) * 100)
+          : 0,
+    },
+    timing: {
+      totalTimeSeconds: attempt.durationSeconds,
+      perQuestion: attempt.responses.map((response) => ({
+        questionId: response.questionId,
+        timeSeconds: Math.round(response.elapsedMs / 1000),
+      })),
+    },
+    missedQuestions: attempt.responses
+      .filter((response) => !response.isCorrect)
+      .map((response) => ({
+        questionId: response.questionId,
+        questionText: response.questionText || 'Quiz question',
+        chosenAnswer: response.answer,
+        correctAnswer: response.correctAnswer || 'See the lesson answer key',
+        timeSeconds: Math.round(response.elapsedMs / 1000),
+      })),
+  }));
 }
 
 export async function getStudentDashboard(studentId: string): Promise<StudentDashboard> {
@@ -714,6 +762,20 @@ export async function getClassPerformanceReport(
     )
   ).filter((report): report is StudentPerformanceReport => report !== null);
   return buildClassPerformanceReport(sectionId, reports, threshold);
+}
+
+export async function getOverallClassPerformanceReport(): Promise<ClassPerformanceReport> {
+  const sections = await listSections();
+  const studentIds = [
+    ...new Set(sections.flatMap((section) => section.roster)),
+  ];
+  const threshold = await getStrugglingThreshold();
+  const reports = (
+    await Promise.all(
+      studentIds.map((studentId) => getStudentPerformanceReport(studentId)),
+    )
+  ).filter((report): report is StudentPerformanceReport => report !== null);
+  return buildClassPerformanceReport('all-classes', reports, threshold);
 }
 
 export async function getTeacherDashboard(
@@ -1228,8 +1290,8 @@ async function insertAttempt(database: Db, attempt: QuizAttempt, source: 'local'
     `INSERT OR IGNORE INTO quiz_attempts (
       id, student_id, module_id, score, total_items, weak_topic, strong_topic,
       mastery_level, duration_seconds, attempt_number, submitted_at, source,
-      learning_format_used
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      learning_format_used, quiz_id
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     attempt.id,
     attempt.studentId,
     attempt.moduleId,
@@ -1243,17 +1305,23 @@ async function insertAttempt(database: Db, attempt: QuizAttempt, source: 'local'
     attempt.submittedAt,
     source,
     attempt.learningFormatUsed,
+    attempt.quizId ?? `${attempt.moduleId}-quiz1`,
   );
   for (const response of attempt.responses) {
     await database.runAsync(
       `INSERT OR IGNORE INTO question_responses
-       (attempt_id, question_id, answer, is_correct, elapsed_ms)
-       VALUES (?, ?, ?, ?, ?)`,
+       (
+         attempt_id, question_id, answer, is_correct, elapsed_ms,
+         question_text, correct_answer
+       )
+       VALUES (?, ?, ?, ?, ?, ?, ?)`,
       attempt.id,
       response.questionId,
       response.answer,
       response.isCorrect ? 1 : 0,
       response.elapsedMs,
+      response.questionText ?? '',
+      response.correctAnswer ?? '',
     );
   }
 }
@@ -1321,6 +1389,7 @@ function mapAttempt(row: AttemptRow, responses: ResponseRow[]): QuizAttempt {
     id: row.id,
     studentId: row.student_id,
     moduleId: row.module_id,
+    quizId: row.quiz_id || `${row.module_id}-quiz1`,
     score: row.score,
     totalItems: row.total_items,
     weakTopic: row.weak_topic,
@@ -1335,6 +1404,8 @@ function mapAttempt(row: AttemptRow, responses: ResponseRow[]): QuizAttempt {
       answer: response.answer,
       isCorrect: response.is_correct === 1,
       elapsedMs: response.elapsed_ms,
+      questionText: response.question_text,
+      correctAnswer: response.correct_answer,
     })),
   };
 }

@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type { CompositeScreenProps } from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
   BookOpen,
@@ -19,6 +20,7 @@ import {
   ChevronRight,
   Clock3,
   Layers,
+  PackageOpen,
   Lightbulb,
   ListChecks,
   Pause,
@@ -70,6 +72,8 @@ import {
   saveCustomReviewSet,
   savePomodoroSession,
 } from '@/data/mvpRepository';
+import { listLearningPackages } from '@/data/learningRepository';
+import { getTeacherProfile } from '@/data/repository';
 import type {
   CustomReviewSet,
   DueReviewItem,
@@ -77,6 +81,7 @@ import type {
   PomodoroSession,
   ReviewImportance,
   ReviewItem,
+  StoredLearningPackage,
   StudyTechnique,
 } from '@/domain/types';
 import type {
@@ -85,6 +90,8 @@ import type {
 } from '@/navigation/types';
 import { useSessionStore } from '@/store/session';
 import { isCompanionConfigured } from '@/services/companion';
+import { askPavo } from '@/services/companion';
+import { buildTeacherCompanionRequest } from '@/domain/companion';
 import { useConnectivity } from '@/services/connectivity';
 import { analyzeParentDigest } from '@/services/digestAnalysis';
 import { deliverParentDigest, type DigestDelivery } from '@/services/parentDigest';
@@ -163,6 +170,10 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
     <ReviewExperience
       onBack={navigation.goBack}
       onOpenSets={() => navigation.navigate('CustomReviewSets')}
+      onOpenPackage={(packageId) =>
+        navigation.navigate('LearningPackage', { packageId })
+      }
+      onImport={() => navigation.navigate('ReceiveTransfer')}
     />
   );
 }
@@ -171,6 +182,10 @@ export function StudentStudyScreen({ navigation }: StudyProps) {
   return (
     <ReviewExperience
       onOpenSets={() => navigation.navigate('CustomReviewSets')}
+      onOpenPackage={(packageId) =>
+        navigation.navigate('LearningPackage', { packageId })
+      }
+      onImport={() => navigation.navigate('ReceiveTransfer')}
     />
   );
 }
@@ -178,15 +193,20 @@ export function StudentStudyScreen({ navigation }: StudyProps) {
 function ReviewExperience({
   onBack,
   onOpenSets,
+  onOpenPackage,
+  onImport,
 }: {
   onBack?: () => void;
   onOpenSets(): void;
+  onOpenPackage(packageId: string): void;
+  onImport(): void;
 }) {
   const student = useSessionStore((state) => state.student);
   const compact = useCompactViewport();
   const [technique, setTechnique] = useState<StudyTechnique>('active-recall');
   const [items, setItems] = useState<DueReviewItem[]>([]);
   const [sets, setSets] = useState<CustomReviewSet[]>([]);
+  const [packages, setPackages] = useState<StoredLearningPackage[]>([]);
   const [activeSetId, setActiveSetId] = useState<string | null>(null);
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -204,12 +224,14 @@ function ReviewExperience({
 
   const load = useCallback(async () => {
     if (!student) return;
-    const [nextItems, nextSets] = await Promise.all([
+    const [nextItems, nextSets, nextPackages] = await Promise.all([
       listDueReviewItems(student.id),
       listCustomReviewSets(`student:${student.id}`),
+      listLearningPackages(`student:${student.id}`),
     ]);
     setItems(nextItems);
     setSets(nextSets);
+    setPackages(nextPackages);
     setIndex(0);
     setRevealed(false);
     setWrittenAnswer('');
@@ -217,6 +239,7 @@ function ReviewExperience({
   }, [student]);
 
   useEffect(() => void load(), [load]);
+  useFocusEffect(useCallback(() => void load(), [load]));
   useEffect(() => {
     if (!pomodoro || !timerRunning || secondsLeft <= 0) return;
     const timer = setInterval(
@@ -375,6 +398,12 @@ function ReviewExperience({
     : 0;
   const phaseProgress =
     phaseSeconds > 0 ? (phaseSeconds - secondsLeft) / phaseSeconds : 0;
+  const studyJams = packages.filter(
+    (item) => item.contentCategory === 'studentMaterial',
+  );
+  const teacherReviewers = packages.filter(
+    (item) => item.contentCategory === 'teacherReviewer',
+  );
 
   return (
     <Screen>
@@ -414,6 +443,63 @@ function ReviewExperience({
           <HeroPill icon={Layers} label={activeSet ? activeSet.title : 'All due items'} />
         </Row>
       </HeroCard>
+
+      <SectionHeader
+        title="Study Jams"
+        caption="Reviews you created with Pavo or received from a classmate."
+        actionLabel="Import"
+        onAction={onImport}
+      />
+      {studyJams.length > 0 ? (
+        <Card>
+          {studyJams.map((item, position) => (
+            <View key={item.packageId}>
+              {position > 0 ? <Divider style={styles.reviewDivider} /> : null}
+              <ListRow
+                icon={Sparkles}
+                title={item.title}
+                subtitle={`${item.manifest.reviewItems.length} review items${
+                  item.manifest.quiz
+                    ? ` · ${item.manifest.quiz.questions.length} quiz questions`
+                    : ''
+                }`}
+                color={colors.primary}
+                onPress={() => onOpenPackage(item.packageId)}
+              />
+            </View>
+          ))}
+        </Card>
+      ) : (
+        <EmptyState
+          title="No Study Jams yet"
+          body="Ask Pavo to prepare a review, or import one from a nearby classmate."
+        />
+      )}
+
+      <SectionHeader
+        title="Teacher Sent Reviewers"
+        caption="Supplementary practice sent by your teacher."
+      />
+      {teacherReviewers.length > 0 ? (
+        <Card>
+          {teacherReviewers.map((item, position) => (
+            <View key={item.packageId}>
+              {position > 0 ? <Divider style={styles.reviewDivider} /> : null}
+              <ListRow
+                icon={PackageOpen}
+                title={item.title}
+                subtitle={`${item.manifest.reviewItems.length} review items · Teacher issued`}
+                color={colors.secondary}
+                onPress={() => onOpenPackage(item.packageId)}
+              />
+            </View>
+          ))}
+        </Card>
+      ) : (
+        <Text style={styles.helper}>
+          Teacher reviewers appear here after a nearby transfer.
+        </Text>
+      )}
 
       <SectionHeader
         title="Study techniques"
@@ -725,11 +811,21 @@ export function CustomReviewSetsScreen({ navigation }: CustomProps) {
   const [answer, setAnswer] = useState('');
   const [conceptId, setConceptId] = useState('');
   const [importance, setImportance] = useState<ReviewImportance>('core');
+  const [teacherId, setTeacherId] = useState('local-teacher');
+  const [aiBusy, setAiBusy] = useState(false);
+  const connectivity = useConnectivity();
   const authorId = student
     ? `student:${student.id}`
     : role === 'teacher'
-      ? 'teacher:local-teacher'
+      ? `teacher:${teacherId}`
       : null;
+
+  useEffect(() => {
+    if (role !== 'teacher') return;
+    void getTeacherProfile().then((profile) => {
+      if (profile) setTeacherId(profile.teacherId);
+    });
+  }, [role]);
 
   const load = useCallback(async () => {
     if (!authorId) return;
@@ -778,6 +874,49 @@ export function CustomReviewSetsScreen({ navigation }: CustomProps) {
     await load();
   }
 
+  async function draftReviewItem() {
+    if (role !== 'teacher') return;
+    if (!title.trim()) {
+      Alert.alert('Add a topic', 'Name the reviewer before asking for a draft.');
+      return;
+    }
+    if (connectivity !== 'online' || !isCompanionConfigured()) {
+      Alert.alert('Internet required', 'Connect to use inline AI assist.');
+      return;
+    }
+    setAiBusy(true);
+    try {
+      const result = await askPavo(
+        buildTeacherCompanionRequest({
+          intent: 'teacher_author_reviewer',
+          gradeLevel: 5,
+          question: `Draft a focused reviewer for "${title}". Suggest one strong recall prompt first.`,
+        }),
+      );
+      const first = result.flashcards[0];
+      if (!first) {
+        Alert.alert('No card returned', 'Try a more specific reviewer topic.');
+        return;
+      }
+      setPrompt(first.front);
+      setAnswer(first.back);
+      setConceptId(
+        title
+          .toLocaleLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+          .slice(0, 60) || 'review-topic',
+      );
+    } catch (error) {
+      Alert.alert(
+        'Suggestion unavailable',
+        error instanceof Error ? error.message : 'Try again.',
+      );
+    } finally {
+      setAiBusy(false);
+    }
+  }
+
   const visibleItems = items.slice(0, 12);
 
   return (
@@ -823,7 +962,7 @@ export function CustomReviewSetsScreen({ navigation }: CustomProps) {
                   subtitle={`${count} ${count === 1 ? 'item' : 'items'} · ${
                     set.visibility === 'private' ? 'Private' : 'Shared to class'
                   } · Created ${formatDate(set.createdAt)}`}
-                  trailing={
+                  trailing={role === 'teacher' ? (
                     <PrimaryButton
                       label="Share"
                       icon={Share2}
@@ -831,7 +970,7 @@ export function CustomReviewSetsScreen({ navigation }: CustomProps) {
                       size="sm"
                       onPress={() => navigation.navigate('Transfer', { setId: set.setId })}
                     />
-                  }
+                  ) : undefined}
                 />
               </View>
             );
@@ -857,6 +996,15 @@ export function CustomReviewSetsScreen({ navigation }: CustomProps) {
           placeholder="Photosynthesis — tricky terms"
           hint="Required. Shown as a filter chip in the review hub."
         />
+        {role === 'teacher' ? (
+          <PrimaryButton
+            label={aiBusy ? 'Drafting suggestion...' : 'Suggest with AI'}
+            icon={Sparkles}
+            tone="secondary"
+            disabled={aiBusy}
+            onPress={() => void draftReviewItem()}
+          />
+        ) : null}
       </Card>
 
       <Card>

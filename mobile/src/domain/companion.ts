@@ -6,7 +6,16 @@ import type {
   StudentTask,
 } from './types';
 
-export type CompanionIntent = 'review_lessons' | 'ask' | 'weekly_digest';
+export type CompanionIntent =
+  | 'review_lessons'
+  | 'ask'
+  | 'weekly_digest'
+  | 'teacher_student_insight'
+  | 'teacher_class_insight'
+  | 'teacher_lesson_plan'
+  | 'teacher_class_summary'
+  | 'teacher_author_module'
+  | 'teacher_author_reviewer';
 export type CompanionActivity =
   | 'lesson'
   | 'flashcards'
@@ -65,6 +74,23 @@ export interface CompanionRequest {
       submittedAt: number;
     }>;
     offlineInsight: string;
+  };
+  teacherContext?: {
+    averageScorePercentage?: number;
+    trend?: string;
+    currentLearningFormat?: string;
+    timingPattern?: string;
+    strugglingConcepts?: Array<{
+      conceptId: string;
+      missCount: number;
+      attempts: number;
+    }>;
+    classAveragePercentage?: number;
+    learnerCount?: number;
+    commonlyMissedConcepts?: Array<{
+      conceptId: string;
+      percentOfClassMissing: number;
+    }>;
   };
 }
 
@@ -172,6 +198,48 @@ export function buildDigestCompanionRequest(args: {
       })),
       offlineInsight: args.digest.insightNote,
     },
+  };
+}
+
+export function buildTeacherCompanionRequest(args: {
+  intent: Extract<
+    CompanionIntent,
+    | 'teacher_student_insight'
+    | 'teacher_class_insight'
+    | 'teacher_lesson_plan'
+    | 'teacher_class_summary'
+    | 'teacher_author_module'
+    | 'teacher_author_reviewer'
+  >;
+  gradeLevel: number;
+  question?: string;
+  conversation?: CompanionRequest['conversation'];
+  modules?: LearningModule[];
+  teacherContext?: CompanionRequest['teacherContext'];
+}): CompanionRequest {
+  return {
+    intent: args.intent,
+    activity:
+      args.intent === 'teacher_author_reviewer'
+        ? 'flashcards'
+        : args.intent === 'teacher_class_summary' ||
+            args.intent === 'teacher_student_insight' ||
+            args.intent === 'teacher_class_insight'
+          ? 'mixed_practice'
+          : 'lesson',
+    gradeLevel: Math.max(1, Math.min(12, Math.round(args.gradeLevel))),
+    question: args.question?.trim().slice(0, 500) || undefined,
+    conversation: args.conversation?.slice(-6),
+    modules: (args.modules ?? []).slice(0, 4).map((module) => ({
+      id: module.id,
+      title: module.title,
+      subject: module.subject,
+      competencyCode: module.competencyCode,
+      summary: module.summary.slice(0, 800),
+      content: module.content.slice(0, 5000),
+    })),
+    deadlines: [],
+    teacherContext: args.teacherContext,
   };
 }
 

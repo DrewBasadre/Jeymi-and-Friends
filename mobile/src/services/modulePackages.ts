@@ -48,6 +48,7 @@ export interface TeacherModuleDraft {
   markdown: string;
   images: TeacherModuleImage[];
   reviewItems?: ReviewItem[];
+  quizQuestions?: BundledQuizQuestion[];
 }
 
 export interface InstalledModulePackage {
@@ -110,7 +111,12 @@ export async function pickAndProcessModuleImages(
 
 export async function buildTeacherModulePackage(
   draft: TeacherModuleDraft,
-): Promise<TransferPackage> {
+): Promise<
+  TransferPackage & {
+    mimeType: 'application/vnd.wais.module+zip';
+    manifest: CurriculumModuleManifest;
+  }
+> {
   if (draft.images.length > MODULE_ARCHIVE_LIMITS.images) {
     throw new Error(`A module can contain at most ${MODULE_ARCHIVE_LIMITS.images} images.`);
   }
@@ -123,6 +129,11 @@ export async function buildTeacherModulePackage(
     throw new Error('Module Markdown must be 2 MB or smaller.');
   }
   const entries: Record<string, Uint8Array> = { [markdownPath]: markdownBytes };
+  if (draft.quizQuestions?.length) {
+    entries[`${moduleId}-quiz1.json`] = strToU8(
+      JSON.stringify(bundledQuizSchema.parse(draft.quizQuestions)),
+    );
+  }
   for (const image of draft.images) {
     assertSafePackagePath(image.packagePath);
     const bytes = new Uint8Array(

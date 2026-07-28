@@ -25,6 +25,7 @@ import {
 } from '@/components/ui';
 import { MascotPanel } from '@/components/mascot';
 import { saveReceivedModulePackage } from '@/data/repository';
+import { saveLearningPackage } from '@/data/learningRepository';
 import type { RootStackParamList } from '@/navigation/types';
 import {
   nearby,
@@ -32,6 +33,7 @@ import {
   type NearbyReceivedFile,
   type NearbyVerificationRequest,
 } from '@/services/nearby';
+import { verifyReceivedStudyPackage } from '@/services/learningPackages';
 import { useSessionStore } from '@/store/session';
 import { capitalize, formatDate } from '@/utils/format';
 import {
@@ -74,7 +76,30 @@ export function ReceiveTransferScreen({ navigation }: Props) {
     const connectionSubscription = nearby.addConnectionListener(setConnection);
     const receivedSubscription = nearby.addReceivedFileListener((file) => {
       setIngesting(true);
-      void saveReceivedModulePackage(file)
+      const save =
+        file.manifest.contentCategory === 'teacherModule'
+          ? saveReceivedModulePackage({
+              moduleId: file.moduleId,
+              displayName: file.displayName,
+              fileUri: file.fileUri,
+              mimeType: file.mimeType,
+              sizeBytes: file.sizeBytes,
+              sha256: file.sha256,
+              manifest: file.manifest,
+            })
+          : verifyReceivedStudyPackage({
+              fileUri: file.fileUri,
+              expectedSha256: file.sha256,
+              expectedManifest: file.manifest,
+            }).then((manifest) => {
+              if (!student) throw new Error('Sign in before receiving material.');
+              return saveLearningPackage({
+                ownerId: `student:${student.id}`,
+                manifest,
+                received: true,
+              });
+            });
+      void save
         .then(() => {
           setReceived(file);
           setAdvertising(false);
@@ -93,7 +118,7 @@ export function ReceiveTransferScreen({ navigation }: Props) {
       receivedSubscription?.remove();
       void nearby.stop();
     };
-  }, []);
+  }, [student]);
 
   useEffect(() => {
     if (!available || started.current) return;
@@ -277,8 +302,22 @@ export function ReceiveTransferScreen({ navigation }: Props) {
             color={colors.success}
           />
           <Divider />
-          <DetailLine label="Subject" value={formatSubject(received.manifest.subject)} />
-          <DetailLine label="Grade level" value={`Grade ${received.manifest.gradeLevel}`} />
+          <DetailLine
+            label="Type"
+            value={packageCategoryLabel(received.manifest.contentCategory)}
+          />
+          {received.manifest.contentCategory === 'teacherModule' ? (
+            <>
+              <DetailLine
+                label="Subject"
+                value={formatSubject(received.manifest.subject)}
+              />
+              <DetailLine
+                label="Grade level"
+                value={`Grade ${received.manifest.gradeLevel}`}
+              />
+            </>
+          ) : null}
           <DetailLine label="Version" value={`Version ${received.manifest.version}`} />
           <DetailLine label="Package size" value={formatBytes(received.sizeBytes)} />
           <DetailLine label="Received" value={formatDate(Date.now())} />
@@ -289,8 +328,19 @@ export function ReceiveTransferScreen({ navigation }: Props) {
             body="The package matched its SHA-256 fingerprint, so nothing was altered in transit."
           />
           <PrimaryButton
-            label="Open modules"
-            onPress={() => navigation.replace('StudentTabs')}
+            label={
+              received.manifest.contentCategory === 'teacherModule'
+                ? 'Open modules'
+                : 'Open Study'
+            }
+            onPress={() =>
+              navigation.replace('StudentTabs', {
+                screen:
+                  received.manifest.contentCategory === 'teacherModule'
+                    ? 'Modules'
+                    : 'Study',
+              })
+            }
           />
         </Card>
       ) : null}
@@ -364,6 +414,15 @@ function DetailLine({ label, value }: { label: string; value: string }) {
       </Text>
     </View>
   );
+}
+
+function packageCategoryLabel(
+  category: NearbyReceivedFile['manifest']['contentCategory'],
+): string {
+  if (category === 'teacherModule') return 'Teacher module';
+  if (category === 'teacherQuiz') return 'Teacher quiz';
+  if (category === 'teacherReviewer') return 'Teacher sent reviewer';
+  return 'Study Jam';
 }
 
 /* ── Derivations (presentation only) ───────────────────────────────────── */

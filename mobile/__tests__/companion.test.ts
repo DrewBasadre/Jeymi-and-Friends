@@ -2,6 +2,7 @@ import { describe, expect, it } from '@jest/globals';
 import {
   buildCompanionRequest,
   buildDigestCompanionRequest,
+  buildTeacherCompanionRequest,
   companionResponseSchema,
   validateCompanionQuestion,
 } from '../src/domain/companion';
@@ -142,6 +143,28 @@ describe('companion request privacy', () => {
     expect(serialized).not.toContain('student-secret');
     expect(serialized).not.toContain('attempt-secret');
     expect(serialized).not.toContain('digest-secret');
+  });
+
+  it('builds teacher insight requests from pattern data without identity', () => {
+    const request = buildTeacherCompanionRequest({
+      intent: 'teacher_student_insight',
+      gradeLevel: 5,
+      question: 'Suggest an intervention.',
+      teacherContext: {
+        averageScorePercentage: 54,
+        trend: 'declining',
+        currentLearningFormat: 'visual',
+        timingPattern: 'fast-and-wrong',
+        strugglingConcepts: [
+          { conceptId: 'fraction-subtraction', missCount: 4, attempts: 2 },
+        ],
+      },
+    });
+    const serialized = JSON.stringify(request);
+    expect(request.intent).toBe('teacher_student_insight');
+    expect(serialized).toContain('fraction-subtraction');
+    expect(serialized).not.toContain('studentId');
+    expect(serialized).not.toContain('studentName');
   });
 });
 

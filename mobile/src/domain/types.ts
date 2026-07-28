@@ -120,6 +120,11 @@ export type ModuleSource =
   | 'supabase-ota'
   | 'teacher-bluetooth'
   | 'seed-bundle';
+export type ContentCategory =
+  | 'teacherModule'
+  | 'teacherQuiz'
+  | 'teacherReviewer'
+  | 'studentMaterial';
 export type ReviewItemType = 'flashcard' | 'quiz-question' | 'concept-summary';
 export type ReviewImportance = 'core' | 'supplementary' | 'stretch';
 
@@ -144,6 +149,7 @@ export interface ReviewItem {
 export interface CurriculumModuleManifest {
   moduleId: string;
   version: number;
+  contentCategory: 'teacherModule';
   source: ModuleSource;
   gradeLevel: number;
   subject: string;
@@ -181,12 +187,15 @@ export interface QuestionResponse {
   answer: string;
   isCorrect: boolean;
   elapsedMs: number;
+  questionText?: string;
+  correctAnswer?: string;
 }
 
 export interface QuizAttempt {
   id: string;
   studentId: string;
   moduleId: string;
+  quizId?: string;
   score: number;
   totalItems: number;
   weakTopic: string;
@@ -197,6 +206,34 @@ export interface QuizAttempt {
   submittedAt: number;
   learningFormatUsed: LearningFormat;
   responses: QuestionResponse[];
+}
+
+export interface QuizAttemptLog {
+  attemptLogId: string;
+  studentId: string;
+  moduleId: string;
+  quizId: string;
+  attemptNumber: number;
+  completedAt: string;
+  score: {
+    correct: number;
+    total: number;
+    percentage: number;
+  };
+  timing: {
+    totalTimeSeconds: number;
+    perQuestion: Array<{
+      questionId: string;
+      timeSeconds: number;
+    }>;
+  };
+  missedQuestions: Array<{
+    questionId: string;
+    questionText: string;
+    chosenAnswer: string;
+    correctAnswer: string;
+    timeSeconds: number;
+  }>;
 }
 
 export interface StudentProgress {
@@ -428,14 +465,59 @@ export interface AiSuggestion {
   source: 'edge' | 'offline';
 }
 
+export interface StudyPackageManifest {
+  packageId: string;
+  version: number;
+  contentCategory: Exclude<ContentCategory, 'teacherModule'>;
+  title: string;
+  reviewItems: ReviewItem[];
+  quiz?: {
+    questions: BundledQuizQuestion[];
+  };
+  createdBy: string;
+  sharedBy: string[];
+  createdAt: string;
+}
+
+export type LearningPackageManifest =
+  | CurriculumModuleManifest
+  | StudyPackageManifest;
+
+export interface StoredLearningPackage {
+  packageId: string;
+  ownerId: string;
+  contentCategory: Exclude<ContentCategory, 'teacherModule'>;
+  title: string;
+  manifest: StudyPackageManifest;
+  receivedAt: string | null;
+  createdAt: string;
+}
+
+export interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: string;
+  producedPackageId?: string | null;
+}
+
+export interface ChatSession {
+  sessionId: string;
+  ownerId: `student:${string}` | `teacher:${string}`;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+  messages: ChatMessage[];
+}
+
 export interface TransferPackage {
   moduleId: string;
   displayName: string;
   fileUri: string;
   mimeType:
     | 'application/vnd.wais.module+zip'
-    | 'application/vnd.wais.review-set+json';
+    | 'application/vnd.wais.review-set+json'
+    | 'application/vnd.wais.study-package+zip';
   sizeBytes: number;
   sha256: string;
-  manifest: CurriculumModuleManifest;
+  manifest: LearningPackageManifest;
 }

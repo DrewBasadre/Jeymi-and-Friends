@@ -2,6 +2,7 @@ import { describe, expect, it } from '@jest/globals';
 import {
   buildMarkdownManifest,
   moduleManifestSchema,
+  studyPackageManifestSchema,
 } from '../src/domain/manifest';
 
 describe('curriculum module manifests', () => {
@@ -29,6 +30,7 @@ describe('curriculum module manifests', () => {
     expect(Object.keys(teacher)).toEqual([
       'moduleId',
       'version',
+      'contentCategory',
       'source',
       'gradeLevel',
       'subject',
@@ -37,6 +39,30 @@ describe('curriculum module manifests', () => {
       'checksums',
       'quizId',
     ]);
+  });
+
+  it('requires one of the three non-module categories for study packages', () => {
+    const base = {
+      packageId: 'jam-1',
+      version: 1,
+      title: 'Fraction review',
+      reviewItems: [],
+      createdBy: 'student:one',
+      sharedBy: [],
+      createdAt: '2026-07-29T00:00:00.000Z',
+    };
+    expect(
+      studyPackageManifestSchema.parse({
+        ...base,
+        contentCategory: 'studentMaterial',
+      }).contentCategory,
+    ).toBe('studentMaterial');
+    expect(() =>
+      studyPackageManifestSchema.parse({
+        ...base,
+        contentCategory: 'teacherModule',
+      }),
+    ).toThrow();
   });
 
   it('rejects malformed checksums before a package becomes usable', () => {

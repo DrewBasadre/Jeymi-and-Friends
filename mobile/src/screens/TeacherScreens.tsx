@@ -18,6 +18,9 @@ import type { CompositeScreenProps } from '@react-navigation/native';
 import { useFocusEffect } from '@react-navigation/native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { CameraView, useCameraPermissions } from 'expo-camera';
+import * as Crypto from 'expo-crypto';
+import * as Print from 'expo-print';
+import * as Sharing from 'expo-sharing';
 import {
   Award,
   Bluetooth,
@@ -26,9 +29,11 @@ import {
   CheckCircle2,
   ClipboardList,
   FileText,
+  History,
   Layers,
   LogOut,
   Minus,
+  Plus,
   PencilLine,
   QrCode,
   RefreshCw,
@@ -52,6 +57,7 @@ import {
   Callout,
   Card,
   CardHeader,
+  Chip,
   Divider,
   EmptyState,
   HeroCard,
@@ -74,15 +80,28 @@ import {
   useResponsiveColumns,
 } from '@/components/ui';
 import { MascotPanel, PeacockPhase, peacockPhaseFromScore } from '@/components/mascot';
+import { InteractiveLearningPreview } from '@/components/InteractiveLearningPreview';
 import { capitalize, formatDate } from '@/utils/format';
+import {
+  buildTeacherCompanionRequest,
+  type CompanionResponse,
+} from '@/domain/companion';
 import {
   getActiveSection,
   getClassPerformanceReport,
+  getOverallClassPerformanceReport,
   getStudentPerformanceReport,
   getTeacherDashboard,
   getTeacherProfile,
   importQrReport,
+  listSections,
 } from '@/data/repository';
+import {
+  appendChatMessage,
+  createChatSession,
+  listChatSessions,
+  saveLearningPackage,
+} from '@/data/learningRepository';
 import { useSessionStore } from '@/store/session';
 import {
   listCustomReviewSets,
@@ -91,8 +110,10 @@ import {
 } from '@/data/mvpRepository';
 import type {
   ClassPerformanceReport,
+  ChatSession,
   QuizAttempt,
   Section,
+  StudyPackageManifest,
   StudentPerformanceReport,
   TeacherDashboard,
   TeacherLearnerRow,
@@ -104,7 +125,13 @@ import type {
   TeacherTabParamList,
 } from '@/navigation/types';
 import { buildReviewSetPackage } from '@/services/files';
-import { inspectModulePackage } from '@/services/modulePackages';
+import { askPavo, isCompanionConfigured } from '@/services/companion';
+import { useConnectivity } from '@/services/connectivity';
+import {
+  buildLearningPackage,
+  inspectLearningPackage,
+} from '@/services/learningPackages';
+import { buildTeacherModulePackage } from '@/services/modulePackages';
 import {
   nearby,
   type NearbyPeer,
@@ -135,36 +162,87 @@ type StackProps<Route extends keyof RootStackParamList> = NativeStackScreenProps
 
 export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>) {
   const [dashboard, setDashboard] = useState<TeacherDashboard | null>(null);
-  const [overallDashboard, setOverallDashboard] =
-    useState<TeacherDashboard | null>(null);
   const [activeSection, setActiveSection] = useState<Section | null>(null);
+  const [sections, setSections] = useState<Section[]>([]);
+  const [scope, setScope] = useState<string>('all');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
   const [classReport, setClassReport] =
     useState<ClassPerformanceReport | null>(null);
+  const [classInsight, setClassInsight] =
+    useState<CompanionResponse | null>(null);
+  const [classInsightLoading, setClassInsightLoading] = useState(false);
   const compact = useCompactViewport();
+  const connectivity = useConnectivity();
   const load = useCallback(() => {
     void (async () => {
-      const section = await getActiveSection();
-      const [sectionDashboard, overall, report] = await Promise.all([
-        getTeacherDashboard(section?.sectionId),
-        getTeacherDashboard(),
-        section ? getClassPerformanceReport(section.sectionId) : null,
+      const [section, nextSections] = await Promise.all([
+        getActiveSection(),
+        listSections(),
+      ]);
+      const sectionId = scope === 'all' ? undefined : scope;
+      const [sectionDashboard, report] = await Promise.all([
+        getTeacherDashboard(sectionId),
+        sectionId
+          ? getClassPerformanceReport(sectionId)
+          : getOverallClassPerformanceReport(),
       ]);
       setActiveSection(section);
+      setSections(nextSections);
       setDashboard(sectionDashboard);
-      setOverallDashboard(overall);
       setClassReport(report);
     })();
-  }, []);
+  }, [scope]);
   useFocusEffect(load);
 
   const learners = dashboard?.learners ?? [];
   const struggling = dashboard?.strugglingStudents ?? [];
   const classAverage = dashboard?.classAverage ?? 0;
   const threshold = dashboard?.strugglingThreshold ?? 60;
-  const leaderboard = (dashboard?.leaderboard ?? []).slice(0, 5);
-  const overallLeaderboard = (overallDashboard?.leaderboard ?? []).slice(0, 5);
+  const leaderboard = [...(dashboard?.leaderboard ?? [])].sort((left, right) =>
+    sortDirection === 'asc'
+      ? left.averageScore - right.averageScore
+      : right.averageScore - left.averageScore,
+  );
   const missedConcepts = classReport?.commonlyMissedConcepts.slice(0, 5) ?? [];
   const onTrack = Math.max(0, learners.length - struggling.length);
+  const selectedSection = sections.find(
+    (section) => section.sectionId === scope,
+  );
+  const scopeLabel =
+    scope === 'all' ? 'All classes (overall)' : selectedSection?.name ?? 'Section';
+
+  async function generateClassInsight() {
+    if (!classReport) return;
+    if (connectivity !== 'online' || !isCompanionConfigured()) {
+      Alert.alert('Internet required', 'Connect to use Gurobot class insight.');
+      return;
+    }
+    setClassInsightLoading(true);
+    try {
+      setClassInsight(
+        await askPavo(
+          buildTeacherCompanionRequest({
+            intent: 'teacher_class_insight',
+            gradeLevel: selectedSection?.gradeLevel ?? activeSection?.gradeLevel ?? 5,
+            question:
+              'Recommend a reteaching order, grouping strategy, pacing adjustment, and monitoring check.',
+            teacherContext: {
+              classAveragePercentage: classReport.classAveragePercentage,
+              learnerCount: learners.length,
+              commonlyMissedConcepts: classReport.commonlyMissedConcepts,
+            },
+          }),
+        ),
+      );
+    } catch (error) {
+      Alert.alert(
+        'Insight unavailable',
+        error instanceof Error ? error.message : 'Try again.',
+      );
+    } finally {
+      setClassInsightLoading(false);
+    }
+  }
 
   return (
     <Screen>
@@ -186,14 +264,20 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
           <View style={styles.heroTop}>
             <View style={styles.flex}>
               <Text style={styles.heroOverline}>
-                {(activeSection ? 'Active section' : 'No active section').toUpperCase()}
+                {scopeLabel.toUpperCase()}
               </Text>
               <Text style={styles.heroTitle} numberOfLines={2}>
-                {activeSection?.name ?? 'Class Overview'}
+                {scopeLabel}
               </Text>
               <Text style={styles.heroBody}>
-                {activeSection
-                  ? `Grade ${activeSection.gradeLevel} — ${learners.length} ${
+                {scope === 'all'
+                  ? `${learners.length} ${
+                      learners.length === 1 ? 'learner' : 'learners'
+                    } across ${sections.length} ${
+                      sections.length === 1 ? 'class' : 'classes'
+                    }.`
+                  : selectedSection
+                  ? `Grade ${selectedSection.gradeLevel} — ${learners.length} ${
                       learners.length === 1 ? 'learner' : 'learners'
                     } on this device.`
                   : 'Activate a section, then scan learner profile QR codes to build your roster.'}
@@ -246,7 +330,7 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
             icon={UsersRound}
             label="Rostered learners"
             value={learners.length}
-            footnote={activeSection ? activeSection.name : 'No active section'}
+              footnote={scopeLabel}
             color={colors.secondary}
           />
           <StatTile
@@ -259,8 +343,8 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
           <StatTile
             icon={Layers}
             label="All sections"
-            value={`${overallDashboard?.classAverage ?? 0}%`}
-            footnote={`${overallDashboard?.learners.length ?? 0} learners overall`}
+              value={sections.length}
+              footnote="Managed on this device"
             color={colors.accentText}
           />
         </TileGrid>
@@ -320,11 +404,41 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
       </Card>
 
       <SectionHeader
-        title="Section leaderboard"
-        caption="Top five learners in the active section"
+        title="Leaderboard"
+        caption={`${scopeLabel} · ${
+          sortDirection === 'asc' ? 'Lowest averages first' : 'Highest averages first'
+        }`}
         actionLabel={learners.length ? 'Record book' : undefined}
         onAction={learners.length ? () => navigation.navigate('RecordBook') : undefined}
       />
+      <Card>
+        <Text style={styles.fieldCaption}>Scope</Text>
+        <View style={styles.scopeChips}>
+          <Chip
+            label="All classes (overall)"
+            selected={scope === 'all'}
+            onPress={() => setScope('all')}
+          />
+          {sections.map((section) => (
+            <Chip
+              key={section.sectionId}
+              label={section.name}
+              selected={scope === section.sectionId}
+              onPress={() => setScope(section.sectionId)}
+            />
+          ))}
+        </View>
+        <Divider />
+        <Text style={styles.fieldCaption}>Sort by average score</Text>
+        <SegmentedControl
+          value={sortDirection}
+          onChange={setSortDirection}
+          options={[
+            { value: 'asc', label: 'Lowest first' },
+            { value: 'desc', label: 'Highest first' },
+          ]}
+        />
+      </Card>
       <Card>
         {!learners.length ? (
           <EmptyState
@@ -379,31 +493,19 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
               </View>
             ))}
           </Card>
+          <PrimaryButton
+            label={
+              classInsightLoading
+                ? 'Preparing class approach...'
+                : 'Generate class AI insight'
+            }
+            icon={Sparkles}
+            disabled={classInsightLoading}
+            onPress={() => void generateClassInsight()}
+          />
+          {classInsight ? <AiReportCard result={classInsight} /> : null}
         </>
       ) : null}
-
-      <SectionHeader title="Across all sections" caption="Everyone recorded on this device" />
-      <Card>
-        {!overallLeaderboard.length ? (
-          <Text style={styles.rowMeta}>
-            Learners appear here after joining a managed section.
-          </Text>
-        ) : (
-          overallLeaderboard.map((learner, index) => (
-            <View key={learner.studentId}>
-              {index > 0 ? <Divider style={styles.rowDivider} /> : null}
-              <LeaderboardRow
-                learner={learner}
-                rank={index + 1}
-                meta={`${peacockPhaseFromScore(learner.averageScore).name} · ${learner.section}`}
-                onPress={() =>
-                  navigation.navigate('LearnerDetail', { studentId: learner.studentId })
-                }
-              />
-            </View>
-          ))
-        )}
-      </Card>
 
       <SectionHeader title="Teaching tools" caption="Author and share offline material" />
       <Card>
@@ -825,77 +927,499 @@ export function ScannerScreen(): ReactElement {
    ──────────────────────────────────────────────────────────────────────── */
 
 export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): ReactElement {
+  const [profile, setProfile] = useState<TeacherProfile | null>(null);
+  const [section, setSection] = useState<Section | null>(null);
+  const [report, setReport] = useState<ClassPerformanceReport | null>(null);
+  const [intent, setIntent] = useState<
+    | 'teacher_lesson_plan'
+    | 'teacher_class_summary'
+    | 'teacher_author_module'
+    | 'teacher_author_reviewer'
+  >('teacher_lesson_plan');
+  const [prompt, setPrompt] = useState('');
+  const [result, setResult] = useState<CompanionResponse | null>(null);
+  const [transferPackage, setTransferPackage] =
+    useState<TransferPackage | null>(null);
+  const [sessions, setSessions] = useState<ChatSession[]>([]);
+  const [activeSession, setActiveSession] = useState<ChatSession | null>(null);
+  const [historyOpen, setHistoryOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const connectivity = useConnectivity();
+
+  const load = useCallback(async () => {
+    const [nextProfile, nextSection] = await Promise.all([
+      getTeacherProfile(),
+      getActiveSection(),
+    ]);
+    setProfile(nextProfile);
+    setSection(nextSection);
+    if (nextSection) {
+      setReport(await getClassPerformanceReport(nextSection.sectionId));
+    }
+    const ownerId = `teacher:${nextProfile?.teacherId ?? 'local-teacher'}` as const;
+    const nextSessions = await listChatSessions(ownerId);
+    setSessions(nextSessions);
+    if (!activeSession) {
+      const session =
+        nextSessions[0] ?? (await createChatSession(ownerId));
+      setActiveSession(session);
+      if (nextSessions.length === 0) setSessions([session]);
+    }
+  }, [activeSession]);
+
+  useFocusEffect(useCallback(() => void load(), [load]));
+
+  async function newConversation() {
+    const ownerId =
+      `teacher:${profile?.teacherId ?? 'local-teacher'}` as const;
+    const session = await createChatSession(ownerId);
+    setSessions((current) => [session, ...current]);
+    setActiveSession(session);
+    setResult(null);
+    setTransferPackage(null);
+    setHistoryOpen(false);
+  }
+
+  async function generate() {
+    if (!prompt.trim()) {
+      Alert.alert('Add a request', 'Tell Gurobot what you want to prepare.');
+      return;
+    }
+    if (connectivity !== 'online' || !isCompanionConfigured()) {
+      Alert.alert('Internet required', 'Connect to use Gurobot.');
+      return;
+    }
+    const ownerId =
+      `teacher:${profile?.teacherId ?? 'local-teacher'}` as const;
+    let session =
+      activeSession ?? (await createChatSession(ownerId));
+    setLoading(true);
+    setTransferPackage(null);
+    try {
+      session = await appendChatMessage(session, {
+        role: 'user',
+        content: prompt.trim(),
+        timestamp: new Date().toISOString(),
+      });
+      const nextResult = await askPavo(
+        buildTeacherCompanionRequest({
+          intent,
+          gradeLevel: section?.gradeLevel ?? 5,
+          question: prompt,
+          conversation: session.messages.slice(0, -1).map((message) => ({
+            role: message.role,
+            content: teacherReadableContent(message.content),
+          })),
+          teacherContext:
+            intent === 'teacher_class_summary' && report
+              ? {
+                  classAveragePercentage: report.classAveragePercentage,
+                  learnerCount: report.leaderboard.length,
+                  commonlyMissedConcepts: report.commonlyMissedConcepts,
+                }
+              : undefined,
+        }),
+      );
+      const built = await buildTeacherAssistantPackage({
+        intent,
+        result: nextResult,
+        teacherId: profile?.teacherId ?? 'local-teacher',
+        gradeLevel: section?.gradeLevel ?? 5,
+      });
+      if (built) {
+        setTransferPackage(built);
+      }
+      session = await appendChatMessage(session, {
+        role: 'assistant',
+        content: JSON.stringify(nextResult),
+        timestamp: new Date().toISOString(),
+        producedPackageId: built?.moduleId ?? null,
+      });
+      setActiveSession(session);
+      setSessions((current) => [
+        session,
+        ...current.filter((item) => item.sessionId !== session.sessionId),
+      ]);
+      setResult(nextResult);
+      setPrompt('');
+    } catch (error) {
+      Alert.alert(
+        'Gurobot could not finish',
+        error instanceof Error ? error.message : 'Try again.',
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function exportLessonPlan() {
+    if (!result) return;
+    try {
+      const { uri } = await Print.printToFileAsync({
+        html: lessonPlanHtml(result),
+      });
+      await Sharing.shareAsync(uri, {
+        mimeType: 'application/pdf',
+        dialogTitle: `Export ${result.title}`,
+        UTI: 'com.adobe.pdf',
+      });
+    } catch (error) {
+      Alert.alert(
+        'PDF could not be exported',
+        error instanceof Error ? error.message : 'Try again.',
+      );
+    }
+  }
+
+  const preview = result ? teacherPreviewManifest(result, profile?.teacherId) : null;
+
   return (
     <Screen>
       <ScreenHeader
         overline="Assist"
         title="Gurobot"
-        subtitle="Your future teaching co-pilot."
-        action={<StatusBadge label="Planned" status="notStarted" />}
+        subtitle="Draft, analyze, review, then decide what leaves your device."
+        action={
+          <StatusBadge
+            label={connectivity === 'online' ? 'Online' : 'Offline'}
+            status={connectivity === 'online' ? 'completed' : 'notStarted'}
+          />
+        }
       />
-      <MascotPanel
-        expression="idle"
-        title="Coming soon"
-        body="AI lesson help is on the way. For now, everything you author stays fully offline and private on this device."
+
+      <SegmentedControl
+        value={intent}
+        onChange={(next) => {
+          setIntent(next);
+          setResult(null);
+          setTransferPackage(null);
+        }}
+        options={[
+          { value: 'teacher_lesson_plan', label: 'Plan' },
+          { value: 'teacher_class_summary', label: 'Class' },
+          { value: 'teacher_author_module', label: 'Module' },
+          { value: 'teacher_author_reviewer', label: 'Reviewer' },
+        ]}
       />
+
+      <PressableScale onPress={() => setHistoryOpen((value) => !value)}>
+        <Card>
+          <CardHeader
+            icon={History}
+            title="Past conversations"
+            subtitle={activeSession?.title ?? 'New conversation'}
+            color={colors.secondary}
+            action={
+              <StatusBadge
+                label={`${sessions.length}`}
+                status={sessions.length ? 'completed' : 'notStarted'}
+              />
+            }
+          />
+        </Card>
+      </PressableScale>
+      {historyOpen ? (
+        <Card>
+          <ListRow
+            icon={Plus}
+            title="New conversation"
+            subtitle="Start with a clean context"
+            onPress={() => void newConversation()}
+          />
+          {sessions.slice(0, 8).map((session, index) => (
+            <View key={session.sessionId}>
+              <Divider style={styles.rowDivider} />
+              <ListRow
+                icon={History}
+                title={session.title}
+                subtitle={`${session.messages.length} messages · ${formatDate(
+                  session.updatedAt,
+                )}`}
+                color={colors.secondary}
+                onPress={() => {
+                  setActiveSession(session);
+                  setResult(latestTeacherResult(session));
+                  setHistoryOpen(false);
+                }}
+              />
+            </View>
+          ))}
+        </Card>
+      ) : null}
+
+      <Card>
+        <CardHeader
+          icon={Sparkles}
+          title={teacherIntentTitle(intent)}
+          subtitle={teacherIntentSubtitle(intent, section)}
+          color={colors.primary}
+        />
+        <TextInput
+          value={prompt}
+          onChangeText={setPrompt}
+          multiline
+          maxLength={500}
+          placeholder={teacherIntentPlaceholder(intent)}
+          placeholderTextColor={colors.inkSubtle}
+          style={styles.assistantInput}
+          textAlignVertical="top"
+        />
+        <PrimaryButton
+          label={loading ? 'Gurobot is preparing...' : 'Prepare draft'}
+          icon={Send}
+          disabled={loading}
+          onPress={() => void generate()}
+        />
+      </Card>
+
+      {result ? (
+        <>
+          <AiReportCard result={result} />
+          {preview &&
+          (preview.reviewItems.length > 0 ||
+            (preview.quiz?.questions.length ?? 0) > 0) ? (
+            <Card>
+              <CardHeader
+                icon={Layers}
+                title="Interactive student preview"
+                subtitle="The same cards and quiz controls learners use"
+                color={colors.secondary}
+              />
+              <InteractiveLearningPreview
+                reviewItems={preview.reviewItems}
+                questions={preview.quiz?.questions}
+              />
+            </Card>
+          ) : null}
+        </>
+      ) : null}
+
+      {intent === 'teacher_lesson_plan' && result ? (
+        <PrimaryButton
+          label="Export lesson plan as PDF"
+          icon={FileText}
+          onPress={() => void exportLessonPlan()}
+        />
+      ) : null}
+      {transferPackage ? (
+        <PrimaryButton
+          label="Review & send to students"
+          icon={Send}
+          onPress={() =>
+            navigation.navigate('Transfer', {
+              packageUri: transferPackage.fileUri,
+              displayName: transferPackage.displayName,
+            })
+          }
+        />
+      ) : null}
 
       <Callout
         icon={ShieldCheck}
         tone="info"
-        title="Private by default"
-        body="No lesson content or student data leaves this device today."
+        title="Privacy boundary"
+        body="Class summaries use aggregate numbers only. Learner insights send patterns without names or IDs."
       />
-
-      <SectionHeader title="What Gurobot will do" caption="All opt-in, none of it required" />
-      <Card>
-        <ListRow
-          icon={FileText}
-          title="Draft modules from a topic"
-          subtitle="A first draft you edit before it reaches learners"
-        />
-        <Divider style={styles.rowDivider} />
-        <ListRow
-          icon={ClipboardList}
-          title="Suggest quiz questions"
-          subtitle="Item ideas mapped to the competency you choose"
-          color={colors.secondary}
-        />
-        <Divider style={styles.rowDivider} />
-        <ListRow
-          icon={Sparkles}
-          title="Summarize class performance"
-          subtitle="Plain-language notes drawn from your record book"
-          color={colors.accentText}
-        />
-      </Card>
-
-      <SectionHeader title="Available now" caption="Fully offline authoring" />
-      <Card>
-        <CardHeader
-          icon={PencilLine}
-          title="Author by hand"
-          subtitle="Write lessons and review sets, then share them device to device."
-          color={colors.primary}
-        />
-        <PrimaryButton
-          label="Author a module"
-          icon={FileText}
-          tone="ghost"
-          onPress={() => navigation.navigate('ModuleAuthor')}
-        />
-      </Card>
-
-      <View style={styles.signOutRow}>
-        <PrimaryButton
-          label="Author a review set"
-          icon={Layers}
-          tone="ghost"
-          size="sm"
-          onPress={() => navigation.navigate('CustomReviewSets')}
-        />
-      </View>
     </Screen>
   );
+}
+
+type TeacherAssistantIntent =
+  | 'teacher_lesson_plan'
+  | 'teacher_class_summary'
+  | 'teacher_author_module'
+  | 'teacher_author_reviewer';
+
+function teacherIntentTitle(intent: TeacherAssistantIntent): string {
+  if (intent === 'teacher_lesson_plan') return 'Draft a lesson plan';
+  if (intent === 'teacher_class_summary') return 'Summarize class performance';
+  if (intent === 'teacher_author_module') return 'Draft a student module';
+  return 'Draft a teacher reviewer';
+}
+
+function teacherIntentSubtitle(
+  intent: TeacherAssistantIntent,
+  section: Section | null,
+): string {
+  if (intent === 'teacher_class_summary') {
+    return section
+      ? `Aggregate patterns from ${section.name}`
+      : 'Activate a section to include class patterns';
+  }
+  return `Grade ${section?.gradeLevel ?? 5} · Editable before sharing`;
+}
+
+function teacherIntentPlaceholder(intent: TeacherAssistantIntent): string {
+  if (intent === 'teacher_lesson_plan') {
+    return 'Example: A 45-minute lesson plan on adding unlike fractions';
+  }
+  if (intent === 'teacher_class_summary') {
+    return 'What should the summary emphasize?';
+  }
+  if (intent === 'teacher_author_module') {
+    return 'Topic, competency, examples, and preferred level of challenge';
+  }
+  return 'Topic and the concepts students should practise';
+}
+
+function teacherPreviewManifest(
+  result: CompanionResponse,
+  teacherId = 'local-teacher',
+): StudyPackageManifest {
+  const packageId = `preview_${result.title
+    .toLocaleLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .slice(0, 40)}`;
+  return {
+    packageId,
+    version: 1,
+    contentCategory: 'teacherReviewer',
+    title: result.title,
+    reviewItems: result.flashcards.map((card, index) => ({
+      itemId: `${packageId}_card_${index + 1}`,
+      moduleId: packageId,
+      moduleVersion: 1,
+      conceptId: `draft-${index + 1}`,
+      type: 'flashcard',
+      importance: 'core',
+      prompt: card.front,
+      answer: card.back,
+      formats: { text: card.back },
+      authoredBy: `teacher:${teacherId}`,
+      tags: ['gurobot-draft'],
+    })),
+    ...(result.questions.length
+      ? {
+          quiz: {
+            questions: result.questions.map((question, index) => ({
+              questionId: `${packageId}_question_${index + 1}`,
+              type: 'multiple-choice' as const,
+              prompt: question.prompt,
+              options: question.options,
+              correctAnswer:
+                question.options[question.correctOption] ??
+                question.options[0] ??
+                'No answer supplied',
+              conceptId: `draft-${index + 1}`,
+            })),
+          },
+        }
+      : {}),
+    createdBy: `teacher:${teacherId}`,
+    sharedBy: [],
+    createdAt: new Date().toISOString(),
+  };
+}
+
+async function buildTeacherAssistantPackage(args: {
+  intent: TeacherAssistantIntent;
+  result: CompanionResponse;
+  teacherId: string;
+  gradeLevel: number;
+}): Promise<TransferPackage | null> {
+  if (args.intent === 'teacher_author_reviewer') {
+    const manifest = {
+      ...teacherPreviewManifest(args.result, args.teacherId),
+      packageId: `reviewer_${Crypto.randomUUID()}`,
+    };
+    const normalized: StudyPackageManifest = {
+      ...manifest,
+      reviewItems: manifest.reviewItems.map((item, index) => ({
+        ...item,
+        itemId: `${manifest.packageId}_card_${index + 1}`,
+        moduleId: manifest.packageId,
+      })),
+    };
+    await saveLearningPackage({
+      ownerId: `teacher:${args.teacherId}`,
+      manifest: normalized,
+    });
+    return buildLearningPackage(normalized);
+  }
+  if (args.intent !== 'teacher_author_module') return null;
+  const preview = teacherPreviewManifest(args.result, args.teacherId);
+  return buildTeacherModulePackage({
+    title: args.result.title,
+    gradeLevel: args.gradeLevel,
+    subject: 'ADDED_MATERIALS',
+    markdown: [
+      `# ${args.result.title}`,
+      '',
+      args.result.summary,
+      '',
+      ...args.result.sections.flatMap((section) => [
+        `## ${section.heading}`,
+        '',
+        section.body,
+        '',
+      ]),
+      `## Next step`,
+      '',
+      args.result.nextStep,
+    ].join('\n'),
+    images: [],
+    reviewItems: preview.reviewItems,
+    quizQuestions: preview.quiz?.questions,
+  });
+}
+
+function latestTeacherResult(session: ChatSession): CompanionResponse | null {
+  const message = [...session.messages]
+    .reverse()
+    .find((item) => item.role === 'assistant');
+  if (!message) return null;
+  try {
+    return JSON.parse(message.content) as CompanionResponse;
+  } catch {
+    return null;
+  }
+}
+
+function teacherReadableContent(content: string): string {
+  try {
+    const result = JSON.parse(content) as CompanionResponse;
+    return [
+      result.title,
+      result.summary,
+      ...result.sections.map(
+        (section) => `${section.heading}: ${section.body}`,
+      ),
+      result.nextStep,
+    ].join('\n');
+  } catch {
+    return content;
+  }
+}
+
+function lessonPlanHtml(result: CompanionResponse): string {
+  const sections = result.sections
+    .map(
+      (section) =>
+        `<section><h2>${escapeHtml(section.heading)}</h2><p>${escapeHtml(
+          section.body,
+        ).replace(/\n/g, '<br>')}</p></section>`,
+    )
+    .join('');
+  return `<!doctype html>
+<html><head><meta charset="utf-8"><style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#17221b;padding:36px;line-height:1.5}
+h1{font-size:26px;margin:0 0 8px}h2{font-size:17px;margin:22px 0 6px;color:#126b4d}
+p{font-size:12px;margin:0}.summary{font-size:13px;color:#4d5b52;margin-bottom:18px}
+.next{margin-top:24px;padding:12px;border-left:4px solid #126b4d;background:#eef8f3}
+</style></head><body><h1>${escapeHtml(result.title)}</h1>
+<p class="summary">${escapeHtml(result.summary)}</p>${sections}
+<div class="next"><strong>Next step:</strong> ${escapeHtml(
+    result.nextStep,
+  )}</div></body></html>`;
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 /* ────────────────────────────────────────────────────────────────────────
@@ -1056,7 +1580,10 @@ function InfoLine({ label, value }: { label: string; value: string }) {
 
 export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDetail'>) {
   const [report, setReport] = useState<StudentPerformanceReport | null>(null);
+  const [insight, setInsight] = useState<CompanionResponse | null>(null);
+  const [insightLoading, setInsightLoading] = useState(false);
   const compact = useCompactViewport();
+  const connectivity = useConnectivity();
 
   useEffect(() => {
     void getStudentPerformanceReport(route.params.studentId).then(setReport);
@@ -1096,6 +1623,41 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
       : report.trend === 'declining'
         ? colors.warning
         : colors.secondary;
+
+  async function generateStudentInsight() {
+    if (!report) return;
+    if (connectivity !== 'online' || !isCompanionConfigured()) {
+      Alert.alert('Internet required', 'Connect to use Gurobot insights.');
+      return;
+    }
+    setInsightLoading(true);
+    try {
+      setInsight(
+        await askPavo(
+          buildTeacherCompanionRequest({
+            intent: 'teacher_student_insight',
+            gradeLevel: 5,
+            question:
+              'Prepare a concrete, format-aware intervention approach for this learner pattern.',
+            teacherContext: {
+              averageScorePercentage: report.averageScorePercentage,
+              trend: report.trend,
+              currentLearningFormat: report.profile.currentLearningFormat,
+              timingPattern: timingPattern(report.quizHistory),
+              strugglingConcepts: report.strugglingConcepts,
+            },
+          }),
+        ),
+      );
+    } catch (error) {
+      Alert.alert(
+        'Insight unavailable',
+        error instanceof Error ? error.message : 'Try again.',
+      );
+    } finally {
+      setInsightLoading(false);
+    }
+  }
 
   return (
     <Screen>
@@ -1212,6 +1774,15 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
           <Text style={styles.rowMeta}>No missed concepts recorded.</Text>
         )}
       </Card>
+      <PrimaryButton
+        label={
+          insightLoading ? 'Preparing approach...' : 'Generate AI approach plan'
+        }
+        icon={Sparkles}
+        disabled={insightLoading || history.length === 0}
+        onPress={() => void generateStudentInsight()}
+      />
+      {insight ? <AiReportCard result={insight} /> : null}
 
       <SectionHeader title="Module breakdown" caption="Averages per module on this device" />
       {modules.length ? (
@@ -1326,6 +1897,47 @@ function groupAttemptsByModule(history: QuizAttempt[]): ModuleBreakdown[] {
     .sort((a, b) => b.lastSubmittedAt - a.lastSubmittedAt);
 }
 
+function timingPattern(
+  attempts: QuizAttempt[],
+): 'fast-and-wrong' | 'slow-and-wrong' | 'mixed' | 'no-misses' {
+  const missed = attempts.flatMap((attempt) =>
+    attempt.responses.filter((response) => !response.isCorrect),
+  );
+  if (missed.length === 0) return 'no-misses';
+  const averageSeconds =
+    missed.reduce((sum, response) => sum + response.elapsedMs / 1_000, 0) /
+    missed.length;
+  if (averageSeconds <= 15) return 'fast-and-wrong';
+  if (averageSeconds >= 45) return 'slow-and-wrong';
+  return 'mixed';
+}
+
+function AiReportCard({ result }: { result: CompanionResponse }) {
+  return (
+    <Card accent={colors.accentText}>
+      <CardHeader
+        icon={Sparkles}
+        title={result.title}
+        subtitle="AI-generated suggestion · Review before acting"
+        color={colors.accentText}
+      />
+      <Text style={styles.body}>{result.summary}</Text>
+      {result.sections.map((section, index) => (
+        <View key={`${section.heading}-${index}`} style={styles.insightSection}>
+          <Text style={styles.rowTitle}>{section.heading}</Text>
+          <Text style={styles.body}>{section.body}</Text>
+        </View>
+      ))}
+      <Callout
+        icon={Target}
+        title="Next step"
+        body={result.nextStep}
+        tone="info"
+      />
+    </Card>
+  );
+}
+
 /* ────────────────────────────────────────────────────────────────────────
    Offline transfer
    ──────────────────────────────────────────────────────────────────────── */
@@ -1340,7 +1952,7 @@ export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
     const setId = route.params?.setId;
     const packageUri = route.params?.packageUri;
     if (packageUri) {
-      void inspectModulePackage(packageUri, route.params?.displayName)
+      void inspectLearningPackage(packageUri, route.params?.displayName)
         .then(setTransferPackage)
         .catch((error: unknown) => {
           Alert.alert(
@@ -1495,9 +2107,15 @@ export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
             icon={FileText}
             title={transferPackage.displayName}
             subtitle={`${formatBytes(transferPackage.sizeBytes)} · ${
-              transferPackage.manifest.assets.length
-            } image asset${
-              transferPackage.manifest.assets.length === 1 ? '' : 's'
+              transferPackage.manifest.contentCategory === 'teacherModule'
+                ? `${transferPackage.manifest.assets.length} image asset${
+                    transferPackage.manifest.assets.length === 1 ? '' : 's'
+                  }`
+                : transferPackage.manifest.contentCategory === 'teacherReviewer'
+                  ? `${transferPackage.manifest.reviewItems.length} review items`
+                  : transferPackage.manifest.contentCategory === 'studentMaterial'
+                    ? `${transferPackage.manifest.reviewItems.length} Study Jam items`
+                    : `${transferPackage.manifest.quiz?.questions.length ?? 0} quiz questions`
             } · Manifest v${transferPackage.manifest.version}`}
             color={colors.primary}
           />
@@ -1727,6 +2345,29 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   fieldCaption: { ...text.overline, color: colors.inkSubtle, fontSize: 11 },
+  scopeChips: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.sm,
+  },
+  insightSection: {
+    gap: spacing.xs,
+    paddingTop: spacing.sm,
+    borderTopWidth: 1,
+    borderTopColor: colors.hairline,
+  },
+  assistantInput: {
+    minHeight: 118,
+    maxHeight: 220,
+    padding: spacing.md,
+    borderWidth: 1,
+    borderColor: colors.outline,
+    borderRadius: radius.md,
+    backgroundColor: colors.surface,
+    color: colors.ink,
+    fontSize: 16,
+    lineHeight: 23,
+  },
   progressValue: { ...text.label, color: colors.primary, fontWeight: '800' },
 
   // Leaderboard

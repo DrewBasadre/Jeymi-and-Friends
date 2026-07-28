@@ -2,7 +2,9 @@ import { z } from 'zod';
 import type {
   BundledQuizQuestion,
   CurriculumModuleManifest,
+  LearningPackageManifest,
   ReviewItem,
+  StudyPackageManifest,
 } from './types';
 
 const reviewItemSchema: z.ZodType<ReviewItem> = z.object({
@@ -23,9 +25,15 @@ const reviewItemSchema: z.ZodType<ReviewItem> = z.object({
   tags: z.array(z.string()),
 });
 
-export const moduleManifestSchema: z.ZodType<CurriculumModuleManifest> = z.object({
+export const moduleManifestSchema: z.ZodType<CurriculumModuleManifest> = z.preprocess(
+  (value) =>
+    value && typeof value === 'object' && !('contentCategory' in value)
+      ? { ...value, contentCategory: 'teacherModule' }
+      : value,
+  z.object({
   moduleId: z.string().min(1),
   version: z.number().int().positive(),
+  contentCategory: z.literal('teacherModule'),
   source: z.enum(['supabase-ota', 'teacher-bluetooth', 'seed-bundle']),
   gradeLevel: z.number().int().min(1).max(12),
   subject: z.string().min(1),
@@ -52,7 +60,8 @@ export const moduleManifestSchema: z.ZodType<CurriculumModuleManifest> = z.objec
       });
     }
   }
-});
+}),
+);
 
 export const bundledQuizQuestionSchema: z.ZodType<BundledQuizQuestion> =
   z
@@ -94,8 +103,43 @@ export const bundledQuizQuestionSchema: z.ZodType<BundledQuizQuestion> =
 
 export const bundledQuizSchema = z.array(bundledQuizQuestionSchema).min(3);
 
+export const studyPackageManifestSchema: z.ZodType<StudyPackageManifest> =
+  z.object({
+    packageId: z.string().min(1),
+    version: z.number().int().positive(),
+    contentCategory: z.enum([
+      'teacherQuiz',
+      'teacherReviewer',
+      'studentMaterial',
+    ]),
+    title: z.string().trim().min(1).max(160),
+    reviewItems: z.array(reviewItemSchema).max(100),
+    quiz: z
+      .object({
+        questions: z.array(bundledQuizQuestionSchema).min(1).max(40),
+      })
+      .optional(),
+    createdBy: z.string().min(1),
+    sharedBy: z.array(z.string().min(1)).max(100),
+    createdAt: z.string().datetime(),
+  });
+
 export function parseModuleManifest(value: unknown): CurriculumModuleManifest {
   return moduleManifestSchema.parse(value);
+}
+
+export function parseLearningPackageManifest(
+  value: unknown,
+): LearningPackageManifest {
+  if (
+    value &&
+    typeof value === 'object' &&
+    'contentCategory' in value &&
+    value.contentCategory !== 'teacherModule'
+  ) {
+    return studyPackageManifestSchema.parse(value);
+  }
+  return parseModuleManifest(value);
 }
 
 export function buildMarkdownManifest(args: {
@@ -112,6 +156,7 @@ export function buildMarkdownManifest(args: {
   return moduleManifestSchema.parse({
     moduleId: args.moduleId,
     version: 1,
+    contentCategory: 'teacherModule',
     source: args.source,
     gradeLevel: args.gradeLevel,
     subject: args.subject,

@@ -1,12 +1,11 @@
 import type {
   CustomReviewSet,
   ReviewItem,
+  StudyPackageManifest,
   TransferPackage,
 } from '@/domain/types';
-import {
-  buildTeacherModulePackage,
-  sha256File,
-} from './modulePackages';
+import { buildLearningPackage } from './learningPackages';
+import { sha256File } from './modulePackages';
 
 export async function buildReviewSetPackage(
   set: CustomReviewSet,
@@ -20,28 +19,22 @@ export async function buildReviewSetPackage(
     }),
     ...set.createdItems,
   ];
-  return buildTeacherModulePackage({
-    moduleId: `review-${set.setId}`,
+  const packageId = `review-${set.setId}`;
+  const manifest: StudyPackageManifest = {
+    packageId,
+    version: 1,
+    contentCategory: 'teacherReviewer',
     title: set.title,
-    gradeLevel: 5,
-    subject: 'ADDED_MATERIALS',
-    markdown: [
-      `# ${set.title}`,
-      '',
-      ...reviewItems.flatMap((item) => [
-        `## ${item.prompt}`,
-        '',
-        item.answer,
-        '',
-      ]),
-    ].join('\n'),
-    images: [],
     reviewItems: reviewItems.map((item) => ({
       ...item,
-      moduleId: `review-${set.setId}`,
+      moduleId: packageId,
       moduleVersion: 1,
     })),
-  });
+    createdBy: set.createdBy,
+    sharedBy: [],
+    createdAt: new Date(set.createdAt).toISOString(),
+  };
+  return buildLearningPackage(manifest);
 }
 
 export { sha256File };

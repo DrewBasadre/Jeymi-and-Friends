@@ -405,6 +405,7 @@ async function generateModule(grade, subject, number, topic) {
   const manifest = {
     moduleId,
     version: 1,
+    contentCategory: 'teacherModule',
     source: 'seed-bundle',
     gradeLevel: grade,
     subject: subjectMeta.appSubject,

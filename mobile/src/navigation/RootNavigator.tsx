@@ -34,6 +34,7 @@ import {
   ModuleReaderScreen,
   ModulesScreen,
   QuizReportScreen,
+  QuizAttemptHistoryScreen,
   QuizResultScreen,
   QuizScreen,
   ReportsScreen,
@@ -48,6 +49,7 @@ import {
   SectionsScreen,
 } from '@/screens/TeacherOfflineScreens';
 import { ModuleAuthorScreen } from '@/screens/ModuleAuthorScreen';
+import { LearningPackageScreen } from '@/screens/LearningPackageScreen';
 import {
   CustomReviewSetsScreen,
   ParentDigestScreen,
@@ -301,8 +303,16 @@ export function RootNavigator() {
           name="CustomReviewSets"
           component={CustomReviewSetsScreen}
         />
+        <RootStack.Screen
+          name="LearningPackage"
+          component={LearningPackageScreen}
+        />
         <RootStack.Screen name="ParentDigest" component={ParentDigestScreen} />
         <RootStack.Screen name="QuizReport" component={QuizReportScreen} />
+        <RootStack.Screen
+          name="QuizAttemptHistory"
+          component={QuizAttemptHistoryScreen}
+        />
         <RootStack.Screen name="TeacherLogin" component={TeacherLoginScreen} />
         <RootStack.Screen name="TeacherTabs" component={TeacherTabNavigator} />
         <RootStack.Screen name="Sections" component={SectionsScreen} />

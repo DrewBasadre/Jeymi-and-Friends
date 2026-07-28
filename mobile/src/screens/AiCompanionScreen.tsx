@@ -23,6 +23,9 @@ import {
   ChevronRight,
   ChevronUp,
   CircleHelp,
+  History,
+  Layers,
+  Plus,
   RotateCcw,
   Send,
   ShieldCheck,
@@ -31,6 +34,7 @@ import {
   Wifi,
   WifiOff,
 } from 'lucide-react-native';
+import * as Crypto from 'expo-crypto';
 import { CompanionThinking } from '@/components/CompanionThinking';
 import { PeacockPhase, peacockPhase } from '@/components/mascot/PeacockPhase';
 import {
@@ -47,6 +51,12 @@ import {
   listStudentTasks,
 } from '@/data/repository';
 import {
+  appendChatMessage,
+  createChatSession,
+  listChatSessions,
+  saveLearningPackage,
+} from '@/data/learningRepository';
+import {
   buildCompanionRequest,
   validateCompanionQuestion,
 } from '@/domain/companion';
@@ -57,6 +67,8 @@ import type {
 } from '@/domain/companion';
 import type {
   LearningModule,
+  ChatSession,
+  StudyPackageManifest,
   StudentDashboard,
   StudentTask,
   Subject,
@@ -102,8 +114,16 @@ export function AiCompanionScreen({ navigation }: Props) {
   const [contextCollapsed, setContextCollapsed] = useState(false);
   const [reviewSetupCollapsed, setReviewSetupCollapsed] = useState(false);
   const [turns, setTurns] = useState<
-    Array<{ id: number; prompt: string; result: CompanionResponse }>
+    Array<{
+      id: number;
+      prompt: string;
+      result: CompanionResponse;
+      producedPackageId?: string | null;
+    }>
   >([]);
+  const [sessions, setSessions] = useState<ChatSession[]>([]);
+  const [activeSession, setActiveSession] = useState<ChatSession | null>(null);
+  const [historyOpen, setHistoryOpen] = useState(false);
   const [submission, setSubmission] = useState<{ id: number; label: string } | null>(null);
   const [thinkingComplete, setThinkingComplete] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -114,15 +134,24 @@ export function AiCompanionScreen({ navigation }: Props) {
 
   const load = useCallback(async () => {
     if (!student) return;
-    const [nextDashboard, nextTasks, nextModules] = await Promise.all([
+    const ownerId = `student:${student.id}` as const;
+    const [nextDashboard, nextTasks, nextModules, nextSessions] = await Promise.all([
       getStudentDashboard(student.id),
       listStudentTasks(student.id),
       listModules(student.id),
+      listChatSessions(ownerId),
     ]);
     setDashboard(nextDashboard);
     setTasks(nextTasks);
     setModules(nextModules);
-  }, [student]);
+    setSessions(nextSessions);
+    if (!activeSession) {
+      const session =
+        nextSessions[0] ?? (await createChatSession(ownerId));
+      openSession(session);
+      if (nextSessions.length === 0) setSessions([session]);
+    }
+  }, [activeSession, student]);
 
   useFocusEffect(useCallback(() => void load(), [load]));
 
@@ -173,6 +202,19 @@ export function AiCompanionScreen({ navigation }: Props) {
   });
   const online = connectivity === 'online' && configured;
 
+  function openSession(session: ChatSession) {
+    setActiveSession(session);
+    setTurns(turnsFromSession(session));
+    setHistoryOpen(false);
+  }
+
+  async function startConversation() {
+    if (!student) return;
+    const session = await createChatSession(`student:${student.id}`);
+    setSessions((current) => [session, ...current]);
+    openSession(session);
+  }
+
   function toggleSubject(subject: Subject) {
     setSelectedSubjects((current) =>
       current.includes(subject)
@@ -209,7 +251,7 @@ export function AiCompanionScreen({ navigation }: Props) {
       setError('Your progress is still loading.');
       return;
     }
-    if (intent === 'review_lessons' && selectedModuleIds.length === 0) {
+    if (selectedModuleIds.length === 0) {
       setError('Choose at least one installed lesson to review.');
       return;
     }
@@ -235,37 +277,60 @@ export function AiCompanionScreen({ navigation }: Props) {
     setThinkingComplete(false);
     setLoading(true);
     try {
+      let session =
+        activeSession ??
+        (await createChatSession(`student:${student.id}`));
+      session = await appendChatMessage(session, {
+        role: 'user',
+        content: label,
+        timestamp: new Date().toISOString(),
+      });
+      setActiveSession(session);
       const request = buildCompanionRequest({
         intent,
         activity,
         gradeLevel: student.gradeLevel,
         question,
-        conversation: turns.slice(-3).flatMap((turn) => [
-          { role: 'user' as const, content: turn.prompt },
-          {
-            role: 'assistant' as const,
-            content: [
-              turn.result.title,
-              turn.result.summary,
-              ...turn.result.sections.map(
-                (section) => `${section.heading}: ${section.body}`,
-              ),
-              `Next step: ${turn.result.nextStep}`,
-            ].join('\n'),
-          },
-        ]),
+        conversation: session.messages.slice(0, -1).map((message) => ({
+          role: message.role,
+          content: readableChatContent(message.content),
+        })),
         selectedModuleIds,
         modules,
         dashboard,
         tasks,
       });
       const [nextResult] = await Promise.all([askPavo(request), delay(1700)]);
+      const manifest = studyJamFromResponse({
+        result: nextResult,
+        studentId: student.id,
+        moduleId: selectedModuleIds[0]!,
+      });
+      await saveLearningPackage({
+        ownerId: `student:${student.id}`,
+        manifest,
+      });
+      session = await appendChatMessage(session, {
+        role: 'assistant',
+        content: JSON.stringify(nextResult),
+        timestamp: new Date().toISOString(),
+        producedPackageId: manifest.packageId,
+      });
+      setActiveSession(session);
+      setSessions((current) =>
+        [session, ...current.filter((item) => item.sessionId !== session.sessionId)]
+      );
       setThinkingComplete(true);
       await delay(280);
       setTurns((current) =>
         [
           ...current,
-          { id: submissionId, prompt: label, result: nextResult },
+          {
+            id: submissionId,
+            prompt: label,
+            result: nextResult,
+            producedPackageId: manifest.packageId,
+          },
         ].slice(-8),
       );
       setSubmission(null);
@@ -338,6 +403,63 @@ export function AiCompanionScreen({ navigation }: Props) {
         <ShieldCheck size={14} color={colors.success} />
         <Text style={styles.statusText}>Child-safe</Text>
       </View>
+
+      <Pressable
+        accessibilityRole="button"
+        accessibilityState={{ expanded: historyOpen }}
+        onPress={() => setHistoryOpen((value) => !value)}
+        style={({ pressed }) => [
+          styles.historyToggle,
+          pressed && styles.pressed,
+        ]}
+      >
+        <History size={17} color={colors.primary} />
+        <View style={styles.flex}>
+          <Text style={styles.setupTitle}>Past conversations</Text>
+          <Text style={styles.setupMeta} numberOfLines={1}>
+            {activeSession?.title ?? 'New conversation'}
+          </Text>
+        </View>
+        {historyOpen ? (
+          <ChevronUp size={18} color={colors.inkMuted} />
+        ) : (
+          <ChevronDown size={18} color={colors.inkMuted} />
+        )}
+      </Pressable>
+      {historyOpen ? (
+        <View style={styles.historyPanel}>
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => void startConversation()}
+            style={styles.historyRow}
+          >
+            <Plus size={17} color={colors.primary} />
+            <Text style={styles.historyNew}>New conversation</Text>
+          </Pressable>
+          {sessions.slice(0, 8).map((session) => (
+            <Pressable
+              key={session.sessionId}
+              accessibilityRole="button"
+              onPress={() => openSession(session)}
+              style={[
+                styles.historyRow,
+                session.sessionId === activeSession?.sessionId &&
+                  styles.historyRowActive,
+              ]}
+            >
+              <History size={16} color={colors.inkMuted} />
+              <View style={styles.flex}>
+                <Text style={styles.historyTitle} numberOfLines={1}>
+                  {session.title}
+                </Text>
+                <Text style={styles.setupMeta}>
+                  {session.messages.length} messages
+                </Text>
+              </View>
+            </Pressable>
+          ))}
+        </View>
+      ) : null}
 
       {intent === 'review_lessons' ? (
         <>
@@ -494,7 +616,10 @@ export function AiCompanionScreen({ navigation }: Props) {
               <View style={styles.userBubble}>
                 <Text style={styles.userBubbleText}>{turn.prompt}</Text>
               </View>
-              <CompanionResult result={turn.result} />
+              <CompanionResult
+                result={turn.result}
+                saved={Boolean(turn.producedPackageId)}
+              />
             </View>
           ))}
 
@@ -563,7 +688,13 @@ export function AiCompanionScreen({ navigation }: Props) {
   );
 }
 
-function CompanionResult({ result }: { result: CompanionResponse }) {
+export function CompanionResult({
+  result,
+  saved = false,
+}: {
+  result: CompanionResponse;
+  saved?: boolean;
+}) {
   const opacity = useRef(new Animated.Value(0)).current;
   const rise = useRef(new Animated.Value(18)).current;
   const expansion = useRef(new Animated.Value(0)).current;
@@ -627,6 +758,12 @@ function CompanionResult({ result }: { result: CompanionResponse }) {
         </View>
       </View>
       <Text style={styles.resultSummary}>{result.summary}</Text>
+      {saved ? (
+        <View style={styles.savedRow}>
+          <Layers size={16} color={colors.success} />
+          <Text style={styles.savedText}>Saved to Study Jams</Text>
+        </View>
+      ) : null}
 
       {result.sections.map((section, index) => (
         <View key={`${section.heading}-${index}`} style={styles.resultSection}>
@@ -791,6 +928,119 @@ function delay(milliseconds: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
+function studyJamFromResponse(args: {
+  result: CompanionResponse;
+  studentId: string;
+  moduleId: string;
+}): StudyPackageManifest {
+  const packageId = `jam_${Crypto.randomUUID()}`;
+  const authoredBy = `student:${args.studentId}`;
+  const reviewItems = [
+    ...args.result.flashcards.map((card, index) => ({
+      itemId: `${packageId}_card_${index + 1}`,
+      moduleId: args.moduleId,
+      moduleVersion: 1,
+      conceptId: `pavo-card-${index + 1}`,
+      type: 'flashcard' as const,
+      importance: 'core' as const,
+      prompt: card.front,
+      answer: card.back,
+      formats: { text: card.back },
+      authoredBy,
+      tags: ['pavo', 'study-jam'],
+    })),
+    ...args.result.sections.map((section, index) => ({
+      itemId: `${packageId}_summary_${index + 1}`,
+      moduleId: args.moduleId,
+      moduleVersion: 1,
+      conceptId: `pavo-summary-${index + 1}`,
+      type: 'concept-summary' as const,
+      importance: 'supplementary' as const,
+      prompt: section.heading,
+      answer: section.body,
+      formats: { text: section.body },
+      authoredBy,
+      tags: ['pavo', 'study-jam'],
+    })),
+  ];
+  return {
+    packageId,
+    version: 1,
+    contentCategory: 'studentMaterial',
+    title: args.result.title,
+    reviewItems,
+    ...(args.result.questions.length
+      ? {
+          quiz: {
+            questions: args.result.questions.map((question, index) => ({
+              questionId: `${packageId}_question_${index + 1}`,
+              type: 'multiple-choice' as const,
+              prompt: question.prompt,
+              options: question.options,
+              correctAnswer:
+                question.options[question.correctOption] ??
+                question.options[0] ??
+                'No answer supplied',
+              conceptId: `pavo-question-${index + 1}`,
+            })),
+          },
+        }
+      : {}),
+    createdBy: authoredBy,
+    sharedBy: [],
+    createdAt: new Date().toISOString(),
+  };
+}
+
+function turnsFromSession(
+  session: ChatSession,
+): Array<{
+  id: number;
+  prompt: string;
+  result: CompanionResponse;
+  producedPackageId?: string | null;
+}> {
+  const turns: Array<{
+    id: number;
+    prompt: string;
+    result: CompanionResponse;
+    producedPackageId?: string | null;
+  }> = [];
+  for (let index = 0; index < session.messages.length - 1; index += 1) {
+    const user = session.messages[index];
+    const assistant = session.messages[index + 1];
+    if (user?.role !== 'user' || assistant?.role !== 'assistant') continue;
+    try {
+      turns.push({
+        id: Date.parse(assistant.timestamp) || index,
+        prompt: user.content,
+        result: JSON.parse(assistant.content) as CompanionResponse,
+        producedPackageId: assistant.producedPackageId,
+      });
+      index += 1;
+    } catch {
+      // Older plain-text assistant messages remain in history without a rich preview.
+    }
+  }
+  return turns.slice(-8);
+}
+
+function readableChatContent(content: string): string {
+  try {
+    const result = JSON.parse(content) as CompanionResponse;
+    return [
+      result.title,
+      result.summary,
+      ...result.sections.map(
+        (section) => `${section.heading}: ${section.body}`,
+      ),
+      result.nextStep,
+    ].join('\n');
+  } catch {
+    return content;
+  }
+}
+
 const styles = StyleSheet.create({
   flex: { flex: 1, minWidth: 0 },
   chatScreen: {
@@ -833,6 +1083,37 @@ const styles = StyleSheet.create({
     backgroundColor: colors.outline,
   },
   statusText: { ...text.caption, color: colors.inkMuted },
+  historyToggle: {
+    minHeight: 48,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    paddingHorizontal: spacing.md,
+    borderWidth: 1,
+    borderColor: colors.outline,
+    borderRadius: radius.md,
+    backgroundColor: colors.surface,
+  },
+  historyPanel: {
+    maxHeight: 240,
+    gap: spacing.xs,
+    padding: spacing.sm,
+    borderWidth: 1,
+    borderColor: colors.outline,
+    borderRadius: radius.md,
+    backgroundColor: colors.surface,
+  },
+  historyRow: {
+    minHeight: 44,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    paddingHorizontal: spacing.sm,
+    borderRadius: radius.sm,
+  },
+  historyRowActive: { backgroundColor: colors.primaryTint },
+  historyNew: { ...text.label, color: colors.primary },
+  historyTitle: { ...text.bodyStrong, color: colors.ink },
   setupToggle: {
     minHeight: 48,
     flexDirection: 'row',
@@ -1051,6 +1332,12 @@ const styles = StyleSheet.create({
   resultEyebrow: { ...text.overline, color: colors.primary, letterSpacing: 0.6 },
   resultTitle: { ...text.h2, color: colors.ink },
   resultSummary: { ...text.body, color: colors.inkMuted },
+  savedRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+  },
+  savedText: { ...text.caption, color: colors.success, fontWeight: '700' },
   resultSection: {
     gap: spacing.xs,
     paddingBottom: spacing.lg,

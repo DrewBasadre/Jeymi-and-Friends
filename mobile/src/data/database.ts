@@ -2,7 +2,7 @@ import * as SQLite from 'expo-sqlite';
 import { removeLegacyAddedMaterialsDemoFiles } from '@/services/modulePackages';
 
 const DATABASE_NAME = 'wais-next.db';
-const SCHEMA_VERSION = 5;
+const SCHEMA_VERSION = 6;
 
 let databasePromise: Promise<SQLite.SQLiteDatabase> | null = null;
 
@@ -303,6 +303,27 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
       error_message TEXT
     );
 
+    CREATE TABLE IF NOT EXISTS learning_packages (
+      package_id TEXT PRIMARY KEY NOT NULL,
+      owner_id TEXT NOT NULL,
+      content_category TEXT NOT NULL CHECK (
+        content_category IN ('teacherQuiz', 'teacherReviewer', 'studentMaterial')
+      ),
+      title TEXT NOT NULL,
+      manifest_json TEXT NOT NULL,
+      received_at INTEGER,
+      created_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS chat_sessions (
+      session_id TEXT PRIMARY KEY NOT NULL,
+      owner_id TEXT NOT NULL,
+      title TEXT NOT NULL,
+      messages_json TEXT NOT NULL,
+      created_at INTEGER NOT NULL,
+      updated_at INTEGER NOT NULL
+    );
+
     CREATE INDEX IF NOT EXISTS idx_modules_grade_subject
       ON modules(grade_level, subject, quarter);
     CREATE INDEX IF NOT EXISTS idx_attempts_student_submitted
@@ -323,6 +344,10 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
       ON section_roster(student_id);
     CREATE INDEX IF NOT EXISTS idx_student_tasks_due
       ON student_tasks(student_id, completed_at, due_date);
+    CREATE INDEX IF NOT EXISTS idx_packages_owner_category
+      ON learning_packages(owner_id, content_category, created_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_chat_sessions_owner_updated
+      ON chat_sessions(owner_id, updated_at DESC);
 
     PRAGMA user_version = ${SCHEMA_VERSION};
   `);
@@ -331,6 +356,19 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
     'quiz_attempts',
     'learning_format_used',
     "TEXT NOT NULL DEFAULT 'text'",
+  );
+  await ensureColumn(database, 'quiz_attempts', 'quiz_id', "TEXT NOT NULL DEFAULT ''");
+  await ensureColumn(
+    database,
+    'question_responses',
+    'question_text',
+    "TEXT NOT NULL DEFAULT ''",
+  );
+  await ensureColumn(
+    database,
+    'question_responses',
+    'correct_answer',
+    "TEXT NOT NULL DEFAULT ''",
   );
   await database.execAsync(`
     DELETE FROM module_manifests
@@ -385,6 +423,8 @@ export async function resetDatabaseForDevelopment(): Promise<void> {
     DELETE FROM scanned_reports;
     DELETE FROM scanned_report_parts;
     DELETE FROM transfer_sessions;
+    DELETE FROM learning_packages;
+    DELETE FROM chat_sessions;
     DELETE FROM student_tasks;
     DELETE FROM section_roster;
     DELETE FROM sections;

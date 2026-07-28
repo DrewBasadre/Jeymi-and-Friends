@@ -6,7 +6,7 @@ export type RootStackParamList = {
   StudentLogin: undefined;
   StudentSetup: undefined;
   LearningAssessment: { studentId: string };
-  StudentTabs: undefined;
+  StudentTabs: { screen?: keyof StudentTabParamList } | undefined;
   AiCompanion: undefined;
   ModuleReader: { moduleId: string };
   Quiz: { moduleId: string };
@@ -14,8 +14,10 @@ export type RootStackParamList = {
   Flashcards: undefined;
   ReviewHub: undefined;
   CustomReviewSets: undefined;
+  LearningPackage: { packageId: string };
   ParentDigest: undefined;
   QuizReport: { moduleId: string; attemptId: string };
+  QuizAttemptHistory: { attemptLogId: string };
   TeacherLogin: undefined;
   TeacherTabs: undefined;
   Sections: undefined;
