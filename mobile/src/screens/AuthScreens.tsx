@@ -10,14 +10,14 @@ import {
 } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
-  BookOpen,
   GraduationCap,
   ShieldCheck,
   Sparkles,
   UserRound,
   UsersRound,
 } from 'lucide-react-native';
-import { Card, PrimaryButton, Screen, ScreenHeader, SectionTitle } from '@/components/ui';
+import { Card, CardHeader, PrimaryButton, ProgressBar, Screen, ScreenHeader, SectionTitle } from '@/components/ui';
+import { Celebrate, MascotPanel, Peacock } from '@/components/mascot';
 import {
   getTeacherProfile,
   saveLearningProfile,
@@ -28,7 +28,7 @@ import { deriveLearningProfile } from '@/domain/learning';
 import type { LearningAssessmentAnswer } from '@/domain/types';
 import type { RootStackParamList } from '@/navigation/types';
 import { useSessionStore } from '@/store/session';
-import { colors, radius, spacing } from '@/theme/tokens';
+import { colors, radius, spacing, text } from '@/theme/tokens';
 
 type Props<Route extends keyof RootStackParamList> = NativeStackScreenProps<RootStackParamList, Route>;
 
@@ -38,21 +38,20 @@ export function RoleScreen({ navigation }: Props<'Role'>) {
   return (
     <Screen style={styles.roleScreen}>
       <View style={styles.brandBlock}>
-        <View style={styles.brandMark}>
-          <BookOpen size={32} color={colors.white} />
+        <View style={styles.brandHalo}>
+          <Peacock size={104} expression="happy" />
         </View>
-        <Text style={styles.brandName}>WAIS</Text>
+        <Text style={styles.brandName}>Pavo</Text>
         <Text style={styles.brandLine}>Learning that stays with you, online or offline.</Text>
       </View>
 
-      <Card accent={colors.indigo}>
-        <View style={styles.cardTitleRow}>
-          <UserRound size={25} color={colors.indigo} />
-          <View style={styles.flex}>
-            <Text style={styles.cardTitle}>I am a student</Text>
-            <Text style={styles.body}>Open lessons, practice with flashcards, and share results.</Text>
-          </View>
-        </View>
+      <Card accent={colors.primary}>
+        <CardHeader
+          icon={UserRound}
+          color={colors.primary}
+          title="I am a student"
+          subtitle="Open lessons, practice with flashcards, and share results."
+        />
         <PrimaryButton
           label="Continue as student"
           onPress={() => {
@@ -62,14 +61,13 @@ export function RoleScreen({ navigation }: Props<'Role'>) {
         />
       </Card>
 
-      <Card accent={colors.emerald}>
-        <View style={styles.cardTitleRow}>
-          <UsersRound size={25} color={colors.emerald} />
-          <View style={styles.flex}>
-            <Text style={styles.cardTitle}>I am a teacher</Text>
-            <Text style={styles.body}>Scan reports, review the class, and prepare modules.</Text>
-          </View>
-        </View>
+      <Card accent={colors.secondary}>
+        <CardHeader
+          icon={UsersRound}
+          color={colors.secondary}
+          title="I am a teacher"
+          subtitle="Scan reports, review the class, and prepare modules."
+        />
         <PrimaryButton
           label="Continue as teacher"
           tone="secondary"
@@ -81,7 +79,7 @@ export function RoleScreen({ navigation }: Props<'Role'>) {
       </Card>
 
       <View style={styles.modeNote}>
-        <ShieldCheck size={18} color={colors.emerald} />
+        <ShieldCheck size={18} color={colors.success} />
         <Text style={styles.modeText}>
           {mode === 'lightweight' ? 'Lightweight offline mode is active.' : 'Full mode is active. Core learning still works offline.'}
         </Text>
@@ -125,7 +123,7 @@ export function StudentLoginScreen({ navigation }: Props<'StudentLogin'>) {
           secureTextEntry
           placeholder="4 digits"
         />
-        {error ? <Text style={styles.error}>{error}</Text> : null}
+        {error ? <ErrorNote message={error} /> : null}
         <PrimaryButton
           label="Sign in"
           loading={loading}
@@ -228,16 +226,17 @@ export function LearningAssessmentScreen({ navigation, route }: Props<'LearningA
   if (!question) {
     return (
       <Screen>
-        <ScreenHeader title="Your learning mix" />
-        <Card accent={colors.emerald}>
-          <GraduationCap size={36} color={colors.emerald} />
-          <Text style={styles.cardTitle}>All set</Text>
-          <Text style={styles.body}>
-            WAIS will use your answers to order helpful formats first. This is not an intelligence test, and you can change it later.
-          </Text>
+        <Celebrate trigger={1} />
+        <MascotPanel
+          expression="happy"
+          title="You're all set!"
+          body="Pavo will show your most helpful formats first. This isn't a test — you can change it anytime."
+        />
+        <Card accent={colors.primary}>
+          <CardHeader icon={GraduationCap} title="What's next" color={colors.primary} />
           <Text style={styles.body}>
             Your lesson library starts empty. Ask your teacher to send your first
-            module from their Android device.
+            module — then scan the QR to add it here.
           </Text>
           <PrimaryButton label="Open my learning hub" onPress={() => navigation.replace('StudentTabs')} />
         </Card>
@@ -268,10 +267,11 @@ export function LearningAssessmentScreen({ navigation, route }: Props<'LearningA
   return (
     <Screen>
       <ScreenHeader
+        overline={`Question ${step + 1} of ${LEARNING_ASSESSMENT.length}`}
         title="How do you like to learn?"
-        subtitle={`Question ${step + 1} of ${LEARNING_ASSESSMENT.length}`}
         onBack={step === 0 ? navigation.goBack : () => setStep((current) => current - 1)}
       />
+      <ProgressBar value={(step + 1) / LEARNING_ASSESSMENT.length} />
       {step === 0 ? (
         <View style={styles.guardianRow}>
           <Switch
@@ -374,7 +374,7 @@ export function TeacherLoginScreen({ navigation }: Props<'TeacherLogin'>) {
           onChangeText={setAge}
           keyboardType="number-pad"
         />
-        {error ? <Text style={styles.error}>{error}</Text> : null}
+        {error ? <ErrorNote message={error} /> : null}
         <PrimaryButton
           label="Open teacher workspace"
           icon={UsersRound}
@@ -402,59 +402,95 @@ function Field({
       <TextInput
         {...props}
         style={styles.input}
-        placeholderTextColor={colors.inkMuted}
-        selectionColor={colors.indigo}
+        placeholderTextColor={colors.inkSubtle}
+        selectionColor={colors.primary}
       />
     </View>
   );
 }
 
+function ErrorNote({ message }: { message: string }) {
+  return (
+    <View style={styles.errorNote}>
+      <ShieldCheck size={16} color={colors.error} />
+      <Text style={styles.error}>{message}</Text>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
-  roleScreen: { paddingTop: 44 },
-  brandBlock: { alignItems: 'center', paddingVertical: spacing.xl, gap: spacing.sm },
-  brandMark: {
-    width: 64,
-    height: 64,
-    borderRadius: radius.md,
-    backgroundColor: colors.indigo,
+  roleScreen: { gap: spacing.lg },
+  brandBlock: { alignItems: 'center', paddingTop: spacing.sm, paddingBottom: spacing.md, gap: spacing.xs },
+  brandHalo: {
+    width: 132,
+    height: 132,
+    borderRadius: radius.round,
+    backgroundColor: colors.primaryTint,
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: spacing.sm,
   },
-  brandName: { color: colors.ink, fontSize: 40, fontWeight: '900' },
-  brandLine: { color: colors.inkMuted, fontSize: 16, lineHeight: 23, textAlign: 'center', maxWidth: 330 },
-  cardTitleRow: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.md },
-  cardTitle: { color: colors.ink, fontSize: 19, lineHeight: 25, fontWeight: '800' },
-  body: { color: colors.inkMuted, fontSize: 15, lineHeight: 22 },
+  brandName: { ...text.display, color: colors.ink, fontSize: 38 },
+  brandLine: { ...text.body, color: colors.inkMuted, textAlign: 'center', maxWidth: 320 },
+  cardTitle: { ...text.title, color: colors.ink },
+  body: { ...text.body, color: colors.inkMuted, fontSize: 15 },
   flex: { flex: 1, gap: spacing.xs },
-  modeNote: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spacing.sm },
-  modeText: { flex: 1, color: colors.inkMuted, fontSize: 13, lineHeight: 18 },
+  modeNote: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    backgroundColor: colors.successTint,
+    borderRadius: radius.md,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.lg,
+  },
+  modeText: { flex: 1, color: colors.inkMuted, ...text.caption },
   field: { gap: spacing.sm },
-  fieldLabel: { color: colors.ink, fontSize: 14, fontWeight: '800' },
+  fieldLabel: { color: colors.ink, ...text.label, fontWeight: '800' },
   input: {
-    minHeight: 50,
+    minHeight: 52,
     borderRadius: radius.md,
     borderWidth: 1,
     borderColor: colors.outline,
     backgroundColor: colors.surface,
     color: colors.ink,
     paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.md,
     fontSize: 16,
   },
-  error: { color: colors.danger, fontSize: 14, lineHeight: 20, fontWeight: '700' },
-  guardianRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  guardianText: { flex: 1, color: colors.inkMuted, fontSize: 14, lineHeight: 20 },
+  errorNote: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    backgroundColor: colors.errorTint,
+    borderRadius: radius.md,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.md,
+  },
+  error: { flex: 1, color: colors.error, ...text.label, fontWeight: '700' },
+  guardianRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+    backgroundColor: colors.surface,
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: colors.outline,
+    padding: spacing.md,
+  },
+  guardianText: { flex: 1, color: colors.inkMuted, ...text.label },
   optionList: { gap: spacing.md },
   option: {
     minHeight: 64,
     borderRadius: radius.md,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: colors.outline,
     backgroundColor: colors.surface,
     padding: spacing.lg,
     justifyContent: 'center',
   },
-  optionPressed: { borderColor: colors.indigo, backgroundColor: colors.indigoTint },
+  optionPressed: { borderColor: colors.primary, backgroundColor: colors.primaryTint },
   optionDisabled: { opacity: 0.55 },
-  optionText: { color: colors.ink, fontSize: 17, lineHeight: 23, fontWeight: '700' },
-  helper: { color: colors.inkMuted, textAlign: 'center', fontSize: 13, lineHeight: 19 },
+  optionText: { color: colors.ink, ...text.bodyStrong, fontSize: 17 },
+  helper: { color: colors.inkMuted, textAlign: 'center', ...text.caption },
 });

@@ -36,15 +36,20 @@ import {
 } from '@/components/ModuleMarkdown';
 import {
   Card,
+  CardHeader,
   Chip,
   EmptyState,
   IconButton,
   Metric,
   PrimaryButton,
+  ProgressBar,
   Screen,
   ScreenHeader,
   SectionTitle,
+  Skeleton,
+  StatusBadge,
 } from '@/components/ui';
+import { Celebrate, MascotPanel } from '@/components/mascot';
 import {
   getAttempts,
   getDueFlashcards,
@@ -91,7 +96,7 @@ import type {
 } from '@/navigation/types';
 import { readModuleAloud, stopReading } from '@/services/speech';
 import { useSessionStore } from '@/store/session';
-import { colors, radius, spacing, subjectColor } from '@/theme/tokens';
+import { colors, elevation, radius, spacing, subjectColor, text } from '@/theme/tokens';
 
 type StudentTabProps<Route extends keyof StudentTabParamList> = CompositeScreenProps<
   BottomTabScreenProps<StudentTabParamList, Route>,
@@ -128,64 +133,95 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
   useFocusEffect(useCallback(() => void load(), [load]));
 
   if (!student) return <EmptyState title="No student profile" body="Sign in again to open your learning hub." />;
+  const loading = !dashboard;
+  const completed = dashboard?.completedModules ?? 0;
+  const total = dashboard?.totalModules ?? 0;
+  const openTasks = tasks.filter((task) => !task.completedAt).slice(0, 5);
   return (
     <Screen>
       <ScreenHeader
-        title={`Hi, ${student.firstName}`}
+        overline="Welcome back"
+        title={`Hi, ${student.firstName}!`}
         subtitle={formatSectionLabel(student.gradeLevel, student.section)}
-        action={<Chip label={mode === 'lightweight' ? 'Offline light' : 'Full mode'} color={colors.emerald} selected />}
+        action={
+          <StatusBadge
+            label={mode === 'lightweight' ? 'Offline light' : 'Full mode'}
+            status={mode === 'lightweight' ? 'inProgress' : 'completed'}
+          />
+        }
       />
-      <Card accent={colors.indigo}>
-        <Text style={styles.eyebrow}>LEARNING MATCH</Text>
+      <Card accent={colors.primary} tone={colors.primaryTint}>
+        <Text style={styles.eyebrow}>YOUR LEARNING MATCH</Text>
         <Text style={styles.heroTitle}>
           {adaptive
-            ? `${capitalize(
-                adaptive.manualOverride ?? adaptive.currentDefaultFormat,
-              )} format`
+            ? `${capitalize(adaptive.manualOverride ?? adaptive.currentDefaultFormat)} format`
             : profile
               ? `${capitalize(profile.primaryStyle)} learning`
               : 'Balanced learning'}
         </Text>
         <Text style={styles.body}>
-          Lessons with matching formats appear first. This profile guides presentation, not ability.
+          Lessons that match how you learn appear first. This guides presentation, not ability.
         </Text>
+        {total > 0 ? (
+          <View style={styles.heroProgress}>
+            <ProgressBar value={completed / total} />
+            <Text style={styles.heroProgressLabel}>
+              {completed} of {total} modules complete
+            </Text>
+          </View>
+        ) : null}
       </Card>
-      <View style={styles.metricGrid}>
-        <Metric
-          label="Modules complete"
-          value={`${dashboard?.completedModules ?? 0}/${dashboard?.totalModules ?? 0}`}
-          tint={colors.indigoTint}
-        />
-        <Metric label="Average score" value={`${dashboard?.averageScore ?? 0}%`} tint={colors.emeraldTint} />
-        <Metric label="Cards due" value={dashboard?.dueFlashcards ?? 0} tint={colors.amberTint} />
-        <Metric label="Quiz attempts" value={dashboard?.totalAttempts ?? 0} tint={colors.coralTint} />
-      </View>
+      {loading ? (
+        <View style={styles.metricGrid}>
+          <Skeleton width="47%" height={92} style={styles.metricSkeleton} />
+          <Skeleton width="47%" height={92} style={styles.metricSkeleton} />
+          <Skeleton width="47%" height={92} style={styles.metricSkeleton} />
+          <Skeleton width="47%" height={92} style={styles.metricSkeleton} />
+        </View>
+      ) : (
+        <View style={styles.metricGrid}>
+          <Metric label="Modules done" value={`${completed}/${total}`} tint={colors.primaryTint} color={colors.primaryStrong} />
+          <Metric label="Average score" value={`${dashboard?.averageScore ?? 0}%`} tint={colors.successTint} color={colors.success} />
+          <Metric label="Cards due" value={dashboard?.dueFlashcards ?? 0} tint={colors.accentTint} color={colors.accentText} />
+          <Metric label="Quiz attempts" value={dashboard?.totalAttempts ?? 0} tint={colors.secondaryTint} color={colors.secondary} />
+        </View>
+      )}
       <Card>
-        <SectionTitle>Deadlines</SectionTitle>
-        {tasks.filter((task) => !task.completedAt).length === 0 ? (
+        <CardHeader icon={Clock3} title="Deadlines" color={colors.secondary} />
+        {openTasks.length === 0 ? (
           <Text style={styles.body}>
-            Scan an assignment QR from your teacher to add tasks here.
+            You're all caught up. Scan an assignment QR from your teacher to add tasks here.
           </Text>
         ) : (
-          tasks
-            .filter((task) => !task.completedAt)
-            .slice(0, 5)
-            .map((task) => (
-              <View key={task.taskId} style={styles.profileLine}>
-                <Text style={styles.focusValue}>{task.targetId}</Text>
-                <Text style={styles.focusLabel}>
-                  {task.type === 'module' ? 'Module' : 'Quiz'} due {task.dueDate}
+          openTasks.map((task) => (
+            <View key={task.taskId} style={styles.taskRow}>
+              <View style={[styles.taskDot, { backgroundColor: task.type === 'module' ? colors.secondary : colors.accent }]} />
+              <View style={styles.flex}>
+                <Text style={styles.focusValue}>
+                  {task.type === 'module' ? 'Module to read' : 'Quiz to take'}
                 </Text>
+                <Text style={styles.focusLabel}>Due {task.dueDate}</Text>
               </View>
-            ))
+            </View>
+          ))
         )}
       </Card>
       <Card>
-        <SectionTitle>Today’s focus</SectionTitle>
-        <Text style={styles.focusLabel}>Practice next</Text>
-        <Text style={styles.focusValue}>{dashboard?.weakTopic ?? 'Loading...'}</Text>
-        <Text style={styles.focusLabel}>Strong area</Text>
-        <Text style={styles.focusValue}>{dashboard?.strongTopic ?? 'Loading...'}</Text>
+        <CardHeader icon={Brain} title="Today's focus" color={colors.primary} />
+        <View style={styles.focusRow}>
+          <View style={styles.flex}>
+            <Text style={styles.focusLabel}>Practice next</Text>
+            {loading ? <Skeleton width="80%" height={18} /> : (
+              <Text style={styles.focusValue} numberOfLines={2}>{dashboard?.weakTopic ?? 'No weak topic yet'}</Text>
+            )}
+          </View>
+          <View style={styles.flex}>
+            <Text style={styles.focusLabel}>Strong area</Text>
+            {loading ? <Skeleton width="80%" height={18} /> : (
+              <Text style={styles.focusValue} numberOfLines={2}>{dashboard?.strongTopic ?? 'Take a quiz to unlock'}</Text>
+            )}
+          </View>
+        </View>
       </Card>
       <PrimaryButton
         label="Open study techniques"
@@ -194,7 +230,7 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
       />
       <PrimaryButton
         label="Open modules"
-        tone="secondary"
+        tone="ghost"
         icon={BookOpen}
         onPress={() => navigation.navigate('Modules')}
       />
@@ -356,16 +392,13 @@ export function ModuleReaderScreen({ navigation, route }: StackProps<'ModuleRead
           }
         />
       </Card>
-      <Card accent={colors.amber}>
-        <View style={styles.cardTitleRow}>
-          <Brain size={23} color={colors.amber} />
-          <View style={styles.flex}>
-            <Text style={styles.cardTitle}>Inline recall</Text>
-            <Text style={styles.body}>
-              Tap a highlighted term above, or select a phrase below.
-            </Text>
-          </View>
-        </View>
+      <Card accent={colors.accent}>
+        <CardHeader
+          icon={Brain}
+          color={colors.accent}
+          title="Inline recall"
+          subtitle="Tap a highlighted term above, or select any phrase below to quiz yourself."
+        />
         {recallActivity ? (
           <>
             <Text style={styles.question}>{recallActivity.prompt}</Text>
@@ -511,22 +544,23 @@ export function QuizScreen({ navigation, route }: StackProps<'Quiz'>) {
   return (
     <Screen>
       <ScreenHeader
+        overline={`Question ${index + 1} of ${questions.length}`}
         title={module.title}
-        subtitle={`Question ${index + 1} of ${questions.length}`}
         onBack={navigation.goBack}
       />
-      <View style={styles.progressTrack}>
-        <View style={[styles.progressFill, { width: `${((index + 1) / questions.length) * 100}%` }]} />
-      </View>
-      <View style={styles.chipRow}>
-        {(['text', 'audio', 'visual', 'kinesthetic'] as const).map((format) => (
-          <Chip
-            key={format}
-            label={capitalize(format)}
-            selected={learningFormat === format}
-            onPress={() => setLearningFormat(format)}
-          />
-        ))}
+      <ProgressBar value={(index + 1) / questions.length} />
+      <View>
+        <Text style={styles.formatLabel}>Show me this as</Text>
+        <View style={styles.chipRow}>
+          {(['text', 'audio', 'visual', 'kinesthetic'] as const).map((format) => (
+            <Chip
+              key={format}
+              label={capitalize(format)}
+              selected={learningFormat === format}
+              onPress={() => setLearningFormat(format)}
+            />
+          ))}
+        </View>
       </View>
       <Card accent={subjectColor[module.subject]}>
         <View style={styles.timerLine}>
@@ -546,24 +580,23 @@ export function QuizScreen({ navigation, route }: StackProps<'Quiz'>) {
             placeholderTextColor={colors.inkMuted}
           />
         ) : (
-          question.choices.map((choice) => (
-            <Pressable
-              key={choice}
-              onPress={() => answer(choice)}
-              style={[
-                styles.answerOption,
-                selected === choice && styles.answerSelected,
-              ]}
-            >
-              <View
-                style={[
-                  styles.radio,
-                  selected === choice && styles.radioSelected,
-                ]}
-              />
-              <Text style={styles.answerText}>{choice}</Text>
-            </Pressable>
-          ))
+          question.choices.map((choice) => {
+            const isSelected = selected === choice;
+            return (
+              <Pressable
+                key={choice}
+                accessibilityRole="radio"
+                accessibilityState={{ selected: isSelected }}
+                onPress={() => answer(choice)}
+                style={[styles.answerOption, isSelected && styles.answerSelected]}
+              >
+                <View style={[styles.radio, isSelected && styles.radioSelected]}>
+                  {isSelected ? <CheckCircle2 size={16} color={colors.white} /> : null}
+                </View>
+                <Text style={styles.answerText}>{choice}</Text>
+              </Pressable>
+            );
+          })
         )}
       </View>
       <PrimaryButton
@@ -583,24 +616,38 @@ export function QuizResultScreen({ navigation, route }: StackProps<'QuizResult'>
     void getQuestions(module.id).then(setQuestions);
   }, [module.id]);
   const percent = attempt.totalItems > 0 ? Math.round((attempt.score / attempt.totalItems) * 100) : 0;
+  const great = percent >= 80;
+  const good = percent >= 50;
   return (
     <Screen>
-      <ScreenHeader title="Quiz complete" subtitle={module.title} />
-      <Card accent={percent >= 80 ? colors.emerald : colors.amber}>
+      {great ? <Celebrate trigger={1} /> : null}
+      <MascotPanel
+        expression={great ? 'happy' : 'encouraging'}
+        title={great ? 'Amazing work!' : good ? 'Nice effort!' : "Let's practice more"}
+        body={
+          great
+            ? "You've really got this. Keep the streak going."
+            : good
+              ? "You're getting there — review the misses below."
+              : "Every attempt helps you learn. Take another look below."
+        }
+      />
+      <Card accent={great ? colors.success : good ? colors.accent : colors.secondary}>
         <Text style={styles.score}>{attempt.score}/{attempt.totalItems}</Text>
-        <Text style={styles.scoreLabel}>{percent}% - {capitalize(attempt.masteryLevel.toLocaleLowerCase())}</Text>
+        <Text style={styles.scoreLabel}>{percent}% · {capitalize(attempt.masteryLevel.toLocaleLowerCase())}</Text>
+        <ProgressBar value={percent / 100} height={12} />
         <View style={styles.resultRow}>
           <View style={styles.flex}>
             <Text style={styles.focusLabel}>Strong topic</Text>
-            <Text style={styles.focusValue}>{attempt.strongTopic}</Text>
+            <Text style={styles.focusValue} numberOfLines={2}>{attempt.strongTopic}</Text>
           </View>
           <View style={styles.flex}>
             <Text style={styles.focusLabel}>Practice next</Text>
-            <Text style={styles.focusValue}>{attempt.weakTopic}</Text>
+            <Text style={styles.focusValue} numberOfLines={2}>{attempt.weakTopic}</Text>
           </View>
         </View>
         <Text style={styles.body}>
-          Time: {formatDuration(attempt.durationSeconds)} - Attempt {attempt.attemptNumber} - {capitalize(attempt.learningFormatUsed)}
+          {formatDuration(attempt.durationSeconds)} · Attempt {attempt.attemptNumber} · {capitalize(attempt.learningFormatUsed)}
         </Text>
       </Card>
       <SectionTitle>Question breakdown</SectionTitle>
@@ -609,11 +656,17 @@ export function QuizResultScreen({ navigation, route }: StackProps<'QuizResult'>
         return (
           <Card
             key={response.questionId}
-            accent={response.isCorrect ? colors.emerald : colors.coral}
+            accent={response.isCorrect ? colors.success : colors.coral}
           >
-            <Text style={styles.focusLabel}>Question {index + 1}</Text>
+            <View style={styles.breakdownTop}>
+              <StatusBadge
+                label={response.isCorrect ? 'Correct' : 'Review'}
+                status={response.isCorrect ? 'completed' : 'inProgress'}
+              />
+              <Text style={styles.focusLabel}>Question {index + 1}</Text>
+            </View>
             <Text style={styles.focusValue}>
-              {question?.questionText ?? response.questionId}
+              {question?.questionText ?? `Question ${index + 1}`}
             </Text>
             <Text style={styles.body}>Your answer: {response.answer}</Text>
             {!response.isCorrect ? (
@@ -661,26 +714,37 @@ export function FlashcardsScreen({ navigation }: StackProps<'Flashcards'>) {
         onBack={navigation.goBack}
       />
       {!card ? (
-        <EmptyState title="You’re caught up" body="WAIS will bring cards back when they are useful to review." />
+        <EmptyState
+          expression="happy"
+          title="You're all caught up!"
+          body="Pavo will bring cards back right when they're most useful to review."
+        />
       ) : (
         <>
+          <ProgressBar value={(index + 1) / Math.max(cards.length, 1)} />
           <Pressable onPress={() => setRevealed((value) => !value)}>
             <View style={[styles.flashcard, revealed && styles.flashcardBack]}>
               <Text style={styles.flashcardLabel}>{revealed ? 'ANSWER' : 'PROMPT'}</Text>
               <Text style={styles.flashcardText}>{revealed ? card.back : card.front}</Text>
-              <Text style={styles.helper}>{revealed ? 'How well did you remember?' : 'Tap to reveal'}</Text>
+              <Text style={styles.flashcardHint}>{revealed ? 'How well did you remember?' : 'Tap to reveal'}</Text>
             </View>
           </Pressable>
           {revealed ? (
             <View style={styles.ratingGrid}>
               {([
-                [0, 'Again'],
-                [2, 'Hard'],
-                [4, 'Good'],
-                [5, 'Easy'],
-              ] as const).map(([rating, label]) => (
-                <Pressable key={rating} style={styles.rating} onPress={() => void rate(rating)}>
-                  <Text style={styles.ratingNumber}>{rating}</Text>
+                [0, 'Again', colors.coral],
+                [2, 'Hard', colors.accent],
+                [4, 'Good', colors.secondary],
+                [5, 'Easy', colors.success],
+              ] as const).map(([rating, label, tint]) => (
+                <Pressable
+                  key={rating}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Rate ${label}`}
+                  style={styles.rating}
+                  onPress={() => void rate(rating)}
+                >
+                  <View style={[styles.ratingDot, { backgroundColor: tint }]} />
                   <Text style={styles.ratingLabel}>{label}</Text>
                 </Pressable>
               ))}
@@ -840,7 +904,7 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
       <Card>
         <Text style={styles.cardTitle}>Default learning format</Text>
         <Text style={styles.body}>
-          WAIS recommends {adaptive?.currentDefaultFormat ?? 'text'} from recent completed work. Choose a default at any time.
+          Pavo recommends {adaptive?.currentDefaultFormat ?? 'text'} from recent completed work. Choose a default at any time.
         </Text>
         <View style={styles.chipRow}>
           {(['text', 'audio', 'visual', 'kinesthetic'] as const).map((format) => (
@@ -868,13 +932,7 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
         </View>
       </Card>
       <Card>
-        <View style={styles.cardTitleRow}>
-          <Settings2 size={23} color={colors.indigo} />
-          <View style={styles.flex}>
-            <Text style={styles.cardTitle}>Device mode</Text>
-            <Text style={styles.body}>{modeReason}</Text>
-          </View>
-        </View>
+        <CardHeader icon={Settings2} title="Device mode" subtitle={modeReason} color={colors.primary} />
         <View style={styles.segmented}>
           {(['lightweight', 'full'] as const).map((option) => (
             <Pressable
@@ -891,21 +949,24 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
       </Card>
       <PrimaryButton
         label="Parent weekly digest"
-        tone="secondary"
+        tone="ghost"
         onPress={() => navigation.navigate('ParentDigest')}
       />
       <PrimaryButton
         label="Receive a module"
-        tone="secondary"
+        tone="ghost"
         icon={Download}
         onPress={() => navigation.navigate('ReceiveTransfer')}
       />
-      <PrimaryButton
-        label="Sign out"
-        tone="danger"
-        icon={LogOut}
-        onPress={() => void signOut().then(() => navigation.getParent()?.navigate('Role'))}
-      />
+      <View style={styles.signOutRow}>
+        <PrimaryButton
+          label="Sign out"
+          tone="danger"
+          size="sm"
+          icon={LogOut}
+          onPress={() => void signOut().then(() => navigation.getParent()?.navigate('Role'))}
+        />
+      </View>
     </Screen>
   );
 }
@@ -930,63 +991,62 @@ function formatDuration(seconds: number): string {
 }
 
 const styles = StyleSheet.create({
-  flex: { flex: 1 },
+  flex: { flex: 1, minWidth: 0 },
   fixedHeader: { paddingHorizontal: spacing.xl, paddingTop: spacing.xl, gap: spacing.md },
-  listContent: { padding: spacing.xl, gap: spacing.md, paddingBottom: 40 },
-  chipRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: spacing.sm,
-    paddingRight: spacing.xl,
-  },
+  listContent: { padding: spacing.xl, gap: spacing.md, paddingBottom: spacing.huge },
+  chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, paddingRight: spacing.xl },
   metricGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
-  eyebrow: { color: colors.indigo, fontSize: 12, fontWeight: '900' },
-  heroTitle: { color: colors.ink, fontSize: 24, lineHeight: 30, fontWeight: '900' },
-  body: { color: colors.inkMuted, fontSize: 15, lineHeight: 22 },
-  focusLabel: { color: colors.inkMuted, fontSize: 12, lineHeight: 17, fontWeight: '800' },
-  focusValue: { color: colors.ink, fontSize: 16, lineHeight: 22, fontWeight: '800' },
-  cardTitle: { color: colors.ink, fontSize: 19, lineHeight: 25, fontWeight: '800' },
-  cardTitleRow: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.md },
+  metricSkeleton: { borderRadius: radius.lg, flexGrow: 1 },
+  eyebrow: { ...text.overline, color: colors.primary },
+  heroTitle: { ...text.h2, color: colors.ink, fontSize: 24 },
+  heroProgress: { gap: spacing.sm, marginTop: spacing.xs },
+  heroProgressLabel: { ...text.caption, color: colors.primaryStrong },
+  body: { ...text.body, color: colors.inkMuted, fontSize: 15 },
+  focusRow: { flexDirection: 'row', gap: spacing.lg },
+  focusLabel: { ...text.overline, color: colors.inkMuted, letterSpacing: 0.4 },
+  focusValue: { ...text.bodyStrong, color: colors.ink, marginTop: 2 },
+  cardTitle: { ...text.title, color: colors.ink },
+  formatLabel: { ...text.caption, color: colors.inkMuted, marginBottom: spacing.sm },
+  taskRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, paddingVertical: spacing.xs },
+  taskDot: { width: 10, height: 10, borderRadius: radius.round },
   moduleTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.md },
-  moduleCode: { color: colors.inkMuted, fontSize: 12, fontWeight: '700' },
+  moduleCode: { ...text.caption, color: colors.inkMuted },
   styleTags: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  styleTag: { color: colors.indigo, fontSize: 12, fontWeight: '800', backgroundColor: colors.indigoTint, padding: 6, borderRadius: radius.sm },
-  progressTrack: { height: 8, borderRadius: radius.round, backgroundColor: colors.surfaceMuted, overflow: 'hidden' },
-  progressFill: { height: '100%', backgroundColor: colors.indigo },
+  styleTag: {
+    ...text.caption,
+    color: colors.primary,
+    backgroundColor: colors.primaryTint,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 4,
+    borderRadius: radius.sm,
+    overflow: 'hidden',
+  },
   input: {
-    minHeight: 50,
+    minHeight: 52,
     borderRadius: radius.md,
     borderWidth: 1,
     borderColor: colors.outline,
     backgroundColor: colors.surface,
     color: colors.ink,
     paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.md,
     fontSize: 16,
   },
   recallSource: {
-    minHeight: 180,
+    minHeight: 160,
     lineHeight: 24,
+    backgroundColor: colors.surfaceMuted,
     paddingVertical: spacing.md,
   },
-  recallCorrect: {
-    color: colors.emerald,
-    fontSize: 14,
-    fontWeight: '800',
-    textAlign: 'center',
-  },
-  recallRetry: {
-    color: colors.coral,
-    fontSize: 14,
-    fontWeight: '800',
-    textAlign: 'center',
-  },
+  recallCorrect: { color: colors.success, ...text.label, fontWeight: '800', textAlign: 'center' },
+  recallRetry: { color: colors.coral, ...text.label, fontWeight: '800', textAlign: 'center' },
   timerLine: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  question: { color: colors.ink, fontSize: 21, lineHeight: 29, fontWeight: '800' },
+  question: { ...text.h2, color: colors.ink, fontSize: 21, lineHeight: 29 },
   optionList: { gap: spacing.md },
   answerOption: {
     minHeight: 60,
     borderRadius: radius.md,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: colors.outline,
     backgroundColor: colors.surface,
     padding: spacing.lg,
@@ -994,37 +1054,58 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: spacing.md,
   },
-  answerSelected: { borderColor: colors.indigo, backgroundColor: colors.indigoTint },
-  radio: { width: 20, height: 20, borderRadius: 10, borderWidth: 2, borderColor: colors.outline },
-  radioSelected: { borderWidth: 6, borderColor: colors.indigo },
-  answerText: { flex: 1, color: colors.ink, fontSize: 16, lineHeight: 22, fontWeight: '700' },
-  score: { color: colors.ink, fontSize: 54, fontWeight: '900', textAlign: 'center' },
-  scoreLabel: { color: colors.inkMuted, fontSize: 17, fontWeight: '800', textAlign: 'center' },
+  answerSelected: { borderColor: colors.primary, backgroundColor: colors.primaryTint },
+  radio: {
+    width: 26,
+    height: 26,
+    borderRadius: 13,
+    borderWidth: 2,
+    borderColor: colors.outlineStrong,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  radioSelected: { borderColor: colors.primary, backgroundColor: colors.primary },
+  answerText: { flex: 1, color: colors.ink, ...text.bodyStrong },
+  score: { color: colors.ink, fontSize: 52, lineHeight: 58, fontWeight: '800', textAlign: 'center' },
+  scoreLabel: { color: colors.inkMuted, ...text.title, textAlign: 'center' },
   resultRow: { flexDirection: 'row', gap: spacing.xl, borderTopWidth: 1, borderTopColor: colors.outline, paddingTop: spacing.lg },
+  breakdownTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.md },
   flashcard: {
-    minHeight: 340,
-    borderRadius: radius.md,
-    backgroundColor: colors.indigo,
+    minHeight: 320,
+    borderRadius: radius.xl,
+    backgroundColor: colors.primary,
     padding: spacing.xxl,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: spacing.xl,
+    gap: spacing.lg,
+    ...elevation.e2,
   },
-  flashcardBack: { backgroundColor: colors.emerald },
-  flashcardLabel: { color: colors.white, fontSize: 12, fontWeight: '900' },
-  flashcardText: { color: colors.white, fontSize: 30, lineHeight: 39, fontWeight: '900', textAlign: 'center' },
-  helper: { color: colors.inkMuted, textAlign: 'center', fontSize: 13, lineHeight: 19 },
+  flashcardBack: { backgroundColor: colors.secondary },
+  flashcardLabel: { ...text.overline, color: colors.white, opacity: 0.85 },
+  flashcardText: { color: colors.white, fontSize: 30, lineHeight: 39, fontWeight: '800', textAlign: 'center' },
+  flashcardHint: { color: colors.white, opacity: 0.85, textAlign: 'center', ...text.caption },
   ratingGrid: { flexDirection: 'row', gap: spacing.sm },
-  rating: { flex: 1, minHeight: 70, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.outline, borderRadius: radius.md, alignItems: 'center', justifyContent: 'center' },
-  ratingNumber: { color: colors.indigo, fontSize: 20, fontWeight: '900' },
-  ratingLabel: { color: colors.inkMuted, fontSize: 11, fontWeight: '800' },
-  qrCard: { alignItems: 'center', justifyContent: 'center', paddingVertical: spacing.xxl },
-  qrNote: { color: colors.inkMuted, fontSize: 14, lineHeight: 21, textAlign: 'center' },
+  rating: {
+    flex: 1,
+    minHeight: 74,
+    gap: spacing.sm,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.outline,
+    borderRadius: radius.md,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  ratingDot: { width: 16, height: 16, borderRadius: radius.round },
+  ratingLabel: { color: colors.ink, ...text.label, fontWeight: '800' },
+  qrCard: { alignItems: 'center', justifyContent: 'center', paddingVertical: spacing.xxl, gap: spacing.lg },
+  qrNote: { color: colors.inkMuted, ...text.label, textAlign: 'center' },
   profileLine: { borderTopWidth: 1, borderTopColor: colors.outline, paddingTop: spacing.md, gap: spacing.xs },
-  profileValue: { color: colors.ink, fontSize: 16, fontWeight: '700' },
+  profileValue: { color: colors.ink, ...text.bodyStrong },
   segmented: { flexDirection: 'row', borderWidth: 1, borderColor: colors.outline, borderRadius: radius.md, overflow: 'hidden' },
   segment: { flex: 1, minHeight: 46, alignItems: 'center', justifyContent: 'center', paddingHorizontal: spacing.sm },
-  segmentActive: { backgroundColor: colors.indigo },
-  segmentText: { color: colors.inkMuted, fontSize: 14, fontWeight: '800' },
+  segmentActive: { backgroundColor: colors.primary },
+  segmentText: { color: colors.inkMuted, ...text.label, fontWeight: '800' },
   segmentTextActive: { color: colors.white },
+  signOutRow: { marginTop: spacing.sm, alignItems: 'center' },
 });
