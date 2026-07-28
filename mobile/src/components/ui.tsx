@@ -12,6 +12,7 @@ import {
   ActivityIndicator,
   Animated,
   Easing,
+  Modal,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -31,7 +32,7 @@ import Svg, {
   Stop,
 } from 'react-native-svg';
 import * as Haptics from 'expo-haptics';
-import { ArrowLeft, ChevronRight, type LucideIcon } from 'lucide-react-native';
+import { ArrowLeft, Check, ChevronDown, ChevronRight, type LucideIcon } from 'lucide-react-native';
 import {
   colors,
   elevation,
@@ -659,6 +660,84 @@ export function SegmentedControl<T extends string>({
   );
 }
 
+/**
+ * Single-select dropdown. A bordered field that opens a modal list of options —
+ * the space-saving replacement for a long row of selection chips. Selecting an
+ * option calls `onChange` with the same value the chips used, so it is a drop-in
+ * behavioural swap.
+ */
+export function Dropdown<T extends string>({
+  value,
+  options,
+  onChange,
+  placeholder = 'Select',
+  accessibilityLabel,
+}: {
+  value: T | null;
+  options: { value: T; label: string }[];
+  onChange: (value: T) => void;
+  placeholder?: string;
+  accessibilityLabel?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const selected = options.find((option) => option.value === value);
+  return (
+    <>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={accessibilityLabel ?? selected?.label ?? placeholder}
+        accessibilityState={{ expanded: open }}
+        onPress={() => {
+          void Haptics.selectionAsync().catch(() => {});
+          setOpen(true);
+        }}
+        style={({ pressed }) => [styles.dropdownField, pressed && styles.pressedSoft]}
+      >
+        <Text style={[styles.dropdownValue, !selected && styles.dropdownPlaceholder]} numberOfLines={1}>
+          {selected?.label ?? placeholder}
+        </Text>
+        <ChevronDown size={18} color={colors.inkMuted} />
+      </Pressable>
+      <Modal visible={open} transparent animationType="fade" onRequestClose={() => setOpen(false)}>
+        <Pressable style={styles.dropdownBackdrop} onPress={() => setOpen(false)}>
+          <View style={styles.dropdownSheet}>
+            <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
+              {options.map((option, index) => {
+                const active = option.value === value;
+                return (
+                  <Pressable
+                    key={option.value}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: active }}
+                    onPress={() => {
+                      void Haptics.selectionAsync().catch(() => {});
+                      onChange(option.value);
+                      setOpen(false);
+                    }}
+                    style={({ pressed }) => [
+                      styles.dropdownOption,
+                      index > 0 && styles.dropdownOptionDivider,
+                      pressed && styles.dropdownOptionPressed,
+                    ]}
+                  >
+                    <Text
+                      style={[styles.dropdownOptionText, active && styles.dropdownOptionTextActive]}
+                      numberOfLines={2}
+                    >
+                      {option.label}
+                    </Text>
+                    {active ? <Check size={18} color={colors.primary} strokeWidth={2.6} /> : null}
+                  </Pressable>
+                );
+              })}
+            </ScrollView>
+          </View>
+        </Pressable>
+      </Modal>
+    </>
+  );
+}
+
 /** Tappable row: icon plate → title/subtitle → chevron. */
 export function ListRow({
   icon: Icon,
@@ -1214,6 +1293,50 @@ const styles = StyleSheet.create({
   segmentActive: { backgroundColor: colors.surface, ...elevation.e0 },
   segmentText: { ...text.label, color: colors.inkMuted, fontWeight: '700' },
   segmentTextActive: { color: colors.primary, fontWeight: '800' },
+
+  dropdownField: {
+    minHeight: 48,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.sm,
+    borderWidth: 1.5,
+    borderColor: colors.outline,
+    borderRadius: radius.md,
+    backgroundColor: colors.surface,
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.sm,
+  },
+  dropdownValue: { ...text.bodyStrong, color: colors.ink, flex: 1, minWidth: 0 },
+  dropdownPlaceholder: { color: colors.inkSubtle, fontWeight: '400' },
+  dropdownBackdrop: {
+    flex: 1,
+    backgroundColor: colors.scrim,
+    justifyContent: 'center',
+    paddingHorizontal: spacing.xl,
+  },
+  dropdownSheet: {
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    borderColor: colors.outline,
+    maxHeight: 360,
+    overflow: 'hidden',
+    ...elevation.e3,
+  },
+  dropdownOption: {
+    minHeight: 52,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.md,
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.md,
+  },
+  dropdownOptionDivider: { borderTopWidth: 1, borderTopColor: colors.hairline },
+  dropdownOptionPressed: { backgroundColor: colors.surfaceMuted },
+  dropdownOptionText: { ...text.body, color: colors.ink, flex: 1, minWidth: 0 },
+  dropdownOptionTextActive: { color: colors.primary, fontWeight: '700' },
 
   listRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, paddingVertical: spacing.xs },
   listRowTitle: { ...text.bodyStrong, color: colors.ink },

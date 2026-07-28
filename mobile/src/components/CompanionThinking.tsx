@@ -9,7 +9,8 @@ import {
 import { Check, LoaderCircle } from 'lucide-react-native';
 import { colors, motion, radius, spacing, text } from '@/theme/tokens';
 
-const steps = [
+/** Student-context process steps — the default shown to learners. */
+const DEFAULT_STEPS = [
   'Reading your learning context',
   'Checking child-safety rules',
   'Matching installed lessons',
@@ -19,9 +20,12 @@ const steps = [
 export function CompanionThinking({
   prompt,
   complete,
+  steps = DEFAULT_STEPS,
 }: {
   prompt: string;
   complete: boolean;
+  /** Process steps to reveal. Pass a role-specific set (e.g. teacher). */
+  steps?: readonly string[];
 }) {
   const bubbleOpacity = useRef(new Animated.Value(0)).current;
   const bubbleRise = useRef(new Animated.Value(12)).current;
