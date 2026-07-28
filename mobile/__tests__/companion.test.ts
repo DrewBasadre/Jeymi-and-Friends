@@ -1,11 +1,13 @@
 import { describe, expect, it } from '@jest/globals';
 import {
   buildCompanionRequest,
+  buildDigestCompanionRequest,
   companionResponseSchema,
   validateCompanionQuestion,
 } from '../src/domain/companion';
 import type {
   LearningModule,
+  ParentDigest,
   StudentDashboard,
   StudentTask,
 } from '../src/domain/types';
@@ -85,9 +87,61 @@ describe('companion request privacy', () => {
     expect(serialized).not.toContain('student-secret');
     expect(serialized).not.toContain('Teacher Name');
     expect(serialized).not.toContain('Section Secret');
-    expect(request.performance.averageScore).toBe(78);
+    expect(request.performance).toBeUndefined();
     expect(request.modules).toHaveLength(1);
     expect(request.deadlines[0]?.title).toBe('Fractions');
+  });
+
+  it('builds an anonymized parent digest analysis request', () => {
+    const digest = {
+      digestId: 'digest-secret',
+      studentId: 'student-secret',
+      weekOf: '2026-07-27',
+      summary: {
+        modulesCompleted: 1,
+        quizzesTaken: 1,
+        averageScorePercentage: 80,
+        trend: 'improving',
+        flashcardsReviewed: 4,
+        engagementDaysActive: 3,
+        topStrugglingConcepts: [],
+      },
+      lessons: [
+        {
+          moduleId: 'math-1',
+          title: 'Fractions',
+          subject: 'MATH',
+          source: 'seed-bundle',
+          status: 'COMPLETED',
+          lastActivityAt: 1,
+        },
+      ],
+      quizResults: [
+        {
+          attemptId: 'attempt-secret',
+          moduleId: 'math-1',
+          moduleTitle: 'Fractions',
+          score: 4,
+          totalItems: 5,
+          scorePercentage: 80,
+          masteryLevel: 'PROFICIENT',
+          strongTopic: 'Equal parts',
+          weakTopic: 'Number lines',
+          submittedAt: 1,
+        },
+      ],
+      insightNote: 'Keep reviewing number lines.',
+      scoreTrend: [],
+      engagementDays: [],
+      generatedAt: '2026-07-29T00:00:00.000Z',
+    } satisfies ParentDigest;
+    const request = buildDigestCompanionRequest({ digest, gradeLevel: 5 });
+    const serialized = JSON.stringify(request);
+    expect(request.intent).toBe('weekly_digest');
+    expect(request.digest?.lessons[0]?.title).toBe('Fractions');
+    expect(serialized).not.toContain('student-secret');
+    expect(serialized).not.toContain('attempt-secret');
+    expect(serialized).not.toContain('digest-secret');
   });
 });
 

@@ -31,6 +31,8 @@ import {
   Square,
   Target,
   Timer,
+  Wifi,
+  WifiOff,
   type LucideIcon,
 } from 'lucide-react-native';
 import {
@@ -82,6 +84,9 @@ import type {
   StudentTabParamList,
 } from '@/navigation/types';
 import { useSessionStore } from '@/store/session';
+import { isCompanionConfigured } from '@/services/companion';
+import { useConnectivity } from '@/services/connectivity';
+import { analyzeParentDigest } from '@/services/digestAnalysis';
 import { deliverParentDigest, type DigestDelivery } from '@/services/parentDigest';
 import {
   colors,
@@ -968,6 +973,15 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
   const [digest, setDigest] = useState<ParentDigest | null>(null);
   const [delivery, setDelivery] = useState<DigestDelivery>('in-app');
   const [authorized, setAuthorized] = useState(false);
+  const [onlineAnalysis, setOnlineAnalysis] = useState<
+    Awaited<ReturnType<typeof analyzeParentDigest>> | null
+  >(null);
+  const [analysisState, setAnalysisState] = useState<
+    'offline' | 'loading' | 'online' | 'error'
+  >('offline');
+  const connectivity = useConnectivity();
+  const analysisAvailable =
+    connectivity === 'online' && isCompanionConfigured();
 
   useEffect(() => {
     if (student && authorized) {
@@ -977,6 +991,24 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
       });
     }
   }, [authorized, student]);
+
+  useEffect(() => {
+    if (!digest || !student || !analysisAvailable || onlineAnalysis) return;
+    let active = true;
+    setAnalysisState('loading');
+    void analyzeParentDigest(digest, student.gradeLevel)
+      .then((analysis) => {
+        if (!active) return;
+        setOnlineAnalysis(analysis);
+        setAnalysisState('online');
+      })
+      .catch(() => {
+        if (active) setAnalysisState('error');
+      });
+    return () => {
+      active = false;
+    };
+  }, [analysisAvailable, digest, onlineAnalysis, student]);
 
   return (
     <>
@@ -1013,6 +1045,26 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
                 <Chip
                   size="sm"
                   label={`Generated ${formatDate(digest.generatedAt)}`}
+                />
+                <Chip
+                  size="sm"
+                  label="Offline report ready"
+                  color={colors.success}
+                />
+                <Chip
+                  size="sm"
+                  label={
+                    analysisState === 'online'
+                      ? 'Pavo analysis online'
+                      : analysisState === 'loading'
+                        ? 'Pavo is analyzing'
+                        : 'Pavo analysis offline'
+                  }
+                  color={
+                    analysisState === 'online'
+                      ? colors.primary
+                      : colors.inkSubtle
+                  }
                 />
               </Row>
             </Card>
@@ -1051,6 +1103,70 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
                 color={colors.success}
               />
             </TileGrid>
+
+            <SectionHeader
+              title="Lessons read"
+              caption="Seeded and imported modules opened or completed this week."
+            />
+            <Card>
+              {digest.lessons.length > 0 ? (
+                digest.lessons.map((lesson, index) => (
+                  <View key={lesson.moduleId}>
+                    {index > 0 ? <Divider style={styles.reviewDivider} /> : null}
+                    <ListRow
+                      icon={BookOpen}
+                      color={colors.primary}
+                      title={lesson.title}
+                      subtitle={`${friendlySubjectLabel(lesson.subject)} · ${friendlyModuleSource(lesson.source)} · ${
+                        lesson.status === 'COMPLETED' ? 'Completed' : 'Read'
+                      } ${formatDate(lesson.lastActivityAt)}`}
+                    />
+                  </View>
+                ))
+              ) : (
+                <Text style={styles.reportBody}>
+                  No lesson reading was recorded this week.
+                </Text>
+              )}
+            </Card>
+
+            <SectionHeader
+              title="Quiz results"
+              caption="Every quiz attempt recorded on this device this week."
+            />
+            <Card>
+              {digest.quizResults.length > 0 ? (
+                digest.quizResults.map((quiz, index) => (
+                  <View key={quiz.attemptId}>
+                    {index > 0 ? <Divider style={styles.reviewDivider} /> : null}
+                    <ListRow
+                      icon={ListChecks}
+                      color={colors.secondary}
+                      title={quiz.moduleTitle}
+                      subtitle={`${quiz.score}/${quiz.totalItems} correct · ${capitalize(
+                        quiz.masteryLevel.toLocaleLowerCase(),
+                      )} · ${formatDate(quiz.submittedAt)}`}
+                      trailing={
+                        <Text style={styles.quizScore}>
+                          {Math.round(quiz.scorePercentage)}%
+                        </Text>
+                      }
+                    />
+                    {(quiz.strongTopic || quiz.weakTopic) ? (
+                      <Text style={styles.quizTopics}>
+                        {quiz.strongTopic ? `Strength: ${quiz.strongTopic}` : ''}
+                        {quiz.strongTopic && quiz.weakTopic ? ' · ' : ''}
+                        {quiz.weakTopic ? `Review: ${quiz.weakTopic}` : ''}
+                      </Text>
+                    ) : null}
+                  </View>
+                ))
+              ) : (
+                <Text style={styles.reportBody}>
+                  No quiz attempts were recorded this week.
+                </Text>
+              )}
+            </Card>
 
             <SectionHeader title="Quiz score trend" />
             <Card>
@@ -1100,20 +1216,78 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
               )}
             </Card>
 
-            <SectionHeader title="Weekly insight" />
+            <SectionHeader
+              title="Offline insight"
+              caption="Always available, even without internet access."
+            />
             <Card accent={colors.accent}>
               <CardHeader
                 icon={Lightbulb}
                 title="One useful next step"
-                subtitle="Generated deterministically from local activity"
+                subtitle="Generated on this device from local activity"
                 color={colors.accentText}
               />
               <Text style={styles.reportBody}>{digest.insightNote}</Text>
             </Card>
 
+            <SectionHeader
+              title="Pavo analysis"
+              caption="A deeper interpretation is prepared only while online."
+            />
+            <Card accent={onlineAnalysis ? colors.primary : colors.outlineStrong}>
+              {onlineAnalysis ? (
+                <>
+                  <CardHeader
+                    icon={Sparkles}
+                    title={onlineAnalysis.title}
+                    subtitle="Online analysis from anonymized weekly learning data"
+                    color={colors.primary}
+                  />
+                  <Text style={styles.reportBody}>{onlineAnalysis.summary}</Text>
+                  {onlineAnalysis.sections.map((section, index) => (
+                    <View key={`${section.heading}-${index}`}>
+                      <Divider style={styles.reviewDivider} />
+                      <Text style={styles.analysisHeading}>{section.heading}</Text>
+                      <Text style={styles.reportBody}>{section.body}</Text>
+                    </View>
+                  ))}
+                  <Divider style={styles.reviewDivider} />
+                  <Text style={styles.analysisHeading}>Recommended next step</Text>
+                  <Text style={styles.reportBody}>{onlineAnalysis.nextStep}</Text>
+                </>
+              ) : analysisState === 'loading' ? (
+                <MascotPanel
+                  title="Pavo is analyzing this week"
+                  body="The local report remains available while the online analysis is prepared."
+                  expression="encouraging"
+                />
+              ) : (
+                <View style={styles.analysisUnavailable}>
+                  {analysisAvailable ? (
+                    <Wifi size={22} color={colors.error} />
+                  ) : (
+                    <WifiOff size={22} color={colors.inkSubtle} />
+                  )}
+                  <View style={styles.flex}>
+                    <Text style={styles.analysisHeading}>
+                      {analysisState === 'error'
+                        ? 'Online analysis could not finish'
+                        : 'Online analysis unavailable'}
+                    </Text>
+                    <Text style={styles.reportBody}>
+                      {analysisState === 'error'
+                        ? 'The complete offline report is still ready. Reopen this digest to try the analysis again.'
+                        : 'Connect to the internet to add Pavo’s comprehensive interpretation. Nothing in the offline report is hidden.'}
+                    </Text>
+                  </View>
+                </View>
+              )}
+            </Card>
+
             <Text style={styles.reportFooter}>
-              This report was generated on this device from the past week of
-              activity. No account or internet connection is required to read it.
+              Lesson activity, quiz results, charts, and the offline insight are
+              generated on this device. Online analysis never includes the
+              learner's name, student number, or section.
             </Text>
           </>
         ) : (
@@ -1306,6 +1480,16 @@ function formatDigestDate(value: string): string {
   });
 }
 
+function friendlySubjectLabel(value: string): string {
+  return capitalize(value.replaceAll('_', ' ').toLocaleLowerCase());
+}
+
+function friendlyModuleSource(
+  value: ParentDigest['lessons'][number]['source'],
+): string {
+  return value === 'seed-bundle' ? 'Seeded lesson' : 'Imported lesson';
+}
+
 const styles = StyleSheet.create({
   flex: { flex: 1, minWidth: 0 },
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
@@ -1473,6 +1657,28 @@ const styles = StyleSheet.create({
   reportTitle: { ...text.h1, color: colors.ink },
   reportFor: { ...text.bodySm, color: colors.inkMuted },
   reportBody: { ...text.body, color: colors.inkMuted, lineHeight: 26 },
+  quizScore: {
+    ...text.title,
+    color: colors.secondary,
+    minWidth: 52,
+    textAlign: 'right',
+  },
+  quizTopics: {
+    ...text.caption,
+    color: colors.inkMuted,
+    paddingLeft: 54,
+    paddingBottom: spacing.xs,
+  },
+  analysisHeading: {
+    ...text.title,
+    color: colors.ink,
+    marginBottom: spacing.xs,
+  },
+  analysisUnavailable: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.md,
+  },
   reportFooter: {
     ...text.caption,
     color: colors.inkSubtle,

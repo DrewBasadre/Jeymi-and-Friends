@@ -1,11 +1,12 @@
 import { z } from 'zod';
 import type {
   LearningModule,
+  ParentDigest,
   StudentDashboard,
   StudentTask,
 } from './types';
 
-export type CompanionIntent = 'performance_report' | 'review_lessons' | 'ask';
+export type CompanionIntent = 'review_lessons' | 'ask' | 'weekly_digest';
 export type CompanionActivity =
   | 'lesson'
   | 'flashcards'
@@ -17,6 +18,10 @@ export interface CompanionRequest {
   activity: CompanionActivity;
   gradeLevel: number;
   question?: string;
+  conversation?: Array<{
+    role: 'user' | 'assistant';
+    content: string;
+  }>;
   modules: Array<{
     id: string;
     title: string;
@@ -25,7 +30,7 @@ export interface CompanionRequest {
     summary: string;
     content: string;
   }>;
-  performance: {
+  performance?: {
     completedModules: number;
     totalModules: number;
     averageScore: number;
@@ -40,6 +45,27 @@ export interface CompanionRequest {
     title: string;
     dueDate: string;
   }>;
+  digest?: {
+    weekOf: string;
+    summary: ParentDigest['summary'];
+    lessons: Array<{
+      title: string;
+      subject: string;
+      source: string;
+      status: string;
+    }>;
+    quizzes: Array<{
+      moduleTitle: string;
+      score: number;
+      totalItems: number;
+      scorePercentage: number;
+      masteryLevel: string;
+      strongTopic: string;
+      weakTopic: string;
+      submittedAt: number;
+    }>;
+    offlineInsight: string;
+  };
 }
 
 const companionQuestionSchema = z
@@ -70,6 +96,7 @@ export function buildCompanionRequest(args: {
   activity: CompanionActivity;
   gradeLevel: number;
   question?: string;
+  conversation?: CompanionRequest['conversation'];
   selectedModuleIds: string[];
   modules: LearningModule[];
   dashboard: StudentDashboard;
@@ -84,6 +111,13 @@ export function buildCompanionRequest(args: {
     activity: args.activity,
     gradeLevel: Math.max(1, Math.min(12, Math.round(args.gradeLevel))),
     question: args.question?.trim() || undefined,
+    conversation: args.conversation
+      ?.slice(-6)
+      .map((message) => ({
+        role: message.role,
+        content: message.content.trim().slice(0, 900),
+      }))
+      .filter((message) => message.content.length > 0),
     modules: args.modules
       .filter((module) => selected.has(module.id))
       .slice(0, 4)
@@ -93,17 +127,8 @@ export function buildCompanionRequest(args: {
         subject: module.subject,
         competencyCode: module.competencyCode,
         summary: module.summary.slice(0, 800),
-        content: module.content.slice(0, 6000),
+        content: module.content.slice(0, 5000),
       })),
-    performance: {
-      completedModules: args.dashboard.completedModules,
-      totalModules: args.dashboard.totalModules,
-      averageScore: Math.round(args.dashboard.averageScore),
-      totalAttempts: args.dashboard.totalAttempts,
-      dueReviews: args.dashboard.dueReviews,
-      weakTopic: args.dashboard.weakTopic,
-      strongTopic: args.dashboard.strongTopic,
-    },
     deadlines: args.tasks
       .filter((task) => !task.completedAt)
       .slice(0, 8)
@@ -113,6 +138,40 @@ export function buildCompanionRequest(args: {
         title: moduleTitles.get(task.targetId) ?? 'Assigned learning activity',
         dueDate: task.dueDate,
       })),
+  };
+}
+
+export function buildDigestCompanionRequest(args: {
+  gradeLevel: number;
+  digest: ParentDigest;
+}): CompanionRequest {
+  return {
+    intent: 'weekly_digest',
+    activity: 'mixed_practice',
+    gradeLevel: Math.max(1, Math.min(12, Math.round(args.gradeLevel))),
+    modules: [],
+    deadlines: [],
+    digest: {
+      weekOf: args.digest.weekOf,
+      summary: args.digest.summary,
+      lessons: args.digest.lessons.slice(0, 20).map((lesson) => ({
+        title: lesson.title,
+        subject: lesson.subject,
+        source: lesson.source,
+        status: lesson.status,
+      })),
+      quizzes: args.digest.quizResults.slice(0, 30).map((quiz) => ({
+        moduleTitle: quiz.moduleTitle,
+        score: quiz.score,
+        totalItems: quiz.totalItems,
+        scorePercentage: Math.round(quiz.scorePercentage),
+        masteryLevel: quiz.masteryLevel,
+        strongTopic: quiz.strongTopic,
+        weakTopic: quiz.weakTopic,
+        submittedAt: quiz.submittedAt,
+      })),
+      offlineInsight: args.digest.insightNote,
+    },
   };
 }
 

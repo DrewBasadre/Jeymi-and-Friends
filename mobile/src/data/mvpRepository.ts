@@ -472,13 +472,21 @@ export async function generateParentDigest(
   const nextWeekStart = new Date(weekStartDate.getTime() + 7 * 86_400_000);
   const attempts = await database.getAllAsync<{
     id: string;
+    module_id: string;
+    module_title: string;
     score: number;
     total_items: number;
+    strong_topic: string;
+    weak_topic: string;
+    mastery_level: ParentDigest['quizResults'][number]['masteryLevel'];
     submitted_at: number;
   }>(
-    `SELECT id, score, total_items, submitted_at
-     FROM quiz_attempts
-     WHERE student_id = ? AND submitted_at >= ? AND submitted_at < ?
+    `SELECT qa.id, qa.module_id, m.title AS module_title, qa.score,
+            qa.total_items, qa.strong_topic, qa.weak_topic,
+            qa.mastery_level, qa.submitted_at
+     FROM quiz_attempts qa
+     JOIN modules m ON m.id = qa.module_id
+     WHERE qa.student_id = ? AND qa.submitted_at >= ? AND qa.submitted_at < ?
      ORDER BY submitted_at`,
     studentId,
     previousStart.getTime(),
@@ -497,7 +505,7 @@ export async function generateParentDigest(
       ? null
       : averageAttemptPercentage(previousAttempts);
 
-  const [completedRow, reviewRow, flashcardRow, missedRows, activityRows] =
+  const [completedRow, reviewRow, flashcardRow, missedRows, activityRows, lessonRows] =
     await Promise.all([
       database.getFirstAsync<{ count: number }>(
         `SELECT COUNT(*) AS count
@@ -573,6 +581,32 @@ export async function generateParentDigest(
         weekStartDate.getTime(),
         nextWeekStart.getTime(),
       ),
+      database.getAllAsync<{
+        module_id: string;
+        title: string;
+        subject: ParentDigest['lessons'][number]['subject'];
+        source: ParentDigest['lessons'][number]['source'] | null;
+        status: ParentDigest['lessons'][number]['status'];
+        updated_at: number;
+      }>(
+        `SELECT p.module_id, m.title, m.subject,
+                COALESCE(mm.source,
+                  CASE WHEN m.is_teacher_created = 1
+                    THEN 'teacher-bluetooth'
+                    ELSE 'seed-bundle'
+                  END
+                ) AS source,
+                p.status, p.updated_at
+           FROM progress p
+           JOIN modules m ON m.id = p.module_id
+           LEFT JOIN module_manifests mm ON mm.module_id = p.module_id
+          WHERE p.student_id = ? AND p.updated_at >= ? AND p.updated_at < ?
+            AND p.status IN ('IN_PROGRESS', 'COMPLETED')
+          ORDER BY p.updated_at DESC, m.title`,
+        studentId,
+        weekStartDate.getTime(),
+        nextWeekStart.getTime(),
+      ),
     ]);
 
   const engagementDates = new Set(
@@ -616,11 +650,34 @@ export async function generateParentDigest(
           engagementDaysActive: previousActivityDates.size,
         };
   const generatedAt = now.toISOString();
+  const lessons: ParentDigest['lessons'] = lessonRows.map((lesson) => ({
+    moduleId: lesson.module_id,
+    title: lesson.title,
+    subject: lesson.subject,
+    source: lesson.source ?? 'seed-bundle',
+    status: lesson.status,
+    lastActivityAt: lesson.updated_at,
+  }));
+  const quizResults: ParentDigest['quizResults'] = currentAttempts.map((attempt) => ({
+    attemptId: attempt.id,
+    moduleId: attempt.module_id,
+    moduleTitle: attempt.module_title,
+    score: attempt.score,
+    totalItems: attempt.total_items,
+    scorePercentage:
+      attempt.total_items > 0 ? (attempt.score / attempt.total_items) * 100 : 0,
+    masteryLevel: attempt.mastery_level,
+    strongTopic: attempt.strong_topic,
+    weakTopic: attempt.weak_topic,
+    submittedAt: attempt.submitted_at,
+  }));
   const digest: ParentDigest = {
     digestId: `digest_${Crypto.randomUUID()}`,
     studentId,
     weekOf: dateOnly(weekStartDate),
     summary,
+    lessons,
+    quizResults,
     insightNote: buildDigestInsight(summary, previousSummary),
     scoreTrend,
     engagementDays,

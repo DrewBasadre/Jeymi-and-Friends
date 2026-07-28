@@ -2,6 +2,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Animated,
   Easing,
+  KeyboardAvoidingView,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -12,19 +14,20 @@ import {
 import { useFocusEffect } from '@react-navigation/native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
-  BarChart3,
+  ArrowLeft,
   BookOpen,
   CalendarClock,
   Check,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
+  ChevronUp,
   CircleHelp,
-  Layers3,
   RotateCcw,
   Send,
   ShieldCheck,
+  SlidersHorizontal,
   Sparkles,
-  Target,
   Wifi,
   WifiOff,
 } from 'lucide-react-native';
@@ -32,17 +35,11 @@ import { CompanionThinking } from '@/components/CompanionThinking';
 import { PeacockPhase, peacockPhase } from '@/components/mascot/PeacockPhase';
 import {
   Callout,
-  Card,
-  CardHeader,
   Chip,
   Divider,
   EmptyState,
-  PrimaryButton,
   Screen,
-  ScreenHeader,
   SegmentedControl,
-  StatTile,
-  TileGrid,
 } from '@/components/ui';
 import {
   getStudentDashboard,
@@ -78,9 +75,9 @@ import {
 } from '@/theme/tokens';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'AiCompanion'>;
+type LearnerCompanionIntent = Exclude<CompanionIntent, 'weekly_digest'>;
 
-const intentOptions: Array<{ value: CompanionIntent; label: string }> = [
-  { value: 'performance_report', label: 'Performance' },
+const intentOptions: Array<{ value: LearnerCompanionIntent; label: string }> = [
   { value: 'review_lessons', label: 'Review' },
   { value: 'ask', label: 'Ask' },
 ];
@@ -97,16 +94,21 @@ export function AiCompanionScreen({ navigation }: Props) {
   const [dashboard, setDashboard] = useState<StudentDashboard | null>(null);
   const [tasks, setTasks] = useState<StudentTask[]>([]);
   const [modules, setModules] = useState<LearningModule[]>([]);
-  const [intent, setIntent] = useState<CompanionIntent>('performance_report');
+  const [intent, setIntent] = useState<LearnerCompanionIntent>('review_lessons');
   const [activity, setActivity] = useState<CompanionActivity>('mixed_practice');
   const [selectedSubjects, setSelectedSubjects] = useState<Subject[]>([]);
   const [selectedModuleIds, setSelectedModuleIds] = useState<string[]>([]);
   const [question, setQuestion] = useState('');
+  const [contextCollapsed, setContextCollapsed] = useState(false);
+  const [reviewSetupCollapsed, setReviewSetupCollapsed] = useState(false);
+  const [turns, setTurns] = useState<
+    Array<{ id: number; prompt: string; result: CompanionResponse }>
+  >([]);
   const [submission, setSubmission] = useState<{ id: number; label: string } | null>(null);
   const [thinkingComplete, setThinkingComplete] = useState(false);
-  const [result, setResult] = useState<CompanionResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const chatRef = useRef<ScrollView>(null);
   const connectivity = useConnectivity();
   const configured = isCompanionConfigured();
 
@@ -133,6 +135,10 @@ export function AiCompanionScreen({ navigation }: Props) {
       setSelectedSubjects([subjects[0]]);
     }
   }, [selectedSubjects.length, subjects]);
+  useEffect(() => {
+    const timer = setTimeout(() => chatRef.current?.scrollToEnd({ animated: true }), 80);
+    return () => clearTimeout(timer);
+  }, [submission, turns]);
 
   const reviewModules = useMemo(
     () =>
@@ -145,6 +151,13 @@ export function AiCompanionScreen({ navigation }: Props) {
     () => modules.filter((module) => selectedModuleIds.includes(module.id)),
     [modules, selectedModuleIds],
   );
+  useEffect(() => {
+    if (intent !== 'review_lessons') return;
+    const firstAvailable = reviewModules[0];
+    if (selectedModuleIds.length === 0 && firstAvailable) {
+      setSelectedModuleIds([firstAvailable.id]);
+    }
+  }, [intent, reviewModules, selectedModuleIds.length]);
   const openTasks = useMemo(
     () =>
       tasks
@@ -215,9 +228,11 @@ export function AiCompanionScreen({ navigation }: Props) {
     }
 
     const label = submissionLabel(intent, activity, selectedModules, question);
-    setSubmission({ id: Date.now(), label });
+    const submissionId = Date.now();
+    setSubmission({ id: submissionId, label });
+    setContextCollapsed(true);
+    setReviewSetupCollapsed(true);
     setThinkingComplete(false);
-    setResult(null);
     setLoading(true);
     try {
       const request = buildCompanionRequest({
@@ -225,6 +240,20 @@ export function AiCompanionScreen({ navigation }: Props) {
         activity,
         gradeLevel: student.gradeLevel,
         question,
+        conversation: turns.slice(-3).flatMap((turn) => [
+          { role: 'user' as const, content: turn.prompt },
+          {
+            role: 'assistant' as const,
+            content: [
+              turn.result.title,
+              turn.result.summary,
+              ...turn.result.sections.map(
+                (section) => `${section.heading}: ${section.body}`,
+              ),
+              `Next step: ${turn.result.nextStep}`,
+            ].join('\n'),
+          },
+        ]),
         selectedModuleIds,
         modules,
         dashboard,
@@ -233,7 +262,14 @@ export function AiCompanionScreen({ navigation }: Props) {
       const [nextResult] = await Promise.all([askPavo(request), delay(1700)]);
       setThinkingComplete(true);
       await delay(280);
-      setResult(nextResult);
+      setTurns((current) =>
+        [
+          ...current,
+          { id: submissionId, prompt: label, result: nextResult },
+        ].slice(-8),
+      );
+      setSubmission(null);
+      setQuestion('');
     } catch (nextError) {
       setError(
         nextError instanceof Error
@@ -255,258 +291,274 @@ export function AiCompanionScreen({ navigation }: Props) {
   }
 
   return (
-    <Screen bottomClearance>
-      <ScreenHeader
-        overline="Online learning companion"
-        title="Pavo"
-        subtitle={`${growth.name} companion · Grade ${student.gradeLevel}`}
-        onBack={() => navigation.goBack()}
-        action={
-          <View style={styles.mascotWrap}>
-            <PeacockPhase phase={growth.phase} size={58} />
-          </View>
-        }
+    <Screen scroll={false} style={styles.chatScreen}>
+      <View style={styles.chatHeader}>
+        <Pressable
+          accessibilityLabel="Back"
+          onPress={() => navigation.goBack()}
+          style={({ pressed }) => [styles.iconButton, pressed && styles.pressed]}
+        >
+          <ArrowLeft size={22} color={colors.ink} />
+        </Pressable>
+        <View style={styles.flex}>
+          <Text style={styles.headerEyebrow}>PAVO AI PARTNER</Text>
+          <Text style={styles.chatTitle}>What can Pavo prepare</Text>
+        </View>
+        <View style={styles.mascotWrap}>
+          <PeacockPhase phase={growth.phase} size={48} />
+        </View>
+      </View>
+
+      <SegmentedControl
+        options={intentOptions}
+        value={intent}
+        onChange={(next) => {
+          setIntent(next);
+          setReviewSetupCollapsed(next === 'ask');
+          setError(null);
+        }}
       />
 
-      <View style={styles.statusRow}>
-        <View style={[styles.statusDot, online ? styles.onlineDot : styles.offlineDot]} />
+      <View style={styles.connectionRow}>
         {online ? (
-          <Wifi size={16} color={colors.success} />
+          <Wifi size={14} color={colors.success} />
         ) : (
-          <WifiOff size={16} color={colors.inkSubtle} />
+          <WifiOff size={14} color={colors.inkSubtle} />
         )}
         <Text style={styles.statusText}>
           {online
-            ? 'Online and ready'
+            ? 'Online'
             : connectivity === 'checking'
               ? 'Checking connection'
               : connectivity === 'offline'
                 ? 'Offline'
                 : 'Setup required'}
         </Text>
+        <View style={styles.connectionDivider} />
+        <ShieldCheck size={14} color={colors.success} />
+        <Text style={styles.statusText}>Child-safe</Text>
       </View>
 
-      {!online ? (
-        <Callout
-          icon={WifiOff}
-          title="Online review unavailable"
-          body={
-            connectivity === 'offline'
-              ? 'Your downloaded lessons still work. Reconnect to ask Pavo for new reports and practice.'
-              : 'This build needs its secure Pavo server URL before AI review can run.'
-          }
-          tone="warning"
-        />
+      {intent === 'review_lessons' ? (
+        <>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityState={{ expanded: !reviewSetupCollapsed }}
+            onPress={() => setReviewSetupCollapsed((collapsed) => !collapsed)}
+            style={({ pressed }) => [
+              styles.setupToggle,
+              pressed && styles.pressed,
+            ]}
+          >
+            <SlidersHorizontal size={17} color={colors.secondary} />
+            <View style={styles.flex}>
+              <Text style={styles.setupTitle}>Review context</Text>
+              <Text style={styles.setupMeta} numberOfLines={1}>
+                {selectedModules.length} lesson
+                {selectedModules.length === 1 ? '' : 's'} ·{' '}
+                {activityOptions.find((option) => option.value === activity)?.label}
+              </Text>
+            </View>
+            {reviewSetupCollapsed ? (
+              <ChevronDown size={18} color={colors.inkMuted} />
+            ) : (
+              <ChevronUp size={18} color={colors.inkMuted} />
+            )}
+          </Pressable>
+          {!reviewSetupCollapsed ? (
+            <View style={styles.reviewContext}>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.chipRow}
+              >
+                {subjects.map((subject) => (
+                  <Chip
+                    key={subject}
+                    label={friendlySubject(subject)}
+                    selected={selectedSubjects.includes(subject)}
+                    color={subjectColor[subject]}
+                    onPress={() => toggleSubject(subject)}
+                  />
+                ))}
+              </ScrollView>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.chipRow}
+              >
+                {reviewModules.map((module) => (
+                  <Chip
+                    key={module.id}
+                    label={module.title}
+                    selected={selectedModuleIds.includes(module.id)}
+                    color={subjectColor[module.subject]}
+                    onPress={() => toggleModule(module.id)}
+                  />
+                ))}
+              </ScrollView>
+              <SegmentedControl
+                options={activityOptions}
+                value={activity}
+                onChange={setActivity}
+              />
+            </View>
+          ) : null}
+        </>
       ) : null}
 
-      <Card>
-        <CardHeader
-          icon={BarChart3}
-          title="Learning snapshot"
-          subtitle="Local stats shared without your name or student number"
-          color={colors.secondary}
-        />
-        <TileGrid columns={2}>
-          <StatTile
-            icon={Check}
-            label="Modules done"
-            value={`${dashboard?.completedModules ?? 0}/${dashboard?.totalModules ?? 0}`}
-            color={colors.success}
-          />
-          <StatTile
-            icon={Target}
-            label="Average"
-            value={`${Math.round(dashboard?.averageScore ?? 0)}%`}
-            color={colors.secondary}
-          />
-          <StatTile
-            icon={Layers3}
-            label="Reviews due"
-            value={dashboard?.dueReviews ?? 0}
-            color={colors.primary}
-          />
-          <StatTile
-            icon={CalendarClock}
-            label="Deadlines"
-            value={openTasks.length}
-            color={colors.accentText}
-          />
-        </TileGrid>
-      </Card>
-
-      <Card>
-        <CardHeader
-          icon={CalendarClock}
-          title="To-do"
-          subtitle={openTasks.length > 0 ? 'Nearest deadlines' : 'Nothing waiting'}
-          color={colors.accentText}
-        />
-        {openTasks.length === 0 ? (
-          <Text style={styles.body}>You are caught up.</Text>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityState={{ expanded: !contextCollapsed }}
+        onPress={() => setContextCollapsed((collapsed) => !collapsed)}
+        style={({ pressed }) => [
+          styles.contextToggle,
+          pressed && styles.pressed,
+        ]}
+      >
+        <BookOpen size={18} color={colors.primary} />
+        <View style={styles.flex}>
+          <Text style={styles.contextTitle}>Learning snapshot</Text>
+          <Text style={styles.contextMeta}>
+            {modules.length} lessons available · {openTasks.length} to-do
+          </Text>
+        </View>
+        {contextCollapsed ? (
+          <ChevronDown size={19} color={colors.inkMuted} />
         ) : (
-          openTasks.map((task, index) => (
-            <View key={task.taskId}>
-              {index > 0 ? <Divider style={styles.divider} /> : null}
-              <View style={styles.todoRow}>
-                <View style={styles.todoCheck} />
-                <View style={styles.flex}>
-                  <Text style={styles.todoTitle}>
-                    {modules.find((module) => module.id === task.targetId)?.title ??
-                      (task.type === 'module' ? 'Read assigned module' : 'Take assigned quiz')}
-                  </Text>
-                  <Text style={styles.todoDue}>Due {friendlyDate(task.dueDate)}</Text>
+          <ChevronUp size={19} color={colors.inkMuted} />
+        )}
+      </Pressable>
+
+      {!contextCollapsed ? (
+        <View style={styles.contextDetails}>
+          <View style={styles.contextSectionHeader}>
+            <CalendarClock size={16} color={colors.accentText} />
+            <Text style={styles.contextSectionTitle}>To-do</Text>
+          </View>
+          {openTasks.length === 0 ? (
+            <Text style={styles.body}>You are caught up.</Text>
+          ) : (
+            openTasks.map((task, index) => (
+              <View key={task.taskId}>
+                {index > 0 ? <Divider style={styles.divider} /> : null}
+                <View style={styles.todoRow}>
+                  <View style={styles.todoCheck} />
+                  <View style={styles.flex}>
+                    <Text style={styles.todoTitle}>
+                      {modules.find((module) => module.id === task.targetId)?.title ??
+                        (task.type === 'module'
+                          ? 'Read assigned module'
+                          : 'Take assigned quiz')}
+                    </Text>
+                    <Text style={styles.todoDue}>
+                      Due {friendlyDate(task.dueDate)}
+                    </Text>
+                  </View>
                 </View>
               </View>
-            </View>
-          ))
-        )}
-      </Card>
+            ))
+          )}
+        </View>
+      ) : null}
 
-      <View style={styles.builder}>
-        <Text style={styles.sectionTitle}>What should Pavo prepare?</Text>
-        <SegmentedControl
-          options={intentOptions}
-          value={intent}
-          onChange={(next) => {
-            setIntent(next);
-            setError(null);
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        style={styles.conversation}
+      >
+        <ScrollView
+          ref={chatRef}
+          contentContainerStyle={styles.conversationContent}
+          keyboardShouldPersistTaps="handled"
+          onScroll={(event) => {
+            if (event.nativeEvent.contentOffset.y > 24 && !contextCollapsed) {
+              setContextCollapsed(true);
+            }
           }}
-        />
-
-        {intent === 'performance_report' ? (
-          <Callout
-            icon={BarChart3}
-            title="Performance report"
-            body="Pavo will explain strengths, practice priorities, deadlines, and useful next steps from the stats above."
-          />
-        ) : null}
-
-        {intent === 'review_lessons' ? (
-          <View style={styles.reviewBuilder}>
-            <Text style={styles.stepLabel}>1. Select subjects</Text>
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.chipRow}
-            >
-              {subjects.map((subject) => (
-                <Chip
-                  key={subject}
-                  label={friendlySubject(subject)}
-                  selected={selectedSubjects.includes(subject)}
-                  color={subjectColor[subject]}
-                  onPress={() => toggleSubject(subject)}
-                />
-              ))}
-            </ScrollView>
-
-            <Text style={styles.stepLabel}>2. Select lessons</Text>
-            <View style={styles.lessonList}>
-              {reviewModules.map((module) => {
-                const selected = selectedModuleIds.includes(module.id);
-                return (
-                  <Pressable
-                    key={module.id}
-                    accessibilityRole="checkbox"
-                    accessibilityState={{ checked: selected }}
-                    onPress={() => toggleModule(module.id)}
-                    style={({ pressed }) => [
-                      styles.lessonRow,
-                      selected && styles.lessonRowSelected,
-                      pressed && styles.pressed,
-                    ]}
-                  >
-                    <View style={[styles.checkbox, selected && styles.checkboxSelected]}>
-                      {selected ? <Check size={14} color={colors.white} strokeWidth={3} /> : null}
-                    </View>
-                    <View style={styles.flex}>
-                      <Text style={styles.lessonTitle}>{module.title}</Text>
-                      <Text style={styles.lessonMeta}>
-                        {friendlySubject(module.subject)} · {module.competencyCode}
-                      </Text>
-                    </View>
-                  </Pressable>
-                );
-              })}
+          scrollEventThrottle={32}
+          showsVerticalScrollIndicator={false}
+        >
+          {turns.length === 0 && !submission ? (
+            <View style={styles.welcomeBubble}>
+              <Sparkles size={18} color={colors.primary} />
+              <Text style={styles.welcomeText}>
+                {intent === 'review_lessons'
+                  ? 'Choose a lesson, then tell me what kind of practice would help.'
+                  : 'Ask me a question about what you are learning.'}
+              </Text>
             </View>
+          ) : null}
 
-            <Text style={styles.stepLabel}>3. Choose an activity</Text>
-            <SegmentedControl
-              options={activityOptions}
-              value={activity}
-              onChange={setActivity}
-            />
+          {turns.map((turn) => (
+            <View key={turn.id} style={styles.turn}>
+              <View style={styles.userBubble}>
+                <Text style={styles.userBubbleText}>{turn.prompt}</Text>
+              </View>
+              <CompanionResult result={turn.result} />
+            </View>
+          ))}
+
+          {submission ? (
+            <View style={styles.turn}>
+              <CompanionThinking
+                key={submission.id}
+                prompt={submission.label}
+                complete={thinkingComplete}
+              />
+            </View>
+          ) : null}
+        </ScrollView>
+
+        {error ? (
+          <View style={styles.composerError}>
+            <CircleHelp size={15} color={colors.error} />
+            <Text style={styles.composerErrorText}>{error}</Text>
           </View>
         ) : null}
 
-        <View style={styles.promptBlock}>
-          <View style={styles.promptHeader}>
-            <Text style={styles.stepLabel}>
-              {intent === 'ask' ? 'Your lesson question' : 'Extra instructions (optional)'}
-            </Text>
-            <View style={styles.guardrail}>
-              <ShieldCheck size={14} color={colors.success} />
-              <Text style={styles.guardrailText}>Child-safe</Text>
-            </View>
-          </View>
+        <View style={styles.composer}>
           <TextInput
-            accessibilityLabel="Question for Pavo"
+            accessibilityLabel="Message Pavo"
             editable={!loading && online}
             maxLength={500}
             multiline
             onChangeText={setQuestion}
+            onFocus={() => {
+              setContextCollapsed(true);
+              setReviewSetupCollapsed(true);
+              setTimeout(
+                () => chatRef.current?.scrollToEnd({ animated: true }),
+                120,
+              );
+            }}
             placeholder={
               intent === 'ask'
-                ? 'Ask about an installed lesson...'
-                : 'Example: Give me more examples before the quiz.'
+                ? 'Ask Pavo anything about your lessons'
+                : 'Tell Pavo what you want to practise'
             }
             placeholderTextColor={colors.inkSubtle}
-            style={styles.input}
+            style={styles.chatInput}
             value={question}
           />
-          <Text style={styles.counter}>{question.length}/500</Text>
+          <Pressable
+            accessibilityLabel={intent === 'ask' ? 'Ask Pavo' : 'Prepare review'}
+            disabled={!online || !dashboard || loading}
+            onPress={() => void generate()}
+            style={({ pressed }) => [
+              styles.sendButton,
+              (!online || !dashboard || loading) && styles.sendButtonDisabled,
+              pressed && styles.pressed,
+            ]}
+          >
+            <Send size={20} color={colors.white} />
+          </Pressable>
         </View>
-
-        {error ? (
-          <Callout
-            icon={CircleHelp}
-            title="Pavo could not continue"
-            body={error}
-            tone="error"
-          />
+        {!online ? (
+          <Text style={styles.offlineHint}>
+            Downloaded lessons still work. Reconnect to message Pavo.
+          </Text>
         ) : null}
-
-        <PrimaryButton
-          icon={intent === 'performance_report' ? BarChart3 : intent === 'ask' ? Send : Sparkles}
-          label={
-            intent === 'performance_report'
-              ? 'Create performance report'
-              : intent === 'ask'
-                ? 'Ask Pavo'
-                : 'Create review activity'
-          }
-          disabled={!online || !dashboard}
-          loading={loading}
-          onPress={() => void generate()}
-        />
-      </View>
-
-      {submission ? (
-        <CompanionThinking
-          key={submission.id}
-          prompt={submission.label}
-          complete={thinkingComplete}
-        />
-      ) : null}
-
-      {result ? <CompanionResult result={result} /> : null}
-
-      <View style={styles.poweredRow}>
-        <ShieldCheck size={14} color={colors.inkSubtle} />
-        <Text style={styles.poweredText}>
-          Built with ChatGPT Codex · AI responses by OpenAI
-        </Text>
-      </View>
+      </KeyboardAvoidingView>
     </Screen>
   );
 }
@@ -706,14 +758,11 @@ function CompanionResult({ result }: { result: CompanionResponse }) {
 }
 
 function submissionLabel(
-  intent: CompanionIntent,
+  intent: LearnerCompanionIntent,
   activity: CompanionActivity,
   modules: LearningModule[],
   question: string,
 ): string {
-  if (intent === 'performance_report') {
-    return 'Create a clear report from my learning progress.';
-  }
   if (intent === 'ask') return question.trim();
   const activityLabel = {
     lesson: 'a review lesson',
@@ -744,22 +793,86 @@ function delay(milliseconds: number): Promise<void> {
 
 const styles = StyleSheet.create({
   flex: { flex: 1, minWidth: 0 },
+  chatScreen: {
+    flex: 1,
+    gap: spacing.md,
+    paddingBottom: spacing.md,
+  },
+  chatHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
+  },
+  iconButton: {
+    width: 42,
+    height: 42,
+    borderRadius: radius.round,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.outline,
+  },
+  headerEyebrow: { ...text.overline, color: colors.primary },
+  chatTitle: { ...text.h2, color: colors.ink, marginTop: 2 },
   mascotWrap: {
-    width: 64,
-    height: 64,
+    width: 52,
+    height: 52,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  statusRow: {
-    alignSelf: 'flex-start',
+  connectionRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.xs,
   },
-  statusDot: { width: 8, height: 8, borderRadius: radius.round },
-  onlineDot: { backgroundColor: colors.success },
-  offlineDot: { backgroundColor: colors.inkSubtle },
+  connectionDivider: {
+    width: 1,
+    height: 14,
+    marginHorizontal: spacing.xs,
+    backgroundColor: colors.outline,
+  },
   statusText: { ...text.caption, color: colors.inkMuted },
+  setupToggle: {
+    minHeight: 48,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    paddingHorizontal: spacing.md,
+    borderWidth: 1,
+    borderColor: colors.outline,
+    borderRadius: radius.md,
+    backgroundColor: colors.surface,
+  },
+  setupTitle: { ...text.label, color: colors.ink },
+  setupMeta: { ...text.tiny, color: colors.inkMuted, marginTop: 1 },
+  reviewContext: {
+    gap: spacing.sm,
+    paddingBottom: spacing.xs,
+  },
+  contextToggle: {
+    minHeight: 54,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    paddingHorizontal: spacing.md,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: colors.hairline,
+  },
+  contextTitle: { ...text.label, color: colors.ink },
+  contextMeta: { ...text.caption, color: colors.inkMuted, marginTop: 1 },
+  contextDetails: {
+    gap: spacing.sm,
+    paddingHorizontal: spacing.md,
+    paddingBottom: spacing.sm,
+  },
+  contextSectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+  },
+  contextSectionTitle: { ...text.label, color: colors.ink },
   body: { ...text.bodySm, color: colors.inkMuted },
   divider: { marginVertical: spacing.sm },
   todoRow: {
@@ -778,11 +891,7 @@ const styles = StyleSheet.create({
   },
   todoTitle: { ...text.bodyStrong, color: colors.ink, fontSize: 15 },
   todoDue: { ...text.caption, color: colors.accentText },
-  builder: { gap: spacing.lg },
-  sectionTitle: { ...text.h2, color: colors.ink },
-  reviewBuilder: { gap: spacing.md },
-  stepLabel: { ...text.label, color: colors.ink, fontWeight: '800' },
-  chipRow: { gap: spacing.sm, paddingRight: spacing.lg },
+  chipRow: { gap: spacing.sm, paddingRight: spacing.md },
   lessonList: { gap: spacing.sm },
   lessonRow: {
     minHeight: 66,
@@ -843,6 +952,81 @@ const styles = StyleSheet.create({
     lineHeight: 23,
   },
   counter: { ...text.tiny, color: colors.inkSubtle, alignSelf: 'flex-end' },
+  conversation: { flex: 1, minHeight: 0 },
+  conversationContent: {
+    flexGrow: 1,
+    gap: spacing.xl,
+    paddingVertical: spacing.md,
+  },
+  welcomeBubble: {
+    alignSelf: 'flex-start',
+    maxWidth: '88%',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.sm,
+    borderRadius: radius.md,
+    borderTopLeftRadius: radius.xs,
+    backgroundColor: colors.primaryTint,
+    padding: spacing.md,
+  },
+  welcomeText: { ...text.bodySm, color: colors.ink, flex: 1 },
+  turn: { gap: spacing.md },
+  userBubble: {
+    alignSelf: 'flex-end',
+    maxWidth: '88%',
+    borderRadius: radius.md,
+    borderTopRightRadius: radius.xs,
+    backgroundColor: colors.primary,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+  },
+  userBubbleText: { ...text.bodySm, color: colors.white },
+  composerError: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    paddingBottom: spacing.xs,
+  },
+  composerErrorText: { ...text.caption, color: colors.error, flex: 1 },
+  composer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    gap: spacing.sm,
+    borderTopWidth: 1,
+    borderTopColor: colors.outline,
+    paddingTop: spacing.sm,
+  },
+  chatInput: {
+    flex: 1,
+    minHeight: 48,
+    maxHeight: 120,
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: colors.outline,
+    backgroundColor: colors.surface,
+    color: colors.ink,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+    textAlignVertical: 'top',
+    fontSize: 16,
+    lineHeight: 22,
+  },
+  sendButton: {
+    width: 48,
+    height: 48,
+    borderRadius: radius.round,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.primary,
+    ...elevation.e1,
+  },
+  sendButtonDisabled: { opacity: 0.4 },
+  offlineHint: {
+    ...text.tiny,
+    color: colors.inkSubtle,
+    textAlign: 'center',
+    paddingTop: spacing.xs,
+  },
   pressed: { opacity: 0.82 },
   result: {
     gap: spacing.lg,

@@ -285,11 +285,35 @@ export interface ParentDigestSummary {
   }>;
 }
 
+export interface ParentDigestLesson {
+  moduleId: string;
+  title: string;
+  subject: Subject;
+  source: ModuleSource;
+  status: Extract<ProgressStatus, 'IN_PROGRESS' | 'COMPLETED'>;
+  lastActivityAt: number;
+}
+
+export interface ParentDigestQuizResult {
+  attemptId: string;
+  moduleId: string;
+  moduleTitle: string;
+  score: number;
+  totalItems: number;
+  scorePercentage: number;
+  masteryLevel: MasteryLevel;
+  strongTopic: string;
+  weakTopic: string;
+  submittedAt: number;
+}
+
 export interface ParentDigest {
   digestId: string;
   studentId: string;
   weekOf: string;
   summary: ParentDigestSummary;
+  lessons: ParentDigestLesson[];
+  quizResults: ParentDigestQuizResult[];
   insightNote: string;
   scoreTrend: Array<{
     date: string;

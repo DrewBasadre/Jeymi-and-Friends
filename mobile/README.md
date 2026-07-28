@@ -5,8 +5,9 @@ learning. React Native renders the interface, Expo SQLite stores student and
 teacher data, and a Kotlin Expo module provides Google Nearby Connections
 module transfer.
 
-The shipped app has no runtime AI dependency and does not require a cloud
-service.
+Core learning, quizzes, review, reports, and the parent digest work without a
+cloud service. Pavo's learner chat and the optional comprehensive parent
+analysis use a secured Supabase Edge Function when internet access is available.
 
 ## Current Offline Flows
 
@@ -23,7 +24,9 @@ service.
 - Active recall, SM-2 spaced repetition, retrieval practice, interleaving,
   custom review sets, and Pomodoro sessions
 - Parent-PIN-protected default-format editing and weekly digest access
-- Locally computed weekly score, engagement, review, and concept insights
+- Offline weekly lesson history, quiz results, scores, engagement, review, and
+  concept insights
+- Optional online Pavo analysis of anonymized weekly learning data
 - Teacher sections, assignment QR codes, student profile scanning, report
   scanning, record book, and learner support flags
 - Teacher Markdown module authoring with local WebP images and review items
@@ -68,6 +71,10 @@ npm start
 ```
 
 The custom Nearby module means Expo Go is not supported.
+
+Pavo's Android configuration lives in `.env`. Only the Supabase function URL
+and public publishable key belong there; `OPENAI_API_KEY` must remain in
+Supabase Edge Function secrets.
 
 ## Validate
 

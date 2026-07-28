@@ -4,6 +4,16 @@ This server boundary keeps the OpenAI key out of the Android bundle. It validate
 and limits requests, removes identity fields from the mobile contract, moderates
 input and output, and asks the Responses API for strict structured JSON.
 
+The same endpoint supports two deliberately separate experiences:
+
+- Learner `review_lessons` and `ask` conversations
+- Parent `weekly_digest` analysis built from anonymized local lesson and quiz
+  activity
+
+The Android app never sends a learner's name, student number, section, digest
+ID, quiz-attempt ID, or module ID for parent analysis. Offline digest generation
+does not call this function.
+
 ## Deploy
 
 1. Link the Supabase project:
