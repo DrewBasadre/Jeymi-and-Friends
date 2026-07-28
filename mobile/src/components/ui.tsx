@@ -51,12 +51,14 @@ export function Screen({
 
 /**
  * Number of columns to lay lists/grids out in, based on viewport width.
- * Phones stay single-column; tablets and larger fill the space with 2–3.
+ * `phoneColumns` controls the count on phones (default 1); tablets and larger
+ * fill the space with 2–3. Pass 2 for compact cards that read well side-by-side.
  */
-export function useResponsiveColumns(): number {
+export function useResponsiveColumns(phoneColumns = 1): number {
   const { width } = useWindowDimensions();
-  if (width >= 920) return 3;
-  if (width >= 640) return 2;
+  if (width >= 920) return Math.max(3, phoneColumns);
+  if (width >= 640) return Math.max(2, phoneColumns);
+  if (width >= 360) return phoneColumns;
   return 1;
 }
 

@@ -262,7 +262,7 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
   );
 
   const filtered = filter === 'ALL' ? modules : modules.filter((module) => module.subject === filter);
-  const columns = useResponsiveColumns();
+  const columns = useResponsiveColumns(2);
   return (
     <Screen scroll={false} style={styles.flex}>
       <View style={styles.fixedHeader}>
@@ -293,8 +293,8 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
                 <Chip label={capitalize(item.subject.replace('_', ' ').toLocaleLowerCase())} color={subjectColor[item.subject]} selected />
                 <Text style={styles.moduleCode}>{item.competencyCode}</Text>
               </View>
-              <Text style={styles.cardTitle} numberOfLines={2}>{item.title}</Text>
-              <Text style={styles.body} numberOfLines={3}>{item.summary}</Text>
+              <Text style={styles.moduleTitle} numberOfLines={2}>{item.title}</Text>
+              <Text style={styles.moduleSummary} numberOfLines={3}>{item.summary}</Text>
               <View style={styles.styleTags}>
                 {item.contentStyleTags.slice(0, 3).map((tag) => (
                   <Text key={tag} style={styles.styleTag}>{capitalize(tag)}</Text>
@@ -1032,7 +1032,9 @@ const styles = StyleSheet.create({
   taskDot: { width: 10, height: 10, borderRadius: radius.round },
   taskDue: { ...text.caption, color: colors.secondary, marginTop: 1 },
   moduleCell: { flex: 1 },
-  moduleCard: { flex: 1 },
+  moduleCard: { flex: 1, gap: spacing.sm },
+  moduleTitle: { ...text.bodyStrong, color: colors.ink, fontSize: 17 },
+  moduleSummary: { ...text.caption, color: colors.inkMuted, fontSize: 13, lineHeight: 19 },
   gridRow: { gap: spacing.md },
   cardAction: {
     marginTop: 'auto',
