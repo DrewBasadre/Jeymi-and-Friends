@@ -215,7 +215,7 @@ export function ModuleAuthorScreen({ navigation }: Props) {
           value={conceptId}
           onChangeText={setConceptId}
           autoCapitalize="none"
-          placeholder="fraction-subtraction"
+          placeholder="Example: fraction-subtraction"
         />
         <Text style={styles.label}>Item type</Text>
         <View style={styles.chips}>

@@ -49,6 +49,7 @@ import type { RootStackParamList } from '@/navigation/types';
 import { useSessionStore } from '@/store/session';
 import { deliverParentDigest, type DigestDelivery } from '@/services/parentDigest';
 import { colors, radius, spacing, text } from '@/theme/tokens';
+import { formatDateRange } from '@/utils/format';
 
 type ReviewProps = NativeStackScreenProps<RootStackParamList, 'ReviewHub'>;
 type CustomProps = NativeStackScreenProps<RootStackParamList, 'CustomReviewSets'>;
@@ -588,7 +589,7 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
           <Card accent={colors.success}>
             <CardHeader
               icon={CalendarDays}
-              title={`${digest.weekStart} to ${digest.weekEnd}`}
+              title={formatDateRange(digest.weekStart, digest.weekEnd)}
               subtitle={digest.summary}
               color={colors.success}
             />

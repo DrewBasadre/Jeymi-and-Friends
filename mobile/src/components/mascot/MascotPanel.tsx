@@ -1,25 +1,31 @@
 import { useEffect, useRef } from 'react';
 import { AccessibilityInfo, Animated, Easing, StyleSheet, Text, View } from 'react-native';
 import { colors, radius, spacing, text } from '@/theme/tokens';
-import { Peacock, type PeacockExpression } from './Peacock';
+import { PeacockPhase, type PeacockPhaseNumber } from './PeacockPhase';
 
 /**
- * The peacock as a warm guide — used for onboarding, empty states, and
- * encouragement. Gentle idle bob that respects reduced-motion.
+ * The pixel peacock as a warm guide — used for onboarding, empty states, and
+ * encouragement. Gentle idle bob that respects reduced motion.
  */
 export function MascotPanel({
   title,
   body,
-  expression = 'idle',
+  phase,
+  expression,
   size = 108,
   animate = true,
 }: {
   title: string;
   body?: string;
-  expression?: PeacockExpression;
+  /** Which growth phase to show. Falls back to a phase derived from `expression`. */
+  phase?: PeacockPhaseNumber;
+  /** Legacy mood hint, mapped to a phase when `phase` is not given. */
+  expression?: 'idle' | 'happy' | 'encouraging';
   size?: number;
   animate?: boolean;
 }) {
+  const resolvedPhase: PeacockPhaseNumber =
+    phase ?? (expression === 'happy' ? 5 : expression === 'encouraging' ? 3 : 4);
   const bob = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -30,18 +36,8 @@ export function MascotPanel({
       if (reduce || cancelled) return;
       loop = Animated.loop(
         Animated.sequence([
-          Animated.timing(bob, {
-            toValue: 1,
-            duration: 1600,
-            easing: Easing.inOut(Easing.sin),
-            useNativeDriver: true,
-          }),
-          Animated.timing(bob, {
-            toValue: 0,
-            duration: 1600,
-            easing: Easing.inOut(Easing.sin),
-            useNativeDriver: true,
-          }),
+          Animated.timing(bob, { toValue: 1, duration: 1600, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
+          Animated.timing(bob, { toValue: 0, duration: 1600, easing: Easing.inOut(Easing.sin), useNativeDriver: true }),
         ]),
       );
       loop.start();
@@ -58,7 +54,7 @@ export function MascotPanel({
     <View style={styles.wrap}>
       <View style={styles.halo}>
         <Animated.View style={{ transform: [{ translateY }] }}>
-          <Peacock size={size} expression={expression} />
+          <PeacockPhase phase={resolvedPhase} size={size} />
         </Animated.View>
       </View>
       <Text style={styles.title}>{title}</Text>

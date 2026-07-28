@@ -50,8 +50,9 @@ import {
   SkeletonCard,
   StatusBadge,
 } from '@/components/ui';
-import { Celebrate, MascotPanel, PixelPeacock, peacockTier } from '@/components/mascot';
+import { Celebrate, MascotPanel } from '@/components/mascot';
 import { PeacockMeter } from '@/components/PeacockMeter';
+import { formatDeadline } from '@/utils/format';
 import {
   getAttempts,
   getDueFlashcards,
@@ -152,7 +153,15 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
           />
         }
       />
-      {loading ? <SkeletonCard /> : <PeacockMeter score={dashboard?.averageScore ?? 0} />}
+      {loading ? (
+        <SkeletonCard />
+      ) : (
+        <PeacockMeter
+          completedModules={completed}
+          totalModules={total}
+          averageScore={dashboard?.averageScore ?? 0}
+        />
+      )}
       <Card accent={colors.secondary} tone={colors.secondaryTint}>
         <View style={styles.matchRow}>
           <View style={styles.flex}>
@@ -202,7 +211,7 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
                 <Text style={styles.focusValue}>
                   {task.type === 'module' ? 'Module to read' : 'Quiz to take'}
                 </Text>
-                <Text style={styles.focusLabel}>Due {task.dueDate}</Text>
+                <Text style={styles.taskDue}>{formatDeadline(task.dueDate)}</Text>
               </View>
             </View>
           ))
@@ -1012,6 +1021,7 @@ const styles = StyleSheet.create({
   formatLabel: { ...text.caption, color: colors.inkMuted, marginBottom: spacing.sm },
   taskRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, paddingVertical: spacing.xs },
   taskDot: { width: 10, height: 10, borderRadius: radius.round },
+  taskDue: { ...text.caption, color: colors.secondary, marginTop: 1 },
   moduleTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.md },
   moduleCode: { ...text.caption, color: colors.inkMuted },
   styleTags: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },

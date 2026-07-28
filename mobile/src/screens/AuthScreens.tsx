@@ -17,7 +17,7 @@ import {
   UsersRound,
 } from 'lucide-react-native';
 import { Card, CardHeader, PrimaryButton, ProgressBar, Screen, ScreenHeader, SectionTitle } from '@/components/ui';
-import { Celebrate, MascotPanel, Peacock, PixelPeacock } from '@/components/mascot';
+import { Celebrate, MascotPanel, PeacockPhase } from '@/components/mascot';
 import { seedDemoData } from '@/data/demoSeed';
 import {
   getTeacherProfile,
@@ -58,7 +58,7 @@ export function LandingScreen({ navigation }: Props<'Landing'>) {
     <Screen style={styles.landing} scroll={false}>
       <View style={styles.landingHero}>
         <View style={styles.landingHalo}>
-          <PixelPeacock size={152} stage={4} accessibilityLabel="Pavo the peacock" />
+          <PeacockPhase phase={5} size={152} accessibilityLabel="Pavo the peacock" />
         </View>
         <Text style={styles.brandName}>Pavo</Text>
         <Text style={styles.landingTagline}>
@@ -86,7 +86,7 @@ export function RoleScreen({ navigation }: Props<'Role'>) {
     <Screen style={styles.roleScreen}>
       <View style={styles.brandBlock}>
         <View style={styles.brandHalo}>
-          <Peacock size={104} expression="happy" />
+          <PeacockPhase phase={5} size={104} />
         </View>
         <Text style={styles.brandName}>Pavo</Text>
         <Text style={styles.brandLine}>Learning that stays with you, online or offline.</Text>

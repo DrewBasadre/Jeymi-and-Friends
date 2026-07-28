@@ -1,22 +1,24 @@
 import { useEffect, useRef } from 'react';
 import { AccessibilityInfo, Animated, Easing, StyleSheet, Text, View } from 'react-native';
 import { colors, elevation, radius, spacing, text } from '@/theme/tokens';
-import { PixelPeacock, peacockTier } from '@/components/mascot';
+import { PeacockPhase, peacockPhase } from '@/components/mascot';
 import { ProgressBar } from '@/components/ui';
 
 /**
- * The learner's performance peacock: a gamified hero that reflects overall
- * score. The peacock unfurls its feathers and brightens as the score climbs,
- * and droops when it's low — a friendly, at-a-glance sense of "how am I doing".
+ * The learner's growth peacock: a gamified hero that shows how far the student
+ * has come. The peacock matures through 5 phases as they complete lessons and
+ * build mastery — a friendly, at-a-glance sense of progress.
  */
 export function PeacockMeter({
-  score,
-  caption = 'Overall performance',
+  completedModules,
+  totalModules,
+  averageScore,
 }: {
-  score: number;
-  caption?: string;
+  completedModules: number;
+  totalModules: number;
+  averageScore: number;
 }) {
-  const { stage, tier, blurb } = peacockTier(score);
+  const { phase, name, blurb } = peacockPhase({ completedModules, totalModules, averageScore });
   const bob = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -45,20 +47,25 @@ export function PeacockMeter({
       <View style={styles.row}>
         <View style={styles.stage}>
           <Animated.View style={{ transform: [{ translateY }] }}>
-            <PixelPeacock size={104} stage={stage} accessibilityLabel={`Your peacock is ${tier}`} />
+            <PeacockPhase phase={phase} size={104} accessibilityLabel={`Your peacock, ${name}, phase ${phase} of 5`} />
           </Animated.View>
         </View>
         <View style={styles.flex}>
-          <Text style={styles.overline}>YOUR PEACOCK</Text>
-          <Text style={styles.tier}>{tier}</Text>
+          <Text style={styles.overline}>Your Peacock · Phase {phase} of 5</Text>
+          <Text style={styles.tier}>{name}</Text>
           <Text style={styles.blurb}>{blurb}</Text>
+          <View style={styles.pips}>
+            {[1, 2, 3, 4, 5].map((p) => (
+              <View key={p} style={[styles.pip, p <= phase && styles.pipOn]} />
+            ))}
+          </View>
         </View>
       </View>
       <View style={styles.meter}>
-        <ProgressBar value={score / 100} height={12} trackColor={colors.surface} />
+        <ProgressBar value={averageScore / 100} height={12} trackColor={colors.surface} />
         <View style={styles.meterRow}>
-          <Text style={styles.caption}>{caption}</Text>
-          <Text style={styles.score}>{Math.round(score)}%</Text>
+          <Text style={styles.caption}>Overall performance</Text>
+          <Text style={styles.score}>{Math.round(averageScore)}%</Text>
         </View>
       </View>
     </View>
@@ -86,6 +93,9 @@ const styles = StyleSheet.create({
   overline: { ...text.overline, color: colors.gradientStart },
   tier: { ...text.h1, color: colors.white, fontSize: 26 },
   blurb: { ...text.body, color: 'rgba(255,255,255,0.9)', fontSize: 14, marginTop: 2 },
+  pips: { flexDirection: 'row', gap: 6, marginTop: spacing.sm },
+  pip: { width: 20, height: 6, borderRadius: 3, backgroundColor: 'rgba(255,255,255,0.22)' },
+  pipOn: { backgroundColor: colors.accent },
   meter: {
     backgroundColor: 'rgba(255,255,255,0.14)',
     borderRadius: radius.md,

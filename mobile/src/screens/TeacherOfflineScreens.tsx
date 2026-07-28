@@ -32,6 +32,7 @@ import { encodeAssignmentQr } from '@/domain/qr';
 import type { AssignmentTask, Section, TeacherProfile } from '@/domain/types';
 import type { RootStackParamList } from '@/navigation/types';
 import { colors, radius, spacing, text } from '@/theme/tokens';
+import { formatDeadline } from '@/utils/format';
 
 type SectionsProps = NativeStackScreenProps<RootStackParamList, 'Sections'>;
 type AssignmentProps = NativeStackScreenProps<
@@ -269,7 +270,7 @@ export function AssignmentBuilderScreen({ navigation }: AssignmentProps) {
                 {task.type === 'module' ? task.moduleId : task.quizId}
               </Text>
               <Text style={styles.body}>
-                {task.type === 'module' ? 'Module' : 'Quiz'} · due {task.dueDate}
+                {task.type === 'module' ? 'Module' : 'Quiz'} · {formatDeadline(task.dueDate)}
               </Text>
             </View>
             <CheckCircle2 size={22} color={colors.success} />

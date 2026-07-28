@@ -49,7 +49,8 @@ import {
   Skeleton,
   StatusBadge,
 } from '@/components/ui';
-import { MascotPanel, PixelPeacock, peacockTier } from '@/components/mascot';
+import { MascotPanel, PeacockPhase, peacockPhaseFromScore } from '@/components/mascot';
+import { formatDate } from '@/utils/format';
 import {
   getActiveSection,
   getClassPerformanceReport,
@@ -172,11 +173,11 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
                 <Text style={[styles.rankText, index < 3 && styles.rankTextTop]}>{index + 1}</Text>
               </View>
               <View style={styles.peacockCell}>
-                <PixelPeacock size={38} stage={peacockTier(learner.averageScore).stage} accessibilityLabel={`${learner.displayName}'s peacock`} />
+                <PeacockPhase size={40} phase={peacockPhaseFromScore(learner.averageScore).phase} accessibilityLabel={`${learner.displayName}'s peacock`} />
               </View>
               <View style={styles.flex}>
                 <Text style={styles.rowTitle}>{learner.displayName}</Text>
-                <Text style={styles.rowMeta}>{peacockTier(learner.averageScore).tier} · {learner.totalAttempts} attempts</Text>
+                <Text style={styles.rowMeta}>{peacockPhaseFromScore(learner.averageScore).name} · {learner.totalAttempts} attempts</Text>
               </View>
               <Text style={styles.rowScore}>{learner.averageScore}%</Text>
             </Pressable>
@@ -206,11 +207,11 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
               <Text style={[styles.rankText, index < 3 && styles.rankTextTop]}>{index + 1}</Text>
             </View>
             <View style={styles.peacockCell}>
-              <PixelPeacock size={38} stage={peacockTier(learner.averageScore).stage} accessibilityLabel={`${learner.displayName}'s peacock`} />
+              <PeacockPhase size={40} phase={peacockPhaseFromScore(learner.averageScore).phase} accessibilityLabel={`${learner.displayName}'s peacock`} />
             </View>
             <View style={styles.flex}>
               <Text style={styles.rowTitle}>{learner.displayName}</Text>
-              <Text style={styles.rowMeta}>{peacockTier(learner.averageScore).tier} · {learner.section}</Text>
+              <Text style={styles.rowMeta}>{peacockPhaseFromScore(learner.averageScore).name} · {learner.section}</Text>
             </View>
             <Text style={styles.rowScore}>{learner.averageScore}%</Text>
           </Pressable>
@@ -512,7 +513,7 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
               <View key={attempt.id} style={styles.rowBetween}>
                 <View style={styles.flex}>
                   <Text style={styles.rowTitle}>
-                    {new Date(attempt.submittedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                    {formatDate(attempt.submittedAt)}
                   </Text>
                   <Text style={styles.rowMeta}>
                     {attempt.score}/{attempt.totalItems} correct
