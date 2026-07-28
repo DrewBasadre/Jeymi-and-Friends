@@ -19,6 +19,7 @@ import type { ComponentProps } from 'react';
 import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
+  LandingScreen,
   LearningAssessmentScreen,
   RoleScreen,
   StudentLoginScreen,
@@ -230,7 +231,7 @@ export function RootNavigator() {
   const student = useSessionStore((state) => state.student);
   const initialRouteName: keyof RootStackParamList = student
     ? 'StudentTabs'
-    : 'Role';
+    : 'Landing';
 
   return (
     <NavigationContainer theme={navigationTheme}>
@@ -241,6 +242,7 @@ export function RootNavigator() {
           contentStyle: { backgroundColor: colors.background },
         }}
       >
+        <RootStack.Screen name="Landing" component={LandingScreen} />
         <RootStack.Screen name="Role" component={RoleScreen} />
         <RootStack.Screen name="StudentLogin" component={StudentLoginScreen} />
         <RootStack.Screen name="StudentSetup" component={StudentSetupScreen} />

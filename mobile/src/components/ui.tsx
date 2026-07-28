@@ -464,8 +464,8 @@ const styles = StyleSheet.create({
   cardTitle: { ...text.title, color: colors.ink },
   cardSubtitle: { ...text.caption, color: colors.inkMuted, marginTop: 1 },
   button: {
-    minHeight: 52,
-    borderRadius: radius.md,
+    minHeight: 54,
+    borderRadius: radius.lg,
     backgroundColor: colors.primary,
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.md,

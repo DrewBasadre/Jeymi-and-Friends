@@ -17,7 +17,8 @@ import {
   UsersRound,
 } from 'lucide-react-native';
 import { Card, CardHeader, PrimaryButton, ProgressBar, Screen, ScreenHeader, SectionTitle } from '@/components/ui';
-import { Celebrate, MascotPanel, Peacock } from '@/components/mascot';
+import { Celebrate, MascotPanel, Peacock, PixelPeacock } from '@/components/mascot';
+import { seedDemoData } from '@/data/demoSeed';
 import {
   getTeacherProfile,
   saveLearningProfile,
@@ -31,6 +32,52 @@ import { useSessionStore } from '@/store/session';
 import { colors, radius, spacing, text } from '@/theme/tokens';
 
 type Props<Route extends keyof RootStackParamList> = NativeStackScreenProps<RootStackParamList, Route>;
+
+export function LandingScreen({ navigation }: Props<'Landing'>) {
+  const login = useSessionStore((state) => state.login);
+  const [loadingDemo, setLoadingDemo] = useState(false);
+
+  async function exploreDemo() {
+    setLoadingDemo(true);
+    try {
+      const creds = await seedDemoData();
+      const ok = await login(creds.studentNumber, creds.pin);
+      if (ok) {
+        navigation.reset({ index: 0, routes: [{ name: 'StudentTabs' }] });
+      } else {
+        navigation.navigate('Role');
+      }
+    } catch (error) {
+      Alert.alert('Demo data', error instanceof Error ? error.message : 'Could not load the demo classroom.');
+    } finally {
+      setLoadingDemo(false);
+    }
+  }
+
+  return (
+    <Screen style={styles.landing} scroll={false}>
+      <View style={styles.landingHero}>
+        <View style={styles.landingHalo}>
+          <PixelPeacock size={152} stage={4} accessibilityLabel="Pavo the peacock" />
+        </View>
+        <Text style={styles.brandName}>Pavo</Text>
+        <Text style={styles.landingTagline}>
+          Your friendly learning buddy. Grow your peacock as you learn — online or offline.
+        </Text>
+      </View>
+      <View style={styles.landingActions}>
+        <PrimaryButton label="Start learning" icon={Sparkles} onPress={() => navigation.navigate('Role')} />
+        <PrimaryButton
+          label="Explore a demo classroom"
+          tone="ghost"
+          loading={loadingDemo}
+          onPress={() => void exploreDemo()}
+        />
+        <Text style={styles.landingFoot}>Works fully offline · No account needed to try</Text>
+      </View>
+    </Screen>
+  );
+}
 
 export function RoleScreen({ navigation }: Props<'Role'>) {
   const chooseRole = useSessionStore((state) => state.chooseRole);
@@ -419,6 +466,26 @@ function ErrorNote({ message }: { message: string }) {
 }
 
 const styles = StyleSheet.create({
+  landing: { flex: 1, justifyContent: 'space-between', paddingBottom: spacing.xxl },
+  landingHero: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.sm },
+  landingHalo: {
+    width: 196,
+    height: 196,
+    borderRadius: radius.round,
+    backgroundColor: colors.primaryTint,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.md,
+  },
+  landingTagline: {
+    ...text.body,
+    color: colors.inkMuted,
+    textAlign: 'center',
+    maxWidth: 320,
+    marginTop: spacing.xs,
+  },
+  landingActions: { gap: spacing.md },
+  landingFoot: { ...text.caption, color: colors.inkSubtle, textAlign: 'center', marginTop: spacing.xs },
   roleScreen: { gap: spacing.lg },
   brandBlock: { alignItems: 'center', paddingTop: spacing.sm, paddingBottom: spacing.md, gap: spacing.xs },
   brandHalo: {

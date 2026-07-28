@@ -1,6 +1,7 @@
 import type { LearningModule, QuizAttempt } from '@/domain/types';
 
 export type RootStackParamList = {
+  Landing: undefined;
   Role: undefined;
   StudentLogin: undefined;
   StudentSetup: undefined;

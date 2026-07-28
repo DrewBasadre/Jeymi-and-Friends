@@ -47,9 +47,11 @@ import {
   ScreenHeader,
   SectionTitle,
   Skeleton,
+  SkeletonCard,
   StatusBadge,
 } from '@/components/ui';
-import { Celebrate, MascotPanel } from '@/components/mascot';
+import { Celebrate, MascotPanel, PixelPeacock, peacockTier } from '@/components/mascot';
+import { PeacockMeter } from '@/components/PeacockMeter';
 import {
   getAttempts,
   getDueFlashcards,
@@ -150,26 +152,26 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
           />
         }
       />
-      <Card accent={colors.primary} tone={colors.primaryTint}>
-        <Text style={styles.eyebrow}>YOUR LEARNING MATCH</Text>
-        <Text style={styles.heroTitle}>
-          {adaptive
-            ? `${capitalize(adaptive.manualOverride ?? adaptive.currentDefaultFormat)} format`
-            : profile
-              ? `${capitalize(profile.primaryStyle)} learning`
-              : 'Balanced learning'}
-        </Text>
-        <Text style={styles.body}>
-          Lessons that match how you learn appear first. This guides presentation, not ability.
-        </Text>
-        {total > 0 ? (
-          <View style={styles.heroProgress}>
-            <ProgressBar value={completed / total} />
-            <Text style={styles.heroProgressLabel}>
-              {completed} of {total} modules complete
+      {loading ? <SkeletonCard /> : <PeacockMeter score={dashboard?.averageScore ?? 0} />}
+      <Card accent={colors.secondary} tone={colors.secondaryTint}>
+        <View style={styles.matchRow}>
+          <View style={styles.flex}>
+            <Text style={styles.eyebrow}>LEARNING MATCH</Text>
+            <Text style={styles.matchTitle}>
+              {adaptive
+                ? `${capitalize(adaptive.manualOverride ?? adaptive.currentDefaultFormat)} format`
+                : profile
+                  ? `${capitalize(profile.primaryStyle)} learning`
+                  : 'Balanced learning'}
             </Text>
           </View>
-        ) : null}
+          {total > 0 ? (
+            <View style={styles.matchProgress}>
+              <Text style={styles.heroProgressLabel}>{completed}/{total} modules</Text>
+              <ProgressBar value={completed / total} height={8} />
+            </View>
+          ) : null}
+        </View>
       </Card>
       {loading ? (
         <View style={styles.metricGrid}>
@@ -997,10 +999,11 @@ const styles = StyleSheet.create({
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, paddingRight: spacing.xl },
   metricGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
   metricSkeleton: { borderRadius: radius.lg, flexGrow: 1 },
-  eyebrow: { ...text.overline, color: colors.primary },
-  heroTitle: { ...text.h2, color: colors.ink, fontSize: 24 },
-  heroProgress: { gap: spacing.sm, marginTop: spacing.xs },
-  heroProgressLabel: { ...text.caption, color: colors.primaryStrong },
+  eyebrow: { ...text.overline, color: colors.secondary },
+  matchRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  matchTitle: { ...text.title, color: colors.ink, marginTop: 2 },
+  matchProgress: { width: 108, gap: spacing.xs },
+  heroProgressLabel: { ...text.caption, color: colors.secondary, textAlign: 'right' },
   body: { ...text.body, color: colors.inkMuted, fontSize: 15 },
   focusRow: { flexDirection: 'row', gap: spacing.lg },
   focusLabel: { ...text.overline, color: colors.inkMuted, letterSpacing: 0.4 },

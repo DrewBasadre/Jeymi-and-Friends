@@ -25,6 +25,7 @@ import {
   CheckCircle2,
   FileText,
   Layers,
+  LogOut,
   PencilLine,
   QrCode,
   RefreshCw,
@@ -48,7 +49,7 @@ import {
   Skeleton,
   StatusBadge,
 } from '@/components/ui';
-import { MascotPanel } from '@/components/mascot';
+import { MascotPanel, PixelPeacock, peacockTier } from '@/components/mascot';
 import {
   getActiveSection,
   getClassPerformanceReport,
@@ -170,9 +171,12 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
               <View style={[styles.rank, index < 3 && styles.rankTop]}>
                 <Text style={[styles.rankText, index < 3 && styles.rankTextTop]}>{index + 1}</Text>
               </View>
+              <View style={styles.peacockCell}>
+                <PixelPeacock size={38} stage={peacockTier(learner.averageScore).stage} accessibilityLabel={`${learner.displayName}'s peacock`} />
+              </View>
               <View style={styles.flex}>
                 <Text style={styles.rowTitle}>{learner.displayName}</Text>
-                <Text style={styles.rowMeta}>{learner.section} · {learner.totalAttempts} attempts</Text>
+                <Text style={styles.rowMeta}>{peacockTier(learner.averageScore).tier} · {learner.totalAttempts} attempts</Text>
               </View>
               <Text style={styles.rowScore}>{learner.averageScore}%</Text>
             </Pressable>
@@ -201,9 +205,12 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
             <View style={[styles.rank, index < 3 && styles.rankTop]}>
               <Text style={[styles.rankText, index < 3 && styles.rankTextTop]}>{index + 1}</Text>
             </View>
+            <View style={styles.peacockCell}>
+              <PixelPeacock size={38} stage={peacockTier(learner.averageScore).stage} accessibilityLabel={`${learner.displayName}'s peacock`} />
+            </View>
             <View style={styles.flex}>
               <Text style={styles.rowTitle}>{learner.displayName}</Text>
-              <Text style={styles.rowMeta}>{learner.section}</Text>
+              <Text style={styles.rowMeta}>{peacockTier(learner.averageScore).tier} · {learner.section}</Text>
             </View>
             <Text style={styles.rowScore}>{learner.averageScore}%</Text>
           </Pressable>
@@ -437,6 +444,15 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
           onPress={() => navigation.navigate('ModuleAuthor')}
         />
       </Card>
+      <View style={styles.signOutRow}>
+        <PrimaryButton
+          label="Sign out"
+          icon={LogOut}
+          tone="danger"
+          size="sm"
+          onPress={() => navigation.getParent()?.navigate('Landing')}
+        />
+      </View>
     </Screen>
   );
 }
@@ -782,10 +798,18 @@ const styles = StyleSheet.create({
   },
   learnerRowFirst: { borderTopWidth: 0, marginTop: 0, paddingTop: spacing.xs },
   rank: {
-    width: 30,
-    height: 30,
+    width: 26,
+    height: 26,
     borderRadius: radius.round,
     backgroundColor: colors.surfaceMuted,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  peacockCell: {
+    width: 44,
+    height: 44,
+    borderRadius: radius.md,
+    backgroundColor: colors.primaryTint,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -840,4 +864,5 @@ const styles = StyleSheet.create({
   peerDot: { width: 10, height: 10, borderRadius: radius.round, backgroundColor: colors.success },
   peerAction: { minWidth: 116 },
   hash: { color: colors.inkSubtle, fontSize: 11, lineHeight: 16, fontFamily: 'monospace' },
+  signOutRow: { marginTop: spacing.sm, alignItems: 'center' },
 });
