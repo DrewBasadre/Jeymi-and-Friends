@@ -16,6 +16,8 @@ import {
   type LucideIcon,
 } from 'lucide-react-native';
 import type { ComponentProps } from 'react';
+import { View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   LearningAssessmentScreen,
   RoleScreen,
@@ -84,39 +86,60 @@ const navigationTheme: Theme = {
   },
 };
 
-const tabScreenOptions = {
-  headerShown: false,
-  tabBarActiveTintColor: colors.indigo,
-  tabBarInactiveTintColor: colors.inkMuted,
-  tabBarHideOnKeyboard: true,
-  tabBarLabelStyle: {
-    fontSize: 12,
-    fontWeight: '700' as const,
-  },
-  tabBarStyle: {
-    height: 66,
-    paddingTop: 7,
-    paddingBottom: 8,
-    borderTopColor: colors.outline,
-    backgroundColor: colors.surface,
-  },
-};
+function useTabScreenOptions() {
+  const insets = useSafeAreaInsets();
+  return {
+    headerShown: false,
+    tabBarActiveTintColor: colors.primary,
+    tabBarInactiveTintColor: colors.inkSubtle,
+    tabBarHideOnKeyboard: true,
+    tabBarLabelStyle: {
+      fontSize: 11,
+      fontWeight: '700' as const,
+      marginTop: 2,
+    },
+    tabBarItemStyle: { paddingTop: 8 },
+    tabBarStyle: {
+      height: 60 + insets.bottom,
+      paddingTop: 6,
+      paddingBottom: Math.max(insets.bottom, 8),
+      borderTopColor: colors.outline,
+      backgroundColor: colors.surface,
+    },
+  } as const;
+}
 
 function TabIcon({
   icon: Icon,
   color,
   size,
+  focused,
 }: {
   icon: LucideIcon;
   color: string;
   size: number;
+  focused: boolean;
 }) {
-  return <Icon color={color} size={size} strokeWidth={2.2} />;
+  return (
+    <View
+      style={{
+        width: 44,
+        height: 30,
+        borderRadius: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: focused ? colors.primaryTint : 'transparent',
+      }}
+    >
+      <Icon color={color} size={size} strokeWidth={focused ? 2.6 : 2.1} />
+    </View>
+  );
 }
 
 function StudentTabNavigator() {
+  const screenOptions = useTabScreenOptions();
   return (
-    <StudentTabs.Navigator screenOptions={tabScreenOptions}>
+    <StudentTabs.Navigator screenOptions={screenOptions}>
       <StudentTabs.Screen
         name="StudentHome"
         component={StudentHomeScreen}
@@ -164,8 +187,9 @@ function StudentTabNavigator() {
 }
 
 function TeacherTabNavigator() {
+  const screenOptions = useTabScreenOptions();
   return (
-    <TeacherTabs.Navigator screenOptions={tabScreenOptions}>
+    <TeacherTabs.Navigator screenOptions={screenOptions}>
       <TeacherTabs.Screen
         name="TeacherHome"
         component={TeacherHomeScreen}
@@ -194,7 +218,7 @@ function TeacherTabNavigator() {
         name="Gurobot"
         component={GurobotScreen}
         options={{
-          title: 'Gurobot',
+          title: 'Assist',
           tabBarIcon: (props) => <TabIcon icon={Bot} {...props} />,
         }}
       />
