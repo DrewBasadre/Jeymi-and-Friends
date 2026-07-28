@@ -166,6 +166,18 @@ describe('companion request privacy', () => {
     expect(serialized).not.toContain('studentId');
     expect(serialized).not.toContain('studentName');
   });
+
+  it('routes teacher-authored standalone quizzes through quiz mode', () => {
+    const request = buildTeacherCompanionRequest({
+      intent: 'teacher_author_quiz',
+      gradeLevel: 5,
+      question: 'Create six questions about equivalent fractions.',
+    });
+    expect(request.intent).toBe('teacher_author_quiz');
+    expect(request.activity).toBe('quiz');
+    expect(request.modules).toEqual([]);
+    expect(request.deadlines).toEqual([]);
+  });
 });
 
 describe('companion response', () => {

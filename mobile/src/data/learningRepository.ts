@@ -6,6 +6,7 @@ import type {
   StoredLearningPackage,
   StudyPackageManifest,
 } from '@/domain/types';
+import { teacherQuizModuleId } from '@/services/learningPackages';
 import { getDatabase } from './database';
 
 type PackageCategory = StudyPackageManifest['contentCategory'];
@@ -37,7 +38,7 @@ export async function saveLearningPackage(args: {
     receivedAt,
     Number.isFinite(createdAt) ? createdAt : Date.now(),
   );
-  return {
+  const stored: StoredLearningPackage = {
     packageId: args.manifest.packageId,
     ownerId: args.ownerId,
     contentCategory: args.manifest.contentCategory,
@@ -46,6 +47,8 @@ export async function saveLearningPackage(args: {
     receivedAt: receivedAt ? new Date(receivedAt).toISOString() : null,
     createdAt: args.manifest.createdAt,
   };
+  await ensureTeacherQuizActivity(database, stored);
+  return stored;
 }
 
 export async function listLearningPackages(
@@ -66,7 +69,13 @@ export async function listLearningPackages(
          WHERE owner_id = ? ORDER BY created_at DESC`,
         ownerId,
       );
-  return rows.map(mapPackage);
+  const packages = rows.map(mapPackage);
+  await Promise.all(
+    packages.map((learningPackage) =>
+      ensureTeacherQuizActivity(database, learningPackage),
+    ),
+  );
+  return packages;
 }
 
 export async function getLearningPackage(
@@ -212,4 +221,63 @@ function mapChat(row: ChatRow): ChatSession {
     updatedAt: new Date(row.updated_at).toISOString(),
     messages: JSON.parse(row.messages_json) as ChatMessage[],
   };
+}
+
+async function ensureTeacherQuizActivity(
+  database: Awaited<ReturnType<typeof getDatabase>>,
+  learningPackage: StoredLearningPackage,
+): Promise<void> {
+  const { manifest } = learningPackage;
+  if (
+    manifest.contentCategory !== 'teacherQuiz' ||
+    !manifest.quiz?.questions.length
+  ) {
+    return;
+  }
+
+  const moduleId = teacherQuizModuleId(manifest.packageId);
+  const questions = manifest.quiz.questions;
+  await database.withTransactionAsync(async () => {
+    await database.runAsync(
+      `INSERT INTO modules (
+         id, title, subject, grade_level, quarter, competency_code, summary,
+         content, content_style_tags_json, is_teacher_created, updated_at
+       ) VALUES (?, ?, 'Mathematics', 0, 0, ?, ?, ?, '[]', 1, ?)
+       ON CONFLICT(id) DO UPDATE SET
+         title = excluded.title,
+         summary = excluded.summary,
+         content = excluded.content,
+         updated_at = excluded.updated_at`,
+      moduleId,
+      manifest.title,
+      'Teacher-issued standalone quiz',
+      'A standalone graded quiz sent by a teacher.',
+      `# ${manifest.title}\n\nTeacher-issued standalone quiz.`,
+      Date.now(),
+    );
+    await database.runAsync(
+      'DELETE FROM quiz_questions WHERE module_id = ?',
+      moduleId,
+    );
+    for (const question of questions) {
+      const type = {
+        'multiple-choice': 'MULTIPLE_CHOICE',
+        'fill-in-the-blank': 'FILL_IN_THE_BLANK',
+        identification: 'IDENTIFICATION',
+      }[question.type];
+      await database.runAsync(
+        `INSERT INTO quiz_questions (
+           id, module_id, type, question_text, choices_json, correct_answer,
+           topic_tag
+         ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        `${moduleId}:${question.questionId}`,
+        moduleId,
+        type,
+        question.prompt,
+        JSON.stringify(question.options ?? []),
+        question.correctAnswer,
+        question.conceptId,
+      );
+    }
+  });
 }

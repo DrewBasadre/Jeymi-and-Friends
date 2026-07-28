@@ -934,6 +934,7 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
     | 'teacher_lesson_plan'
     | 'teacher_class_summary'
     | 'teacher_author_module'
+    | 'teacher_author_quiz'
     | 'teacher_author_reviewer'
   >('teacher_lesson_plan');
   const [prompt, setPrompt] = useState('');
@@ -1098,7 +1099,8 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
           { value: 'teacher_lesson_plan', label: 'Plan' },
           { value: 'teacher_class_summary', label: 'Class' },
           { value: 'teacher_author_module', label: 'Module' },
-          { value: 'teacher_author_reviewer', label: 'Reviewer' },
+          { value: 'teacher_author_quiz', label: 'Quiz' },
+          { value: 'teacher_author_reviewer', label: 'Review' },
         ]}
       />
 
@@ -1228,12 +1230,14 @@ type TeacherAssistantIntent =
   | 'teacher_lesson_plan'
   | 'teacher_class_summary'
   | 'teacher_author_module'
+  | 'teacher_author_quiz'
   | 'teacher_author_reviewer';
 
 function teacherIntentTitle(intent: TeacherAssistantIntent): string {
   if (intent === 'teacher_lesson_plan') return 'Draft a lesson plan';
   if (intent === 'teacher_class_summary') return 'Summarize class performance';
   if (intent === 'teacher_author_module') return 'Draft a student module';
+  if (intent === 'teacher_author_quiz') return 'Draft a standalone quiz';
   return 'Draft a teacher reviewer';
 }
 
@@ -1258,6 +1262,9 @@ function teacherIntentPlaceholder(intent: TeacherAssistantIntent): string {
   }
   if (intent === 'teacher_author_module') {
     return 'Topic, competency, examples, and preferred level of challenge';
+  }
+  if (intent === 'teacher_author_quiz') {
+    return 'Topic, competency, number of questions, and difficulty';
   }
   return 'Topic and the concepts students should practise';
 }
@@ -1335,6 +1342,31 @@ async function buildTeacherAssistantPackage(args: {
       manifest: normalized,
     });
     return buildLearningPackage(normalized);
+  }
+  if (args.intent === 'teacher_author_quiz') {
+    if (!args.result.questions.length) {
+      throw new Error('The quiz draft did not include any questions.');
+    }
+    const preview = teacherPreviewManifest(args.result, args.teacherId);
+    const packageId = `quiz_${Crypto.randomUUID()}`;
+    const manifest: StudyPackageManifest = {
+      ...preview,
+      packageId,
+      contentCategory: 'teacherQuiz',
+      reviewItems: [],
+      quiz: {
+        questions:
+          preview.quiz?.questions.map((question, index) => ({
+            ...question,
+            questionId: `${packageId}_question_${index + 1}`,
+          })) ?? [],
+      },
+    };
+    await saveLearningPackage({
+      ownerId: `teacher:${args.teacherId}`,
+      manifest,
+    });
+    return buildLearningPackage(manifest);
   }
   if (args.intent !== 'teacher_author_module') return null;
   const preview = teacherPreviewManifest(args.result, args.teacherId);

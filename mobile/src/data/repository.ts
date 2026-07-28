@@ -44,6 +44,7 @@ import type {
   TeacherLearnerRow,
 } from '@/domain/types';
 import { installModulePackage } from '@/services/modulePackages';
+import { isTeacherQuizModuleId } from '@/services/learningPackages';
 import { getDatabase } from './database';
 import {
   getAdaptiveFormatProfile,
@@ -477,18 +478,20 @@ export async function submitQuiz(args: {
 
   await database.withTransactionAsync(async () => {
     await insertAttempt(database, attempt, 'local');
-    await database.runAsync(
-      `INSERT INTO progress (student_id, module_id, status, mastery_level, updated_at)
-       VALUES (?, ?, 'COMPLETED', ?, ?)
-       ON CONFLICT(student_id, module_id) DO UPDATE SET
-         status = 'COMPLETED',
-         mastery_level = excluded.mastery_level,
-         updated_at = excluded.updated_at`,
-      args.studentId,
-      args.moduleId,
-      attempt.masteryLevel,
-      submittedAt,
-    );
+    if (!isTeacherQuizModuleId(args.moduleId)) {
+      await database.runAsync(
+        `INSERT INTO progress (student_id, module_id, status, mastery_level, updated_at)
+         VALUES (?, ?, 'COMPLETED', ?, ?)
+         ON CONFLICT(student_id, module_id) DO UPDATE SET
+           status = 'COMPLETED',
+           mastery_level = excluded.mastery_level,
+           updated_at = excluded.updated_at`,
+        args.studentId,
+        args.moduleId,
+        attempt.masteryLevel,
+        submittedAt,
+      );
+    }
   });
 
   await recordFormatOutcome({
@@ -1193,7 +1196,9 @@ async function importMvpQuizReport(
     title: report.moduleId,
     subject: 'ADDED_MATERIALS',
     competencyCode: '',
-    gradeLevel: student.gradeLevel,
+    gradeLevel: isTeacherQuizModuleId(report.moduleId)
+      ? 0
+      : student.gradeLevel,
   });
   const questions = await getQuestions(report.moduleId);
   const questionById = new Map(questions.map((question) => [question.id, question]));
@@ -1235,18 +1240,20 @@ async function importMvpQuizReport(
   };
   await database.withTransactionAsync(async () => {
     await insertAttempt(database, attempt, 'qr');
-    await database.runAsync(
-      `INSERT INTO progress (student_id, module_id, status, mastery_level, updated_at)
-       VALUES (?, ?, 'COMPLETED', ?, ?)
-       ON CONFLICT(student_id, module_id) DO UPDATE SET
-         status = 'COMPLETED',
-         mastery_level = excluded.mastery_level,
-         updated_at = excluded.updated_at`,
-      student.id,
-      report.moduleId,
-      attempt.masteryLevel,
-      attempt.submittedAt,
-    );
+    if (!isTeacherQuizModuleId(report.moduleId)) {
+      await database.runAsync(
+        `INSERT INTO progress (student_id, module_id, status, mastery_level, updated_at)
+         VALUES (?, ?, 'COMPLETED', ?, ?)
+         ON CONFLICT(student_id, module_id) DO UPDATE SET
+           status = 'COMPLETED',
+           mastery_level = excluded.mastery_level,
+           updated_at = excluded.updated_at`,
+        student.id,
+        report.moduleId,
+        attempt.masteryLevel,
+        attempt.submittedAt,
+      );
+    }
     await database.runAsync(
       `INSERT OR IGNORE INTO scanned_reports
        (report_id, student_id, payload_json, schema_version, scanned_at)

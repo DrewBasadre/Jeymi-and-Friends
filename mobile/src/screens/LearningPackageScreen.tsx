@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Send, ShieldCheck } from 'lucide-react-native';
+import { ClipboardCheck, Send, ShieldCheck } from 'lucide-react-native';
 import { InteractiveLearningPreview } from '@/components/InteractiveLearningPreview';
 import {
   Callout,
@@ -17,6 +17,7 @@ import {
 import type { StoredLearningPackage } from '@/domain/types';
 import type { RootStackParamList } from '@/navigation/types';
 import { buildLearningPackage } from '@/services/learningPackages';
+import { teacherQuizModuleId } from '@/services/learningPackages';
 import { useSessionStore } from '@/store/session';
 import { formatDate } from '@/utils/format';
 
@@ -88,10 +89,31 @@ export function LearningPackageScreen({ navigation, route }: Props) {
         }
         tone="info"
       />
-      <InteractiveLearningPreview
-        reviewItems={manifest.reviewItems}
-        questions={manifest.quiz?.questions}
-      />
+      {manifest.contentCategory === 'teacherQuiz' ? (
+        <>
+          <Callout
+            icon={ClipboardCheck}
+            title="Ready when you are"
+            body={`${manifest.quiz?.questions.length ?? 0} questions. Your timing and result will be saved in My Quiz History.`}
+            tone="info"
+          />
+          <PrimaryButton
+            label="Take assigned quiz"
+            icon={ClipboardCheck}
+            disabled={!manifest.quiz?.questions.length}
+            onPress={() =>
+              navigation.navigate('Quiz', {
+                moduleId: teacherQuizModuleId(manifest.packageId),
+              })
+            }
+          />
+        </>
+      ) : (
+        <InteractiveLearningPreview
+          reviewItems={manifest.reviewItems}
+          questions={manifest.quiz?.questions}
+        />
+      )}
       {manifest.contentCategory === 'studentMaterial' ? (
         <PrimaryButton
           label="Export & Share to a Classmate"

@@ -10,6 +10,15 @@ import type {
 import { sha256File } from './modulePackages';
 
 const packageDirectory = new Directory(Paths.document, 'study-packages');
+const teacherQuizModulePrefix = 'teacher-quiz:';
+
+export function teacherQuizModuleId(packageId: string): string {
+  return `${teacherQuizModulePrefix}${packageId}`;
+}
+
+export function isTeacherQuizModuleId(moduleId: string): boolean {
+  return moduleId.startsWith(teacherQuizModulePrefix);
+}
 
 export async function buildLearningPackage(
   manifest: StudyPackageManifest,

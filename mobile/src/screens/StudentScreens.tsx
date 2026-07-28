@@ -86,6 +86,7 @@ import {
   submitQuiz,
 } from '@/data/repository';
 import { listLearningPackages } from '@/data/learningRepository';
+import { teacherQuizModuleId } from '@/services/learningPackages';
 import {
   getAdaptiveFormatProfile,
   getEffectiveLearningFormat,
@@ -1062,6 +1063,10 @@ export function ReportsScreen({ navigation }: StudentTabProps<'Reports'>) {
       ) : (
         attempts.map((attempt) => {
           const module = modules.find((item) => item.id === attempt.moduleId);
+          const teacherQuiz = teacherQuizzes.find(
+            (item) =>
+              teacherQuizModuleId(item.packageId) === attempt.moduleId,
+          );
           const percent =
             attempt.totalItems > 0 ? Math.round((attempt.score / attempt.totalItems) * 100) : 0;
           const subject = module?.subject;
@@ -1069,7 +1074,7 @@ export function ReportsScreen({ navigation }: StudentTabProps<'Reports'>) {
             <Card key={attempt.id} accent={subject ? subjectColor[subject] : colors.primary}>
               <CardHeader
                 icon={QrCode}
-                title={module?.title ?? attempt.moduleId}
+                title={module?.title ?? teacherQuiz?.title ?? attempt.moduleId}
                 subtitle={`${attempt.score}/${attempt.totalItems} correct · ${formatDuration(attempt.durationSeconds)}`}
                 color={subject ? subjectColor[subject] : colors.primary}
                 action={

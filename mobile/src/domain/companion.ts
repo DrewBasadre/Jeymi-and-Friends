@@ -15,6 +15,7 @@ export type CompanionIntent =
   | 'teacher_lesson_plan'
   | 'teacher_class_summary'
   | 'teacher_author_module'
+  | 'teacher_author_quiz'
   | 'teacher_author_reviewer';
 export type CompanionActivity =
   | 'lesson'
@@ -209,6 +210,7 @@ export function buildTeacherCompanionRequest(args: {
     | 'teacher_lesson_plan'
     | 'teacher_class_summary'
     | 'teacher_author_module'
+    | 'teacher_author_quiz'
     | 'teacher_author_reviewer'
   >;
   gradeLevel: number;
@@ -222,6 +224,8 @@ export function buildTeacherCompanionRequest(args: {
     activity:
       args.intent === 'teacher_author_reviewer'
         ? 'flashcards'
+        : args.intent === 'teacher_author_quiz'
+          ? 'quiz'
         : args.intent === 'teacher_class_summary' ||
             args.intent === 'teacher_student_insight' ||
             args.intent === 'teacher_class_insight'

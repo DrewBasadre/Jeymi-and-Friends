@@ -104,25 +104,35 @@ export const bundledQuizQuestionSchema: z.ZodType<BundledQuizQuestion> =
 export const bundledQuizSchema = z.array(bundledQuizQuestionSchema).min(3);
 
 export const studyPackageManifestSchema: z.ZodType<StudyPackageManifest> =
-  z.object({
-    packageId: z.string().min(1),
-    version: z.number().int().positive(),
-    contentCategory: z.enum([
-      'teacherQuiz',
-      'teacherReviewer',
-      'studentMaterial',
-    ]),
-    title: z.string().trim().min(1).max(160),
-    reviewItems: z.array(reviewItemSchema).max(100),
-    quiz: z
-      .object({
-        questions: z.array(bundledQuizQuestionSchema).min(1).max(40),
-      })
-      .optional(),
-    createdBy: z.string().min(1),
-    sharedBy: z.array(z.string().min(1)).max(100),
-    createdAt: z.string().datetime(),
-  });
+  z
+    .object({
+      packageId: z.string().min(1),
+      version: z.number().int().positive(),
+      contentCategory: z.enum([
+        'teacherQuiz',
+        'teacherReviewer',
+        'studentMaterial',
+      ]),
+      title: z.string().trim().min(1).max(160),
+      reviewItems: z.array(reviewItemSchema).max(100),
+      quiz: z
+        .object({
+          questions: z.array(bundledQuizQuestionSchema).min(1).max(40),
+        })
+        .optional(),
+      createdBy: z.string().min(1),
+      sharedBy: z.array(z.string().min(1)).max(100),
+      createdAt: z.string().datetime(),
+    })
+    .superRefine((manifest, context) => {
+      if (manifest.contentCategory === 'teacherQuiz' && !manifest.quiz) {
+        context.addIssue({
+          code: 'custom',
+          path: ['quiz'],
+          message: 'Teacher quiz packages must include quiz questions.',
+        });
+      }
+    });
 
 export function parseModuleManifest(value: unknown): CurriculumModuleManifest {
   return moduleManifestSchema.parse(value);

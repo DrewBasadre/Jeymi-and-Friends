@@ -88,6 +88,7 @@ type SafeIntent =
   | 'teacher_lesson_plan'
   | 'teacher_class_summary'
   | 'teacher_author_module'
+  | 'teacher_author_quiz'
   | 'teacher_author_reviewer';
 
 interface SafeRequest {
@@ -238,10 +239,13 @@ Deno.serve(async (request) => {
     }
 
     const outputText = extractOutputText(rawResponse);
-    if (!outputText || (await isFlagged(outputText, apiKey))) {
+    const normalizedOutput = outputText
+      ? normalizeOutput(outputText, input.intent)
+      : null;
+    if (!normalizedOutput || (await isFlagged(normalizedOutput, apiKey))) {
       return json({ error: 'Pavo could not safely share that answer.' }, 502);
     }
-    return new Response(outputText, {
+    return new Response(normalizedOutput, {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
@@ -317,11 +321,41 @@ Do not invent or request learner identities. Return empty flashcards and questio
     teacher_author_module: `
 Draft student-facing module content grounded in the teacher's topic and supplied vetted modules.
 Use the sections as Markdown-ready lesson sections. Add practice questions only when useful.`,
+    teacher_author_quiz: `
+Draft a standalone graded quiz with five to ten multiple-choice questions unless the teacher asks
+for another count. Keep sections and flashcards empty. Every question needs plausible options, one
+correct option, and a concise explanation.`,
     teacher_author_reviewer: `
 Draft a focused reviewer set. Put review cards in flashcards and optional checks in questions.
 Keep every item editable and appropriate for the stated grade level.`,
   };
   return tasks[intent as keyof typeof tasks] ?? null;
+}
+
+function normalizeOutput(outputText: string, intent: SafeIntent): string {
+  if (intent !== 'teacher_lesson_plan') return outputText;
+  const parsed: unknown = JSON.parse(outputText);
+  if (!isRecord(parsed) || !Array.isArray(parsed.sections)) {
+    throw new Error('Invalid lesson plan response.');
+  }
+  const sections = parsed.sections.filter(isRecord);
+  const required = ['Objectives', 'Materials', 'Procedure', 'Assessment'];
+  parsed.sections = required.map((heading) => {
+    const key = heading.toLocaleLowerCase();
+    const matching = sections.find(
+      (section) =>
+        typeof section.heading === 'string' &&
+        section.heading.toLocaleLowerCase().includes(key),
+    );
+    return {
+      heading,
+      body:
+        matching && typeof matching.body === 'string'
+          ? matching.body
+          : `Complete the ${heading.toLocaleLowerCase()} before exporting this lesson plan.`,
+    };
+  });
+  return JSON.stringify(parsed);
 }
 
 function validateRequest(value: unknown): SafeRequest {
@@ -337,6 +371,7 @@ function validateRequest(value: unknown): SafeRequest {
     'teacher_lesson_plan',
     'teacher_class_summary',
     'teacher_author_module',
+    'teacher_author_quiz',
     'teacher_author_reviewer',
   ];
   if (!validIntents.includes(intent as SafeIntent)) {

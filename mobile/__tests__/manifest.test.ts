@@ -65,6 +65,37 @@ describe('curriculum module manifests', () => {
     ).toThrow();
   });
 
+  it('requires standalone teacher quiz packages to contain questions', () => {
+    const base = {
+      packageId: 'quiz-1',
+      version: 1,
+      contentCategory: 'teacherQuiz' as const,
+      title: 'Equivalent fractions check',
+      reviewItems: [],
+      createdBy: 'teacher:one',
+      sharedBy: [],
+      createdAt: '2026-07-29T00:00:00.000Z',
+    };
+    expect(() => studyPackageManifestSchema.parse(base)).toThrow();
+    expect(
+      studyPackageManifestSchema.parse({
+        ...base,
+        quiz: {
+          questions: [
+            {
+              questionId: 'q1',
+              type: 'multiple-choice',
+              prompt: 'Which fraction equals one half?',
+              options: ['2/4', '1/3'],
+              correctAnswer: '2/4',
+              conceptId: 'equivalent-fractions',
+            },
+          ],
+        },
+      }).quiz?.questions,
+    ).toHaveLength(1);
+  });
+
   it('rejects malformed checksums before a package becomes usable', () => {
     expect(() =>
       moduleManifestSchema.parse({
