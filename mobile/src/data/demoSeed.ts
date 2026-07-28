@@ -1,7 +1,7 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 import { getDatabase, resetDatabaseForDevelopment } from './database';
 import { saveStudent } from './repository';
-import type { Subject } from '@/domain/types';
+import type { LearningFormat, Subject } from '@/domain/types';
 
 /**
  * Demo / mock data seeder.
@@ -194,10 +194,15 @@ export async function seedDemoData(): Promise<{ studentNumber: string; pin: stri
     created,
   );
 
-  // Modules, questions, flashcards
+  // Modules, questions, flashcards.
+  // `resetDatabaseForDevelopment()` intentionally does NOT clear the modules /
+  // quiz_questions / flashcards tables (a teacher may have authored their own
+  // modules we must not wipe). So the demo's own rows are written with INSERT
+  // OR REPLACE — re-running the demo overwrites its fixed `demo_*` ids cleanly
+  // instead of colliding on the primary key.
   for (const mod of MODULES) {
     await db.runAsync(
-      `INSERT INTO modules (
+      `INSERT OR REPLACE INTO modules (
         id, title, subject, grade_level, quarter, competency_code, summary,
         content, content_style_tags_json, is_teacher_created, updated_at
       ) VALUES (?, ?, ?, 5, 1, ?, ?, ?, ?, 1, ?)`,
@@ -213,7 +218,7 @@ export async function seedDemoData(): Promise<{ studentNumber: string; pin: stri
     for (let i = 0; i < mod.questions.length; i += 1) {
       const question = mod.questions[i]!;
       await db.runAsync(
-        `INSERT INTO quiz_questions (id, module_id, type, question_text, choices_json, correct_answer, topic_tag)
+        `INSERT OR REPLACE INTO quiz_questions (id, module_id, type, question_text, choices_json, correct_answer, topic_tag)
          VALUES (?, ?, 'MULTIPLE_CHOICE', ?, ?, ?, ?)`,
         `${mod.id}_q${i + 1}`,
         mod.id,
@@ -226,7 +231,7 @@ export async function seedDemoData(): Promise<{ studentNumber: string; pin: stri
     for (let i = 0; i < mod.flashcards.length; i += 1) {
       const [front, back] = mod.flashcards[i]!;
       await db.runAsync(
-        `INSERT INTO flashcards (id, module_id, front, back, learning_style_tag)
+        `INSERT OR REPLACE INTO flashcards (id, module_id, front, back, learning_style_tag)
          VALUES (?, ?, ?, ?, ?)`,
         `${mod.id}_f${i + 1}`,
         mod.id,
@@ -261,59 +266,68 @@ export async function seedDemoData(): Promise<{ studentNumber: string; pin: stri
     );
   }
 
-  // Attempts, responses, progress — a believable history per learner
+  // Attempts, responses, progress — a believable history per learner.
+  // Learners who ended up strong show a two-attempt arc (a weaker first try,
+  // then improvement) so the record book, reports and trend badges have real
+  // history to render; struggling learners have a single recent attempt.
+  const FORMATS = ['visual', 'text', 'audio'] as const;
   for (const learner of LEARNERS) {
     const studentId = idByKey.get(learner.key)!;
     for (let m = 0; m < GRADED_MODULES.length; m += 1) {
       const moduleId = GRADED_MODULES[m]!;
       const mod = MODULES.find((x) => x.id === moduleId)!;
-      const correct = learner.scores[m]!;
+      const finalScore = learner.scores[m]!;
       const total = mod.questions.length;
-      const pct = Math.round((correct / total) * 100);
-      const submittedAt = created - (GRADED_MODULES.length - m) * DAY - m * 3_600_000;
-      const attemptId = `demo_att_${learner.key}_${m}`;
-      const orderedTopics = mod.questions.map((question) => question.topic);
-      const strongTopic = orderedTopics[0] ?? mod.subject;
-      const weakTopic = orderedTopics[total - 1] ?? 'Review';
-      await db.runAsync(
-        `INSERT INTO quiz_attempts (
-          id, student_id, module_id, score, total_items, weak_topic, strong_topic,
-          mastery_level, duration_seconds, attempt_number, submitted_at, source, learning_format_used
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, 'local', 'text')`,
-        attemptId,
-        studentId,
-        moduleId,
-        correct,
-        total,
-        correct < total ? weakTopic : 'Ready for next challenge',
-        strongTopic,
-        masteryFor(pct),
-        120 + m * 30,
-        submittedAt,
-      );
-      for (let i = 0; i < total; i += 1) {
-        const question = mod.questions[i]!;
-        const isCorrect = i < correct;
-        await db.runAsync(
-          `INSERT INTO question_responses (attempt_id, question_id, answer, is_correct, elapsed_ms)
-           VALUES (?, ?, ?, ?, ?)`,
-          attemptId,
-          `${moduleId}_q${i + 1}`,
-          isCorrect ? question.answer : (question.choices.find((c) => c !== question.answer) ?? 'A'),
-          isCorrect ? 1 : 0,
-          8000 + i * 1500,
-        );
+      const format = FORMATS[m % FORMATS.length]!;
+
+      // A retake arc only where there is room to improve.
+      const scores = finalScore >= 3 ? [Math.max(1, finalScore - 2), finalScore] : [finalScore];
+      for (let a = 0; a < scores.length; a += 1) {
+        const isLatest = a === scores.length - 1;
+        // Latest attempt is recent; the earlier try sits ~9–12 days back.
+        const submittedAt = isLatest
+          ? created - (GRADED_MODULES.length - m) * DAY - m * 3_600_000
+          : created - (9 + m) * DAY;
+        await seedAttempt(db, {
+          attemptId: `demo_att_${learner.key}_${m}_${a + 1}`,
+          studentId,
+          moduleId,
+          mod,
+          correct: scores[a]!,
+          total,
+          attemptNumber: a + 1,
+          durationSeconds: 150 - a * 20 + m * 15,
+          format,
+          submittedAt,
+        });
       }
       await db.runAsync(
         `INSERT OR REPLACE INTO progress (student_id, module_id, status, mastery_level, updated_at)
          VALUES (?, ?, 'COMPLETED', ?, ?)`,
         studentId,
         moduleId,
-        masteryFor(pct),
-        submittedAt,
+        masteryFor(Math.round((finalScore / total) * 100)),
+        created - (GRADED_MODULES.length - m) * DAY,
       );
     }
   }
+
+  // Review items (retrieval-practice bank) built from every module's questions
+  // and flashcards. Opening the Review Hub auto-schedules these as due, so the
+  // technique screens have real prompts to drill instead of an empty queue.
+  const reviewItemIds = await seedReviewItems(db);
+
+  // A shared, teacher-authored custom review set drawn from the science bank.
+  await db.runAsync(
+    `INSERT INTO custom_review_sets
+      (set_id, created_by, title, item_ids_json, created_items_json, visibility, created_at)
+     VALUES (?, ?, ?, ?, '[]', 'shared', ?)`,
+    'demo_set_ecosystems',
+    teacherId,
+    'Ecosystem key ideas',
+    JSON.stringify(reviewItemIds.filter((id) => id.startsWith('demo_sci_ecosystems')).slice(0, 4)),
+    created,
+  );
 
   // Learning profile + adaptive format for the demo student (drives the home hero)
   const mariaId = idByKey.get('maria')!;
@@ -335,6 +349,49 @@ export async function seedDemoData(): Promise<{ studentNumber: string; pin: stri
     created,
   );
 
+  // Format history — the signal behind "Pavo recommends visual". Recent visual
+  // work scores highest, so the recommendation the app shows is earned.
+  const formatRuns: Array<[LearningFormat, number, number]> = [
+    ['visual', 92, 1],
+    ['visual', 88, 3],
+    ['text', 74, 5],
+    ['audio', 68, 8],
+    ['kinesthetic', 80, 11],
+  ];
+  for (let i = 0; i < formatRuns.length; i += 1) {
+    const [format, score, daysAgo] = formatRuns[i]!;
+    await db.runAsync(
+      `INSERT INTO format_history (id, student_id, attempted_at, format, completed, score_percentage)
+       VALUES (?, ?, ?, ?, 1, ?)`,
+      `demo_fmt_${i}`,
+      mariaId,
+      created - daysAgo * DAY,
+      format,
+      score,
+    );
+  }
+
+  // A little retrieval-practice history for the demo student, so the review
+  // analytics and streak reflect real activity rather than a cold start.
+  const techniques = ['active-recall', 'retrieval-quiz', 'interleaved', 'blurting'] as const;
+  const historyItems = reviewItemIds.slice(0, 6);
+  for (let i = 0; i < historyItems.length; i += 1) {
+    const recalled = i % 4 !== 0 ? 1 : 0; // mostly recalled, a couple missed
+    await db.runAsync(
+      `INSERT INTO review_events
+        (id, student_id, item_id, quality, recalled, elapsed_seconds, reviewed_at, technique)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      `demo_rev_${i}`,
+      mariaId,
+      historyItems[i]!,
+      recalled ? 4 + (i % 2) : 2,
+      recalled,
+      12 + i * 3,
+      created - (i + 1) * 3_600_000,
+      techniques[i % techniques.length]!,
+    );
+  }
+
   // Upcoming tasks for the demo student
   const issuedAt = new Date(created).toISOString();
   const due = (days: number) => new Date(created + days * DAY).toISOString().slice(0, 10);
@@ -342,6 +399,138 @@ export async function seedDemoData(): Promise<{ studentNumber: string; pin: stri
   await seedTask(db, mariaId, 'quiz', 'demo_math_fractions', due(4), SECTION_NAME, issuedAt);
 
   return { studentNumber: DEMO_STUDENT.studentNumber, pin: DEMO_STUDENT.pin };
+}
+
+/** Insert one graded attempt plus its per-question responses. */
+async function seedAttempt(
+  db: SQLiteDatabase,
+  args: {
+    attemptId: string;
+    studentId: string;
+    moduleId: string;
+    mod: (typeof MODULES)[number];
+    correct: number;
+    total: number;
+    attemptNumber: number;
+    durationSeconds: number;
+    format: LearningFormat;
+    submittedAt: number;
+  },
+): Promise<void> {
+  const { mod, correct, total } = args;
+  const pct = Math.round((correct / total) * 100);
+  const orderedTopics = mod.questions.map((question) => question.topic);
+  const strongTopic = orderedTopics[0] ?? mod.subject;
+  const weakTopic = orderedTopics[total - 1] ?? 'Review';
+  await db.runAsync(
+    `INSERT OR REPLACE INTO quiz_attempts (
+      id, student_id, module_id, score, total_items, weak_topic, strong_topic,
+      mastery_level, duration_seconds, attempt_number, submitted_at, source, learning_format_used
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'local', ?)`,
+    args.attemptId,
+    args.studentId,
+    args.moduleId,
+    correct,
+    total,
+    correct < total ? weakTopic : 'Ready for next challenge',
+    strongTopic,
+    masteryFor(pct),
+    args.durationSeconds,
+    args.attemptNumber,
+    args.submittedAt,
+    args.format,
+  );
+  for (let i = 0; i < total; i += 1) {
+    const question = mod.questions[i]!;
+    const isCorrect = i < correct;
+    await db.runAsync(
+      `INSERT OR REPLACE INTO question_responses (attempt_id, question_id, answer, is_correct, elapsed_ms)
+       VALUES (?, ?, ?, ?, ?)`,
+      args.attemptId,
+      `${args.moduleId}_q${i + 1}`,
+      isCorrect ? question.answer : (question.choices.find((c) => c !== question.answer) ?? 'A'),
+      isCorrect ? 1 : 0,
+      8000 + i * 1500,
+    );
+  }
+}
+
+/**
+ * Seed the retrieval-practice bank from module content. Returns the created
+ * item ids. Written with INSERT OR REPLACE because `review_items` is shared
+ * curriculum data that the dev reset intentionally leaves in place.
+ */
+async function seedReviewItems(db: SQLiteDatabase): Promise<string[]> {
+  const ids: string[] = [];
+  for (const mod of MODULES) {
+    // Flashards → flashcard items.
+    for (let i = 0; i < mod.flashcards.length; i += 1) {
+      const [front, back] = mod.flashcards[i]!;
+      const itemId = `${mod.id}_ri_f${i + 1}`;
+      await upsertReviewItem(db, {
+        itemId,
+        moduleId: mod.id,
+        conceptId: mod.competencyCode,
+        type: 'flashcard',
+        importance: i === 0 ? 'core' : 'supplementary',
+        prompt: front,
+        answer: back,
+        formats: { text: front },
+        tags: mod.tags,
+      });
+      ids.push(itemId);
+    }
+    // Quiz questions → quiz-question items.
+    for (let i = 0; i < mod.questions.length; i += 1) {
+      const question = mod.questions[i]!;
+      const itemId = `${mod.id}_ri_q${i + 1}`;
+      await upsertReviewItem(db, {
+        itemId,
+        moduleId: mod.id,
+        conceptId: question.topic,
+        type: 'quiz-question',
+        importance: i < 2 ? 'core' : i < 4 ? 'supplementary' : 'stretch',
+        prompt: question.q,
+        answer: question.answer,
+        formats: { text: question.q },
+        tags: [question.topic],
+      });
+      ids.push(itemId);
+    }
+  }
+  return ids;
+}
+
+async function upsertReviewItem(
+  db: SQLiteDatabase,
+  item: {
+    itemId: string;
+    moduleId: string;
+    conceptId: string;
+    type: 'flashcard' | 'quiz-question' | 'concept-summary';
+    importance: 'core' | 'supplementary' | 'stretch';
+    prompt: string;
+    answer: string;
+    formats: { text?: string; audio?: string; visual?: string };
+    tags: string[];
+  },
+): Promise<void> {
+  await db.runAsync(
+    `INSERT OR REPLACE INTO review_items
+      (item_id, module_id, module_version, concept_id, type, importance,
+       prompt, answer, formats_json, authored_by, tags_json)
+     VALUES (?, ?, 1, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    item.itemId,
+    item.moduleId,
+    item.conceptId,
+    item.type,
+    item.importance,
+    item.prompt,
+    item.answer,
+    JSON.stringify(item.formats),
+    DEMO_TEACHER.name,
+    JSON.stringify(item.tags),
+  );
 }
 
 async function seedTask(
