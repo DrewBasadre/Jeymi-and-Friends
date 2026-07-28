@@ -3,7 +3,6 @@ package org.wais.nearby
 import android.Manifest
 import android.net.Uri
 import android.os.Build
-import android.os.ParcelFileDescriptor
 import com.google.android.gms.nearby.Nearby
 import com.google.android.gms.nearby.connection.AdvertisingOptions
 import com.google.android.gms.nearby.connection.ConnectionInfo
@@ -27,10 +26,11 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.security.MessageDigest
 import java.util.Locale
+import kotlin.math.max
 
 class WaisNearbyModule : Module() {
   private val serviceId = "org.wais.learninghub"
-  private val strategy = Strategy.P2P_CLUSTER
+  private val strategy = Strategy.P2P_POINT_TO_POINT
   private val peers = linkedMapOf<String, String>()
   private val connectedPeers = mutableSetOf<String>()
   private val pendingConnections = mutableSetOf<String>()
@@ -39,7 +39,7 @@ class WaisNearbyModule : Module() {
   private val successfulIncomingPayloads = mutableSetOf<Long>()
   private val metadataByPayload = mutableMapOf<Long, TransferMetadata>()
   private val metadataPayloads = mutableSetOf<Long>()
-  private val outboundPayloads = mutableMapOf<String, Long>()
+  private val outboundTransfers = mutableMapOf<String, OutboundTransfer>()
 
   private val context
     get() = requireNotNull(appContext.reactContext)
@@ -146,46 +146,45 @@ class WaisNearbyModule : Module() {
       }
       try {
         val source = fileFromUri(fileUri)
-        val descriptor = ParcelFileDescriptor.open(
-          source,
-          ParcelFileDescriptor.MODE_READ_ONLY
-        )
-        val filePayload = Payload.fromFile(descriptor)
+        val filePayload = Payload.fromFile(source).apply {
+          setFileName(safeFileName(JSONObject(metadataJson).optString("displayName", source.name)))
+          setSensitive(true)
+        }
         val transferId = filePayload.id.toString()
         val metadata = JSONObject(metadataJson).apply {
           put("payloadId", filePayload.id)
           put("transferId", transferId)
           put("fileName", safeFileName(optString("displayName", source.name)))
         }
-        outboundPayloads[transferId] = filePayload.id
-        val metadataPayload = Payload.fromBytes(metadata.toString().toByteArray(Charsets.UTF_8))
-        metadataPayloads.add(metadataPayload.id)
-        client.sendPayload(peerId, metadataPayload).addOnSuccessListener {
-          client.sendPayload(peerId, filePayload).addOnSuccessListener {
-              sendTransferUpdate(
-                transferId,
-                "queued",
-                0,
-                source.length(),
-                null
-              )
-              promise.resolve(transferId)
-            }.addOnFailureListener { error ->
-              outboundPayloads.remove(transferId)
-              promise.reject("E_TRANSFER", error.message, error)
-            }
-        }.addOnFailureListener { error ->
-            metadataPayloads.remove(metadataPayload.id)
-            outboundPayloads.remove(transferId)
-            promise.reject("E_TRANSFER", error.message, error)
-          }
+        val transfer = OutboundTransfer(
+          peerId = peerId,
+          metadata = metadata,
+          payload = filePayload,
+          totalBytes = source.length()
+        )
+        outboundTransfers[transferId] = transfer
+        sendOutboundTransfer(transferId, transfer, promise)
       } catch (error: Exception) {
         promise.reject("E_FILE", error.message, error)
       }
     }
 
+    AsyncFunction("retryTransfer") { transferId: String, promise: Promise ->
+      val transfer = outboundTransfers[transferId]
+      if (transfer == null) {
+        promise.reject("E_TRANSFER", "This transfer can no longer be resumed.", null)
+        return@AsyncFunction
+      }
+      if (!connectedPeers.contains(transfer.peerId)) {
+        promise.reject("E_NOT_CONNECTED", "Reconnect to the student device before resuming.", null)
+        return@AsyncFunction
+      }
+      transfer.payload.setOffset(transfer.resumeOffset)
+      sendOutboundTransfer(transferId, transfer, promise)
+    }
+
     AsyncFunction("cancelTransfer") { transferId: String, promise: Promise ->
-      val payloadId = outboundPayloads.remove(transferId) ?: transferId.toLongOrNull()
+      val payloadId = outboundTransfers[transferId]?.payload?.id ?: transferId.toLongOrNull()
       if (payloadId == null) {
         promise.reject("E_TRANSFER", "Unknown transfer ID.", null)
         return@AsyncFunction
@@ -209,7 +208,8 @@ class WaisNearbyModule : Module() {
       successfulIncomingPayloads.clear()
       metadataByPayload.clear()
       metadataPayloads.clear()
-      outboundPayloads.clear()
+      outboundTransfers.values.forEach { it.payload.close() }
+      outboundTransfers.clear()
     }
   }
 
@@ -272,7 +272,11 @@ class WaisNearbyModule : Module() {
           receiveMetadata(payload.asBytes())
         }
         Payload.Type.FILE -> {
-          incomingFiles[payload.id] = payload
+          metadataByPayload[payload.id]?.let { metadata ->
+            if (metadata.resumeOffset > 0) payload.setOffset(metadata.resumeOffset)
+          }
+          val previous = incomingFiles.put(payload.id, payload)
+          if (previous != null && previous !== payload) previous.close()
           incomingEndpoints[payload.id] = endpointId
           finishIncomingIfReady(endpointId, payload.id)
         }
@@ -313,16 +317,23 @@ class WaisNearbyModule : Module() {
           successfulIncomingPayloads.add(update.payloadId)
         }
         finishIncomingIfReady(endpointId, update.payloadId)
-        outboundPayloads.remove(transferId)
+        outboundTransfers.remove(transferId)?.payload?.close()
       } else if (
         update.status == PayloadTransferUpdate.Status.FAILURE ||
         update.status == PayloadTransferUpdate.Status.CANCELED
       ) {
-        incomingFiles.remove(update.payloadId)
-        incomingEndpoints.remove(update.payloadId)
+        // Nearby resumes only when both sides retain the payload and its last offset.
         successfulIncomingPayloads.remove(update.payloadId)
-        metadataByPayload.remove(update.payloadId)
-        outboundPayloads.remove(transferId)
+        incomingFiles[update.payloadId]?.let { payload ->
+          payload.setOffset(max(payload.offset, update.bytesTransferred))
+        }
+        outboundTransfers[transferId]?.let { transfer ->
+          transfer.resumeOffset = max(
+            transfer.resumeOffset,
+            max(transfer.payload.offset, update.bytesTransferred)
+          ).coerceAtMost(transfer.totalBytes)
+          transfer.payload.setOffset(transfer.resumeOffset)
+        }
       }
     }
   }
@@ -336,12 +347,16 @@ class WaisNearbyModule : Module() {
         transferId = objectValue.optString("transferId", payloadId.toString()),
         moduleId = objectValue.optString("moduleId", ""),
         displayName = objectValue.optString("displayName", "WAIS module"),
-        fileName = safeFileName(objectValue.optString("fileName", "wais-module.pdf")),
-        mimeType = objectValue.optString("mimeType", "application/pdf"),
+        fileName = safeFileName(objectValue.optString("fileName", "wais-module.wais-module")),
+        mimeType = objectValue.optString("mimeType", "application/vnd.wais.module+zip"),
         sizeBytes = objectValue.optLong("sizeBytes", 0),
         sha256 = objectValue.optString("sha256", "").lowercase(Locale.US),
-        manifestJson = objectValue.optJSONObject("manifest")?.toString() ?: "{}"
+        manifestJson = objectValue.optJSONObject("manifest")?.toString() ?: "{}",
+        resumeOffset = objectValue.optLong("resumeOffset", 0).coerceAtLeast(0)
       )
+      incomingFiles[payloadId]?.let { payload ->
+        payload.setOffset(max(payload.offset, metadataByPayload[payloadId]?.resumeOffset ?: 0))
+      }
       incomingEndpoints[payloadId]?.let { endpointId ->
         finishIncomingIfReady(endpointId, payloadId)
       }
@@ -364,11 +379,12 @@ class WaisNearbyModule : Module() {
       }
       val actualHash = sha256(target)
       if (metadata.sha256.isNotBlank() && actualHash != metadata.sha256) {
+        val receivedSize = target.length()
         target.delete()
         sendTransferUpdate(
           metadata.transferId,
           "failed",
-          target.length(),
+          receivedSize,
           metadata.sizeBytes,
           "Checksum verification failed."
         )
@@ -438,6 +454,35 @@ class WaisNearbyModule : Module() {
     )
   }
 
+  private fun sendOutboundTransfer(
+    transferId: String,
+    transfer: OutboundTransfer,
+    promise: Promise
+  ) {
+    transfer.metadata.put("resumeOffset", transfer.resumeOffset)
+    val metadataPayload = Payload.fromBytes(
+      transfer.metadata.toString().toByteArray(Charsets.UTF_8)
+    )
+    metadataPayloads.add(metadataPayload.id)
+    client.sendPayload(transfer.peerId, metadataPayload).addOnSuccessListener {
+      client.sendPayload(transfer.peerId, transfer.payload).addOnSuccessListener {
+        sendTransferUpdate(
+          transferId,
+          "queued",
+          transfer.resumeOffset,
+          transfer.totalBytes,
+          null
+        )
+        promise.resolve(transferId)
+      }.addOnFailureListener { error ->
+        promise.reject("E_TRANSFER", error.message, error)
+      }
+    }.addOnFailureListener { error ->
+      metadataPayloads.remove(metadataPayload.id)
+      promise.reject("E_TRANSFER", error.message, error)
+    }
+  }
+
   private fun requiredPermissions(): Array<String> {
     return when {
       Build.VERSION.SDK_INT >= 37 -> arrayOf(
@@ -469,7 +514,7 @@ class WaisNearbyModule : Module() {
     if (uri.scheme == null || uri.scheme == "file") {
       return File(requireNotNull(uri.path) { "File URI has no path." })
     }
-    val target = File.createTempFile("wais-send-", ".pdf", context.cacheDir)
+    val target = File.createTempFile("wais-send-", ".wais-module", context.cacheDir)
     context.contentResolver.openInputStream(uri).use { input ->
       requireNotNull(input) { "Selected file could not be opened." }
       FileOutputStream(target).use { output -> input.copyTo(output) }
@@ -495,21 +540,21 @@ class WaisNearbyModule : Module() {
       .replace(Regex("[^A-Za-z0-9._ -]"), "_")
       .trim()
       .take(100)
-    val withExtension = if (cleaned.lowercase(Locale.US).endsWith(".pdf")) {
+    val withExtension = if (cleaned.lowercase(Locale.US).endsWith(".wais-module")) {
       cleaned
     } else {
-      "$cleaned.pdf"
+      "$cleaned.wais-module"
     }
-    return withExtension.ifBlank { "wais-module.pdf" }
+    return withExtension.ifBlank { "wais-module.wais-module" }
   }
 
   private fun uniqueTarget(directory: File, fileName: String): File {
     val first = File(directory, fileName)
     if (!first.exists()) return first
-    val stem = fileName.removeSuffix(".pdf")
+    val stem = fileName.removeSuffix(".wais-module")
     var suffix = 2
     while (true) {
-      val candidate = File(directory, "$stem-$suffix.pdf")
+      val candidate = File(directory, "$stem-$suffix.wais-module")
       if (!candidate.exists()) return candidate
       suffix += 1
     }
@@ -524,5 +569,14 @@ private data class TransferMetadata(
   val mimeType: String,
   val sizeBytes: Long,
   val sha256: String,
-  val manifestJson: String
+  val manifestJson: String,
+  val resumeOffset: Long
+)
+
+private data class OutboundTransfer(
+  val peerId: String,
+  val metadata: JSONObject,
+  val payload: Payload,
+  val totalBytes: Long,
+  var resumeOffset: Long = 0
 )

@@ -1,4 +1,4 @@
-import { type ComponentProps, useState } from 'react';
+import { type ComponentProps, useEffect, useState } from 'react';
 import {
   Alert,
   Pressable,
@@ -18,16 +18,15 @@ import {
   UsersRound,
 } from 'lucide-react-native';
 import { Card, PrimaryButton, Screen, ScreenHeader, SectionTitle } from '@/components/ui';
-import { getStudent, saveLearningProfile } from '@/data/repository';
+import {
+  getTeacherProfile,
+  saveLearningProfile,
+  saveTeacherProfile,
+} from '@/data/repository';
 import { LEARNING_ASSESSMENT } from '@/domain/assessment';
 import { deriveLearningProfile } from '@/domain/learning';
 import type { LearningAssessmentAnswer } from '@/domain/types';
 import type { RootStackParamList } from '@/navigation/types';
-import {
-  setupGradeDataset,
-  type DatasetSetupResult,
-} from '@/services/contentSync';
-import { signInTeacher } from '@/services/teacherAuth';
 import { useSessionStore } from '@/store/session';
 import { colors, radius, spacing } from '@/theme/tokens';
 
@@ -149,6 +148,7 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
   const [studentNumber, setStudentNumber] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [gradeLevel, setGradeLevel] = useState('');
   const [section, setSection] = useState('');
   const [pin, setPin] = useState('');
   const [saving, setSaving] = useState(false);
@@ -161,7 +161,7 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
         firstName,
         lastName,
         middleInitial: '',
-        gradeLevel: 5,
+        gradeLevel: Number(gradeLevel),
         section,
         birthday: '',
         pin,
@@ -174,7 +174,17 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
     }
   }
 
-  const complete = studentNumber.trim() && firstName.trim() && lastName.trim() && section.trim() && pin.length >= 4;
+  const parsedGrade = Number(gradeLevel);
+  const complete = Boolean(
+    studentNumber.trim() &&
+      firstName.trim() &&
+      lastName.trim() &&
+      Number.isInteger(parsedGrade) &&
+      parsedGrade >= 1 &&
+      parsedGrade <= 12 &&
+      section.trim() &&
+      pin.length >= 4,
+  );
   return (
     <Screen>
       <ScreenHeader
@@ -186,7 +196,14 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
         <Field label="Student number" value={studentNumber} onChangeText={setStudentNumber} placeholder="2026-001" />
         <Field label="First name" value={firstName} onChangeText={setFirstName} placeholder="First name" />
         <Field label="Last name" value={lastName} onChangeText={setLastName} placeholder="Last name" />
-        <Field label="Grade and section" value={section} onChangeText={setSection} placeholder="5 - Mabini" />
+        <Field
+          label="Grade level"
+          value={gradeLevel}
+          onChangeText={setGradeLevel}
+          keyboardType="number-pad"
+          placeholder="1 to 12"
+        />
+        <Field label="Section" value={section} onChangeText={setSection} placeholder="Mabini" />
         <Field
           label="Create a PIN"
           value={pin}
@@ -205,7 +222,6 @@ export function LearningAssessmentScreen({ navigation, route }: Props<'LearningA
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<LearningAssessmentAnswer[]>([]);
   const [guardianAcknowledged, setGuardianAcknowledged] = useState(false);
-  const [dataset, setDataset] = useState<DatasetSetupResult | null>(null);
   const [saving, setSaving] = useState(false);
   const question = LEARNING_ASSESSMENT[step];
 
@@ -220,9 +236,8 @@ export function LearningAssessmentScreen({ navigation, route }: Props<'LearningA
             WAIS will use your answers to order helpful formats first. This is not an intelligence test, and you can change it later.
           </Text>
           <Text style={styles.body}>
-            {dataset?.source === 'cloud'
-              ? `${dataset.availableModules} grade-level modules are ready, including ${dataset.downloadedPackages} offline PDF package(s).`
-              : 'The bundled Grade 5 lessons are ready. Cloud modules can download later when this device is online.'}
+            Your lesson library starts empty. Ask your teacher to send your first
+            module from their Android device.
           </Text>
           <PrimaryButton label="Open my learning hub" onPress={() => navigation.replace('StudentTabs')} />
         </Card>
@@ -243,14 +258,6 @@ export function LearningAssessmentScreen({ navigation, route }: Props<'LearningA
       );
       try {
         await saveLearningProfile(profile);
-        const student = await getStudent(route.params.studentId);
-        setDataset(
-          await setupGradeDataset(
-            route.params.studentId,
-            student?.gradeLevel ?? 5,
-            profile.primaryStyle,
-          ),
-        );
       } finally {
         setSaving(false);
       }
@@ -302,22 +309,44 @@ export function LearningAssessmentScreen({ navigation, route }: Props<'LearningA
 }
 
 export function TeacherLoginScreen({ navigation }: Props<'TeacherLogin'>) {
-  const [teacherNumber, setTeacherNumber] = useState('T-1001');
-  const [password, setPassword] = useState('');
+  const [facultyId, setFacultyId] = useState('');
+  const [name, setName] = useState('');
+  const [age, setAge] = useState('');
+  const [existingTeacherId, setExistingTeacherId] = useState<string | null>(null);
+  const [existingId, setExistingId] = useState<string | null>(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    void getTeacherProfile().then((profile) => {
+      if (!profile) return;
+      setExistingTeacherId(profile.teacherId);
+      setExistingId(profile.facultyId);
+      setFacultyId(profile.facultyId);
+      setName(profile.name);
+      setAge(String(profile.age));
+    });
+  }, []);
 
   async function submit() {
     setLoading(true);
     setError('');
     try {
-      await signInTeacher(teacherNumber, password);
+      if (existingId && facultyId.trim() !== existingId) {
+        throw new Error('This device is registered to a different faculty ID.');
+      }
+      await saveTeacherProfile({
+        teacherId: existingTeacherId ?? undefined,
+        name,
+        age: Number(age),
+        facultyId,
+      });
       navigation.replace('TeacherTabs');
     } catch (caught) {
       setError(
         caught instanceof Error
           ? caught.message
-          : 'The teacher credentials are incorrect.',
+          : 'The local teacher profile could not be opened.',
       );
     } finally {
       setLoading(false);
@@ -326,22 +355,36 @@ export function TeacherLoginScreen({ navigation }: Props<'TeacherLogin'>) {
 
   return (
     <Screen>
-      <ScreenHeader title="Teacher sign in" subtitle="Classroom tools work without internet." onBack={navigation.goBack} />
+      <ScreenHeader
+        title={existingId ? 'Teacher profile' : 'Create teacher profile'}
+        subtitle="This account stays only on this Android device."
+        onBack={navigation.goBack}
+      />
       <Card>
         <Field
-          label="Teacher number or email"
-          value={teacherNumber}
-          onChangeText={setTeacherNumber}
+          label="Faculty ID"
+          value={facultyId}
+          onChangeText={setFacultyId}
           autoCapitalize="none"
-          keyboardType="email-address"
         />
-        <Field label="Password" value={password} onChangeText={setPassword} secureTextEntry />
+        <Field label="Name" value={name} onChangeText={setName} />
+        <Field
+          label="Age"
+          value={age}
+          onChangeText={setAge}
+          keyboardType="number-pad"
+        />
         {error ? <Text style={styles.error}>{error}</Text> : null}
         <PrimaryButton
           label="Open teacher workspace"
           icon={UsersRound}
           loading={loading}
-          disabled={!teacherNumber.trim() || !password}
+          disabled={
+            !facultyId.trim() ||
+            !name.trim() ||
+            !Number.isInteger(Number(age)) ||
+            Number(age) < 18
+          }
           onPress={() => void submit()}
         />
       </Card>

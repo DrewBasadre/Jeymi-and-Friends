@@ -1,113 +1,47 @@
 import { z } from 'zod';
 import type {
+  AssignmentTask,
   LearningFormat,
-  LearningStyle,
-  QuestionResponse,
   QuizAttempt,
   QuizQuestion,
   Student,
 } from './types';
+import { formatSectionLabel } from './section';
 
-const payloadType = <T extends string>(value: T) => z.literal(value).default(value);
-
-export const legacyStudentProfileSchema = z.object({
-  payloadType: payloadType('student_profile'),
-  studentId: z.string().default(''),
-  studentNumber: z.string(),
-  firstName: z.string(),
-  lastName: z.string(),
-  middleInitial: z.string().default(''),
-  gradeLevel: z.number().int(),
-  section: z.string(),
-  birthday: z.string().default(''),
+const isoDateTime = z.string().refine((value) => Number.isFinite(Date.parse(value)), {
+  message: 'Expected an ISO-8601 date and time.',
 });
 
-export const legacyQuizResultSchema = z.object({
-  payloadType: payloadType('quiz_result'),
-  attemptId: z.string(),
-  studentId: z.string(),
-  studentNumber: z.string(),
-  firstName: z.string(),
-  lastName: z.string(),
-  middleInitial: z.string().default(''),
-  displayName: z.string(),
-  gradeLevel: z.number().int(),
-  section: z.string(),
-  moduleId: z.string(),
-  moduleTitle: z.string(),
-  subject: z.string(),
-  competencyCode: z.string(),
-  score: z.number().int(),
-  totalItems: z.number().int(),
-  weakTopic: z.string(),
-  strongTopic: z.string().default(''),
-  masteryLevel: z.string().default('DEVELOPING'),
-  durationSeconds: z.number().default(0),
-  attemptNumber: z.number().int().default(1),
-  submittedAt: z.number(),
+export const profileQrSchema = z.object({
+  schemaVersion: z.literal('1.0'),
+  qrType: z.literal('profile'),
+  studentId: z.string().min(1).max(160),
+  name: z.string().min(1).max(200),
+  studentNumber: z.string().min(1).max(80),
+  section: z.string().min(1).max(160),
+  currentLearningFormat: z.enum(['text', 'audio', 'visual', 'kinesthetic']),
 });
 
-export const legacyQuizAttemptSchema = z.object({
-  attemptId: z.string(),
-  moduleId: z.string(),
-  score: z.number().int(),
-  totalItems: z.number().int(),
-  weakTopic: z.string(),
-  strongTopic: z.string().default(''),
-  masteryLevel: z.string().default('DEVELOPING'),
-  durationSeconds: z.number().default(0),
-  attemptNumber: z.number().int().default(1),
-  submittedAt: z.number(),
-});
-
-export const legacyProgressExportSchema = z.object({
-  payloadType: payloadType('progress_export'),
-  studentId: z.string(),
-  displayName: z.string(),
-  gradeLevel: z.number().int(),
-  section: z.string(),
-  schoolYear: z.string(),
-  quizAttempts: z.array(legacyQuizAttemptSchema),
-  completedModules: z.array(z.string()),
-  weakTopics: z.array(z.string()),
-  gradeCompletionPercent: z.number().int(),
-});
-
-export const legacyTeacherQuestionSchema = z.object({
-  id: z.string(),
-  type: z.string(),
-  questionText: z.string(),
-  choices: z.array(z.string()).default([]),
-  correctAnswer: z.string(),
-  topicTag: z.string(),
-});
-
-export const legacyTeacherModuleSchema = z.object({
-  payloadType: payloadType('teacher_module'),
-  moduleId: z.string(),
-  title: z.string(),
-  subject: z.string(),
-  gradeLevel: z.number().int(),
-  quarter: z.number().int(),
-  moduleNumber: z.number().int().default(0),
-  competencyCode: z.string(),
-  content: z.string(),
-  questions: z.array(legacyTeacherQuestionSchema).default([]),
-});
-
-const responseSchema = z.object({
-  questionId: z.string(),
-  isCorrect: z.boolean(),
-  elapsedMs: z.number().int().nonnegative(),
-});
-
-export const quizReportV2Schema = z.object({
-  schemaVersion: z.literal(2),
-  payloadType: z.literal('quiz_result'),
-  report: legacyQuizResultSchema.omit({ payloadType: true }).extend({
-    learningStyleTag: z.enum(['visual', 'auditory', 'reading', 'kinesthetic', 'balanced']),
-    responses: z.array(responseSchema),
+export const assignmentTaskSchema = z.discriminatedUnion('type', [
+  z.object({
+    type: z.literal('module'),
+    moduleId: z.string().min(1).max(160),
+    dueDate: z.string().date(),
   }),
+  z.object({
+    type: z.literal('quiz'),
+    quizId: z.string().min(1).max(160),
+    dueDate: z.string().date(),
+  }),
+]);
+
+export const assignmentQrSchema = z.object({
+  schemaVersion: z.literal('1.0'),
+  qrType: z.literal('assignment'),
+  issuedBy: z.string().min(1).max(160),
+  issuedAt: isoDateTime,
+  classSection: z.string().min(1).max(160),
+  tasks: z.array(assignmentTaskSchema).min(1).max(40),
 });
 
 const questionTimingSchema = z.object({
@@ -122,17 +56,15 @@ const missedQuestionSchema = z.object({
   timeSeconds: z.number().int().nonnegative(),
 });
 
-export const quizReportSchema = z
-  .object({
+const quizReportObjectSchema = z.object({
     schemaVersion: z.literal('1.0'),
+    qrType: z.literal('quizReport'),
     reportId: z.string().uuid(),
     studentId: z.string().min(1).max(160),
     moduleId: z.string().min(1).max(160),
     quizId: z.string().min(1).max(160),
     attemptNumber: z.number().int().positive(),
-    completedAt: z.string().refine((value) => Number.isFinite(Date.parse(value)), {
-      message: 'completedAt must be an ISO-8601 date.',
-    }),
+    completedAt: isoDateTime,
     learningFormatUsed: z.enum(['text', 'audio', 'visual', 'kinesthetic']),
     score: z.object({
       correct: z.number().int().nonnegative(),
@@ -141,11 +73,16 @@ export const quizReportSchema = z
     }),
     timing: z.object({
       totalTimeSeconds: z.number().int().nonnegative(),
-      perQuestion: z.array(questionTimingSchema),
+      perQuestion: z.array(questionTimingSchema).min(1),
     }),
     missedQuestions: z.array(missedQuestionSchema),
-  })
-  .superRefine((report, context) => {
+  });
+
+function validateQuizReport(
+  report: z.infer<typeof quizReportObjectSchema>,
+  context: z.RefinementCtx,
+  requireAllTiming: boolean,
+): void {
     if (report.score.correct > report.score.total) {
       context.addIssue({
         code: 'custom',
@@ -169,6 +106,13 @@ export const quizReportSchema = z
         message: 'Question timing entries must be unique.',
       });
     }
+    if (requireAllTiming && timingIds.length !== report.score.total) {
+      context.addIssue({
+        code: 'custom',
+        path: ['timing', 'perQuestion'],
+        message: 'Timing must be captured for every quiz question.',
+      });
+    }
     for (const miss of report.missedQuestions) {
       if (!timingIds.includes(miss.questionId)) {
         context.addIssue({
@@ -178,103 +122,105 @@ export const quizReportSchema = z
         });
       }
     }
-  });
+}
+
+export const quizReportSchema = quizReportObjectSchema.superRefine(
+  (report, context) => validateQuizReport(report, context, true),
+);
+
+const quizReportFragmentSchema = quizReportObjectSchema.superRefine(
+  (report, context) => validateQuizReport(report, context, false),
+);
 
 export const quizReportPartSchema = z.object({
   schemaVersion: z.literal('1.0'),
+  qrType: z.literal('quizReport'),
   reportId: z.string().uuid(),
   part: z.number().int().positive(),
   totalParts: z.number().int().positive(),
-  report: quizReportSchema,
+  report: quizReportFragmentSchema,
 });
 
-export type LegacyStudentProfile = z.infer<typeof legacyStudentProfileSchema>;
-export type LegacyQuizResult = z.infer<typeof legacyQuizResultSchema>;
-export type LegacyProgressExport = z.infer<typeof legacyProgressExportSchema>;
-export type LegacyTeacherModule = z.infer<typeof legacyTeacherModuleSchema>;
-export type QuizReportV2 = z.infer<typeof quizReportV2Schema>;
+export type ProfileQr = z.infer<typeof profileQrSchema>;
+export type AssignmentQr = z.infer<typeof assignmentQrSchema>;
 export type QuizReport = z.infer<typeof quizReportSchema>;
 export type QuizReportPart = z.infer<typeof quizReportPartSchema>;
 
 export type DecodedQrPayload =
-  | { kind: 'student_profile'; version: 1; data: LegacyStudentProfile }
-  | { kind: 'quiz_result'; version: 1; data: LegacyQuizResult }
-  | { kind: 'quiz_result'; version: 2; data: QuizReportV2 }
-  | { kind: 'quiz_report'; version: '1.0'; data: QuizReport | QuizReportPart }
-  | { kind: 'progress_export'; version: 1; data: LegacyProgressExport }
-  | { kind: 'teacher_module'; version: 1; data: LegacyTeacherModule };
-
-function unwrapJson(raw: string): unknown {
-  let current: unknown = raw.trim();
-  for (let depth = 0; depth < 4; depth += 1) {
-    if (typeof current === 'string') {
-      current = JSON.parse(current);
-      continue;
-    }
-    if (current && typeof current === 'object' && !Array.isArray(current)) {
-      const record = current as Record<string, unknown>;
-      const isPayloadObject =
-        typeof record.payloadType === 'string' ||
-        typeof record.schemaVersion === 'number';
-      const wrapped =
-        record.payload ??
-        record.data ??
-        record.json ??
-        (!isPayloadObject && Object.keys(record).length <= 2
-          ? record.content
-          : undefined);
-      if (typeof wrapped === 'string') {
-        current = wrapped;
-        continue;
-      }
-    }
-    break;
-  }
-  return current;
-}
+  | { kind: 'profile'; data: ProfileQr }
+  | { kind: 'assignment'; data: AssignmentQr }
+  | { kind: 'quizReport'; data: QuizReport | QuizReportPart };
 
 export function decodeQrPayload(raw: string): DecodedQrPayload {
-  const value = unwrapJson(raw);
+  let value: unknown;
+  try {
+    value = JSON.parse(raw.trim());
+  } catch {
+    throw new Error('QR payload must be valid JSON.');
+  }
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
     throw new Error('QR payload must be a JSON object.');
   }
   const object = value as Record<string, unknown>;
-  if (object.schemaVersion === '1.0') {
-    if ('part' in object || 'report' in object) {
-      return {
-        kind: 'quiz_report',
-        version: '1.0',
-        data: quizReportPartSchema.parse(object),
-      };
-    }
-    return {
-      kind: 'quiz_report',
-      version: '1.0',
-      data: quizReportSchema.parse(object),
-    };
+  if (object.schemaVersion !== '1.0') {
+    throw new Error('Unsupported WAIS QR schema version.');
   }
-  if (object.schemaVersion === 2) {
-    return { kind: 'quiz_result', version: 2, data: quizReportV2Schema.parse(object) };
+  if (object.qrType === 'profile') {
+    return { kind: 'profile', data: profileQrSchema.parse(object) };
   }
+  if (object.qrType === 'assignment') {
+    return { kind: 'assignment', data: assignmentQrSchema.parse(object) };
+  }
+  if (object.qrType === 'quizReport') {
+    const data =
+      'part' in object
+        ? quizReportPartSchema.parse(object)
+        : quizReportSchema.parse(object);
+    return { kind: 'quizReport', data };
+  }
+  throw new Error('Unsupported WAIS QR type.');
+}
 
-  const type = typeof object.payloadType === 'string' ? object.payloadType : '';
-  if (type === 'student_profile') {
-    return { kind: type, version: 1, data: legacyStudentProfileSchema.parse(object) };
-  }
-  if (type === 'quiz_result') {
-    return { kind: type, version: 1, data: legacyQuizResultSchema.parse(object) };
-  }
-  if (type === 'teacher_module') {
-    return { kind: type, version: 1, data: legacyTeacherModuleSchema.parse(object) };
-  }
-  if (type === 'progress_export' || type === '') {
-    return {
-      kind: 'progress_export',
-      version: 1,
-      data: legacyProgressExportSchema.parse({ ...object, payloadType: 'progress_export' }),
-    };
-  }
-  throw new Error(`Unsupported WAIS QR payload type: ${type}`);
+export function encodeProfileQr(args: {
+  student: Student;
+  currentLearningFormat: LearningFormat;
+}): string {
+  return JSON.stringify(
+    profileQrSchema.parse({
+      schemaVersion: '1.0',
+      qrType: 'profile',
+      studentId: args.student.id,
+      name: args.student.displayName,
+      studentNumber: args.student.studentNumber,
+      section: formatSectionLabel(
+        args.student.gradeLevel,
+        args.student.section,
+      ),
+      currentLearningFormat: args.currentLearningFormat,
+    }),
+  );
+}
+
+export function encodeAssignmentQr(args: {
+  teacherId: string;
+  classSection: string;
+  tasks: AssignmentTask[];
+  issuedAt?: string;
+}): string {
+  return JSON.stringify(
+    assignmentQrSchema.parse({
+      schemaVersion: '1.0',
+      qrType: 'assignment',
+      issuedBy: args.teacherId,
+      issuedAt: args.issuedAt ?? new Date().toISOString(),
+      classSection: args.classSection,
+      tasks: args.tasks.map((task) =>
+        task.type === 'module'
+          ? { type: task.type, moduleId: task.moduleId, dueDate: task.dueDate }
+          : { type: task.type, quizId: task.quizId, dueDate: task.dueDate },
+      ),
+    }),
+  );
 }
 
 export function encodeQuizReportParts(args: {
@@ -288,28 +234,16 @@ export function encodeQuizReportParts(args: {
   const maxPayloadCharacters = args.maxPayloadCharacters ?? 1_800;
   const questionById = new Map(args.questions.map((question) => [question.id, question]));
   const reportId = reportIdForAttempt(args.attempt.id);
-  const timing = args.attempt.responses.map((response) => ({
-    questionId: response.questionId,
-    timeSeconds: Math.max(0, Math.round(response.elapsedMs / 1_000)),
-  }));
-  const missedQuestions = args.attempt.responses
-    .filter((response) => !response.isCorrect)
-    .map((response) => ({
-      questionId: response.questionId,
-      chosenAnswer: response.answer,
-      correctAnswer: questionById.get(response.questionId)?.correctAnswer ?? '',
-      timeSeconds: Math.max(0, Math.round(response.elapsedMs / 1_000)),
-    }));
   const report: QuizReport = quizReportSchema.parse({
     schemaVersion: '1.0',
+    qrType: 'quizReport',
     reportId,
     studentId: args.student.id,
     moduleId: args.module.id,
     quizId: `${args.module.id}-quiz1`,
     attemptNumber: args.attempt.attemptNumber,
     completedAt: new Date(args.attempt.submittedAt).toISOString(),
-    learningFormatUsed:
-      args.learningFormatUsed ?? args.attempt.learningFormatUsed,
+    learningFormatUsed: args.learningFormatUsed ?? args.attempt.learningFormatUsed,
     score: {
       correct: args.attempt.score,
       total: args.attempt.totalItems,
@@ -319,18 +253,28 @@ export function encodeQuizReportParts(args: {
     },
     timing: {
       totalTimeSeconds: args.attempt.durationSeconds,
-      perQuestion: timing,
+      perQuestion: args.attempt.responses.map((response) => ({
+        questionId: response.questionId,
+        timeSeconds: Math.max(0, Math.round(response.elapsedMs / 1_000)),
+      })),
     },
-    missedQuestions,
+    missedQuestions: args.attempt.responses
+      .filter((response) => !response.isCorrect)
+      .map((response) => ({
+        questionId: response.questionId,
+        chosenAnswer: response.answer,
+        correctAnswer: questionById.get(response.questionId)?.correctAnswer ?? '',
+        timeSeconds: Math.max(0, Math.round(response.elapsedMs / 1_000)),
+      })),
   });
 
   const fullPayload = JSON.stringify(report);
   if (fullPayload.length <= maxPayloadCharacters) return [fullPayload];
 
-  const units = report.timing.perQuestion.map((timingItem) => ({
-    timing: timingItem,
+  const units = report.timing.perQuestion.map((timing) => ({
+    timing,
     missed: report.missedQuestions.find(
-      (item) => item.questionId === timingItem.questionId,
+      (item) => item.questionId === timing.questionId,
     ),
   }));
   const groups: typeof units[] = [];
@@ -340,6 +284,7 @@ export function encodeQuizReportParts(args: {
     const candidateReport = reportWithUnits(report, candidate);
     const estimated = JSON.stringify({
       schemaVersion: '1.0',
+      qrType: 'quizReport',
       reportId,
       part: 99,
       totalParts: 99,
@@ -358,6 +303,7 @@ export function encodeQuizReportParts(args: {
     JSON.stringify(
       quizReportPartSchema.parse({
         schemaVersion: '1.0',
+        qrType: 'quizReport',
         reportId,
         part: index + 1,
         totalParts: groups.length,
@@ -406,53 +352,6 @@ export function mergeQuizReportParts(parts: QuizReportPart[]): QuizReport {
   });
 }
 
-export function encodeQuizReportV2(args: {
-  student: Student;
-  module: { id: string; title: string; subject: string; competencyCode: string };
-  attempt: QuizAttempt;
-  learningStyleTag: LearningStyle;
-}): string {
-  const { student, module, attempt, learningStyleTag } = args;
-  const payload: QuizReportV2 = {
-    schemaVersion: 2,
-    payloadType: 'quiz_result',
-    report: {
-      attemptId: attempt.id,
-      studentId: student.id,
-      studentNumber: student.studentNumber,
-      firstName: student.firstName,
-      lastName: student.lastName,
-      middleInitial: student.middleInitial,
-      displayName: student.displayName,
-      gradeLevel: student.gradeLevel,
-      section: student.section,
-      moduleId: module.id,
-      moduleTitle: module.title,
-      subject: module.subject,
-      competencyCode: module.competencyCode,
-      score: attempt.score,
-      totalItems: attempt.totalItems,
-      weakTopic: attempt.weakTopic,
-      strongTopic: attempt.strongTopic,
-      masteryLevel: attempt.masteryLevel,
-      durationSeconds: attempt.durationSeconds,
-      attemptNumber: attempt.attemptNumber,
-      submittedAt: attempt.submittedAt,
-      learningStyleTag,
-      responses: attempt.responses.map(minimizeResponse),
-    },
-  };
-  return JSON.stringify(quizReportV2Schema.parse(payload));
-}
-
-function minimizeResponse(response: QuestionResponse) {
-  return {
-    questionId: response.questionId,
-    isCorrect: response.isCorrect,
-    elapsedMs: response.elapsedMs,
-  };
-}
-
 function reportWithUnits(
   report: QuizReport,
   units: Array<{
@@ -460,16 +359,14 @@ function reportWithUnits(
     missed: QuizReport['missedQuestions'][number] | undefined;
   }>,
 ): QuizReport {
-  return quizReportSchema.parse({
+  return {
     ...report,
     timing: {
       ...report.timing,
       perQuestion: units.map((unit) => unit.timing),
     },
-    missedQuestions: units.flatMap((unit) =>
-      unit.missed ? [unit.missed] : [],
-    ),
-  });
+    missedQuestions: units.flatMap((unit) => (unit.missed ? [unit.missed] : [])),
+  };
 }
 
 function reportIdForAttempt(attemptId: string): string {

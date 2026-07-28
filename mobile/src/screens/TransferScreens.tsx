@@ -96,7 +96,7 @@ export function ReceiveTransferScreen({ navigation }: Props) {
     <Screen>
       <ScreenHeader
         title="Receive a module"
-        subtitle="Keep this screen open while your teacher sends the PDF."
+        subtitle="Keep this screen open while the Markdown package arrives."
         onBack={navigation.goBack}
       />
       <Card accent={available ? colors.emerald : colors.amber}>

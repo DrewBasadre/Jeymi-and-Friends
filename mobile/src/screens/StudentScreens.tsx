@@ -5,7 +5,6 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
-  Switch,
   Text,
   TextInput,
   View,
@@ -14,13 +13,11 @@ import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type { CompositeScreenProps } from '@react-navigation/native';
 import { useFocusEffect } from '@react-navigation/native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useAudioPlayer } from 'expo-audio';
 import {
   BookOpen,
   Brain,
   CircleStop,
   Clock3,
-  CloudUpload,
   Download,
   LogOut,
   Play,
@@ -28,12 +25,15 @@ import {
   RefreshCw,
   ChevronLeft,
   ChevronRight,
+  CheckCircle2,
   Settings2,
-  Sparkles,
   Volume2,
 } from 'lucide-react-native';
 import QRCode from 'react-native-qrcode-svg';
-import Pdf from 'react-native-pdf';
+import {
+  markdownToPlainText,
+  ModuleMarkdown,
+} from '@/components/ModuleMarkdown';
 import {
   Card,
   Chip,
@@ -50,13 +50,12 @@ import {
   getDueFlashcards,
   getLearningProfile,
   getModule,
-  getPrivacyConsent,
   getQuestions,
   getStudentDashboard,
+  listStudentTasks,
   listModules,
   markLessonRead,
   reviewFlashcard,
-  savePrivacyConsent,
   submitQuiz,
 } from '@/data/repository';
 import {
@@ -64,7 +63,14 @@ import {
   getEffectiveLearningFormat,
   setLearningFormatOverride,
 } from '@/data/mvpRepository';
-import { encodeQuizReportParts } from '@/domain/qr';
+import { encodeProfileQr, encodeQuizReportParts } from '@/domain/qr';
+import { formatSectionLabel } from '@/domain/section';
+import {
+  createInlineRecallForTerm,
+  createInlineRecallFromSelection,
+  isInlineRecallAnswerCorrect,
+  type InlineRecallActivity,
+} from '@/domain/inlineRecall';
 import type {
   AdaptiveFormatProfile,
   DueFlashcard,
@@ -76,17 +82,13 @@ import type {
   QuizAttempt,
   QuizQuestion,
   StudentDashboard,
+  StudentTask,
   Subject,
 } from '@/domain/types';
 import type {
   RootStackParamList,
   StudentTabParamList,
 } from '@/navigation/types';
-import {
-  connectStudentCloudAccount,
-  syncStudentData,
-} from '@/services/cloudSync';
-import { generateCloudVoice } from '@/services/cloudVoice';
 import { readModuleAloud, stopReading } from '@/services/speech';
 import { useSessionStore } from '@/store/session';
 import { colors, radius, spacing, subjectColor } from '@/theme/tokens';
@@ -107,17 +109,20 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
   const [dashboard, setDashboard] = useState<StudentDashboard | null>(null);
   const [profile, setProfile] = useState<LearningProfile | null>(null);
   const [adaptive, setAdaptive] = useState<AdaptiveFormatProfile | null>(null);
+  const [tasks, setTasks] = useState<StudentTask[]>([]);
 
   const load = useCallback(async () => {
     if (!student) return;
-    const [nextDashboard, nextProfile, nextAdaptive] = await Promise.all([
+    const [nextDashboard, nextProfile, nextAdaptive, nextTasks] = await Promise.all([
       getStudentDashboard(student.id),
       getLearningProfile(student.id),
       getAdaptiveFormatProfile(student.id),
+      listStudentTasks(student.id),
     ]);
     setDashboard(nextDashboard);
     setProfile(nextProfile);
     setAdaptive(nextAdaptive);
+    setTasks(nextTasks);
   }, [student]);
 
   useFocusEffect(useCallback(() => void load(), [load]));
@@ -127,7 +132,7 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
     <Screen>
       <ScreenHeader
         title={`Hi, ${student.firstName}`}
-        subtitle={`Grade ${student.gradeLevel} - ${student.section}`}
+        subtitle={formatSectionLabel(student.gradeLevel, student.section)}
         action={<Chip label={mode === 'lightweight' ? 'Offline light' : 'Full mode'} color={colors.emerald} selected />}
       />
       <Card accent={colors.indigo}>
@@ -155,6 +160,26 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
         <Metric label="Cards due" value={dashboard?.dueFlashcards ?? 0} tint={colors.amberTint} />
         <Metric label="Quiz attempts" value={dashboard?.totalAttempts ?? 0} tint={colors.coralTint} />
       </View>
+      <Card>
+        <SectionTitle>Deadlines</SectionTitle>
+        {tasks.filter((task) => !task.completedAt).length === 0 ? (
+          <Text style={styles.body}>
+            Scan an assignment QR from your teacher to add tasks here.
+          </Text>
+        ) : (
+          tasks
+            .filter((task) => !task.completedAt)
+            .slice(0, 5)
+            .map((task) => (
+              <View key={task.taskId} style={styles.profileLine}>
+                <Text style={styles.focusValue}>{task.targetId}</Text>
+                <Text style={styles.focusLabel}>
+                  {task.type === 'module' ? 'Module' : 'Quiz'} due {task.dueDate}
+                </Text>
+              </View>
+            ))
+        )}
+      </Card>
       <Card>
         <SectionTitle>Today’s focus</SectionTitle>
         <Text style={styles.focusLabel}>Practice next</Text>
@@ -226,7 +251,12 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
             </Card>
           </Pressable>
         )}
-        ListEmptyComponent={<EmptyState title="No modules here" body="Choose another subject or import a teacher module." />}
+        ListEmptyComponent={
+          <EmptyState
+            title="Waiting for your first lesson"
+            body="Ask your teacher to send a module from their Android device."
+          />
+        }
       />
     </Screen>
   );
@@ -234,20 +264,20 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
 
 export function ModuleReaderScreen({ navigation, route }: StackProps<'ModuleReader'>) {
   const student = useSessionStore((state) => state.student);
-  const canUseOnline = useSessionStore((state) => state.canUseOnlineEnhancements);
   const [module, setModule] = useState<LearningModule | null>(null);
   const [reading, setReading] = useState(false);
-  const [cloudVoiceLoading, setCloudVoiceLoading] = useState(false);
-  const [cloudVoiceAllowed, setCloudVoiceAllowed] = useState(false);
-  const cloudVoicePlayer = useAudioPlayer(null);
+  const [recallActivity, setRecallActivity] =
+    useState<InlineRecallActivity | null>(null);
+  const [recallAnswer, setRecallAnswer] = useState('');
+  const [recallResult, setRecallResult] =
+    useState<'correct' | 'retry' | null>(null);
+  const plainText = useMemo(
+    () => (module ? markdownToPlainText(module.content) : ''),
+    [module],
+  );
 
   useEffect(() => {
     void getModule(route.params.moduleId).then(setModule);
-    if (student) {
-      void getPrivacyConsent(student.id).then((consent) => {
-        setCloudVoiceAllowed(consent?.aiDiagnosticsAllowed === true);
-      });
-    }
     return () => void stopReading();
   }, [route.params.moduleId, student]);
 
@@ -262,7 +292,7 @@ export function ModuleReaderScreen({ navigation, route }: StackProps<'ModuleRead
       return;
     }
     setReading(true);
-    await readModuleAloud(module!.content, {
+    await readModuleAloud(plainText, {
       onDone: () => setReading(false),
       onError: () => setReading(false),
     }).catch((error) => Alert.alert('Read aloud', error.message));
@@ -270,23 +300,36 @@ export function ModuleReaderScreen({ navigation, route }: StackProps<'ModuleRead
 
   async function finishLesson() {
     if (student) await markLessonRead(student.id, module!.id);
+    const questions = await getQuestions(module!.id);
+    if (questions.length === 0) {
+      Alert.alert(
+        'Lesson complete',
+        'This module has no graded quiz yet. Your reading progress is saved.',
+      );
+      return;
+    }
     navigation.navigate('Quiz', { moduleId: module!.id });
   }
 
-  async function playEnhancedVoice() {
-    setCloudVoiceLoading(true);
-    try {
-      const uri = await generateCloudVoice(module!.content);
-      cloudVoicePlayer.replace(uri);
-      cloudVoicePlayer.play();
-    } catch (error) {
-      Alert.alert(
-        'Enhanced voice unavailable',
-        error instanceof Error ? error.message : 'Use the on-device read aloud button.',
-      );
-    } finally {
-      setCloudVoiceLoading(false);
+  function openRecallActivity(activity: InlineRecallActivity | null) {
+    if (!activity) {
+      setRecallActivity(null);
+      setRecallAnswer('');
+      setRecallResult(null);
+      return;
     }
+    setRecallActivity(activity);
+    setRecallAnswer('');
+    setRecallResult(null);
+  }
+
+  function checkRecallAnswer() {
+    if (!recallActivity || !recallAnswer.trim()) return;
+    setRecallResult(
+      isInlineRecallAnswerCorrect(recallActivity, recallAnswer)
+        ? 'correct'
+        : 'retry',
+    );
   }
 
   return (
@@ -304,35 +347,90 @@ export function ModuleReaderScreen({ navigation, route }: StackProps<'ModuleRead
           />
         }
       />
-      {module.localAssetUri ? (
-        <View style={styles.pdfFrame}>
-          <Pdf
-            source={{ uri: module.localAssetUri, cache: true }}
-            style={styles.pdf}
-            trustAllCerts={false}
-            onError={(error) => Alert.alert('PDF unavailable', String(error))}
-          />
+      <Card accent={subjectColor[module.subject]}>
+        <ModuleMarkdown
+          markdown={module.content}
+          moduleDirectoryUri={module.localAssetUri}
+          onTaggedTermPress={(term) =>
+            openRecallActivity(createInlineRecallForTerm(plainText, term))
+          }
+        />
+      </Card>
+      <Card accent={colors.amber}>
+        <View style={styles.cardTitleRow}>
+          <Brain size={23} color={colors.amber} />
+          <View style={styles.flex}>
+            <Text style={styles.cardTitle}>Inline recall</Text>
+            <Text style={styles.body}>
+              Tap a highlighted term above, or select a phrase below.
+            </Text>
+          </View>
         </View>
-      ) : (
-        <Card accent={subjectColor[module.subject]}>
-          <Text style={styles.readerText}>{module.content}</Text>
-        </Card>
-      )}
+        {recallActivity ? (
+          <>
+            <Text style={styles.question}>{recallActivity.prompt}</Text>
+            <TextInput
+              value={recallAnswer}
+              onChangeText={(value) => {
+                setRecallAnswer(value);
+                setRecallResult(null);
+              }}
+              style={styles.input}
+              placeholder="Fill in the blank"
+              placeholderTextColor={colors.inkMuted}
+            />
+            <PrimaryButton
+              label="Check answer"
+              icon={CheckCircle2}
+              disabled={!recallAnswer.trim()}
+              onPress={checkRecallAnswer}
+            />
+            {recallResult ? (
+              <Text
+                style={
+                  recallResult === 'correct'
+                    ? styles.recallCorrect
+                    : styles.recallRetry
+                }
+              >
+                {recallResult === 'correct'
+                  ? 'Correct. Nice retrieval.'
+                  : 'Try again. The answer is in the sentence above.'}
+              </Text>
+            ) : null}
+            <PrimaryButton
+              label="Choose another phrase"
+              tone="secondary"
+              onPress={() => openRecallActivity(null)}
+            />
+          </>
+        ) : (
+          <TextInput
+            value={plainText}
+            editable
+            multiline
+            onChangeText={() => undefined}
+            onSelectionChange={({ nativeEvent }) => {
+              const { start, end } = nativeEvent.selection;
+              if (end > start) {
+                openRecallActivity(
+                  createInlineRecallFromSelection(plainText, start, end),
+                );
+              }
+            }}
+            selectTextOnFocus={false}
+            showSoftInputOnFocus={false}
+            style={[styles.input, styles.recallSource]}
+            textAlignVertical="top"
+          />
+        )}
+      </Card>
       <Card>
         <Text style={styles.cardTitle}>Try it your way</Text>
         <Text style={styles.body}>
           Explain one idea aloud, sketch it, write two sentences, or demonstrate it with nearby objects.
         </Text>
       </Card>
-      {canUseOnline && cloudVoiceAllowed && module.content ? (
-        <PrimaryButton
-          label="Play enhanced voice sample"
-          tone="secondary"
-          icon={Sparkles}
-          loading={cloudVoiceLoading}
-          onPress={() => void playEnhancedVoice()}
-        />
-      ) : null}
       <PrimaryButton label="Lesson read - start quiz" icon={Play} onPress={() => void finishLesson()} />
     </Screen>
   );
@@ -438,16 +536,35 @@ export function QuizScreen({ navigation, route }: StackProps<'Quiz'>) {
         <Text style={styles.question}>{question.questionText}</Text>
       </Card>
       <View style={styles.optionList}>
-        {question.choices.map((choice) => (
-          <Pressable
-            key={choice}
-            onPress={() => answer(choice)}
-            style={[styles.answerOption, selected === choice && styles.answerSelected]}
-          >
-            <View style={[styles.radio, selected === choice && styles.radioSelected]} />
-            <Text style={styles.answerText}>{choice}</Text>
-          </Pressable>
-        ))}
+        {question.type === 'ENUMERATION' ? (
+          <TextInput
+            value={selected ?? ''}
+            onChangeText={answer}
+            style={styles.input}
+            autoCapitalize="sentences"
+            placeholder="Type your answer"
+            placeholderTextColor={colors.inkMuted}
+          />
+        ) : (
+          question.choices.map((choice) => (
+            <Pressable
+              key={choice}
+              onPress={() => answer(choice)}
+              style={[
+                styles.answerOption,
+                selected === choice && styles.answerSelected,
+              ]}
+            >
+              <View
+                style={[
+                  styles.radio,
+                  selected === choice && styles.radioSelected,
+                ]}
+              />
+              <Text style={styles.answerText}>{choice}</Text>
+            </Pressable>
+          ))
+        )}
       </View>
       <PrimaryButton
         label={index === questions.length - 1 ? 'Submit quiz' : 'Next question'}
@@ -461,6 +578,10 @@ export function QuizScreen({ navigation, route }: StackProps<'Quiz'>) {
 
 export function QuizResultScreen({ navigation, route }: StackProps<'QuizResult'>) {
   const { module, attempt } = route.params;
+  const [questions, setQuestions] = useState<QuizQuestion[]>([]);
+  useEffect(() => {
+    void getQuestions(module.id).then(setQuestions);
+  }, [module.id]);
   const percent = attempt.totalItems > 0 ? Math.round((attempt.score / attempt.totalItems) * 100) : 0;
   return (
     <Screen>
@@ -482,6 +603,27 @@ export function QuizResultScreen({ navigation, route }: StackProps<'QuizResult'>
           Time: {formatDuration(attempt.durationSeconds)} - Attempt {attempt.attemptNumber} - {capitalize(attempt.learningFormatUsed)}
         </Text>
       </Card>
+      <SectionTitle>Question breakdown</SectionTitle>
+      {attempt.responses.map((response, index) => {
+        const question = questions.find((item) => item.id === response.questionId);
+        return (
+          <Card
+            key={response.questionId}
+            accent={response.isCorrect ? colors.emerald : colors.coral}
+          >
+            <Text style={styles.focusLabel}>Question {index + 1}</Text>
+            <Text style={styles.focusValue}>
+              {question?.questionText ?? response.questionId}
+            </Text>
+            <Text style={styles.body}>Your answer: {response.answer}</Text>
+            {!response.isCorrect ? (
+              <Text style={styles.body}>
+                Correct answer: {question?.correctAnswer ?? 'Review with your teacher'}
+              </Text>
+            ) : null}
+          </Card>
+        );
+      })}
       <PrimaryButton
         label="Show report QR"
         icon={QrCode}
@@ -661,70 +803,39 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
   const student = useSessionStore((state) => state.student);
   const mode = useSessionStore((state) => state.mode);
   const modeReason = useSessionStore((state) => state.modeReason);
-  const canUseOnline = useSessionStore((state) => state.canUseOnlineEnhancements);
   const setMode = useSessionStore((state) => state.setMode);
   const signOut = useSessionStore((state) => state.signOut);
-  const [guardianName, setGuardianName] = useState('');
-  const [cloudAllowed, setCloudAllowed] = useState(false);
-  const [diagnosticsAllowed, setDiagnosticsAllowed] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [syncing, setSyncing] = useState(false);
-  const [syncStatus, setSyncStatus] = useState('');
   const [adaptive, setAdaptive] = useState<AdaptiveFormatProfile | null>(null);
 
   useEffect(() => {
     if (!student) return;
-    void getPrivacyConsent(student.id).then((consent) => {
-      if (!consent) return;
-      setGuardianName(consent.guardianName);
-      setCloudAllowed(consent.cloudSyncAllowed);
-      setDiagnosticsAllowed(consent.aiDiagnosticsAllowed);
-    });
     void getAdaptiveFormatProfile(student.id).then(setAdaptive);
   }, [student]);
 
   if (!student) return null;
-
-  async function saveCloudChoices() {
-    if (!guardianName.trim()) {
-      Alert.alert('Guardian confirmation needed', 'Enter the parent or guardian name before enabling cloud services.');
-      return;
-    }
-    setSyncing(true);
-    setSyncStatus('');
-    try {
-      await savePrivacyConsent({
-        studentId: student!.id,
-        noticeVersion: '2026-07',
-        guardianName,
-        guardianAcknowledgedAt: Date.now(),
-        aiDiagnosticsAllowed: diagnosticsAllowed,
-        cloudSyncAllowed: cloudAllowed,
-      });
-      if (!cloudAllowed) {
-        setSyncStatus('Privacy choices saved. Learning records remain only on this device.');
-        return;
-      }
-      const result = email.trim() && password
-        ? await connectStudentCloudAccount(student!.id, email, password)
-        : await syncStudentData(student!.id);
-      setPassword('');
-      setSyncStatus(`Cloud backup is current. ${result.synced} queued record(s) synced${result.failed ? `; ${result.failed} will retry` : ''}.`);
-    } catch (error) {
-      setSyncStatus(error instanceof Error ? error.message : 'Cloud backup could not finish.');
-    } finally {
-      setSyncing(false);
-    }
-  }
+  const profilePayload = encodeProfileQr({
+    student,
+    currentLearningFormat:
+      adaptive?.manualOverride ?? adaptive?.currentDefaultFormat ?? 'text',
+  });
 
   return (
     <Screen>
       <ScreenHeader title="Profile" subtitle={student.studentNumber} />
       <Card>
         <Text style={styles.cardTitle}>{student.displayName}</Text>
-        <ProfileLine label="Grade and section" value={`Grade ${student.gradeLevel} - ${student.section}`} />
+        <ProfileLine
+          label="Grade and section"
+          value={formatSectionLabel(student.gradeLevel, student.section)}
+        />
         <ProfileLine label="Student number" value={student.studentNumber} />
+      </Card>
+      <Card style={styles.qrCard}>
+        <Text style={styles.cardTitle}>My profile QR</Text>
+        <QRCode value={profilePayload} size={240} ecl="M" />
+        <Text style={styles.qrNote}>
+          Show this once to your teacher while your class section is active.
+        </Text>
       </Card>
       <Card>
         <Text style={styles.cardTitle}>Default learning format</Text>
@@ -755,62 +866,6 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
             }}
           />
         </View>
-      </Card>
-      <Card>
-        <View style={styles.cardTitleRow}>
-          <CloudUpload size={23} color={colors.emerald} />
-          <View style={styles.flex}>
-            <Text style={styles.cardTitle}>Optional cloud backup</Text>
-            <Text style={styles.body}>A parent or guardian controls whether learning records leave this device.</Text>
-          </View>
-        </View>
-        <TextInput
-          value={guardianName}
-          onChangeText={setGuardianName}
-          style={styles.input}
-          placeholder="Parent or guardian name"
-          placeholderTextColor={colors.inkMuted}
-        />
-        <ConsentSwitch
-          label="Back up learning profile and quiz results"
-          value={cloudAllowed}
-          onValueChange={setCloudAllowed}
-        />
-        <ConsentSwitch
-          label="Allow de-identified AI diagnostics and enhanced voice"
-          value={diagnosticsAllowed}
-          onValueChange={setDiagnosticsAllowed}
-        />
-        {cloudAllowed ? (
-          <>
-            <TextInput
-              value={email}
-              onChangeText={setEmail}
-              style={styles.input}
-              autoCapitalize="none"
-              keyboardType="email-address"
-              placeholder="Provisioned student email"
-              placeholderTextColor={colors.inkMuted}
-            />
-            <TextInput
-              value={password}
-              onChangeText={setPassword}
-              style={styles.input}
-              secureTextEntry
-              placeholder="Cloud account password"
-              placeholderTextColor={colors.inkMuted}
-            />
-          </>
-        ) : null}
-        <PrimaryButton
-          label={cloudAllowed ? 'Save and sync' : 'Save privacy choices'}
-          icon={CloudUpload}
-          loading={syncing}
-          disabled={cloudAllowed && (mode !== 'full' || !canUseOnline)}
-          onPress={() => void saveCloudChoices()}
-        />
-        {mode !== 'full' ? <Text style={styles.helper}>Cloud controls are paused in lightweight mode.</Text> : null}
-        {syncStatus ? <Text style={styles.helper}>{syncStatus}</Text> : null}
       </Card>
       <Card>
         <View style={styles.cardTitleRow}>
@@ -855,28 +910,6 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
   );
 }
 
-function ConsentSwitch({
-  label,
-  value,
-  onValueChange,
-}: {
-  label: string;
-  value: boolean;
-  onValueChange(value: boolean): void;
-}) {
-  return (
-    <View style={styles.consentRow}>
-      <Text style={styles.consentLabel}>{label}</Text>
-      <Switch
-        value={value}
-        onValueChange={onValueChange}
-        trackColor={{ false: colors.outline, true: colors.emeraldTint }}
-        thumbColor={value ? colors.emerald : colors.inkMuted}
-      />
-    </View>
-  );
-}
-
 function ProfileLine({ label, value }: { label: string; value: string }) {
   return (
     <View style={styles.profileLine}>
@@ -918,9 +951,6 @@ const styles = StyleSheet.create({
   moduleCode: { color: colors.inkMuted, fontSize: 12, fontWeight: '700' },
   styleTags: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   styleTag: { color: colors.indigo, fontSize: 12, fontWeight: '800', backgroundColor: colors.indigoTint, padding: 6, borderRadius: radius.sm },
-  readerText: { color: colors.ink, fontSize: 18, lineHeight: 30 },
-  pdfFrame: { height: 560, borderRadius: radius.md, overflow: 'hidden', borderWidth: 1, borderColor: colors.outline },
-  pdf: { flex: 1, backgroundColor: colors.surfaceMuted },
   progressTrack: { height: 8, borderRadius: radius.round, backgroundColor: colors.surfaceMuted, overflow: 'hidden' },
   progressFill: { height: '100%', backgroundColor: colors.indigo },
   input: {
@@ -933,8 +963,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
     fontSize: 16,
   },
-  consentRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
-  consentLabel: { flex: 1, color: colors.ink, fontSize: 14, lineHeight: 20, fontWeight: '700' },
+  recallSource: {
+    minHeight: 180,
+    lineHeight: 24,
+    paddingVertical: spacing.md,
+  },
+  recallCorrect: {
+    color: colors.emerald,
+    fontSize: 14,
+    fontWeight: '800',
+    textAlign: 'center',
+  },
+  recallRetry: {
+    color: colors.coral,
+    fontSize: 14,
+    fontWeight: '800',
+    textAlign: 'center',
+  },
   timerLine: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   question: { color: colors.ink, fontSize: 21, lineHeight: 29, fontWeight: '800' },
   optionList: { gap: spacing.md },

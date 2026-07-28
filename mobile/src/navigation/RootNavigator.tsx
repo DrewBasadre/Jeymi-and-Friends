@@ -35,6 +35,12 @@ import {
   StudentProfileScreen,
 } from '@/screens/StudentScreens';
 import { ReceiveTransferScreen } from '@/screens/TransferScreens';
+import { StudentScanScreen } from '@/screens/StudentScanScreen';
+import {
+  AssignmentBuilderScreen,
+  SectionsScreen,
+} from '@/screens/TeacherOfflineScreens';
+import { ModuleAuthorScreen } from '@/screens/ModuleAuthorScreen';
 import {
   CustomReviewSetsScreen,
   ParentDigestScreen,
@@ -125,6 +131,14 @@ function StudentTabNavigator() {
         options={{
           title: 'Modules',
           tabBarIcon: (props) => <TabIcon icon={BookOpen} {...props} />,
+        }}
+      />
+      <StudentTabs.Screen
+        name="StudentScan"
+        component={StudentScanScreen}
+        options={{
+          title: 'Scan',
+          tabBarIcon: (props) => <TabIcon icon={ScanLine} {...props} />,
         }}
       />
       <StudentTabs.Screen
@@ -224,7 +238,13 @@ export function RootNavigator() {
         <RootStack.Screen name="QuizReport" component={QuizReportScreen} />
         <RootStack.Screen name="TeacherLogin" component={TeacherLoginScreen} />
         <RootStack.Screen name="TeacherTabs" component={TeacherTabNavigator} />
+        <RootStack.Screen name="Sections" component={SectionsScreen} />
+        <RootStack.Screen
+          name="AssignmentBuilder"
+          component={AssignmentBuilderScreen}
+        />
         <RootStack.Screen name="LearnerDetail" component={LearnerDetailScreen} />
+        <RootStack.Screen name="ModuleAuthor" component={ModuleAuthorScreen} />
         <RootStack.Screen name="Transfer" component={TransferScreen} />
         <RootStack.Screen
           name="ReceiveTransfer"

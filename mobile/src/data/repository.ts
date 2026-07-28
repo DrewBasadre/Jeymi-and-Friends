@@ -9,12 +9,19 @@ import {
 import {
   decodeQrPayload,
   mergeQuizReportParts,
-  type DecodedQrPayload,
-  type LegacyQuizResult,
   type QuizReport,
   type QuizReportPart,
 } from '@/domain/qr';
+import {
+  buildClassPerformanceReport,
+  performanceTrend,
+} from '@/domain/reporting';
+import {
+  assignmentMatchesStudentSection,
+  formatSectionLabel,
+} from '@/domain/section';
 import type {
+  ClassPerformanceReport,
   DueFlashcard,
   FlashcardRating,
   CurriculumModuleManifest,
@@ -25,17 +32,24 @@ import type {
   QuestionResponse,
   QuizAttempt,
   QuizQuestion,
+  Section,
+  StrugglingConcept,
   Student,
   StudentDashboard,
+  StudentPerformanceReport,
+  StudentTask,
+  TeacherProfile,
   TeacherDashboard,
   TeacherLearnerRow,
 } from '@/domain/types';
+import { installModulePackage } from '@/services/modulePackages';
 import { getDatabase } from './database';
 import {
   getAdaptiveFormatProfile,
   getStrugglingThreshold,
   initializeAdaptiveFormatProfile,
   recordFormatOutcome,
+  saveScannedLearningFormat,
   saveModuleManifest,
 } from './mvpRepository';
 
@@ -112,24 +126,6 @@ interface ProfileRow {
   assessment_version: number;
   completed_at: number;
   guardian_acknowledged_at: number | null;
-}
-
-export interface PrivacyConsent {
-  studentId: string;
-  noticeVersion: string;
-  guardianName: string;
-  guardianAcknowledgedAt: number;
-  aiDiagnosticsAllowed: boolean;
-  cloudSyncAllowed: boolean;
-}
-
-export interface SyncQueueItem {
-  id: string;
-  entityType: string;
-  entityId: string;
-  operation: string;
-  payload: unknown;
-  attempts: number;
 }
 
 const now = () => Date.now();
@@ -234,102 +230,8 @@ export async function saveLearningProfile(profile: LearningProfile): Promise<voi
       profile.completedAt,
       profile.guardianAcknowledgedAt,
     );
-    await enqueueSync(database, 'learning_profile', profile.studentId, 'upsert', profile);
   });
   await initializeAdaptiveFormatProfile(profile);
-}
-
-export async function getPrivacyConsent(studentId: string): Promise<PrivacyConsent | null> {
-  const database = await getDatabase();
-  const row = await database.getFirstAsync<{
-    student_id: string;
-    notice_version: string;
-    guardian_name: string;
-    guardian_acknowledged_at: number;
-    ai_diagnostics_allowed: number;
-    cloud_sync_allowed: number;
-  }>(
-    `SELECT * FROM privacy_consents
-     WHERE student_id = ?
-     ORDER BY guardian_acknowledged_at DESC
-     LIMIT 1`,
-    studentId,
-  );
-  if (!row) return null;
-  return {
-    studentId: row.student_id,
-    noticeVersion: row.notice_version,
-    guardianName: row.guardian_name,
-    guardianAcknowledgedAt: row.guardian_acknowledged_at,
-    aiDiagnosticsAllowed: row.ai_diagnostics_allowed === 1,
-    cloudSyncAllowed: row.cloud_sync_allowed === 1,
-  };
-}
-
-export async function savePrivacyConsent(consent: PrivacyConsent): Promise<void> {
-  const database = await getDatabase();
-  await database.runAsync(
-    `INSERT INTO privacy_consents (
-      student_id, notice_version, guardian_name, guardian_acknowledged_at,
-      ai_diagnostics_allowed, cloud_sync_allowed
-    ) VALUES (?, ?, ?, ?, ?, ?)
-    ON CONFLICT(student_id, notice_version) DO UPDATE SET
-      guardian_name = excluded.guardian_name,
-      guardian_acknowledged_at = excluded.guardian_acknowledged_at,
-      ai_diagnostics_allowed = excluded.ai_diagnostics_allowed,
-      cloud_sync_allowed = excluded.cloud_sync_allowed`,
-    consent.studentId,
-    consent.noticeVersion,
-    consent.guardianName.trim(),
-    consent.guardianAcknowledgedAt,
-    consent.aiDiagnosticsAllowed ? 1 : 0,
-    consent.cloudSyncAllowed ? 1 : 0,
-  );
-}
-
-export async function listDueSyncItems(): Promise<SyncQueueItem[]> {
-  const database = await getDatabase();
-  const rows = await database.getAllAsync<{
-    id: string;
-    entity_type: string;
-    entity_id: string;
-    operation: string;
-    payload_json: string;
-    attempts: number;
-  }>(
-    `SELECT id, entity_type, entity_id, operation, payload_json, attempts
-     FROM sync_queue
-     WHERE next_attempt_at <= ?
-     ORDER BY created_at
-     LIMIT 50`,
-    now(),
-  );
-  return rows.map((row) => ({
-    id: row.id,
-    entityType: row.entity_type,
-    entityId: row.entity_id,
-    operation: row.operation,
-    payload: JSON.parse(row.payload_json) as unknown,
-    attempts: row.attempts,
-  }));
-}
-
-export async function completeSyncItem(idValue: string): Promise<void> {
-  const database = await getDatabase();
-  await database.runAsync('DELETE FROM sync_queue WHERE id = ?', idValue);
-}
-
-export async function failSyncItem(idValue: string, message: string, attempts: number): Promise<void> {
-  const database = await getDatabase();
-  const delay = Math.min(60 * 60_000, 15_000 * 2 ** Math.min(attempts, 8));
-  await database.runAsync(
-    `UPDATE sync_queue
-     SET attempts = attempts + 1, next_attempt_at = ?, last_error = ?
-     WHERE id = ?`,
-    now() + delay,
-    message.slice(0, 500),
-    idValue,
-  );
 }
 
 export async function getLearningProfile(studentId: string): Promise<LearningProfile | null> {
@@ -378,85 +280,68 @@ export async function saveReceivedModulePackage(input: {
   moduleId: string;
   displayName: string;
   fileUri: string;
-  mimeType?: 'application/pdf' | 'application/vnd.wais.module+json';
+  mimeType?:
+    | 'application/vnd.wais.module+zip'
+    | 'application/vnd.wais.review-set+json';
   sizeBytes: number;
   sha256: string;
   manifest?: CurriculumModuleManifest;
 }): Promise<void> {
   const database = await getDatabase();
-  if (
-    input.manifest &&
-    !Object.values(input.manifest.checksums).includes(
-      `sha256:${input.sha256.toLocaleLowerCase()}`,
-    )
-  ) {
-    throw new Error('The received file does not match its module manifest.');
-  }
-  const moduleId = input.moduleId.trim() || `pdf_${input.sha256.slice(0, 16)}`;
+  const installed = await installModulePackage({
+    fileUri: input.fileUri,
+    expectedArchiveSha256: input.sha256,
+    expectedManifest: input.manifest,
+  });
+  const manifest = installed.manifest;
+  const moduleId =
+    manifest.moduleId ||
+    input.moduleId.trim() ||
+    `module_${input.sha256.slice(0, 16)}`;
   await ensureModule(database, {
     id: moduleId,
-    title: input.displayName.replace(/\.pdf$/i, ''),
-    subject: 'ADDED_MATERIALS',
-    competencyCode: 'Teacher-provided PDF module',
-    gradeLevel: 5,
+    title: input.displayName.replace(/\.wais-module$/i, ''),
+    subject: manifest.subject,
+    competencyCode: 'Teacher-provided Markdown module',
+    gradeLevel: manifest.gradeLevel,
   });
   await database.runAsync(
     `UPDATE modules
-     SET local_asset_uri = ?,
+     SET title = ?,
+         subject = ?,
+         grade_level = ?,
+         summary = ?,
+         content = ?,
+         local_asset_uri = ?,
          package_sha256 = ?,
          package_size_bytes = ?,
          updated_at = ?
      WHERE id = ?`,
-    input.mimeType === 'application/vnd.wais.module+json'
-      ? null
-      : input.fileUri,
+    input.displayName.replace(/\.wais-module$/i, ''),
+    normalizeSubject(manifest.subject),
+    manifest.gradeLevel,
+    markdownSummary(installed.markdown),
+    installed.markdown,
+    installed.directoryUri,
     input.sha256.toLocaleLowerCase(),
     input.sizeBytes,
     now(),
     moduleId,
   );
-  if (input.manifest) {
-    await saveModuleManifest(input.manifest, true);
+  await saveModuleManifest(manifest, true);
+  for (const item of manifest.reviewItems ?? []) {
+    if (item.type !== 'quiz-question') continue;
+    await database.runAsync(
+      `INSERT OR REPLACE INTO quiz_questions (
+        id, module_id, type, question_text, choices_json, correct_answer, topic_tag
+      ) VALUES (?, ?, 'ENUMERATION', ?, '[]', ?, ?)`,
+      item.itemId,
+      moduleId,
+      item.prompt,
+      item.answer,
+      item.conceptId,
+    );
   }
-}
-
-export async function upsertCloudModule(module: LearningModule): Promise<void> {
-  const database = await getDatabase();
-  await database.runAsync(
-    `INSERT INTO modules (
-      id, title, subject, grade_level, quarter, competency_code, summary, content,
-      content_style_tags_json, local_asset_uri, remote_asset_path, package_sha256,
-      package_size_bytes, is_teacher_created, updated_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ON CONFLICT(id) DO UPDATE SET
-      title = excluded.title,
-      subject = excluded.subject,
-      grade_level = excluded.grade_level,
-      quarter = excluded.quarter,
-      competency_code = excluded.competency_code,
-      summary = excluded.summary,
-      content_style_tags_json = excluded.content_style_tags_json,
-      local_asset_uri = COALESCE(excluded.local_asset_uri, modules.local_asset_uri),
-      remote_asset_path = excluded.remote_asset_path,
-      package_sha256 = excluded.package_sha256,
-      package_size_bytes = excluded.package_size_bytes,
-      updated_at = excluded.updated_at`,
-    module.id,
-    module.title,
-    module.subject,
-    module.gradeLevel,
-    module.quarter,
-    module.competencyCode,
-    module.summary,
-    module.content,
-    JSON.stringify(module.contentStyleTags),
-    module.localAssetUri,
-    module.remoteAssetPath,
-    module.packageSha256,
-    module.packageSizeBytes,
-    module.isTeacherCreated ? 1 : 0,
-    module.updatedAt,
-  );
 }
 
 export async function getQuestions(moduleId: string): Promise<QuizQuestion[]> {
@@ -537,7 +422,6 @@ export async function submitQuiz(args: {
       attempt.masteryLevel,
       submittedAt,
     );
-    await enqueueSync(database, 'quiz_attempt', attempt.id, 'upsert', attempt);
   });
 
   await recordFormatOutcome({
@@ -664,8 +548,96 @@ export async function reviewFlashcard(card: DueFlashcard, rating: FlashcardRatin
   );
 }
 
-export async function getTeacherDashboard(): Promise<TeacherDashboard> {
-  const students = await listStudents();
+export async function getStudentPerformanceReport(
+  studentId: string,
+): Promise<StudentPerformanceReport | null> {
+  const student = await getStudent(studentId);
+  if (!student) return null;
+
+  const database = await getDatabase();
+  const [quizHistory, adaptive, strugglingConcepts] = await Promise.all([
+    getAttempts(studentId),
+    getAdaptiveFormatProfile(studentId),
+    database.getAllAsync<{
+      concept_id: string;
+      miss_count: number;
+      attempts: number;
+    }>(
+      `SELECT
+         COALESCE(ri.concept_id, qq.topic_tag, qa.weak_topic, 'Needs review')
+           AS concept_id,
+         COUNT(*) AS miss_count,
+         COUNT(DISTINCT qr.attempt_id) AS attempts
+       FROM question_responses qr
+       JOIN quiz_attempts qa ON qa.id = qr.attempt_id
+       LEFT JOIN review_items ri ON ri.item_id = qr.question_id
+       LEFT JOIN quiz_questions qq ON qq.id = qr.question_id
+       WHERE qa.student_id = ? AND qr.is_correct = 0
+       GROUP BY concept_id
+       ORDER BY miss_count DESC, concept_id`,
+      studentId,
+    ),
+  ]);
+
+  return {
+    studentId,
+    profile: {
+      name: student.displayName,
+      studentNumber: student.studentNumber,
+      section: student.section,
+      currentLearningFormat:
+        adaptive.manualOverride ?? adaptive.currentDefaultFormat,
+    },
+    quizHistory,
+    averageScorePercentage: averagePercent(quizHistory),
+    strugglingConcepts: strugglingConcepts.map(
+      (row): StrugglingConcept => ({
+        conceptId: row.concept_id,
+        missCount: row.miss_count,
+        attempts: row.attempts,
+      }),
+    ),
+    trend: performanceTrend(quizHistory),
+  };
+}
+
+export async function getClassPerformanceReport(
+  sectionId: string,
+): Promise<ClassPerformanceReport> {
+  const section = (await listSections()).find(
+    (candidate) => candidate.sectionId === sectionId,
+  );
+  if (!section) throw new Error('Section was not found.');
+
+  const threshold = await getStrugglingThreshold();
+  const reports = (
+    await Promise.all(
+      section.roster.map((studentId) => getStudentPerformanceReport(studentId)),
+    )
+  ).filter((report): report is StudentPerformanceReport => report !== null);
+  return buildClassPerformanceReport(sectionId, reports, threshold);
+}
+
+export async function getTeacherDashboard(
+  sectionId?: string,
+): Promise<TeacherDashboard> {
+  const database = await getDatabase();
+  const students = (
+    sectionId
+      ? await database.getAllAsync<StudentRow>(
+          `SELECT s.* FROM students s
+           JOIN section_roster sr ON sr.student_id = s.id
+           WHERE sr.section_id = ? AND s.is_archived = 0
+           ORDER BY s.last_name, s.first_name`,
+          sectionId,
+        )
+      : await database.getAllAsync<StudentRow>(
+          `SELECT DISTINCT s.* FROM students s
+           JOIN section_roster sr ON sr.student_id = s.id
+           WHERE s.is_archived = 0
+           ORDER BY s.last_name, s.first_name`,
+        )
+  ).map(mapStudent);
   const threshold = await getStrugglingThreshold();
   const learners: TeacherLearnerRow[] = [];
   const latestPercentages: number[] = [];
@@ -696,13 +668,7 @@ export async function getTeacherDashboard(): Promise<TeacherDashboard> {
         : Math.round(
             (attempts[0]!.score / Math.max(1, attempts[0]!.totalItems)) * 100,
           );
-    const lastThree = attempts.slice(0, 3).map(
-      (attempt) => (attempt.score / Math.max(1, attempt.totalItems)) * 100,
-    );
-    const decliningTrend =
-      lastThree.length === 3 &&
-      lastThree[0]! < lastThree[1]! &&
-      lastThree[1]! < lastThree[2]!;
+    const decliningTrend = performanceTrend(attempts) === 'declining';
     const belowThreshold = attempts.length > 0 && latestScore < threshold;
     const adaptive = await getAdaptiveFormatProfile(student.id);
     learners.push({
@@ -746,7 +712,7 @@ export async function getTeacherDashboard(): Promise<TeacherDashboard> {
 export async function importQrReport(raw: string): Promise<string> {
   const database = await getDatabase();
   const decoded = decodeQrPayload(raw);
-  if (decoded.kind === 'quiz_report') {
+  if (decoded.kind === 'quizReport') {
     const report = await resolveQuizReportScan(database, decoded.data);
     if (!report) {
       const part = decoded.data as QuizReportPart;
@@ -757,48 +723,260 @@ export async function importQrReport(raw: string): Promise<string> {
     await importMvpQuizReport(database, report);
     return `Stored the ${report.moduleId} report for ${report.studentId}.`;
   }
-  if (decoded.kind === 'student_profile') {
+  if (decoded.kind === 'profile') {
     const profile = decoded.data;
+    const activeSection = await getActiveSection();
+    if (!activeSection) {
+      throw new Error('Choose an active section before scanning a student profile.');
+    }
+    const name = splitDisplayName(profile.name);
     const student = await saveStudent({
-      id: profile.studentId || studentIdFromNumber(profile.studentNumber),
+      id: profile.studentId,
       studentNumber: profile.studentNumber,
-      firstName: profile.firstName,
-      lastName: profile.lastName,
-      middleInitial: profile.middleInitial,
-      gradeLevel: profile.gradeLevel,
-      section: profile.section,
-      birthday: profile.birthday,
+      firstName: name.firstName,
+      lastName: name.lastName,
+      middleInitial: '',
+      gradeLevel: activeSection.gradeLevel,
+      section: activeSection.name,
+      birthday: '',
       pin: '1234',
     });
-    return `Added ${student.displayName}. Default PIN: 1234.`;
+    await database.runAsync(
+      `INSERT INTO section_roster (section_id, student_id, added_at)
+       VALUES (?, ?, ?)
+       ON CONFLICT(section_id, student_id) DO UPDATE SET added_at = excluded.added_at`,
+      activeSection.sectionId,
+      student.id,
+      now(),
+    );
+    await saveScannedLearningFormat(
+      student.id,
+      profile.currentLearningFormat,
+    );
+    return `Placed ${student.displayName} in ${activeSection.name}.`;
   }
 
-  if (decoded.kind === 'teacher_module') {
-    await importTeacherModule(database, decoded.data);
-    return `Imported module: ${decoded.data.title}.`;
-  }
+  throw new Error('Students scan assignment QR codes from the Scan tab.');
+}
 
-  if (decoded.kind === 'quiz_result') {
-    const legacy =
-      decoded.version === 2
-        ? ({
-            payloadType: 'quiz_result',
-            ...decoded.data.report,
-          } satisfies LegacyQuizResult)
-        : decoded.data;
-    const responses =
-      decoded.version === 2
-        ? decoded.data.report.responses.map((response) => ({
-            ...response,
-            answer: '',
-          }))
-        : [];
-    await importQuizResult(database, legacy, responses, decoded.version);
-    return `Stored ${legacy.displayName}'s ${legacy.moduleTitle} result.`;
+export async function importAssignmentQr(
+  raw: string,
+  studentId: string,
+): Promise<{ added: number; total: number }> {
+  const decoded = decodeQrPayload(raw);
+  if (decoded.kind !== 'assignment') {
+    throw new Error('The student Scan tab only accepts assignment QR codes.');
   }
+  const student = await getStudent(studentId);
+  if (!student) throw new Error('Student profile was not found on this device.');
+  if (
+    !assignmentMatchesStudentSection({
+      classSection: decoded.data.classSection,
+      studentGradeLevel: student.gradeLevel,
+      studentSection: student.section,
+    })
+  ) {
+    throw new Error(
+      `This assignment is for ${decoded.data.classSection}, not ${formatSectionLabel(
+        student.gradeLevel,
+        student.section,
+      )}.`,
+    );
+  }
+  const database = await getDatabase();
+  let added = 0;
+  await database.withTransactionAsync(async () => {
+    for (const task of decoded.data.tasks) {
+      const targetId =
+        task.type === 'module' ? task.moduleId : task.quizId;
+      const existing = await database.getFirstAsync<{ task_id: string }>(
+        `SELECT task_id FROM student_tasks
+         WHERE student_id = ? AND task_type = ? AND target_id = ? AND due_date = ?`,
+        studentId,
+        task.type,
+        targetId,
+        task.dueDate,
+      );
+      await database.runAsync(
+        `INSERT INTO student_tasks (
+          task_id, student_id, task_type, target_id, due_date, issued_by,
+          issued_at, class_section, completed_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL)
+        ON CONFLICT(student_id, task_type, target_id, due_date) DO UPDATE SET
+          issued_by = excluded.issued_by,
+          issued_at = excluded.issued_at,
+          class_section = excluded.class_section`,
+        existing?.task_id ?? id('task'),
+        studentId,
+        task.type,
+        targetId,
+        task.dueDate,
+        decoded.data.issuedBy,
+        decoded.data.issuedAt,
+        decoded.data.classSection,
+      );
+      if (!existing) added += 1;
+    }
+  });
+  return { added, total: decoded.data.tasks.length };
+}
 
-  await importProgressExport(database, decoded);
-  return `Imported ${decoded.data.quizAttempts.length} attempt(s) for ${decoded.data.displayName}.`;
+export async function listStudentTasks(studentId: string): Promise<StudentTask[]> {
+  const database = await getDatabase();
+  const rows = await database.getAllAsync<{
+    task_id: string;
+    student_id: string;
+    task_type: StudentTask['type'];
+    target_id: string;
+    due_date: string;
+    issued_by: string;
+    issued_at: string;
+    class_section: string;
+    completed_at: string | null;
+  }>(
+    `SELECT * FROM student_tasks
+     WHERE student_id = ?
+     ORDER BY completed_at IS NOT NULL, due_date, issued_at`,
+    studentId,
+  );
+  return rows.map((row) => ({
+    taskId: row.task_id,
+    studentId: row.student_id,
+    type: row.task_type,
+    targetId: row.target_id,
+    dueDate: row.due_date,
+    issuedBy: row.issued_by,
+    issuedAt: row.issued_at,
+    classSection: row.class_section,
+    completedAt: row.completed_at,
+  }));
+}
+
+export async function saveTeacherProfile(
+  input: Omit<TeacherProfile, 'teacherId' | 'createdAt'> & {
+    teacherId?: string;
+  },
+): Promise<TeacherProfile> {
+  const database = await getDatabase();
+  const teacherId = input.teacherId?.trim() || id('teacher');
+  const createdAt = new Date().toISOString();
+  await database.runAsync(
+    `INSERT INTO teachers (teacher_id, name, age, faculty_id, created_at)
+     VALUES (?, ?, ?, ?, ?)
+     ON CONFLICT(teacher_id) DO UPDATE SET
+       name = excluded.name,
+       age = excluded.age,
+       faculty_id = excluded.faculty_id`,
+    teacherId,
+    input.name.trim(),
+    input.age,
+    input.facultyId.trim(),
+    Date.parse(createdAt),
+  );
+  return { ...input, teacherId, createdAt };
+}
+
+export async function getTeacherProfile(): Promise<TeacherProfile | null> {
+  const database = await getDatabase();
+  const row = await database.getFirstAsync<{
+    teacher_id: string;
+    name: string;
+    age: number;
+    faculty_id: string;
+    created_at: number;
+  }>('SELECT * FROM teachers ORDER BY created_at LIMIT 1');
+  return row
+    ? {
+        teacherId: row.teacher_id,
+        name: row.name,
+        age: row.age,
+        facultyId: row.faculty_id,
+        createdAt: new Date(row.created_at).toISOString(),
+      }
+    : null;
+}
+
+export async function createSection(args: {
+  teacherId: string;
+  name: string;
+  gradeLevel: number;
+}): Promise<Section> {
+  const database = await getDatabase();
+  const sectionId = id('section');
+  const count = await database.getFirstAsync<{ count: number }>(
+    'SELECT COUNT(*) AS count FROM sections WHERE teacher_id = ?',
+    args.teacherId,
+  );
+  const isActive = (count?.count ?? 0) === 0;
+  await database.runAsync(
+    `INSERT INTO sections (
+      section_id, teacher_id, name, grade_level, is_active, created_at
+    ) VALUES (?, ?, ?, ?, ?, ?)`,
+    sectionId,
+    args.teacherId,
+    args.name.trim(),
+    args.gradeLevel,
+    isActive ? 1 : 0,
+    now(),
+  );
+  return {
+    sectionId,
+    teacherId: args.teacherId,
+    name: args.name.trim(),
+    gradeLevel: args.gradeLevel,
+    isActive,
+    roster: [],
+  };
+}
+
+export async function setActiveSection(sectionId: string): Promise<void> {
+  const database = await getDatabase();
+  const section = await database.getFirstAsync<{ teacher_id: string }>(
+    'SELECT teacher_id FROM sections WHERE section_id = ?',
+    sectionId,
+  );
+  if (!section) throw new Error('Section was not found.');
+  await database.withTransactionAsync(async () => {
+    await database.runAsync(
+      'UPDATE sections SET is_active = 0 WHERE teacher_id = ?',
+      section.teacher_id,
+    );
+    await database.runAsync(
+      'UPDATE sections SET is_active = 1 WHERE section_id = ?',
+      sectionId,
+    );
+  });
+}
+
+export async function listSections(): Promise<Section[]> {
+  const database = await getDatabase();
+  const rows = await database.getAllAsync<{
+    section_id: string;
+    teacher_id: string;
+    name: string;
+    grade_level: number;
+    is_active: number;
+  }>('SELECT * FROM sections ORDER BY is_active DESC, name');
+  return Promise.all(
+    rows.map(async (row) => {
+      const roster = await database.getAllAsync<{ student_id: string }>(
+        'SELECT student_id FROM section_roster WHERE section_id = ? ORDER BY added_at',
+        row.section_id,
+      );
+      return {
+        sectionId: row.section_id,
+        teacherId: row.teacher_id,
+        name: row.name,
+        gradeLevel: row.grade_level,
+        isActive: row.is_active === 1,
+        roster: roster.map((item) => item.student_id),
+      };
+    }),
+  );
+}
+
+export async function getActiveSection(): Promise<Section | null> {
+  return (await listSections()).find((section) => section.isActive) ?? null;
 }
 
 async function resolveQuizReportScan(
@@ -921,210 +1099,6 @@ async function importMvpQuizReport(
   });
 }
 
-async function importQuizResult(
-  database: Db,
-  result: LegacyQuizResult,
-  responses: QuestionResponse[],
-  version: number,
-): Promise<void> {
-  const student = await resolveImportedStudent(result);
-  await ensureModule(database, {
-    id: result.moduleId,
-    title: result.moduleTitle,
-    subject: result.subject,
-    competencyCode: result.competencyCode,
-    gradeLevel: result.gradeLevel,
-  });
-  const attempt: QuizAttempt = {
-    id: result.attemptId,
-    studentId: student.id,
-    moduleId: result.moduleId,
-    score: result.score,
-    totalItems: result.totalItems,
-    weakTopic: result.weakTopic,
-    strongTopic: result.strongTopic,
-    masteryLevel: normalizeMastery(result.masteryLevel),
-    durationSeconds: result.durationSeconds,
-    attemptNumber: result.attemptNumber,
-    submittedAt: result.submittedAt,
-    learningFormatUsed:
-      decodedLearningFormat(
-        'learningStyleTag' in result
-          ? (result as LegacyQuizResult & { learningStyleTag?: string })
-              .learningStyleTag
-          : undefined,
-      ),
-    responses,
-  };
-  await database.withTransactionAsync(async () => {
-    await insertAttempt(database, attempt, 'qr');
-    await database.runAsync(
-      `INSERT INTO progress (student_id, module_id, status, mastery_level, updated_at)
-       VALUES (?, ?, 'COMPLETED', ?, ?)
-       ON CONFLICT(student_id, module_id) DO UPDATE SET
-         status = 'COMPLETED',
-         mastery_level = excluded.mastery_level,
-         updated_at = excluded.updated_at`,
-      student.id,
-      result.moduleId,
-      attempt.masteryLevel,
-      result.submittedAt,
-    );
-    await database.runAsync(
-      `INSERT OR IGNORE INTO scanned_reports
-       (report_id, student_id, payload_json, schema_version, scanned_at)
-       VALUES (?, ?, ?, ?, ?)`,
-      result.attemptId,
-      student.id,
-      JSON.stringify(result),
-      version,
-      now(),
-    );
-  });
-}
-
-async function importProgressExport(
-  database: Db,
-  decoded: Extract<DecodedQrPayload, { kind: 'progress_export' }>,
-): Promise<void> {
-  const exportData = decoded.data;
-  const nameParts = exportData.displayName.trim().split(/\s+/);
-  const student = await resolveImportedStudent({
-    studentId: exportData.studentId,
-    studentNumber: exportData.studentId,
-    firstName: nameParts[0] ?? '',
-    lastName: nameParts.slice(1).join(' '),
-    middleInitial: '',
-    displayName: exportData.displayName,
-    gradeLevel: exportData.gradeLevel,
-    section: exportData.section,
-  });
-  for (const item of exportData.quizAttempts) {
-    await ensureModule(database, {
-      id: item.moduleId,
-      title: item.moduleId,
-      subject: 'ADDED_MATERIALS',
-      competencyCode: '',
-      gradeLevel: exportData.gradeLevel,
-    });
-    await insertAttempt(
-      database,
-      {
-        id: item.attemptId,
-        studentId: student.id,
-        moduleId: item.moduleId,
-        score: item.score,
-        totalItems: item.totalItems,
-        weakTopic: item.weakTopic,
-        strongTopic: item.strongTopic,
-        masteryLevel: normalizeMastery(item.masteryLevel),
-        durationSeconds: item.durationSeconds,
-        attemptNumber: item.attemptNumber,
-        submittedAt: item.submittedAt,
-        learningFormatUsed: 'text',
-        responses: [],
-      },
-      'qr',
-    );
-  }
-  for (const moduleId of exportData.completedModules) {
-    await ensureModule(database, {
-      id: moduleId,
-      title: moduleId,
-      subject: 'ADDED_MATERIALS',
-      competencyCode: '',
-      gradeLevel: exportData.gradeLevel,
-    });
-    await database.runAsync(
-      `INSERT INTO progress (student_id, module_id, status, mastery_level, updated_at)
-       VALUES (?, ?, 'COMPLETED', 'PROFICIENT', ?)
-       ON CONFLICT(student_id, module_id) DO UPDATE SET status = 'COMPLETED'`,
-      student.id,
-      moduleId,
-      now(),
-    );
-  }
-}
-
-async function importTeacherModule(
-  database: Db,
-  module: Extract<DecodedQrPayload, { kind: 'teacher_module' }>['data'],
-): Promise<void> {
-  await database.withTransactionAsync(async () => {
-    await database.runAsync(
-      `INSERT INTO modules (
-        id, title, subject, grade_level, quarter, competency_code, summary, content,
-        content_style_tags_json, is_teacher_created, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, '["balanced"]', 1, ?)
-      ON CONFLICT(id) DO UPDATE SET
-        title = excluded.title,
-        subject = excluded.subject,
-        grade_level = excluded.grade_level,
-        quarter = excluded.quarter,
-        competency_code = excluded.competency_code,
-        content = excluded.content,
-        updated_at = excluded.updated_at`,
-      module.moduleId,
-      module.title,
-      normalizeSubject(module.subject),
-      module.gradeLevel,
-      module.quarter,
-      module.competencyCode,
-      module.content.slice(0, 180),
-      module.content,
-      now(),
-    );
-    for (const [index, question] of module.questions.entries()) {
-      await database.runAsync(
-        `INSERT OR REPLACE INTO quiz_questions
-         (id, module_id, type, question_text, choices_json, correct_answer, topic_tag)
-         VALUES (?, ?, ?, ?, ?, ?, ?)`,
-        question.id || `${module.moduleId}_q${index + 1}`,
-        module.moduleId,
-        normalizeQuestionType(question.type),
-        question.questionText,
-        JSON.stringify(question.choices),
-        question.correctAnswer,
-        question.topicTag,
-      );
-    }
-  });
-}
-
-async function resolveImportedStudent(input: {
-  studentId: string;
-  studentNumber: string;
-  firstName: string;
-  lastName: string;
-  middleInitial: string;
-  displayName: string;
-  gradeLevel: number;
-  section: string;
-}): Promise<Student> {
-  const database = await getDatabase();
-  const row = await database.getFirstAsync<StudentRow>(
-    `SELECT * FROM students
-     WHERE id = ? OR lower(student_number) = lower(?)
-     ORDER BY CASE WHEN id = ? THEN 0 ELSE 1 END
-     LIMIT 1`,
-    input.studentId,
-    input.studentNumber,
-    input.studentId,
-  );
-  if (row) return mapStudent(row);
-  return saveStudent({
-    id: input.studentId || studentIdFromNumber(input.studentNumber),
-    studentNumber: input.studentNumber || input.studentId,
-    firstName: input.firstName || input.displayName.split(' ')[0] || 'Student',
-    lastName: input.lastName || input.displayName.split(' ').slice(1).join(' '),
-    middleInitial: input.middleInitial,
-    gradeLevel: input.gradeLevel,
-    section: input.section,
-    birthday: '',
-    pin: '1234',
-  });
-}
-
 async function ensureModule(
   database: Db,
   module: {
@@ -1191,28 +1165,6 @@ async function initializeFlashcards(database: Db, studentId: string): Promise<vo
      SELECT ?, id, 2.5, 0, 0, ? FROM flashcards`,
     studentId,
     now(),
-  );
-}
-
-async function enqueueSync(
-  database: Db,
-  entityType: string,
-  entityId: string,
-  operation: string,
-  payload: unknown,
-): Promise<void> {
-  const createdAt = now();
-  await database.runAsync(
-    `INSERT INTO sync_queue (
-      id, entity_type, entity_id, operation, payload_json, next_attempt_at, created_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-    id('sync'),
-    entityType,
-    entityId,
-    operation,
-    JSON.stringify(payload),
-    createdAt,
-    createdAt,
   );
 }
 
@@ -1287,13 +1239,6 @@ function mapAttempt(row: AttemptRow, responses: ResponseRow[]): QuizAttempt {
   };
 }
 
-function decodedLearningFormat(value: string | undefined): LearningFormat {
-  if (value === 'auditory') return 'audio';
-  if (value === 'reading') return 'text';
-  if (value === 'visual' || value === 'kinesthetic') return value;
-  return 'text';
-}
-
 function bestAttempt(attempts: QuizAttempt[]): QuizAttempt {
   const sorted = [...attempts].sort((left, right) => {
     const scoreDifference =
@@ -1305,22 +1250,13 @@ function bestAttempt(attempts: QuizAttempt[]): QuizAttempt {
   return best;
 }
 
-function studentIdFromNumber(studentNumber: string): string {
-  const slug = studentNumber.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
-  return `student_${slug || Crypto.randomUUID()}`;
-}
-
-function normalizeMastery(value: string): MasteryLevel {
-  const normalized = value.toUpperCase();
-  if (
-    normalized === 'BEGINNER' ||
-    normalized === 'DEVELOPING' ||
-    normalized === 'PROFICIENT' ||
-    normalized === 'ADVANCED'
-  ) {
-    return normalized;
-  }
-  return 'DEVELOPING';
+function markdownSummary(markdown: string): string {
+  return markdown
+    .replace(/!\[[^\]]*]\([^)]*\)/g, '')
+    .replace(/[`*_>#-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 180);
 }
 
 function normalizeSubject(value: string): LearningModule['subject'] {
@@ -1331,8 +1267,13 @@ function normalizeSubject(value: string): LearningModule['subject'] {
   return 'ADDED_MATERIALS';
 }
 
-function normalizeQuestionType(value: string): QuizQuestion['type'] {
-  const normalized = value.toUpperCase();
-  if (normalized === 'TRUE_FALSE' || normalized === 'IDENTIFICATION') return normalized;
-  return 'MULTIPLE_CHOICE';
+function splitDisplayName(value: string): {
+  firstName: string;
+  lastName: string;
+} {
+  const parts = value.trim().split(/\s+/).filter(Boolean);
+  return {
+    firstName: parts[0] ?? 'Student',
+    lastName: parts.slice(1).join(' ') || 'Learner',
+  };
 }

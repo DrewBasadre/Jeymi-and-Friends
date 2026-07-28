@@ -1,8 +1,7 @@
 import * as SQLite from 'expo-sqlite';
-import { SEED_FLASHCARDS, SEED_MODULES, SEED_QUESTIONS } from './seed';
 
 const DATABASE_NAME = 'wais-next.db';
-const SCHEMA_VERSION = 2;
+const SCHEMA_VERSION = 4;
 
 let databasePromise: Promise<SQLite.SQLiteDatabase> | null = null;
 
@@ -10,7 +9,6 @@ export function getDatabase(): Promise<SQLite.SQLiteDatabase> {
   if (!databasePromise) {
     databasePromise = SQLite.openDatabaseAsync(DATABASE_NAME).then(async (database) => {
       await migrate(database);
-      await seed(database);
       return database;
     });
   }
@@ -35,6 +33,44 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
       pin TEXT NOT NULL,
       is_archived INTEGER NOT NULL DEFAULT 0,
       updated_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS teachers (
+      teacher_id TEXT PRIMARY KEY NOT NULL,
+      name TEXT NOT NULL,
+      age INTEGER NOT NULL,
+      faculty_id TEXT NOT NULL UNIQUE,
+      created_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS sections (
+      section_id TEXT PRIMARY KEY NOT NULL,
+      teacher_id TEXT NOT NULL REFERENCES teachers(teacher_id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      grade_level INTEGER NOT NULL,
+      is_active INTEGER NOT NULL DEFAULT 0,
+      created_at INTEGER NOT NULL,
+      UNIQUE(teacher_id, name)
+    );
+
+    CREATE TABLE IF NOT EXISTS section_roster (
+      section_id TEXT NOT NULL REFERENCES sections(section_id) ON DELETE CASCADE,
+      student_id TEXT NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+      added_at INTEGER NOT NULL,
+      PRIMARY KEY (section_id, student_id)
+    );
+
+    CREATE TABLE IF NOT EXISTS student_tasks (
+      task_id TEXT PRIMARY KEY NOT NULL,
+      student_id TEXT NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+      task_type TEXT NOT NULL,
+      target_id TEXT NOT NULL,
+      due_date TEXT NOT NULL,
+      issued_by TEXT NOT NULL,
+      issued_at TEXT NOT NULL,
+      class_section TEXT NOT NULL,
+      completed_at TEXT,
+      UNIQUE(student_id, task_type, target_id, due_date)
     );
 
     CREATE TABLE IF NOT EXISTS learning_profiles (
@@ -260,28 +296,6 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
       error_message TEXT
     );
 
-    CREATE TABLE IF NOT EXISTS sync_queue (
-      id TEXT PRIMARY KEY NOT NULL,
-      entity_type TEXT NOT NULL,
-      entity_id TEXT NOT NULL,
-      operation TEXT NOT NULL,
-      payload_json TEXT NOT NULL,
-      attempts INTEGER NOT NULL DEFAULT 0,
-      next_attempt_at INTEGER NOT NULL,
-      created_at INTEGER NOT NULL,
-      last_error TEXT
-    );
-
-    CREATE TABLE IF NOT EXISTS privacy_consents (
-      student_id TEXT NOT NULL REFERENCES students(id) ON DELETE CASCADE,
-      notice_version TEXT NOT NULL,
-      guardian_name TEXT NOT NULL,
-      guardian_acknowledged_at INTEGER NOT NULL,
-      ai_diagnostics_allowed INTEGER NOT NULL DEFAULT 0,
-      cloud_sync_allowed INTEGER NOT NULL DEFAULT 0,
-      PRIMARY KEY (student_id, notice_version)
-    );
-
     CREATE INDEX IF NOT EXISTS idx_modules_grade_subject
       ON modules(grade_level, subject, quarter);
     CREATE INDEX IF NOT EXISTS idx_attempts_student_submitted
@@ -296,8 +310,12 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
       ON review_events(student_id, reviewed_at DESC);
     CREATE INDEX IF NOT EXISTS idx_format_history_student_time
       ON format_history(student_id, attempted_at DESC);
-    CREATE INDEX IF NOT EXISTS idx_sync_due
-      ON sync_queue(next_attempt_at);
+    CREATE INDEX IF NOT EXISTS idx_sections_teacher
+      ON sections(teacher_id, is_active DESC);
+    CREATE INDEX IF NOT EXISTS idx_roster_student
+      ON section_roster(student_id);
+    CREATE INDEX IF NOT EXISTS idx_student_tasks_due
+      ON student_tasks(student_id, completed_at, due_date);
 
     PRAGMA user_version = ${SCHEMA_VERSION};
   `);
@@ -307,68 +325,30 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
     'learning_format_used',
     "TEXT NOT NULL DEFAULT 'text'",
   );
+  await database.execAsync(`
+    DELETE FROM module_manifests
+    WHERE json_extract(manifest_json, '$.content.markdown') IS NULL;
+    UPDATE modules
+    SET content = CASE
+          WHEN trim(content) = '' THEN
+            '# Module needs re-export\n\nThis legacy PDF module must be shared again as Markdown.'
+          ELSE content
+        END,
+        summary = CASE
+          WHEN trim(summary) = '' THEN 'Legacy module awaiting Markdown re-export.'
+          ELSE summary
+        END,
+        local_asset_uri = NULL
+    WHERE lower(local_asset_uri) LIKE '%.pdf';
+    DELETE FROM modules
+    WHERE id IN (
+      SELECT module_id FROM module_manifests WHERE source = 'bundled'
+    );
+    DELETE FROM module_manifests WHERE source != 'teacher-bluetooth';
+    DROP TABLE IF EXISTS sync_queue;
+    DROP TABLE IF EXISTS privacy_consents;
+  `);
   await database.execAsync(`PRAGMA user_version = ${SCHEMA_VERSION};`);
-}
-
-async function seed(database: SQLite.SQLiteDatabase): Promise<void> {
-  const row = await database.getFirstAsync<{ count: number }>('SELECT COUNT(*) AS count FROM modules');
-  if ((row?.count ?? 0) === 0) {
-    await database.withTransactionAsync(async () => {
-      for (const module of SEED_MODULES) {
-        await database.runAsync(
-        `INSERT INTO modules (
-          id, title, subject, grade_level, quarter, competency_code, summary, content,
-          content_style_tags_json, local_asset_uri, remote_asset_path, package_sha256,
-          package_size_bytes, is_teacher_created, updated_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        module.id,
-        module.title,
-        module.subject,
-        module.gradeLevel,
-        module.quarter,
-        module.competencyCode,
-        module.summary,
-        module.content,
-        JSON.stringify(module.contentStyleTags),
-        module.localAssetUri,
-        module.remoteAssetPath,
-        module.packageSha256,
-        module.packageSizeBytes,
-        module.isTeacherCreated ? 1 : 0,
-        module.updatedAt,
-        );
-      }
-
-      for (const question of SEED_QUESTIONS) {
-        await database.runAsync(
-        `INSERT INTO quiz_questions (
-          id, module_id, type, question_text, choices_json, correct_answer, topic_tag
-        ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-        question.id,
-        question.moduleId,
-        question.type,
-        question.questionText,
-        JSON.stringify(question.choices),
-        question.correctAnswer,
-        question.topicTag,
-        );
-      }
-
-      for (const flashcard of SEED_FLASHCARDS) {
-        await database.runAsync(
-        `INSERT INTO flashcards (id, module_id, front, back, learning_style_tag)
-         VALUES (?, ?, ?, ?, ?)`,
-        flashcard.id,
-        flashcard.moduleId,
-        flashcard.front,
-        flashcard.back,
-        flashcard.learningStyleTag,
-        );
-      }
-    });
-  }
-  await seedReviewItems(database);
-  await seedBundledManifests(database);
 }
 
 export async function resetDatabaseForDevelopment(): Promise<void> {
@@ -386,79 +366,15 @@ export async function resetDatabaseForDevelopment(): Promise<void> {
     DELETE FROM format_history;
     DELETE FROM adaptive_format_profiles;
     DELETE FROM learning_profiles;
-    DELETE FROM privacy_consents;
     DELETE FROM scanned_reports;
     DELETE FROM scanned_report_parts;
     DELETE FROM transfer_sessions;
-    DELETE FROM sync_queue;
+    DELETE FROM student_tasks;
+    DELETE FROM section_roster;
+    DELETE FROM sections;
+    DELETE FROM teachers;
     DELETE FROM students;
   `);
-}
-
-async function seedReviewItems(database: SQLite.SQLiteDatabase): Promise<void> {
-  await database.execAsync(`
-    INSERT OR IGNORE INTO review_items (
-      item_id, module_id, module_version, concept_id, type, importance,
-      prompt, answer, formats_json, authored_by, tags_json
-    )
-    SELECT
-      f.id,
-      f.module_id,
-      1,
-      CASE
-        WHEN instr(f.id, '_') > 0 THEN f.module_id || ':' || f.id
-        ELSE f.module_id || ':review'
-      END,
-      'flashcard',
-      'core',
-      f.front,
-      f.back,
-      json_object('text', f.back),
-      'curriculum',
-      json_array(f.learning_style_tag)
-    FROM flashcards f;
-  `);
-}
-
-async function seedBundledManifests(
-  database: SQLite.SQLiteDatabase,
-): Promise<void> {
-  for (const module of SEED_MODULES) {
-    const reviewItems = SEED_FLASHCARDS.filter(
-      (card) => card.moduleId === module.id,
-    ).map((card) => ({
-      itemId: card.id,
-      moduleId: module.id,
-      moduleVersion: 1,
-      conceptId: `${module.id}:${card.id}`,
-      type: 'flashcard',
-      importance: 'core',
-      prompt: card.front,
-      answer: card.back,
-      formats: { text: card.back },
-      authoredBy: 'curriculum',
-      tags: [card.learningStyleTag],
-    }));
-    const manifest = {
-      moduleId: module.id,
-      version: 1,
-      source: 'bundled',
-      gradeLevel: module.gradeLevel,
-      subject: module.subject,
-      formats: { text: `${module.id}.txt` },
-      checksums: {},
-      quizId: `${module.id}-quiz1`,
-      reviewItems,
-    };
-    await database.runAsync(
-      `INSERT OR IGNORE INTO module_manifests
-       (module_id, version, source, manifest_json, verified_at)
-       VALUES (?, 1, 'bundled', ?, ?)`,
-      module.id,
-      JSON.stringify(manifest),
-      Date.now(),
-    );
-  }
 }
 
 async function ensureColumn(

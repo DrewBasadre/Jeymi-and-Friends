@@ -1,107 +1,91 @@
-# WAIS Mobile
+# WAIS Android
 
-Cross-platform, offline-first WAIS client for Android and iOS. The app uses
-Expo prebuild/CNG because PDF rendering and Google Nearby Connections require
-custom native code; it does not run in Expo Go.
+WAIS is an Android-first Expo React Native app for fully offline classroom
+learning. React Native renders the interface, Expo SQLite stores shared student
+and teacher data, and a Kotlin Expo module provides Android Nearby Connections
+module transfer.
 
-## Capabilities
+This build intentionally has no Supabase client, Edge Functions, cloud auth,
+OTA module download, or callable AI service.
 
-- Student learning-style assessment and personalized module ordering
-- Bundled offline Grade 5 dataset plus one-time Supabase dataset download
-- Offline SQLite progress, unlimited quiz attempts, per-question timing, and
-  validated multipart QR reports
-- Adaptive learning-format recommendations with student/parent overrides
-- Offline SM-2 review with active recall, retrieval quizzes, interleaving,
-  Pomodoro sessions, blurting, and custom review sets
-- Weekly parent digests with notification and in-app delivery
-- Offline OS text-to-speech and local PDF reading
-- Offline teacher QR scanning, record book, leaderboard, and support flags
-- Consent-gated Supabase profile/attempt sync with retry queue
-- Authenticated lesson-plan and de-identified diagnostic Edge Functions
-- Canonical manifests and checksum-verified PDF/custom-set transfer through
-  Google Nearby Connections on Android and iOS
-- Legacy WAIS QR/data import compatibility documented in `../MIGRATION_AUDIT.md`
+## Current offline flows
 
-## Setup
+- Parent-guided student registration and learning-format assessment
+- Persistent student profile and canonical Profile QR
+- Local teacher profile with name, age, and faculty ID
+- Teacher sections with one authoritative active section
+- Profile QR scan into the active section roster, with update instead of
+  duplicate behavior
+- Assignment QR creation for module and quiz tasks
+- Student Assignment QR scanning with merge-only local deadlines
+- Empty first-run module library with a teacher-transfer waiting state
+- Teacher Markdown module authoring with local WebP images
+- Manual concept ID, importance, and review-item authoring
+- Native Markdown rendering with raw HTML disabled
+- Offline on-device text-to-speech
+- Multiple-choice and enumeration quiz UI, per-question timing, results, and
+  breakdown
+- Multipart Quiz Report QR generation and teacher import
+- Flashcards, SM-2 spaced repetition, retrieval practice, interleaving, custom
+  review sets, blurting, and a Pomodoro wrapper
+- Local student and class performance summaries and teacher-only leaderboard
+- Android Nearby Connections package transfer with verification, cancel, and
+  resume support
+- Disabled `AI assist coming soon` and `AI approach plan coming soon` slots
 
-```sh
+## Module packages
+
+The only implemented module source is `teacher-bluetooth`.
+
+A `.wais-module` file is a bounded ZIP archive containing:
+
+- `manifest.json`
+- one local Markdown file
+- optional local MP3 audio
+- optional local WebP assets
+
+Every content file has a SHA-256 checksum in the manifest. Archive paths,
+expanded sizes, file counts, Markdown size, audio size, and image sizes are
+validated before installation. Attached images are converted to WebP at 80%
+quality and resized so their longest edge is at most 1080 pixels.
+
+## Run on Android
+
+Requirements:
+
+- Node.js and npm
+- Android Studio SDK and an Android emulator or device
+- Android Studio's bundled Java 21
+
+```bash
 npm install
-cp .env.example .env.local
-npx expo prebuild --clean
+JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home" npm run android
 ```
 
-Set `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` for cloud
-features. Apply `supabase/migrations/202607280001_initial_wais.sql`, deploy the
-three Edge Functions, and set `GEMINI_API_KEY` as an Edge Function secret. Promote
-teacher accounts to the `teacher` role through trusted administration; new auth
-accounts default to `student`. Apply both migrations in filename order.
+For an already-built development client, start Metro with:
 
-## Run And Build
+```bash
+npm start
+```
 
-```sh
-npm run typecheck
-npm test
-npx --yes deno-bin test supabase/functions/_shared/privacy_test.ts
-npx --yes deno-bin check supabase/functions/lesson-plan/index.ts \
-  supabase/functions/student-diagnostic/index.ts \
-  supabase/functions/cloud-voice/index.ts
+## Validate
+
+```bash
+npm run validate
 npx expo-doctor
 ```
 
-Android local build:
+The Jest suite covers adaptive learning, SM-2 review behavior, canonical QR
+envelopes and multipart reports, manifest validation, and bounded module archive
+extraction.
 
-```sh
-export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-npx expo prebuild --clean --no-install
-cd android && ./gradlew :app:assembleDebug
-```
+## Native Android transport
 
-iOS requires full Xcode and CocoaPods. Open the generated workspace only after:
+`modules/wais-nearby/android` uses Google Nearby Connections with
+`P2P_POINT_TO_POINT`. Connection verification exchanges the small handshake and
+metadata payloads. Nearby selects the available Bluetooth/BLE and local Wi-Fi
+transport for the file payload. The app verifies the archive checksum before
+installing it and preserves transfer state for offset-based retry.
 
-```sh
-npx expo prebuild --clean --no-install
-cd ios && pod install
-```
-
-EAS development, preview, and production profiles are in `eas.json`.
-
-## Native Transfer
-
-The Android module lives in `modules/wais-nearby`; the iOS Expo inline module
-lives in `src/native/WaisNearby.swift`. The config plugin pins Google's Swift
-package and configures iOS Bonjour/local-network declarations. Transfer uses an
-explicit code confirmation, app-private storage, SHA-256 verification, progress,
-cancellation, and metadata/PDF payload separation.
-
-Google Nearby Connections negotiates Bluetooth and local Wi-Fi transports
-internally. Its file-payload API reports progress but does not expose verified
-chunk offsets, so an interrupted file currently retries from the beginning.
-True chunk-level resume requires an application-level chunk protocol and remains
-the one transport constraint against the locked MVP specification.
-
-Weekly digests schedule an OS notification on the device holding the student
-profile when it is online and remain available in-app otherwise. Delivery to a
-separate parent phone requires parent-device token registration and configured
-push credentials, which are not present in this repository.
-
-Physical acceptance requires one Android and one iOS development build:
-
-1. Open **Offline module transfer** on the teacher device and choose a PDF.
-2. Open **Receive a module** on the student device.
-3. Discover/connect and confirm that the same code appears on both devices.
-4. Send the PDF, cancel/retry once, then verify it opens offline after airplane mode.
-5. Generate a quiz QR on the student device, scan it on the teacher device, and
-   verify student association, score, total duration, and per-question timing.
-
-Bluetooth and camera acceptance cannot be certified with simulators.
-
-## Modes And Privacy
-
-Lightweight mode disables cloud controls while preserving every core learning
-workflow. Full mode adds downloads, cloud backup, AI, and a short cloud voice
-sample while on-device speech remains the baseline. AI requests require a
-Supabase session and reject direct identifier keys recursively. Student
-diagnostics send only module ID, missed-topic tags, a timing pattern, and the
-learning format used; the online call also requires guardian consent. Raw
-answers, student names, and student IDs remain local.
+Two physical Android devices remain the authoritative acceptance environment
+for radio interruption and resume behavior.

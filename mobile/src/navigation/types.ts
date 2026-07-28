@@ -16,14 +16,20 @@ export type RootStackParamList = {
   QuizReport: { moduleId: string; attemptId: string };
   TeacherLogin: undefined;
   TeacherTabs: undefined;
+  Sections: undefined;
+  AssignmentBuilder: undefined;
   LearnerDetail: { studentId: string };
-  Transfer: { setId?: string } | undefined;
+  ModuleAuthor: undefined;
+  Transfer:
+    | { setId?: string; packageUri?: string; displayName?: string }
+    | undefined;
   ReceiveTransfer: undefined;
 };
 
 export type StudentTabParamList = {
   StudentHome: undefined;
   Modules: undefined;
+  StudentScan: undefined;
   Reports: undefined;
   Profile: undefined;
 };

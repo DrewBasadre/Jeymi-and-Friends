@@ -24,15 +24,12 @@ import {
   Bot,
   Camera,
   CheckCircle2,
-  FileUp,
   PencilLine,
   QrCode,
   RefreshCw,
   Search,
-  ShieldCheck,
   Upload,
   UsersRound,
-  WifiOff,
 } from 'lucide-react-native';
 import {
   Card,
@@ -45,13 +42,11 @@ import {
   SectionTitle,
 } from '@/components/ui';
 import {
-  getAttempts,
-  getModule,
-  getPrivacyConsent,
-  getQuestions,
+  getActiveSection,
+  getClassPerformanceReport,
+  getStudentPerformanceReport,
   getTeacherDashboard,
   importQrReport,
-  listModules,
 } from '@/data/repository';
 import {
   listCustomReviewSets,
@@ -59,26 +54,25 @@ import {
   setStrugglingThreshold,
 } from '@/data/mvpRepository';
 import type {
-  AiSuggestion,
-  DiagnosticInput,
+  ClassPerformanceReport,
   LearningModule,
+  Section,
+  StudentPerformanceReport,
   TeacherDashboard,
-  TeacherLearnerRow,
   TransferPackage,
 } from '@/domain/types';
 import type {
   RootStackParamList,
   TeacherTabParamList,
 } from '@/navigation/types';
-import { generateDiagnostic, generateLessonPlan, type LessonPlanResult } from '@/services/ai';
-import { buildReviewSetPackage, pickPdfPackage } from '@/services/files';
+import { buildReviewSetPackage } from '@/services/files';
+import { inspectModulePackage } from '@/services/modulePackages';
 import {
   nearby,
   type NearbyPeer,
   type NearbyTransferUpdate,
   type NearbyVerificationRequest,
 } from '@/services/nearby';
-import { useSessionStore } from '@/store/session';
 import { colors, radius, spacing } from '@/theme/tokens';
 
 type TeacherTabProps<Route extends keyof TeacherTabParamList> = CompositeScreenProps<
@@ -93,14 +87,36 @@ type StackProps<Route extends keyof RootStackParamList> = NativeStackScreenProps
 
 export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>) {
   const [dashboard, setDashboard] = useState<TeacherDashboard | null>(null);
-  const load = useCallback(() => void getTeacherDashboard().then(setDashboard), []);
+  const [overallDashboard, setOverallDashboard] =
+    useState<TeacherDashboard | null>(null);
+  const [activeSection, setActiveSection] = useState<Section | null>(null);
+  const [classReport, setClassReport] =
+    useState<ClassPerformanceReport | null>(null);
+  const load = useCallback(() => {
+    void (async () => {
+      const section = await getActiveSection();
+      const [sectionDashboard, overall, report] = await Promise.all([
+        getTeacherDashboard(section?.sectionId),
+        getTeacherDashboard(),
+        section ? getClassPerformanceReport(section.sectionId) : null,
+      ]);
+      setActiveSection(section);
+      setDashboard(sectionDashboard);
+      setOverallDashboard(overall);
+      setClassReport(report);
+    })();
+  }, []);
   useFocusEffect(load);
 
   return (
     <Screen>
       <ScreenHeader
-        title="Class overview"
-        subtitle="Calculated from reports stored on this device."
+        title={activeSection?.name ?? 'Class overview'}
+        subtitle={
+          activeSection
+            ? `Grade ${activeSection.gradeLevel} - calculated on this device.`
+            : 'Choose an active section to begin.'
+        }
         action={<Chip label="Offline ready" color={colors.emerald} selected />}
       />
       <View style={styles.metricGrid}>
@@ -117,9 +133,7 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
               label={`${value}%`}
               selected={dashboard?.strugglingThreshold === value}
               onPress={() => {
-                void setStrugglingThreshold(value).then(() =>
-                  getTeacherDashboard().then(setDashboard),
-                );
+                void setStrugglingThreshold(value).then(load);
               }}
             />
           ))}
@@ -128,7 +142,7 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
       <Card accent={colors.emerald}>
         <View style={styles.headingRow}>
           <UsersRound size={22} color={colors.emerald} />
-          <SectionTitle>Leaderboard</SectionTitle>
+          <SectionTitle>Active section leaderboard</SectionTitle>
         </View>
         {(dashboard?.leaderboard ?? []).slice(0, 5).map((learner, index) => (
           <Pressable
@@ -145,9 +159,62 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
           </Pressable>
         ))}
         {!dashboard?.learners.length ? (
-          <EmptyState title="No scanned reports" body="Use the scanner to build the local class dashboard." />
+          <EmptyState title="No rostered learners" body="Choose a section, then scan student profile QR codes." />
         ) : null}
       </Card>
+      {classReport?.commonlyMissedConcepts.length ? (
+        <Card accent={colors.amber}>
+          <SectionTitle>Commonly missed concepts</SectionTitle>
+          {classReport.commonlyMissedConcepts.slice(0, 5).map((concept) => (
+            <View key={concept.conceptId} style={styles.rowBetween}>
+              <Text style={styles.rowTitle}>{concept.conceptId}</Text>
+              <Text style={styles.rowScore}>
+                {concept.percentOfClassMissing}%
+              </Text>
+            </View>
+          ))}
+        </Card>
+      ) : null}
+      <Card>
+        <SectionTitle>Overall leaderboard</SectionTitle>
+        {(overallDashboard?.leaderboard ?? []).slice(0, 5).map(
+          (learner, index) => (
+            <Pressable
+              key={learner.studentId}
+              style={styles.learnerRow}
+              onPress={() =>
+                navigation.navigate('LearnerDetail', {
+                  studentId: learner.studentId,
+                })
+              }
+            >
+              <Text style={styles.rank}>{index + 1}</Text>
+              <View style={styles.flex}>
+                <Text style={styles.rowTitle}>{learner.displayName}</Text>
+                <Text style={styles.rowMeta}>{learner.section}</Text>
+              </View>
+              <Text style={styles.rowScore}>{learner.averageScore}%</Text>
+            </Pressable>
+          ),
+        )}
+        {!overallDashboard?.learners.length ? (
+          <Text style={styles.rowMeta}>
+            Learners appear here after joining a managed section.
+          </Text>
+        ) : null}
+      </Card>
+      <PrimaryButton
+        label="Manage sections"
+        icon={UsersRound}
+        tone="secondary"
+        onPress={() => navigation.navigate('Sections')}
+      />
+      <PrimaryButton
+        label="Create assignment QR"
+        icon={QrCode}
+        tone="secondary"
+        onPress={() => navigation.navigate('AssignmentBuilder')}
+      />
       <PrimaryButton
         label="Author review sets"
         icon={PencilLine}
@@ -155,10 +222,10 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
         onPress={() => navigation.navigate('CustomReviewSets')}
       />
       <PrimaryButton
-        label="Distribute PDF modules"
+        label="Author Markdown module"
         icon={Bluetooth}
         tone="secondary"
-        onPress={() => navigation.navigate('Transfer')}
+        onPress={() => navigation.navigate('ModuleAuthor')}
       />
     </Screen>
   );
@@ -166,8 +233,16 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
 
 export function RecordBookScreen({ navigation }: TeacherTabProps<'RecordBook'>) {
   const [dashboard, setDashboard] = useState<TeacherDashboard | null>(null);
+  const [activeSection, setActiveSection] = useState<Section | null>(null);
   const [query, setQuery] = useState('');
-  useFocusEffect(useCallback(() => void getTeacherDashboard().then(setDashboard), []));
+  useFocusEffect(
+    useCallback(() => {
+      void getActiveSection().then(async (section) => {
+        setActiveSection(section);
+        setDashboard(await getTeacherDashboard(section?.sectionId));
+      });
+    }, []),
+  );
 
   const learners = useMemo(() => {
     const value = query.trim().toLocaleLowerCase();
@@ -180,7 +255,14 @@ export function RecordBookScreen({ navigation }: TeacherTabProps<'RecordBook'>) 
   return (
     <Screen scroll={false} style={styles.flex}>
       <View style={styles.fixedHeader}>
-        <ScreenHeader title="Record book" subtitle="Local reports and intervention flags." />
+        <ScreenHeader
+          title="Record book"
+          subtitle={
+            activeSection
+              ? `${activeSection.name} - local reports and intervention flags.`
+              : 'Choose an active section to view its roster.'
+          }
+        />
         <View style={styles.searchBox}>
           <Search size={19} color={colors.inkMuted} />
           <TextInput
@@ -302,219 +384,107 @@ export function ScannerScreen(): ReactElement {
 }
 
 export function GurobotScreen(): ReactElement {
-  const canUseOnline = useSessionStore((state) => state.canUseOnlineEnhancements);
-  const [topic, setTopic] = useState('Properties of Materials');
-  const [subject, setSubject] = useState<'SCIENCE' | 'MATH' | 'ENGLISH'>('SCIENCE');
-  const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<LessonPlanResult | null>(null);
-  const [draft, setDraft] = useState('');
-
-  async function generate() {
-    setLoading(true);
-    try {
-      const dashboard = await getTeacherDashboard();
-      setResult(
-        await generateLessonPlan({
-          gradeLevel: 5,
-          subject,
-          recentClassPerformance: {
-            averagePercentage: dashboard.classAverage,
-            commonlyMissedTopics: [
-              topic.trim(),
-              ...dashboard.strugglingStudents.map((item) => item.weakTopic),
-            ].filter(Boolean).slice(0, 8),
-          },
-        }),
-      );
-    } catch (error) {
-      Alert.alert('Online lesson planning unavailable', error instanceof Error ? error.message : 'Try again later.');
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    if (!result) return;
-    setDraft(
-      [
-        result.title,
-        '',
-        'Objectives',
-        ...result.objectives.map((item) => `- ${item}`),
-        '',
-        'Lesson flow',
-        ...result.lessonFlow.map((item) => `- ${item}`),
-        '',
-        'Assessment',
-        ...result.assessment.map((item) => `- ${item}`),
-        '',
-        'Remediation',
-        ...result.remediation.map((item) => `- ${item}`),
-      ].join('\n'),
-    );
-  }, [result]);
-
   return (
     <Screen>
       <ScreenHeader
-        title="Gurobot"
-        subtitle="AI lesson planning is an online enhancement through a protected server function."
+        title="AI assist"
+        subtitle="Reserved for a later online build."
       />
-      {!canUseOnline ? (
-        <Card accent={colors.amber}>
-          <WifiOff size={25} color={colors.amber} />
-          <Text style={styles.cardTitle}>Available in full mode</Text>
-          <Text style={styles.body}>Switch device mode in the student profile or settings when this device has connectivity.</Text>
-        </Card>
-      ) : null}
-      <Card>
-        <Text style={styles.fieldLabel}>Subject</Text>
-        <View style={styles.chipRow}>
-          {(['SCIENCE', 'MATH', 'ENGLISH'] as const).map((option) => (
-            <Chip
-              key={option}
-              label={option}
-              selected={subject === option}
-              onPress={() => setSubject(option)}
-            />
-          ))}
-        </View>
-        <Text style={styles.fieldLabel}>Lesson topic</Text>
-        <TextInput
-          value={topic}
-          onChangeText={setTopic}
-          style={styles.input}
-          placeholder="Topic or competency"
-          placeholderTextColor={colors.inkMuted}
-        />
+      <Card accent={colors.amber}>
+        <Bot size={30} color={colors.amber} />
+        <Text style={styles.cardTitle}>AI assist coming soon</Text>
+        <Text style={styles.body}>
+          Manual module authoring is fully available offline. No lesson content
+          or student data leaves this device in the current Android build.
+        </Text>
         <PrimaryButton
-          label="Generate lesson plan"
+          label="AI assist coming soon"
           icon={Bot}
-          loading={loading}
-          disabled={!canUseOnline || !topic.trim()}
-          onPress={() => void generate()}
+          disabled
+          onPress={() => undefined}
         />
       </Card>
-      {result ? (
-        <Card accent={colors.indigo}>
-          <Text style={styles.cardTitle}>Suggestion draft</Text>
-          <TextInput
-            value={draft}
-            onChangeText={setDraft}
-            style={[styles.input, styles.draftInput]}
-            multiline
-          />
-        </Card>
-      ) : null}
     </Screen>
   );
 }
 
 export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDetail'>) {
-  const [learner, setLearner] = useState<TeacherLearnerRow | null>(null);
-  const [suggestion, setSuggestion] = useState<AiSuggestion | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [suggestionDraft, setSuggestionDraft] = useState('');
+  const [report, setReport] = useState<StudentPerformanceReport | null>(null);
 
   useEffect(() => {
-    void getTeacherDashboard().then((dashboard) => {
-      setLearner(dashboard.learners.find((item) => item.studentId === route.params.studentId) ?? null);
-    });
+    void getStudentPerformanceReport(route.params.studentId).then(setReport);
   }, [route.params.studentId]);
-
-  async function analyze() {
-    if (!learner) return;
-    setLoading(true);
-    const [attempts, modules, consent] = await Promise.all([
-      getAttempts(learner.studentId),
-      listModules(learner.studentId),
-      getPrivacyConsent(learner.studentId),
-    ]);
-    const latest = attempts[0];
-    const module = latest ? modules.find((item) => item.id === latest.moduleId) : null;
-    const questions = latest ? await getQuestions(latest.moduleId) : [];
-    const questionById = new Map(questions.map((question) => [question.id, question]));
-    const missed = latest?.responses.filter((response) => !response.isCorrect) ?? [];
-    const averageMissSeconds =
-      missed.length === 0
-        ? 0
-        : missed.reduce((sum, response) => sum + response.elapsedMs / 1_000, 0) /
-          missed.length;
-    const input: DiagnosticInput = {
-      moduleId: module?.id ?? latest?.moduleId ?? 'general-progress',
-      missedQuestionTopics: [
-        ...new Set(
-          missed.map(
-            (response) =>
-              questionById.get(response.questionId)?.topicTag ?? latest?.weakTopic ?? 'review',
-          ),
-        ),
-      ],
-      timingPattern:
-        missed.length === 0
-          ? 'no-misses'
-          : averageMissSeconds > 45
-            ? 'slow-and-wrong'
-            : averageMissSeconds < 15
-              ? 'fast-and-wrong'
-              : 'mixed',
-      learningFormatUsed: latest?.learningFormatUsed ?? 'text',
-    };
-    const next = await generateDiagnostic(
-      input,
-      consent?.aiDiagnosticsAllowed === true,
-    );
-    setSuggestion(next);
-    setSuggestionDraft(
-      [
-        next.summary,
-        '',
-        ...next.actions.map((action) => `- ${action}`),
-        '',
-        `Monitoring: ${next.monitoringPlan}`,
-      ].join('\n'),
-    );
-    setLoading(false);
-  }
 
   return (
     <Screen>
-      <ScreenHeader title={learner?.displayName ?? 'Learner'} subtitle={learner?.studentNumber} onBack={navigation.goBack} />
-      {learner ? (
+      <ScreenHeader
+        title={report?.profile.name ?? 'Learner'}
+        subtitle={
+          report
+            ? `${report.profile.studentNumber} - ${report.profile.section}`
+            : undefined
+        }
+        onBack={navigation.goBack}
+      />
+      {report ? (
         <>
           <View style={styles.metricGrid}>
-            <Metric label="Average" value={`${learner.averageScore}%`} tint={colors.indigoTint} />
-            <Metric label="Attempts" value={learner.totalAttempts} tint={colors.emeraldTint} />
-            <Metric label="Completed" value={learner.completedModules} tint={colors.amberTint} />
+            <Metric label="Average" value={`${report.averageScorePercentage}%`} tint={colors.indigoTint} />
+            <Metric label="Attempts" value={report.quizHistory.length} tint={colors.emeraldTint} />
+            <Metric label="Trend" value={capitalize(report.trend)} tint={colors.amberTint} />
           </View>
           <Card>
-            <Text style={styles.fieldLabel}>Practice next</Text>
-            <Text style={styles.cardTitle}>{learner.weakTopic}</Text>
+            <Text style={styles.fieldLabel}>Current learning format</Text>
+            <Text style={styles.cardTitle}>
+              {capitalize(report.profile.currentLearningFormat)}
+            </Text>
+          </Card>
+          <Card accent={colors.amber}>
+            <SectionTitle>Struggling concepts</SectionTitle>
+            {report.strugglingConcepts.slice(0, 5).map((concept) => (
+              <View key={concept.conceptId} style={styles.rowBetween}>
+                <View style={styles.flex}>
+                  <Text style={styles.rowTitle}>{concept.conceptId}</Text>
+                  <Text style={styles.rowMeta}>
+                    Missed across {concept.attempts}{' '}
+                    {concept.attempts === 1 ? 'attempt' : 'attempts'}
+                  </Text>
+                </View>
+                <Chip label={`${concept.missCount} misses`} color={colors.amber} />
+              </View>
+            ))}
+            {!report.strugglingConcepts.length ? (
+              <Text style={styles.rowMeta}>No missed concepts recorded.</Text>
+            ) : null}
+          </Card>
+          <Card>
+            <SectionTitle>Quiz history</SectionTitle>
+            {report.quizHistory.slice(0, 10).map((attempt) => (
+              <View key={attempt.id} style={styles.rowBetween}>
+                <View style={styles.flex}>
+                  <Text style={styles.rowTitle}>{attempt.moduleId}</Text>
+                  <Text style={styles.rowMeta}>
+                    {new Date(attempt.submittedAt).toLocaleDateString()}
+                  </Text>
+                </View>
+                <Text style={styles.rowScore}>
+                  {Math.round(
+                    (attempt.score / Math.max(1, attempt.totalItems)) * 100,
+                  )}
+                  %
+                </Text>
+              </View>
+            ))}
+            {!report.quizHistory.length ? (
+              <Text style={styles.rowMeta}>No quiz reports scanned yet.</Text>
+            ) : null}
           </Card>
           <PrimaryButton
-            label="Suggest teaching approach"
+            label="AI approach plan coming soon"
             icon={Bot}
-            loading={loading}
-            onPress={() => void analyze()}
+            disabled
+            onPress={() => undefined}
           />
-          {suggestion ? (
-            <Card accent={suggestion.source === 'edge' ? colors.indigo : colors.emerald}>
-              <View style={styles.rowBetween}>
-                <Text style={styles.cardTitle}>Suggestion draft</Text>
-                <Chip label={suggestion.source === 'edge' ? 'Online AI' : 'Offline guide'} selected color={colors.emerald} />
-              </View>
-              <TextInput
-                value={suggestionDraft}
-                onChangeText={setSuggestionDraft}
-                style={[styles.input, styles.draftInput]}
-                multiline
-              />
-              <View style={styles.privacyLine}>
-                <ShieldCheck size={18} color={colors.emerald} />
-                <Text style={styles.privacyText}>No name, student number, birthday, section, or raw answers were sent.</Text>
-              </View>
-            </Card>
-          ) : null}
         </>
       ) : <EmptyState title="Learner not found" body="Scan the learner’s report again." />}
     </Screen>
@@ -529,14 +499,31 @@ export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
 
   useEffect(() => {
     const setId = route.params?.setId;
-    if (!setId) return;
-    void Promise.all([listCustomReviewSets(), listReviewItems()]).then(
-      async ([sets, items]) => {
-        const set = sets.find((candidate) => candidate.setId === setId);
-        if (set) setTransferPackage(await buildReviewSetPackage(set, items));
-      },
-    );
-  }, [route.params?.setId]);
+    const packageUri = route.params?.packageUri;
+    if (packageUri) {
+      void inspectModulePackage(packageUri, route.params?.displayName)
+        .then(setTransferPackage)
+        .catch((error: unknown) => {
+          Alert.alert(
+            'Module package unavailable',
+            error instanceof Error ? error.message : 'Build the module again.',
+          );
+        });
+      return;
+    }
+    if (setId) {
+      void Promise.all([listCustomReviewSets(), listReviewItems()]).then(
+        async ([sets, items]) => {
+          const set = sets.find((candidate) => candidate.setId === setId);
+          if (set) setTransferPackage(await buildReviewSetPackage(set, items));
+        },
+      );
+    }
+  }, [
+    route.params?.displayName,
+    route.params?.packageUri,
+    route.params?.setId,
+  ]);
 
   useEffect(() => {
     const peerSubscription = nearby.addPeerListener(setPeers);
@@ -583,14 +570,6 @@ export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
     );
   }
 
-  async function selectPdf() {
-    try {
-      setTransferPackage(await pickPdfPackage());
-    } catch (error) {
-      Alert.alert('PDF not selected', error instanceof Error ? error.message : 'Could not open this file.');
-    }
-  }
-
   async function findDevices() {
     try {
       await nearby.discover();
@@ -621,6 +600,32 @@ export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
     }
   }
 
+  async function resumeTransfer() {
+    if (!update) return;
+    try {
+      await nearby.retry(update.transferId);
+    } catch (error) {
+      Alert.alert(
+        'Transfer could not resume',
+        error instanceof Error
+          ? error.message
+          : 'Reconnect to the student device and try again.',
+      );
+    }
+  }
+
+  async function cancelTransfer() {
+    if (!update || update.transferId === 'pending') return;
+    try {
+      await nearby.cancel(update.transferId);
+    } catch (error) {
+      Alert.alert(
+        'Transfer could not be cancelled',
+        error instanceof Error ? error.message : 'Try again.',
+      );
+    }
+  }
+
   return (
     <Screen>
       <ScreenHeader title="Offline module transfer" subtitle="Curriculum and review packages" onBack={navigation.goBack} />
@@ -632,22 +637,30 @@ export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
             <Text style={styles.body}>
               {available
                 ? 'Nearby Connections can use Bluetooth and local Wi-Fi without internet.'
-                : 'PDF inspection works here; device-to-device transfer requires the native Nearby module on physical devices.'}
+                : 'Module inspection works here; device-to-device transfer requires the native Nearby module on physical devices.'}
             </Text>
           </View>
         </View>
       </Card>
-      <PrimaryButton label="Choose PDF package" icon={FileUp} tone="secondary" onPress={() => void selectPdf()} />
       {transferPackage ? (
         <Card>
           <Text style={styles.cardTitle}>{transferPackage.displayName}</Text>
           <Text style={styles.body}>{formatBytes(transferPackage.sizeBytes)}</Text>
           <Text style={styles.rowMeta}>
-            {transferPackage.manifest.reviewItems.length} review item{transferPackage.manifest.reviewItems.length === 1 ? '' : 's'} - manifest v{transferPackage.manifest.version}
+            Markdown + {transferPackage.manifest.assets.length} image asset
+            {transferPackage.manifest.assets.length === 1 ? '' : 's'} - manifest v
+            {transferPackage.manifest.version}
           </Text>
           <Text style={styles.hash} numberOfLines={2}>SHA-256 {transferPackage.sha256}</Text>
         </Card>
-      ) : null}
+      ) : (
+        <PrimaryButton
+          label="Author a Markdown module"
+          icon={PencilLine}
+          tone="secondary"
+          onPress={() => navigation.replace('ModuleAuthor')}
+        />
+      )}
       <PrimaryButton
         label="Find nearby student devices"
         icon={Search}
@@ -679,6 +692,20 @@ export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
           <Text style={styles.rowTitle}>{capitalize(update.status)}</Text>
           <Text style={styles.body}>{formatBytes(update.bytesTransferred)} of {formatBytes(update.totalBytes)}</Text>
           {update.errorMessage ? <Text style={styles.error}>{update.errorMessage}</Text> : null}
+          {update.status === 'queued' || update.status === 'transferring' ? (
+            <PrimaryButton
+              label="Cancel transfer"
+              tone="danger"
+              onPress={() => void cancelTransfer()}
+            />
+          ) : null}
+          {update.status === 'failed' || update.status === 'cancelled' ? (
+            <PrimaryButton
+              label="Resume transfer"
+              icon={RefreshCw}
+              onPress={() => void resumeTransfer()}
+            />
+          ) : null}
         </Card>
       ) : null}
     </Screen>

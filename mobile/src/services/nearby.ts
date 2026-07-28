@@ -67,6 +67,7 @@ interface WaisNearbyModule {
   requestConnection(peerId: string): Promise<void>;
   acceptConnection(peerId: string, accept: boolean): Promise<void>;
   sendFile(peerId: string, metadataJson: string, fileUri: string): Promise<string>;
+  retryTransfer(transferId: string): Promise<string>;
   cancelTransfer(transferId: string): Promise<void>;
 }
 
@@ -113,6 +114,16 @@ export const nearby = {
       }),
       transferPackage.fileUri,
     );
+  },
+
+  async retry(transferId: string): Promise<string> {
+    if (!nativeModule) throw unavailableError();
+    return nativeModule.retryTransfer(transferId);
+  },
+
+  async cancel(transferId: string): Promise<void> {
+    if (!nativeModule) throw unavailableError();
+    await nativeModule.cancelTransfer(transferId);
   },
 
   addPeerListener(listener: (peers: NearbyPeer[]) => void): EventSubscription | null {

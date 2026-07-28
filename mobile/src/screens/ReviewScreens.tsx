@@ -6,8 +6,11 @@ import {
   CalendarDays,
   CheckCircle2,
   ListChecks,
+  Pause,
   PencilLine,
+  Play,
   Plus,
+  Square,
   Timer,
 } from 'lucide-react-native';
 import {
@@ -51,7 +54,6 @@ const TECHNIQUES: Array<{ key: StudyTechnique; label: string }> = [
   { key: 'active-recall', label: 'Recall' },
   { key: 'retrieval-quiz', label: 'Retrieval quiz' },
   { key: 'interleaved', label: 'Interleaved' },
-  { key: 'pomodoro', label: 'Pomodoro' },
   { key: 'blurting', label: 'Blurting' },
 ];
 
@@ -69,7 +71,10 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
   const [pomodoro, setPomodoro] = useState<PomodoroSession | null>(null);
   const [workMinutes, setWorkMinutes] = useState(25);
   const [breakMinutes, setBreakMinutes] = useState(5);
+  const [cyclesPlanned, setCyclesPlanned] = useState(4);
   const [secondsLeft, setSecondsLeft] = useState(25 * 60);
+  const [timerPhase, setTimerPhase] = useState<'work' | 'break'>('work');
+  const [timerRunning, setTimerRunning] = useState(false);
   const itemStartedAt = useRef(Date.now());
 
   const load = useCallback(async () => {
@@ -88,10 +93,36 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
 
   useEffect(() => void load(), [load]);
   useEffect(() => {
-    if (!pomodoro || secondsLeft <= 0) return;
-    const timer = setInterval(() => setSecondsLeft((value) => Math.max(0, value - 1)), 1_000);
+    if (!pomodoro || !timerRunning || secondsLeft <= 0) return;
+    const timer = setInterval(
+      () => setSecondsLeft((value) => Math.max(0, value - 1)),
+      1_000,
+    );
     return () => clearInterval(timer);
-  }, [pomodoro, secondsLeft]);
+  }, [pomodoro, secondsLeft, timerRunning]);
+
+  useEffect(() => {
+    if (!pomodoro || !timerRunning || secondsLeft !== 0) return;
+    if (timerPhase === 'work') {
+      setTimerPhase('break');
+      setSecondsLeft(pomodoro.breakMinutes * 60);
+      return;
+    }
+
+    const completedCycles = Math.min(
+      pomodoro.cyclesPlanned,
+      pomodoro.completedCycles + 1,
+    );
+    const nextSession = { ...pomodoro, completedCycles };
+    setPomodoro(nextSession);
+    void savePomodoroSession(nextSession);
+    if (completedCycles >= pomodoro.cyclesPlanned) {
+      setTimerRunning(false);
+      return;
+    }
+    setTimerPhase('work');
+    setSecondsLeft(pomodoro.workMinutes * 60);
+  }, [pomodoro, secondsLeft, timerPhase, timerRunning]);
 
   const queue = useMemo(() => {
     const selectedSet = sets.find((set) => set.setId === activeSetId);
@@ -120,7 +151,6 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
     setWrittenAnswer('');
     setRetrievalAnswers({});
     setRetrievalResult(null);
-    setPomodoro(null);
     itemStartedAt.current = Date.now();
   }
 
@@ -135,12 +165,8 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
       technique,
     });
     if (pomodoro) {
-      const finishingCycle = index === queue.length - 1;
       const nextSession: PomodoroSession = {
         ...pomodoro,
-        completedCycles: finishingCycle
-          ? Math.min(pomodoro.cyclesPlanned, pomodoro.completedCycles + 1)
-          : pomodoro.completedCycles,
         itemLog: [
           ...pomodoro.itemLog,
           {
@@ -193,12 +219,21 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
       studentId: student.id,
       workMinutes,
       breakMinutes,
-      cyclesPlanned: 4,
+      cyclesPlanned,
     });
     setPomodoro(session);
     setSecondsLeft(session.workMinutes * 60);
+    setTimerPhase('work');
+    setTimerRunning(true);
     setIndex(0);
     itemStartedAt.current = Date.now();
+  }
+
+  function stopPomodoro() {
+    setPomodoro(null);
+    setTimerRunning(false);
+    setTimerPhase('work');
+    setSecondsLeft(workMinutes * 60);
   }
 
   if (!student) {
@@ -252,12 +287,18 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
         </View>
       ) : null}
 
-      {technique === 'pomodoro' && !pomodoro ? (
+      {!pomodoro ? (
         <Card accent={colors.coral}>
           <View style={styles.headingRow}>
             <Timer size={24} color={colors.coral} />
-            <Text style={styles.cardTitle}>Work block</Text>
+            <View style={styles.flex}>
+              <Text style={styles.cardTitle}>Study timer</Text>
+              <Text style={styles.body}>
+                Run timed work and break cycles with any technique.
+              </Text>
+            </View>
           </View>
+          <Text style={styles.label}>Work</Text>
           <View style={styles.chipRow}>
             {[15, 25, 35].map((minutes) => (
               <Chip
@@ -268,6 +309,7 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
               />
             ))}
           </View>
+          <Text style={styles.label}>Break</Text>
           <View style={styles.chipRow}>
             {[5, 10, 15].map((minutes) => (
               <Chip
@@ -278,15 +320,57 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
               />
             ))}
           </View>
+          <Text style={styles.label}>Cycles</Text>
+          <View style={styles.chipRow}>
+            {[1, 2, 4].map((cycles) => (
+              <Chip
+                key={cycles}
+                label={`${cycles}`}
+                selected={cyclesPlanned === cycles}
+                onPress={() => setCyclesPlanned(cycles)}
+              />
+            ))}
+          </View>
           <PrimaryButton label="Start timer" icon={Timer} onPress={() => void startPomodoro()} />
         </Card>
       ) : null}
 
       {pomodoro ? (
-        <View style={styles.metricRow}>
-          <Metric label="Work time" value={formatClock(secondsLeft)} tint={colors.coralTint} />
-          <Metric label="Next break" value={`${pomodoro.breakMinutes} min`} tint={colors.emeraldTint} />
-        </View>
+        <Card accent={timerPhase === 'work' ? colors.coral : colors.emerald}>
+          <View style={styles.metricRow}>
+            <Metric
+              label={timerPhase === 'work' ? 'Work time' : 'Break time'}
+              value={formatClock(secondsLeft)}
+              tint={
+                timerPhase === 'work'
+                  ? colors.coralTint
+                  : colors.emeraldTint
+              }
+            />
+            <Metric
+              label="Cycle"
+              value={`${Math.min(
+                pomodoro.cyclesPlanned,
+                pomodoro.completedCycles + 1,
+              )}/${pomodoro.cyclesPlanned}`}
+              tint={colors.indigoTint}
+            />
+          </View>
+          <View style={styles.timerActions}>
+            <PrimaryButton
+              label={timerRunning ? 'Pause' : 'Resume'}
+              icon={timerRunning ? Pause : Play}
+              tone="secondary"
+              onPress={() => setTimerRunning((value) => !value)}
+            />
+            <PrimaryButton
+              label="End timer"
+              icon={Square}
+              tone="danger"
+              onPress={stopPomodoro}
+            />
+          </View>
+        </Card>
       ) : null}
 
       {retrievalResult !== null ? (
@@ -302,7 +386,7 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
             </View>
           ))}
         </Card>
-      ) : !current && technique !== 'pomodoro' ? (
+      ) : !current ? (
         <EmptyState title="Review complete" body="The next due items will appear here automatically." />
       ) : current ? (
         <Card accent={technique === 'blurting' ? colors.amber : colors.indigo}>
@@ -571,6 +655,7 @@ const styles = StyleSheet.create({
   headingRow: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.md },
   rowBetween: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.md },
   metricRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
+  timerActions: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   cardTitle: { color: colors.ink, fontSize: 19, lineHeight: 25, fontWeight: '800' },
   prompt: { color: colors.ink, fontSize: 22, lineHeight: 30, fontWeight: '800' },
   answer: { color: colors.emerald, fontSize: 17, lineHeight: 25, fontWeight: '800' },

@@ -1,5 +1,5 @@
 import CryptoKit
-import ExpoModulesCore
+public import ExpoModulesCore
 import Foundation
 import NearbyConnections
 
@@ -298,8 +298,8 @@ public final class WaisNearby: Module {
       transferID: object["transferId"] as? String ?? String(payloadID),
       moduleID: object["moduleId"] as? String ?? "",
       displayName: object["displayName"] as? String ?? "WAIS module",
-      fileName: object["fileName"] as? String ?? "wais-module.pdf",
-      mimeType: object["mimeType"] as? String ?? "application/pdf",
+      fileName: object["fileName"] as? String ?? "wais-module.wais-module",
+      mimeType: object["mimeType"] as? String ?? "application/vnd.wais.module+zip",
       sizeBytes: (object["sizeBytes"] as? NSNumber)?.int64Value ?? 0,
       sha256: (object["sha256"] as? String ?? "").lowercased(),
       manifestJSON: jsonString(object["manifest"])
@@ -347,10 +347,12 @@ public final class WaisNearby: Module {
       .reduce(into: "") { $0.append($1) }
       .trimmingCharacters(in: .whitespacesAndNewlines)
     let limited = String(cleaned.prefix(100))
-    if limited.lowercased().hasSuffix(".pdf") {
+    if limited.lowercased().hasSuffix(".wais-module") {
       return limited
     }
-    return limited.isEmpty ? "wais-module.pdf" : "\(limited).pdf"
+    return limited.isEmpty
+      ? "wais-module.wais-module"
+      : "\(limited).wais-module"
   }
 
   private func moduleDirectory() throws -> URL {
@@ -379,7 +381,9 @@ public final class WaisNearby: Module {
     let stem = (fileName as NSString).deletingPathExtension
     var suffix = 2
     while true {
-      let candidate = directory.appendingPathComponent("\(stem)-\(suffix).pdf")
+      let candidate = directory.appendingPathComponent(
+        "\(stem)-\(suffix).wais-module"
+      )
       if !FileManager.default.fileExists(atPath: candidate.path) {
         return candidate
       }

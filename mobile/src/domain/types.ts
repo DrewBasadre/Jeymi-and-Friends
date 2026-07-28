@@ -5,7 +5,7 @@ export type LearningFormat = 'text' | 'audio' | 'visual' | 'kinesthetic';
 export type Subject = 'SCIENCE' | 'MATH' | 'ENGLISH' | 'ADDED_MATERIALS';
 export type ProgressStatus = 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED';
 export type MasteryLevel = 'BEGINNER' | 'DEVELOPING' | 'PROFICIENT' | 'ADVANCED';
-export type QuestionType = 'MULTIPLE_CHOICE' | 'TRUE_FALSE' | 'IDENTIFICATION';
+export type QuestionType = 'MULTIPLE_CHOICE' | 'ENUMERATION';
 
 export interface Student {
   id: string;
@@ -19,6 +19,47 @@ export interface Student {
   birthday: string;
   pin: string;
   isArchived: boolean;
+}
+
+export type AssignmentTask =
+  | {
+      type: 'module';
+      moduleId: string;
+      dueDate: string;
+    }
+  | {
+      type: 'quiz';
+      quizId: string;
+      dueDate: string;
+    };
+
+export interface StudentTask {
+  taskId: string;
+  studentId: string;
+  type: AssignmentTask['type'];
+  targetId: string;
+  dueDate: string;
+  issuedBy: string;
+  issuedAt: string;
+  classSection: string;
+  completedAt: string | null;
+}
+
+export interface TeacherProfile {
+  teacherId: string;
+  name: string;
+  age: number;
+  facultyId: string;
+  createdAt: string;
+}
+
+export interface Section {
+  sectionId: string;
+  teacherId: string;
+  name: string;
+  gradeLevel: number;
+  isActive: boolean;
+  roster: string[];
 }
 
 export interface LearningProfile {
@@ -72,7 +113,7 @@ export interface LearningModule {
   updatedAt: number;
 }
 
-export type ModuleSource = 'supabase-ota' | 'teacher-bluetooth' | 'bundled';
+export type ModuleSource = 'supabase-ota' | 'teacher-bluetooth';
 export type ReviewItemType = 'flashcard' | 'quiz-question' | 'concept-summary';
 export type ReviewImportance = 'core' | 'supplementary' | 'stretch';
 
@@ -100,14 +141,14 @@ export interface CurriculumModuleManifest {
   source: ModuleSource;
   gradeLevel: number;
   subject: string;
-  formats: {
-    text?: string;
+  content: {
+    markdown: string;
     audio?: string;
-    visual?: string;
   };
+  assets: string[];
   checksums: Record<string, string>;
   quizId: string;
-  reviewItems: ReviewItem[];
+  reviewItems?: ReviewItem[];
 }
 
 export interface QuizQuestion {
@@ -197,7 +238,6 @@ export type StudyTechnique =
   | 'active-recall'
   | 'retrieval-quiz'
   | 'interleaved'
-  | 'pomodoro'
   | 'blurting';
 
 export interface PomodoroItemLog {
@@ -266,6 +306,42 @@ export interface TeacherDashboard {
   learners: TeacherLearnerRow[];
 }
 
+export type PerformanceTrend = 'improving' | 'declining' | 'stable';
+
+export interface StrugglingConcept {
+  conceptId: string;
+  missCount: number;
+  attempts: number;
+}
+
+export interface StudentPerformanceReport {
+  studentId: string;
+  profile: {
+    name: string;
+    studentNumber: string;
+    section: string;
+    currentLearningFormat: LearningFormat;
+  };
+  quizHistory: QuizAttempt[];
+  averageScorePercentage: number;
+  strugglingConcepts: StrugglingConcept[];
+  trend: PerformanceTrend;
+}
+
+export interface ClassPerformanceReport {
+  sectionId: string;
+  classAveragePercentage: number;
+  leaderboard: Array<{
+    studentId: string;
+    averagePercentage: number;
+  }>;
+  strugglingStudents: string[];
+  commonlyMissedConcepts: Array<{
+    conceptId: string;
+    percentOfClassMissing: number;
+  }>;
+}
+
 export interface DiagnosticInput {
   moduleId: string;
   missedQuestionTopics: string[];
@@ -284,7 +360,9 @@ export interface TransferPackage {
   moduleId: string;
   displayName: string;
   fileUri: string;
-  mimeType: 'application/pdf' | 'application/vnd.wais.module+json';
+  mimeType:
+    | 'application/vnd.wais.module+zip'
+    | 'application/vnd.wais.review-set+json';
   sizeBytes: number;
   sha256: string;
   manifest: CurriculumModuleManifest;

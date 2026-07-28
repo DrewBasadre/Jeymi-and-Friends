@@ -24,7 +24,6 @@
           "useSQLCipher": false
         }
       ],
-      "expo-secure-store",
       "expo-sharing",
       [
         "expo-document-picker",
@@ -32,7 +31,6 @@
           "iCloudContainerEnvironment": "Production"
         }
       ],
-      "expo-audio",
       "expo-notifications",
       "expo-asset"
     ],

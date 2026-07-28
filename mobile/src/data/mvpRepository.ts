@@ -154,6 +154,21 @@ export async function setLearningFormatOverride(
   return next;
 }
 
+export async function saveScannedLearningFormat(
+  studentId: string,
+  format: LearningFormat,
+): Promise<AdaptiveFormatProfile> {
+  const profile = await getAdaptiveFormatProfile(studentId);
+  const next = {
+    ...profile,
+    currentDefaultFormat: format,
+    manualOverride: null,
+    updatedAt: Date.now(),
+  };
+  await saveAdaptiveFormatProfile(next);
+  return next;
+}
+
 export async function getEffectiveLearningFormat(
   studentId: string,
 ): Promise<LearningFormat> {
@@ -579,7 +594,9 @@ export async function saveModuleManifest(
       JSON.stringify(parsed),
       verified ? Date.now() : null,
     );
-    for (const item of parsed.reviewItems) await upsertReviewItem(database, item);
+    for (const item of parsed.reviewItems ?? []) {
+      await upsertReviewItem(database, item);
+    }
   });
 }
 
