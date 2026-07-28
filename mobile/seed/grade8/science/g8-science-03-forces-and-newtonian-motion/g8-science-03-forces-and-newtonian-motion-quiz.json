@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-science-03-forces-and-newtonian-motion-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains Newton laws?",
+    "options": [
+      "Inertia, acceleration, mass, and action-reaction pairs explain forces and motion",
+      "It is only the title of the lesson Forces and Newtonian Motion.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Inertia, acceleration, mass, and action-reaction pairs explain forces and motion",
+    "conceptId": "newton-laws"
+  },
+  {
+    "questionId": "g8-science-03-forces-and-newtonian-motion-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A loaded cart accelerates less than an empty cart under the same force",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A loaded cart accelerates less than an empty cart under the same force",
+    "conceptId": "newton-laws-application"
+  },
+  {
+    "questionId": "g8-science-03-forces-and-newtonian-motion-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "Newton laws",
+    "conceptId": "newton-laws"
+  },
+  {
+    "questionId": "g8-science-03-forces-and-newtonian-motion-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Analyze forces in a transport safety scenario.",
+    "correctAnswer": "Newton laws",
+    "conceptId": "newton-laws-application"
+  },
+  {
+    "questionId": "g8-science-03-forces-and-newtonian-motion-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "newton-laws-reasoning"
+  }
+]

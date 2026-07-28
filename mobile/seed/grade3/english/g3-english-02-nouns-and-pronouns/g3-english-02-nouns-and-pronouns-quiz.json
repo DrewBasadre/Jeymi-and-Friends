@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-english-02-nouns-and-pronouns-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains pronoun reference?",
+    "options": [
+      "Pronouns replace nouns while keeping the reader clear about who or what is meant",
+      "It is only the title of the lesson Nouns and Pronouns.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Pronouns replace nouns while keeping the reader clear about who or what is meant",
+    "conceptId": "pronoun-reference"
+  },
+  {
+    "questionId": "g3-english-02-nouns-and-pronouns-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Maria planted seeds. She watered them",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Maria planted seeds. She watered them",
+    "conceptId": "pronoun-reference-application"
+  },
+  {
+    "questionId": "g3-english-02-nouns-and-pronouns-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "pronoun reference",
+    "conceptId": "pronoun-reference"
+  },
+  {
+    "questionId": "g3-english-02-nouns-and-pronouns-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Replace repeated nouns with clear pronouns.",
+    "correctAnswer": "pronoun reference",
+    "conceptId": "pronoun-reference-application"
+  },
+  {
+    "questionId": "g3-english-02-nouns-and-pronouns-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "pronoun-reference-reasoning"
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-english-05-comparing-sources-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains source synthesis?",
+    "options": [
+      "Readers compare purpose, evidence, perspective, and omissions across sources",
+      "It is only the title of the lesson Comparing Sources.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Readers compare purpose, evidence, perspective, and omissions across sources",
+    "conceptId": "source-synthesis"
+  },
+  {
+    "questionId": "g8-english-05-comparing-sources-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Two reports may use the same event to support different conclusions",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Two reports may use the same event to support different conclusions",
+    "conceptId": "source-synthesis-application"
+  },
+  {
+    "questionId": "g8-english-05-comparing-sources-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "source synthesis",
+    "conceptId": "source-synthesis"
+  },
+  {
+    "questionId": "g8-english-05-comparing-sources-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Create a comparison matrix for two texts.",
+    "correctAnswer": "source synthesis",
+    "conceptId": "source-synthesis-application"
+  },
+  {
+    "questionId": "g8-english-05-comparing-sources-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "source-synthesis-reasoning"
+  }
+]

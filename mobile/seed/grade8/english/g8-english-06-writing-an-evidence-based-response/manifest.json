@@ -1,0 +1,120 @@
+{
+  "moduleId": "g8-english-06-writing-an-evidence-based-response",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 8,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:dc5c0d67de67e05ad5b2b835054fcf08f8ac2b64a1cfde258f1d05c6ef6469c8",
+    "g8-english-06-writing-an-evidence-based-response-quiz.json": "sha256:10575fbf5ae6ed6f005e60907e8f931658dd0c9244339a827c17e2a8b3a8c556",
+    "images/concept-guide.webp": "sha256:2d5004913cdcd3ccfc40da41c804b773f3e8b9ae5168985a3d53b93412d17c2f",
+    "images/worked-example.webp": "sha256:a20bc167acce2fb9bdaa523e1a0bd77b54bf5917e72d3058bb2ea7b1786f5fd7"
+  },
+  "quizId": "g8-english-06-writing-an-evidence-based-response-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g8-english-06-writing-an-evidence-based-response",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-06-writing-an-evidence-based-response-review-1",
+      "conceptId": "analytical-writing",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is analytical writing?",
+      "answer": "A focused claim, selected evidence, explanation, and transitions build analysis",
+      "formats": {
+        "text": "A focused claim, selected evidence, explanation, and transitions build analysis.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g8-english-06-writing-an-evidence-based-response",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-06-writing-an-evidence-based-response-review-2",
+      "conceptId": "analytical-writing-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for analytical writing.",
+      "answer": "Evidence becomes persuasive when reasoning connects it to the claim",
+      "formats": {
+        "text": "Evidence becomes persuasive when reasoning connects it to the claim.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g8-english-06-writing-an-evidence-based-response",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-06-writing-an-evidence-based-response-review-3",
+      "conceptId": "analytical-writing",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Writing an Evidence-Based Response.",
+      "answer": "analytical writing",
+      "formats": {
+        "text": "analytical writing"
+      }
+    },
+    {
+      "moduleId": "g8-english-06-writing-an-evidence-based-response",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-06-writing-an-evidence-based-response-review-4",
+      "conceptId": "analytical-writing-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain analytical writing in one or two clear sentences.",
+      "answer": "A focused claim, selected evidence, explanation, and transitions build analysis",
+      "formats": {
+        "text": "A focused claim, selected evidence, explanation, and transitions build analysis."
+      }
+    },
+    {
+      "moduleId": "g8-english-06-writing-an-evidence-based-response",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-06-writing-an-evidence-based-response-review-5",
+      "conceptId": "analytical-writing-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Draft and revise one analytical paragraph.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Draft and revise one analytical paragraph."
+      }
+    }
+  ]
+}

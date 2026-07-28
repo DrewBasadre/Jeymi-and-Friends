@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-math-01-quadratic-expressions-and-equations-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains quadratics?",
+    "options": [
+      "Quadratic relationships can be factored, completed as squares, graphed, or solved by formula",
+      "It is only the title of the lesson Quadratic Expressions and Equations.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Quadratic relationships can be factored, completed as squares, graphed, or solved by formula",
+    "conceptId": "quadratics"
+  },
+  {
+    "questionId": "g9-math-01-quadratic-expressions-and-equations-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "The roots of x squared - 5x + 6 are 2 and 3",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "The roots of x squared - 5x + 6 are 2 and 3",
+    "conceptId": "quadratics-application"
+  },
+  {
+    "questionId": "g9-math-01-quadratic-expressions-and-equations-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "quadratics",
+    "conceptId": "quadratics"
+  },
+  {
+    "questionId": "g9-math-01-quadratic-expressions-and-equations-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compare two methods for solving a quadratic.",
+    "correctAnswer": "quadratics",
+    "conceptId": "quadratics-application"
+  },
+  {
+    "questionId": "g9-math-01-quadratic-expressions-and-equations-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "quadratics-reasoning"
+  }
+]

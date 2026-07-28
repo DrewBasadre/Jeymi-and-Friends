@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-science-04-energy-transformation-and-circuits-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains energy transformation?",
+    "options": [
+      "Energy changes form while total energy is conserved within a system",
+      "It is only the title of the lesson Energy Transformation and Circuits.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Energy changes form while total energy is conserved within a system",
+    "conceptId": "energy-transformation"
+  },
+  {
+    "questionId": "g6-science-04-energy-transformation-and-circuits-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A battery chemical energy becomes electrical energy and then light",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A battery chemical energy becomes electrical energy and then light",
+    "conceptId": "energy-transformation-application"
+  },
+  {
+    "questionId": "g6-science-04-energy-transformation-and-circuits-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "energy transformation",
+    "conceptId": "energy-transformation"
+  },
+  {
+    "questionId": "g6-science-04-energy-transformation-and-circuits-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Label energy changes in three household devices.",
+    "correctAnswer": "energy transformation",
+    "conceptId": "energy-transformation-application"
+  },
+  {
+    "questionId": "g6-science-04-energy-transformation-and-circuits-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "energy-transformation-reasoning"
+  }
+]

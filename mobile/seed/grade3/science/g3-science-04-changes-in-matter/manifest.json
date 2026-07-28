@@ -1,0 +1,120 @@
+{
+  "moduleId": "g3-science-04-changes-in-matter",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 3,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:d1ccf2a1dc8c97fa575e29d7a349d3e26a9862f3219c549cc3c3ac09d65d602b",
+    "g3-science-04-changes-in-matter-quiz.json": "sha256:1501aea48332ac6dcc0c6dd04b3938ce04c9ef307bfb9fc4eb2b1375694c50bc",
+    "images/concept-guide.webp": "sha256:16eea39d5894c0029be742c8474e96a1aeb5aac3efc97a9d8df4f48abe6f3063",
+    "images/worked-example.webp": "sha256:a46b2d7affd9756a4fece1ac9bf0b6013ced519587d75adeaa949eb53bf069c0"
+  },
+  "quizId": "g3-science-04-changes-in-matter-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g3-science-04-changes-in-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-04-changes-in-matter-review-1",
+      "conceptId": "physical-change",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is physical change?",
+      "answer": "Heating, cooling, cutting, bending, and mixing can change matter without making a new substance",
+      "formats": {
+        "text": "Heating, cooling, cutting, bending, and mixing can change matter without making a new substance.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g3-science-04-changes-in-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-04-changes-in-matter-review-2",
+      "conceptId": "physical-change-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for physical change.",
+      "answer": "Ice melting changes state but remains water",
+      "formats": {
+        "text": "Ice melting changes state but remains water.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g3-science-04-changes-in-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-04-changes-in-matter-review-3",
+      "conceptId": "physical-change",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Changes in Matter.",
+      "answer": "physical change",
+      "formats": {
+        "text": "physical change"
+      }
+    },
+    {
+      "moduleId": "g3-science-04-changes-in-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-04-changes-in-matter-review-4",
+      "conceptId": "physical-change-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain physical change in one or two clear sentences.",
+      "answer": "Heating, cooling, cutting, bending, and mixing can change matter without making a new substance",
+      "formats": {
+        "text": "Heating, cooling, cutting, bending, and mixing can change matter without making a new substance."
+      }
+    },
+    {
+      "moduleId": "g3-science-04-changes-in-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-04-changes-in-matter-review-5",
+      "conceptId": "physical-change-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Observe one reversible and one hard-to-reverse change.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Observe one reversible and one hard-to-reverse change."
+      }
+    }
+  ]
+}

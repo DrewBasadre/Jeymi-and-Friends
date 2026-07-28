@@ -1,0 +1,120 @@
+{
+  "moduleId": "g7-math-02-integers-and-rational-numbers",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 7,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:c3b4d15c5fea756d355d7a16ff8c0db72dd786b4b84e8f659d2035c9fe5655c3",
+    "g7-math-02-integers-and-rational-numbers-quiz.json": "sha256:8f34474c99c5b8dc95eed8c6f75eae144a25e158214069f750bd4424296c33fb",
+    "images/concept-guide.webp": "sha256:e3ea90c5c6d5948a73accdb0ccdbd9674d38853890d4259aced9a08e017db885",
+    "images/worked-example.webp": "sha256:dcb394b907c3f55e3846c86aca9b65add285f4903dd1fe90f40dc4bcab899115"
+  },
+  "quizId": "g7-math-02-integers-and-rational-numbers-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g7-math-02-integers-and-rational-numbers",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-02-integers-and-rational-numbers-review-1",
+      "conceptId": "rational-numbers",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is rational numbers?",
+      "answer": "Properties of operations extend to positive and negative fractions and decimals",
+      "formats": {
+        "text": "Properties of operations extend to positive and negative fractions and decimals.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g7-math-02-integers-and-rational-numbers",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-02-integers-and-rational-numbers-review-2",
+      "conceptId": "rational-numbers-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for rational numbers.",
+      "answer": "Subtracting a negative is equivalent to adding its opposite",
+      "formats": {
+        "text": "Subtracting a negative is equivalent to adding its opposite.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g7-math-02-integers-and-rational-numbers",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-02-integers-and-rational-numbers-review-3",
+      "conceptId": "rational-numbers",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Integers and Rational Numbers.",
+      "answer": "rational numbers",
+      "formats": {
+        "text": "rational numbers"
+      }
+    },
+    {
+      "moduleId": "g7-math-02-integers-and-rational-numbers",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-02-integers-and-rational-numbers-review-4",
+      "conceptId": "rational-numbers-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain rational numbers in one or two clear sentences.",
+      "answer": "Properties of operations extend to positive and negative fractions and decimals",
+      "formats": {
+        "text": "Properties of operations extend to positive and negative fractions and decimals."
+      }
+    },
+    {
+      "moduleId": "g7-math-02-integers-and-rational-numbers",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-02-integers-and-rational-numbers-review-5",
+      "conceptId": "rational-numbers-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Explain temperature and debt changes on a number line.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Explain temperature and debt changes on a number line."
+      }
+    }
+  ]
+}

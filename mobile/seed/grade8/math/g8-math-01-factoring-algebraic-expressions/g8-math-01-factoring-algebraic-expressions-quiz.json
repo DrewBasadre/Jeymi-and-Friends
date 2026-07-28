@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-math-01-factoring-algebraic-expressions-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains factoring?",
+    "options": [
+      "Common factors and polynomial patterns reverse multiplication",
+      "It is only the title of the lesson Factoring Algebraic Expressions.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Common factors and polynomial patterns reverse multiplication",
+    "conceptId": "factoring"
+  },
+  {
+    "questionId": "g8-math-01-factoring-algebraic-expressions-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "x squared + 5x + 6 factors as (x + 2)(x + 3)",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "x squared + 5x + 6 factors as (x + 2)(x + 3)",
+    "conceptId": "factoring-application"
+  },
+  {
+    "questionId": "g8-math-01-factoring-algebraic-expressions-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "factoring",
+    "conceptId": "factoring"
+  },
+  {
+    "questionId": "g8-math-01-factoring-algebraic-expressions-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Verify factors by expansion.",
+    "correctAnswer": "factoring",
+    "conceptId": "factoring-application"
+  },
+  {
+    "questionId": "g8-math-01-factoring-algebraic-expressions-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "factoring-reasoning"
+  }
+]

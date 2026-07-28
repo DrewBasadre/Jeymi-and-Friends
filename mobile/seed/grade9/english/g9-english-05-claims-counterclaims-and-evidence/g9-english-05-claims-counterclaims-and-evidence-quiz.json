@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-english-05-claims-counterclaims-and-evidence-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains argumentation?",
+    "options": [
+      "Strong arguments address counterclaims and weigh quality, relevance, and sufficiency of evidence",
+      "It is only the title of the lesson Claims, Counterclaims, and Evidence.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Strong arguments address counterclaims and weigh quality, relevance, and sufficiency of evidence",
+    "conceptId": "argumentation"
+  },
+  {
+    "questionId": "g9-english-05-claims-counterclaims-and-evidence-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Acknowledging a limitation can strengthen credibility",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Acknowledging a limitation can strengthen credibility",
+    "conceptId": "argumentation-application"
+  },
+  {
+    "questionId": "g9-english-05-claims-counterclaims-and-evidence-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "argumentation",
+    "conceptId": "argumentation"
+  },
+  {
+    "questionId": "g9-english-05-claims-counterclaims-and-evidence-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Build an argument map with a counterclaim.",
+    "correctAnswer": "argumentation",
+    "conceptId": "argumentation-application"
+  },
+  {
+    "questionId": "g9-english-05-claims-counterclaims-and-evidence-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "argumentation-reasoning"
+  }
+]

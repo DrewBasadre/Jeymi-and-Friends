@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-science-02-cells-and-microscopy-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains cell organization?",
+    "options": [
+      "Microscopes reveal cells whose structures support specialized functions and levels of organization",
+      "It is only the title of the lesson Cells and Microscopy.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Microscopes reveal cells whose structures support specialized functions and levels of organization",
+    "conceptId": "cell-organization"
+  },
+  {
+    "questionId": "g7-science-02-cells-and-microscopy-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Muscle cells contain structures suited for contraction",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Muscle cells contain structures suited for contraction",
+    "conceptId": "cell-organization-application"
+  },
+  {
+    "questionId": "g7-science-02-cells-and-microscopy-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "cell organization",
+    "conceptId": "cell-organization"
+  },
+  {
+    "questionId": "g7-science-02-cells-and-microscopy-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Calculate magnification and compare cell types.",
+    "correctAnswer": "cell organization",
+    "conceptId": "cell-organization-application"
+  },
+  {
+    "questionId": "g7-science-02-cells-and-microscopy-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "cell-organization-reasoning"
+  }
+]

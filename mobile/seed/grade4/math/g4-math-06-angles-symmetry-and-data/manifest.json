@@ -1,0 +1,120 @@
+{
+  "moduleId": "g4-math-06-angles-symmetry-and-data",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 4,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:dbfa0a4b48f54e96c3e35bc6929398b082f343d76f55496f0f3f1fac2daf461b",
+    "g4-math-06-angles-symmetry-and-data-quiz.json": "sha256:3beb21554e9b27b98309768b27cb959f6c45c1f411b0357ba8564df4b288f30a",
+    "images/concept-guide.webp": "sha256:2e6910ed320a1e76492aebed419e0d8e8f40260ac18ac4cfd4b88dac702d9520",
+    "images/worked-example.webp": "sha256:272ac88f758d780485f8c2453c9901e116f4778f5ad19c1c56454c34148532a4"
+  },
+  "quizId": "g4-math-06-angles-symmetry-and-data-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g4-math-06-angles-symmetry-and-data",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-06-angles-symmetry-and-data-review-1",
+      "conceptId": "geometric-reasoning",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is geometric reasoning?",
+      "answer": "Angles measure turns, symmetry matches balanced parts, and graphs summarize observations",
+      "formats": {
+        "text": "Angles measure turns, symmetry matches balanced parts, and graphs summarize observations.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g4-math-06-angles-symmetry-and-data",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-06-angles-symmetry-and-data-review-2",
+      "conceptId": "geometric-reasoning-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for geometric reasoning.",
+      "answer": "A right angle is a quarter turn measuring 90 degrees",
+      "formats": {
+        "text": "A right angle is a quarter turn measuring 90 degrees.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g4-math-06-angles-symmetry-and-data",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-06-angles-symmetry-and-data-review-3",
+      "conceptId": "geometric-reasoning",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Angles, Symmetry, and Data.",
+      "answer": "geometric reasoning",
+      "formats": {
+        "text": "geometric reasoning"
+      }
+    },
+    {
+      "moduleId": "g4-math-06-angles-symmetry-and-data",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-06-angles-symmetry-and-data-review-4",
+      "conceptId": "geometric-reasoning-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain geometric reasoning in one or two clear sentences.",
+      "answer": "Angles measure turns, symmetry matches balanced parts, and graphs summarize observations",
+      "formats": {
+        "text": "Angles measure turns, symmetry matches balanced parts, and graphs summarize observations."
+      }
+    },
+    {
+      "moduleId": "g4-math-06-angles-symmetry-and-data",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-06-angles-symmetry-and-data-review-5",
+      "conceptId": "geometric-reasoning-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Find lines of symmetry and measure sample angles.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Find lines of symmetry and measure sample angles."
+      }
+    }
+  ]
+}

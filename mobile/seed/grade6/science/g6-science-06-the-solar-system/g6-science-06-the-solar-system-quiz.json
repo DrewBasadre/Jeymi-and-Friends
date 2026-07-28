@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-science-06-the-solar-system-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains solar system?",
+    "options": [
+      "Gravity organizes planets and moons, and predictable motions produce observable cycles",
+      "It is only the title of the lesson The Solar System.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Gravity organizes planets and moons, and predictable motions produce observable cycles",
+    "conceptId": "solar-system"
+  },
+  {
+    "questionId": "g6-science-06-the-solar-system-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Earth rotation causes day and night while revolution defines a year",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Earth rotation causes day and night while revolution defines a year",
+    "conceptId": "solar-system-application"
+  },
+  {
+    "questionId": "g6-science-06-the-solar-system-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "solar system",
+    "conceptId": "solar-system"
+  },
+  {
+    "questionId": "g6-science-06-the-solar-system-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Use a scale model to compare orbital order.",
+    "correctAnswer": "solar system",
+    "conceptId": "solar-system-application"
+  },
+  {
+    "questionId": "g6-science-06-the-solar-system-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "solar-system-reasoning"
+  }
+]

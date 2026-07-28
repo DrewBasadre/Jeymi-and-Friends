@@ -1,0 +1,120 @@
+{
+  "moduleId": "g3-science-06-earth-moon-and-sky-patterns",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 3,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:b1432f511ed9db336678f28d1958dad0e1e2449640d1113f8af1b5cb5afb3877",
+    "g3-science-06-earth-moon-and-sky-patterns-quiz.json": "sha256:99ba0d0cf8a630aee0175b575aac904b4311d4f300b118f90ed65be7abf9c461",
+    "images/concept-guide.webp": "sha256:51aef5af61ce735c452068ecedce489b8689066c935077ee4dbc8ef599df71e2",
+    "images/worked-example.webp": "sha256:bce793b799b4a1a449997b8cc249760c2c2ba7c05f5b4b21a3a104adbdbce24b"
+  },
+  "quizId": "g3-science-06-earth-moon-and-sky-patterns-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g3-science-06-earth-moon-and-sky-patterns",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-06-earth-moon-and-sky-patterns-review-1",
+      "conceptId": "sky-patterns",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is sky patterns?",
+      "answer": "The Sun, Moon, and stars appear in predictable daily and monthly patterns",
+      "formats": {
+        "text": "The Sun, Moon, and stars appear in predictable daily and monthly patterns.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g3-science-06-earth-moon-and-sky-patterns",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-06-earth-moon-and-sky-patterns-review-2",
+      "conceptId": "sky-patterns-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for sky patterns.",
+      "answer": "Shadows change direction as the Sun appears to move across the sky",
+      "formats": {
+        "text": "Shadows change direction as the Sun appears to move across the sky.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g3-science-06-earth-moon-and-sky-patterns",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-06-earth-moon-and-sky-patterns-review-3",
+      "conceptId": "sky-patterns",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Earth, Moon, and Sky Patterns.",
+      "answer": "sky patterns",
+      "formats": {
+        "text": "sky patterns"
+      }
+    },
+    {
+      "moduleId": "g3-science-06-earth-moon-and-sky-patterns",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-06-earth-moon-and-sky-patterns-review-4",
+      "conceptId": "sky-patterns-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain sky patterns in one or two clear sentences.",
+      "answer": "The Sun, Moon, and stars appear in predictable daily and monthly patterns",
+      "formats": {
+        "text": "The Sun, Moon, and stars appear in predictable daily and monthly patterns."
+      }
+    },
+    {
+      "moduleId": "g3-science-06-earth-moon-and-sky-patterns",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-06-earth-moon-and-sky-patterns-review-5",
+      "conceptId": "sky-patterns-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Measure one shadow at three times of day.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Measure one shadow at three times of day."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g1-english-06-beginning-middle-and-end-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains story sequence?",
+    "options": [
+      "Events in a story happen in an order: beginning, middle, and end",
+      "It is only the title of the lesson Beginning, Middle, and End.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Events in a story happen in an order: beginning, middle, and end",
+    "conceptId": "story-sequence"
+  },
+  {
+    "questionId": "g1-english-06-beginning-middle-and-end-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "First Ana plants a seed, next she waters it, and finally a sprout appears",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "First Ana plants a seed, next she waters it, and finally a sprout appears",
+    "conceptId": "story-sequence-application"
+  },
+  {
+    "questionId": "g1-english-06-beginning-middle-and-end-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "story sequence",
+    "conceptId": "story-sequence"
+  },
+  {
+    "questionId": "g1-english-06-beginning-middle-and-end-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Retell a short story using first, next, and last.",
+    "correctAnswer": "story sequence",
+    "conceptId": "story-sequence-application"
+  },
+  {
+    "questionId": "g1-english-06-beginning-middle-and-end-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "story-sequence-reasoning"
+  }
+]

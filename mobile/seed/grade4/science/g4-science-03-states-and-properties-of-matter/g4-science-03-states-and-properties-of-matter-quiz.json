@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-science-03-states-and-properties-of-matter-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains matter properties?",
+    "options": [
+      "Mass, volume, shape, solubility, and state help describe and identify matter",
+      "It is only the title of the lesson States and Properties of Matter.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Mass, volume, shape, solubility, and state help describe and identify matter",
+    "conceptId": "matter-properties"
+  },
+  {
+    "questionId": "g4-science-03-states-and-properties-of-matter-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Salt dissolves in water, but sand settles",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Salt dissolves in water, but sand settles",
+    "conceptId": "matter-properties-application"
+  },
+  {
+    "questionId": "g4-science-03-states-and-properties-of-matter-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "matter properties",
+    "conceptId": "matter-properties"
+  },
+  {
+    "questionId": "g4-science-03-states-and-properties-of-matter-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compare three materials using a property table.",
+    "correctAnswer": "matter properties",
+    "conceptId": "matter-properties-application"
+  },
+  {
+    "questionId": "g4-science-03-states-and-properties-of-matter-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "matter-properties-reasoning"
+  }
+]

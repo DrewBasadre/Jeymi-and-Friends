@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-english-03-grammar-style-and-emphasis",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:5819d246c7bf7df495babb8f87c15e55baf8c2e0b158814422f0f171c4e20a79",
+    "g9-english-03-grammar-style-and-emphasis-quiz.json": "sha256:2b53f8f92e91841e507cd3ce584d4ab133b7b7e6e039ac33205fb85f2ae9e19b",
+    "images/concept-guide.webp": "sha256:435ba8a3a76ac00998f3ecdd00b96908a72cc4eaa99aa5ef349dcd60f6065606",
+    "images/worked-example.webp": "sha256:db9bb295b96f5130a9ccc60d37c8a65fdb81b1e3cab4170faf68282c19724a55"
+  },
+  "quizId": "g9-english-03-grammar-style-and-emphasis-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-english-03-grammar-style-and-emphasis",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-03-grammar-style-and-emphasis-review-1",
+      "conceptId": "sentence-style",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is sentence style?",
+      "answer": "Syntax, punctuation, voice, and deliberate repetition shape emphasis and rhythm",
+      "formats": {
+        "text": "Syntax, punctuation, voice, and deliberate repetition shape emphasis and rhythm.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-english-03-grammar-style-and-emphasis",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-03-grammar-style-and-emphasis-review-2",
+      "conceptId": "sentence-style-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for sentence style.",
+      "answer": "A short sentence after long ones can create impact",
+      "formats": {
+        "text": "A short sentence after long ones can create impact.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-english-03-grammar-style-and-emphasis",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-03-grammar-style-and-emphasis-review-3",
+      "conceptId": "sentence-style",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Grammar, Style, and Emphasis.",
+      "answer": "sentence style",
+      "formats": {
+        "text": "sentence style"
+      }
+    },
+    {
+      "moduleId": "g9-english-03-grammar-style-and-emphasis",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-03-grammar-style-and-emphasis-review-4",
+      "conceptId": "sentence-style-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain sentence style in one or two clear sentences.",
+      "answer": "Syntax, punctuation, voice, and deliberate repetition shape emphasis and rhythm",
+      "formats": {
+        "text": "Syntax, punctuation, voice, and deliberate repetition shape emphasis and rhythm."
+      }
+    },
+    {
+      "moduleId": "g9-english-03-grammar-style-and-emphasis",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-03-grammar-style-and-emphasis-review-5",
+      "conceptId": "sentence-style-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Revise a paragraph for deliberate emphasis.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Revise a paragraph for deliberate emphasis."
+      }
+    }
+  ]
+}

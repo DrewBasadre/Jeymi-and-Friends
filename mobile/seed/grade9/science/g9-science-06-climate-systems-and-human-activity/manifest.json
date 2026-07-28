@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-science-06-climate-systems-and-human-activity",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:3b28d5e2c41a0742a4d0883e4c169ac55abbe7763f2252bc45eb3422179b7a3a",
+    "g9-science-06-climate-systems-and-human-activity-quiz.json": "sha256:b9dca972cedeebc823889b78334ee074890730550a4c3ad300271f40af124d76",
+    "images/concept-guide.webp": "sha256:68900593ce685a4bc91883e5eb232d0c50ca83bb3718dd9c880af8de8a2710a8",
+    "images/worked-example.webp": "sha256:523920cf2bad840a8ec8027eed0c7d5b22ddbe94c62548fe8e3fba9e71caa058"
+  },
+  "quizId": "g9-science-06-climate-systems-and-human-activity-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-science-06-climate-systems-and-human-activity",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-06-climate-systems-and-human-activity-review-1",
+      "conceptId": "climate-systems",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is climate systems?",
+      "answer": "Radiation balance, greenhouse gases, oceans, land use, and feedback shape climate",
+      "formats": {
+        "text": "Radiation balance, greenhouse gases, oceans, land use, and feedback shape climate.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-science-06-climate-systems-and-human-activity",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-06-climate-systems-and-human-activity-review-2",
+      "conceptId": "climate-systems-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for climate systems.",
+      "answer": "Warmer oceans can alter weather patterns and sea level",
+      "formats": {
+        "text": "Warmer oceans can alter weather patterns and sea level.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-science-06-climate-systems-and-human-activity",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-06-climate-systems-and-human-activity-review-3",
+      "conceptId": "climate-systems",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Climate Systems and Human Activity.",
+      "answer": "climate systems",
+      "formats": {
+        "text": "climate systems"
+      }
+    },
+    {
+      "moduleId": "g9-science-06-climate-systems-and-human-activity",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-06-climate-systems-and-human-activity-review-4",
+      "conceptId": "climate-systems-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain climate systems in one or two clear sentences.",
+      "answer": "Radiation balance, greenhouse gases, oceans, land use, and feedback shape climate",
+      "formats": {
+        "text": "Radiation balance, greenhouse gases, oceans, land use, and feedback shape climate."
+      }
+    },
+    {
+      "moduleId": "g9-science-06-climate-systems-and-human-activity",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-06-climate-systems-and-human-activity-review-5",
+      "conceptId": "climate-systems-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Evaluate evidence in a local climate-impact case.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Evaluate evidence in a local climate-impact case."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-english-05-multimodal-and-digital-texts-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains multimodal literacy?",
+    "options": [
+      "Layout, image, sound, interaction, and data visualization shape digital meaning",
+      "It is only the title of the lesson Multimodal and Digital Texts.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Layout, image, sound, interaction, and data visualization shape digital meaning",
+    "conceptId": "multimodal-literacy"
+  },
+  {
+    "questionId": "g10-english-05-multimodal-and-digital-texts-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A graph scale can visually exaggerate a small change",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A graph scale can visually exaggerate a small change",
+    "conceptId": "multimodal-literacy-application"
+  },
+  {
+    "questionId": "g10-english-05-multimodal-and-digital-texts-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "multimodal literacy",
+    "conceptId": "multimodal-literacy"
+  },
+  {
+    "questionId": "g10-english-05-multimodal-and-digital-texts-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Evaluate how design choices affect one infographic.",
+    "correctAnswer": "multimodal literacy",
+    "conceptId": "multimodal-literacy-application"
+  },
+  {
+    "questionId": "g10-english-05-multimodal-and-digital-texts-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "multimodal-literacy-reasoning"
+  }
+]

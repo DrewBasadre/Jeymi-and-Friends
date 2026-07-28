@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-english-04-describing-words-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains adjectives?",
+    "options": [
+      "Adjectives tell size, color, number, shape, or quality",
+      "It is only the title of the lesson Describing Words.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Adjectives tell size, color, number, shape, or quality",
+    "conceptId": "adjectives"
+  },
+  {
+    "questionId": "g2-english-04-describing-words-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Three bright kites adds number and color details",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Three bright kites adds number and color details",
+    "conceptId": "adjectives-application"
+  },
+  {
+    "questionId": "g2-english-04-describing-words-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "adjectives",
+    "conceptId": "adjectives"
+  },
+  {
+    "questionId": "g2-english-04-describing-words-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Add two useful adjectives to each of three nouns.",
+    "correctAnswer": "adjectives",
+    "conceptId": "adjectives-application"
+  },
+  {
+    "questionId": "g2-english-04-describing-words-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "adjectives-reasoning"
+  }
+]

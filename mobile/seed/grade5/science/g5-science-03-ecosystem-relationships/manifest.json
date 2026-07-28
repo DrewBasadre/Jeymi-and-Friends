@@ -1,0 +1,120 @@
+{
+  "moduleId": "g5-science-03-ecosystem-relationships",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 5,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:c44a7d0812253ed71e05fd8be0ff1fbf65ac44f40bb887cbe89859adc21d3233",
+    "g5-science-03-ecosystem-relationships-quiz.json": "sha256:8c9dea4e6daeb6ecc82a00cfb8abbe99f488df93f147d6c720ea19f59ac3d48b",
+    "images/concept-guide.webp": "sha256:0127e77675e5aeb74d2f62659a985a15c21773008eb5a2235d0b18464ca57a91",
+    "images/worked-example.webp": "sha256:a0c906374d1cad17799b09f0eed2e4e73c3b729c2a901b17259b73d54ebb3a1c"
+  },
+  "quizId": "g5-science-03-ecosystem-relationships-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g5-science-03-ecosystem-relationships",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-03-ecosystem-relationships-review-1",
+      "conceptId": "ecosystem-interactions",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is ecosystem interactions?",
+      "answer": "Organisms compete, cooperate, and depend on abiotic factors within ecosystems",
+      "formats": {
+        "text": "Organisms compete, cooperate, and depend on abiotic factors within ecosystems.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g5-science-03-ecosystem-relationships",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-03-ecosystem-relationships-review-2",
+      "conceptId": "ecosystem-interactions-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for ecosystem interactions.",
+      "answer": "Mangrove roots shelter young fish while holding coastal sediment",
+      "formats": {
+        "text": "Mangrove roots shelter young fish while holding coastal sediment.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g5-science-03-ecosystem-relationships",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-03-ecosystem-relationships-review-3",
+      "conceptId": "ecosystem-interactions",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Ecosystem Relationships.",
+      "answer": "ecosystem interactions",
+      "formats": {
+        "text": "ecosystem interactions"
+      }
+    },
+    {
+      "moduleId": "g5-science-03-ecosystem-relationships",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-03-ecosystem-relationships-review-4",
+      "conceptId": "ecosystem-interactions-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain ecosystem interactions in one or two clear sentences.",
+      "answer": "Organisms compete, cooperate, and depend on abiotic factors within ecosystems",
+      "formats": {
+        "text": "Organisms compete, cooperate, and depend on abiotic factors within ecosystems."
+      }
+    },
+    {
+      "moduleId": "g5-science-03-ecosystem-relationships",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-03-ecosystem-relationships-review-5",
+      "conceptId": "ecosystem-interactions-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Map four interactions in a Philippine ecosystem.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Map four interactions in a Philippine ecosystem."
+      }
+    }
+  ]
+}

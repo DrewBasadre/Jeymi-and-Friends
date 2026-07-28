@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g1-math-03-joining-to-add-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains addition?",
+    "options": [
+      "Addition finds how many there are when groups are joined",
+      "It is only the title of the lesson Joining to Add.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Addition finds how many there are when groups are joined",
+    "conceptId": "addition"
+  },
+  {
+    "questionId": "g1-math-03-joining-to-add-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Three shells plus two shells make five shells",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Three shells plus two shells make five shells",
+    "conceptId": "addition-application"
+  },
+  {
+    "questionId": "g1-math-03-joining-to-add-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "addition",
+    "conceptId": "addition"
+  },
+  {
+    "questionId": "g1-math-03-joining-to-add-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Make two small groups of counters and write their addition sentence.",
+    "correctAnswer": "addition",
+    "conceptId": "addition-application"
+  },
+  {
+    "questionId": "g1-math-03-joining-to-add-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "addition-reasoning"
+  }
+]

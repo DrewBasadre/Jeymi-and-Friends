@@ -8,7 +8,6 @@ import {
 } from '../src/domain/learning';
 import {
   assessmentToFormatProfile,
-  buildParentDigestSummary,
   estimatePomodoroQueueSize,
   interleaveReviewItems,
   recomputeAdaptiveFormat,
@@ -172,20 +171,4 @@ describe('learning domain', () => {
     expect(estimatePomodoroQueueSize(25, [50, 70, 60])).toBe(25);
   });
 
-  it('builds a deterministic parent digest summary', () => {
-    const summary = buildParentDigestSummary({
-      digestId: 'digest-1',
-      studentId: 'student-1',
-      weekStart: '2026-07-27',
-      weekEnd: '2026-08-02',
-      modulesCompleted: ['Fractions'],
-      timeTrend: 'steady',
-      currentFormatPreference: 'visual',
-      homeSuggestion: 'Use a fraction strip.',
-      generatedAt: 1,
-    });
-    expect(summary).toContain('Fractions');
-    expect(summary).toContain('visual');
-    expect(summary).toContain('fraction strip');
-  });
 });

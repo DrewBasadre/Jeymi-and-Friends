@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-math-04-expressions-and-equations-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains algebraic thinking?",
+    "options": [
+      "Variables represent unknown or changing quantities, and equations express equality",
+      "It is only the title of the lesson Expressions and Equations.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Variables represent unknown or changing quantities, and equations express equality",
+    "conceptId": "algebraic-thinking"
+  },
+  {
+    "questionId": "g6-math-04-expressions-and-equations-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "3x + 2 = 14 can be solved by undoing operations",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "3x + 2 = 14 can be solved by undoing operations",
+    "conceptId": "algebraic-thinking-application"
+  },
+  {
+    "questionId": "g6-math-04-expressions-and-equations-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "algebraic thinking",
+    "conceptId": "algebraic-thinking"
+  },
+  {
+    "questionId": "g6-math-04-expressions-and-equations-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Translate three word situations into expressions.",
+    "correctAnswer": "algebraic thinking",
+    "conceptId": "algebraic-thinking-application"
+  },
+  {
+    "questionId": "g6-math-04-expressions-and-equations-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "algebraic-thinking-reasoning"
+  }
+]

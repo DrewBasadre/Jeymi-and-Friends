@@ -1,0 +1,120 @@
+{
+  "moduleId": "g2-science-05-pushes-and-pulls",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 2,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:d5fc8f2411e6f506f4ac852ec39314f26814bb73b5d1608a534ff156cee36aed",
+    "g2-science-05-pushes-and-pulls-quiz.json": "sha256:ae2f36d558d85cd3d4ba05674ac9433b196ee3d56b09e0ece9cc12e6fcecb621",
+    "images/concept-guide.webp": "sha256:0b89919fdad29b6b20ccbe220a9e2941ec34752f60fec05f6a90334eb783e766",
+    "images/worked-example.webp": "sha256:41593077656f9ce4c4179f3d8da6191ebbc86e25302567f944c533811c8165c0"
+  },
+  "quizId": "g2-science-05-pushes-and-pulls-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g2-science-05-pushes-and-pulls",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-05-pushes-and-pulls-review-1",
+      "conceptId": "force",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is force?",
+      "answer": "A push or pull can start, stop, speed up, slow down, or turn an object",
+      "formats": {
+        "text": "A push or pull can start, stop, speed up, slow down, or turn an object.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g2-science-05-pushes-and-pulls",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-05-pushes-and-pulls-review-2",
+      "conceptId": "force-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for force.",
+      "answer": "A gentle push makes a toy car roll forward",
+      "formats": {
+        "text": "A gentle push makes a toy car roll forward.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g2-science-05-pushes-and-pulls",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-05-pushes-and-pulls-review-3",
+      "conceptId": "force",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Pushes and Pulls.",
+      "answer": "force",
+      "formats": {
+        "text": "force"
+      }
+    },
+    {
+      "moduleId": "g2-science-05-pushes-and-pulls",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-05-pushes-and-pulls-review-4",
+      "conceptId": "force-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain force in one or two clear sentences.",
+      "answer": "A push or pull can start, stop, speed up, slow down, or turn an object",
+      "formats": {
+        "text": "A push or pull can start, stop, speed up, slow down, or turn an object."
+      }
+    },
+    {
+      "moduleId": "g2-science-05-pushes-and-pulls",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-05-pushes-and-pulls-review-5",
+      "conceptId": "force-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Test how different pushes change a toy car motion.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Test how different pushes change a toy car motion."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-math-02-linear-equations-in-two-variables-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains linear graph?",
+    "options": [
+      "A linear equation represents a constant rate and graphs as a straight line",
+      "It is only the title of the lesson Linear Equations in Two Variables.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "A linear equation represents a constant rate and graphs as a straight line",
+    "conceptId": "linear-graph"
+  },
+  {
+    "questionId": "g8-math-02-linear-equations-in-two-variables-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "y = 2x + 1 has slope 2 and intercept 1",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "y = 2x + 1 has slope 2 and intercept 1",
+    "conceptId": "linear-graph-application"
+  },
+  {
+    "questionId": "g8-math-02-linear-equations-in-two-variables-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "linear graph",
+    "conceptId": "linear-graph"
+  },
+  {
+    "questionId": "g8-math-02-linear-equations-in-two-variables-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Graph and interpret a real rate relationship.",
+    "correctAnswer": "linear graph",
+    "conceptId": "linear-graph-application"
+  },
+  {
+    "questionId": "g8-math-02-linear-equations-in-two-variables-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "linear-graph-reasoning"
+  }
+]

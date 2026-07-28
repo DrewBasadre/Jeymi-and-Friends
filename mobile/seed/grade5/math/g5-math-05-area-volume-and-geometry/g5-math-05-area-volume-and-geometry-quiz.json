@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-math-05-area-volume-and-geometry-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains measurement formulas?",
+    "options": [
+      "Area measures surface coverage and volume measures three-dimensional space",
+      "It is only the title of the lesson Area, Volume, and Geometry.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Area measures surface coverage and volume measures three-dimensional space",
+    "conceptId": "measurement-formulas"
+  },
+  {
+    "questionId": "g5-math-05-area-volume-and-geometry-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A rectangular prism volume is length times width times height",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A rectangular prism volume is length times width times height",
+    "conceptId": "measurement-formulas-application"
+  },
+  {
+    "questionId": "g5-math-05-area-volume-and-geometry-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "measurement formulas",
+    "conceptId": "measurement-formulas"
+  },
+  {
+    "questionId": "g5-math-05-area-volume-and-geometry-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Measure a box and calculate its volume.",
+    "correctAnswer": "measurement formulas",
+    "conceptId": "measurement-formulas-application"
+  },
+  {
+    "questionId": "g5-math-05-area-volume-and-geometry-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "measurement-formulas-reasoning"
+  }
+]

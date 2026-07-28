@@ -4,6 +4,10 @@ import { getDatabase } from '@/data/database';
 import { getStudent, loginStudent, saveStudent } from '@/data/repository';
 import type { AppMode, Student, UserRole } from '@/domain/types';
 import { detectDeviceCapability, setModeOverride } from '@/services/deviceTier';
+import {
+  provisionSeedBundleForGrade,
+  type SeedProvisionProgress,
+} from '@/services/seedBundles';
 
 const SESSION_KEY = 'wais.studentSession';
 
@@ -17,7 +21,10 @@ interface SessionState {
   bootstrap(): Promise<void>;
   chooseRole(role: UserRole | null): void;
   login(identifier: string, pin: string): Promise<boolean>;
-  createStudent(input: Parameters<typeof saveStudent>[0]): Promise<Student>;
+  createStudent(
+    input: Parameters<typeof saveStudent>[0],
+    onProgress?: (progress: SeedProvisionProgress) => void,
+  ): Promise<Student>;
   setMode(mode: AppMode): Promise<void>;
   signOut(): Promise<void>;
 }
@@ -37,6 +44,9 @@ export const useSessionStore = create<SessionState>((set) => ({
       AsyncStorage.getItem(SESSION_KEY),
     ]);
     const student = studentId ? await getStudent(studentId) : null;
+    if (student) {
+      await provisionSeedBundleForGrade(student.id, student.gradeLevel);
+    }
     set({
       ready: true,
       student,
@@ -54,13 +64,19 @@ export const useSessionStore = create<SessionState>((set) => ({
   async login(identifier, pin) {
     const student = await loginStudent(identifier, pin);
     if (!student) return false;
+    await provisionSeedBundleForGrade(student.id, student.gradeLevel);
     await AsyncStorage.setItem(SESSION_KEY, student.id);
     set({ student, role: 'student' });
     return true;
   },
 
-  async createStudent(input) {
+  async createStudent(input, onProgress) {
     const student = await saveStudent(input);
+    await provisionSeedBundleForGrade(
+      student.id,
+      student.gradeLevel,
+      onProgress,
+    );
     await AsyncStorage.setItem(SESSION_KEY, student.id);
     set({ student, role: 'student' });
     return student;
@@ -80,4 +96,3 @@ export const useSessionStore = create<SessionState>((set) => ({
     set({ student: null, role: null });
   },
 }));
-

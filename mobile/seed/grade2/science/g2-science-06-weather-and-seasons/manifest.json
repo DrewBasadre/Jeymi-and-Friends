@@ -1,0 +1,120 @@
+{
+  "moduleId": "g2-science-06-weather-and-seasons",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 2,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:70b24a3bc878b0ec2cffda8e6e3702218b4e93ebbc759a7749d96e08d74b482b",
+    "g2-science-06-weather-and-seasons-quiz.json": "sha256:6ba29d178e1c79a008cb977f70220ef5b857ce2289715575a235e9db84cbee64",
+    "images/concept-guide.webp": "sha256:944b19339074a1e370640355e13c1009eef2b8f9ba3bd88507f7f142aa5d306b",
+    "images/worked-example.webp": "sha256:02946eb81c11608b6f780a1614e6cd42aca7f1d8f0e255910c8e3166c5569ee3"
+  },
+  "quizId": "g2-science-06-weather-and-seasons-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g2-science-06-weather-and-seasons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-06-weather-and-seasons-review-1",
+      "conceptId": "weather-patterns",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is weather patterns?",
+      "answer": "Daily observations reveal patterns in clouds, rain, wind, and temperature",
+      "formats": {
+        "text": "Daily observations reveal patterns in clouds, rain, wind, and temperature.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g2-science-06-weather-and-seasons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-06-weather-and-seasons-review-2",
+      "conceptId": "weather-patterns-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for weather patterns.",
+      "answer": "Several rainy days may require umbrellas and indoor plans",
+      "formats": {
+        "text": "Several rainy days may require umbrellas and indoor plans.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g2-science-06-weather-and-seasons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-06-weather-and-seasons-review-3",
+      "conceptId": "weather-patterns",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Weather and Seasons.",
+      "answer": "weather patterns",
+      "formats": {
+        "text": "weather patterns"
+      }
+    },
+    {
+      "moduleId": "g2-science-06-weather-and-seasons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-06-weather-and-seasons-review-4",
+      "conceptId": "weather-patterns-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain weather patterns in one or two clear sentences.",
+      "answer": "Daily observations reveal patterns in clouds, rain, wind, and temperature",
+      "formats": {
+        "text": "Daily observations reveal patterns in clouds, rain, wind, and temperature."
+      }
+    },
+    {
+      "moduleId": "g2-science-06-weather-and-seasons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-06-weather-and-seasons-review-5",
+      "conceptId": "weather-patterns-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Keep a seven-day picture weather record.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Keep a seven-day picture weather record."
+      }
+    }
+  ]
+}

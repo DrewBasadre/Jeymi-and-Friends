@@ -1,0 +1,120 @@
+{
+  "moduleId": "g7-science-01-scientific-inquiry-and-measurement",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 7,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:e215ec782366a8938e99f37040797982a11ee872a088fbc9be1c978cadd1bd2f",
+    "g7-science-01-scientific-inquiry-and-measurement-quiz.json": "sha256:46f26b320636bdbd4b58b92117559ebaf6f21b2ab784ee5377df1225b27b3f7c",
+    "images/concept-guide.webp": "sha256:7c30f5e22771055929bac51d2f73d47e281f0ce0c45756f33ac58bff608b3222",
+    "images/worked-example.webp": "sha256:c42ffc6cc5117d4b93a3b9c849581ff47a4dd664537ac0516e3acc349d80e729"
+  },
+  "quizId": "g7-science-01-scientific-inquiry-and-measurement-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g7-science-01-scientific-inquiry-and-measurement",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-01-scientific-inquiry-and-measurement-review-1",
+      "conceptId": "scientific-inquiry",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is scientific inquiry?",
+      "answer": "Testable questions, controlled variables, repeated trials, and precise measurement strengthen evidence",
+      "formats": {
+        "text": "Testable questions, controlled variables, repeated trials, and precise measurement strengthen evidence.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g7-science-01-scientific-inquiry-and-measurement",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-01-scientific-inquiry-and-measurement-review-2",
+      "conceptId": "scientific-inquiry-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for scientific inquiry.",
+      "answer": "Changing only light exposure helps test its effect on seedling growth",
+      "formats": {
+        "text": "Changing only light exposure helps test its effect on seedling growth.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g7-science-01-scientific-inquiry-and-measurement",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-01-scientific-inquiry-and-measurement-review-3",
+      "conceptId": "scientific-inquiry",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Scientific Inquiry and Measurement.",
+      "answer": "scientific inquiry",
+      "formats": {
+        "text": "scientific inquiry"
+      }
+    },
+    {
+      "moduleId": "g7-science-01-scientific-inquiry-and-measurement",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-01-scientific-inquiry-and-measurement-review-4",
+      "conceptId": "scientific-inquiry-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain scientific inquiry in one or two clear sentences.",
+      "answer": "Testable questions, controlled variables, repeated trials, and precise measurement strengthen evidence",
+      "formats": {
+        "text": "Testable questions, controlled variables, repeated trials, and precise measurement strengthen evidence."
+      }
+    },
+    {
+      "moduleId": "g7-science-01-scientific-inquiry-and-measurement",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-01-scientific-inquiry-and-measurement-review-5",
+      "conceptId": "scientific-inquiry-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Design a fair test with independent and dependent variables.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Design a fair test with independent and dependent variables."
+      }
+    }
+  ]
+}

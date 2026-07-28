@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g1-science-01-using-our-senses-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains five senses?",
+    "options": [
+      "Our eyes, ears, nose, tongue, and skin help us learn about the world",
+      "It is only the title of the lesson Using Our Senses.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Our eyes, ears, nose, tongue, and skin help us learn about the world",
+    "conceptId": "five-senses"
+  },
+  {
+    "questionId": "g1-science-01-using-our-senses-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A ripe mango can look yellow, smell sweet, feel smooth, and taste juicy",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A ripe mango can look yellow, smell sweet, feel smooth, and taste juicy",
+    "conceptId": "five-senses-application"
+  },
+  {
+    "questionId": "g1-science-01-using-our-senses-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "five senses",
+    "conceptId": "five-senses"
+  },
+  {
+    "questionId": "g1-science-01-using-our-senses-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Choose a safe classroom object and describe it with three senses.",
+    "correctAnswer": "five senses",
+    "conceptId": "five-senses-application"
+  },
+  {
+    "questionId": "g1-science-01-using-our-senses-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "five-senses-reasoning"
+  }
+]

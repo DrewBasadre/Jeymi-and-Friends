@@ -1,0 +1,120 @@
+{
+  "moduleId": "g5-math-02-adding-and-subtracting-fractions",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 5,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:43475ccdb7bac8193fbfb687b4087179e5cffeffd0ee24384774d75790b74afd",
+    "g5-math-02-adding-and-subtracting-fractions-quiz.json": "sha256:244f846e75f5015dbfced8e4b2de7b07933085d8f5eac436b9470a5f39eb8f8d",
+    "images/concept-guide.webp": "sha256:19c08095f709c704b0db628e1cf2702293b54423fd02b5b00c6eca1c3606c6fc",
+    "images/worked-example.webp": "sha256:c6ba0b5996f95b8f46849aec9c518d7426c6126027e9c49041eab01a98937e4c"
+  },
+  "quizId": "g5-math-02-adding-and-subtracting-fractions-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g5-math-02-adding-and-subtracting-fractions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-math-02-adding-and-subtracting-fractions-review-1",
+      "conceptId": "fraction-operations",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is fraction operations?",
+      "answer": "Fractions need common units before numerators can be combined",
+      "formats": {
+        "text": "Fractions need common units before numerators can be combined.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g5-math-02-adding-and-subtracting-fractions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-math-02-adding-and-subtracting-fractions-review-2",
+      "conceptId": "fraction-operations-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for fraction operations.",
+      "answer": "One half plus one fourth becomes two fourths plus one fourth",
+      "formats": {
+        "text": "One half plus one fourth becomes two fourths plus one fourth.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g5-math-02-adding-and-subtracting-fractions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-math-02-adding-and-subtracting-fractions-review-3",
+      "conceptId": "fraction-operations",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Adding and Subtracting Fractions.",
+      "answer": "fraction operations",
+      "formats": {
+        "text": "fraction operations"
+      }
+    },
+    {
+      "moduleId": "g5-math-02-adding-and-subtracting-fractions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-math-02-adding-and-subtracting-fractions-review-4",
+      "conceptId": "fraction-operations-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain fraction operations in one or two clear sentences.",
+      "answer": "Fractions need common units before numerators can be combined",
+      "formats": {
+        "text": "Fractions need common units before numerators can be combined."
+      }
+    },
+    {
+      "moduleId": "g5-math-02-adding-and-subtracting-fractions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-math-02-adding-and-subtracting-fractions-review-5",
+      "conceptId": "fraction-operations-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Model three fraction sums using area bars.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Model three fraction sums using area bars."
+      }
+    }
+  ]
+}

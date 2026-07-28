@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-math-01-sequences-and-series-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains sequences?",
+    "options": [
+      "Arithmetic and geometric patterns can be represented recursively and explicitly",
+      "It is only the title of the lesson Sequences and Series.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Arithmetic and geometric patterns can be represented recursively and explicitly",
+    "conceptId": "sequences"
+  },
+  {
+    "questionId": "g10-math-01-sequences-and-series-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "An arithmetic sequence adds a constant common difference",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "An arithmetic sequence adds a constant common difference",
+    "conceptId": "sequences-application"
+  },
+  {
+    "questionId": "g10-math-01-sequences-and-series-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "sequences",
+    "conceptId": "sequences"
+  },
+  {
+    "questionId": "g10-math-01-sequences-and-series-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Model savings growth with a sequence.",
+    "correctAnswer": "sequences",
+    "conceptId": "sequences-application"
+  },
+  {
+    "questionId": "g10-math-01-sequences-and-series-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "sequences-reasoning"
+  }
+]

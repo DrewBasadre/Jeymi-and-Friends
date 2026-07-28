@@ -1,0 +1,120 @@
+{
+  "moduleId": "g7-math-04-linear-equations-and-inequalities",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 7,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:70182ad5505fa270ae3faef3277e55b3a21f85289927d00cf7b5d82307023002",
+    "g7-math-04-linear-equations-and-inequalities-quiz.json": "sha256:08b0fe6890cc7937171e18742eac7e0ba64987e60db7c2afc8801979a001802c",
+    "images/concept-guide.webp": "sha256:cc2b78b08974ed19a229107820554d14b6c92cf5f30bc58e2006e27110a937c1",
+    "images/worked-example.webp": "sha256:1c95e592285ac5804da0d83a007c38c058b2018785560df41066ebd041d5435a"
+  },
+  "quizId": "g7-math-04-linear-equations-and-inequalities-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g7-math-04-linear-equations-and-inequalities",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-04-linear-equations-and-inequalities-review-1",
+      "conceptId": "linear-relationships",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is linear relationships?",
+      "answer": "Inverse operations solve equations, while inequality solutions represent ranges",
+      "formats": {
+        "text": "Inverse operations solve equations, while inequality solutions represent ranges.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g7-math-04-linear-equations-and-inequalities",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-04-linear-equations-and-inequalities-review-2",
+      "conceptId": "linear-relationships-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for linear relationships.",
+      "answer": "2x + 5 < 17 gives x < 6",
+      "formats": {
+        "text": "2x + 5 < 17 gives x < 6.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g7-math-04-linear-equations-and-inequalities",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-04-linear-equations-and-inequalities-review-3",
+      "conceptId": "linear-relationships",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Linear Equations and Inequalities.",
+      "answer": "linear relationships",
+      "formats": {
+        "text": "linear relationships"
+      }
+    },
+    {
+      "moduleId": "g7-math-04-linear-equations-and-inequalities",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-04-linear-equations-and-inequalities-review-4",
+      "conceptId": "linear-relationships-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain linear relationships in one or two clear sentences.",
+      "answer": "Inverse operations solve equations, while inequality solutions represent ranges",
+      "formats": {
+        "text": "Inverse operations solve equations, while inequality solutions represent ranges."
+      }
+    },
+    {
+      "moduleId": "g7-math-04-linear-equations-and-inequalities",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-04-linear-equations-and-inequalities-review-5",
+      "conceptId": "linear-relationships-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Solve and graph a practical inequality.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Solve and graph a practical inequality."
+      }
+    }
+  ]
+}

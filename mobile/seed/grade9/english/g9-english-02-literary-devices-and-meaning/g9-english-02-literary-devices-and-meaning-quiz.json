@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-english-02-literary-devices-and-meaning-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains literary analysis?",
+    "options": [
+      "Symbol, irony, imagery, motif, and structure contribute to layered interpretation",
+      "It is only the title of the lesson Literary Devices and Meaning.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Symbol, irony, imagery, motif, and structure contribute to layered interpretation",
+    "conceptId": "literary-analysis"
+  },
+  {
+    "questionId": "g9-english-02-literary-devices-and-meaning-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Dramatic irony gives the audience knowledge a character lacks",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Dramatic irony gives the audience knowledge a character lacks",
+    "conceptId": "literary-analysis-application"
+  },
+  {
+    "questionId": "g9-english-02-literary-devices-and-meaning-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "literary analysis",
+    "conceptId": "literary-analysis"
+  },
+  {
+    "questionId": "g9-english-02-literary-devices-and-meaning-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Trace one device across a literary selection.",
+    "correctAnswer": "literary analysis",
+    "conceptId": "literary-analysis-application"
+  },
+  {
+    "questionId": "g9-english-02-literary-devices-and-meaning-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "literary-analysis-reasoning"
+  }
+]

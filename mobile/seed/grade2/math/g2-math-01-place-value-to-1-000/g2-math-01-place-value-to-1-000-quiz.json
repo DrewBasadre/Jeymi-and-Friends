@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-math-01-place-value-to-1-000-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains hundreds tens ones?",
+    "options": [
+      "Three-digit numbers are composed of hundreds, tens, and ones",
+      "It is only the title of the lesson Place Value to 1,000.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Three-digit numbers are composed of hundreds, tens, and ones",
+    "conceptId": "hundreds-tens-ones"
+  },
+  {
+    "questionId": "g2-math-01-place-value-to-1-000-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "352 is three hundreds, five tens, and two ones",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "352 is three hundreds, five tens, and two ones",
+    "conceptId": "hundreds-tens-ones-application"
+  },
+  {
+    "questionId": "g2-math-01-place-value-to-1-000-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "hundreds tens ones",
+    "conceptId": "hundreds-tens-ones"
+  },
+  {
+    "questionId": "g2-math-01-place-value-to-1-000-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Represent 406 with place-value drawings.",
+    "correctAnswer": "hundreds tens ones",
+    "conceptId": "hundreds-tens-ones-application"
+  },
+  {
+    "questionId": "g2-math-01-place-value-to-1-000-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "hundreds-tens-ones-reasoning"
+  }
+]

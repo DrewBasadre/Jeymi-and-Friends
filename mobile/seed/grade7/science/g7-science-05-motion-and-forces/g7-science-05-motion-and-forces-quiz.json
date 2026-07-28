@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-science-05-motion-and-forces-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains net force?",
+    "options": [
+      "Speed, velocity, acceleration, and net force describe and explain changing motion",
+      "It is only the title of the lesson Motion and Forces.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Speed, velocity, acceleration, and net force describe and explain changing motion",
+    "conceptId": "net-force"
+  },
+  {
+    "questionId": "g7-science-05-motion-and-forces-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Balanced forces produce no change in motion",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Balanced forces produce no change in motion",
+    "conceptId": "net-force-application"
+  },
+  {
+    "questionId": "g7-science-05-motion-and-forces-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "net force",
+    "conceptId": "net-force"
+  },
+  {
+    "questionId": "g7-science-05-motion-and-forces-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Graph position over time for a moving object.",
+    "correctAnswer": "net force",
+    "conceptId": "net-force-application"
+  },
+  {
+    "questionId": "g7-science-05-motion-and-forces-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "net-force-reasoning"
+  }
+]

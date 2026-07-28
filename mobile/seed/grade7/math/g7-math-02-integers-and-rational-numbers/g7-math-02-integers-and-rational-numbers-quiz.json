@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-math-02-integers-and-rational-numbers-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains rational numbers?",
+    "options": [
+      "Properties of operations extend to positive and negative fractions and decimals",
+      "It is only the title of the lesson Integers and Rational Numbers.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Properties of operations extend to positive and negative fractions and decimals",
+    "conceptId": "rational-numbers"
+  },
+  {
+    "questionId": "g7-math-02-integers-and-rational-numbers-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Subtracting a negative is equivalent to adding its opposite",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Subtracting a negative is equivalent to adding its opposite",
+    "conceptId": "rational-numbers-application"
+  },
+  {
+    "questionId": "g7-math-02-integers-and-rational-numbers-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "rational numbers",
+    "conceptId": "rational-numbers"
+  },
+  {
+    "questionId": "g7-math-02-integers-and-rational-numbers-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Explain temperature and debt changes on a number line.",
+    "correctAnswer": "rational numbers",
+    "conceptId": "rational-numbers-application"
+  },
+  {
+    "questionId": "g7-math-02-integers-and-rational-numbers-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "rational-numbers-reasoning"
+  }
+]

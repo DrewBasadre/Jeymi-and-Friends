@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-science-01-keeping-the-body-healthy-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains healthy habits?",
+    "options": [
+      "Cleanliness, nutritious food, movement, and rest help body parts work well",
+      "It is only the title of the lesson Keeping the Body Healthy.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Cleanliness, nutritious food, movement, and rest help body parts work well",
+    "conceptId": "healthy-habits"
+  },
+  {
+    "questionId": "g2-science-01-keeping-the-body-healthy-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Washing hands with soap removes dirt before eating",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Washing hands with soap removes dirt before eating",
+    "conceptId": "healthy-habits-application"
+  },
+  {
+    "questionId": "g2-science-01-keeping-the-body-healthy-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "healthy habits",
+    "conceptId": "healthy-habits"
+  },
+  {
+    "questionId": "g2-science-01-keeping-the-body-healthy-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Make a four-part healthy-day plan.",
+    "correctAnswer": "healthy habits",
+    "conceptId": "healthy-habits-application"
+  },
+  {
+    "questionId": "g2-science-01-keeping-the-body-healthy-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "healthy-habits-reasoning"
+  }
+]

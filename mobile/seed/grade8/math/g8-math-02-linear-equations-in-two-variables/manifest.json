@@ -1,0 +1,120 @@
+{
+  "moduleId": "g8-math-02-linear-equations-in-two-variables",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 8,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:175c19a307c07b437ddeb7bbf071d9afd95c0458c3c76bbd6e2d314333d54331",
+    "g8-math-02-linear-equations-in-two-variables-quiz.json": "sha256:d1c50e11b21b7dc88738ce614036771791958c962f3ffac093e0833b0850857d",
+    "images/concept-guide.webp": "sha256:40be0a27622765d09dee18846056600df5f36f203ba8004f6ffe2d883d08d05c",
+    "images/worked-example.webp": "sha256:d38e3181ae4541f83d7c0463d46d990a5c3b02ee80bf05304f29a5faef4ef4b7"
+  },
+  "quizId": "g8-math-02-linear-equations-in-two-variables-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g8-math-02-linear-equations-in-two-variables",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-math-02-linear-equations-in-two-variables-review-1",
+      "conceptId": "linear-graph",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is linear graph?",
+      "answer": "A linear equation represents a constant rate and graphs as a straight line",
+      "formats": {
+        "text": "A linear equation represents a constant rate and graphs as a straight line.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g8-math-02-linear-equations-in-two-variables",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-math-02-linear-equations-in-two-variables-review-2",
+      "conceptId": "linear-graph-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for linear graph.",
+      "answer": "y = 2x + 1 has slope 2 and intercept 1",
+      "formats": {
+        "text": "y = 2x + 1 has slope 2 and intercept 1.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g8-math-02-linear-equations-in-two-variables",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-math-02-linear-equations-in-two-variables-review-3",
+      "conceptId": "linear-graph",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Linear Equations in Two Variables.",
+      "answer": "linear graph",
+      "formats": {
+        "text": "linear graph"
+      }
+    },
+    {
+      "moduleId": "g8-math-02-linear-equations-in-two-variables",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-math-02-linear-equations-in-two-variables-review-4",
+      "conceptId": "linear-graph-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain linear graph in one or two clear sentences.",
+      "answer": "A linear equation represents a constant rate and graphs as a straight line",
+      "formats": {
+        "text": "A linear equation represents a constant rate and graphs as a straight line."
+      }
+    },
+    {
+      "moduleId": "g8-math-02-linear-equations-in-two-variables",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-math-02-linear-equations-in-two-variables-review-5",
+      "conceptId": "linear-graph-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Graph and interpret a real rate relationship.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Graph and interpret a real rate relationship."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-english-02-vocabulary-and-register-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains register?",
+    "options": [
+      "Word choice shifts across formal, informal, technical, and conversational settings",
+      "It is only the title of the lesson Vocabulary and Register.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Word choice shifts across formal, informal, technical, and conversational settings",
+    "conceptId": "register"
+  },
+  {
+    "questionId": "g8-english-02-vocabulary-and-register-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "request assistance is more formal than ask for help",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "request assistance is more formal than ask for help",
+    "conceptId": "register-application"
+  },
+  {
+    "questionId": "g8-english-02-vocabulary-and-register-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "register",
+    "conceptId": "register"
+  },
+  {
+    "questionId": "g8-english-02-vocabulary-and-register-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Rewrite one message in two registers.",
+    "correctAnswer": "register",
+    "conceptId": "register-application"
+  },
+  {
+    "questionId": "g8-english-02-vocabulary-and-register-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "register-reasoning"
+  }
+]

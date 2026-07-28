@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-math-04-equivalent-fractions-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains fraction equivalence?",
+    "options": [
+      "Multiplying or dividing numerator and denominator by the same number names the same amount",
+      "It is only the title of the lesson Equivalent Fractions.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Multiplying or dividing numerator and denominator by the same number names the same amount",
+    "conceptId": "fraction-equivalence"
+  },
+  {
+    "questionId": "g4-math-04-equivalent-fractions-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "One half equals two fourths and four eighths",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "One half equals two fourths and four eighths",
+    "conceptId": "fraction-equivalence-application"
+  },
+  {
+    "questionId": "g4-math-04-equivalent-fractions-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "fraction equivalence",
+    "conceptId": "fraction-equivalence"
+  },
+  {
+    "questionId": "g4-math-04-equivalent-fractions-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Use fraction strips to find three equivalents.",
+    "correctAnswer": "fraction equivalence",
+    "conceptId": "fraction-equivalence-application"
+  },
+  {
+    "questionId": "g4-math-04-equivalent-fractions-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "fraction-equivalence-reasoning"
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-english-03-regular-and-irregular-verbs-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains verb forms?",
+    "options": [
+      "Some past verbs add ed while others change form",
+      "It is only the title of the lesson Regular and Irregular Verbs.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Some past verbs add ed while others change form",
+    "conceptId": "verb-forms"
+  },
+  {
+    "questionId": "g3-english-03-regular-and-irregular-verbs-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Jump becomes jumped, but go becomes went",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Jump becomes jumped, but go becomes went",
+    "conceptId": "verb-forms-application"
+  },
+  {
+    "questionId": "g3-english-03-regular-and-irregular-verbs-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "verb forms",
+    "conceptId": "verb-forms"
+  },
+  {
+    "questionId": "g3-english-03-regular-and-irregular-verbs-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Sort ten verbs as regular or irregular.",
+    "correctAnswer": "verb forms",
+    "conceptId": "verb-forms-application"
+  },
+  {
+    "questionId": "g3-english-03-regular-and-irregular-verbs-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "verb-forms-reasoning"
+  }
+]

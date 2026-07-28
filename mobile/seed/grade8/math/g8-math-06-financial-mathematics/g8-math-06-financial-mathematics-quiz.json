@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-math-06-financial-mathematics-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains financial decisions?",
+    "options": [
+      "Percent increase, discount, tax, simple interest, and budgeting guide financial choices",
+      "It is only the title of the lesson Financial Mathematics.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Percent increase, discount, tax, simple interest, and budgeting guide financial choices",
+    "conceptId": "financial-decisions"
+  },
+  {
+    "questionId": "g8-math-06-financial-mathematics-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A 20 percent discount reduces a 500-peso item by 100 pesos",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A 20 percent discount reduces a 500-peso item by 100 pesos",
+    "conceptId": "financial-decisions-application"
+  },
+  {
+    "questionId": "g8-math-06-financial-mathematics-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "financial decisions",
+    "conceptId": "financial-decisions"
+  },
+  {
+    "questionId": "g8-math-06-financial-mathematics-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compare two purchase offers using total cost.",
+    "correctAnswer": "financial decisions",
+    "conceptId": "financial-decisions-application"
+  },
+  {
+    "questionId": "g8-math-06-financial-mathematics-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "financial-decisions-reasoning"
+  }
+]

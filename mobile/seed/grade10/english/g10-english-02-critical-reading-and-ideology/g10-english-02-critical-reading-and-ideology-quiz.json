@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-english-02-critical-reading-and-ideology-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains critical reading?",
+    "options": [
+      "Readers examine assumptions, power, representation, and silenced perspectives in texts",
+      "It is only the title of the lesson Critical Reading and Ideology.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Readers examine assumptions, power, representation, and silenced perspectives in texts",
+    "conceptId": "critical-reading"
+  },
+  {
+    "questionId": "g10-english-02-critical-reading-and-ideology-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Word choice can frame one group as active and another as passive",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Word choice can frame one group as active and another as passive",
+    "conceptId": "critical-reading-application"
+  },
+  {
+    "questionId": "g10-english-02-critical-reading-and-ideology-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "critical reading",
+    "conceptId": "critical-reading"
+  },
+  {
+    "questionId": "g10-english-02-critical-reading-and-ideology-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Analyze framing in two accounts of an event.",
+    "correctAnswer": "critical reading",
+    "conceptId": "critical-reading-application"
+  },
+  {
+    "questionId": "g10-english-02-critical-reading-and-ideology-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "critical-reading-reasoning"
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-english-03-present-and-past-actions-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains verb tense?",
+    "options": [
+      "Verb forms show whether an action happens now or happened before",
+      "It is only the title of the lesson Present and Past Actions.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Verb forms show whether an action happens now or happened before",
+    "conceptId": "verb-tense"
+  },
+  {
+    "questionId": "g2-english-03-present-and-past-actions-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "I walk today; I walked yesterday",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "I walk today; I walked yesterday",
+    "conceptId": "verb-tense-application"
+  },
+  {
+    "questionId": "g2-english-03-present-and-past-actions-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "verb tense",
+    "conceptId": "verb-tense"
+  },
+  {
+    "questionId": "g2-english-03-present-and-past-actions-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Change five present-tense actions into past tense.",
+    "correctAnswer": "verb tense",
+    "conceptId": "verb-tense-application"
+  },
+  {
+    "questionId": "g2-english-03-present-and-past-actions-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "verb-tense-reasoning"
+  }
+]

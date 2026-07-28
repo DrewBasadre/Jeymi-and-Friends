@@ -1,0 +1,120 @@
+{
+  "moduleId": "g2-math-06-length-time-and-money",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 2,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:a4c86d1a658d7a2a9116ca315aa9ac7115ff5aa8ea54879d19d04777a18a5a93",
+    "g2-math-06-length-time-and-money-quiz.json": "sha256:36acf5d7ceb7c98ce8ed8ebd1255a8d8831b8f8b00e8836b8f37e230c100cf59",
+    "images/concept-guide.webp": "sha256:f6e2d32f65cd54f0e2a9841d4499d77e3f2ccd3a73e00d0da69eb01393fcfda8",
+    "images/worked-example.webp": "sha256:fe6db5a9ed144937c99caf5239b24f24d02b755b247c37fd226afca8afb396ca"
+  },
+  "quizId": "g2-math-06-length-time-and-money-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g2-math-06-length-time-and-money",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-math-06-length-time-and-money-review-1",
+      "conceptId": "practical-measurement",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is practical measurement?",
+      "answer": "Standard units and Philippine coins help describe and solve daily situations",
+      "formats": {
+        "text": "Standard units and Philippine coins help describe and solve daily situations.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g2-math-06-length-time-and-money",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-math-06-length-time-and-money-review-2",
+      "conceptId": "practical-measurement-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for practical measurement.",
+      "answer": "A ruler measures centimeters, while a clock measures elapsed time",
+      "formats": {
+        "text": "A ruler measures centimeters, while a clock measures elapsed time.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g2-math-06-length-time-and-money",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-math-06-length-time-and-money-review-3",
+      "conceptId": "practical-measurement",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Length, Time, and Money.",
+      "answer": "practical measurement",
+      "formats": {
+        "text": "practical measurement"
+      }
+    },
+    {
+      "moduleId": "g2-math-06-length-time-and-money",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-math-06-length-time-and-money-review-4",
+      "conceptId": "practical-measurement-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain practical measurement in one or two clear sentences.",
+      "answer": "Standard units and Philippine coins help describe and solve daily situations",
+      "formats": {
+        "text": "Standard units and Philippine coins help describe and solve daily situations."
+      }
+    },
+    {
+      "moduleId": "g2-math-06-length-time-and-money",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-math-06-length-time-and-money-review-5",
+      "conceptId": "practical-measurement-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Plan a small purchase and count the exact coins needed.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Plan a small purchase and count the exact coins needed."
+      }
+    }
+  ]
+}

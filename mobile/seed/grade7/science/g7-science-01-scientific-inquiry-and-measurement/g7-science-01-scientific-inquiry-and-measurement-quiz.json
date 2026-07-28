@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-science-01-scientific-inquiry-and-measurement-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains scientific inquiry?",
+    "options": [
+      "Testable questions, controlled variables, repeated trials, and precise measurement strengthen evidence",
+      "It is only the title of the lesson Scientific Inquiry and Measurement.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Testable questions, controlled variables, repeated trials, and precise measurement strengthen evidence",
+    "conceptId": "scientific-inquiry"
+  },
+  {
+    "questionId": "g7-science-01-scientific-inquiry-and-measurement-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Changing only light exposure helps test its effect on seedling growth",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Changing only light exposure helps test its effect on seedling growth",
+    "conceptId": "scientific-inquiry-application"
+  },
+  {
+    "questionId": "g7-science-01-scientific-inquiry-and-measurement-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "scientific inquiry",
+    "conceptId": "scientific-inquiry"
+  },
+  {
+    "questionId": "g7-science-01-scientific-inquiry-and-measurement-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Design a fair test with independent and dependent variables.",
+    "correctAnswer": "scientific inquiry",
+    "conceptId": "scientific-inquiry-application"
+  },
+  {
+    "questionId": "g7-science-01-scientific-inquiry-and-measurement-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "scientific-inquiry-reasoning"
+  }
+]

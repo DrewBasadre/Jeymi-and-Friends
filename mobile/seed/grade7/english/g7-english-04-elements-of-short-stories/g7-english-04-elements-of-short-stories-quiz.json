@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-english-04-elements-of-short-stories-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains literary elements?",
+    "options": [
+      "Plot, conflict, character, setting, and point of view work together to build meaning",
+      "It is only the title of the lesson Elements of Short Stories.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Plot, conflict, character, setting, and point of view work together to build meaning",
+    "conceptId": "literary-elements"
+  },
+  {
+    "questionId": "g7-english-04-elements-of-short-stories-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A first-person narrator reveals one character perspective",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A first-person narrator reveals one character perspective",
+    "conceptId": "literary-elements-application"
+  },
+  {
+    "questionId": "g7-english-04-elements-of-short-stories-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "literary elements",
+    "conceptId": "literary-elements"
+  },
+  {
+    "questionId": "g7-english-04-elements-of-short-stories-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Map conflict and turning point in a short story.",
+    "correctAnswer": "literary elements",
+    "conceptId": "literary-elements-application"
+  },
+  {
+    "questionId": "g7-english-04-elements-of-short-stories-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "literary-elements-reasoning"
+  }
+]

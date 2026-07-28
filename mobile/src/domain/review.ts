@@ -5,7 +5,6 @@ import type {
   FormatHistoryEntry,
   LearningFormat,
   LearningProfile,
-  ParentDigest,
   PomodoroSession,
   ReviewItem,
   ReviewState,
@@ -218,22 +217,6 @@ export function createCustomReviewSet(args: {
     visibility: args.visibility ?? 'private',
     createdAt: Date.now(),
   };
-}
-
-export function buildParentDigestSummary(input: Omit<ParentDigest, 'summary'>): string {
-  const moduleLine =
-    input.modulesCompleted.length === 0
-      ? 'No modules were completed this week.'
-      : `${input.modulesCompleted.length} module${
-          input.modulesCompleted.length === 1 ? ' was' : 's were'
-        } completed: ${input.modulesCompleted.join(', ')}.`;
-  const timeLine = {
-    up: 'Study time increased compared with the previous week.',
-    down: 'Study time was lower than the previous week.',
-    steady: 'Study time stayed steady compared with the previous week.',
-    'not-enough-data': 'A time trend will appear after another week of activity.',
-  }[input.timeTrend];
-  return `${moduleLine} ${timeLine} The current learning-format preference is ${input.currentFormatPreference}. ${input.homeSuggestion}`;
 }
 
 function confidenceFor(historyCount: number): number {

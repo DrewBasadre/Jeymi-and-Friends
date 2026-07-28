@@ -20,7 +20,7 @@ export async function deliverParentDigest(
   await Notifications.scheduleNotificationAsync({
     content: {
       title: 'WAIS weekly learning digest',
-      body: digest.summary,
+      body: digest.insightNote,
       data: {
         digestId: digest.digestId,
         studentId: digest.studentId,

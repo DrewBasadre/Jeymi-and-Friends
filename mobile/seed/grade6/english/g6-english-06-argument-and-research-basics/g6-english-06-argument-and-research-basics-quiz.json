@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-english-06-argument-and-research-basics-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains argument?",
+    "options": [
+      "Credible sources, clear claims, relevant evidence, and reasoning strengthen an argument",
+      "It is only the title of the lesson Argument and Research Basics.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Credible sources, clear claims, relevant evidence, and reasoning strengthen an argument",
+    "conceptId": "argument"
+  },
+  {
+    "questionId": "g6-english-06-argument-and-research-basics-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A health claim should rely on qualified and current sources",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A health claim should rely on qualified and current sources",
+    "conceptId": "argument-application"
+  },
+  {
+    "questionId": "g6-english-06-argument-and-research-basics-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "argument",
+    "conceptId": "argument"
+  },
+  {
+    "questionId": "g6-english-06-argument-and-research-basics-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compare two sources and defend which is more credible.",
+    "correctAnswer": "argument",
+    "conceptId": "argument-application"
+  },
+  {
+    "questionId": "g6-english-06-argument-and-research-basics-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "argument-reasoning"
+  }
+]

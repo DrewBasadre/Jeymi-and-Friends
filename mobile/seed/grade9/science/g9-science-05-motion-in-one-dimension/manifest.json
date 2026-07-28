@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-science-05-motion-in-one-dimension",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:02dca626d4f6ea26237a1a2128dd5eca3b196e09c9ec3b8b4583853797cd0246",
+    "g9-science-05-motion-in-one-dimension-quiz.json": "sha256:c81f32d63a219bc858dc537fce0c9e165563a22869a8fce61552c6242ff300b9",
+    "images/concept-guide.webp": "sha256:f7a3290123faff40d91d8c9f876d321f984c7983552956b908af2eaaf6d6883c",
+    "images/worked-example.webp": "sha256:4339b8016618e4127f1df7f363e9c125d6cac500e9804225407e309560cead59"
+  },
+  "quizId": "g9-science-05-motion-in-one-dimension-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-science-05-motion-in-one-dimension",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-05-motion-in-one-dimension-review-1",
+      "conceptId": "kinematics",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is kinematics?",
+      "answer": "Displacement, velocity, acceleration, and graphs provide complementary descriptions of motion",
+      "formats": {
+        "text": "Displacement, velocity, acceleration, and graphs provide complementary descriptions of motion.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-science-05-motion-in-one-dimension",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-05-motion-in-one-dimension-review-2",
+      "conceptId": "kinematics-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for kinematics.",
+      "answer": "The slope of a position-time graph represents velocity",
+      "formats": {
+        "text": "The slope of a position-time graph represents velocity.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-science-05-motion-in-one-dimension",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-05-motion-in-one-dimension-review-3",
+      "conceptId": "kinematics",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Motion in One Dimension.",
+      "answer": "kinematics",
+      "formats": {
+        "text": "kinematics"
+      }
+    },
+    {
+      "moduleId": "g9-science-05-motion-in-one-dimension",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-05-motion-in-one-dimension-review-4",
+      "conceptId": "kinematics-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain kinematics in one or two clear sentences.",
+      "answer": "Displacement, velocity, acceleration, and graphs provide complementary descriptions of motion",
+      "formats": {
+        "text": "Displacement, velocity, acceleration, and graphs provide complementary descriptions of motion."
+      }
+    },
+    {
+      "moduleId": "g9-science-05-motion-in-one-dimension",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-05-motion-in-one-dimension-review-5",
+      "conceptId": "kinematics-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Analyze matching motion graphs and stories.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Analyze matching motion graphs and stories."
+      }
+    }
+  ]
+}

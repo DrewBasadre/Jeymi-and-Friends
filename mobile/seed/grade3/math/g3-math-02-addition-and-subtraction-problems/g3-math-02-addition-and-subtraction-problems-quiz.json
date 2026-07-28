@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-math-02-addition-and-subtraction-problems-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains multi-step operations?",
+    "options": [
+      "Estimate, compute accurately, and check whether an answer fits the situation",
+      "It is only the title of the lesson Addition and Subtraction Problems.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Estimate, compute accurately, and check whether an answer fits the situation",
+    "conceptId": "multi-step-operations"
+  },
+  {
+    "questionId": "g3-math-02-addition-and-subtraction-problems-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A library with 2,350 books adds 475 and removes 128",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A library with 2,350 books adds 475 and removes 128",
+    "conceptId": "multi-step-operations-application"
+  },
+  {
+    "questionId": "g3-math-02-addition-and-subtraction-problems-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "multi-step operations",
+    "conceptId": "multi-step-operations"
+  },
+  {
+    "questionId": "g3-math-02-addition-and-subtraction-problems-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Write and solve a two-step classroom inventory problem.",
+    "correctAnswer": "multi-step operations",
+    "conceptId": "multi-step-operations-application"
+  },
+  {
+    "questionId": "g3-math-02-addition-and-subtraction-problems-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "multi-step-operations-reasoning"
+  }
+]

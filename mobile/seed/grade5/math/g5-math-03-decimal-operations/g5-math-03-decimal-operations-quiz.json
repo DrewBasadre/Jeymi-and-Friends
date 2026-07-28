@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-math-03-decimal-operations-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains decimal operations?",
+    "options": [
+      "Align place values when adding or subtracting decimals and reason about magnitude",
+      "It is only the title of the lesson Decimal Operations.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Align place values when adding or subtracting decimals and reason about magnitude",
+    "conceptId": "decimal-operations"
+  },
+  {
+    "questionId": "g5-math-03-decimal-operations-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "12.50 - 3.75 equals 8.75",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "12.50 - 3.75 equals 8.75",
+    "conceptId": "decimal-operations-application"
+  },
+  {
+    "questionId": "g5-math-03-decimal-operations-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "decimal operations",
+    "conceptId": "decimal-operations"
+  },
+  {
+    "questionId": "g5-math-03-decimal-operations-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compute change from a realistic shopping list.",
+    "correctAnswer": "decimal operations",
+    "conceptId": "decimal-operations-application"
+  },
+  {
+    "questionId": "g5-math-03-decimal-operations-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "decimal-operations-reasoning"
+  }
+]

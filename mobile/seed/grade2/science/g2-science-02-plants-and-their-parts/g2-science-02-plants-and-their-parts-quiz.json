@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-science-02-plants-and-their-parts-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains plant parts?",
+    "options": [
+      "Roots, stems, leaves, flowers, fruits, and seeds have connected jobs",
+      "It is only the title of the lesson Plants and Their Parts.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Roots, stems, leaves, flowers, fruits, and seeds have connected jobs",
+    "conceptId": "plant-parts"
+  },
+  {
+    "questionId": "g2-science-02-plants-and-their-parts-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Roots take in water while the stem carries it upward",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Roots take in water while the stem carries it upward",
+    "conceptId": "plant-parts-application"
+  },
+  {
+    "questionId": "g2-science-02-plants-and-their-parts-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "plant parts",
+    "conceptId": "plant-parts"
+  },
+  {
+    "questionId": "g2-science-02-plants-and-their-parts-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Label a local plant and explain two part functions.",
+    "correctAnswer": "plant parts",
+    "conceptId": "plant-parts-application"
+  },
+  {
+    "questionId": "g2-science-02-plants-and-their-parts-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "plant-parts-reasoning"
+  }
+]

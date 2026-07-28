@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-science-05-motion-and-simple-machines-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains motion?",
+    "options": [
+      "Position changes over time, and simple machines can make work easier",
+      "It is only the title of the lesson Motion and Simple Machines.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Position changes over time, and simple machines can make work easier",
+    "conceptId": "motion"
+  },
+  {
+    "questionId": "g3-science-05-motion-and-simple-machines-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A ramp lets a box move upward with less lifting force",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A ramp lets a box move upward with less lifting force",
+    "conceptId": "motion-application"
+  },
+  {
+    "questionId": "g3-science-05-motion-and-simple-machines-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "motion",
+    "conceptId": "motion"
+  },
+  {
+    "questionId": "g3-science-05-motion-and-simple-machines-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compare moving an object with and without a ramp.",
+    "correctAnswer": "motion",
+    "conceptId": "motion-application"
+  },
+  {
+    "questionId": "g3-science-05-motion-and-simple-machines-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "motion-reasoning"
+  }
+]

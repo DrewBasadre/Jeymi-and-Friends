@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-math-03-variation-and-proportion",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:169a05f7f3748b4d7caa6900874f446666415000cdff03fbf2bb6a8b8c342af6",
+    "g9-math-03-variation-and-proportion-quiz.json": "sha256:1004d9bca2dd4d6a2d6ccdceed6aab336d359712123e3b03dd93c9031c38de6f",
+    "images/concept-guide.webp": "sha256:a15b7ab60eca30c2f4ccdfb24f0cd1815986698afcb84afbab5598ef13bb30dc",
+    "images/worked-example.webp": "sha256:03741558fae5323cb5eca97904090e0102f9f9d5eb31b5112c7ea52d5ac8a4d2"
+  },
+  "quizId": "g9-math-03-variation-and-proportion-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-math-03-variation-and-proportion",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-03-variation-and-proportion-review-1",
+      "conceptId": "variation",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is variation?",
+      "answer": "Direct, inverse, joint, and combined variation model changing quantities",
+      "formats": {
+        "text": "Direct, inverse, joint, and combined variation model changing quantities.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-math-03-variation-and-proportion",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-03-variation-and-proportion-review-2",
+      "conceptId": "variation-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for variation.",
+      "answer": "Travel time varies inversely with speed for fixed distance",
+      "formats": {
+        "text": "Travel time varies inversely with speed for fixed distance.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-math-03-variation-and-proportion",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-03-variation-and-proportion-review-3",
+      "conceptId": "variation",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Variation and Proportion.",
+      "answer": "variation",
+      "formats": {
+        "text": "variation"
+      }
+    },
+    {
+      "moduleId": "g9-math-03-variation-and-proportion",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-03-variation-and-proportion-review-4",
+      "conceptId": "variation-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain variation in one or two clear sentences.",
+      "answer": "Direct, inverse, joint, and combined variation model changing quantities",
+      "formats": {
+        "text": "Direct, inverse, joint, and combined variation model changing quantities."
+      }
+    },
+    {
+      "moduleId": "g9-math-03-variation-and-proportion",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-03-variation-and-proportion-review-5",
+      "conceptId": "variation-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Build an equation from measured paired data.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Build an equation from measured paired data."
+      }
+    }
+  ]
+}

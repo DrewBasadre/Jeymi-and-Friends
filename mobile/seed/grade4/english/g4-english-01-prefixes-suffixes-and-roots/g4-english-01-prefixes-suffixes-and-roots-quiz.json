@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-english-01-prefixes-suffixes-and-roots-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains word parts?",
+    "options": [
+      "Meaningful word parts help readers unlock unfamiliar vocabulary",
+      "It is only the title of the lesson Prefixes, Suffixes, and Roots.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Meaningful word parts help readers unlock unfamiliar vocabulary",
+    "conceptId": "word-parts"
+  },
+  {
+    "questionId": "g4-english-01-prefixes-suffixes-and-roots-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "replay combines re, meaning again, with play",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "replay combines re, meaning again, with play",
+    "conceptId": "word-parts-application"
+  },
+  {
+    "questionId": "g4-english-01-prefixes-suffixes-and-roots-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "word parts",
+    "conceptId": "word-parts"
+  },
+  {
+    "questionId": "g4-english-01-prefixes-suffixes-and-roots-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Build and define six words from known roots and affixes.",
+    "correctAnswer": "word parts",
+    "conceptId": "word-parts-application"
+  },
+  {
+    "questionId": "g4-english-01-prefixes-suffixes-and-roots-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "word-parts-reasoning"
+  }
+]

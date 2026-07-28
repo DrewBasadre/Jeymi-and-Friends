@@ -1,150 +1,186 @@
 # WAIS App Capabilities
 
-WAIS is an Android-first, offline-first learning application with shared-code
-iOS compatibility. The current implementation is maintained in the
-[`mobile`](./mobile) directory.
+This document inventories the current Android application in
+[`mobile`](./mobile). WAIS is offline-first: core student, parent, teacher,
+reporting, authoring, and transfer workflows run without a server or runtime AI.
 
-## Student Experience
+## Bundled Curriculum
 
-- Student profile creation and PIN-based offline sign-in
-- Parent or guardian-assisted initial setup
-- Learning-style assessment
-- Adaptive text, audio, visual, or kinesthetic format recommendation
-- Recommendations recalculated from completion and quiz performance
-- Manual learning-format overrides
-- Personalized module ordering
-- Dashboard showing completion, average score, attempts, due reviews,
-  strengths, and suggested practice
-- Grade 5 Science, Math, and English content bundled for offline use
-- Subject filtering and teacher-added materials
-- Native Markdown module reader with local WebP lesson images
+- 180 original MATATAG Quarter 1-aligned demo modules
+- Grades 1-10, with six modules per subject and grade
+- Science, Math, and English coverage
+- Grade 1 authored and validated first as the pipeline proof
+- Grade-appropriate lesson length, vocabulary, examples, guided practice, and
+  checks for understanding
+- Two module-specific WebP diagrams or teaching aids per module
+- 360 total bundled visual assets, each within the 1080-pixel cap
+- Five-question quiz and five structured review items per module
+- Static manifests, Markdown, quiz JSON, images, and `.wais-module` archives
+- Honest demo labeling rather than a claim of official curriculum text
+
+## Student Setup And Profile
+
+- Parent-guided profile registration
+- Grade, section, birthday, student number, and local sign-in PIN
+- Learning-style assessment and adaptive format recommendation
+- Text, audio, visual, and kinesthetic default formats
+- Automatic installation of the selected grade's 18-module library
+- Idempotent grade-bundle provisioning on later sign-ins
+- Profile QR for teacher roster enrollment
+- Visible default learning format on Profile
+- Parent PIN required only to edit that format or open the weekly digest
+- Parent PIN creation on first protected action
+- Salted SHA-256 parent PIN storage with no plaintext PIN persistence
+- Offline light and full device modes
+
+## Student Home
+
+- One contextual recommended action for the day
+- Reviews due, quizzes completed today, and open deadlines
+- Upcoming assignment deadlines with urgency progress
+- Module-library completion progress
+- Seven-day quiz-attempt chart
+- Seven-day average-score trend chart
+- Deterministic WAIS buddy encouragement based on local progress
+- Dedicated Home, Modules, Study, Scan, Reports, and Profile tabs
+
+## Lessons And Modules
+
+- Subject filters for Science, Math, English, and teacher-added materials
+- Downloaded lesson status and best quiz score
+- Native Markdown rendering with raw HTML disabled
+- Local WebP lesson-image rendering
 - On-device text-to-speech
-- Optional cloud-generated voice
-- Offline progress and completion tracking
-- Unlimited quiz attempts
-- Learning-format selection for each attempt
-- Per-question and total quiz timing
-- Mastery, strong-topic, and weak-topic results
+- Lesson read and completion tracking
+- Format-specific study prompts
+- Pre-tagged terms that open deterministic fill-in-the-blank recall
+- Student-selected text spans that open the same offline recall activity
+- No connectivity or model dependency for inline recall
+
+## Quizzes And Reports
+
+- Multiple-choice questions
+- Fill-in-the-blank questions
+- Identification questions
+- Options restricted to multiple-choice questions
+- Exact local answer grading with case and surrounding-space normalization
+- Per-question and total attempt timing
+- Unlimited attempts with attempt numbering
+- Mastery, strong-topic, weak-topic, and full answer breakdown
+- Deterministic WAIS buddy feedback after each quiz
 - Offline quiz-report QR generation
-- Automatic multipart QR reports when payloads become too dense
-
-## Study Tools
-
-- SM-2 spaced-repetition scheduling with 0-5 ratings
-- Active-recall flashcards with hidden answers
-- Retrieval-practice quizzes that delay feedback until completion
-- Interleaved practice across different concepts
-- Self-explanation and blurting exercises
-- Pomodoro sessions with configurable work and break lengths
-- Pomodoro queue sizing based on the learner's historical response times
-- Review events from Pomodoro sessions update the same SM-2 schedule
-- Student-created and teacher-created review sets
-- Selection of existing review items or creation of new prompt-and-answer items
-- Concept, importance, type, author, and tag metadata
-- Private or class-shared review-set visibility
-
-## Reports And Privacy
-
-- Zod validation before QR generation and after scanning
+- Automatic multipart report QRs for larger payloads
 - Timing included for every question
 - Answer details included only for missed questions
-- No question text embedded in QR reports
-- No correct-answer details included for correctly answered questions
-- Corrupted or incomplete multipart scans are rejected
-- Legacy WAIS QR payload compatibility
-- Raw answers remain local
-- AI requests exclude student names, IDs, birthdays, sections, and raw answers
-- Recursive identifier and privacy checks in Edge Functions
-- Content-safety checks before AI output is displayed
+- Corrupted and incomplete multipart scans rejected
+
+## Study
+
+- Dedicated Study tab
+- Active-recall cards with hidden answers
+- SM-2 spaced-repetition scheduling and 0-5 quality ratings
+- Retrieval-practice mode with delayed full-set feedback
+- Interleaved concept queues
+- Inline recall from lesson terms or selected text
+- Custom student and teacher review sets
+- Core, supplementary, and stretch importance
+- Private and class-shared set visibility
+- Pomodoro wrapper with configurable work, break, and cycle values
+- Queue sizing from historical review timing
+- Pomodoro review results updating the same SM-2 schedule
+
+## Parent Weekly Digest
+
+- Parent-PIN-protected access
+- Locally generated week-of report
+- Modules completed
+- Quizzes taken
+- Average score and improving, stable, or declining trend
+- Review items completed
+- Engagement days active
+- Top repeatedly missed concepts
+- Seven-day score chart
+- Seven-day engagement display
+- Threshold-driven deterministic insight note
+- Same-device Android notification when permission and native support are
+  available
+- In-app fallback with no network requirement
 
 ## Teacher Workspace
 
-- Offline demo teacher sign-in and Supabase teacher authentication
-- Local class dashboard based entirely on scanned reports
-- Class average using the latest student attempt per module
-- Teacher-only leaderboard
-- Configurable struggling threshold at 50%, 60%, or 70%
-- Support flags for low scores or three-attempt declining trends
+- Offline teacher profile and sign-in
+- Multiple sections with one active section
+- Student profile QR enrollment into the active roster
+- Duplicate-safe roster updates
+- Module and quiz assignment QR creation
 - Searchable local record book
-- Learner averages, attempts, completed modules, and practice priorities
-- Recommended learning format with confidence percentage
-- Camera-based QR scanning and multipart report assembly
-- De-identified learner diagnostic suggestions
-- Offline diagnostic fallback
-- Editable suggestion drafts
-- Protected Gurobot lesson-plan generation
-- Lesson-plan requests grounded in class average and commonly missed topics
-- Teacher review-set authoring
-- Markdown module authoring and review-set distribution tools
+- Class average and teacher-only leaderboard
+- Configurable struggling threshold
+- Learner support flags for low latest score or declining trend
+- Learner quiz history, completed modules, weak topics, and format recommendation
+- Camera-based profile and quiz-report scanning
+- Multipart report assembly
+- Offline diagnostic suggestions
+- Teacher Markdown module authoring
+- Local image selection, WebP conversion, and size limiting
+- Review-item authoring with concept and importance metadata
+- Custom review-set sharing
+- No active AI generation path
 
-## Offline Transfer
+## Android Nearby Transfer
 
-- Shared canonical manifest for Supabase and teacher-transferred content
-- Manifest version, source, content paths, assets, checksums, quiz ID, and
-  review items
-- Android and iOS Google Nearby Connections modules
-- Bluetooth and local Wi-Fi transport negotiation
+- Receive action in the student Profile
+- Automatic advertising and waiting state when the receive screen opens
 - Pairing-code confirmation
+- Automatic module ingestion after the trusted classroom connection
+- `Received: <module title>` success confirmation
+- Bluetooth, BLE, and local Wi-Fi transport negotiation
+- Point-to-point Android strategy
 - App-private received-file storage
-- SHA-256 integrity verification
-- Transfer progress and cancellation
-- In-process interrupted-transfer resume using Google Nearby payload offsets
-- Point-to-point Android strategy for the highest available one-to-one bandwidth
-- `.wais-module` archives containing Markdown, WebP assets, and manifests
-- Teacher and cloud-prepared photos capped at 1080 pixels on the longest edge
-- Provider-independent OTA module preparation with exact manifests and
-  upload-ready database records
-- ZIP expansion, file-count, and per-file limits for low-memory Android devices
-- Imported review items immediately join the normal study scheduler
+- Transfer progress, cancellation, retry, and in-process resume
+- Archive SHA-256 verification
+- Manifest source and version validation
+- Per-file, total expansion, image, audio, Markdown, and quiz limits
+- Imported review items joining the standard study scheduler
+- Seed modules remaining installed when teacher modules are added
 
-## Parent And Cloud Features
+## Data And Architecture
 
-- Template-based weekly parent digest
-- Completed modules, study-time trend, current format preference, and home
-  suggestion
-- Android notification delivery with offline in-app fallback
-- Consent-controlled Supabase profile and attempt synchronization
-- Retry queue for interrupted synchronization
-- One-time curriculum dataset download
-- Supabase migrations for manifests, attempts, formats, and review data
-- Authenticated lesson-plan, diagnostic, and cloud-voice Edge Functions
-- Lightweight offline mode and full online-enhancement mode
-
-## Platform And Architecture
-
-- React Native and Expo prebuild application with Android as the primary target
-- Offline-first SQLite persistence
-- Additive database migrations that preserve existing student data
+- Expo React Native application focused on Android
+- Expo SQLite local persistence
+- Additive database migrations
 - App-private module and transfer storage
-- Native Android and iOS Nearby Connections integrations
-- Local deterministic review, dashboard, and digest logic
-- Supabase authentication, synchronization, storage, and Edge Functions for
-  optional online features
-- Hermes production bundles for Android and iOS
+- Static `seed-bundle` registry included by Metro
+- Canonical module manifests with source, version, content paths, assets,
+  checksums, quiz ID, and review items
+- Supported source values: `seed-bundle`, `teacher-bluetooth`, and reserved
+  `supabase-ota`
+- Zod validation for manifests, quiz JSON, and QR payloads
+- No runtime LLM, image generation, or required backend
+- No student data leaves the device in the implemented core flows
 
 ## Current Constraints
 
-- Android resume state is retained for the current sender process. Reopening
-  the sender app starts a new transfer.
-- Sending digests to a separate parent phone requires parent-device
-  registration and configured push credentials.
-- Physical Android-to-Android interruption and resume still needs testing on
-  two real devices.
-- Cloud AI, synchronization, and voice require Supabase configuration and
-  deployed Edge Functions.
-- The custom native modules mean the application cannot run in Expo Go.
+- Expo Go cannot load the custom native Nearby module; use a development build.
+- Nearby interruption and resume must be accepted on two physical Android
+  devices because an emulator cannot validate real radio behavior.
+- Resume state belongs to the current sender process; reopening the sender starts
+  a new transfer.
+- Separate-parent-device delivery is not implemented; the digest is local with a
+  same-device notification fallback.
+- `supabase-ota` is reserved in the manifest schema but OTA delivery is not
+  active.
 
-## Validation Status
+## Validation Commands
 
-- TypeScript validation passes.
-- All 30 Jest tests and both cloud-preparation tests pass.
-- All three privacy tests and all three provider-gating tests pass.
-- Supabase Edge Functions pass Deno type checking.
-- The Android debug build succeeds and has been smoke-tested in an emulator.
-- The Android native module starts BLE and Wi-Fi LAN discovery on API 36.
+```bash
+cd mobile
+npm run seed:validate
+npm run validate
+npx expo-doctor
+npx expo export --platform android
+```
 
 ## Repository
 
-- GitHub: <https://github.com/DrewBasadre/Jeymi-and-Friends>
-- Latest published MVP commit:
-  [`e6e0694`](https://github.com/DrewBasadre/Jeymi-and-Friends/commit/e6e06946970a36290992c921a1581d527eb3dfb4)
+<https://github.com/DrewBasadre/Jeymi-and-Friends>

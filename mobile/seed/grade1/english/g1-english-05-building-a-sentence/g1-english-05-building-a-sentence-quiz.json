@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g1-english-05-building-a-sentence-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains sentence?",
+    "options": [
+      "A sentence shares a complete idea, starts with a capital letter, and ends with punctuation",
+      "It is only the title of the lesson Building a Sentence.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "A sentence shares a complete idea, starts with a capital letter, and ends with punctuation",
+    "conceptId": "sentence"
+  },
+  {
+    "questionId": "g1-english-05-building-a-sentence-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "The bird sings. is a complete sentence",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "The bird sings. is a complete sentence",
+    "conceptId": "sentence-application"
+  },
+  {
+    "questionId": "g1-english-05-building-a-sentence-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "sentence",
+    "conceptId": "sentence"
+  },
+  {
+    "questionId": "g1-english-05-building-a-sentence-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Arrange word cards to make two complete sentences.",
+    "correctAnswer": "sentence",
+    "conceptId": "sentence-application"
+  },
+  {
+    "questionId": "g1-english-05-building-a-sentence-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "sentence-reasoning"
+  }
+]

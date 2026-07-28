@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-english-04-simple-compound-and-complex-sentences-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains sentence structure?",
+    "options": [
+      "Clauses combine to show equal or dependent relationships between ideas",
+      "It is only the title of the lesson Simple, Compound, and Complex Sentences.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Clauses combine to show equal or dependent relationships between ideas",
+    "conceptId": "sentence-structure"
+  },
+  {
+    "questionId": "g5-english-04-simple-compound-and-complex-sentences-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "We stayed inside because the rain was heavy is complex",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "We stayed inside because the rain was heavy is complex",
+    "conceptId": "sentence-structure-application"
+  },
+  {
+    "questionId": "g5-english-04-simple-compound-and-complex-sentences-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "sentence structure",
+    "conceptId": "sentence-structure"
+  },
+  {
+    "questionId": "g5-english-04-simple-compound-and-complex-sentences-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Combine short ideas using coordination and subordination.",
+    "correctAnswer": "sentence structure",
+    "conceptId": "sentence-structure-application"
+  },
+  {
+    "questionId": "g5-english-04-simple-compound-and-complex-sentences-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "sentence-structure-reasoning"
+  }
+]

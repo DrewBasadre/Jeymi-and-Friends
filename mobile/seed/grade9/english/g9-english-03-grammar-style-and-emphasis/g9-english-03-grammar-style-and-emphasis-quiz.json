@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-english-03-grammar-style-and-emphasis-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains sentence style?",
+    "options": [
+      "Syntax, punctuation, voice, and deliberate repetition shape emphasis and rhythm",
+      "It is only the title of the lesson Grammar, Style, and Emphasis.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Syntax, punctuation, voice, and deliberate repetition shape emphasis and rhythm",
+    "conceptId": "sentence-style"
+  },
+  {
+    "questionId": "g9-english-03-grammar-style-and-emphasis-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A short sentence after long ones can create impact",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A short sentence after long ones can create impact",
+    "conceptId": "sentence-style-application"
+  },
+  {
+    "questionId": "g9-english-03-grammar-style-and-emphasis-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "sentence style",
+    "conceptId": "sentence-style"
+  },
+  {
+    "questionId": "g9-english-03-grammar-style-and-emphasis-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Revise a paragraph for deliberate emphasis.",
+    "correctAnswer": "sentence style",
+    "conceptId": "sentence-style-application"
+  },
+  {
+    "questionId": "g9-english-03-grammar-style-and-emphasis-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "sentence-style-reasoning"
+  }
+]

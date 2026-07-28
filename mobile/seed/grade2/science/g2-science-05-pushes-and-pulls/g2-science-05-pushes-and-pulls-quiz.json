@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-science-05-pushes-and-pulls-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains force?",
+    "options": [
+      "A push or pull can start, stop, speed up, slow down, or turn an object",
+      "It is only the title of the lesson Pushes and Pulls.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "A push or pull can start, stop, speed up, slow down, or turn an object",
+    "conceptId": "force"
+  },
+  {
+    "questionId": "g2-science-05-pushes-and-pulls-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A gentle push makes a toy car roll forward",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A gentle push makes a toy car roll forward",
+    "conceptId": "force-application"
+  },
+  {
+    "questionId": "g2-science-05-pushes-and-pulls-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "force",
+    "conceptId": "force"
+  },
+  {
+    "questionId": "g2-science-05-pushes-and-pulls-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Test how different pushes change a toy car motion.",
+    "correctAnswer": "force",
+    "conceptId": "force-application"
+  },
+  {
+    "questionId": "g2-science-05-pushes-and-pulls-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "force-reasoning"
+  }
+]

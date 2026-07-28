@@ -14,7 +14,6 @@ import type { CompositeScreenProps } from '@react-navigation/native';
 import { useFocusEffect } from '@react-navigation/native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
-  BookOpen,
   Brain,
   CircleStop,
   Clock3,
@@ -39,16 +38,17 @@ import {
   Chip,
   EmptyState,
   IconButton,
-  Metric,
   PrimaryButton,
   Screen,
   ScreenHeader,
   SectionTitle,
 } from '@/components/ui';
+import { ParentPinPrompt } from '@/components/ParentPinPrompt';
+import { MascotNote } from '@/components/MascotNote';
+import { MiniBarChart, ProgressBar } from '@/components/ProgressCharts';
 import {
   getAttempts,
   getDueFlashcards,
-  getLearningProfile,
   getModule,
   getQuestions,
   getStudentDashboard,
@@ -64,6 +64,10 @@ import {
   setLearningFormatOverride,
 } from '@/data/mvpRepository';
 import { encodeProfileQr, encodeQuizReportParts } from '@/domain/qr';
+import {
+  dashboardMascotMessage,
+  quizMascotMessage,
+} from '@/domain/motivation';
 import { formatSectionLabel } from '@/domain/section';
 import {
   createInlineRecallForTerm,
@@ -77,7 +81,6 @@ import type {
   FlashcardRating,
   LearningFormat,
   LearningModule,
-  LearningProfile,
   QuestionResponse,
   QuizAttempt,
   QuizQuestion,
@@ -107,27 +110,33 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
   const student = useSessionStore((state) => state.student);
   const mode = useSessionStore((state) => state.mode);
   const [dashboard, setDashboard] = useState<StudentDashboard | null>(null);
-  const [profile, setProfile] = useState<LearningProfile | null>(null);
-  const [adaptive, setAdaptive] = useState<AdaptiveFormatProfile | null>(null);
   const [tasks, setTasks] = useState<StudentTask[]>([]);
 
   const load = useCallback(async () => {
     if (!student) return;
-    const [nextDashboard, nextProfile, nextAdaptive, nextTasks] = await Promise.all([
+    const [nextDashboard, nextTasks] = await Promise.all([
       getStudentDashboard(student.id),
-      getLearningProfile(student.id),
-      getAdaptiveFormatProfile(student.id),
       listStudentTasks(student.id),
     ]);
     setDashboard(nextDashboard);
-    setProfile(nextProfile);
-    setAdaptive(nextAdaptive);
     setTasks(nextTasks);
   }, [student]);
 
   useFocusEffect(useCallback(() => void load(), [load]));
 
   if (!student) return <EmptyState title="No student profile" body="Sign in again to open your learning hub." />;
+  const openTasks = tasks
+    .filter((task) => !task.completedAt)
+    .sort((left, right) => left.dueDate.localeCompare(right.dueDate));
+  const nearestTask = openTasks[0];
+  const todayFocus =
+    (dashboard?.dueReviews ?? 0) > 0
+      ? `Review ${dashboard!.dueReviews} due item${dashboard!.dueReviews === 1 ? '' : 's'} in Study.`
+      : nearestTask
+        ? `Complete ${nearestTask.targetId} before ${formatShortDate(nearestTask.dueDate)}.`
+        : dashboard?.weakTopic && dashboard.weakTopic !== 'No weak topic yet'
+          ? `Practice ${dashboard.weakTopic} in the next module quiz.`
+          : 'Open the next module in your grade library.';
   return (
     <Screen>
       <ScreenHeader
@@ -135,69 +144,96 @@ export function StudentHomeScreen({ navigation }: StudentTabProps<'StudentHome'>
         subtitle={formatSectionLabel(student.gradeLevel, student.section)}
         action={<Chip label={mode === 'lightweight' ? 'Offline light' : 'Full mode'} color={colors.emerald} selected />}
       />
-      <Card accent={colors.indigo}>
-        <Text style={styles.eyebrow}>LEARNING MATCH</Text>
-        <Text style={styles.heroTitle}>
-          {adaptive
-            ? `${capitalize(
-                adaptive.manualOverride ?? adaptive.currentDefaultFormat,
-              )} format`
-            : profile
-              ? `${capitalize(profile.primaryStyle)} learning`
-              : 'Balanced learning'}
-        </Text>
-        <Text style={styles.body}>
-          Lessons with matching formats appear first. This profile guides presentation, not ability.
-        </Text>
+      {dashboard ? (
+        <MascotNote message={dashboardMascotMessage(dashboard)} />
+      ) : null}
+      <Card accent={colors.amber}>
+        <Text style={styles.cardTitle}>Today&apos;s focus</Text>
+        <Text style={styles.focusValue}>{todayFocus}</Text>
+        <View style={styles.dashboardRow}>
+          <View style={styles.dashboardStat}>
+            <Text style={styles.dashboardValue}>{dashboard?.dueReviews ?? 0}</Text>
+            <Text style={styles.focusLabel}>Reviews due</Text>
+          </View>
+          <View style={styles.dashboardStat}>
+            <Text style={styles.dashboardValue}>{dashboard?.quizAttemptsToday ?? 0}</Text>
+            <Text style={styles.focusLabel}>Quizzes today</Text>
+          </View>
+          <View style={styles.dashboardStat}>
+            <Text style={styles.dashboardValue}>{openTasks.length}</Text>
+            <Text style={styles.focusLabel}>Open deadlines</Text>
+          </View>
+        </View>
       </Card>
-      <View style={styles.metricGrid}>
-        <Metric
-          label="Modules complete"
-          value={`${dashboard?.completedModules ?? 0}/${dashboard?.totalModules ?? 0}`}
-          tint={colors.indigoTint}
-        />
-        <Metric label="Average score" value={`${dashboard?.averageScore ?? 0}%`} tint={colors.emeraldTint} />
-        <Metric label="Cards due" value={dashboard?.dueFlashcards ?? 0} tint={colors.amberTint} />
-        <Metric label="Quiz attempts" value={dashboard?.totalAttempts ?? 0} tint={colors.coralTint} />
-      </View>
       <Card>
-        <SectionTitle>Deadlines</SectionTitle>
-        {tasks.filter((task) => !task.completedAt).length === 0 ? (
+        <Text style={styles.cardTitle}>Deadlines</Text>
+        {openTasks.length === 0 ? (
           <Text style={styles.body}>
             Scan an assignment QR from your teacher to add tasks here.
           </Text>
         ) : (
-          tasks
-            .filter((task) => !task.completedAt)
+          openTasks
             .slice(0, 5)
             .map((task) => (
               <View key={task.taskId} style={styles.profileLine}>
-                <Text style={styles.focusValue}>{task.targetId}</Text>
+                <View style={styles.rowBetween}>
+                  <Text style={styles.focusValue}>{task.targetId}</Text>
+                  <Text style={styles.focusLabel}>
+                    {formatShortDate(task.dueDate)}
+                  </Text>
+                </View>
+                <ProgressBar
+                  color={deadlineColor(task.dueDate)}
+                  value={deadlineProgress(task)}
+                />
                 <Text style={styles.focusLabel}>
-                  {task.type === 'module' ? 'Module' : 'Quiz'} due {task.dueDate}
+                  {task.type === 'module' ? 'Module' : 'Quiz'} deadline
                 </Text>
               </View>
             ))
         )}
       </Card>
       <Card>
-        <SectionTitle>Today’s focus</SectionTitle>
-        <Text style={styles.focusLabel}>Practice next</Text>
-        <Text style={styles.focusValue}>{dashboard?.weakTopic ?? 'Loading...'}</Text>
-        <Text style={styles.focusLabel}>Strong area</Text>
-        <Text style={styles.focusValue}>{dashboard?.strongTopic ?? 'Loading...'}</Text>
+        <View style={styles.rowBetween}>
+          <Text style={styles.cardTitle}>Module completion</Text>
+          <Text style={styles.progressValue}>
+            {dashboard?.completedModules ?? 0}/{dashboard?.totalModules ?? 0}
+          </Text>
+        </View>
+        <ProgressBar value={dashboard?.moduleCompletionPercentage ?? 0} />
+        <Text style={styles.body}>
+          {dashboard?.moduleCompletionPercentage ?? 0}% of the offline grade library completed
+        </Text>
       </Card>
-      <PrimaryButton
-        label="Open study techniques"
-        icon={Brain}
-        onPress={() => navigation.navigate('ReviewHub')}
-      />
-      <PrimaryButton
-        label="Open modules"
-        tone="secondary"
-        icon={BookOpen}
-        onPress={() => navigation.navigate('Modules')}
-      />
+      <Card>
+        <View style={styles.rowBetween}>
+          <Text style={styles.cardTitle}>Quiz attempts</Text>
+          <Chip label={`${dashboard?.totalAttempts ?? 0} total`} />
+        </View>
+        <MiniBarChart
+          color={colors.coral}
+          emptyLabel="No quizzes in the last seven days"
+          points={(dashboard?.quizAttemptsByDay ?? []).map((point) => ({
+            label: shortWeekday(point.date),
+            value: point.count,
+          }))}
+        />
+      </Card>
+      <Card>
+        <View style={styles.rowBetween}>
+          <Text style={styles.cardTitle}>Average score trend</Text>
+          <Chip label={`${Math.round(dashboard?.averageScore ?? 0)}% overall`} color={colors.emerald} />
+        </View>
+        <MiniBarChart
+          color={colors.emerald}
+          emptyLabel="Complete a quiz to begin the score trend"
+          suffix="%"
+          points={(dashboard?.averageScoreTrend ?? []).map((point) => ({
+            label: shortWeekday(point.date),
+            value: point.averageScorePercentage,
+          }))}
+        />
+      </Card>
     </Screen>
   );
 }
@@ -253,8 +289,8 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
         )}
         ListEmptyComponent={
           <EmptyState
-            title="Waiting for your first lesson"
-            body="Ask your teacher to send a module from their Android device."
+            title="Preparing your offline library"
+            body="Sign in again to retry the bundled Grade-level lesson setup."
           />
         }
       />
@@ -536,13 +572,17 @@ export function QuizScreen({ navigation, route }: StackProps<'Quiz'>) {
         <Text style={styles.question}>{question.questionText}</Text>
       </Card>
       <View style={styles.optionList}>
-        {question.type === 'ENUMERATION' ? (
+        {question.type !== 'MULTIPLE_CHOICE' ? (
           <TextInput
             value={selected ?? ''}
             onChangeText={answer}
             style={styles.input}
             autoCapitalize="sentences"
-            placeholder="Type your answer"
+            placeholder={
+              question.type === 'FILL_IN_THE_BLANK'
+                ? 'Complete the missing word or phrase'
+                : 'Type your answer'
+            }
             placeholderTextColor={colors.inkMuted}
           />
         ) : (
@@ -603,6 +643,13 @@ export function QuizResultScreen({ navigation, route }: StackProps<'QuizResult'>
           Time: {formatDuration(attempt.durationSeconds)} - Attempt {attempt.attemptNumber} - {capitalize(attempt.learningFormatUsed)}
         </Text>
       </Card>
+      <MascotNote
+        message={quizMascotMessage({
+          correct: attempt.score,
+          total: attempt.totalItems,
+          attemptNumber: attempt.attemptNumber,
+        })}
+      />
       <SectionTitle>Question breakdown</SectionTitle>
       {attempt.responses.map((response, index) => {
         const question = questions.find((item) => item.id === response.questionId);
@@ -806,6 +853,9 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
   const setMode = useSessionStore((state) => state.setMode);
   const signOut = useSessionStore((state) => state.signOut);
   const [adaptive, setAdaptive] = useState<AdaptiveFormatProfile | null>(null);
+  const [pendingFormat, setPendingFormat] = useState<
+    LearningFormat | null | undefined
+  >(undefined);
 
   useEffect(() => {
     if (!student) return;
@@ -840,7 +890,9 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
       <Card>
         <Text style={styles.cardTitle}>Default learning format</Text>
         <Text style={styles.body}>
-          WAIS recommends {adaptive?.currentDefaultFormat ?? 'text'} from recent completed work. Choose a default at any time.
+          WAIS recommends {adaptive?.currentDefaultFormat ?? 'text'} from
+          recent completed work. A parent PIN is required to change this visible
+          default.
         </Text>
         <View style={styles.chipRow}>
           {(['text', 'audio', 'visual', 'kinesthetic'] as const).map((format) => (
@@ -851,19 +903,13 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
                 (adaptive?.manualOverride ?? adaptive?.currentDefaultFormat) ===
                 format
               }
-              onPress={() => {
-                void setLearningFormatOverride(student.id, format).then(
-                  setAdaptive,
-                );
-              }}
+              onPress={() => setPendingFormat(format)}
             />
           ))}
           <Chip
             label="Use recommendation"
             selected={adaptive?.manualOverride === null}
-            onPress={() => {
-              void setLearningFormatOverride(student.id, null).then(setAdaptive);
-            }}
+            onPress={() => setPendingFormat(null)}
           />
         </View>
       </Card>
@@ -906,6 +952,21 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
         icon={LogOut}
         onPress={() => void signOut().then(() => navigation.getParent()?.navigate('Role'))}
       />
+      <ParentPinPrompt
+        studentId={student.id}
+        visible={pendingFormat !== undefined}
+        purpose="Changing the learner's default lesson format requires a parent or guardian."
+        onAuthorized={() => {
+          const nextFormat = pendingFormat;
+          setPendingFormat(undefined);
+          if (nextFormat !== undefined) {
+            void setLearningFormatOverride(student.id, nextFormat).then(
+              setAdaptive,
+            );
+          }
+        }}
+        onCancel={() => setPendingFormat(undefined)}
+      />
     </Screen>
   );
 }
@@ -921,6 +982,37 @@ function ProfileLine({ label, value }: { label: string; value: string }) {
 
 function capitalize(value: string): string {
   return value ? `${value[0]?.toLocaleUpperCase()}${value.slice(1)}` : value;
+}
+
+function shortWeekday(value: string): string {
+  return new Date(`${value}T12:00:00`).toLocaleDateString(undefined, {
+    weekday: 'short',
+  });
+}
+
+function formatShortDate(value: string): string {
+  return new Date(`${value}T12:00:00`).toLocaleDateString(undefined, {
+    month: 'short',
+    day: 'numeric',
+  });
+}
+
+function deadlineProgress(task: StudentTask): number {
+  const issued = Date.parse(task.issuedAt);
+  const due = Date.parse(`${task.dueDate}T23:59:59`);
+  if (!Number.isFinite(issued) || due <= issued) return 100;
+  return Math.round(
+    Math.max(0, Math.min(1, (Date.now() - issued) / (due - issued))) * 100,
+  );
+}
+
+function deadlineColor(value: string): string {
+  const daysLeft = Math.ceil(
+    (Date.parse(`${value}T23:59:59`) - Date.now()) / 86_400_000,
+  );
+  if (daysLeft <= 2) return colors.coral;
+  if (daysLeft <= 5) return colors.amber;
+  return colors.indigo;
 }
 
 function formatDuration(seconds: number): string {
@@ -939,9 +1031,23 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
     paddingRight: spacing.xl,
   },
-  metricGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
-  eyebrow: { color: colors.indigo, fontSize: 12, fontWeight: '900' },
-  heroTitle: { color: colors.ink, fontSize: 24, lineHeight: 30, fontWeight: '900' },
+  dashboardRow: { flexDirection: 'row', gap: spacing.sm },
+  dashboardStat: {
+    backgroundColor: colors.surfaceMuted,
+    borderRadius: radius.md,
+    flex: 1,
+    gap: spacing.xs,
+    minWidth: 0,
+    padding: spacing.md,
+  },
+  dashboardValue: { color: colors.ink, fontSize: 24, fontWeight: '900' },
+  rowBetween: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: spacing.md,
+    justifyContent: 'space-between',
+  },
+  progressValue: { color: colors.indigo, fontSize: 16, fontWeight: '900' },
   body: { color: colors.inkMuted, fontSize: 15, lineHeight: 22 },
   focusLabel: { color: colors.inkMuted, fontSize: 12, lineHeight: 17, fontWeight: '800' },
   focusValue: { color: colors.ink, fontSize: 16, lineHeight: 22, fontWeight: '800' },

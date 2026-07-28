@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-science-05-weather-and-climate-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains climate?",
+    "options": [
+      "Weather is short-term atmospheric condition; climate describes patterns over many years",
+      "It is only the title of the lesson Weather and Climate.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Weather is short-term atmospheric condition; climate describes patterns over many years",
+    "conceptId": "climate"
+  },
+  {
+    "questionId": "g4-science-05-weather-and-climate-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "One rainy afternoon is weather, while a region long wet season is climate",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "One rainy afternoon is weather, while a region long wet season is climate",
+    "conceptId": "climate-application"
+  },
+  {
+    "questionId": "g4-science-05-weather-and-climate-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "climate",
+    "conceptId": "climate"
+  },
+  {
+    "questionId": "g4-science-05-weather-and-climate-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compare daily weather records with a climate description.",
+    "correctAnswer": "climate",
+    "conceptId": "climate-application"
+  },
+  {
+    "questionId": "g4-science-05-weather-and-climate-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "climate-reasoning"
+  }
+]

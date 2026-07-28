@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-math-03-division-with-remainders-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains division?",
+    "options": [
+      "Division can share equally or measure groups, sometimes leaving a remainder",
+      "It is only the title of the lesson Division with Remainders.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Division can share equally or measure groups, sometimes leaving a remainder",
+    "conceptId": "division"
+  },
+  {
+    "questionId": "g4-math-03-division-with-remainders-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "53 books placed on shelves of 8 leave 5 books after 6 full shelves",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "53 books placed on shelves of 8 leave 5 books after 6 full shelves",
+    "conceptId": "division-application"
+  },
+  {
+    "questionId": "g4-math-03-division-with-remainders-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "division",
+    "conceptId": "division"
+  },
+  {
+    "questionId": "g4-math-03-division-with-remainders-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Interpret a remainder in two real situations.",
+    "correctAnswer": "division",
+    "conceptId": "division-application"
+  },
+  {
+    "questionId": "g4-math-03-division-with-remainders-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "division-reasoning"
+  }
+]

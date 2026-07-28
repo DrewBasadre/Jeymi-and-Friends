@@ -1,0 +1,120 @@
+{
+  "moduleId": "g3-english-03-regular-and-irregular-verbs",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 3,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:6be3587da7bff2fdba59fa03086486d4e63cd7fe4c9814bf68687b88d0501cf1",
+    "g3-english-03-regular-and-irregular-verbs-quiz.json": "sha256:7d55354822481fbf9a401982dba4122fc6f722bd737433a9cfd0d8176de0670f",
+    "images/concept-guide.webp": "sha256:b32b3e25cad5b3c1eb84274c3ccbbedec1c4432cc4f963ece7d52d514be2a826",
+    "images/worked-example.webp": "sha256:1d4255e7f8a61518d5f1b291c861547a19ed18f17f253c044a94489f0a8b7e58"
+  },
+  "quizId": "g3-english-03-regular-and-irregular-verbs-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g3-english-03-regular-and-irregular-verbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-03-regular-and-irregular-verbs-review-1",
+      "conceptId": "verb-forms",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is verb forms?",
+      "answer": "Some past verbs add ed while others change form",
+      "formats": {
+        "text": "Some past verbs add ed while others change form.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g3-english-03-regular-and-irregular-verbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-03-regular-and-irregular-verbs-review-2",
+      "conceptId": "verb-forms-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for verb forms.",
+      "answer": "Jump becomes jumped, but go becomes went",
+      "formats": {
+        "text": "Jump becomes jumped, but go becomes went.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g3-english-03-regular-and-irregular-verbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-03-regular-and-irregular-verbs-review-3",
+      "conceptId": "verb-forms",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Regular and Irregular Verbs.",
+      "answer": "verb forms",
+      "formats": {
+        "text": "verb forms"
+      }
+    },
+    {
+      "moduleId": "g3-english-03-regular-and-irregular-verbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-03-regular-and-irregular-verbs-review-4",
+      "conceptId": "verb-forms-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain verb forms in one or two clear sentences.",
+      "answer": "Some past verbs add ed while others change form",
+      "formats": {
+        "text": "Some past verbs add ed while others change form."
+      }
+    },
+    {
+      "moduleId": "g3-english-03-regular-and-irregular-verbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-03-regular-and-irregular-verbs-review-5",
+      "conceptId": "verb-forms-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Sort ten verbs as regular or irregular.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Sort ten verbs as regular or irregular."
+      }
+    }
+  ]
+}

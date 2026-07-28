@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-math-02-adding-three-digit-numbers-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains addition strategies?",
+    "options": [
+      "Add ones, tens, and hundreds while regrouping when a place reaches ten",
+      "It is only the title of the lesson Adding Three-Digit Numbers.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Add ones, tens, and hundreds while regrouping when a place reaches ten",
+    "conceptId": "addition-strategies"
+  },
+  {
+    "questionId": "g2-math-02-adding-three-digit-numbers-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "In 268 + 157, eight ones plus seven ones regroup as one ten and five ones",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "In 268 + 157, eight ones plus seven ones regroup as one ten and five ones",
+    "conceptId": "addition-strategies-application"
+  },
+  {
+    "questionId": "g2-math-02-adding-three-digit-numbers-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "addition strategies",
+    "conceptId": "addition-strategies"
+  },
+  {
+    "questionId": "g2-math-02-adding-three-digit-numbers-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Solve an addition story using a place-value chart.",
+    "correctAnswer": "addition strategies",
+    "conceptId": "addition-strategies-application"
+  },
+  {
+    "questionId": "g2-math-02-adding-three-digit-numbers-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "addition-strategies-reasoning"
+  }
+]

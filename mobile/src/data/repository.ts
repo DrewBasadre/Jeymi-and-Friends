@@ -287,23 +287,58 @@ export async function saveReceivedModulePackage(input: {
   sha256: string;
   manifest?: CurriculumModuleManifest;
 }): Promise<void> {
+  await saveModulePackage({
+    ...input,
+    expectedSource: 'teacher-bluetooth',
+    isTeacherCreated: true,
+    competencyCode: 'Teacher-provided Markdown module',
+  });
+}
+
+export async function saveSeedModulePackage(input: {
+  moduleId: string;
+  displayName: string;
+  fileUri: string;
+  sizeBytes: number;
+}): Promise<void> {
+  await saveModulePackage({
+    ...input,
+    expectedSource: 'seed-bundle',
+    isTeacherCreated: false,
+    competencyCode: 'MATATAG-aligned Q1 demo content',
+  });
+}
+
+async function saveModulePackage(input: {
+  moduleId: string;
+  displayName: string;
+  fileUri: string;
+  sizeBytes: number;
+  sha256?: string;
+  manifest?: CurriculumModuleManifest;
+  expectedSource: 'teacher-bluetooth' | 'seed-bundle';
+  isTeacherCreated: boolean;
+  competencyCode: string;
+}): Promise<void> {
   const database = await getDatabase();
   const installed = await installModulePackage({
     fileUri: input.fileUri,
     expectedArchiveSha256: input.sha256,
     expectedManifest: input.manifest,
+    expectedSource: input.expectedSource,
   });
   const manifest = installed.manifest;
   const moduleId =
     manifest.moduleId ||
     input.moduleId.trim() ||
-    `module_${input.sha256.slice(0, 16)}`;
+    `module_${installed.archiveSha256.slice(0, 16)}`;
   await ensureModule(database, {
     id: moduleId,
     title: input.displayName.replace(/\.wais-module$/i, ''),
     subject: manifest.subject,
-    competencyCode: 'Teacher-provided Markdown module',
+    competencyCode: input.competencyCode,
     gradeLevel: manifest.gradeLevel,
+    isTeacherCreated: input.isTeacherCreated,
   });
   await database.runAsync(
     `UPDATE modules
@@ -315,6 +350,7 @@ export async function saveReceivedModulePackage(input: {
          local_asset_uri = ?,
          package_sha256 = ?,
          package_size_bytes = ?,
+         is_teacher_created = ?,
          updated_at = ?
      WHERE id = ?`,
     input.displayName.replace(/\.wais-module$/i, ''),
@@ -323,24 +359,47 @@ export async function saveReceivedModulePackage(input: {
     markdownSummary(installed.markdown),
     installed.markdown,
     installed.directoryUri,
-    input.sha256.toLocaleLowerCase(),
+    installed.archiveSha256,
     input.sizeBytes,
+    input.isTeacherCreated ? 1 : 0,
     now(),
     moduleId,
   );
   await saveModuleManifest(manifest, true);
-  for (const item of manifest.reviewItems ?? []) {
-    if (item.type !== 'quiz-question') continue;
-    await database.runAsync(
-      `INSERT OR REPLACE INTO quiz_questions (
-        id, module_id, type, question_text, choices_json, correct_answer, topic_tag
-      ) VALUES (?, ?, 'ENUMERATION', ?, '[]', ?, ?)`,
-      item.itemId,
-      moduleId,
-      item.prompt,
-      item.answer,
-      item.conceptId,
-    );
+  if (installed.quizQuestions.length > 0) {
+    for (const question of installed.quizQuestions) {
+      const type: QuizQuestion['type'] = {
+        'multiple-choice': 'MULTIPLE_CHOICE',
+        'fill-in-the-blank': 'FILL_IN_THE_BLANK',
+        identification: 'IDENTIFICATION',
+      }[question.type] as QuizQuestion['type'];
+      await database.runAsync(
+        `INSERT OR REPLACE INTO quiz_questions (
+          id, module_id, type, question_text, choices_json, correct_answer, topic_tag
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        question.questionId,
+        moduleId,
+        type,
+        question.prompt,
+        JSON.stringify(question.options ?? []),
+        question.correctAnswer,
+        question.conceptId,
+      );
+    }
+  } else {
+    for (const item of manifest.reviewItems ?? []) {
+      if (item.type !== 'quiz-question') continue;
+      await database.runAsync(
+        `INSERT OR REPLACE INTO quiz_questions (
+          id, module_id, type, question_text, choices_json, correct_answer, topic_tag
+        ) VALUES (?, ?, 'IDENTIFICATION', ?, '[]', ?, ?)`,
+        item.itemId,
+        moduleId,
+        item.prompt,
+        item.answer,
+        item.conceptId,
+      );
+    }
   }
 }
 
@@ -472,6 +531,13 @@ export async function getStudentDashboard(studentId: string): Promise<StudentDas
     studentId,
     now(),
   );
+  const dueReviewItems = await database.getFirstAsync<{ count: number }>(
+    `SELECT COUNT(*) AS count
+     FROM review_states
+     WHERE student_id = ? AND due_date <= ?`,
+    studentId,
+    localDate(new Date()),
+  );
   const weakTopic =
     attempts.find((attempt) => attempt.weakTopic !== 'Ready for next challenge')?.weakTopic ??
     'No weak topic yet';
@@ -479,14 +545,46 @@ export async function getStudentDashboard(studentId: string): Promise<StudentDas
     (left, right) => right.score / Math.max(1, right.totalItems) - left.score / Math.max(1, left.totalItems),
   )[0];
   const strongModule = strongest ? modules.find((module) => module.id === strongest.moduleId) : null;
+  const completedModules = progress?.count ?? 0;
+  const today = localDate(new Date());
+  const chartDates = Array.from({ length: 7 }, (_, index) => {
+    const date = new Date();
+    date.setHours(12, 0, 0, 0);
+    date.setDate(date.getDate() - (6 - index));
+    return localDate(date);
+  });
+  const quizAttemptsByDay = chartDates.map((date) => ({
+    date,
+    count: attempts.filter(
+      (attempt) => localDate(new Date(attempt.submittedAt)) === date,
+    ).length,
+  }));
+  const averageScoreTrend = chartDates.map((date) => {
+    const dailyAttempts = attempts.filter(
+      (attempt) => localDate(new Date(attempt.submittedAt)) === date,
+    );
+    return {
+      date,
+      averageScorePercentage: averagePercent(dailyAttempts),
+    };
+  });
   return {
-    completedModules: progress?.count ?? 0,
+    completedModules,
     totalModules: modules.length,
+    moduleCompletionPercentage:
+      modules.length === 0
+        ? 0
+        : Math.round((completedModules / modules.length) * 100),
     averageScore: averagePercent(attempts),
     dueFlashcards: due?.count ?? 0,
+    dueReviews: (due?.count ?? 0) + (dueReviewItems?.count ?? 0),
     weakTopic,
     strongTopic: strongModule?.subject ?? 'Take a quiz to unlock',
     totalAttempts: attempts.length,
+    quizAttemptsToday:
+      quizAttemptsByDay.find((point) => point.date === today)?.count ?? 0,
+    quizAttemptsByDay,
+    averageScoreTrend,
   };
 }
 
@@ -1107,18 +1205,20 @@ async function ensureModule(
     subject: string;
     competencyCode: string;
     gradeLevel: number;
+    isTeacherCreated?: boolean;
   },
 ): Promise<void> {
   await database.runAsync(
     `INSERT OR IGNORE INTO modules (
       id, title, subject, grade_level, quarter, competency_code, summary, content,
       content_style_tags_json, is_teacher_created, updated_at
-    ) VALUES (?, ?, ?, ?, 1, ?, '', '', '["balanced"]', 1, ?)`,
+    ) VALUES (?, ?, ?, ?, 1, ?, '', '', '["balanced"]', ?, ?)`,
     module.id,
     module.title,
     normalizeSubject(module.subject),
     module.gradeLevel,
     module.competencyCode,
+    module.isTeacherCreated === false ? 0 : 1,
     now(),
   );
 }
@@ -1276,4 +1376,11 @@ function splitDisplayName(value: string): {
     firstName: parts[0] ?? 'Student',
     lastName: parts.slice(1).join(' ') || 'Learner',
   };
+}
+
+function localDate(value: Date): string {
+  const year = value.getFullYear();
+  const month = String(value.getMonth() + 1).padStart(2, '0');
+  const day = String(value.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }

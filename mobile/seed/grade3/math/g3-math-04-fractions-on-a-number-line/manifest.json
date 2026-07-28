@@ -1,0 +1,120 @@
+{
+  "moduleId": "g3-math-04-fractions-on-a-number-line",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 3,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:a86ba1f2ec7bf36dca8984fdb7a2626e3e25454ccc2f6549dbfdb43018069e67",
+    "g3-math-04-fractions-on-a-number-line-quiz.json": "sha256:a6aa7d41361e48060a49148e68c37a270e87d0cd257522c1b08f4b202170a4ad",
+    "images/concept-guide.webp": "sha256:de3cb94d5b95f8f01413dd4f0e2080260d8a216aa723d6c75c9319389413e375",
+    "images/worked-example.webp": "sha256:02c6b01b103ad454feb86184ccfbed3528eff2ad5e9f2bd9d3fa5f8ff2c7ce5d"
+  },
+  "quizId": "g3-math-04-fractions-on-a-number-line-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g3-math-04-fractions-on-a-number-line",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-04-fractions-on-a-number-line-review-1",
+      "conceptId": "fraction-magnitude",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is fraction magnitude?",
+      "answer": "Fractions name equal intervals between whole numbers",
+      "formats": {
+        "text": "Fractions name equal intervals between whole numbers.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g3-math-04-fractions-on-a-number-line",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-04-fractions-on-a-number-line-review-2",
+      "conceptId": "fraction-magnitude-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for fraction magnitude.",
+      "answer": "Three fourths is the third one-fourth step from zero",
+      "formats": {
+        "text": "Three fourths is the third one-fourth step from zero.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g3-math-04-fractions-on-a-number-line",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-04-fractions-on-a-number-line-review-3",
+      "conceptId": "fraction-magnitude",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Fractions on a Number Line.",
+      "answer": "fraction magnitude",
+      "formats": {
+        "text": "fraction magnitude"
+      }
+    },
+    {
+      "moduleId": "g3-math-04-fractions-on-a-number-line",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-04-fractions-on-a-number-line-review-4",
+      "conceptId": "fraction-magnitude-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain fraction magnitude in one or two clear sentences.",
+      "answer": "Fractions name equal intervals between whole numbers",
+      "formats": {
+        "text": "Fractions name equal intervals between whole numbers."
+      }
+    },
+    {
+      "moduleId": "g3-math-04-fractions-on-a-number-line",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-04-fractions-on-a-number-line-review-5",
+      "conceptId": "fraction-magnitude-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Place halves, fourths, and eighths on a number line.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Place halves, fourths, and eighths on a number line."
+      }
+    }
+  ]
+}

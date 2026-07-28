@@ -1,0 +1,120 @@
+{
+  "moduleId": "g10-english-01-world-literature-and-context",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 10,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:b69c072dba47093643b00133a80118971d8026ac5ce56890f6415cc6a2fd8a8f",
+    "g10-english-01-world-literature-and-context-quiz.json": "sha256:0c9ef969eeafe18151c9fd350376a93cd5b7b161cd98f1b832a06d29faffd1ba",
+    "images/concept-guide.webp": "sha256:3759ecbb2df5f6e67b01245f9d996354457e45fa6e7953cad4724570ed7df58c",
+    "images/worked-example.webp": "sha256:ce2c3d9a1ba93faa73574654c9880172bbd33de66d01484e588682085f3d217d"
+  },
+  "quizId": "g10-english-01-world-literature-and-context-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g10-english-01-world-literature-and-context",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-01-world-literature-and-context-review-1",
+      "conceptId": "contextual-reading",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is contextual reading?",
+      "answer": "Historical, cultural, and authorial contexts inform interpretation without replacing textual evidence",
+      "formats": {
+        "text": "Historical, cultural, and authorial contexts inform interpretation without replacing textual evidence.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g10-english-01-world-literature-and-context",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-01-world-literature-and-context-review-2",
+      "conceptId": "contextual-reading-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for contextual reading.",
+      "answer": "A symbol may carry different meanings across cultures",
+      "formats": {
+        "text": "A symbol may carry different meanings across cultures.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g10-english-01-world-literature-and-context",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-01-world-literature-and-context-review-3",
+      "conceptId": "contextual-reading",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in World Literature and Context.",
+      "answer": "contextual reading",
+      "formats": {
+        "text": "contextual reading"
+      }
+    },
+    {
+      "moduleId": "g10-english-01-world-literature-and-context",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-01-world-literature-and-context-review-4",
+      "conceptId": "contextual-reading-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain contextual reading in one or two clear sentences.",
+      "answer": "Historical, cultural, and authorial contexts inform interpretation without replacing textual evidence",
+      "formats": {
+        "text": "Historical, cultural, and authorial contexts inform interpretation without replacing textual evidence."
+      }
+    },
+    {
+      "moduleId": "g10-english-01-world-literature-and-context",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-01-world-literature-and-context-review-5",
+      "conceptId": "contextual-reading-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Connect one text detail to relevant context.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Connect one text detail to relevant context."
+      }
+    }
+  ]
+}

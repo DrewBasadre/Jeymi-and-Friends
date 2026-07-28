@@ -1,0 +1,120 @@
+{
+  "moduleId": "g3-english-06-narrative-sequence-and-dialogue",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 3,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:cfea6f58415dd5671835b39b9ccb4bb7efe47f125b6529c3b1f09c7d94088b98",
+    "g3-english-06-narrative-sequence-and-dialogue-quiz.json": "sha256:1e6aa6deb28b80b55b350b8134b3029e59a9a0ac8393e3050952ef87351e33af",
+    "images/concept-guide.webp": "sha256:ab641f67d3ea383edb59c3b57a0dfb9419bd55b6185d9d6157db7574326d46b0",
+    "images/worked-example.webp": "sha256:5a33c0af3e0693da5d35e7f1aff8d97f8614eb7f34a886f3a5594521b92720ea"
+  },
+  "quizId": "g3-english-06-narrative-sequence-and-dialogue-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g3-english-06-narrative-sequence-and-dialogue",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-06-narrative-sequence-and-dialogue-review-1",
+      "conceptId": "narrative",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is narrative?",
+      "answer": "Narratives organize events and use dialogue to reveal character and action",
+      "formats": {
+        "text": "Narratives organize events and use dialogue to reveal character and action.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g3-english-06-narrative-sequence-and-dialogue",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-06-narrative-sequence-and-dialogue-review-2",
+      "conceptId": "narrative-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for narrative.",
+      "answer": "Quotation marks show the exact words a character speaks",
+      "formats": {
+        "text": "Quotation marks show the exact words a character speaks.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g3-english-06-narrative-sequence-and-dialogue",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-06-narrative-sequence-and-dialogue-review-3",
+      "conceptId": "narrative",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Narrative Sequence and Dialogue.",
+      "answer": "narrative",
+      "formats": {
+        "text": "narrative"
+      }
+    },
+    {
+      "moduleId": "g3-english-06-narrative-sequence-and-dialogue",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-06-narrative-sequence-and-dialogue-review-4",
+      "conceptId": "narrative-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain narrative in one or two clear sentences.",
+      "answer": "Narratives organize events and use dialogue to reveal character and action",
+      "formats": {
+        "text": "Narratives organize events and use dialogue to reveal character and action."
+      }
+    },
+    {
+      "moduleId": "g3-english-06-narrative-sequence-and-dialogue",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-06-narrative-sequence-and-dialogue-review-5",
+      "conceptId": "narrative-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Write a short beginning, problem, and ending with dialogue.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Write a short beginning, problem, and ending with dialogue."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-english-06-reading-informational-text-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains text features?",
+    "options": [
+      "Headings, captions, diagrams, and glossaries help readers locate and interpret information",
+      "It is only the title of the lesson Reading Informational Text.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Headings, captions, diagrams, and glossaries help readers locate and interpret information",
+    "conceptId": "text-features"
+  },
+  {
+    "questionId": "g4-english-06-reading-informational-text-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A caption explains what a photograph demonstrates",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A caption explains what a photograph demonstrates",
+    "conceptId": "text-features-application"
+  },
+  {
+    "questionId": "g4-english-06-reading-informational-text-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "text features",
+    "conceptId": "text-features"
+  },
+  {
+    "questionId": "g4-english-06-reading-informational-text-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Use text features to answer questions from an article.",
+    "correctAnswer": "text features",
+    "conceptId": "text-features-application"
+  },
+  {
+    "questionId": "g4-english-06-reading-informational-text-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "text-features-reasoning"
+  }
+]

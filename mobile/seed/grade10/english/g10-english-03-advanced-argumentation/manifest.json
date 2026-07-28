@@ -1,0 +1,120 @@
+{
+  "moduleId": "g10-english-03-advanced-argumentation",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 10,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:4e523b8314854192f55da04dbfd8d11a953fe80ce8c304c67f4f5d622ffd7e88",
+    "g10-english-03-advanced-argumentation-quiz.json": "sha256:ac31199357435a6dbba9c18218cd4288923b340bf56083eeefa2aa1add66b8da",
+    "images/concept-guide.webp": "sha256:6efc42f2805db1915d4f6606d39247c44ebebf7e4519c6a2a6c4f8d25fa42161",
+    "images/worked-example.webp": "sha256:9546d9fe6a27e57ee78f147fc4ac206b50e50cf316b75528ad318add27ab4074"
+  },
+  "quizId": "g10-english-03-advanced-argumentation-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g10-english-03-advanced-argumentation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-03-advanced-argumentation-review-1",
+      "conceptId": "reasoned-argument",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is reasoned argument?",
+      "answer": "Nuanced claims qualify scope, synthesize evidence, address counterarguments, and avoid fallacies",
+      "formats": {
+        "text": "Nuanced claims qualify scope, synthesize evidence, address counterarguments, and avoid fallacies.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g10-english-03-advanced-argumentation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-03-advanced-argumentation-review-2",
+      "conceptId": "reasoned-argument-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for reasoned argument.",
+      "answer": "A causal claim requires more than simple correlation",
+      "formats": {
+        "text": "A causal claim requires more than simple correlation.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g10-english-03-advanced-argumentation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-03-advanced-argumentation-review-3",
+      "conceptId": "reasoned-argument",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Advanced Argumentation.",
+      "answer": "reasoned argument",
+      "formats": {
+        "text": "reasoned argument"
+      }
+    },
+    {
+      "moduleId": "g10-english-03-advanced-argumentation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-03-advanced-argumentation-review-4",
+      "conceptId": "reasoned-argument-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain reasoned argument in one or two clear sentences.",
+      "answer": "Nuanced claims qualify scope, synthesize evidence, address counterarguments, and avoid fallacies",
+      "formats": {
+        "text": "Nuanced claims qualify scope, synthesize evidence, address counterarguments, and avoid fallacies."
+      }
+    },
+    {
+      "moduleId": "g10-english-03-advanced-argumentation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-03-advanced-argumentation-review-5",
+      "conceptId": "reasoned-argument-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Audit an argument for assumptions and fallacies.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Audit an argument for assumptions and fallacies."
+      }
+    }
+  ]
+}

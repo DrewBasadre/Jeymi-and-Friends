@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-english-05-writing-a-clear-paragraph-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains main idea?",
+    "options": [
+      "A paragraph has a focused main idea and supporting details in a logical order",
+      "It is only the title of the lesson Writing a Clear Paragraph.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "A paragraph has a focused main idea and supporting details in a logical order",
+    "conceptId": "main-idea"
+  },
+  {
+    "questionId": "g3-english-05-writing-a-clear-paragraph-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A topic sentence about recycling is followed by reasons and examples",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A topic sentence about recycling is followed by reasons and examples",
+    "conceptId": "main-idea-application"
+  },
+  {
+    "questionId": "g3-english-05-writing-a-clear-paragraph-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "main idea",
+    "conceptId": "main-idea"
+  },
+  {
+    "questionId": "g3-english-05-writing-a-clear-paragraph-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Plan a paragraph with one main idea and three details.",
+    "correctAnswer": "main idea",
+    "conceptId": "main-idea-application"
+  },
+  {
+    "questionId": "g3-english-05-writing-a-clear-paragraph-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "main-idea-reasoning"
+  }
+]

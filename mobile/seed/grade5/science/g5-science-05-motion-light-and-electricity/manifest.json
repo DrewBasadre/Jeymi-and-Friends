@@ -1,0 +1,120 @@
+{
+  "moduleId": "g5-science-05-motion-light-and-electricity",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 5,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:57ef433186b21d9c6d978dfc3bae6aed38c4e9ea1df2370d8f3de5a47ac46f96",
+    "g5-science-05-motion-light-and-electricity-quiz.json": "sha256:aa279db16f0c47460c5b6f8bf068e78abd890a025650b65e8e8c628c810300d2",
+    "images/concept-guide.webp": "sha256:476b343184d3c0fa08a7807782030d1b99c28bb0de4f07690915bc41fd364940",
+    "images/worked-example.webp": "sha256:318c9864a8d2d1ae97b43e0432c93413c9eef8f209ffe49264caeac65198ad35"
+  },
+  "quizId": "g5-science-05-motion-light-and-electricity-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g5-science-05-motion-light-and-electricity",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-05-motion-light-and-electricity-review-1",
+      "conceptId": "energy-systems",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is energy systems?",
+      "answer": "Forces affect motion, light travels and reflects, and closed circuits carry electric current",
+      "formats": {
+        "text": "Forces affect motion, light travels and reflects, and closed circuits carry electric current.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g5-science-05-motion-light-and-electricity",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-05-motion-light-and-electricity-review-2",
+      "conceptId": "energy-systems-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for energy systems.",
+      "answer": "A bulb lights when wires form a complete circuit",
+      "formats": {
+        "text": "A bulb lights when wires form a complete circuit.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g5-science-05-motion-light-and-electricity",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-05-motion-light-and-electricity-review-3",
+      "conceptId": "energy-systems",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Motion, Light, and Electricity.",
+      "answer": "energy systems",
+      "formats": {
+        "text": "energy systems"
+      }
+    },
+    {
+      "moduleId": "g5-science-05-motion-light-and-electricity",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-05-motion-light-and-electricity-review-4",
+      "conceptId": "energy-systems-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain energy systems in one or two clear sentences.",
+      "answer": "Forces affect motion, light travels and reflects, and closed circuits carry electric current",
+      "formats": {
+        "text": "Forces affect motion, light travels and reflects, and closed circuits carry electric current."
+      }
+    },
+    {
+      "moduleId": "g5-science-05-motion-light-and-electricity",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-05-motion-light-and-electricity-review-5",
+      "conceptId": "energy-systems-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Build and troubleshoot a simple low-voltage circuit model.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Build and troubleshoot a simple low-voltage circuit model."
+      }
+    }
+  ]
+}

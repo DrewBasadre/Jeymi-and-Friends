@@ -1,0 +1,120 @@
+{
+  "moduleId": "g1-english-05-building-a-sentence",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 1,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:088f76bde4fc27cee95917532b86069a53440e5d2f154ac8722eacd4acd57b75",
+    "g1-english-05-building-a-sentence-quiz.json": "sha256:a55dca25ec709e6156ebcf0f42d31b16c5bc07dfb7dd5f75ac0dfbafa9438629",
+    "images/concept-guide.webp": "sha256:145e81354fe69e5d175bab8086590bd46363654bfc695d7fb1fa6cd6c0f1c3fa",
+    "images/worked-example.webp": "sha256:0172882525a8b427c016f355358e096ce342bc3970ee0eaffc02fe47744bfdce"
+  },
+  "quizId": "g1-english-05-building-a-sentence-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g1-english-05-building-a-sentence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-05-building-a-sentence-review-1",
+      "conceptId": "sentence",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is sentence?",
+      "answer": "A sentence shares a complete idea, starts with a capital letter, and ends with punctuation",
+      "formats": {
+        "text": "A sentence shares a complete idea, starts with a capital letter, and ends with punctuation.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g1-english-05-building-a-sentence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-05-building-a-sentence-review-2",
+      "conceptId": "sentence-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for sentence.",
+      "answer": "The bird sings. is a complete sentence",
+      "formats": {
+        "text": "The bird sings. is a complete sentence.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g1-english-05-building-a-sentence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-05-building-a-sentence-review-3",
+      "conceptId": "sentence",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Building a Sentence.",
+      "answer": "sentence",
+      "formats": {
+        "text": "sentence"
+      }
+    },
+    {
+      "moduleId": "g1-english-05-building-a-sentence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-05-building-a-sentence-review-4",
+      "conceptId": "sentence-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain sentence in one or two clear sentences.",
+      "answer": "A sentence shares a complete idea, starts with a capital letter, and ends with punctuation",
+      "formats": {
+        "text": "A sentence shares a complete idea, starts with a capital letter, and ends with punctuation."
+      }
+    },
+    {
+      "moduleId": "g1-english-05-building-a-sentence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-05-building-a-sentence-review-5",
+      "conceptId": "sentence-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Arrange word cards to make two complete sentences.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Arrange word cards to make two complete sentences."
+      }
+    }
+  ]
+}

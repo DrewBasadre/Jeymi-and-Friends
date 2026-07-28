@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-english-06-narrative-sequence-and-dialogue-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains narrative?",
+    "options": [
+      "Narratives organize events and use dialogue to reveal character and action",
+      "It is only the title of the lesson Narrative Sequence and Dialogue.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Narratives organize events and use dialogue to reveal character and action",
+    "conceptId": "narrative"
+  },
+  {
+    "questionId": "g3-english-06-narrative-sequence-and-dialogue-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Quotation marks show the exact words a character speaks",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Quotation marks show the exact words a character speaks",
+    "conceptId": "narrative-application"
+  },
+  {
+    "questionId": "g3-english-06-narrative-sequence-and-dialogue-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "narrative",
+    "conceptId": "narrative"
+  },
+  {
+    "questionId": "g3-english-06-narrative-sequence-and-dialogue-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Write a short beginning, problem, and ending with dialogue.",
+    "correctAnswer": "narrative",
+    "conceptId": "narrative-application"
+  },
+  {
+    "questionId": "g3-english-06-narrative-sequence-and-dialogue-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "narrative-reasoning"
+  }
+]

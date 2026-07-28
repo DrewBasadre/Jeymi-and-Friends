@@ -1,0 +1,120 @@
+{
+  "moduleId": "g2-science-02-plants-and-their-parts",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 2,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:24092c9bebfd8674f5c57799ba68d8fee97cb78d1e15a12eb0b9b651dca9e925",
+    "g2-science-02-plants-and-their-parts-quiz.json": "sha256:7c1b228253191f187d3efa72f02864d63b6005ebec6c102087e92272e36ad294",
+    "images/concept-guide.webp": "sha256:694aee374fce190d0b76d260232c5ade0bb82645009647d66294e21aa5a19f80",
+    "images/worked-example.webp": "sha256:a3dc7eebf2bccb82c354262325c7442fcbcf603b45a59c5a7030e4d0b1c5e90d"
+  },
+  "quizId": "g2-science-02-plants-and-their-parts-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g2-science-02-plants-and-their-parts",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-02-plants-and-their-parts-review-1",
+      "conceptId": "plant-parts",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is plant parts?",
+      "answer": "Roots, stems, leaves, flowers, fruits, and seeds have connected jobs",
+      "formats": {
+        "text": "Roots, stems, leaves, flowers, fruits, and seeds have connected jobs.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g2-science-02-plants-and-their-parts",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-02-plants-and-their-parts-review-2",
+      "conceptId": "plant-parts-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for plant parts.",
+      "answer": "Roots take in water while the stem carries it upward",
+      "formats": {
+        "text": "Roots take in water while the stem carries it upward.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g2-science-02-plants-and-their-parts",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-02-plants-and-their-parts-review-3",
+      "conceptId": "plant-parts",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Plants and Their Parts.",
+      "answer": "plant parts",
+      "formats": {
+        "text": "plant parts"
+      }
+    },
+    {
+      "moduleId": "g2-science-02-plants-and-their-parts",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-02-plants-and-their-parts-review-4",
+      "conceptId": "plant-parts-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain plant parts in one or two clear sentences.",
+      "answer": "Roots, stems, leaves, flowers, fruits, and seeds have connected jobs",
+      "formats": {
+        "text": "Roots, stems, leaves, flowers, fruits, and seeds have connected jobs."
+      }
+    },
+    {
+      "moduleId": "g2-science-02-plants-and-their-parts",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-02-plants-and-their-parts-review-5",
+      "conceptId": "plant-parts-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Label a local plant and explain two part functions.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Label a local plant and explain two part functions."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-english-06-characters-and-setting-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains story elements?",
+    "options": [
+      "Characters act in a story, and the setting tells where and when events happen",
+      "It is only the title of the lesson Characters and Setting.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Characters act in a story, and the setting tells where and when events happen",
+    "conceptId": "story-elements"
+  },
+  {
+    "questionId": "g2-english-06-characters-and-setting-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Lina is the character, and the school garden is the setting",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Lina is the character, and the school garden is the setting",
+    "conceptId": "story-elements-application"
+  },
+  {
+    "questionId": "g2-english-06-characters-and-setting-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "story elements",
+    "conceptId": "story-elements"
+  },
+  {
+    "questionId": "g2-english-06-characters-and-setting-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Identify the characters and setting in a familiar tale.",
+    "correctAnswer": "story elements",
+    "conceptId": "story-elements-application"
+  },
+  {
+    "questionId": "g2-english-06-characters-and-setting-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "story-elements-reasoning"
+  }
+]

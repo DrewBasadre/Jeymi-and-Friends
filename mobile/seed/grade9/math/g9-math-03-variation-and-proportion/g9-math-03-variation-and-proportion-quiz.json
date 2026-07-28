@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-math-03-variation-and-proportion-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains variation?",
+    "options": [
+      "Direct, inverse, joint, and combined variation model changing quantities",
+      "It is only the title of the lesson Variation and Proportion.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Direct, inverse, joint, and combined variation model changing quantities",
+    "conceptId": "variation"
+  },
+  {
+    "questionId": "g9-math-03-variation-and-proportion-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Travel time varies inversely with speed for fixed distance",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Travel time varies inversely with speed for fixed distance",
+    "conceptId": "variation-application"
+  },
+  {
+    "questionId": "g9-math-03-variation-and-proportion-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "variation",
+    "conceptId": "variation"
+  },
+  {
+    "questionId": "g9-math-03-variation-and-proportion-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Build an equation from measured paired data.",
+    "correctAnswer": "variation",
+    "conceptId": "variation-application"
+  },
+  {
+    "questionId": "g9-math-03-variation-and-proportion-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "variation-reasoning"
+  }
+]

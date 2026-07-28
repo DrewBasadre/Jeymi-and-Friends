@@ -5,7 +5,10 @@ export type LearningFormat = 'text' | 'audio' | 'visual' | 'kinesthetic';
 export type Subject = 'SCIENCE' | 'MATH' | 'ENGLISH' | 'ADDED_MATERIALS';
 export type ProgressStatus = 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED';
 export type MasteryLevel = 'BEGINNER' | 'DEVELOPING' | 'PROFICIENT' | 'ADVANCED';
-export type QuestionType = 'MULTIPLE_CHOICE' | 'ENUMERATION';
+export type QuestionType =
+  | 'MULTIPLE_CHOICE'
+  | 'FILL_IN_THE_BLANK'
+  | 'IDENTIFICATION';
 
 export interface Student {
   id: string;
@@ -113,7 +116,10 @@ export interface LearningModule {
   updatedAt: number;
 }
 
-export type ModuleSource = 'supabase-ota' | 'teacher-bluetooth';
+export type ModuleSource =
+  | 'supabase-ota'
+  | 'teacher-bluetooth'
+  | 'seed-bundle';
 export type ReviewItemType = 'flashcard' | 'quiz-question' | 'concept-summary';
 export type ReviewImportance = 'core' | 'supplementary' | 'stretch';
 
@@ -159,6 +165,15 @@ export interface QuizQuestion {
   choices: string[];
   correctAnswer: string;
   topicTag: string;
+}
+
+export interface BundledQuizQuestion {
+  questionId: string;
+  type: 'multiple-choice' | 'fill-in-the-blank' | 'identification';
+  prompt: string;
+  options?: string[];
+  correctAnswer: string;
+  conceptId: string;
 }
 
 export interface QuestionResponse {
@@ -237,8 +252,7 @@ export interface CustomReviewSet {
 export type StudyTechnique =
   | 'active-recall'
   | 'retrieval-quiz'
-  | 'interleaved'
-  | 'blurting';
+  | 'interleaved';
 
 export interface PomodoroItemLog {
   itemId: string;
@@ -258,27 +272,61 @@ export interface PomodoroSession {
   itemLog: PomodoroItemLog[];
 }
 
+export interface ParentDigestSummary {
+  modulesCompleted: number;
+  quizzesTaken: number;
+  averageScorePercentage: number;
+  trend: PerformanceTrend;
+  flashcardsReviewed: number;
+  engagementDaysActive: number;
+  topStrugglingConcepts: Array<{
+    conceptId: string;
+    missCount: number;
+  }>;
+}
+
 export interface ParentDigest {
   digestId: string;
   studentId: string;
-  weekStart: string;
-  weekEnd: string;
-  modulesCompleted: string[];
-  timeTrend: 'up' | 'steady' | 'down' | 'not-enough-data';
-  currentFormatPreference: LearningFormat;
-  homeSuggestion: string;
-  summary: string;
-  generatedAt: number;
+  weekOf: string;
+  summary: ParentDigestSummary;
+  insightNote: string;
+  scoreTrend: Array<{
+    date: string;
+    averageScorePercentage: number;
+  }>;
+  engagementDays: Array<{
+    date: string;
+    active: boolean;
+  }>;
+  generatedAt: string;
+}
+
+export interface ParentPinRecord {
+  studentId: string;
+  parentPinHash: string;
+  pinSetAt: string;
 }
 
 export interface StudentDashboard {
   completedModules: number;
   totalModules: number;
+  moduleCompletionPercentage: number;
   averageScore: number;
   dueFlashcards: number;
+  dueReviews: number;
   weakTopic: string;
   strongTopic: string;
   totalAttempts: number;
+  quizAttemptsToday: number;
+  quizAttemptsByDay: Array<{
+    date: string;
+    count: number;
+  }>;
+  averageScoreTrend: Array<{
+    date: string;
+    averageScorePercentage: number;
+  }>;
 }
 
 export interface TeacherLearnerRow {

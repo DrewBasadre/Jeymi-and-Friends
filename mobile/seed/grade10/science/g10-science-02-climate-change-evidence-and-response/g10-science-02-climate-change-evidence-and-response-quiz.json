@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-science-02-climate-change-evidence-and-response-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains climate change?",
+    "options": [
+      "Multiple long-term data sets reveal climate trends, impacts, mitigation, and adaptation choices",
+      "It is only the title of the lesson Climate Change Evidence and Response.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Multiple long-term data sets reveal climate trends, impacts, mitigation, and adaptation choices",
+    "conceptId": "climate-change"
+  },
+  {
+    "questionId": "g10-science-02-climate-change-evidence-and-response-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Rising average sea level is measured across decades, not one tide",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Rising average sea level is measured across decades, not one tide",
+    "conceptId": "climate-change-application"
+  },
+  {
+    "questionId": "g10-science-02-climate-change-evidence-and-response-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "climate change",
+    "conceptId": "climate-change"
+  },
+  {
+    "questionId": "g10-science-02-climate-change-evidence-and-response-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Evaluate a local adaptation option using evidence and tradeoffs.",
+    "correctAnswer": "climate change",
+    "conceptId": "climate-change-application"
+  },
+  {
+    "questionId": "g10-science-02-climate-change-evidence-and-response-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "climate-change-reasoning"
+  }
+]

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g2-english-05-kinds-of-sentences",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 2,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:07213368eb73e8fe2f31a6dc2ed0a2aa8f0ace37b2012ff95cf702f36006105b",
+    "g2-english-05-kinds-of-sentences-quiz.json": "sha256:4fedda1fee2e6da44ef46f3fb76b921451b151efc7c62fc010459f2dac9e7695",
+    "images/concept-guide.webp": "sha256:12da22b2be063ab68725a8c5d754d6a7664d978ebcf1a6b98ad4c877e0db13bb",
+    "images/worked-example.webp": "sha256:ea8ddfa67b6d0bdb0fa74b9aac7ea0d97d9d282209d1d2693d529a492ded975d"
+  },
+  "quizId": "g2-english-05-kinds-of-sentences-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g2-english-05-kinds-of-sentences",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-05-kinds-of-sentences-review-1",
+      "conceptId": "sentence-purpose",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is sentence purpose?",
+      "answer": "Statements, questions, commands, and exclamations have different purposes and punctuation",
+      "formats": {
+        "text": "Statements, questions, commands, and exclamations have different purposes and punctuation.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g2-english-05-kinds-of-sentences",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-05-kinds-of-sentences-review-2",
+      "conceptId": "sentence-purpose-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for sentence purpose.",
+      "answer": "Where is my bag? asks a question",
+      "formats": {
+        "text": "Where is my bag? asks a question.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g2-english-05-kinds-of-sentences",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-05-kinds-of-sentences-review-3",
+      "conceptId": "sentence-purpose",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Kinds of Sentences.",
+      "answer": "sentence purpose",
+      "formats": {
+        "text": "sentence purpose"
+      }
+    },
+    {
+      "moduleId": "g2-english-05-kinds-of-sentences",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-05-kinds-of-sentences-review-4",
+      "conceptId": "sentence-purpose-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain sentence purpose in one or two clear sentences.",
+      "answer": "Statements, questions, commands, and exclamations have different purposes and punctuation",
+      "formats": {
+        "text": "Statements, questions, commands, and exclamations have different purposes and punctuation."
+      }
+    },
+    {
+      "moduleId": "g2-english-05-kinds-of-sentences",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-05-kinds-of-sentences-review-5",
+      "conceptId": "sentence-purpose-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Write one example of each sentence kind.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Write one example of each sentence kind."
+      }
+    }
+  ]
+}

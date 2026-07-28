@@ -1,0 +1,120 @@
+{
+  "moduleId": "g7-science-06-earth-structure-and-geologic-processes",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 7,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:1ac65796c56f496a7b32f9807277e0c987a865f3e8971c52444aeb2a6f920545",
+    "g7-science-06-earth-structure-and-geologic-processes-quiz.json": "sha256:2d63d195714880c80c43b57eab87daa77e576cc54d14dbd949b56ad37a8511df",
+    "images/concept-guide.webp": "sha256:0507f1d90e738aa8df3272433146ee2295af0fecf08cedc1d6e7ea8fcf621bad",
+    "images/worked-example.webp": "sha256:a2d66d12691cd03a31212d0f266447de1334a211eacd08ee0baf3c73620a87af"
+  },
+  "quizId": "g7-science-06-earth-structure-and-geologic-processes-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g7-science-06-earth-structure-and-geologic-processes",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-06-earth-structure-and-geologic-processes-review-1",
+      "conceptId": "geologic-processes",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is geologic processes?",
+      "answer": "Earth layers, plate movement, weathering, and erosion continually reshape the surface",
+      "formats": {
+        "text": "Earth layers, plate movement, weathering, and erosion continually reshape the surface.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g7-science-06-earth-structure-and-geologic-processes",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-06-earth-structure-and-geologic-processes-review-2",
+      "conceptId": "geologic-processes-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for geologic processes.",
+      "answer": "Converging plates can build mountains or form trenches",
+      "formats": {
+        "text": "Converging plates can build mountains or form trenches.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g7-science-06-earth-structure-and-geologic-processes",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-06-earth-structure-and-geologic-processes-review-3",
+      "conceptId": "geologic-processes",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Earth Structure and Geologic Processes.",
+      "answer": "geologic processes",
+      "formats": {
+        "text": "geologic processes"
+      }
+    },
+    {
+      "moduleId": "g7-science-06-earth-structure-and-geologic-processes",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-06-earth-structure-and-geologic-processes-review-4",
+      "conceptId": "geologic-processes-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain geologic processes in one or two clear sentences.",
+      "answer": "Earth layers, plate movement, weathering, and erosion continually reshape the surface",
+      "formats": {
+        "text": "Earth layers, plate movement, weathering, and erosion continually reshape the surface."
+      }
+    },
+    {
+      "moduleId": "g7-science-06-earth-structure-and-geologic-processes",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-06-earth-structure-and-geologic-processes-review-5",
+      "conceptId": "geologic-processes-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Interpret a plate-boundary diagram and hazard pattern.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Interpret a plate-boundary diagram and hazard pattern."
+      }
+    }
+  ]
+}

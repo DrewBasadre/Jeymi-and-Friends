@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-math-01-whole-numbers-to-millions-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains large numbers?",
+    "options": [
+      "Digit position determines value through millions, and rounding gives useful estimates",
+      "It is only the title of the lesson Whole Numbers to Millions.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Digit position determines value through millions, and rounding gives useful estimates",
+    "conceptId": "large-numbers"
+  },
+  {
+    "questionId": "g4-math-01-whole-numbers-to-millions-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "3,482,190 rounds to 3,500,000 to the nearest hundred thousand",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "3,482,190 rounds to 3,500,000 to the nearest hundred thousand",
+    "conceptId": "large-numbers-application"
+  },
+  {
+    "questionId": "g4-math-01-whole-numbers-to-millions-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "large numbers",
+    "conceptId": "large-numbers"
+  },
+  {
+    "questionId": "g4-math-01-whole-numbers-to-millions-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Read, compare, and round population figures.",
+    "correctAnswer": "large numbers",
+    "conceptId": "large-numbers-application"
+  },
+  {
+    "questionId": "g4-math-01-whole-numbers-to-millions-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "large-numbers-reasoning"
+  }
+]

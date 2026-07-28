@@ -1,0 +1,120 @@
+{
+  "moduleId": "g6-math-05-geometry-and-surface-area",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 6,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:4a0e35899190c39eeaac6466cb2f0cc3f2bcb9286e368506c61a23f42bcdca5a",
+    "g6-math-05-geometry-and-surface-area-quiz.json": "sha256:8f9bb64530a4470939ce67e07f13535d8ca5b3d5ac2643bbbbb1162d70c7bb20",
+    "images/concept-guide.webp": "sha256:d893b9af3f549dd0f1726b93bf1bae52d90e79b993ae261c9daae7762f860740",
+    "images/worked-example.webp": "sha256:54db314f31a4c61c26005aca9a78196560370de0f7a4a3e200c641170dd0cbe9"
+  },
+  "quizId": "g6-math-05-geometry-and-surface-area-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g6-math-05-geometry-and-surface-area",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-05-geometry-and-surface-area-review-1",
+      "conceptId": "spatial-measurement",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is spatial measurement?",
+      "answer": "Nets, formulas, and angle relationships support two- and three-dimensional reasoning",
+      "formats": {
+        "text": "Nets, formulas, and angle relationships support two- and three-dimensional reasoning.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g6-math-05-geometry-and-surface-area",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-05-geometry-and-surface-area-review-2",
+      "conceptId": "spatial-measurement-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for spatial measurement.",
+      "answer": "A cube net contains six congruent squares",
+      "formats": {
+        "text": "A cube net contains six congruent squares.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g6-math-05-geometry-and-surface-area",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-05-geometry-and-surface-area-review-3",
+      "conceptId": "spatial-measurement",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Geometry and Surface Area.",
+      "answer": "spatial measurement",
+      "formats": {
+        "text": "spatial measurement"
+      }
+    },
+    {
+      "moduleId": "g6-math-05-geometry-and-surface-area",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-05-geometry-and-surface-area-review-4",
+      "conceptId": "spatial-measurement-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain spatial measurement in one or two clear sentences.",
+      "answer": "Nets, formulas, and angle relationships support two- and three-dimensional reasoning",
+      "formats": {
+        "text": "Nets, formulas, and angle relationships support two- and three-dimensional reasoning."
+      }
+    },
+    {
+      "moduleId": "g6-math-05-geometry-and-surface-area",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-05-geometry-and-surface-area-review-5",
+      "conceptId": "spatial-measurement-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Draw a prism net and calculate its surface area.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Draw a prism net and calculate its surface area."
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g10-math-05-counting-and-probability",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 10,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:d531f5137199e1c1f762d532f612a1e93dd41ee4ce55fb2a2a0fbe494155d0db",
+    "g10-math-05-counting-and-probability-quiz.json": "sha256:5f258d8fe3d2e19676ee864d1889bb235e13f78a288c105559512c279bb429c7",
+    "images/concept-guide.webp": "sha256:794d5fb017cbc779a12652791e986a9000748d870b4e0cd236249f3bd0433946",
+    "images/worked-example.webp": "sha256:0565f0e8562c2c23b3823aa3b4a457634c37a57b6eb045abf69a7bb165c1d5f7"
+  },
+  "quizId": "g10-math-05-counting-and-probability-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g10-math-05-counting-and-probability",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-05-counting-and-probability-review-1",
+      "conceptId": "counting-principles",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is counting principles?",
+      "answer": "Permutations, combinations, and probability rules count structured outcomes",
+      "formats": {
+        "text": "Permutations, combinations, and probability rules count structured outcomes.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g10-math-05-counting-and-probability",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-05-counting-and-probability-review-2",
+      "conceptId": "counting-principles-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for counting principles.",
+      "answer": "Order matters in a permutation but not in a combination",
+      "formats": {
+        "text": "Order matters in a permutation but not in a combination.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g10-math-05-counting-and-probability",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-05-counting-and-probability-review-3",
+      "conceptId": "counting-principles",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Counting and Probability.",
+      "answer": "counting principles",
+      "formats": {
+        "text": "counting principles"
+      }
+    },
+    {
+      "moduleId": "g10-math-05-counting-and-probability",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-05-counting-and-probability-review-4",
+      "conceptId": "counting-principles-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain counting principles in one or two clear sentences.",
+      "answer": "Permutations, combinations, and probability rules count structured outcomes",
+      "formats": {
+        "text": "Permutations, combinations, and probability rules count structured outcomes."
+      }
+    },
+    {
+      "moduleId": "g10-math-05-counting-and-probability",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-05-counting-and-probability-review-5",
+      "conceptId": "counting-principles-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Choose and justify a counting method for two scenarios.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Choose and justify a counting method for two scenarios."
+      }
+    }
+  ]
+}

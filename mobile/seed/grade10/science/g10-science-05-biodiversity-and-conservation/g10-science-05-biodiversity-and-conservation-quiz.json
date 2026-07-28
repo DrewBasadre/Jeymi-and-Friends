@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-science-05-biodiversity-and-conservation-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains biodiversity?",
+    "options": [
+      "Genetic, species, and ecosystem diversity support resilience and human well-being",
+      "It is only the title of the lesson Biodiversity and Conservation.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Genetic, species, and ecosystem diversity support resilience and human well-being",
+    "conceptId": "biodiversity"
+  },
+  {
+    "questionId": "g10-science-05-biodiversity-and-conservation-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Habitat fragmentation can isolate populations and reduce gene flow",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Habitat fragmentation can isolate populations and reduce gene flow",
+    "conceptId": "biodiversity-application"
+  },
+  {
+    "questionId": "g10-science-05-biodiversity-and-conservation-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "biodiversity",
+    "conceptId": "biodiversity"
+  },
+  {
+    "questionId": "g10-science-05-biodiversity-and-conservation-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Prioritize conservation actions for a local habitat.",
+    "correctAnswer": "biodiversity",
+    "conceptId": "biodiversity-application"
+  },
+  {
+    "questionId": "g10-science-05-biodiversity-and-conservation-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "biodiversity-reasoning"
+  }
+]

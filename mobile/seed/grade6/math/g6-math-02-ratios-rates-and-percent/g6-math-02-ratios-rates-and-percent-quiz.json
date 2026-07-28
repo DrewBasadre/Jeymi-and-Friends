@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-math-02-ratios-rates-and-percent-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains proportional reasoning?",
+    "options": [
+      "Equivalent ratios connect rates, proportions, and percentages",
+      "It is only the title of the lesson Ratios, Rates, and Percent.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Equivalent ratios connect rates, proportions, and percentages",
+    "conceptId": "proportional-reasoning"
+  },
+  {
+    "questionId": "g6-math-02-ratios-rates-and-percent-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "If 2 notebooks cost 50 pesos, the unit rate is 25 pesos each",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "If 2 notebooks cost 50 pesos, the unit rate is 25 pesos each",
+    "conceptId": "proportional-reasoning-application"
+  },
+  {
+    "questionId": "g6-math-02-ratios-rates-and-percent-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "proportional reasoning",
+    "conceptId": "proportional-reasoning"
+  },
+  {
+    "questionId": "g6-math-02-ratios-rates-and-percent-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Use a ratio table to solve a discount problem.",
+    "correctAnswer": "proportional reasoning",
+    "conceptId": "proportional-reasoning-application"
+  },
+  {
+    "questionId": "g6-math-02-ratios-rates-and-percent-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "proportional-reasoning-reasoning"
+  }
+]

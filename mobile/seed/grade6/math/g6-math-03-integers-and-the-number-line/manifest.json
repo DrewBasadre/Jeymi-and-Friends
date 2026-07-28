@@ -1,0 +1,120 @@
+{
+  "moduleId": "g6-math-03-integers-and-the-number-line",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 6,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:58a6ae22e56b8129d7dd99d8170a8e6acf912bf622b1af9e248039258adbbeff",
+    "g6-math-03-integers-and-the-number-line-quiz.json": "sha256:9354356242e48b1fe988e8a1387382fe51d510016622ce996091b5ba18e05551",
+    "images/concept-guide.webp": "sha256:271eb3038bd85661281ad87af9f9c6f30c5c8813395355855d76762698cdd006",
+    "images/worked-example.webp": "sha256:44af37a101da066d2834b90ed3763ccca9104fc8ac5888b47fc20904de74cf61"
+  },
+  "quizId": "g6-math-03-integers-and-the-number-line-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g6-math-03-integers-and-the-number-line",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-03-integers-and-the-number-line-review-1",
+      "conceptId": "integers",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is integers?",
+      "answer": "Positive and negative numbers describe quantities relative to zero",
+      "formats": {
+        "text": "Positive and negative numbers describe quantities relative to zero.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g6-math-03-integers-and-the-number-line",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-03-integers-and-the-number-line-review-2",
+      "conceptId": "integers-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for integers.",
+      "answer": "An elevation of -5 meters is below sea level",
+      "formats": {
+        "text": "An elevation of -5 meters is below sea level.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g6-math-03-integers-and-the-number-line",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-03-integers-and-the-number-line-review-3",
+      "conceptId": "integers",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Integers and the Number Line.",
+      "answer": "integers",
+      "formats": {
+        "text": "integers"
+      }
+    },
+    {
+      "moduleId": "g6-math-03-integers-and-the-number-line",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-03-integers-and-the-number-line-review-4",
+      "conceptId": "integers-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain integers in one or two clear sentences.",
+      "answer": "Positive and negative numbers describe quantities relative to zero",
+      "formats": {
+        "text": "Positive and negative numbers describe quantities relative to zero."
+      }
+    },
+    {
+      "moduleId": "g6-math-03-integers-and-the-number-line",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-03-integers-and-the-number-line-review-5",
+      "conceptId": "integers-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Model temperature changes with integer operations.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Model temperature changes with integer operations."
+      }
+    }
+  ]
+}

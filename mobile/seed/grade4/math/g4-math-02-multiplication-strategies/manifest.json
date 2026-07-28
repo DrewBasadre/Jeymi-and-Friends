@@ -1,0 +1,120 @@
+{
+  "moduleId": "g4-math-02-multiplication-strategies",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 4,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:31f488da3c4abb25fc9fe5197cf0a70d04c68c55134960fadec794e1ee718928",
+    "g4-math-02-multiplication-strategies-quiz.json": "sha256:7f3214be2baf02cf5acda6a3cdfe8a2b056712e305d1d407b20fca1fb5dee488",
+    "images/concept-guide.webp": "sha256:f7a202c64b7f7846198d057f3585fba67e4afb370145721b289e6213a19c1587",
+    "images/worked-example.webp": "sha256:eb8d5b226f40693221566cf7da960539ab23e30cb847f62c8c10d9c624c723df"
+  },
+  "quizId": "g4-math-02-multiplication-strategies-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g4-math-02-multiplication-strategies",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-02-multiplication-strategies-review-1",
+      "conceptId": "multi-digit-multiplication",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is multi-digit multiplication?",
+      "answer": "Partial products and place value explain multi-digit multiplication",
+      "formats": {
+        "text": "Partial products and place value explain multi-digit multiplication.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g4-math-02-multiplication-strategies",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-02-multiplication-strategies-review-2",
+      "conceptId": "multi-digit-multiplication-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for multi-digit multiplication.",
+      "answer": "23 x 14 combines 23 x 10 and 23 x 4",
+      "formats": {
+        "text": "23 x 14 combines 23 x 10 and 23 x 4.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g4-math-02-multiplication-strategies",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-02-multiplication-strategies-review-3",
+      "conceptId": "multi-digit-multiplication",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Multiplication Strategies.",
+      "answer": "multi-digit multiplication",
+      "formats": {
+        "text": "multi-digit multiplication"
+      }
+    },
+    {
+      "moduleId": "g4-math-02-multiplication-strategies",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-02-multiplication-strategies-review-4",
+      "conceptId": "multi-digit-multiplication-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain multi-digit multiplication in one or two clear sentences.",
+      "answer": "Partial products and place value explain multi-digit multiplication",
+      "formats": {
+        "text": "Partial products and place value explain multi-digit multiplication."
+      }
+    },
+    {
+      "moduleId": "g4-math-02-multiplication-strategies",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-02-multiplication-strategies-review-5",
+      "conceptId": "multi-digit-multiplication-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Solve one product with an area model and standard algorithm.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Solve one product with an area model and standard algorithm."
+      }
+    }
+  ]
+}

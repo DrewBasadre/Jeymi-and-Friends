@@ -1,10 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import type { CompositeScreenProps } from '@react-navigation/native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
   Brain,
   CalendarDays,
   CheckCircle2,
+  Lightbulb,
   ListChecks,
   Pause,
   PencilLine,
@@ -22,6 +25,8 @@ import {
   Screen,
   ScreenHeader,
 } from '@/components/ui';
+import { ActivityWeek, MiniBarChart } from '@/components/ProgressCharts';
+import { ParentPinPrompt } from '@/components/ParentPinPrompt';
 import {
   createPomodoroForStudent,
   generateParentDigest,
@@ -41,12 +46,19 @@ import type {
   ReviewItem,
   StudyTechnique,
 } from '@/domain/types';
-import type { RootStackParamList } from '@/navigation/types';
+import type {
+  RootStackParamList,
+  StudentTabParamList,
+} from '@/navigation/types';
 import { useSessionStore } from '@/store/session';
 import { deliverParentDigest, type DigestDelivery } from '@/services/parentDigest';
 import { colors, radius, spacing } from '@/theme/tokens';
 
 type ReviewProps = NativeStackScreenProps<RootStackParamList, 'ReviewHub'>;
+type StudyProps = CompositeScreenProps<
+  BottomTabScreenProps<StudentTabParamList, 'Study'>,
+  NativeStackScreenProps<RootStackParamList>
+>;
 type CustomProps = NativeStackScreenProps<RootStackParamList, 'CustomReviewSets'>;
 type DigestProps = NativeStackScreenProps<RootStackParamList, 'ParentDigest'>;
 
@@ -54,10 +66,32 @@ const TECHNIQUES: Array<{ key: StudyTechnique; label: string }> = [
   { key: 'active-recall', label: 'Recall' },
   { key: 'retrieval-quiz', label: 'Retrieval quiz' },
   { key: 'interleaved', label: 'Interleaved' },
-  { key: 'blurting', label: 'Blurting' },
 ];
 
 export function ReviewHubScreen({ navigation }: ReviewProps) {
+  return (
+    <ReviewExperience
+      onBack={navigation.goBack}
+      onOpenSets={() => navigation.navigate('CustomReviewSets')}
+    />
+  );
+}
+
+export function StudentStudyScreen({ navigation }: StudyProps) {
+  return (
+    <ReviewExperience
+      onOpenSets={() => navigation.navigate('CustomReviewSets')}
+    />
+  );
+}
+
+function ReviewExperience({
+  onBack,
+  onOpenSets,
+}: {
+  onBack?: () => void;
+  onOpenSets(): void;
+}) {
   const student = useSessionStore((state) => state.student);
   const [technique, setTechnique] = useState<StudyTechnique>('active-recall');
   const [items, setItems] = useState<DueReviewItem[]>([]);
@@ -245,7 +279,7 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
       <ScreenHeader
         title="Study techniques"
         subtitle={`${items.length} review item${items.length === 1 ? '' : 's'} due`}
-        onBack={navigation.goBack}
+        onBack={onBack}
       />
       <View style={styles.chipRow}>
         {TECHNIQUES.map((option) => (
@@ -261,7 +295,7 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
         label="Custom review sets"
         icon={PencilLine}
         tone="secondary"
-        onPress={() => navigation.navigate('CustomReviewSets')}
+        onPress={onOpenSets}
       />
       {sets.length > 0 ? (
         <View style={styles.chipRow}>
@@ -389,34 +423,12 @@ export function ReviewHubScreen({ navigation }: ReviewProps) {
       ) : !current ? (
         <EmptyState title="Review complete" body="The next due items will appear here automatically." />
       ) : current ? (
-        <Card accent={technique === 'blurting' ? colors.amber : colors.indigo}>
+        <Card accent={colors.indigo}>
           <View style={styles.rowBetween}>
             <Chip label={friendlyConcept(current)} />
             <Text style={styles.counter}>{index + 1}/{queue.length}</Text>
           </View>
-          {technique === 'blurting' ? (
-            <>
-              <Text style={styles.cardTitle}>Write everything you recall</Text>
-              <Text style={styles.prompt}>{friendlyConcept(current)}</Text>
-              <TextInput
-                value={writtenAnswer}
-                onChangeText={setWrittenAnswer}
-                style={[styles.input, styles.multiline]}
-                multiline
-                placeholder="Your explanation"
-                placeholderTextColor={colors.inkMuted}
-              />
-              {revealed ? <Text style={styles.answer}>{current.answer}</Text> : null}
-              {!revealed ? (
-                <PrimaryButton
-                  label="Compare with reference"
-                  onPress={() => setRevealed(true)}
-                />
-              ) : (
-                <RatingRow onGrade={(quality) => void grade(quality)} />
-              )}
-            </>
-          ) : technique === 'retrieval-quiz' ? (
+          {technique === 'retrieval-quiz' ? (
             <>
               <ListChecks size={28} color={colors.indigo} />
               <Text style={styles.prompt}>{current.prompt}</Text>
@@ -566,48 +578,113 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
   const student = useSessionStore((state) => state.student);
   const [digest, setDigest] = useState<ParentDigest | null>(null);
   const [delivery, setDelivery] = useState<DigestDelivery>('in-app');
+  const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
-    if (student) {
+    if (student && authorized) {
       void generateParentDigest(student.id).then(async (next) => {
         setDigest(next);
         setDelivery(await deliverParentDigest(next));
       });
     }
-  }, [student]);
+  }, [authorized, student]);
 
   return (
-    <Screen>
-      <ScreenHeader title="Parent weekly digest" onBack={navigation.goBack} />
-      {digest ? (
-        <>
-          <Card accent={colors.emerald}>
-            <View style={styles.headingRow}>
-              <CalendarDays size={25} color={colors.emerald} />
-              <View style={styles.flex}>
-                <Text style={styles.cardTitle}>{digest.weekStart} to {digest.weekEnd}</Text>
-                <Text style={styles.body}>{digest.summary}</Text>
-                <Text style={styles.meta}>
-                  {delivery === 'notification'
-                    ? 'Parent notification delivered'
-                    : 'Saved for in-app viewing'}
-                </Text>
+    <>
+      <Screen>
+        <ScreenHeader title="Parent weekly digest" onBack={navigation.goBack} />
+        {digest ? (
+          <>
+            <Card accent={colors.emerald}>
+              <View style={styles.headingRow}>
+                <CalendarDays size={25} color={colors.emerald} />
+                <View style={styles.flex}>
+                  <Text style={styles.cardTitle}>
+                    Week of {formatDigestDate(digest.weekOf)}
+                  </Text>
+                  <Text style={styles.meta}>
+                    {delivery === 'notification'
+                      ? 'Parent notification delivered'
+                      : 'Saved for in-app viewing'}
+                  </Text>
+                </View>
               </View>
+            </Card>
+            <View style={styles.metricRow}>
+              <Metric label="Modules completed" value={digest.summary.modulesCompleted} tint={colors.indigoTint} />
+              <Metric label="Quizzes taken" value={digest.summary.quizzesTaken} tint={colors.amberTint} />
+              <Metric label="Average score" value={`${Math.round(digest.summary.averageScorePercentage)}%`} tint={colors.emeraldTint} />
+              <Metric label="Reviews" value={digest.summary.flashcardsReviewed} tint={colors.coralTint} />
             </View>
-          </Card>
-          <View style={styles.metricRow}>
-            <Metric label="Modules" value={digest.modulesCompleted.length} tint={colors.indigoTint} />
-            <Metric label="Time trend" value={capitalize(digest.timeTrend.replaceAll('-', ' '))} tint={colors.amberTint} />
-          </View>
-          <Card>
-            <Text style={styles.label}>Home reinforcement</Text>
-            <Text style={styles.answer}>{digest.homeSuggestion}</Text>
-          </Card>
-        </>
-      ) : (
-        <EmptyState title="Preparing digest" body="Weekly activity is being summarized locally." />
-      )}
-    </Screen>
+            <Card>
+              <Text style={styles.cardTitle}>Quiz score trend</Text>
+              <Text style={styles.body}>
+                Performance is {digest.summary.trend} compared with last week.
+              </Text>
+              <MiniBarChart
+                points={digest.scoreTrend.map((point) => ({
+                  label: shortDay(point.date),
+                  value: point.averageScorePercentage,
+                }))}
+                suffix="%"
+              />
+            </Card>
+            <Card>
+              <Text style={styles.cardTitle}>Engagement</Text>
+              <Text style={styles.body}>
+                Active on {digest.summary.engagementDaysActive} of 7 days.
+              </Text>
+              <ActivityWeek
+                days={digest.engagementDays.map((day) => ({
+                  label: shortDay(day.date),
+                  active: day.active,
+                }))}
+              />
+            </Card>
+            <Card>
+              <Text style={styles.cardTitle}>Top struggling concepts</Text>
+              {digest.summary.topStrugglingConcepts.length > 0 ? (
+                digest.summary.topStrugglingConcepts.map((concept) => (
+                  <View key={concept.conceptId} style={styles.rowBetween}>
+                    <Text style={styles.body}>{friendlyConceptName(concept.conceptId)}</Text>
+                    <Chip label={`${concept.missCount} missed`} color={colors.coral} />
+                  </View>
+                ))
+              ) : (
+                <Text style={styles.body}>No repeatedly missed concepts this week.</Text>
+              )}
+            </Card>
+            <Card accent={colors.amber}>
+              <View style={styles.headingRow}>
+                <Lightbulb size={24} color={colors.amber} />
+                <View style={styles.flex}>
+                  <Text style={styles.cardTitle}>Weekly insight</Text>
+                  <Text style={styles.body}>{digest.insightNote}</Text>
+                </View>
+              </View>
+            </Card>
+          </>
+        ) : (
+          <EmptyState
+            title={authorized ? 'Preparing digest' : 'Parent access required'}
+            body={
+              authorized
+                ? 'Weekly activity is being summarized locally.'
+                : 'Enter or create the parent PIN to open this digest.'
+            }
+          />
+        )}
+      </Screen>
+      {student ? (
+        <ParentPinPrompt
+          studentId={student.id}
+          visible={!authorized}
+          purpose="The weekly digest contains learner progress and is for a parent or guardian."
+          onAuthorized={() => setAuthorized(true)}
+          onCancel={navigation.goBack}
+        />
+      ) : null}
+    </>
   );
 }
 
@@ -647,6 +724,24 @@ function friendlyConcept(item: ReviewItem): string {
     return item.prompt;
   }
   return capitalize(item.conceptId.replaceAll('-', ' '));
+}
+
+function friendlyConceptName(value: string): string {
+  return capitalize(value.replaceAll(/[-_:]+/g, ' '));
+}
+
+function shortDay(value: string): string {
+  return new Date(`${value}T12:00:00`).toLocaleDateString(undefined, {
+    weekday: 'short',
+  });
+}
+
+function formatDigestDate(value: string): string {
+  return new Date(`${value}T12:00:00`).toLocaleDateString(undefined, {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
 }
 
 const styles = StyleSheet.create({

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-math-01-fraction-and-decimal-fluency-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains rational operations?",
+    "options": [
+      "Fractions and decimals represent rational quantities and can be converted for efficient computation",
+      "It is only the title of the lesson Fraction and Decimal Fluency.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Fractions and decimals represent rational quantities and can be converted for efficient computation",
+    "conceptId": "rational-operations"
+  },
+  {
+    "questionId": "g6-math-01-fraction-and-decimal-fluency-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Three fourths equals 0.75",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Three fourths equals 0.75",
+    "conceptId": "rational-operations-application"
+  },
+  {
+    "questionId": "g6-math-01-fraction-and-decimal-fluency-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "rational operations",
+    "conceptId": "rational-operations"
+  },
+  {
+    "questionId": "g6-math-01-fraction-and-decimal-fluency-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Choose fraction or decimal form to solve three contexts.",
+    "correctAnswer": "rational operations",
+    "conceptId": "rational-operations-application"
+  },
+  {
+    "questionId": "g6-math-01-fraction-and-decimal-fluency-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "rational-operations-reasoning"
+  }
+]

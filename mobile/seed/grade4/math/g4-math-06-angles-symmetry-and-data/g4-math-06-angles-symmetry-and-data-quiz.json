@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-math-06-angles-symmetry-and-data-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains geometric reasoning?",
+    "options": [
+      "Angles measure turns, symmetry matches balanced parts, and graphs summarize observations",
+      "It is only the title of the lesson Angles, Symmetry, and Data.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Angles measure turns, symmetry matches balanced parts, and graphs summarize observations",
+    "conceptId": "geometric-reasoning"
+  },
+  {
+    "questionId": "g4-math-06-angles-symmetry-and-data-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A right angle is a quarter turn measuring 90 degrees",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A right angle is a quarter turn measuring 90 degrees",
+    "conceptId": "geometric-reasoning-application"
+  },
+  {
+    "questionId": "g4-math-06-angles-symmetry-and-data-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "geometric reasoning",
+    "conceptId": "geometric-reasoning"
+  },
+  {
+    "questionId": "g4-math-06-angles-symmetry-and-data-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Find lines of symmetry and measure sample angles.",
+    "correctAnswer": "geometric reasoning",
+    "conceptId": "geometric-reasoning-application"
+  },
+  {
+    "questionId": "g4-math-06-angles-symmetry-and-data-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "geometric-reasoning-reasoning"
+  }
+]

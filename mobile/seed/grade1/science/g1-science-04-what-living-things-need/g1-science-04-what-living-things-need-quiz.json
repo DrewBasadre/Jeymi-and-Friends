@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g1-science-04-what-living-things-need-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains basic needs?",
+    "options": [
+      "Plants and animals need suitable food, water, air, and shelter to live",
+      "It is only the title of the lesson What Living Things Need.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Plants and animals need suitable food, water, air, and shelter to live",
+    "conceptId": "basic-needs"
+  },
+  {
+    "questionId": "g1-science-04-what-living-things-need-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A potted plant wilts when it does not receive enough water",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A potted plant wilts when it does not receive enough water",
+    "conceptId": "basic-needs-application"
+  },
+  {
+    "questionId": "g1-science-04-what-living-things-need-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "basic needs",
+    "conceptId": "basic-needs"
+  },
+  {
+    "questionId": "g1-science-04-what-living-things-need-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Draw a home that gives a pet food, water, air, and shelter.",
+    "correctAnswer": "basic needs",
+    "conceptId": "basic-needs-application"
+  },
+  {
+    "questionId": "g1-science-04-what-living-things-need-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "basic-needs-reasoning"
+  }
+]

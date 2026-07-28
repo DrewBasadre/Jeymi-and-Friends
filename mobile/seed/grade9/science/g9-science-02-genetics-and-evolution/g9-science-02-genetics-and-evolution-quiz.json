@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-science-02-genetics-and-evolution-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains genetic variation?",
+    "options": [
+      "Mutation, recombination, selection, and inheritance change populations across generations",
+      "It is only the title of the lesson Genetics and Evolution.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Mutation, recombination, selection, and inheritance change populations across generations",
+    "conceptId": "genetic-variation"
+  },
+  {
+    "questionId": "g9-science-02-genetics-and-evolution-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A heritable trait that improves survival may become more common",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A heritable trait that improves survival may become more common",
+    "conceptId": "genetic-variation-application"
+  },
+  {
+    "questionId": "g9-science-02-genetics-and-evolution-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "genetic variation",
+    "conceptId": "genetic-variation"
+  },
+  {
+    "questionId": "g9-science-02-genetics-and-evolution-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Analyze trait frequencies in a changing environment.",
+    "correctAnswer": "genetic variation",
+    "conceptId": "genetic-variation-application"
+  },
+  {
+    "questionId": "g9-science-02-genetics-and-evolution-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "genetic-variation-reasoning"
+  }
+]

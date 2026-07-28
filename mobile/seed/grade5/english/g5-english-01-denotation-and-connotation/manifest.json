@@ -1,0 +1,120 @@
+{
+  "moduleId": "g5-english-01-denotation-and-connotation",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 5,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:2fdb415353aba02f087b89781b34368548352384d8ab4663dae43773abceef3d",
+    "g5-english-01-denotation-and-connotation-quiz.json": "sha256:e1fde1e03e00d8eca1b03e08fc52e130a39244b214b9e9cc6bf3e6ae20151e41",
+    "images/concept-guide.webp": "sha256:b49ac53e40c43c76891e62b2519824b8d3019df265b757cd84fc430da436f2dd",
+    "images/worked-example.webp": "sha256:4b533b9a3f7f23bfef018b6c4de78d028601684a3ea52af32e10b2fd65358378"
+  },
+  "quizId": "g5-english-01-denotation-and-connotation-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g5-english-01-denotation-and-connotation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-01-denotation-and-connotation-review-1",
+      "conceptId": "word-meaning",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is word meaning?",
+      "answer": "Words can share a dictionary meaning but carry different feelings or associations",
+      "formats": {
+        "text": "Words can share a dictionary meaning but carry different feelings or associations.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g5-english-01-denotation-and-connotation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-01-denotation-and-connotation-review-2",
+      "conceptId": "word-meaning-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for word meaning.",
+      "answer": "slim and skinny both describe thinness but suggest different tones",
+      "formats": {
+        "text": "slim and skinny both describe thinness but suggest different tones.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g5-english-01-denotation-and-connotation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-01-denotation-and-connotation-review-3",
+      "conceptId": "word-meaning",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Denotation and Connotation.",
+      "answer": "word meaning",
+      "formats": {
+        "text": "word meaning"
+      }
+    },
+    {
+      "moduleId": "g5-english-01-denotation-and-connotation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-01-denotation-and-connotation-review-4",
+      "conceptId": "word-meaning-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain word meaning in one or two clear sentences.",
+      "answer": "Words can share a dictionary meaning but carry different feelings or associations",
+      "formats": {
+        "text": "Words can share a dictionary meaning but carry different feelings or associations."
+      }
+    },
+    {
+      "moduleId": "g5-english-01-denotation-and-connotation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-01-denotation-and-connotation-review-5",
+      "conceptId": "word-meaning-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Rank related words from positive to negative tone.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Rank related words from positive to negative tone."
+      }
+    }
+  ]
+}

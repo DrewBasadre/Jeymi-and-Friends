@@ -1,0 +1,120 @@
+{
+  "moduleId": "g10-science-02-climate-change-evidence-and-response",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 10,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:b22605ac76c00cc5ed5fb971a763d1aaa394d2848fc3c47bb2c3f0b5857132e6",
+    "g10-science-02-climate-change-evidence-and-response-quiz.json": "sha256:398daba9ecff0d61500f91c0c1e0fe8cde09771e89205b906660b0d58f8daa74",
+    "images/concept-guide.webp": "sha256:924179fdce42373ffe89d2f76659853e91fa24410e268a4408f5f5c804c34aa0",
+    "images/worked-example.webp": "sha256:9bbe95260c510db8b8c7f64ff767f52eec8da171b5728b832030bcef2bf74130"
+  },
+  "quizId": "g10-science-02-climate-change-evidence-and-response-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g10-science-02-climate-change-evidence-and-response",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-02-climate-change-evidence-and-response-review-1",
+      "conceptId": "climate-change",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is climate change?",
+      "answer": "Multiple long-term data sets reveal climate trends, impacts, mitigation, and adaptation choices",
+      "formats": {
+        "text": "Multiple long-term data sets reveal climate trends, impacts, mitigation, and adaptation choices.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g10-science-02-climate-change-evidence-and-response",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-02-climate-change-evidence-and-response-review-2",
+      "conceptId": "climate-change-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for climate change.",
+      "answer": "Rising average sea level is measured across decades, not one tide",
+      "formats": {
+        "text": "Rising average sea level is measured across decades, not one tide.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g10-science-02-climate-change-evidence-and-response",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-02-climate-change-evidence-and-response-review-3",
+      "conceptId": "climate-change",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Climate Change Evidence and Response.",
+      "answer": "climate change",
+      "formats": {
+        "text": "climate change"
+      }
+    },
+    {
+      "moduleId": "g10-science-02-climate-change-evidence-and-response",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-02-climate-change-evidence-and-response-review-4",
+      "conceptId": "climate-change-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain climate change in one or two clear sentences.",
+      "answer": "Multiple long-term data sets reveal climate trends, impacts, mitigation, and adaptation choices",
+      "formats": {
+        "text": "Multiple long-term data sets reveal climate trends, impacts, mitigation, and adaptation choices."
+      }
+    },
+    {
+      "moduleId": "g10-science-02-climate-change-evidence-and-response",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-02-climate-change-evidence-and-response-review-5",
+      "conceptId": "climate-change-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Evaluate a local adaptation option using evidence and tradeoffs.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Evaluate a local adaptation option using evidence and tradeoffs."
+      }
+    }
+  ]
+}

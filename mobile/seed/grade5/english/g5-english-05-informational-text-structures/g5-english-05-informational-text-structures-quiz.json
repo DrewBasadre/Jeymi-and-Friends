@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-english-05-informational-text-structures-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains text structure?",
+    "options": [
+      "Authors organize information through sequence, cause-effect, comparison, description, or problem-solution",
+      "It is only the title of the lesson Informational Text Structures.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Authors organize information through sequence, cause-effect, comparison, description, or problem-solution",
+    "conceptId": "text-structure"
+  },
+  {
+    "questionId": "g5-english-05-informational-text-structures-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A typhoon safety article may use problem-solution structure",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A typhoon safety article may use problem-solution structure",
+    "conceptId": "text-structure-application"
+  },
+  {
+    "questionId": "g5-english-05-informational-text-structures-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "text structure",
+    "conceptId": "text-structure"
+  },
+  {
+    "questionId": "g5-english-05-informational-text-structures-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Identify structure clues in three paragraphs.",
+    "correctAnswer": "text structure",
+    "conceptId": "text-structure-application"
+  },
+  {
+    "questionId": "g5-english-05-informational-text-structures-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "text-structure-reasoning"
+  }
+]

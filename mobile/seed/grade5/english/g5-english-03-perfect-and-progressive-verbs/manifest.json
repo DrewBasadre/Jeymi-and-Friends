@@ -1,0 +1,120 @@
+{
+  "moduleId": "g5-english-03-perfect-and-progressive-verbs",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 5,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:d7fd7394b587df7583d372880b99177eb69fb956c9f6463e1467b268d52f7c2c",
+    "g5-english-03-perfect-and-progressive-verbs-quiz.json": "sha256:d8f4343548388d2c56fb37338c585326d3ec180af15100fe4a173273d3d82cda",
+    "images/concept-guide.webp": "sha256:585f6f5a0e10d305a0705b2c00bad35caf627cca7d71b6812651e3046dc78373",
+    "images/worked-example.webp": "sha256:c9fea65f28bde9f794c7962d6cbeabd33115eaec6e684158eaa8843860ca62a9"
+  },
+  "quizId": "g5-english-03-perfect-and-progressive-verbs-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g5-english-03-perfect-and-progressive-verbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-03-perfect-and-progressive-verbs-review-1",
+      "conceptId": "verb-aspect",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is verb aspect?",
+      "answer": "Verb aspect shows whether an action is completed or continuing",
+      "formats": {
+        "text": "Verb aspect shows whether an action is completed or continuing.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g5-english-03-perfect-and-progressive-verbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-03-perfect-and-progressive-verbs-review-2",
+      "conceptId": "verb-aspect-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for verb aspect.",
+      "answer": "She has finished is perfect; she is finishing is progressive",
+      "formats": {
+        "text": "She has finished is perfect; she is finishing is progressive.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g5-english-03-perfect-and-progressive-verbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-03-perfect-and-progressive-verbs-review-3",
+      "conceptId": "verb-aspect",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Perfect and Progressive Verbs.",
+      "answer": "verb aspect",
+      "formats": {
+        "text": "verb aspect"
+      }
+    },
+    {
+      "moduleId": "g5-english-03-perfect-and-progressive-verbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-03-perfect-and-progressive-verbs-review-4",
+      "conceptId": "verb-aspect-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain verb aspect in one or two clear sentences.",
+      "answer": "Verb aspect shows whether an action is completed or continuing",
+      "formats": {
+        "text": "Verb aspect shows whether an action is completed or continuing."
+      }
+    },
+    {
+      "moduleId": "g5-english-03-perfect-and-progressive-verbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-03-perfect-and-progressive-verbs-review-5",
+      "conceptId": "verb-aspect-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Describe one activity using three verb aspects.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Describe one activity using three verb aspects."
+      }
+    }
+  ]
+}

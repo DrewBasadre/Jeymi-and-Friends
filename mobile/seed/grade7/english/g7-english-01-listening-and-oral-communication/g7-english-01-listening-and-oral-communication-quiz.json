@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-english-01-listening-and-oral-communication-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains communication strategies?",
+    "options": [
+      "Purpose, audience, tone, nonverbal cues, and active listening shape effective communication",
+      "It is only the title of the lesson Listening and Oral Communication.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Purpose, audience, tone, nonverbal cues, and active listening shape effective communication",
+    "conceptId": "communication-strategies"
+  },
+  {
+    "questionId": "g7-english-01-listening-and-oral-communication-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A formal report uses a different tone from a friendly conversation",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A formal report uses a different tone from a friendly conversation",
+    "conceptId": "communication-strategies-application"
+  },
+  {
+    "questionId": "g7-english-01-listening-and-oral-communication-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "communication strategies",
+    "conceptId": "communication-strategies"
+  },
+  {
+    "questionId": "g7-english-01-listening-and-oral-communication-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Adapt one message for two audiences.",
+    "correctAnswer": "communication strategies",
+    "conceptId": "communication-strategies-application"
+  },
+  {
+    "questionId": "g7-english-01-listening-and-oral-communication-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "communication-strategies-reasoning"
+  }
+]

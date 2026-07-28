@@ -1,0 +1,120 @@
+{
+  "moduleId": "g4-math-01-whole-numbers-to-millions",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 4,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:fe6b9663f8ed3038cc2d844923e75a5a5a298fcf88f977ae0f8e61797d50e6a9",
+    "g4-math-01-whole-numbers-to-millions-quiz.json": "sha256:55060ee89990def6dbf892916e0e2fd7c8481e6d656014ced30ebcccdf6d3ae6",
+    "images/concept-guide.webp": "sha256:eee1b54c73e86fdc63eeee0ddbc72a4de08967821bbfd48d4a63951c84e5a154",
+    "images/worked-example.webp": "sha256:a6deebe7307399962ccd0640ee8541e9c196b515f3312cbbbc0cdffb7a767b21"
+  },
+  "quizId": "g4-math-01-whole-numbers-to-millions-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g4-math-01-whole-numbers-to-millions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-01-whole-numbers-to-millions-review-1",
+      "conceptId": "large-numbers",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is large numbers?",
+      "answer": "Digit position determines value through millions, and rounding gives useful estimates",
+      "formats": {
+        "text": "Digit position determines value through millions, and rounding gives useful estimates.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g4-math-01-whole-numbers-to-millions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-01-whole-numbers-to-millions-review-2",
+      "conceptId": "large-numbers-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for large numbers.",
+      "answer": "3,482,190 rounds to 3,500,000 to the nearest hundred thousand",
+      "formats": {
+        "text": "3,482,190 rounds to 3,500,000 to the nearest hundred thousand.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g4-math-01-whole-numbers-to-millions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-01-whole-numbers-to-millions-review-3",
+      "conceptId": "large-numbers",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Whole Numbers to Millions.",
+      "answer": "large numbers",
+      "formats": {
+        "text": "large numbers"
+      }
+    },
+    {
+      "moduleId": "g4-math-01-whole-numbers-to-millions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-01-whole-numbers-to-millions-review-4",
+      "conceptId": "large-numbers-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain large numbers in one or two clear sentences.",
+      "answer": "Digit position determines value through millions, and rounding gives useful estimates",
+      "formats": {
+        "text": "Digit position determines value through millions, and rounding gives useful estimates."
+      }
+    },
+    {
+      "moduleId": "g4-math-01-whole-numbers-to-millions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-01-whole-numbers-to-millions-review-5",
+      "conceptId": "large-numbers-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Read, compare, and round population figures.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Read, compare, and round population figures."
+      }
+    }
+  ]
+}

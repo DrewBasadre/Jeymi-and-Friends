@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-math-04-geometry-and-transformations-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains transformations?",
+    "options": [
+      "Translations, rotations, reflections, and dilations preserve or scale geometric properties",
+      "It is only the title of the lesson Geometry and Transformations.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Translations, rotations, reflections, and dilations preserve or scale geometric properties",
+    "conceptId": "transformations"
+  },
+  {
+    "questionId": "g8-math-04-geometry-and-transformations-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A reflection preserves lengths but reverses orientation",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A reflection preserves lengths but reverses orientation",
+    "conceptId": "transformations-application"
+  },
+  {
+    "questionId": "g8-math-04-geometry-and-transformations-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "transformations",
+    "conceptId": "transformations"
+  },
+  {
+    "questionId": "g8-math-04-geometry-and-transformations-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Plot a figure and perform two transformations.",
+    "correctAnswer": "transformations",
+    "conceptId": "transformations-application"
+  },
+  {
+    "questionId": "g8-math-04-geometry-and-transformations-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "transformations-reasoning"
+  }
+]

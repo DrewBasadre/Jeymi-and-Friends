@@ -1,0 +1,40 @@
+# Organ Systems and Homeostasis
+
+> WAIS demo content aligned to MATATAG Quarter 1 learning goals. This is an original classroom learning aid, not official curriculum text.
+
+## Learning goal
+
+By the end of this lesson, you can explain **homeostasis**, use it in a clear example, and apply the idea in a short task.
+
+![Concept guide for Organ Systems and Homeostasis](images/concept-guide.webp)
+
+## Key idea
+
+`homeostasis` is the focus of this lesson. Body systems coordinate to maintain stable internal conditions during changing activity.
+
+Connect the example to the key idea, then explain the connection in your own words.
+
+## Worked example
+
+Sweating helps lower body temperature during exercise.
+
+Notice how the example supports the key idea instead of simply naming it. Ask: Which detail is evidence for the main idea, and how do you know?
+
+![Worked example for Organ Systems and Homeostasis](images/worked-example.webp)
+
+## Guided practice
+
+1. Restate the key idea in your own words.
+2. Identify the important information in the worked example.
+3. Complete this task: Explain how three systems respond during a run.
+4. Check your answer by returning to the definition and visual.
+
+## Talk and think
+
+- What detail was most useful?
+- What is one common mistake someone might make?
+- Where could you observe or use this idea at home, in school, or in the community?
+
+## Remember
+
+The goal is not only to memorize **homeostasis**. You should be able to recognize it, explain it, and use it in a new situation.

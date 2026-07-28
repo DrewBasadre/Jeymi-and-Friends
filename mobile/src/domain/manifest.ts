@@ -1,5 +1,9 @@
 import { z } from 'zod';
-import type { CurriculumModuleManifest, ReviewItem } from './types';
+import type {
+  BundledQuizQuestion,
+  CurriculumModuleManifest,
+  ReviewItem,
+} from './types';
 
 const reviewItemSchema: z.ZodType<ReviewItem> = z.object({
   itemId: z.string().min(1),
@@ -22,7 +26,7 @@ const reviewItemSchema: z.ZodType<ReviewItem> = z.object({
 export const moduleManifestSchema: z.ZodType<CurriculumModuleManifest> = z.object({
   moduleId: z.string().min(1),
   version: z.number().int().positive(),
-  source: z.enum(['supabase-ota', 'teacher-bluetooth']),
+  source: z.enum(['supabase-ota', 'teacher-bluetooth', 'seed-bundle']),
   gradeLevel: z.number().int().min(1).max(12),
   subject: z.string().min(1),
   content: z.object({
@@ -49,6 +53,46 @@ export const moduleManifestSchema: z.ZodType<CurriculumModuleManifest> = z.objec
     }
   }
 });
+
+export const bundledQuizQuestionSchema: z.ZodType<BundledQuizQuestion> =
+  z
+    .object({
+      questionId: z.string().min(1),
+      type: z.enum([
+        'multiple-choice',
+        'fill-in-the-blank',
+        'identification',
+      ]),
+      prompt: z.string().min(1),
+      options: z.array(z.string().min(1)).min(2).optional(),
+      correctAnswer: z.string().min(1),
+      conceptId: z.string().min(1),
+    })
+    .superRefine((question, context) => {
+      if (
+        question.type === 'multiple-choice' &&
+        !question.options?.includes(question.correctAnswer)
+      ) {
+        context.addIssue({
+          code: 'custom',
+          path: ['options'],
+          message:
+            'Multiple-choice options must include the correct answer.',
+        });
+      }
+      if (
+        question.type !== 'multiple-choice' &&
+        question.options !== undefined
+      ) {
+        context.addIssue({
+          code: 'custom',
+          path: ['options'],
+          message: 'Options only apply to multiple-choice questions.',
+        });
+      }
+    });
+
+export const bundledQuizSchema = z.array(bundledQuizQuestionSchema).min(3);
 
 export function parseModuleManifest(value: unknown): CurriculumModuleManifest {
   return moduleManifestSchema.parse(value);

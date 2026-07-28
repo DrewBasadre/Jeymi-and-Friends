@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-math-02-polynomial-functions-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains polynomials?",
+    "options": [
+      "Degree, zeros, factors, end behavior, and graphs describe polynomial relationships",
+      "It is only the title of the lesson Polynomial Functions.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Degree, zeros, factors, end behavior, and graphs describe polynomial relationships",
+    "conceptId": "polynomials"
+  },
+  {
+    "questionId": "g10-math-02-polynomial-functions-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A zero corresponds to an x-intercept and a linear factor",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A zero corresponds to an x-intercept and a linear factor",
+    "conceptId": "polynomials-application"
+  },
+  {
+    "questionId": "g10-math-02-polynomial-functions-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "polynomials",
+    "conceptId": "polynomials"
+  },
+  {
+    "questionId": "g10-math-02-polynomial-functions-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Connect a factored polynomial to its graph.",
+    "correctAnswer": "polynomials",
+    "conceptId": "polynomials-application"
+  },
+  {
+    "questionId": "g10-math-02-polynomial-functions-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "polynomials-reasoning"
+  }
+]

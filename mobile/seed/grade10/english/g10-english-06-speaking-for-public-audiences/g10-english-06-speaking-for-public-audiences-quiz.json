@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-english-06-speaking-for-public-audiences-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains public speaking?",
+    "options": [
+      "Structure, evidence, vocal delivery, visuals, and response to questions build credible presentations",
+      "It is only the title of the lesson Speaking for Public Audiences.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Structure, evidence, vocal delivery, visuals, and response to questions build credible presentations",
+    "conceptId": "public-speaking"
+  },
+  {
+    "questionId": "g10-english-06-speaking-for-public-audiences-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A clear signpost helps listeners follow a complex explanation",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A clear signpost helps listeners follow a complex explanation",
+    "conceptId": "public-speaking-application"
+  },
+  {
+    "questionId": "g10-english-06-speaking-for-public-audiences-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "public speaking",
+    "conceptId": "public-speaking"
+  },
+  {
+    "questionId": "g10-english-06-speaking-for-public-audiences-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Plan and rehearse a three-minute evidence-based talk.",
+    "correctAnswer": "public speaking",
+    "conceptId": "public-speaking-application"
+  },
+  {
+    "questionId": "g10-english-06-speaking-for-public-audiences-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "public-speaking-reasoning"
+  }
+]

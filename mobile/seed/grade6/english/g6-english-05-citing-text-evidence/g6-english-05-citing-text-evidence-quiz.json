@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-english-05-citing-text-evidence-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains text evidence?",
+    "options": [
+      "Readers support inferences with accurate details and explanations from a text",
+      "It is only the title of the lesson Citing Text Evidence.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Readers support inferences with accurate details and explanations from a text",
+    "conceptId": "text-evidence"
+  },
+  {
+    "questionId": "g6-english-05-citing-text-evidence-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A quotation is useful only when the writer explains its relevance",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A quotation is useful only when the writer explains its relevance",
+    "conceptId": "text-evidence-application"
+  },
+  {
+    "questionId": "g6-english-05-citing-text-evidence-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "text evidence",
+    "conceptId": "text-evidence"
+  },
+  {
+    "questionId": "g6-english-05-citing-text-evidence-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Write a claim-evidence-reasoning response.",
+    "correctAnswer": "text evidence",
+    "conceptId": "text-evidence-application"
+  },
+  {
+    "questionId": "g6-english-05-citing-text-evidence-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "text-evidence-reasoning"
+  }
+]

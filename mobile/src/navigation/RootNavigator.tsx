@@ -5,6 +5,7 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
+  Brain,
   BookOpen,
   Bot,
   ChartNoAxesColumnIncreasing,
@@ -45,6 +46,7 @@ import {
   CustomReviewSetsScreen,
   ParentDigestScreen,
   ReviewHubScreen,
+  StudentStudyScreen,
 } from '@/screens/ReviewScreens';
 import {
   GurobotScreen,
@@ -131,6 +133,14 @@ function StudentTabNavigator() {
         options={{
           title: 'Modules',
           tabBarIcon: (props) => <TabIcon icon={BookOpen} {...props} />,
+        }}
+      />
+      <StudentTabs.Screen
+        name="Study"
+        component={StudentStudyScreen}
+        options={{
+          title: 'Study',
+          tabBarIcon: (props) => <TabIcon icon={Brain} {...props} />,
         }}
       />
       <StudentTabs.Screen

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-math-03-multiplication-and-division-facts-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains fact families?",
+    "options": [
+      "Multiplication and division are inverse operations built from equal groups",
+      "It is only the title of the lesson Multiplication and Division Facts.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Multiplication and division are inverse operations built from equal groups",
+    "conceptId": "fact-families"
+  },
+  {
+    "questionId": "g3-math-03-multiplication-and-division-facts-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "6 x 4 = 24, so 24 / 6 = 4",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "6 x 4 = 24, so 24 / 6 = 4",
+    "conceptId": "fact-families-application"
+  },
+  {
+    "questionId": "g3-math-03-multiplication-and-division-facts-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "fact families",
+    "conceptId": "fact-families"
+  },
+  {
+    "questionId": "g3-math-03-multiplication-and-division-facts-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Create four related facts from one array.",
+    "correctAnswer": "fact families",
+    "conceptId": "fact-families-application"
+  },
+  {
+    "questionId": "g3-math-03-multiplication-and-division-facts-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "fact-families-reasoning"
+  }
+]

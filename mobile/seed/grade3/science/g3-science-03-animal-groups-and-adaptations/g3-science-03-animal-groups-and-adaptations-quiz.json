@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-science-03-animal-groups-and-adaptations-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains adaptation?",
+    "options": [
+      "Body coverings, movement, and feeding structures help animals survive",
+      "It is only the title of the lesson Animal Groups and Adaptations.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Body coverings, movement, and feeding structures help animals survive",
+    "conceptId": "adaptation"
+  },
+  {
+    "questionId": "g3-science-03-animal-groups-and-adaptations-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A duck has webbed feet that help it paddle",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A duck has webbed feet that help it paddle",
+    "conceptId": "adaptation-application"
+  },
+  {
+    "questionId": "g3-science-03-animal-groups-and-adaptations-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "adaptation",
+    "conceptId": "adaptation"
+  },
+  {
+    "questionId": "g3-science-03-animal-groups-and-adaptations-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compare how two animals move and get food.",
+    "correctAnswer": "adaptation",
+    "conceptId": "adaptation-application"
+  },
+  {
+    "questionId": "g3-science-03-animal-groups-and-adaptations-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "adaptation-reasoning"
+  }
+]

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g6-science-03-properties-and-separation-of-matter",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 6,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:c6a487609aec60dd789df3e9c17e427ed88407bbcdffda6db30007e71f7a90eb",
+    "g6-science-03-properties-and-separation-of-matter-quiz.json": "sha256:04da7f4a76bf792a123b26f8f4b60a8a9ab2f40aa70318d151f04bb9290183d9",
+    "images/concept-guide.webp": "sha256:51e0924a97602ee9f316403fab1608f7c55dec7a9618ff0977978661979e708a",
+    "images/worked-example.webp": "sha256:ee8a782e1ea1a938a6d05f06d16892bdc1bd2e2637ca724d77b67276b99ae6a7"
+  },
+  "quizId": "g6-science-03-properties-and-separation-of-matter-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g6-science-03-properties-and-separation-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-03-properties-and-separation-of-matter-review-1",
+      "conceptId": "separation-methods",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is separation methods?",
+      "answer": "Observable properties guide filtration, evaporation, decantation, and magnetism",
+      "formats": {
+        "text": "Observable properties guide filtration, evaporation, decantation, and magnetism.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g6-science-03-properties-and-separation-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-03-properties-and-separation-of-matter-review-2",
+      "conceptId": "separation-methods-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for separation methods.",
+      "answer": "Evaporation can recover salt dissolved in water",
+      "formats": {
+        "text": "Evaporation can recover salt dissolved in water.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g6-science-03-properties-and-separation-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-03-properties-and-separation-of-matter-review-3",
+      "conceptId": "separation-methods",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Properties and Separation of Matter.",
+      "answer": "separation methods",
+      "formats": {
+        "text": "separation methods"
+      }
+    },
+    {
+      "moduleId": "g6-science-03-properties-and-separation-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-03-properties-and-separation-of-matter-review-4",
+      "conceptId": "separation-methods-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain separation methods in one or two clear sentences.",
+      "answer": "Observable properties guide filtration, evaporation, decantation, and magnetism",
+      "formats": {
+        "text": "Observable properties guide filtration, evaporation, decantation, and magnetism."
+      }
+    },
+    {
+      "moduleId": "g6-science-03-properties-and-separation-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-03-properties-and-separation-of-matter-review-5",
+      "conceptId": "separation-methods-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Design a sequence to separate a mixed sample.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Design a sequence to separate a mixed sample."
+      }
+    }
+  ]
+}

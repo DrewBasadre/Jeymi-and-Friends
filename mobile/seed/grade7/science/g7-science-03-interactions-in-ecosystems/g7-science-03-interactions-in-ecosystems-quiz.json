@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-science-03-interactions-in-ecosystems-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains ecological balance?",
+    "options": [
+      "Energy pyramids, food webs, limiting factors, and biodiversity shape ecosystem stability",
+      "It is only the title of the lesson Interactions in Ecosystems.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Energy pyramids, food webs, limiting factors, and biodiversity shape ecosystem stability",
+    "conceptId": "ecological-balance"
+  },
+  {
+    "questionId": "g7-science-03-interactions-in-ecosystems-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Removing a predator can increase prey and reduce plant abundance",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Removing a predator can increase prey and reduce plant abundance",
+    "conceptId": "ecological-balance-application"
+  },
+  {
+    "questionId": "g7-science-03-interactions-in-ecosystems-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "ecological balance",
+    "conceptId": "ecological-balance"
+  },
+  {
+    "questionId": "g7-science-03-interactions-in-ecosystems-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Predict two effects of a food-web disturbance.",
+    "correctAnswer": "ecological balance",
+    "conceptId": "ecological-balance-application"
+  },
+  {
+    "questionId": "g7-science-03-interactions-in-ecosystems-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "ecological-balance-reasoning"
+  }
+]

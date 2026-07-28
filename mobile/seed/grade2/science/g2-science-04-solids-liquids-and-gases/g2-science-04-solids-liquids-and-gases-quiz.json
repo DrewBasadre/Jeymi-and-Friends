@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-science-04-solids-liquids-and-gases-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains states of matter?",
+    "options": [
+      "Matter can be solid, liquid, or gas based on its shape and how it fills space",
+      "It is only the title of the lesson Solids, Liquids, and Gases.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Matter can be solid, liquid, or gas based on its shape and how it fills space",
+    "conceptId": "states-of-matter"
+  },
+  {
+    "questionId": "g2-science-04-solids-liquids-and-gases-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Water takes the shape of its cup, while ice keeps its own shape",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Water takes the shape of its cup, while ice keeps its own shape",
+    "conceptId": "states-of-matter-application"
+  },
+  {
+    "questionId": "g2-science-04-solids-liquids-and-gases-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "states of matter",
+    "conceptId": "states-of-matter"
+  },
+  {
+    "questionId": "g2-science-04-solids-liquids-and-gases-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Classify safe household examples by state.",
+    "correctAnswer": "states of matter",
+    "conceptId": "states-of-matter-application"
+  },
+  {
+    "questionId": "g2-science-04-solids-liquids-and-gases-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "states-of-matter-reasoning"
+  }
+]

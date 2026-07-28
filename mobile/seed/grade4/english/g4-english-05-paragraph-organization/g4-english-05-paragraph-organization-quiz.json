@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-english-05-paragraph-organization-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains text organization?",
+    "options": [
+      "Transitions connect a topic sentence, supporting evidence, and conclusion",
+      "It is only the title of the lesson Paragraph Organization.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Transitions connect a topic sentence, supporting evidence, and conclusion",
+    "conceptId": "text-organization"
+  },
+  {
+    "questionId": "g4-english-05-paragraph-organization-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "First, for example, and therefore show relationships between ideas",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "First, for example, and therefore show relationships between ideas",
+    "conceptId": "text-organization-application"
+  },
+  {
+    "questionId": "g4-english-05-paragraph-organization-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "text organization",
+    "conceptId": "text-organization"
+  },
+  {
+    "questionId": "g4-english-05-paragraph-organization-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Reorder mixed sentences into a coherent paragraph.",
+    "correctAnswer": "text organization",
+    "conceptId": "text-organization-application"
+  },
+  {
+    "questionId": "g4-english-05-paragraph-organization-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "text-organization-reasoning"
+  }
+]

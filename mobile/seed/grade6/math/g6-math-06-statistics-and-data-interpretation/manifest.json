@@ -1,0 +1,120 @@
+{
+  "moduleId": "g6-math-06-statistics-and-data-interpretation",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 6,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:3f3ec2e853d1717ba6899cfe473a98593743243d1661f77f59d446b80381577b",
+    "g6-math-06-statistics-and-data-interpretation-quiz.json": "sha256:168be2a88976501973e0904cd3293b35acaa888cd81bdf9adb637f917b699723",
+    "images/concept-guide.webp": "sha256:6e37ff85eb4679290339c82cf7f49857e73d4fe5b83fcb218bad7210066b1da6",
+    "images/worked-example.webp": "sha256:9ae9d3c986fb27f0be6af88c4571e28f23b1eb774946687126dacf0dbcb55a50"
+  },
+  "quizId": "g6-math-06-statistics-and-data-interpretation-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g6-math-06-statistics-and-data-interpretation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-06-statistics-and-data-interpretation-review-1",
+      "conceptId": "statistical-reasoning",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is statistical reasoning?",
+      "answer": "Mean, median, mode, range, and graphs summarize distributions differently",
+      "formats": {
+        "text": "Mean, median, mode, range, and graphs summarize distributions differently.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g6-math-06-statistics-and-data-interpretation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-06-statistics-and-data-interpretation-review-2",
+      "conceptId": "statistical-reasoning-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for statistical reasoning.",
+      "answer": "An outlier can pull the mean away from the median",
+      "formats": {
+        "text": "An outlier can pull the mean away from the median.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g6-math-06-statistics-and-data-interpretation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-06-statistics-and-data-interpretation-review-3",
+      "conceptId": "statistical-reasoning",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Statistics and Data Interpretation.",
+      "answer": "statistical reasoning",
+      "formats": {
+        "text": "statistical reasoning"
+      }
+    },
+    {
+      "moduleId": "g6-math-06-statistics-and-data-interpretation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-06-statistics-and-data-interpretation-review-4",
+      "conceptId": "statistical-reasoning-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain statistical reasoning in one or two clear sentences.",
+      "answer": "Mean, median, mode, range, and graphs summarize distributions differently",
+      "formats": {
+        "text": "Mean, median, mode, range, and graphs summarize distributions differently."
+      }
+    },
+    {
+      "moduleId": "g6-math-06-statistics-and-data-interpretation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-06-statistics-and-data-interpretation-review-5",
+      "conceptId": "statistical-reasoning-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Compare two data sets and choose a useful center.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Compare two data sets and choose a useful center."
+      }
+    }
+  ]
+}

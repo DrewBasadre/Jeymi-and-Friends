@@ -1,0 +1,120 @@
+{
+  "moduleId": "g7-math-03-algebraic-expressions",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 7,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:993dc7a38ab2f60faa3935f5858534898bd233f11e911b96b2b0ef42cdd68f1c",
+    "g7-math-03-algebraic-expressions-quiz.json": "sha256:aad8d256f13601b4f416d7c6ccb160d88df4a80d4ace7fa1a54534b9cbf6e584",
+    "images/concept-guide.webp": "sha256:ae64cbbcad3ca95aa6d06922ae09aefd6e998292eb53ba64bd1f74adbc22d124",
+    "images/worked-example.webp": "sha256:44fc26b77220ae65f8e1d17dc0e0b976c46821223416a28aa96b53a0edc6afa4"
+  },
+  "quizId": "g7-math-03-algebraic-expressions-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g7-math-03-algebraic-expressions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-03-algebraic-expressions-review-1",
+      "conceptId": "expressions",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is expressions?",
+      "answer": "Terms, coefficients, exponents, and properties support simplifying and evaluating expressions",
+      "formats": {
+        "text": "Terms, coefficients, exponents, and properties support simplifying and evaluating expressions.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g7-math-03-algebraic-expressions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-03-algebraic-expressions-review-2",
+      "conceptId": "expressions-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for expressions.",
+      "answer": "3x + 2x - 4 simplifies to 5x - 4",
+      "formats": {
+        "text": "3x + 2x - 4 simplifies to 5x - 4.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g7-math-03-algebraic-expressions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-03-algebraic-expressions-review-3",
+      "conceptId": "expressions",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Algebraic Expressions.",
+      "answer": "expressions",
+      "formats": {
+        "text": "expressions"
+      }
+    },
+    {
+      "moduleId": "g7-math-03-algebraic-expressions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-03-algebraic-expressions-review-4",
+      "conceptId": "expressions-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain expressions in one or two clear sentences.",
+      "answer": "Terms, coefficients, exponents, and properties support simplifying and evaluating expressions",
+      "formats": {
+        "text": "Terms, coefficients, exponents, and properties support simplifying and evaluating expressions."
+      }
+    },
+    {
+      "moduleId": "g7-math-03-algebraic-expressions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-03-algebraic-expressions-review-5",
+      "conceptId": "expressions-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Model a perimeter with an algebraic expression.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Model a perimeter with an algebraic expression."
+      }
+    }
+  ]
+}

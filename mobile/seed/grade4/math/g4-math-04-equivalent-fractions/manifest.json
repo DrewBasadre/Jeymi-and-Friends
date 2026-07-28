@@ -1,0 +1,120 @@
+{
+  "moduleId": "g4-math-04-equivalent-fractions",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 4,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:ded227af5c7dd5306344478736aba81e5ed023791989f2ea3d59817ce690dc60",
+    "g4-math-04-equivalent-fractions-quiz.json": "sha256:5c8e1a2cc1d9e60bec2a626d8ee5f21a9db8970712d13396bb34132dea006d22",
+    "images/concept-guide.webp": "sha256:9384591cd02bedd103570f6a116172dfb647e87e27b1a9efe83c27d69a7202f5",
+    "images/worked-example.webp": "sha256:ca25541cc23a43b8e9772785f120cf66004c92ae8a25984ad0bee996c2a135c6"
+  },
+  "quizId": "g4-math-04-equivalent-fractions-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g4-math-04-equivalent-fractions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-04-equivalent-fractions-review-1",
+      "conceptId": "fraction-equivalence",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is fraction equivalence?",
+      "answer": "Multiplying or dividing numerator and denominator by the same number names the same amount",
+      "formats": {
+        "text": "Multiplying or dividing numerator and denominator by the same number names the same amount.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g4-math-04-equivalent-fractions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-04-equivalent-fractions-review-2",
+      "conceptId": "fraction-equivalence-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for fraction equivalence.",
+      "answer": "One half equals two fourths and four eighths",
+      "formats": {
+        "text": "One half equals two fourths and four eighths.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g4-math-04-equivalent-fractions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-04-equivalent-fractions-review-3",
+      "conceptId": "fraction-equivalence",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Equivalent Fractions.",
+      "answer": "fraction equivalence",
+      "formats": {
+        "text": "fraction equivalence"
+      }
+    },
+    {
+      "moduleId": "g4-math-04-equivalent-fractions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-04-equivalent-fractions-review-4",
+      "conceptId": "fraction-equivalence-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain fraction equivalence in one or two clear sentences.",
+      "answer": "Multiplying or dividing numerator and denominator by the same number names the same amount",
+      "formats": {
+        "text": "Multiplying or dividing numerator and denominator by the same number names the same amount."
+      }
+    },
+    {
+      "moduleId": "g4-math-04-equivalent-fractions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-math-04-equivalent-fractions-review-5",
+      "conceptId": "fraction-equivalence-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Use fraction strips to find three equivalents.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Use fraction strips to find three equivalents."
+      }
+    }
+  ]
+}

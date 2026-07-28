@@ -1,0 +1,120 @@
+{
+  "moduleId": "g5-english-02-pronouns-and-antecedents",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 5,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:fa51b0a0ea75831430c8e0162e810f53519975f76084f5e067f72d0351fe6057",
+    "g5-english-02-pronouns-and-antecedents-quiz.json": "sha256:68b4aba46dde29563ccc42aac3631075da9334cb1452db32fdfe6d62e426570c",
+    "images/concept-guide.webp": "sha256:1f77cc13345898ba9fc7d7a23897395c03d0593d4c5f92ac328abbf5646ebdc1",
+    "images/worked-example.webp": "sha256:21dabcc56925a8174d49469b4ba9b77e6b7ee47a856bb807d28e3fa599f0504c"
+  },
+  "quizId": "g5-english-02-pronouns-and-antecedents-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g5-english-02-pronouns-and-antecedents",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-02-pronouns-and-antecedents-review-1",
+      "conceptId": "pronoun-clarity",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is pronoun clarity?",
+      "answer": "A pronoun needs a clear antecedent and correct number and person",
+      "formats": {
+        "text": "A pronoun needs a clear antecedent and correct number and person.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g5-english-02-pronouns-and-antecedents",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-02-pronouns-and-antecedents-review-2",
+      "conceptId": "pronoun-clarity-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for pronoun clarity.",
+      "answer": "Each learner brought his or her notebook avoids an unclear reference",
+      "formats": {
+        "text": "Each learner brought his or her notebook avoids an unclear reference.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g5-english-02-pronouns-and-antecedents",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-02-pronouns-and-antecedents-review-3",
+      "conceptId": "pronoun-clarity",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Pronouns and Antecedents.",
+      "answer": "pronoun clarity",
+      "formats": {
+        "text": "pronoun clarity"
+      }
+    },
+    {
+      "moduleId": "g5-english-02-pronouns-and-antecedents",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-02-pronouns-and-antecedents-review-4",
+      "conceptId": "pronoun-clarity-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain pronoun clarity in one or two clear sentences.",
+      "answer": "A pronoun needs a clear antecedent and correct number and person",
+      "formats": {
+        "text": "A pronoun needs a clear antecedent and correct number and person."
+      }
+    },
+    {
+      "moduleId": "g5-english-02-pronouns-and-antecedents",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-02-pronouns-and-antecedents-review-5",
+      "conceptId": "pronoun-clarity-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Edit ambiguous pronouns in a short passage.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Edit ambiguous pronouns in a short passage."
+      }
+    }
+  ]
+}

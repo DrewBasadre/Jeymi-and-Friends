@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-science-02-chemical-reactions-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains chemical reaction?",
+    "options": [
+      "Reactants rearrange atoms into products while mass is conserved in a closed system",
+      "It is only the title of the lesson Chemical Reactions.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Reactants rearrange atoms into products while mass is conserved in a closed system",
+    "conceptId": "chemical-reaction"
+  },
+  {
+    "questionId": "g8-science-02-chemical-reactions-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Gas formation, color change, or temperature change may indicate reaction",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Gas formation, color change, or temperature change may indicate reaction",
+    "conceptId": "chemical-reaction-application"
+  },
+  {
+    "questionId": "g8-science-02-chemical-reactions-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "chemical reaction",
+    "conceptId": "chemical-reaction"
+  },
+  {
+    "questionId": "g8-science-02-chemical-reactions-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Balance a simple particle-level reaction model.",
+    "correctAnswer": "chemical reaction",
+    "conceptId": "chemical-reaction-application"
+  },
+  {
+    "questionId": "g8-science-02-chemical-reactions-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "chemical-reaction-reasoning"
+  }
+]

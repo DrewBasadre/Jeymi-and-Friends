@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-math-05-geometry-and-surface-area-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains spatial measurement?",
+    "options": [
+      "Nets, formulas, and angle relationships support two- and three-dimensional reasoning",
+      "It is only the title of the lesson Geometry and Surface Area.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Nets, formulas, and angle relationships support two- and three-dimensional reasoning",
+    "conceptId": "spatial-measurement"
+  },
+  {
+    "questionId": "g6-math-05-geometry-and-surface-area-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A cube net contains six congruent squares",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A cube net contains six congruent squares",
+    "conceptId": "spatial-measurement-application"
+  },
+  {
+    "questionId": "g6-math-05-geometry-and-surface-area-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "spatial measurement",
+    "conceptId": "spatial-measurement"
+  },
+  {
+    "questionId": "g6-math-05-geometry-and-surface-area-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Draw a prism net and calculate its surface area.",
+    "correctAnswer": "spatial measurement",
+    "conceptId": "spatial-measurement-application"
+  },
+  {
+    "questionId": "g6-math-05-geometry-and-surface-area-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "spatial-measurement-reasoning"
+  }
+]

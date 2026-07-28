@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-science-05-motion-in-one-dimension-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains kinematics?",
+    "options": [
+      "Displacement, velocity, acceleration, and graphs provide complementary descriptions of motion",
+      "It is only the title of the lesson Motion in One Dimension.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Displacement, velocity, acceleration, and graphs provide complementary descriptions of motion",
+    "conceptId": "kinematics"
+  },
+  {
+    "questionId": "g9-science-05-motion-in-one-dimension-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "The slope of a position-time graph represents velocity",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "The slope of a position-time graph represents velocity",
+    "conceptId": "kinematics-application"
+  },
+  {
+    "questionId": "g9-science-05-motion-in-one-dimension-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "kinematics",
+    "conceptId": "kinematics"
+  },
+  {
+    "questionId": "g9-science-05-motion-in-one-dimension-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Analyze matching motion graphs and stories.",
+    "correctAnswer": "kinematics",
+    "conceptId": "kinematics-application"
+  },
+  {
+    "questionId": "g9-science-05-motion-in-one-dimension-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "kinematics-reasoning"
+  }
+]

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g4-english-01-prefixes-suffixes-and-roots",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 4,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:0f2c0a60f8962d9c71354941e833ee422a7457aa884e67582f22f08b32f24f5c",
+    "g4-english-01-prefixes-suffixes-and-roots-quiz.json": "sha256:b5a4fded34b6eeec21b28c1a8a9e4b243644d57a622c7102455ea030aa8866af",
+    "images/concept-guide.webp": "sha256:cfe9528dc069a31a5aead9fb4001345402989c8cb6be9123e5606c27609f10a2",
+    "images/worked-example.webp": "sha256:c6f817991adbb4715994e2c4ca9991a4507544983a1d8427b86bf4dcc31a4bda"
+  },
+  "quizId": "g4-english-01-prefixes-suffixes-and-roots-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g4-english-01-prefixes-suffixes-and-roots",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-01-prefixes-suffixes-and-roots-review-1",
+      "conceptId": "word-parts",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is word parts?",
+      "answer": "Meaningful word parts help readers unlock unfamiliar vocabulary",
+      "formats": {
+        "text": "Meaningful word parts help readers unlock unfamiliar vocabulary.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g4-english-01-prefixes-suffixes-and-roots",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-01-prefixes-suffixes-and-roots-review-2",
+      "conceptId": "word-parts-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for word parts.",
+      "answer": "replay combines re, meaning again, with play",
+      "formats": {
+        "text": "replay combines re, meaning again, with play.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g4-english-01-prefixes-suffixes-and-roots",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-01-prefixes-suffixes-and-roots-review-3",
+      "conceptId": "word-parts",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Prefixes, Suffixes, and Roots.",
+      "answer": "word parts",
+      "formats": {
+        "text": "word parts"
+      }
+    },
+    {
+      "moduleId": "g4-english-01-prefixes-suffixes-and-roots",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-01-prefixes-suffixes-and-roots-review-4",
+      "conceptId": "word-parts-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain word parts in one or two clear sentences.",
+      "answer": "Meaningful word parts help readers unlock unfamiliar vocabulary",
+      "formats": {
+        "text": "Meaningful word parts help readers unlock unfamiliar vocabulary."
+      }
+    },
+    {
+      "moduleId": "g4-english-01-prefixes-suffixes-and-roots",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-01-prefixes-suffixes-and-roots-review-5",
+      "conceptId": "word-parts-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Build and define six words from known roots and affixes.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Build and define six words from known roots and affixes."
+      }
+    }
+  ]
+}

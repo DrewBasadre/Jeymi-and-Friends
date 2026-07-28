@@ -152,25 +152,31 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
   const [section, setSection] = useState('');
   const [pin, setPin] = useState('');
   const [saving, setSaving] = useState(false);
+  const [seedStatus, setSeedStatus] = useState('');
 
   async function save() {
     setSaving(true);
     try {
-      const student = await createStudent({
-        studentNumber,
-        firstName,
-        lastName,
-        middleInitial: '',
-        gradeLevel: Number(gradeLevel),
-        section,
-        birthday: '',
-        pin,
-      });
+      const student = await createStudent(
+        {
+          studentNumber,
+          firstName,
+          lastName,
+          middleInitial: '',
+          gradeLevel: Number(gradeLevel),
+          section,
+          birthday: '',
+          pin,
+        },
+        ({ completed, total, title }) =>
+          setSeedStatus(`Adding ${title} (${completed}/${total})`),
+      );
       navigation.replace('LearningAssessment', { studentId: student.id });
     } catch (error) {
       Alert.alert('Profile not saved', error instanceof Error ? error.message : 'Please check the profile details.');
     } finally {
       setSaving(false);
+      setSeedStatus('');
     }
   }
 
@@ -181,7 +187,7 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
       lastName.trim() &&
       Number.isInteger(parsedGrade) &&
       parsedGrade >= 1 &&
-      parsedGrade <= 12 &&
+      parsedGrade <= 10 &&
       section.trim() &&
       pin.length >= 4,
   );
@@ -201,7 +207,7 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
           value={gradeLevel}
           onChangeText={setGradeLevel}
           keyboardType="number-pad"
-          placeholder="1 to 12"
+          placeholder="1 to 10"
         />
         <Field label="Section" value={section} onChangeText={setSection} placeholder="Mabini" />
         <Field
@@ -212,6 +218,7 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
           secureTextEntry
           placeholder="At least 4 digits"
         />
+        {seedStatus ? <Text style={styles.helper}>{seedStatus}</Text> : null}
         <PrimaryButton label="Save and continue" loading={saving} disabled={!complete} onPress={save} />
       </Card>
     </Screen>
@@ -236,8 +243,9 @@ export function LearningAssessmentScreen({ navigation, route }: Props<'LearningA
             WAIS will use your answers to order helpful formats first. This is not an intelligence test, and you can change it later.
           </Text>
           <Text style={styles.body}>
-            Your lesson library starts empty. Ask your teacher to send your first
-            module from their Android device.
+            Your Grade {useSessionStore.getState().student?.gradeLevel ?? ''}
+            {' '}Science, Math, and English demo lessons are ready offline.
+            Teacher-sent modules will appear beside them.
           </Text>
           <PrimaryButton label="Open my learning hub" onPress={() => navigation.replace('StudentTabs')} />
         </Card>

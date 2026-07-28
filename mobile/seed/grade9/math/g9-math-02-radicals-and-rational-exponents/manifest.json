@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-math-02-radicals-and-rational-exponents",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:776643977c2eb31ad4e464bcd814fc80c608f37363d908d74c048eaff6795704",
+    "g9-math-02-radicals-and-rational-exponents-quiz.json": "sha256:ec7356a4be33bcf8586af0e04087fab71a0f5513e49bc3a01dcfdfa2dc642b6a",
+    "images/concept-guide.webp": "sha256:183305db52a0caf84e4920d670ab6328423bc480ac713a03cdbc95f3c752304b",
+    "images/worked-example.webp": "sha256:e73d7465db4a48f26b5a91686d75691f42df7e2f47788416cd3077cd5951a333"
+  },
+  "quizId": "g9-math-02-radicals-and-rational-exponents-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-math-02-radicals-and-rational-exponents",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-02-radicals-and-rational-exponents-review-1",
+      "conceptId": "radicals",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is radicals?",
+      "answer": "Roots and rational exponents are inverse forms governed by exponent properties",
+      "formats": {
+        "text": "Roots and rational exponents are inverse forms governed by exponent properties.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-math-02-radicals-and-rational-exponents",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-02-radicals-and-rational-exponents-review-2",
+      "conceptId": "radicals-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for radicals.",
+      "answer": "The square root of 49 is 7",
+      "formats": {
+        "text": "The square root of 49 is 7.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-math-02-radicals-and-rational-exponents",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-02-radicals-and-rational-exponents-review-3",
+      "conceptId": "radicals",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Radicals and Rational Exponents.",
+      "answer": "radicals",
+      "formats": {
+        "text": "radicals"
+      }
+    },
+    {
+      "moduleId": "g9-math-02-radicals-and-rational-exponents",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-02-radicals-and-rational-exponents-review-4",
+      "conceptId": "radicals-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain radicals in one or two clear sentences.",
+      "answer": "Roots and rational exponents are inverse forms governed by exponent properties",
+      "formats": {
+        "text": "Roots and rational exponents are inverse forms governed by exponent properties."
+      }
+    },
+    {
+      "moduleId": "g9-math-02-radicals-and-rational-exponents",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-02-radicals-and-rational-exponents-review-5",
+      "conceptId": "radicals-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Simplify and estimate radical expressions.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Simplify and estimate radical expressions."
+      }
+    }
+  ]
+}

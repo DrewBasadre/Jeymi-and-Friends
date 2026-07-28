@@ -1,0 +1,120 @@
+{
+  "moduleId": "g3-english-02-nouns-and-pronouns",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 3,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:79cc16cbdc366b1efaf45c784b0ce790d5200c30c4e08bb2ef4043b132a23a8b",
+    "g3-english-02-nouns-and-pronouns-quiz.json": "sha256:00774c8ff3fe951ecc8c741f2d28f12f8779a6809e85b429e73003ea29133a76",
+    "images/concept-guide.webp": "sha256:f33809fa158e2e76d1fcb9266f4f6527361b9772612aeb5e2230ccd709f81c8e",
+    "images/worked-example.webp": "sha256:9a6ca4bfd62034d5932a835acb614a4ded320c12060f232846108059539f63a5"
+  },
+  "quizId": "g3-english-02-nouns-and-pronouns-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g3-english-02-nouns-and-pronouns",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-02-nouns-and-pronouns-review-1",
+      "conceptId": "pronoun-reference",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is pronoun reference?",
+      "answer": "Pronouns replace nouns while keeping the reader clear about who or what is meant",
+      "formats": {
+        "text": "Pronouns replace nouns while keeping the reader clear about who or what is meant.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g3-english-02-nouns-and-pronouns",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-02-nouns-and-pronouns-review-2",
+      "conceptId": "pronoun-reference-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for pronoun reference.",
+      "answer": "Maria planted seeds. She watered them",
+      "formats": {
+        "text": "Maria planted seeds. She watered them.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g3-english-02-nouns-and-pronouns",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-02-nouns-and-pronouns-review-3",
+      "conceptId": "pronoun-reference",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Nouns and Pronouns.",
+      "answer": "pronoun reference",
+      "formats": {
+        "text": "pronoun reference"
+      }
+    },
+    {
+      "moduleId": "g3-english-02-nouns-and-pronouns",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-02-nouns-and-pronouns-review-4",
+      "conceptId": "pronoun-reference-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain pronoun reference in one or two clear sentences.",
+      "answer": "Pronouns replace nouns while keeping the reader clear about who or what is meant",
+      "formats": {
+        "text": "Pronouns replace nouns while keeping the reader clear about who or what is meant."
+      }
+    },
+    {
+      "moduleId": "g3-english-02-nouns-and-pronouns",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-english-02-nouns-and-pronouns-review-5",
+      "conceptId": "pronoun-reference-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Replace repeated nouns with clear pronouns.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Replace repeated nouns with clear pronouns."
+      }
+    }
+  ]
+}

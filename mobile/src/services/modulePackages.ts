@@ -12,6 +12,7 @@ import {
 import { sha256 } from '@noble/hashes/sha2.js';
 import { bytesToHex } from '@noble/hashes/utils.js';
 import {
+  bundledQuizSchema,
   buildMarkdownManifest,
   parseModuleManifest,
 } from '@/domain/manifest';
@@ -20,7 +21,9 @@ import {
   unzipModuleArchive,
 } from '@/domain/moduleArchive';
 import type {
+  BundledQuizQuestion,
   CurriculumModuleManifest,
+  ModuleSource,
   ReviewItem,
   Subject,
   TransferPackage,
@@ -49,6 +52,7 @@ export interface TeacherModuleDraft {
 export interface InstalledModulePackage {
   manifest: CurriculumModuleManifest;
   markdown: string;
+  quizQuestions: BundledQuizQuestion[];
   directoryUri: string;
   archiveSha256: string;
 }
@@ -183,6 +187,7 @@ export async function installModulePackage(args: {
   fileUri: string;
   expectedArchiveSha256?: string;
   expectedManifest?: CurriculumModuleManifest;
+  expectedSource?: Exclude<ModuleSource, 'supabase-ota'>;
 }): Promise<InstalledModulePackage> {
   const archiveFile = new File(args.fileUri);
   const archiveSha256 = await sha256File(archiveFile);
@@ -197,9 +202,10 @@ export async function installModulePackage(args: {
   const manifestBytes = entries[MANIFEST_PATH];
   if (!manifestBytes) throw new Error('The module package has no manifest.json.');
   const manifest = parseModuleManifest(JSON.parse(strFromU8(manifestBytes)));
-  if (manifest.source !== 'teacher-bluetooth') {
+  const expectedSource = args.expectedSource ?? 'teacher-bluetooth';
+  if (manifest.source !== expectedSource) {
     throw new Error(
-      'This Android build only installs modules transferred by a teacher.',
+      `Expected a ${expectedSource} module, received ${manifest.source}.`,
     );
   }
   if (
@@ -210,10 +216,16 @@ export async function installModulePackage(args: {
     throw new Error('The transferred manifest does not match the module archive.');
   }
 
+  const quizPath = `${manifest.quizId}.json`;
+  const quizBytes = entries[quizPath];
+  if (manifest.source === 'seed-bundle' && !quizBytes) {
+    throw new Error('A seed-bundle module must include its quiz JSON.');
+  }
   const requiredPaths = [
     manifest.content.markdown,
     ...(manifest.content.audio ? [manifest.content.audio] : []),
     ...manifest.assets,
+    ...(quizBytes ? [quizPath] : []),
   ];
   for (const path of requiredPaths) {
     assertSafePackagePath(path);
@@ -241,9 +253,13 @@ export async function installModulePackage(args: {
   }
   const markdownBytes = entries[manifest.content.markdown];
   if (!markdownBytes) throw new Error('The module Markdown file is missing.');
+  const quizQuestions = quizBytes
+    ? bundledQuizSchema.parse(JSON.parse(strFromU8(quizBytes)))
+    : [];
   return {
     manifest,
     markdown: strFromU8(markdownBytes),
+    quizQuestions,
     directoryUri: destination.uri,
     archiveSha256,
   };

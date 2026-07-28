@@ -1,0 +1,120 @@
+{
+  "moduleId": "g10-science-01-plate-tectonics-and-earth-history",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 10,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:d88e7bb95118daae7873730611d39d7cdb0b8fc7b4407b0638685cb284ca4de7",
+    "g10-science-01-plate-tectonics-and-earth-history-quiz.json": "sha256:8f3562e6c1fac2d1a6171c8e4ebd6def96b508ba3015aac1658db91ec33df549",
+    "images/concept-guide.webp": "sha256:7750c59e68c5b8ddedaeb5ce5c4dba77bfbba8b6cf3613ccde6025969084f035",
+    "images/worked-example.webp": "sha256:3248f0854b7507eadac0b78165f9904d164ff4474a1400108b3de18701aeca2d"
+  },
+  "quizId": "g10-science-01-plate-tectonics-and-earth-history-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g10-science-01-plate-tectonics-and-earth-history",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-01-plate-tectonics-and-earth-history-review-1",
+      "conceptId": "plate-tectonics",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is plate tectonics?",
+      "answer": "Plate motion, rock evidence, fossils, and geologic structures explain Earth changing history",
+      "formats": {
+        "text": "Plate motion, rock evidence, fossils, and geologic structures explain Earth changing history.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g10-science-01-plate-tectonics-and-earth-history",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-01-plate-tectonics-and-earth-history-review-2",
+      "conceptId": "plate-tectonics-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for plate tectonics.",
+      "answer": "Matching fossils across continents support past continental connections",
+      "formats": {
+        "text": "Matching fossils across continents support past continental connections.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g10-science-01-plate-tectonics-and-earth-history",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-01-plate-tectonics-and-earth-history-review-3",
+      "conceptId": "plate-tectonics",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Plate Tectonics and Earth History.",
+      "answer": "plate tectonics",
+      "formats": {
+        "text": "plate tectonics"
+      }
+    },
+    {
+      "moduleId": "g10-science-01-plate-tectonics-and-earth-history",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-01-plate-tectonics-and-earth-history-review-4",
+      "conceptId": "plate-tectonics-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain plate tectonics in one or two clear sentences.",
+      "answer": "Plate motion, rock evidence, fossils, and geologic structures explain Earth changing history",
+      "formats": {
+        "text": "Plate motion, rock evidence, fossils, and geologic structures explain Earth changing history."
+      }
+    },
+    {
+      "moduleId": "g10-science-01-plate-tectonics-and-earth-history",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-01-plate-tectonics-and-earth-history-review-5",
+      "conceptId": "plate-tectonics-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Synthesize three evidence types for plate movement.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Synthesize three evidence types for plate movement."
+      }
+    }
+  ]
+}

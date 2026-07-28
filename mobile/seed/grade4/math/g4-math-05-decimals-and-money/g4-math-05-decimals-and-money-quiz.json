@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-math-05-decimals-and-money-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains decimal place value?",
+    "options": [
+      "Tenths and hundredths connect fractions, decimals, and money",
+      "It is only the title of the lesson Decimals and Money.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Tenths and hundredths connect fractions, decimals, and money",
+    "conceptId": "decimal-place-value"
+  },
+  {
+    "questionId": "g4-math-05-decimals-and-money-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "0.75 is seventy-five hundredths or seventy-five centavos of one peso",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "0.75 is seventy-five hundredths or seventy-five centavos of one peso",
+    "conceptId": "decimal-place-value-application"
+  },
+  {
+    "questionId": "g4-math-05-decimals-and-money-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "decimal place value",
+    "conceptId": "decimal-place-value"
+  },
+  {
+    "questionId": "g4-math-05-decimals-and-money-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compare prices and compute a simple total.",
+    "correctAnswer": "decimal place value",
+    "conceptId": "decimal-place-value-application"
+  },
+  {
+    "questionId": "g4-math-05-decimals-and-money-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "decimal-place-value-reasoning"
+  }
+]

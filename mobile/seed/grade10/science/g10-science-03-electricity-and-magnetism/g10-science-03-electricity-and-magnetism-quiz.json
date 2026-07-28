@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-science-03-electricity-and-magnetism-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains electromagnetism?",
+    "options": [
+      "Electric current creates magnetic fields, and changing magnetic fields can induce current",
+      "It is only the title of the lesson Electricity and Magnetism.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Electric current creates magnetic fields, and changing magnetic fields can induce current",
+    "conceptId": "electromagnetism"
+  },
+  {
+    "questionId": "g10-science-03-electricity-and-magnetism-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A current-carrying coil can act as an electromagnet",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A current-carrying coil can act as an electromagnet",
+    "conceptId": "electromagnetism-application"
+  },
+  {
+    "questionId": "g10-science-03-electricity-and-magnetism-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "electromagnetism",
+    "conceptId": "electromagnetism"
+  },
+  {
+    "questionId": "g10-science-03-electricity-and-magnetism-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Investigate variables that change electromagnet strength.",
+    "correctAnswer": "electromagnetism",
+    "conceptId": "electromagnetism-application"
+  },
+  {
+    "questionId": "g10-science-03-electricity-and-magnetism-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "electromagnetism-reasoning"
+  }
+]

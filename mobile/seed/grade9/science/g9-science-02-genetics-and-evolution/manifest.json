@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-science-02-genetics-and-evolution",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:ef888e1d2b4bda07e8fea96ced0c6da26b2744f4aa54e6c7887bdc200fc96872",
+    "g9-science-02-genetics-and-evolution-quiz.json": "sha256:93c9dac7c70037d93f9feab87fec234ce8af849de547035ada685efffe242858",
+    "images/concept-guide.webp": "sha256:fad7afdf9a905d6a5ad7e9a07b5fce40798baebc501cdd8350c2160bf2808964",
+    "images/worked-example.webp": "sha256:ed67847642c5f6b87c246be373b142e83e7cf36c718341faa9f8e31414763107"
+  },
+  "quizId": "g9-science-02-genetics-and-evolution-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-science-02-genetics-and-evolution",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-02-genetics-and-evolution-review-1",
+      "conceptId": "genetic-variation",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is genetic variation?",
+      "answer": "Mutation, recombination, selection, and inheritance change populations across generations",
+      "formats": {
+        "text": "Mutation, recombination, selection, and inheritance change populations across generations.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-science-02-genetics-and-evolution",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-02-genetics-and-evolution-review-2",
+      "conceptId": "genetic-variation-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for genetic variation.",
+      "answer": "A heritable trait that improves survival may become more common",
+      "formats": {
+        "text": "A heritable trait that improves survival may become more common.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-science-02-genetics-and-evolution",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-02-genetics-and-evolution-review-3",
+      "conceptId": "genetic-variation",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Genetics and Evolution.",
+      "answer": "genetic variation",
+      "formats": {
+        "text": "genetic variation"
+      }
+    },
+    {
+      "moduleId": "g9-science-02-genetics-and-evolution",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-02-genetics-and-evolution-review-4",
+      "conceptId": "genetic-variation-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain genetic variation in one or two clear sentences.",
+      "answer": "Mutation, recombination, selection, and inheritance change populations across generations",
+      "formats": {
+        "text": "Mutation, recombination, selection, and inheritance change populations across generations."
+      }
+    },
+    {
+      "moduleId": "g9-science-02-genetics-and-evolution",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-02-genetics-and-evolution-review-5",
+      "conceptId": "genetic-variation-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Analyze trait frequencies in a changing environment.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Analyze trait frequencies in a changing environment."
+      }
+    }
+  ]
+}

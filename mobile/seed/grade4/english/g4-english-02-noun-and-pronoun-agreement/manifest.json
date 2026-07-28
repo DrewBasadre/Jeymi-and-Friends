@@ -1,0 +1,120 @@
+{
+  "moduleId": "g4-english-02-noun-and-pronoun-agreement",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 4,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:b99915a479ebef49e0b45b7f3283e04be5fddbac18fb7c975e6b3f2744913353",
+    "g4-english-02-noun-and-pronoun-agreement-quiz.json": "sha256:38fc21614883d70911a86ef7c4614be49ee0d723a9235634ca5337a6437084fb",
+    "images/concept-guide.webp": "sha256:23949214f90c23dfd9b2b3c4100e0dcdae11dd5465abd6c2be1afa5969787154",
+    "images/worked-example.webp": "sha256:5fff2afc7268f2c58a70aca9ef84b17985682d32b06a9d667d50117ed5d88aea"
+  },
+  "quizId": "g4-english-02-noun-and-pronoun-agreement-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g4-english-02-noun-and-pronoun-agreement",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-02-noun-and-pronoun-agreement-review-1",
+      "conceptId": "agreement",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is agreement?",
+      "answer": "Pronouns must clearly match the nouns they replace in number and meaning",
+      "formats": {
+        "text": "Pronouns must clearly match the nouns they replace in number and meaning.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g4-english-02-noun-and-pronoun-agreement",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-02-noun-and-pronoun-agreement-review-2",
+      "conceptId": "agreement-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for agreement.",
+      "answer": "The pupils packed their bags uses a plural pronoun",
+      "formats": {
+        "text": "The pupils packed their bags uses a plural pronoun.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g4-english-02-noun-and-pronoun-agreement",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-02-noun-and-pronoun-agreement-review-3",
+      "conceptId": "agreement",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Noun and Pronoun Agreement.",
+      "answer": "agreement",
+      "formats": {
+        "text": "agreement"
+      }
+    },
+    {
+      "moduleId": "g4-english-02-noun-and-pronoun-agreement",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-02-noun-and-pronoun-agreement-review-4",
+      "conceptId": "agreement-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain agreement in one or two clear sentences.",
+      "answer": "Pronouns must clearly match the nouns they replace in number and meaning",
+      "formats": {
+        "text": "Pronouns must clearly match the nouns they replace in number and meaning."
+      }
+    },
+    {
+      "moduleId": "g4-english-02-noun-and-pronoun-agreement",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-02-noun-and-pronoun-agreement-review-5",
+      "conceptId": "agreement-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Repair unclear pronouns in five sentences.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Repair unclear pronouns in five sentences."
+      }
+    }
+  ]
+}

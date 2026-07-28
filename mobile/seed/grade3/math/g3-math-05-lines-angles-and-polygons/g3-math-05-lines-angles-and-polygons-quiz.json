@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-math-05-lines-angles-and-polygons-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains geometry?",
+    "options": [
+      "Geometric figures can be classified by sides, vertices, lines, and angles",
+      "It is only the title of the lesson Lines, Angles, and Polygons.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Geometric figures can be classified by sides, vertices, lines, and angles",
+    "conceptId": "geometry"
+  },
+  {
+    "questionId": "g3-math-05-lines-angles-and-polygons-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A rectangle has four right angles and two pairs of parallel sides",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A rectangle has four right angles and two pairs of parallel sides",
+    "conceptId": "geometry-application"
+  },
+  {
+    "questionId": "g3-math-05-lines-angles-and-polygons-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "geometry",
+    "conceptId": "geometry"
+  },
+  {
+    "questionId": "g3-math-05-lines-angles-and-polygons-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Sort polygons and explain the rule used.",
+    "correctAnswer": "geometry",
+    "conceptId": "geometry-application"
+  },
+  {
+    "questionId": "g3-math-05-lines-angles-and-polygons-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "geometry-reasoning"
+  }
+]

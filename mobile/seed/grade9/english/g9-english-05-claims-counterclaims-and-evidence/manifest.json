@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-english-05-claims-counterclaims-and-evidence",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:40b8dec8327b128c98599e80128112a94bb4e0755ca271387255efe8c8181475",
+    "g9-english-05-claims-counterclaims-and-evidence-quiz.json": "sha256:186c6a5096293a4d4814caad10e39afa65b1ae508c6d2e3e7d9aa45e855a88e1",
+    "images/concept-guide.webp": "sha256:1c69052635c6d585a25ebd21731cf2634d9aff0dd0e26f13748423da7c84120b",
+    "images/worked-example.webp": "sha256:e9df91769b88773226d268400309982063ab303bcb6ca944e8a49f86be7e0bac"
+  },
+  "quizId": "g9-english-05-claims-counterclaims-and-evidence-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-english-05-claims-counterclaims-and-evidence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-05-claims-counterclaims-and-evidence-review-1",
+      "conceptId": "argumentation",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is argumentation?",
+      "answer": "Strong arguments address counterclaims and weigh quality, relevance, and sufficiency of evidence",
+      "formats": {
+        "text": "Strong arguments address counterclaims and weigh quality, relevance, and sufficiency of evidence.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-english-05-claims-counterclaims-and-evidence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-05-claims-counterclaims-and-evidence-review-2",
+      "conceptId": "argumentation-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for argumentation.",
+      "answer": "Acknowledging a limitation can strengthen credibility",
+      "formats": {
+        "text": "Acknowledging a limitation can strengthen credibility.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-english-05-claims-counterclaims-and-evidence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-05-claims-counterclaims-and-evidence-review-3",
+      "conceptId": "argumentation",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Claims, Counterclaims, and Evidence.",
+      "answer": "argumentation",
+      "formats": {
+        "text": "argumentation"
+      }
+    },
+    {
+      "moduleId": "g9-english-05-claims-counterclaims-and-evidence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-05-claims-counterclaims-and-evidence-review-4",
+      "conceptId": "argumentation-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain argumentation in one or two clear sentences.",
+      "answer": "Strong arguments address counterclaims and weigh quality, relevance, and sufficiency of evidence",
+      "formats": {
+        "text": "Strong arguments address counterclaims and weigh quality, relevance, and sufficiency of evidence."
+      }
+    },
+    {
+      "moduleId": "g9-english-05-claims-counterclaims-and-evidence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-05-claims-counterclaims-and-evidence-review-5",
+      "conceptId": "argumentation-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Build an argument map with a counterclaim.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Build an argument map with a counterclaim."
+      }
+    }
+  ]
+}

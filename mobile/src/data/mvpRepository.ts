@@ -2,13 +2,16 @@ import * as Crypto from 'expo-crypto';
 import {
   appendFormatHistory,
   assessmentToFormatProfile,
-  buildParentDigestSummary,
   buildPomodoroSession,
   createCustomReviewSet,
   effectiveFormat,
   interleaveReviewItems,
   updateSm2State,
 } from '@/domain/review';
+import {
+  buildDigestInsight,
+  compareWeeklyPerformance,
+} from '@/domain/digest';
 import { moduleManifestSchema } from '@/domain/manifest';
 import type {
   AdaptiveFormatProfile,
@@ -23,7 +26,6 @@ import type {
   ReviewImportance,
   ReviewItem,
   StudyTechnique,
-  Subject,
 } from '@/domain/types';
 import { getDatabase } from './database';
 
@@ -467,69 +469,162 @@ export async function generateParentDigest(
   const now = new Date();
   const weekStartDate = startOfWeek(now);
   const previousStart = new Date(weekStartDate.getTime() - 7 * 86_400_000);
+  const nextWeekStart = new Date(weekStartDate.getTime() + 7 * 86_400_000);
   const attempts = await database.getAllAsync<{
-    module_id: string;
-    duration_seconds: number;
+    id: string;
+    score: number;
+    total_items: number;
     submitted_at: number;
   }>(
-    `SELECT module_id, duration_seconds, submitted_at
+    `SELECT id, score, total_items, submitted_at
      FROM quiz_attempts
-     WHERE student_id = ? AND submitted_at >= ?
+     WHERE student_id = ? AND submitted_at >= ? AND submitted_at < ?
      ORDER BY submitted_at`,
     studentId,
     previousStart.getTime(),
+    nextWeekStart.getTime(),
   );
-  const moduleIds = [
-    ...new Set(
-      attempts
-        .filter((item) => item.submitted_at >= weekStartDate.getTime())
-        .map((item) => item.module_id),
-    ),
-  ];
-  const names: string[] = [];
-  for (const moduleId of moduleIds) {
-    const module = await database.getFirstAsync<{ title: string; subject: Subject }>(
-      'SELECT title, subject FROM modules WHERE id = ?',
-      moduleId,
+
+  const currentAttempts = attempts.filter(
+    (item) => item.submitted_at >= weekStartDate.getTime(),
+  );
+  const previousAttempts = attempts.filter(
+    (item) => item.submitted_at < weekStartDate.getTime(),
+  );
+  const currentAverage = averageAttemptPercentage(currentAttempts);
+  const previousAverage =
+    previousAttempts.length === 0
+      ? null
+      : averageAttemptPercentage(previousAttempts);
+
+  const [completedRow, reviewRow, flashcardRow, missedRows, activityRows] =
+    await Promise.all([
+      database.getFirstAsync<{ count: number }>(
+        `SELECT COUNT(*) AS count
+         FROM progress
+         WHERE student_id = ? AND status = 'COMPLETED'
+           AND updated_at >= ? AND updated_at < ?`,
+        studentId,
+        weekStartDate.getTime(),
+        nextWeekStart.getTime(),
+      ),
+      database.getFirstAsync<{ count: number }>(
+        `SELECT COUNT(*) AS count
+         FROM review_events
+         WHERE student_id = ? AND reviewed_at >= ? AND reviewed_at < ?`,
+        studentId,
+        weekStartDate.getTime(),
+        nextWeekStart.getTime(),
+      ),
+      database.getFirstAsync<{ count: number }>(
+        `SELECT COUNT(*) AS count
+         FROM flashcard_reviews
+         WHERE student_id = ? AND last_reviewed_at >= ? AND last_reviewed_at < ?`,
+        studentId,
+        weekStartDate.getTime(),
+        nextWeekStart.getTime(),
+      ),
+      database.getAllAsync<{
+        concept_id: string;
+        miss_count: number;
+      }>(
+        `SELECT COALESCE(NULLIF(q.topic_tag, ''), NULLIF(qa.weak_topic, ''), 'general-review') AS concept_id,
+                SUM(CASE WHEN qr.is_correct = 0 THEN 1 ELSE 0 END) AS miss_count,
+                COUNT(*) AS attempts
+         FROM question_responses qr
+         JOIN quiz_attempts qa ON qa.id = qr.attempt_id
+         LEFT JOIN quiz_questions q ON q.id = qr.question_id
+         WHERE qa.student_id = ? AND qa.submitted_at >= ? AND qa.submitted_at < ?
+         GROUP BY concept_id
+         HAVING miss_count > 0
+         ORDER BY miss_count DESC, concept_id
+         LIMIT 3`,
+        studentId,
+        weekStartDate.getTime(),
+        nextWeekStart.getTime(),
+      ),
+      database.getAllAsync<{ occurred_at: number }>(
+        `SELECT submitted_at AS occurred_at
+           FROM quiz_attempts
+          WHERE student_id = ? AND submitted_at >= ? AND submitted_at < ?
+         UNION ALL
+         SELECT reviewed_at AS occurred_at
+           FROM review_events
+          WHERE student_id = ? AND reviewed_at >= ? AND reviewed_at < ?
+         UNION ALL
+         SELECT last_reviewed_at AS occurred_at
+           FROM flashcard_reviews
+          WHERE student_id = ? AND last_reviewed_at >= ? AND last_reviewed_at < ?
+         UNION ALL
+         SELECT updated_at AS occurred_at
+           FROM progress
+          WHERE student_id = ? AND updated_at >= ? AND updated_at < ?
+            AND status != 'NOT_STARTED'`,
+        studentId,
+        weekStartDate.getTime(),
+        nextWeekStart.getTime(),
+        studentId,
+        weekStartDate.getTime(),
+        nextWeekStart.getTime(),
+        studentId,
+        weekStartDate.getTime(),
+        nextWeekStart.getTime(),
+        studentId,
+        weekStartDate.getTime(),
+        nextWeekStart.getTime(),
+      ),
+    ]);
+
+  const engagementDates = new Set(
+    activityRows.map((row) => dateOnly(new Date(row.occurred_at))),
+  );
+  const engagementDays = sevenDaySeries(weekStartDate).map((date) => ({
+    date,
+    active: engagementDates.has(date),
+  }));
+  const scoreTrend = sevenDaySeries(weekStartDate).map((date) => {
+    const daily = currentAttempts.filter(
+      (attempt) => dateOnly(new Date(attempt.submitted_at)) === date,
     );
-    if (module) names.push(module.title);
-  }
-  const currentSeconds = attempts
-    .filter((item) => item.submitted_at >= weekStartDate.getTime())
-    .reduce((sum, item) => sum + item.duration_seconds, 0);
-  const previousSeconds = attempts
-    .filter((item) => item.submitted_at < weekStartDate.getTime())
-    .reduce((sum, item) => sum + item.duration_seconds, 0);
-  const timeTrend: ParentDigest['timeTrend'] =
-    previousSeconds === 0
-      ? 'not-enough-data'
-      : currentSeconds > previousSeconds * 1.1
-        ? 'up'
-        : currentSeconds < previousSeconds * 0.9
-          ? 'down'
-          : 'steady';
-  const format = await getEffectiveLearningFormat(studentId);
-  const latestModule = moduleIds[0]
-    ? await database.getFirstAsync<{ subject: Subject }>(
-        'SELECT subject FROM modules WHERE id = ?',
-        moduleIds[0],
-      )
-    : null;
-  const homeSuggestion = suggestionFor(format, latestModule?.subject ?? 'ADDED_MATERIALS');
-  const base = {
+    return {
+      date,
+      averageScorePercentage: averageAttemptPercentage(daily),
+    };
+  });
+  const summary: ParentDigest['summary'] = {
+    modulesCompleted: completedRow?.count ?? 0,
+    quizzesTaken: currentAttempts.length,
+    averageScorePercentage: currentAverage,
+    trend: compareWeeklyPerformance(currentAverage, previousAverage),
+    flashcardsReviewed: (reviewRow?.count ?? 0) + (flashcardRow?.count ?? 0),
+    engagementDaysActive: engagementDays.filter((day) => day.active).length,
+    topStrugglingConcepts: missedRows.map((row) => ({
+      conceptId: row.concept_id,
+      missCount: row.miss_count,
+    })),
+  };
+  const previousActivityDates = new Set(
+    attempts
+      .filter((attempt) => attempt.submitted_at < weekStartDate.getTime())
+      .map((attempt) => dateOnly(new Date(attempt.submitted_at))),
+  );
+  const previousSummary =
+    previousAttempts.length === 0
+      ? null
+      : {
+          averageScorePercentage: previousAverage ?? 0,
+          engagementDaysActive: previousActivityDates.size,
+        };
+  const generatedAt = now.toISOString();
+  const digest: ParentDigest = {
     digestId: `digest_${Crypto.randomUUID()}`,
     studentId,
-    weekStart: dateOnly(weekStartDate),
-    weekEnd: dateOnly(new Date(weekStartDate.getTime() + 6 * 86_400_000)),
-    modulesCompleted: names,
-    timeTrend,
-    currentFormatPreference: format,
-    homeSuggestion,
-    generatedAt: Date.now(),
-  };
-  const digest: ParentDigest = {
-    ...base,
-    summary: buildParentDigestSummary(base),
+    weekOf: dateOnly(weekStartDate),
+    summary,
+    insightNote: buildDigestInsight(summary, previousSummary),
+    scoreTrend,
+    engagementDays,
+    generatedAt,
   };
   await database.runAsync(
     `INSERT INTO parent_digests
@@ -542,10 +637,10 @@ export async function generateParentDigest(
        generated_at = excluded.generated_at`,
     digest.digestId,
     digest.studentId,
-    digest.weekStart,
-    digest.weekEnd,
+    digest.weekOf,
+    dateOnly(new Date(weekStartDate.getTime() + 6 * 86_400_000)),
     JSON.stringify(digest),
-    digest.generatedAt,
+    Date.parse(digest.generatedAt),
   );
   return digest;
 }
@@ -646,6 +741,12 @@ async function initializeReviewStates(studentId: string): Promise<void> {
   );
 }
 
+export async function initializeStudentReviewData(
+  studentId: string,
+): Promise<void> {
+  await initializeReviewStates(studentId);
+}
+
 async function upsertReviewItem(
   database: Awaited<ReturnType<typeof getDatabase>>,
   item: ReviewItem,
@@ -711,22 +812,6 @@ function mapDueReviewItem(row: ReviewItemRow, studentId: string): DueReviewItem 
   };
 }
 
-function suggestionFor(format: LearningFormat, subject: Subject): string {
-  const subjectAction = {
-    MATH: 'Practice three short examples using objects found at home.',
-    SCIENCE: 'Observe one household object and explain which properties make it useful.',
-    ENGLISH: 'Read a short paragraph together and name its main idea and two details.',
-    ADDED_MATERIALS: 'Ask the learner to teach back one idea from the latest module.',
-  }[subject];
-  const formatAction = {
-    visual: 'Use a quick sketch or color-coded model.',
-    audio: 'Let the learner explain each step aloud.',
-    text: 'Write a short checklist before starting.',
-    kinesthetic: 'Use familiar objects and let the learner demonstrate.',
-  }[format];
-  return `${formatAction} ${subjectAction}`;
-}
-
 function startOfWeek(value: Date): Date {
   const result = new Date(value);
   const day = result.getDay();
@@ -734,6 +819,32 @@ function startOfWeek(value: Date): Date {
   result.setDate(result.getDate() - distance);
   result.setHours(0, 0, 0, 0);
   return result;
+}
+
+function averageAttemptPercentage(
+  attempts: Array<{ score: number; total_items: number }>,
+): number {
+  if (attempts.length === 0) return 0;
+  return (
+    Math.round(
+      (attempts.reduce(
+        (sum, attempt) =>
+          sum +
+          (attempt.total_items > 0
+            ? (attempt.score / attempt.total_items) * 100
+            : 0),
+        0,
+      ) /
+        attempts.length) *
+        10,
+    ) / 10
+  );
+}
+
+function sevenDaySeries(weekStart: Date): string[] {
+  return Array.from({ length: 7 }, (_, index) =>
+    dateOnly(new Date(weekStart.getTime() + index * 86_400_000)),
+  );
 }
 
 function today(): string {

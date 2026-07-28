@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-math-06-statistics-and-correlation",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:4165fb910f10fdd9da565ea306ca4a28a8b4856046019836ffbe00f67e7bdef4",
+    "g9-math-06-statistics-and-correlation-quiz.json": "sha256:f31575a2e9b46a3daa75f8f9763261205d2e11f75f4bc20b88916171203783fd",
+    "images/concept-guide.webp": "sha256:0ad59d30d20e2d237bf90d0b73419495f141a48c9552828fd81a267515fe42c2",
+    "images/worked-example.webp": "sha256:90c88680cb3c82a14c6f93c280f1b13920447d95cb5c71195075c6a9df629f86"
+  },
+  "quizId": "g9-math-06-statistics-and-correlation-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-math-06-statistics-and-correlation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-06-statistics-and-correlation-review-1",
+      "conceptId": "correlation",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is correlation?",
+      "answer": "Scatterplots, trend lines, and residuals describe association without proving causation",
+      "formats": {
+        "text": "Scatterplots, trend lines, and residuals describe association without proving causation.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-math-06-statistics-and-correlation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-06-statistics-and-correlation-review-2",
+      "conceptId": "correlation-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for correlation.",
+      "answer": "A positive correlation means variables tend to rise together",
+      "formats": {
+        "text": "A positive correlation means variables tend to rise together.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-math-06-statistics-and-correlation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-06-statistics-and-correlation-review-3",
+      "conceptId": "correlation",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Statistics and Correlation.",
+      "answer": "correlation",
+      "formats": {
+        "text": "correlation"
+      }
+    },
+    {
+      "moduleId": "g9-math-06-statistics-and-correlation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-06-statistics-and-correlation-review-4",
+      "conceptId": "correlation-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain correlation in one or two clear sentences.",
+      "answer": "Scatterplots, trend lines, and residuals describe association without proving causation",
+      "formats": {
+        "text": "Scatterplots, trend lines, and residuals describe association without proving causation."
+      }
+    },
+    {
+      "moduleId": "g9-math-06-statistics-and-correlation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-06-statistics-and-correlation-review-5",
+      "conceptId": "correlation-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Interpret a scatterplot and state its limitations.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Interpret a scatterplot and state its limitations."
+      }
+    }
+  ]
+}

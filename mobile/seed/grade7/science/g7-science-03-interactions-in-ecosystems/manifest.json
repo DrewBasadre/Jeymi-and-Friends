@@ -1,0 +1,120 @@
+{
+  "moduleId": "g7-science-03-interactions-in-ecosystems",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 7,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:329b5c08c230d209e5fdf30ee86334360dc367b31b5078797da11a0fbd8fff86",
+    "g7-science-03-interactions-in-ecosystems-quiz.json": "sha256:b7e05a71d5ee0d0841fbd74e0fd29996254fbe6ca8a976ada0b22fd2f75658fd",
+    "images/concept-guide.webp": "sha256:f1616d249038353fa8ffa1e5c1600f9f71fc264d526d7bdc4e12f12f790be528",
+    "images/worked-example.webp": "sha256:63acfe0b60a918fc3c9c263256eba972ab54e0ad542746f1202dd752b59e3370"
+  },
+  "quizId": "g7-science-03-interactions-in-ecosystems-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g7-science-03-interactions-in-ecosystems",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-03-interactions-in-ecosystems-review-1",
+      "conceptId": "ecological-balance",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is ecological balance?",
+      "answer": "Energy pyramids, food webs, limiting factors, and biodiversity shape ecosystem stability",
+      "formats": {
+        "text": "Energy pyramids, food webs, limiting factors, and biodiversity shape ecosystem stability.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g7-science-03-interactions-in-ecosystems",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-03-interactions-in-ecosystems-review-2",
+      "conceptId": "ecological-balance-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for ecological balance.",
+      "answer": "Removing a predator can increase prey and reduce plant abundance",
+      "formats": {
+        "text": "Removing a predator can increase prey and reduce plant abundance.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g7-science-03-interactions-in-ecosystems",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-03-interactions-in-ecosystems-review-3",
+      "conceptId": "ecological-balance",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Interactions in Ecosystems.",
+      "answer": "ecological balance",
+      "formats": {
+        "text": "ecological balance"
+      }
+    },
+    {
+      "moduleId": "g7-science-03-interactions-in-ecosystems",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-03-interactions-in-ecosystems-review-4",
+      "conceptId": "ecological-balance-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain ecological balance in one or two clear sentences.",
+      "answer": "Energy pyramids, food webs, limiting factors, and biodiversity shape ecosystem stability",
+      "formats": {
+        "text": "Energy pyramids, food webs, limiting factors, and biodiversity shape ecosystem stability."
+      }
+    },
+    {
+      "moduleId": "g7-science-03-interactions-in-ecosystems",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-03-interactions-in-ecosystems-review-5",
+      "conceptId": "ecological-balance-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Predict two effects of a food-web disturbance.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Predict two effects of a food-web disturbance."
+      }
+    }
+  ]
+}

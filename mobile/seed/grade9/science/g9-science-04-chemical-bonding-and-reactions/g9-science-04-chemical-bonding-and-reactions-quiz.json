@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-science-04-chemical-bonding-and-reactions-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains chemical bonding?",
+    "options": [
+      "Electron interactions form bonds, and reaction equations represent conservation and energy change",
+      "It is only the title of the lesson Chemical Bonding and Reactions.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Electron interactions form bonds, and reaction equations represent conservation and energy change",
+    "conceptId": "chemical-bonding"
+  },
+  {
+    "questionId": "g9-science-04-chemical-bonding-and-reactions-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Ionic bonding transfers electrons between atoms",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Ionic bonding transfers electrons between atoms",
+    "conceptId": "chemical-bonding-application"
+  },
+  {
+    "questionId": "g9-science-04-chemical-bonding-and-reactions-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "chemical bonding",
+    "conceptId": "chemical-bonding"
+  },
+  {
+    "questionId": "g9-science-04-chemical-bonding-and-reactions-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Classify bonding models and balance equations.",
+    "correctAnswer": "chemical bonding",
+    "conceptId": "chemical-bonding-application"
+  },
+  {
+    "questionId": "g9-science-04-chemical-bonding-and-reactions-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "chemical-bonding-reasoning"
+  }
+]

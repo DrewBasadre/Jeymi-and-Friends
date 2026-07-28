@@ -1,0 +1,120 @@
+{
+  "moduleId": "g1-science-03-living-and-nonliving-things",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 1,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:fb65ef3880a734c6f05bc56663cf38678ec9a48e0cd3a63ff78a75407767532e",
+    "g1-science-03-living-and-nonliving-things-quiz.json": "sha256:5039edd5988ca10ef8e4cac97fd9e5ed2fe066065339e719bfeca5adfc1f561c",
+    "images/concept-guide.webp": "sha256:bb6c0aa1199ab9f7fcf20b5de84ad1f419924a2dd65240bcc0f4c189783bfe39",
+    "images/worked-example.webp": "sha256:9fa7c3a8d10f42784f0fceef04bf58cf385d3c9b6971768ba60a4aa4c31d2dee"
+  },
+  "quizId": "g1-science-03-living-and-nonliving-things-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g1-science-03-living-and-nonliving-things",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-science-03-living-and-nonliving-things-review-1",
+      "conceptId": "living-things",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is living things?",
+      "answer": "Living things grow and need air, water, and food; nonliving things do not grow",
+      "formats": {
+        "text": "Living things grow and need air, water, and food; nonliving things do not grow.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g1-science-03-living-and-nonliving-things",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-science-03-living-and-nonliving-things-review-2",
+      "conceptId": "living-things-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for living things.",
+      "answer": "A seedling grows taller, but a stone stays the same size",
+      "formats": {
+        "text": "A seedling grows taller, but a stone stays the same size.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g1-science-03-living-and-nonliving-things",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-science-03-living-and-nonliving-things-review-3",
+      "conceptId": "living-things",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Living and Nonliving Things.",
+      "answer": "living things",
+      "formats": {
+        "text": "living things"
+      }
+    },
+    {
+      "moduleId": "g1-science-03-living-and-nonliving-things",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-science-03-living-and-nonliving-things-review-4",
+      "conceptId": "living-things-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain living things in one or two clear sentences.",
+      "answer": "Living things grow and need air, water, and food; nonliving things do not grow",
+      "formats": {
+        "text": "Living things grow and need air, water, and food; nonliving things do not grow."
+      }
+    },
+    {
+      "moduleId": "g1-science-03-living-and-nonliving-things",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-science-03-living-and-nonliving-things-review-5",
+      "conceptId": "living-things-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Sort six nearby objects into living and nonliving groups.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Sort six nearby objects into living and nonliving groups."
+      }
+    }
+  ]
+}

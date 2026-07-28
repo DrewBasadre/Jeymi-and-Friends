@@ -1,0 +1,120 @@
+{
+  "moduleId": "g8-english-03-parallelism-and-sentence-control",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 8,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:8d264e4546d6dc15ee2e13418a05f3495f3fbacc7bb146ddefe436d5c227ad5a",
+    "g8-english-03-parallelism-and-sentence-control-quiz.json": "sha256:06de234be65e7d77991ddaa40b5d35e0970d3bdae7aa1956032169d36ba760fe",
+    "images/concept-guide.webp": "sha256:1f8292da61258d8aa2d96d29bff261ad0ee64d4ef53e5a11e8e1099f18743e2e",
+    "images/worked-example.webp": "sha256:395aa97ceabec10d333c8ba6e16e7471659810d95551471e1aef51e477504005"
+  },
+  "quizId": "g8-english-03-parallelism-and-sentence-control-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g8-english-03-parallelism-and-sentence-control",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-03-parallelism-and-sentence-control-review-1",
+      "conceptId": "parallel-structure",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is parallel structure?",
+      "answer": "Parallel grammatical forms make related ideas clear and balanced",
+      "formats": {
+        "text": "Parallel grammatical forms make related ideas clear and balanced.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g8-english-03-parallelism-and-sentence-control",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-03-parallelism-and-sentence-control-review-2",
+      "conceptId": "parallel-structure-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for parallel structure.",
+      "answer": "She likes reading, writing, and drawing uses parallel gerunds",
+      "formats": {
+        "text": "She likes reading, writing, and drawing uses parallel gerunds.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g8-english-03-parallelism-and-sentence-control",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-03-parallelism-and-sentence-control-review-3",
+      "conceptId": "parallel-structure",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Parallelism and Sentence Control.",
+      "answer": "parallel structure",
+      "formats": {
+        "text": "parallel structure"
+      }
+    },
+    {
+      "moduleId": "g8-english-03-parallelism-and-sentence-control",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-03-parallelism-and-sentence-control-review-4",
+      "conceptId": "parallel-structure-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain parallel structure in one or two clear sentences.",
+      "answer": "Parallel grammatical forms make related ideas clear and balanced",
+      "formats": {
+        "text": "Parallel grammatical forms make related ideas clear and balanced."
+      }
+    },
+    {
+      "moduleId": "g8-english-03-parallelism-and-sentence-control",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-03-parallelism-and-sentence-control-review-5",
+      "conceptId": "parallel-structure-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Repair faulty parallelism in a paragraph.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Repair faulty parallelism in a paragraph."
+      }
+    }
+  ]
+}

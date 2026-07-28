@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-math-05-coordinate-geometry",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:9a5490ce3bc008eb35d839941a95cb118dc4e4a411a508ea03ca7322b1e87264",
+    "g9-math-05-coordinate-geometry-quiz.json": "sha256:326a389cdedcab43feb8a449109db38df60526e116ad5ddc3fa72cbe54437300",
+    "images/concept-guide.webp": "sha256:79256ef488313ea546378792ea69ccd00f804561769f2e14e05a78c15c8beb4e",
+    "images/worked-example.webp": "sha256:1ddbe0888700c1bbe9e3210900e92e471efee6349091ae4c405c8c31530b4633"
+  },
+  "quizId": "g9-math-05-coordinate-geometry-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-math-05-coordinate-geometry",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-05-coordinate-geometry-review-1",
+      "conceptId": "coordinate-proof",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is coordinate proof?",
+      "answer": "Slope, distance, midpoint, and equations support geometric reasoning on a plane",
+      "formats": {
+        "text": "Slope, distance, midpoint, and equations support geometric reasoning on a plane.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-math-05-coordinate-geometry",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-05-coordinate-geometry-review-2",
+      "conceptId": "coordinate-proof-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for coordinate proof.",
+      "answer": "Equal slopes can establish parallel sides",
+      "formats": {
+        "text": "Equal slopes can establish parallel sides.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-math-05-coordinate-geometry",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-05-coordinate-geometry-review-3",
+      "conceptId": "coordinate-proof",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Coordinate Geometry.",
+      "answer": "coordinate proof",
+      "formats": {
+        "text": "coordinate proof"
+      }
+    },
+    {
+      "moduleId": "g9-math-05-coordinate-geometry",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-05-coordinate-geometry-review-4",
+      "conceptId": "coordinate-proof-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain coordinate proof in one or two clear sentences.",
+      "answer": "Slope, distance, midpoint, and equations support geometric reasoning on a plane",
+      "formats": {
+        "text": "Slope, distance, midpoint, and equations support geometric reasoning on a plane."
+      }
+    },
+    {
+      "moduleId": "g9-math-05-coordinate-geometry",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-05-coordinate-geometry-review-5",
+      "conceptId": "coordinate-proof-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Use coordinates to classify a quadrilateral.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Use coordinates to classify a quadrilateral."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-science-01-atomic-structure-and-the-periodic-table-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains atomic structure?",
+    "options": [
+      "Protons, neutrons, and electrons determine atomic identity, mass, charge, and periodic patterns",
+      "It is only the title of the lesson Atomic Structure and the Periodic Table.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Protons, neutrons, and electrons determine atomic identity, mass, charge, and periodic patterns",
+    "conceptId": "atomic-structure"
+  },
+  {
+    "questionId": "g8-science-01-atomic-structure-and-the-periodic-table-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Atomic number equals proton count",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Atomic number equals proton count",
+    "conceptId": "atomic-structure-application"
+  },
+  {
+    "questionId": "g8-science-01-atomic-structure-and-the-periodic-table-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "atomic structure",
+    "conceptId": "atomic-structure"
+  },
+  {
+    "questionId": "g8-science-01-atomic-structure-and-the-periodic-table-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Build particle models for three elements.",
+    "correctAnswer": "atomic structure",
+    "conceptId": "atomic-structure-application"
+  },
+  {
+    "questionId": "g8-science-01-atomic-structure-and-the-periodic-table-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "atomic-structure-reasoning"
+  }
+]

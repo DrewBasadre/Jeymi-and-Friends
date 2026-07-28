@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-science-03-ecosystem-dynamics",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:ff4da9e60990da92c4c3d20d6afae6391b7d3a5bab863de6f4fa578404d33917",
+    "g9-science-03-ecosystem-dynamics-quiz.json": "sha256:e9abf84324dec445fbe5c9f39d2bf820ac982573b84959038528d1e698c550eb",
+    "images/concept-guide.webp": "sha256:d917788d387828a855cc798e4a0bd7be76f305eb542498e718721e543353f3ff",
+    "images/worked-example.webp": "sha256:9f311fb0a35728780b7a354247b4475ac6aef9fcd81d49181949492192208cca"
+  },
+  "quizId": "g9-science-03-ecosystem-dynamics-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-science-03-ecosystem-dynamics",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-03-ecosystem-dynamics-review-1",
+      "conceptId": "population-dynamics",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is population dynamics?",
+      "answer": "Carrying capacity, feedback, disturbance, and succession affect populations over time",
+      "formats": {
+        "text": "Carrying capacity, feedback, disturbance, and succession affect populations over time.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-science-03-ecosystem-dynamics",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-03-ecosystem-dynamics-review-2",
+      "conceptId": "population-dynamics-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for population dynamics.",
+      "answer": "A drought can reduce resources and lower carrying capacity",
+      "formats": {
+        "text": "A drought can reduce resources and lower carrying capacity.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-science-03-ecosystem-dynamics",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-03-ecosystem-dynamics-review-3",
+      "conceptId": "population-dynamics",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Ecosystem Dynamics.",
+      "answer": "population dynamics",
+      "formats": {
+        "text": "population dynamics"
+      }
+    },
+    {
+      "moduleId": "g9-science-03-ecosystem-dynamics",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-03-ecosystem-dynamics-review-4",
+      "conceptId": "population-dynamics-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain population dynamics in one or two clear sentences.",
+      "answer": "Carrying capacity, feedback, disturbance, and succession affect populations over time",
+      "formats": {
+        "text": "Carrying capacity, feedback, disturbance, and succession affect populations over time."
+      }
+    },
+    {
+      "moduleId": "g9-science-03-ecosystem-dynamics",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-science-03-ecosystem-dynamics-review-5",
+      "conceptId": "population-dynamics-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Interpret a population graph after disturbance.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Interpret a population graph after disturbance."
+      }
+    }
+  ]
+}

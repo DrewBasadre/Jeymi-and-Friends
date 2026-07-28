@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-english-01-blends-and-digraphs-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains word patterns?",
+    "options": [
+      "Letter groups such as bl, st, sh, and ch help readers decode words",
+      "It is only the title of the lesson Blends and Digraphs.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Letter groups such as bl, st, sh, and ch help readers decode words",
+    "conceptId": "word-patterns"
+  },
+  {
+    "questionId": "g2-english-01-blends-and-digraphs-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Ship begins with sh, a two-letter sound",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Ship begins with sh, a two-letter sound",
+    "conceptId": "word-patterns-application"
+  },
+  {
+    "questionId": "g2-english-01-blends-and-digraphs-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "word patterns",
+    "conceptId": "word-patterns"
+  },
+  {
+    "questionId": "g2-english-01-blends-and-digraphs-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Sort word cards by their beginning blend or digraph.",
+    "correctAnswer": "word patterns",
+    "conceptId": "word-patterns-application"
+  },
+  {
+    "questionId": "g2-english-01-blends-and-digraphs-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "word-patterns-reasoning"
+  }
+]

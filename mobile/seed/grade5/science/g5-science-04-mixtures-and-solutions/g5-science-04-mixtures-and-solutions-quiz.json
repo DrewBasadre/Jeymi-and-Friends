@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-science-04-mixtures-and-solutions-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains mixtures?",
+    "options": [
+      "Mixture parts keep their properties and can be separated using physical methods",
+      "It is only the title of the lesson Mixtures and Solutions.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Mixture parts keep their properties and can be separated using physical methods",
+    "conceptId": "mixtures"
+  },
+  {
+    "questionId": "g5-science-04-mixtures-and-solutions-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Filtering separates insoluble sand from water",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Filtering separates insoluble sand from water",
+    "conceptId": "mixtures-application"
+  },
+  {
+    "questionId": "g5-science-04-mixtures-and-solutions-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "mixtures",
+    "conceptId": "mixtures"
+  },
+  {
+    "questionId": "g5-science-04-mixtures-and-solutions-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Choose methods to separate three sample mixtures.",
+    "correctAnswer": "mixtures",
+    "conceptId": "mixtures-application"
+  },
+  {
+    "questionId": "g5-science-04-mixtures-and-solutions-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "mixtures-reasoning"
+  }
+]

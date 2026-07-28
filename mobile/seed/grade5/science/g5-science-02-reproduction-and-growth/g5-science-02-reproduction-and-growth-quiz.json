@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-science-02-reproduction-and-growth-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains reproduction?",
+    "options": [
+      "Living things reproduce in varied ways and pass through predictable growth stages",
+      "It is only the title of the lesson Reproduction and Growth.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Living things reproduce in varied ways and pass through predictable growth stages",
+    "conceptId": "reproduction"
+  },
+  {
+    "questionId": "g5-science-02-reproduction-and-growth-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Flowering plants form seeds after pollination",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Flowering plants form seeds after pollination",
+    "conceptId": "reproduction-application"
+  },
+  {
+    "questionId": "g5-science-02-reproduction-and-growth-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "reproduction",
+    "conceptId": "reproduction"
+  },
+  {
+    "questionId": "g5-science-02-reproduction-and-growth-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Sequence one plant and one animal life cycle.",
+    "correctAnswer": "reproduction",
+    "conceptId": "reproduction-application"
+  },
+  {
+    "questionId": "g5-science-02-reproduction-and-growth-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "reproduction-reasoning"
+  }
+]

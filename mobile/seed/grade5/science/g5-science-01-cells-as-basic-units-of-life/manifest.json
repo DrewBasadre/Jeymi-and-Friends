@@ -1,0 +1,120 @@
+{
+  "moduleId": "g5-science-01-cells-as-basic-units-of-life",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 5,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:cb4a58f488d6f48603e3fdddcf4310a72709bb421f9aaf9683bcedd2741bd5b1",
+    "g5-science-01-cells-as-basic-units-of-life-quiz.json": "sha256:92848c7562e44e2bd9fe71ab6a15b56f933346e629f34509bc469d48f72d9696",
+    "images/concept-guide.webp": "sha256:20f55e9e06c75c45697efde34bef96434c876b8b148d4932b9ea3a2156eca0b9",
+    "images/worked-example.webp": "sha256:5092ac655620c7f0c5e19b87e13e564e4a3fa2f4e4bc20fb304c0822341d8062"
+  },
+  "quizId": "g5-science-01-cells-as-basic-units-of-life-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g5-science-01-cells-as-basic-units-of-life",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-01-cells-as-basic-units-of-life-review-1",
+      "conceptId": "cells",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is cells?",
+      "answer": "Cells carry out basic life functions and contain structures with specialized roles",
+      "formats": {
+        "text": "Cells carry out basic life functions and contain structures with specialized roles.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g5-science-01-cells-as-basic-units-of-life",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-01-cells-as-basic-units-of-life-review-2",
+      "conceptId": "cells-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for cells.",
+      "answer": "A plant cell wall supports the cell while chloroplasts capture light energy",
+      "formats": {
+        "text": "A plant cell wall supports the cell while chloroplasts capture light energy.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g5-science-01-cells-as-basic-units-of-life",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-01-cells-as-basic-units-of-life-review-3",
+      "conceptId": "cells",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Cells as Basic Units of Life.",
+      "answer": "cells",
+      "formats": {
+        "text": "cells"
+      }
+    },
+    {
+      "moduleId": "g5-science-01-cells-as-basic-units-of-life",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-01-cells-as-basic-units-of-life-review-4",
+      "conceptId": "cells-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain cells in one or two clear sentences.",
+      "answer": "Cells carry out basic life functions and contain structures with specialized roles",
+      "formats": {
+        "text": "Cells carry out basic life functions and contain structures with specialized roles."
+      }
+    },
+    {
+      "moduleId": "g5-science-01-cells-as-basic-units-of-life",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-01-cells-as-basic-units-of-life-review-5",
+      "conceptId": "cells-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Compare labeled plant and animal cell diagrams.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Compare labeled plant and animal cell diagrams."
+      }
+    }
+  ]
+}

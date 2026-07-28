@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-science-06-climate-systems-and-human-activity-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains climate systems?",
+    "options": [
+      "Radiation balance, greenhouse gases, oceans, land use, and feedback shape climate",
+      "It is only the title of the lesson Climate Systems and Human Activity.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Radiation balance, greenhouse gases, oceans, land use, and feedback shape climate",
+    "conceptId": "climate-systems"
+  },
+  {
+    "questionId": "g9-science-06-climate-systems-and-human-activity-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Warmer oceans can alter weather patterns and sea level",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Warmer oceans can alter weather patterns and sea level",
+    "conceptId": "climate-systems-application"
+  },
+  {
+    "questionId": "g9-science-06-climate-systems-and-human-activity-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "climate systems",
+    "conceptId": "climate-systems"
+  },
+  {
+    "questionId": "g9-science-06-climate-systems-and-human-activity-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Evaluate evidence in a local climate-impact case.",
+    "correctAnswer": "climate systems",
+    "conceptId": "climate-systems-application"
+  },
+  {
+    "questionId": "g9-science-06-climate-systems-and-human-activity-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "climate-systems-reasoning"
+  }
+]

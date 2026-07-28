@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g1-science-02-parts-of-the-body-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains body parts?",
+    "options": [
+      "Body parts have different jobs that help us move, work, and stay safe",
+      "It is only the title of the lesson Parts of the Body.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Body parts have different jobs that help us move, work, and stay safe",
+    "conceptId": "body-parts"
+  },
+  {
+    "questionId": "g1-science-02-parts-of-the-body-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Legs help us walk while hands help us hold a pencil",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Legs help us walk while hands help us hold a pencil",
+    "conceptId": "body-parts-application"
+  },
+  {
+    "questionId": "g1-science-02-parts-of-the-body-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "body parts",
+    "conceptId": "body-parts"
+  },
+  {
+    "questionId": "g1-science-02-parts-of-the-body-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Point to five body parts and tell one job for each.",
+    "correctAnswer": "body parts",
+    "conceptId": "body-parts-application"
+  },
+  {
+    "questionId": "g1-science-02-parts-of-the-body-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "body-parts-reasoning"
+  }
+]

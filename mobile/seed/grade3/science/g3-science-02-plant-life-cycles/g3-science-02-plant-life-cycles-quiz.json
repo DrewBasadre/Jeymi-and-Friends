@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-science-02-plant-life-cycles-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains life cycle?",
+    "options": [
+      "Flowering plants pass through seed, germination, growth, flowering, and seed production",
+      "It is only the title of the lesson Plant Life Cycles.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Flowering plants pass through seed, germination, growth, flowering, and seed production",
+    "conceptId": "life-cycle"
+  },
+  {
+    "questionId": "g3-science-02-plant-life-cycles-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A bean seed sprouts roots before its first leaves open",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A bean seed sprouts roots before its first leaves open",
+    "conceptId": "life-cycle-application"
+  },
+  {
+    "questionId": "g3-science-02-plant-life-cycles-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "life cycle",
+    "conceptId": "life-cycle"
+  },
+  {
+    "questionId": "g3-science-02-plant-life-cycles-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Observe and record a seed for one week.",
+    "correctAnswer": "life cycle",
+    "conceptId": "life-cycle-application"
+  },
+  {
+    "questionId": "g3-science-02-plant-life-cycles-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "life-cycle-reasoning"
+  }
+]

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g2-math-03-subtracting-three-digit-numbers",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 2,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:630449edfe688093c80cdb5e3a5b89792b4d76c45bf6cdef99d4b64592ad1498",
+    "g2-math-03-subtracting-three-digit-numbers-quiz.json": "sha256:972232df52574616798268121e99f0aaa372f6ff3863a8df451e2bf4bedb4686",
+    "images/concept-guide.webp": "sha256:74156d22f30144f64469917dc600f6c3ee844e765c7f3417a14fc4ea91360b86",
+    "images/worked-example.webp": "sha256:73bdf939f188269162751601d5ef1a21f9b7cbb3710ab99c1d6a4a5ce89a52de"
+  },
+  "quizId": "g2-math-03-subtracting-three-digit-numbers-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g2-math-03-subtracting-three-digit-numbers",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-math-03-subtracting-three-digit-numbers-review-1",
+      "conceptId": "subtraction-strategies",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is subtraction strategies?",
+      "answer": "Regroup one larger place when a smaller place does not have enough units",
+      "formats": {
+        "text": "Regroup one larger place when a smaller place does not have enough units.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g2-math-03-subtracting-three-digit-numbers",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-math-03-subtracting-three-digit-numbers-review-2",
+      "conceptId": "subtraction-strategies-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for subtraction strategies.",
+      "answer": "To subtract eight ones from two ones, regroup one ten as ten ones",
+      "formats": {
+        "text": "To subtract eight ones from two ones, regroup one ten as ten ones.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g2-math-03-subtracting-three-digit-numbers",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-math-03-subtracting-three-digit-numbers-review-3",
+      "conceptId": "subtraction-strategies",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Subtracting Three-Digit Numbers.",
+      "answer": "subtraction strategies",
+      "formats": {
+        "text": "subtraction strategies"
+      }
+    },
+    {
+      "moduleId": "g2-math-03-subtracting-three-digit-numbers",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-math-03-subtracting-three-digit-numbers-review-4",
+      "conceptId": "subtraction-strategies-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain subtraction strategies in one or two clear sentences.",
+      "answer": "Regroup one larger place when a smaller place does not have enough units",
+      "formats": {
+        "text": "Regroup one larger place when a smaller place does not have enough units."
+      }
+    },
+    {
+      "moduleId": "g2-math-03-subtracting-three-digit-numbers",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-math-03-subtracting-three-digit-numbers-review-5",
+      "conceptId": "subtraction-strategies-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Explain each regrouping step in 432 - 178.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Explain each regrouping step in 432 - 178."
+      }
+    }
+  ]
+}

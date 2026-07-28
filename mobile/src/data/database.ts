@@ -1,7 +1,7 @@
 import * as SQLite from 'expo-sqlite';
 
 const DATABASE_NAME = 'wais-next.db';
-const SCHEMA_VERSION = 4;
+const SCHEMA_VERSION = 5;
 
 let databasePromise: Promise<SQLite.SQLiteDatabase> | null = null;
 
@@ -249,6 +249,12 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
       UNIQUE(student_id, week_start)
     );
 
+    CREATE TABLE IF NOT EXISTS parent_pins (
+      student_id TEXT PRIMARY KEY NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+      parent_pin_hash TEXT NOT NULL,
+      pin_set_at INTEGER NOT NULL
+    );
+
     CREATE TABLE IF NOT EXISTS teacher_settings (
       key TEXT PRIMARY KEY NOT NULL,
       value TEXT NOT NULL,
@@ -344,7 +350,8 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
     WHERE id IN (
       SELECT module_id FROM module_manifests WHERE source = 'bundled'
     );
-    DELETE FROM module_manifests WHERE source != 'teacher-bluetooth';
+    DELETE FROM module_manifests
+    WHERE source NOT IN ('teacher-bluetooth', 'seed-bundle');
     DROP TABLE IF EXISTS sync_queue;
     DROP TABLE IF EXISTS privacy_consents;
   `);
@@ -363,6 +370,7 @@ export async function resetDatabaseForDevelopment(): Promise<void> {
     DELETE FROM custom_review_sets;
     DELETE FROM pomodoro_sessions;
     DELETE FROM parent_digests;
+    DELETE FROM parent_pins;
     DELETE FROM format_history;
     DELETE FROM adaptive_format_profiles;
     DELETE FROM learning_profiles;

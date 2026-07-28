@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-math-06-length-time-and-money-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains practical measurement?",
+    "options": [
+      "Standard units and Philippine coins help describe and solve daily situations",
+      "It is only the title of the lesson Length, Time, and Money.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Standard units and Philippine coins help describe and solve daily situations",
+    "conceptId": "practical-measurement"
+  },
+  {
+    "questionId": "g2-math-06-length-time-and-money-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A ruler measures centimeters, while a clock measures elapsed time",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A ruler measures centimeters, while a clock measures elapsed time",
+    "conceptId": "practical-measurement-application"
+  },
+  {
+    "questionId": "g2-math-06-length-time-and-money-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "practical measurement",
+    "conceptId": "practical-measurement"
+  },
+  {
+    "questionId": "g2-math-06-length-time-and-money-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Plan a small purchase and count the exact coins needed.",
+    "correctAnswer": "practical measurement",
+    "conceptId": "practical-measurement-application"
+  },
+  {
+    "questionId": "g2-math-06-length-time-and-money-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "practical-measurement-reasoning"
+  }
+]

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-english-06-media-and-information-literacy",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:01b288e8b00d16e42eebdac7ad399d14b0f4730841a1a7ca1dc3ceb210387443",
+    "g9-english-06-media-and-information-literacy-quiz.json": "sha256:11e540f67b8a147f5565de2a7066e3c088691d8f3fbe1fbd0cc2cad98de95bc7",
+    "images/concept-guide.webp": "sha256:9ece7226b5b1a41a97ef8faad08994fb79ac8ec8a2565baa439e6da7702f3353",
+    "images/worked-example.webp": "sha256:b0a3272d751705809c665aa48e868a1588e94189c801e662cb62a03c0dfa4c71"
+  },
+  "quizId": "g9-english-06-media-and-information-literacy-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-english-06-media-and-information-literacy",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-06-media-and-information-literacy-review-1",
+      "conceptId": "media-literacy",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is media literacy?",
+      "answer": "Authorship, purpose, framing, algorithms, and verification affect information reliability",
+      "formats": {
+        "text": "Authorship, purpose, framing, algorithms, and verification affect information reliability.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-english-06-media-and-information-literacy",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-06-media-and-information-literacy-review-2",
+      "conceptId": "media-literacy-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for media literacy.",
+      "answer": "A cropped image can remove context and alter interpretation",
+      "formats": {
+        "text": "A cropped image can remove context and alter interpretation.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-english-06-media-and-information-literacy",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-06-media-and-information-literacy-review-3",
+      "conceptId": "media-literacy",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Media and Information Literacy.",
+      "answer": "media literacy",
+      "formats": {
+        "text": "media literacy"
+      }
+    },
+    {
+      "moduleId": "g9-english-06-media-and-information-literacy",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-06-media-and-information-literacy-review-4",
+      "conceptId": "media-literacy-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain media literacy in one or two clear sentences.",
+      "answer": "Authorship, purpose, framing, algorithms, and verification affect information reliability",
+      "formats": {
+        "text": "Authorship, purpose, framing, algorithms, and verification affect information reliability."
+      }
+    },
+    {
+      "moduleId": "g9-english-06-media-and-information-literacy",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-english-06-media-and-information-literacy-review-5",
+      "conceptId": "media-literacy-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Verify one circulating claim using independent sources.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Verify one circulating claim using independent sources."
+      }
+    }
+  ]
+}

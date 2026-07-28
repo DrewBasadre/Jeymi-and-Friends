@@ -1,0 +1,120 @@
+{
+  "moduleId": "g3-science-03-animal-groups-and-adaptations",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 3,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:50e5a31e626c553a2d72d86345bf0bd317ed32b80a87e1bcc8d029d0fa961e0d",
+    "g3-science-03-animal-groups-and-adaptations-quiz.json": "sha256:9d963e0ed21bdb34c2213f4faf06c3301185dc76c5f291d091df65aa4cdf7f28",
+    "images/concept-guide.webp": "sha256:e4b1645bce2354d19e9f38591a13d1de7fea5007620e7ed8974165d4b6777a8c",
+    "images/worked-example.webp": "sha256:71be55bf32950fc74f0a862f34c6f557d59a4b74434810e6ffac187e0b977935"
+  },
+  "quizId": "g3-science-03-animal-groups-and-adaptations-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g3-science-03-animal-groups-and-adaptations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-03-animal-groups-and-adaptations-review-1",
+      "conceptId": "adaptation",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is adaptation?",
+      "answer": "Body coverings, movement, and feeding structures help animals survive",
+      "formats": {
+        "text": "Body coverings, movement, and feeding structures help animals survive.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g3-science-03-animal-groups-and-adaptations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-03-animal-groups-and-adaptations-review-2",
+      "conceptId": "adaptation-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for adaptation.",
+      "answer": "A duck has webbed feet that help it paddle",
+      "formats": {
+        "text": "A duck has webbed feet that help it paddle.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g3-science-03-animal-groups-and-adaptations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-03-animal-groups-and-adaptations-review-3",
+      "conceptId": "adaptation",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Animal Groups and Adaptations.",
+      "answer": "adaptation",
+      "formats": {
+        "text": "adaptation"
+      }
+    },
+    {
+      "moduleId": "g3-science-03-animal-groups-and-adaptations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-03-animal-groups-and-adaptations-review-4",
+      "conceptId": "adaptation-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain adaptation in one or two clear sentences.",
+      "answer": "Body coverings, movement, and feeding structures help animals survive",
+      "formats": {
+        "text": "Body coverings, movement, and feeding structures help animals survive."
+      }
+    },
+    {
+      "moduleId": "g3-science-03-animal-groups-and-adaptations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-science-03-animal-groups-and-adaptations-review-5",
+      "conceptId": "adaptation-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Compare how two animals move and get food.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Compare how two animals move and get food."
+      }
+    }
+  ]
+}

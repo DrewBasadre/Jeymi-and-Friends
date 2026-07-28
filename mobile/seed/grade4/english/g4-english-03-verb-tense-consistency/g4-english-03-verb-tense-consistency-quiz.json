@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-english-03-verb-tense-consistency-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains consistent tense?",
+    "options": [
+      "Writers keep time relationships clear by choosing consistent verb tenses",
+      "It is only the title of the lesson Verb Tense Consistency.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Writers keep time relationships clear by choosing consistent verb tenses",
+    "conceptId": "consistent-tense"
+  },
+  {
+    "questionId": "g4-english-03-verb-tense-consistency-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Yesterday we walked and talked, not walked and talk",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Yesterday we walked and talked, not walked and talk",
+    "conceptId": "consistent-tense-application"
+  },
+  {
+    "questionId": "g4-english-03-verb-tense-consistency-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "consistent tense",
+    "conceptId": "consistent-tense"
+  },
+  {
+    "questionId": "g4-english-03-verb-tense-consistency-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Edit a paragraph with shifting verb tense.",
+    "correctAnswer": "consistent tense",
+    "conceptId": "consistent-tense-application"
+  },
+  {
+    "questionId": "g4-english-03-verb-tense-consistency-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "consistent-tense-reasoning"
+  }
+]

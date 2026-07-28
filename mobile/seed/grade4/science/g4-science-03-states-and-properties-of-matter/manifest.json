@@ -1,0 +1,120 @@
+{
+  "moduleId": "g4-science-03-states-and-properties-of-matter",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 4,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:060d2ebdf856f5ba11a13ce3e36d19bfe28d9c944edecc863a4fefdb7f0d6d0c",
+    "g4-science-03-states-and-properties-of-matter-quiz.json": "sha256:00be13cc8f41dd6150cb054dbd70166cf4c1718e1c747b4e1b859c52caebf1b6",
+    "images/concept-guide.webp": "sha256:6e528f42e409696392a360cee9c2dc1560fd28f1c8d6a9cff1e6a8e9aaff8302",
+    "images/worked-example.webp": "sha256:29e8401ef3af3ead337eead471a4c527e59e4701425c458f0ea039cadc657153"
+  },
+  "quizId": "g4-science-03-states-and-properties-of-matter-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g4-science-03-states-and-properties-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-science-03-states-and-properties-of-matter-review-1",
+      "conceptId": "matter-properties",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is matter properties?",
+      "answer": "Mass, volume, shape, solubility, and state help describe and identify matter",
+      "formats": {
+        "text": "Mass, volume, shape, solubility, and state help describe and identify matter.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g4-science-03-states-and-properties-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-science-03-states-and-properties-of-matter-review-2",
+      "conceptId": "matter-properties-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for matter properties.",
+      "answer": "Salt dissolves in water, but sand settles",
+      "formats": {
+        "text": "Salt dissolves in water, but sand settles.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g4-science-03-states-and-properties-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-science-03-states-and-properties-of-matter-review-3",
+      "conceptId": "matter-properties",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in States and Properties of Matter.",
+      "answer": "matter properties",
+      "formats": {
+        "text": "matter properties"
+      }
+    },
+    {
+      "moduleId": "g4-science-03-states-and-properties-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-science-03-states-and-properties-of-matter-review-4",
+      "conceptId": "matter-properties-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain matter properties in one or two clear sentences.",
+      "answer": "Mass, volume, shape, solubility, and state help describe and identify matter",
+      "formats": {
+        "text": "Mass, volume, shape, solubility, and state help describe and identify matter."
+      }
+    },
+    {
+      "moduleId": "g4-science-03-states-and-properties-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-science-03-states-and-properties-of-matter-review-5",
+      "conceptId": "matter-properties-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Compare three materials using a property table.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Compare three materials using a property table."
+      }
+    }
+  ]
+}

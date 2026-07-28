@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-science-03-ecosystem-dynamics-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains population dynamics?",
+    "options": [
+      "Carrying capacity, feedback, disturbance, and succession affect populations over time",
+      "It is only the title of the lesson Ecosystem Dynamics.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Carrying capacity, feedback, disturbance, and succession affect populations over time",
+    "conceptId": "population-dynamics"
+  },
+  {
+    "questionId": "g9-science-03-ecosystem-dynamics-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A drought can reduce resources and lower carrying capacity",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A drought can reduce resources and lower carrying capacity",
+    "conceptId": "population-dynamics-application"
+  },
+  {
+    "questionId": "g9-science-03-ecosystem-dynamics-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "population dynamics",
+    "conceptId": "population-dynamics"
+  },
+  {
+    "questionId": "g9-science-03-ecosystem-dynamics-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Interpret a population graph after disturbance.",
+    "correctAnswer": "population dynamics",
+    "conceptId": "population-dynamics-application"
+  },
+  {
+    "questionId": "g9-science-03-ecosystem-dynamics-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "population-dynamics-reasoning"
+  }
+]

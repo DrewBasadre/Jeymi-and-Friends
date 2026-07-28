@@ -1,0 +1,120 @@
+{
+  "moduleId": "g10-science-06-biotechnology-and-society",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 10,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:4cca387736488d76eaac81854eba8cb85ea78b356df8ca19440f07655a82e5b7",
+    "g10-science-06-biotechnology-and-society-quiz.json": "sha256:f02c7e5dabd600abe0ffcca8cbd53df46e8e901c0d6d4b6bc479c496857207a1",
+    "images/concept-guide.webp": "sha256:cf1e1255173175b9df4e73624360e9840d22bc355c7730c7d2d4726a691a287a",
+    "images/worked-example.webp": "sha256:0d8ee0253cf47a91d5c5327c65168c16632ad408ed00fd3b0bde7a65c82631ac"
+  },
+  "quizId": "g10-science-06-biotechnology-and-society-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g10-science-06-biotechnology-and-society",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-06-biotechnology-and-society-review-1",
+      "conceptId": "biotechnology",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is biotechnology?",
+      "answer": "Biotechnology applies cellular and genetic knowledge while raising evidence, ethics, and access questions",
+      "formats": {
+        "text": "Biotechnology applies cellular and genetic knowledge while raising evidence, ethics, and access questions.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g10-science-06-biotechnology-and-society",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-06-biotechnology-and-society-review-2",
+      "conceptId": "biotechnology-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for biotechnology.",
+      "answer": "Microorganisms can produce useful foods and medicines",
+      "formats": {
+        "text": "Microorganisms can produce useful foods and medicines.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g10-science-06-biotechnology-and-society",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-06-biotechnology-and-society-review-3",
+      "conceptId": "biotechnology",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Biotechnology and Society.",
+      "answer": "biotechnology",
+      "formats": {
+        "text": "biotechnology"
+      }
+    },
+    {
+      "moduleId": "g10-science-06-biotechnology-and-society",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-06-biotechnology-and-society-review-4",
+      "conceptId": "biotechnology-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain biotechnology in one or two clear sentences.",
+      "answer": "Biotechnology applies cellular and genetic knowledge while raising evidence, ethics, and access questions",
+      "formats": {
+        "text": "Biotechnology applies cellular and genetic knowledge while raising evidence, ethics, and access questions."
+      }
+    },
+    {
+      "moduleId": "g10-science-06-biotechnology-and-society",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-science-06-biotechnology-and-society-review-5",
+      "conceptId": "biotechnology-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Evaluate benefits, risks, and safeguards in one application.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Evaluate benefits, risks, and safeguards in one application."
+      }
+    }
+  ]
+}

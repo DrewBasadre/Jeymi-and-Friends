@@ -1,0 +1,120 @@
+{
+  "moduleId": "g6-english-06-argument-and-research-basics",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 6,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:67ac168463c83fe162c5bb3152ca630be533d868244b807a381e6d102b63d2c4",
+    "g6-english-06-argument-and-research-basics-quiz.json": "sha256:2c9882ec8abf62764185f5a9515f5c5708a604359e2b0a20618d04923278c5f0",
+    "images/concept-guide.webp": "sha256:a13984f5fb3d5137b2a76f5a747c107d364f803375b5771134584e09fbff3f57",
+    "images/worked-example.webp": "sha256:c7e369d531c90e12c743463627b6bac964b7ff1c2254057194bd47e87b4514a4"
+  },
+  "quizId": "g6-english-06-argument-and-research-basics-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g6-english-06-argument-and-research-basics",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-06-argument-and-research-basics-review-1",
+      "conceptId": "argument",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is argument?",
+      "answer": "Credible sources, clear claims, relevant evidence, and reasoning strengthen an argument",
+      "formats": {
+        "text": "Credible sources, clear claims, relevant evidence, and reasoning strengthen an argument.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g6-english-06-argument-and-research-basics",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-06-argument-and-research-basics-review-2",
+      "conceptId": "argument-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for argument.",
+      "answer": "A health claim should rely on qualified and current sources",
+      "formats": {
+        "text": "A health claim should rely on qualified and current sources.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g6-english-06-argument-and-research-basics",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-06-argument-and-research-basics-review-3",
+      "conceptId": "argument",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Argument and Research Basics.",
+      "answer": "argument",
+      "formats": {
+        "text": "argument"
+      }
+    },
+    {
+      "moduleId": "g6-english-06-argument-and-research-basics",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-06-argument-and-research-basics-review-4",
+      "conceptId": "argument-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain argument in one or two clear sentences.",
+      "answer": "Credible sources, clear claims, relevant evidence, and reasoning strengthen an argument",
+      "formats": {
+        "text": "Credible sources, clear claims, relevant evidence, and reasoning strengthen an argument."
+      }
+    },
+    {
+      "moduleId": "g6-english-06-argument-and-research-basics",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-06-argument-and-research-basics-review-5",
+      "conceptId": "argument-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Compare two sources and defend which is more credible.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Compare two sources and defend which is more credible."
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g5-english-04-simple-compound-and-complex-sentences",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 5,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:ed5379d3f93f090ac355a1a53d9c8dda9e8a327b39c28c99b4cad57ad5f43169",
+    "g5-english-04-simple-compound-and-complex-sentences-quiz.json": "sha256:98d84df60505f3edc4b294eac5c8d28ce5936f57eb09ad9a16b5c2252c0b4cce",
+    "images/concept-guide.webp": "sha256:9ab49218fc35aaa7c527ab8c3fa11d8dc26067ab55c0f0aedb1879b0f4260bf3",
+    "images/worked-example.webp": "sha256:273c6948ed477e54e9a0f5d22913261c534a72bb9b9fb1a097777de60b6380a8"
+  },
+  "quizId": "g5-english-04-simple-compound-and-complex-sentences-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g5-english-04-simple-compound-and-complex-sentences",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-04-simple-compound-and-complex-sentences-review-1",
+      "conceptId": "sentence-structure",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is sentence structure?",
+      "answer": "Clauses combine to show equal or dependent relationships between ideas",
+      "formats": {
+        "text": "Clauses combine to show equal or dependent relationships between ideas.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g5-english-04-simple-compound-and-complex-sentences",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-04-simple-compound-and-complex-sentences-review-2",
+      "conceptId": "sentence-structure-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for sentence structure.",
+      "answer": "We stayed inside because the rain was heavy is complex",
+      "formats": {
+        "text": "We stayed inside because the rain was heavy is complex.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g5-english-04-simple-compound-and-complex-sentences",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-04-simple-compound-and-complex-sentences-review-3",
+      "conceptId": "sentence-structure",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Simple, Compound, and Complex Sentences.",
+      "answer": "sentence structure",
+      "formats": {
+        "text": "sentence structure"
+      }
+    },
+    {
+      "moduleId": "g5-english-04-simple-compound-and-complex-sentences",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-04-simple-compound-and-complex-sentences-review-4",
+      "conceptId": "sentence-structure-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain sentence structure in one or two clear sentences.",
+      "answer": "Clauses combine to show equal or dependent relationships between ideas",
+      "formats": {
+        "text": "Clauses combine to show equal or dependent relationships between ideas."
+      }
+    },
+    {
+      "moduleId": "g5-english-04-simple-compound-and-complex-sentences",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-english-04-simple-compound-and-complex-sentences-review-5",
+      "conceptId": "sentence-structure-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Combine short ideas using coordination and subordination.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Combine short ideas using coordination and subordination."
+      }
+    }
+  ]
+}

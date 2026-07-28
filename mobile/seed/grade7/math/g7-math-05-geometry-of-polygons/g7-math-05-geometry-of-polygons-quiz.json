@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-math-05-geometry-of-polygons-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains polygon relationships?",
+    "options": [
+      "Angle sums, congruence, and properties classify polygons and solve unknown measures",
+      "It is only the title of the lesson Geometry of Polygons.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Angle sums, congruence, and properties classify polygons and solve unknown measures",
+    "conceptId": "polygon-relationships"
+  },
+  {
+    "questionId": "g7-math-05-geometry-of-polygons-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Triangle interior angles total 180 degrees",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Triangle interior angles total 180 degrees",
+    "conceptId": "polygon-relationships-application"
+  },
+  {
+    "questionId": "g7-math-05-geometry-of-polygons-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "polygon relationships",
+    "conceptId": "polygon-relationships"
+  },
+  {
+    "questionId": "g7-math-05-geometry-of-polygons-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Derive a quadrilateral angle sum by triangulation.",
+    "correctAnswer": "polygon relationships",
+    "conceptId": "polygon-relationships-application"
+  },
+  {
+    "questionId": "g7-math-05-geometry-of-polygons-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "polygon-relationships-reasoning"
+  }
+]

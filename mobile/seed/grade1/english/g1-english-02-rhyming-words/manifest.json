@@ -1,0 +1,120 @@
+{
+  "moduleId": "g1-english-02-rhyming-words",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 1,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:bf56d6601eec53e19107bcbe7e2f81b8f8bc4cba54a55805d1ddb718f4aa011a",
+    "g1-english-02-rhyming-words-quiz.json": "sha256:afac5632158cb0707a4e33eb9181522ff4804a40720b194f0da7b43ece410223",
+    "images/concept-guide.webp": "sha256:e654d625682b8a22d0723cf8a239a242b399d60ff318488e5a0055dcc3bdb522",
+    "images/worked-example.webp": "sha256:43bcfdc33a16813f1b6d35f2bdb2bf6ad86773d19bf785d9c4d4ae973a114389"
+  },
+  "quizId": "g1-english-02-rhyming-words-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g1-english-02-rhyming-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-02-rhyming-words-review-1",
+      "conceptId": "rhymes",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is rhymes?",
+      "answer": "Rhyming words have the same ending sound",
+      "formats": {
+        "text": "Rhyming words have the same ending sound.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g1-english-02-rhyming-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-02-rhyming-words-review-2",
+      "conceptId": "rhymes-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for rhymes.",
+      "answer": "Cat, hat, and mat share the ending sound at",
+      "formats": {
+        "text": "Cat, hat, and mat share the ending sound at.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g1-english-02-rhyming-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-02-rhyming-words-review-3",
+      "conceptId": "rhymes",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Rhyming Words.",
+      "answer": "rhymes",
+      "formats": {
+        "text": "rhymes"
+      }
+    },
+    {
+      "moduleId": "g1-english-02-rhyming-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-02-rhyming-words-review-4",
+      "conceptId": "rhymes-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain rhymes in one or two clear sentences.",
+      "answer": "Rhyming words have the same ending sound",
+      "formats": {
+        "text": "Rhyming words have the same ending sound."
+      }
+    },
+    {
+      "moduleId": "g1-english-02-rhyming-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-02-rhyming-words-review-5",
+      "conceptId": "rhymes-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Name two words that rhyme with sun.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Name two words that rhyme with sun."
+      }
+    }
+  ]
+}

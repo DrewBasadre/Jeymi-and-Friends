@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-english-02-noun-and-pronoun-agreement-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains agreement?",
+    "options": [
+      "Pronouns must clearly match the nouns they replace in number and meaning",
+      "It is only the title of the lesson Noun and Pronoun Agreement.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Pronouns must clearly match the nouns they replace in number and meaning",
+    "conceptId": "agreement"
+  },
+  {
+    "questionId": "g4-english-02-noun-and-pronoun-agreement-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "The pupils packed their bags uses a plural pronoun",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "The pupils packed their bags uses a plural pronoun",
+    "conceptId": "agreement-application"
+  },
+  {
+    "questionId": "g4-english-02-noun-and-pronoun-agreement-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "agreement",
+    "conceptId": "agreement"
+  },
+  {
+    "questionId": "g4-english-02-noun-and-pronoun-agreement-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Repair unclear pronouns in five sentences.",
+    "correctAnswer": "agreement",
+    "conceptId": "agreement-application"
+  },
+  {
+    "questionId": "g4-english-02-noun-and-pronoun-agreement-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "agreement-reasoning"
+  }
+]

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g4-english-04-precise-adjectives-and-adverbs",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 4,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:523a11eda2c34a4e431ea7c23416f55f34e80685acf9055ac71c7aff1e452f40",
+    "g4-english-04-precise-adjectives-and-adverbs-quiz.json": "sha256:b13582e4addab6b54f10cdc12bbfed9f015310c89a2a4f897ccf2fa9bd050425",
+    "images/concept-guide.webp": "sha256:99a3acbef0eb628d7c5c24ebf894d66410b384e8e87b56248f211390933046b1",
+    "images/worked-example.webp": "sha256:8672c9d3b8f23cc4f0e9ef9ac58c793803a09212ec7cb05bcde41cd09b83a851"
+  },
+  "quizId": "g4-english-04-precise-adjectives-and-adverbs-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g4-english-04-precise-adjectives-and-adverbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-04-precise-adjectives-and-adverbs-review-1",
+      "conceptId": "word-choice",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is word choice?",
+      "answer": "Precise modifiers create clearer descriptions without unnecessary repetition",
+      "formats": {
+        "text": "Precise modifiers create clearer descriptions without unnecessary repetition.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g4-english-04-precise-adjectives-and-adverbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-04-precise-adjectives-and-adverbs-review-2",
+      "conceptId": "word-choice-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for word choice.",
+      "answer": "The narrow path curved sharply gives exact details",
+      "formats": {
+        "text": "The narrow path curved sharply gives exact details.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g4-english-04-precise-adjectives-and-adverbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-04-precise-adjectives-and-adverbs-review-3",
+      "conceptId": "word-choice",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Precise Adjectives and Adverbs.",
+      "answer": "word choice",
+      "formats": {
+        "text": "word choice"
+      }
+    },
+    {
+      "moduleId": "g4-english-04-precise-adjectives-and-adverbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-04-precise-adjectives-and-adverbs-review-4",
+      "conceptId": "word-choice-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain word choice in one or two clear sentences.",
+      "answer": "Precise modifiers create clearer descriptions without unnecessary repetition",
+      "formats": {
+        "text": "Precise modifiers create clearer descriptions without unnecessary repetition."
+      }
+    },
+    {
+      "moduleId": "g4-english-04-precise-adjectives-and-adverbs",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-04-precise-adjectives-and-adverbs-review-5",
+      "conceptId": "word-choice-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Replace weak modifiers with specific choices.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Replace weak modifiers with specific choices."
+      }
+    }
+  ]
+}

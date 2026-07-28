@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-math-05-counting-and-probability-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains counting principles?",
+    "options": [
+      "Permutations, combinations, and probability rules count structured outcomes",
+      "It is only the title of the lesson Counting and Probability.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Permutations, combinations, and probability rules count structured outcomes",
+    "conceptId": "counting-principles"
+  },
+  {
+    "questionId": "g10-math-05-counting-and-probability-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Order matters in a permutation but not in a combination",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Order matters in a permutation but not in a combination",
+    "conceptId": "counting-principles-application"
+  },
+  {
+    "questionId": "g10-math-05-counting-and-probability-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "counting principles",
+    "conceptId": "counting-principles"
+  },
+  {
+    "questionId": "g10-math-05-counting-and-probability-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Choose and justify a counting method for two scenarios.",
+    "correctAnswer": "counting principles",
+    "conceptId": "counting-principles-application"
+  },
+  {
+    "questionId": "g10-math-05-counting-and-probability-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "counting-principles-reasoning"
+  }
+]

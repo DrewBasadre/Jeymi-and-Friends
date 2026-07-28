@@ -1,0 +1,120 @@
+{
+  "moduleId": "g1-english-04-action-words",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 1,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:a6076b3e8db57cc8fa3a907f1657c67eaeb96847eae76b732f5c3341440316c6",
+    "g1-english-04-action-words-quiz.json": "sha256:2cb6a1f02bccc0593d9bc898f65b28f4c0bb6aca071835747b444eca02b84026",
+    "images/concept-guide.webp": "sha256:6e86e067f68271351fcbad3e9663ebd4ec6952aeb6ff43335179c6864a3dd6a2",
+    "images/worked-example.webp": "sha256:d6c1e9fafb073f5f2a42ef587c09b8494f4a3d797f5b86219996d6b0b3268419"
+  },
+  "quizId": "g1-english-04-action-words-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g1-english-04-action-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-04-action-words-review-1",
+      "conceptId": "verbs",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is verbs?",
+      "answer": "An action word tells what someone or something does",
+      "formats": {
+        "text": "An action word tells what someone or something does.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g1-english-04-action-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-04-action-words-review-2",
+      "conceptId": "verbs-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for verbs.",
+      "answer": "Run, read, sing, and jump are action words",
+      "formats": {
+        "text": "Run, read, sing, and jump are action words.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g1-english-04-action-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-04-action-words-review-3",
+      "conceptId": "verbs",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Action Words.",
+      "answer": "verbs",
+      "formats": {
+        "text": "verbs"
+      }
+    },
+    {
+      "moduleId": "g1-english-04-action-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-04-action-words-review-4",
+      "conceptId": "verbs-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain verbs in one or two clear sentences.",
+      "answer": "An action word tells what someone or something does",
+      "formats": {
+        "text": "An action word tells what someone or something does."
+      }
+    },
+    {
+      "moduleId": "g1-english-04-action-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-04-action-words-review-5",
+      "conceptId": "verbs-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Act out three action words for a partner to guess.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Act out three action words for a partner to guess."
+      }
+    }
+  ]
+}

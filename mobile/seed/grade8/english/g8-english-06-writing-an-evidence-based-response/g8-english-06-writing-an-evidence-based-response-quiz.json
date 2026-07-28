@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-english-06-writing-an-evidence-based-response-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains analytical writing?",
+    "options": [
+      "A focused claim, selected evidence, explanation, and transitions build analysis",
+      "It is only the title of the lesson Writing an Evidence-Based Response.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "A focused claim, selected evidence, explanation, and transitions build analysis",
+    "conceptId": "analytical-writing"
+  },
+  {
+    "questionId": "g8-english-06-writing-an-evidence-based-response-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Evidence becomes persuasive when reasoning connects it to the claim",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Evidence becomes persuasive when reasoning connects it to the claim",
+    "conceptId": "analytical-writing-application"
+  },
+  {
+    "questionId": "g8-english-06-writing-an-evidence-based-response-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "analytical writing",
+    "conceptId": "analytical-writing"
+  },
+  {
+    "questionId": "g8-english-06-writing-an-evidence-based-response-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Draft and revise one analytical paragraph.",
+    "correctAnswer": "analytical writing",
+    "conceptId": "analytical-writing-application"
+  },
+  {
+    "questionId": "g8-english-06-writing-an-evidence-based-response-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "analytical-writing-reasoning"
+  }
+]

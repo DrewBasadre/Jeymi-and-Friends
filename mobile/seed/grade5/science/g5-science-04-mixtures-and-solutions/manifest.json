@@ -1,0 +1,120 @@
+{
+  "moduleId": "g5-science-04-mixtures-and-solutions",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 5,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:4ffe7187e12e3fb599c1eecd43b3c739ffa4fca79b19f750cc4653ad96a32632",
+    "g5-science-04-mixtures-and-solutions-quiz.json": "sha256:b2fc2aff7d64bef974f85fcd098a99b8a31886c88a6493bfe73f4c140fdaf03f",
+    "images/concept-guide.webp": "sha256:0feed6a18f39d723c5dec223e9bee2405926bafb8c384c0f038ef6524d5f1c50",
+    "images/worked-example.webp": "sha256:dc9bbe1365890b88fbe013dcd57ccb839e7e27fad60f334034d0efebd497e573"
+  },
+  "quizId": "g5-science-04-mixtures-and-solutions-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g5-science-04-mixtures-and-solutions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-04-mixtures-and-solutions-review-1",
+      "conceptId": "mixtures",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is mixtures?",
+      "answer": "Mixture parts keep their properties and can be separated using physical methods",
+      "formats": {
+        "text": "Mixture parts keep their properties and can be separated using physical methods.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g5-science-04-mixtures-and-solutions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-04-mixtures-and-solutions-review-2",
+      "conceptId": "mixtures-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for mixtures.",
+      "answer": "Filtering separates insoluble sand from water",
+      "formats": {
+        "text": "Filtering separates insoluble sand from water.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g5-science-04-mixtures-and-solutions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-04-mixtures-and-solutions-review-3",
+      "conceptId": "mixtures",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Mixtures and Solutions.",
+      "answer": "mixtures",
+      "formats": {
+        "text": "mixtures"
+      }
+    },
+    {
+      "moduleId": "g5-science-04-mixtures-and-solutions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-04-mixtures-and-solutions-review-4",
+      "conceptId": "mixtures-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain mixtures in one or two clear sentences.",
+      "answer": "Mixture parts keep their properties and can be separated using physical methods",
+      "formats": {
+        "text": "Mixture parts keep their properties and can be separated using physical methods."
+      }
+    },
+    {
+      "moduleId": "g5-science-04-mixtures-and-solutions",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-04-mixtures-and-solutions-review-5",
+      "conceptId": "mixtures-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Choose methods to separate three sample mixtures.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Choose methods to separate three sample mixtures."
+      }
+    }
+  ]
+}

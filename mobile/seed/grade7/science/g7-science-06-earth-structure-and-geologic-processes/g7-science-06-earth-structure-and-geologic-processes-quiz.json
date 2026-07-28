@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-science-06-earth-structure-and-geologic-processes-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains geologic processes?",
+    "options": [
+      "Earth layers, plate movement, weathering, and erosion continually reshape the surface",
+      "It is only the title of the lesson Earth Structure and Geologic Processes.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Earth layers, plate movement, weathering, and erosion continually reshape the surface",
+    "conceptId": "geologic-processes"
+  },
+  {
+    "questionId": "g7-science-06-earth-structure-and-geologic-processes-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Converging plates can build mountains or form trenches",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Converging plates can build mountains or form trenches",
+    "conceptId": "geologic-processes-application"
+  },
+  {
+    "questionId": "g7-science-06-earth-structure-and-geologic-processes-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "geologic processes",
+    "conceptId": "geologic-processes"
+  },
+  {
+    "questionId": "g7-science-06-earth-structure-and-geologic-processes-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Interpret a plate-boundary diagram and hazard pattern.",
+    "correctAnswer": "geologic processes",
+    "conceptId": "geologic-processes-application"
+  },
+  {
+    "questionId": "g7-science-06-earth-structure-and-geologic-processes-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "geologic-processes-reasoning"
+  }
+]

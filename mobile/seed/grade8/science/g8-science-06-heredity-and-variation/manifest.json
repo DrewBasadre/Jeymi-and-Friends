@@ -1,0 +1,120 @@
+{
+  "moduleId": "g8-science-06-heredity-and-variation",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 8,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:bc8d10184acbf11dc0a4f89ad1723b63b07f2ac29da1ad9367914f5f5639aa39",
+    "g8-science-06-heredity-and-variation-quiz.json": "sha256:7055a6b36ae452c22c53d5de7ec19dc970d642d3811db9aff27e279d109ab0c3",
+    "images/concept-guide.webp": "sha256:e75055e217bafb8ebea3abd8fa6fe2e4c4755696e26ce068817350b69efbb13a",
+    "images/worked-example.webp": "sha256:7f876b646a3f6ab77f32b02c393170ad00f755df1626f745f6e29a5bde19e246"
+  },
+  "quizId": "g8-science-06-heredity-and-variation-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g8-science-06-heredity-and-variation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-science-06-heredity-and-variation-review-1",
+      "conceptId": "heredity",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is heredity?",
+      "answer": "Genes carry inherited information while environment and recombination contribute to variation",
+      "formats": {
+        "text": "Genes carry inherited information while environment and recombination contribute to variation.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g8-science-06-heredity-and-variation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-science-06-heredity-and-variation-review-2",
+      "conceptId": "heredity-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for heredity.",
+      "answer": "Siblings share genes but are not genetically identical",
+      "formats": {
+        "text": "Siblings share genes but are not genetically identical.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g8-science-06-heredity-and-variation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-science-06-heredity-and-variation-review-3",
+      "conceptId": "heredity",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Heredity and Variation.",
+      "answer": "heredity",
+      "formats": {
+        "text": "heredity"
+      }
+    },
+    {
+      "moduleId": "g8-science-06-heredity-and-variation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-science-06-heredity-and-variation-review-4",
+      "conceptId": "heredity-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain heredity in one or two clear sentences.",
+      "answer": "Genes carry inherited information while environment and recombination contribute to variation",
+      "formats": {
+        "text": "Genes carry inherited information while environment and recombination contribute to variation."
+      }
+    },
+    {
+      "moduleId": "g8-science-06-heredity-and-variation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-science-06-heredity-and-variation-review-5",
+      "conceptId": "heredity-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Model trait probability with a simple cross.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Model trait probability with a simple cross."
+      }
+    }
+  ]
+}

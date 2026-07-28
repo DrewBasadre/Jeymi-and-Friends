@@ -1,0 +1,120 @@
+{
+  "moduleId": "g2-english-04-describing-words",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 2,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:a9df409e2dfcd032b9889f03a8bf4bbfb3adce01b7a416251b9042491377f5b8",
+    "g2-english-04-describing-words-quiz.json": "sha256:c44507152bdc78401aadaf50b20ed4cb5f862cc125f2dc1a400786bf523efebb",
+    "images/concept-guide.webp": "sha256:017fa5b4282df1959acb1b819210cbbec9c97a2843af0ed94806287f5506b033",
+    "images/worked-example.webp": "sha256:b20c0d7adf7ce9fe949eefbcba2dc113f9e34894ab9a68087367389980fb028c"
+  },
+  "quizId": "g2-english-04-describing-words-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g2-english-04-describing-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-04-describing-words-review-1",
+      "conceptId": "adjectives",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is adjectives?",
+      "answer": "Adjectives tell size, color, number, shape, or quality",
+      "formats": {
+        "text": "Adjectives tell size, color, number, shape, or quality.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g2-english-04-describing-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-04-describing-words-review-2",
+      "conceptId": "adjectives-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for adjectives.",
+      "answer": "Three bright kites adds number and color details",
+      "formats": {
+        "text": "Three bright kites adds number and color details.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g2-english-04-describing-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-04-describing-words-review-3",
+      "conceptId": "adjectives",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Describing Words.",
+      "answer": "adjectives",
+      "formats": {
+        "text": "adjectives"
+      }
+    },
+    {
+      "moduleId": "g2-english-04-describing-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-04-describing-words-review-4",
+      "conceptId": "adjectives-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain adjectives in one or two clear sentences.",
+      "answer": "Adjectives tell size, color, number, shape, or quality",
+      "formats": {
+        "text": "Adjectives tell size, color, number, shape, or quality."
+      }
+    },
+    {
+      "moduleId": "g2-english-04-describing-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-04-describing-words-review-5",
+      "conceptId": "adjectives-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Add two useful adjectives to each of three nouns.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Add two useful adjectives to each of three nouns."
+      }
+    }
+  ]
+}

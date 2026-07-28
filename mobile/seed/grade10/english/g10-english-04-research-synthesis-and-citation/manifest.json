@@ -1,0 +1,120 @@
+{
+  "moduleId": "g10-english-04-research-synthesis-and-citation",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 10,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:73dd373f9281ca8924e6464438d906db589a5230bd6cf99dfa1511a39921b57f",
+    "g10-english-04-research-synthesis-and-citation-quiz.json": "sha256:0701c4d4d12d9f59e892f687b208604ad27abf8a2f2b1078ab8353852c4024d8",
+    "images/concept-guide.webp": "sha256:376cc36974b7bad10589885a7dfee465dcddbebf286d9189a695a21185874361",
+    "images/worked-example.webp": "sha256:b81c0b3961035e11ec512025dcdff2ba1efa2e976227498a86e3bdb5d575285a"
+  },
+  "quizId": "g10-english-04-research-synthesis-and-citation-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g10-english-04-research-synthesis-and-citation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-04-research-synthesis-and-citation-review-1",
+      "conceptId": "research-synthesis",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is research synthesis?",
+      "answer": "Synthesis combines patterns and tensions across credible sources with ethical attribution",
+      "formats": {
+        "text": "Synthesis combines patterns and tensions across credible sources with ethical attribution.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g10-english-04-research-synthesis-and-citation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-04-research-synthesis-and-citation-review-2",
+      "conceptId": "research-synthesis-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for research synthesis.",
+      "answer": "A synthesis paragraph organizes ideas, not one source at a time",
+      "formats": {
+        "text": "A synthesis paragraph organizes ideas, not one source at a time.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g10-english-04-research-synthesis-and-citation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-04-research-synthesis-and-citation-review-3",
+      "conceptId": "research-synthesis",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Research Synthesis and Citation.",
+      "answer": "research synthesis",
+      "formats": {
+        "text": "research synthesis"
+      }
+    },
+    {
+      "moduleId": "g10-english-04-research-synthesis-and-citation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-04-research-synthesis-and-citation-review-4",
+      "conceptId": "research-synthesis-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain research synthesis in one or two clear sentences.",
+      "answer": "Synthesis combines patterns and tensions across credible sources with ethical attribution",
+      "formats": {
+        "text": "Synthesis combines patterns and tensions across credible sources with ethical attribution."
+      }
+    },
+    {
+      "moduleId": "g10-english-04-research-synthesis-and-citation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-english-04-research-synthesis-and-citation-review-5",
+      "conceptId": "research-synthesis-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Create a source matrix and draft a synthesis.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Create a source matrix and draft a synthesis."
+      }
+    }
+  ]
+}

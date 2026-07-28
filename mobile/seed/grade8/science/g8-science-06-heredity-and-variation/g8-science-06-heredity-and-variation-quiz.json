@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-science-06-heredity-and-variation-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains heredity?",
+    "options": [
+      "Genes carry inherited information while environment and recombination contribute to variation",
+      "It is only the title of the lesson Heredity and Variation.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Genes carry inherited information while environment and recombination contribute to variation",
+    "conceptId": "heredity"
+  },
+  {
+    "questionId": "g8-science-06-heredity-and-variation-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Siblings share genes but are not genetically identical",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Siblings share genes but are not genetically identical",
+    "conceptId": "heredity-application"
+  },
+  {
+    "questionId": "g8-science-06-heredity-and-variation-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "heredity",
+    "conceptId": "heredity"
+  },
+  {
+    "questionId": "g8-science-06-heredity-and-variation-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Model trait probability with a simple cross.",
+    "correctAnswer": "heredity",
+    "conceptId": "heredity-application"
+  },
+  {
+    "questionId": "g8-science-06-heredity-and-variation-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "heredity-reasoning"
+  }
+]

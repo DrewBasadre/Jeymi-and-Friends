@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-science-06-earth-moon-and-sky-patterns-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains sky patterns?",
+    "options": [
+      "The Sun, Moon, and stars appear in predictable daily and monthly patterns",
+      "It is only the title of the lesson Earth, Moon, and Sky Patterns.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "The Sun, Moon, and stars appear in predictable daily and monthly patterns",
+    "conceptId": "sky-patterns"
+  },
+  {
+    "questionId": "g3-science-06-earth-moon-and-sky-patterns-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Shadows change direction as the Sun appears to move across the sky",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Shadows change direction as the Sun appears to move across the sky",
+    "conceptId": "sky-patterns-application"
+  },
+  {
+    "questionId": "g3-science-06-earth-moon-and-sky-patterns-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "sky patterns",
+    "conceptId": "sky-patterns"
+  },
+  {
+    "questionId": "g3-science-06-earth-moon-and-sky-patterns-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Measure one shadow at three times of day.",
+    "correctAnswer": "sky patterns",
+    "conceptId": "sky-patterns-application"
+  },
+  {
+    "questionId": "g3-science-06-earth-moon-and-sky-patterns-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "sky-patterns-reasoning"
+  }
+]

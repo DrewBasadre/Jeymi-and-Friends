@@ -1,0 +1,120 @@
+{
+  "moduleId": "g1-math-04-taking-away",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 1,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:e803da8de3b2d2fc97f270f6d71e29d387d62520ef9f9f2e0964e2b01f42a1f6",
+    "g1-math-04-taking-away-quiz.json": "sha256:5121030c2035dcb7e6e321b8d6337e0071d108736a2367f04c26df01b8f2d0ca",
+    "images/concept-guide.webp": "sha256:a9721411422fe7aa1aedd18c528685b5c20bb37795cad4578046ffc7b33cf9e4",
+    "images/worked-example.webp": "sha256:16dc2ed13b7d1e54aec823dd0c29a64dedcc8933ebbce64a90d4b5bd788d6a0f"
+  },
+  "quizId": "g1-math-04-taking-away-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g1-math-04-taking-away",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-04-taking-away-review-1",
+      "conceptId": "subtraction",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is subtraction?",
+      "answer": "Subtraction finds how many remain after some are taken away",
+      "formats": {
+        "text": "Subtraction finds how many remain after some are taken away.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g1-math-04-taking-away",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-04-taking-away-review-2",
+      "conceptId": "subtraction-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for subtraction.",
+      "answer": "Seven crayons take away three crayons leaves four crayons",
+      "formats": {
+        "text": "Seven crayons take away three crayons leaves four crayons.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g1-math-04-taking-away",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-04-taking-away-review-3",
+      "conceptId": "subtraction",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Taking Away.",
+      "answer": "subtraction",
+      "formats": {
+        "text": "subtraction"
+      }
+    },
+    {
+      "moduleId": "g1-math-04-taking-away",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-04-taking-away-review-4",
+      "conceptId": "subtraction-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain subtraction in one or two clear sentences.",
+      "answer": "Subtraction finds how many remain after some are taken away",
+      "formats": {
+        "text": "Subtraction finds how many remain after some are taken away."
+      }
+    },
+    {
+      "moduleId": "g1-math-04-taking-away",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-04-taking-away-review-5",
+      "conceptId": "subtraction-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Act out a subtraction story with ten bottle caps.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Act out a subtraction story with ten bottle caps."
+      }
+    }
+  ]
+}

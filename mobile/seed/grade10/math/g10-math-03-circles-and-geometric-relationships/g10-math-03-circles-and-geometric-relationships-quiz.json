@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-math-03-circles-and-geometric-relationships-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains circle geometry?",
+    "options": [
+      "Arcs, chords, tangents, secants, and angles satisfy connected theorems",
+      "It is only the title of the lesson Circles and Geometric Relationships.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Arcs, chords, tangents, secants, and angles satisfy connected theorems",
+    "conceptId": "circle-geometry"
+  },
+  {
+    "questionId": "g10-math-03-circles-and-geometric-relationships-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A radius to a tangent point is perpendicular to the tangent",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A radius to a tangent point is perpendicular to the tangent",
+    "conceptId": "circle-geometry-application"
+  },
+  {
+    "questionId": "g10-math-03-circles-and-geometric-relationships-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "circle geometry",
+    "conceptId": "circle-geometry"
+  },
+  {
+    "questionId": "g10-math-03-circles-and-geometric-relationships-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Solve and justify a circle-angle problem.",
+    "correctAnswer": "circle geometry",
+    "conceptId": "circle-geometry-application"
+  },
+  {
+    "questionId": "g10-math-03-circles-and-geometric-relationships-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "circle-geometry-reasoning"
+  }
+]

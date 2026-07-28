@@ -1,0 +1,120 @@
+{
+  "moduleId": "g2-english-06-characters-and-setting",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 2,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:771f5e32e326a705e8c8d89986cb7aaceada21781ed56d0b7df8b282c1903530",
+    "g2-english-06-characters-and-setting-quiz.json": "sha256:1da0deee5bb8c225b0e517cfe7444963b03c0cd6f2c9e793888bdd48423f86a1",
+    "images/concept-guide.webp": "sha256:306e8292d72a9bfa0c32aa17aca3d854e05d36019948859e91b964306043d055",
+    "images/worked-example.webp": "sha256:ac71096ca378b05590b9353c355db09b5e5625f1af0871bc43f8700c77b6e770"
+  },
+  "quizId": "g2-english-06-characters-and-setting-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g2-english-06-characters-and-setting",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-06-characters-and-setting-review-1",
+      "conceptId": "story-elements",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is story elements?",
+      "answer": "Characters act in a story, and the setting tells where and when events happen",
+      "formats": {
+        "text": "Characters act in a story, and the setting tells where and when events happen.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g2-english-06-characters-and-setting",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-06-characters-and-setting-review-2",
+      "conceptId": "story-elements-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for story elements.",
+      "answer": "Lina is the character, and the school garden is the setting",
+      "formats": {
+        "text": "Lina is the character, and the school garden is the setting.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g2-english-06-characters-and-setting",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-06-characters-and-setting-review-3",
+      "conceptId": "story-elements",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Characters and Setting.",
+      "answer": "story elements",
+      "formats": {
+        "text": "story elements"
+      }
+    },
+    {
+      "moduleId": "g2-english-06-characters-and-setting",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-06-characters-and-setting-review-4",
+      "conceptId": "story-elements-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain story elements in one or two clear sentences.",
+      "answer": "Characters act in a story, and the setting tells where and when events happen",
+      "formats": {
+        "text": "Characters act in a story, and the setting tells where and when events happen."
+      }
+    },
+    {
+      "moduleId": "g2-english-06-characters-and-setting",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-english-06-characters-and-setting-review-5",
+      "conceptId": "story-elements-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Identify the characters and setting in a familiar tale.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Identify the characters and setting in a familiar tale."
+      }
+    }
+  ]
+}

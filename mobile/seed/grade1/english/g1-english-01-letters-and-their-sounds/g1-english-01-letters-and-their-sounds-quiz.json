@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g1-english-01-letters-and-their-sounds-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains letter sounds?",
+    "options": [
+      "Letters represent sounds that combine to make spoken and written words",
+      "It is only the title of the lesson Letters and Their Sounds.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Letters represent sounds that combine to make spoken and written words",
+    "conceptId": "letter-sounds"
+  },
+  {
+    "questionId": "g1-english-01-letters-and-their-sounds-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "The letter m begins the words map, mat, and moon",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "The letter m begins the words map, mat, and moon",
+    "conceptId": "letter-sounds-application"
+  },
+  {
+    "questionId": "g1-english-01-letters-and-their-sounds-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "letter sounds",
+    "conceptId": "letter-sounds"
+  },
+  {
+    "questionId": "g1-english-01-letters-and-their-sounds-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Say the first sound in five familiar object names.",
+    "correctAnswer": "letter sounds",
+    "conceptId": "letter-sounds-application"
+  },
+  {
+    "questionId": "g1-english-01-letters-and-their-sounds-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "letter-sounds-reasoning"
+  }
+]

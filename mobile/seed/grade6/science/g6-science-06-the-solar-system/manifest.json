@@ -1,0 +1,120 @@
+{
+  "moduleId": "g6-science-06-the-solar-system",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 6,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:8dee22b3a9c25b76ca97fbafd949fba529c8e9e3480ba828364aa156351dde3e",
+    "g6-science-06-the-solar-system-quiz.json": "sha256:4039dd7156053485b2580e65341d03486b2dc9218aedf8eb00b400a5026248ae",
+    "images/concept-guide.webp": "sha256:9f53b6f3836ecb026a9ef69ba68ef7a169dc4da8319ed10d7a8204d8438ba736",
+    "images/worked-example.webp": "sha256:371bc34b11061bf5b69b9ebab1eb1d287ee90261975036945e44a05cf053b707"
+  },
+  "quizId": "g6-science-06-the-solar-system-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g6-science-06-the-solar-system",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-06-the-solar-system-review-1",
+      "conceptId": "solar-system",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is solar system?",
+      "answer": "Gravity organizes planets and moons, and predictable motions produce observable cycles",
+      "formats": {
+        "text": "Gravity organizes planets and moons, and predictable motions produce observable cycles.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g6-science-06-the-solar-system",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-06-the-solar-system-review-2",
+      "conceptId": "solar-system-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for solar system.",
+      "answer": "Earth rotation causes day and night while revolution defines a year",
+      "formats": {
+        "text": "Earth rotation causes day and night while revolution defines a year.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g6-science-06-the-solar-system",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-06-the-solar-system-review-3",
+      "conceptId": "solar-system",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in The Solar System.",
+      "answer": "solar system",
+      "formats": {
+        "text": "solar system"
+      }
+    },
+    {
+      "moduleId": "g6-science-06-the-solar-system",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-06-the-solar-system-review-4",
+      "conceptId": "solar-system-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain solar system in one or two clear sentences.",
+      "answer": "Gravity organizes planets and moons, and predictable motions produce observable cycles",
+      "formats": {
+        "text": "Gravity organizes planets and moons, and predictable motions produce observable cycles."
+      }
+    },
+    {
+      "moduleId": "g6-science-06-the-solar-system",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-06-the-solar-system-review-5",
+      "conceptId": "solar-system-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Use a scale model to compare orbital order.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Use a scale model to compare orbital order."
+      }
+    }
+  ]
+}

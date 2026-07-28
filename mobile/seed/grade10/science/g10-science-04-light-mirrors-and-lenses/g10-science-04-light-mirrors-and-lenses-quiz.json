@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-science-04-light-mirrors-and-lenses-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains optics?",
+    "options": [
+      "Reflection and refraction models explain image formation in mirrors and lenses",
+      "It is only the title of the lesson Light, Mirrors, and Lenses.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Reflection and refraction models explain image formation in mirrors and lenses",
+    "conceptId": "optics"
+  },
+  {
+    "questionId": "g10-science-04-light-mirrors-and-lenses-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A convex lens can converge parallel light rays",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A convex lens can converge parallel light rays",
+    "conceptId": "optics-application"
+  },
+  {
+    "questionId": "g10-science-04-light-mirrors-and-lenses-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "optics",
+    "conceptId": "optics"
+  },
+  {
+    "questionId": "g10-science-04-light-mirrors-and-lenses-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Ray-trace an image and test a lens prediction.",
+    "correctAnswer": "optics",
+    "conceptId": "optics-application"
+  },
+  {
+    "questionId": "g10-science-04-light-mirrors-and-lenses-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "optics-reasoning"
+  }
+]

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g7-english-01-listening-and-oral-communication",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 7,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:2cef5600bebd3ee6fbd1129bd457e5d60f6af29351f23a99d184fe6e90846604",
+    "g7-english-01-listening-and-oral-communication-quiz.json": "sha256:724b5e541b3ba3c65433077c7ad0f6776ea97d1381db007fefcaf1233d2b25ff",
+    "images/concept-guide.webp": "sha256:806f854eee9fe63df19d6b2d70bb3f1c3729428093a925caa840cc9c12cb6aed",
+    "images/worked-example.webp": "sha256:0f0e50bad83a2094fe58c07ad4b8b80abd4dcceffd6937ce96186de4c268a3ff"
+  },
+  "quizId": "g7-english-01-listening-and-oral-communication-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g7-english-01-listening-and-oral-communication",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-english-01-listening-and-oral-communication-review-1",
+      "conceptId": "communication-strategies",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is communication strategies?",
+      "answer": "Purpose, audience, tone, nonverbal cues, and active listening shape effective communication",
+      "formats": {
+        "text": "Purpose, audience, tone, nonverbal cues, and active listening shape effective communication.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g7-english-01-listening-and-oral-communication",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-english-01-listening-and-oral-communication-review-2",
+      "conceptId": "communication-strategies-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for communication strategies.",
+      "answer": "A formal report uses a different tone from a friendly conversation",
+      "formats": {
+        "text": "A formal report uses a different tone from a friendly conversation.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g7-english-01-listening-and-oral-communication",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-english-01-listening-and-oral-communication-review-3",
+      "conceptId": "communication-strategies",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Listening and Oral Communication.",
+      "answer": "communication strategies",
+      "formats": {
+        "text": "communication strategies"
+      }
+    },
+    {
+      "moduleId": "g7-english-01-listening-and-oral-communication",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-english-01-listening-and-oral-communication-review-4",
+      "conceptId": "communication-strategies-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain communication strategies in one or two clear sentences.",
+      "answer": "Purpose, audience, tone, nonverbal cues, and active listening shape effective communication",
+      "formats": {
+        "text": "Purpose, audience, tone, nonverbal cues, and active listening shape effective communication."
+      }
+    },
+    {
+      "moduleId": "g7-english-01-listening-and-oral-communication",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-english-01-listening-and-oral-communication-review-5",
+      "conceptId": "communication-strategies-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Adapt one message for two audiences.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Adapt one message for two audiences."
+      }
+    }
+  ]
+}

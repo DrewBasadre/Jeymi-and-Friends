@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-english-01-using-context-clues-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains context clues?",
+    "options": [
+      "Nearby words and examples help readers infer an unfamiliar word meaning",
+      "It is only the title of the lesson Using Context Clues.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Nearby words and examples help readers infer an unfamiliar word meaning",
+    "conceptId": "context-clues"
+  },
+  {
+    "questionId": "g3-english-01-using-context-clues-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "The arid land was dry and dusty, so arid means dry",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "The arid land was dry and dusty, so arid means dry",
+    "conceptId": "context-clues-application"
+  },
+  {
+    "questionId": "g3-english-01-using-context-clues-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "context clues",
+    "conceptId": "context-clues"
+  },
+  {
+    "questionId": "g3-english-01-using-context-clues-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Underline clues that reveal three unknown words.",
+    "correctAnswer": "context clues",
+    "conceptId": "context-clues-application"
+  },
+  {
+    "questionId": "g3-english-01-using-context-clues-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "context-clues-reasoning"
+  }
+]

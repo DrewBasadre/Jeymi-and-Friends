@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-science-03-ecosystem-relationships-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains ecosystem interactions?",
+    "options": [
+      "Organisms compete, cooperate, and depend on abiotic factors within ecosystems",
+      "It is only the title of the lesson Ecosystem Relationships.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Organisms compete, cooperate, and depend on abiotic factors within ecosystems",
+    "conceptId": "ecosystem-interactions"
+  },
+  {
+    "questionId": "g5-science-03-ecosystem-relationships-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Mangrove roots shelter young fish while holding coastal sediment",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Mangrove roots shelter young fish while holding coastal sediment",
+    "conceptId": "ecosystem-interactions-application"
+  },
+  {
+    "questionId": "g5-science-03-ecosystem-relationships-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "ecosystem interactions",
+    "conceptId": "ecosystem-interactions"
+  },
+  {
+    "questionId": "g5-science-03-ecosystem-relationships-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Map four interactions in a Philippine ecosystem.",
+    "correctAnswer": "ecosystem interactions",
+    "conceptId": "ecosystem-interactions-application"
+  },
+  {
+    "questionId": "g5-science-03-ecosystem-relationships-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "ecosystem-interactions-reasoning"
+  }
+]

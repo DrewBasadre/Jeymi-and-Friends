@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-english-01-denotation-and-connotation-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains word meaning?",
+    "options": [
+      "Words can share a dictionary meaning but carry different feelings or associations",
+      "It is only the title of the lesson Denotation and Connotation.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Words can share a dictionary meaning but carry different feelings or associations",
+    "conceptId": "word-meaning"
+  },
+  {
+    "questionId": "g5-english-01-denotation-and-connotation-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "slim and skinny both describe thinness but suggest different tones",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "slim and skinny both describe thinness but suggest different tones",
+    "conceptId": "word-meaning-application"
+  },
+  {
+    "questionId": "g5-english-01-denotation-and-connotation-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "word meaning",
+    "conceptId": "word-meaning"
+  },
+  {
+    "questionId": "g5-english-01-denotation-and-connotation-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Rank related words from positive to negative tone.",
+    "correctAnswer": "word meaning",
+    "conceptId": "word-meaning-application"
+  },
+  {
+    "questionId": "g5-english-01-denotation-and-connotation-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "word-meaning-reasoning"
+  }
+]

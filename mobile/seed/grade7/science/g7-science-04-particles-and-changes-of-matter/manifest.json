@@ -1,0 +1,120 @@
+{
+  "moduleId": "g7-science-04-particles-and-changes-of-matter",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 7,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:ab12ce9873633b4e3b41643ee81d014ea574d1afec2f94914667ab0671c6605d",
+    "g7-science-04-particles-and-changes-of-matter-quiz.json": "sha256:ddc6bbb32947775b24deba37154358cad464bc986b802d6614bfbcbe563309f6",
+    "images/concept-guide.webp": "sha256:6989789a505a272fb1f51603355e72ed4cc6d98623a45936bc60bc62a78132f0",
+    "images/worked-example.webp": "sha256:83b0bc7ff5d7ab121dee0dafac2c883e68d6a3e4b55fd66f26306ae0f05f6b86"
+  },
+  "quizId": "g7-science-04-particles-and-changes-of-matter-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g7-science-04-particles-and-changes-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-04-particles-and-changes-of-matter-review-1",
+      "conceptId": "particle-model",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is particle model?",
+      "answer": "Particle arrangement and motion explain states, diffusion, and physical or chemical change",
+      "formats": {
+        "text": "Particle arrangement and motion explain states, diffusion, and physical or chemical change.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g7-science-04-particles-and-changes-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-04-particles-and-changes-of-matter-review-2",
+      "conceptId": "particle-model-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for particle model.",
+      "answer": "Heating increases particle motion and can cause melting",
+      "formats": {
+        "text": "Heating increases particle motion and can cause melting.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g7-science-04-particles-and-changes-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-04-particles-and-changes-of-matter-review-3",
+      "conceptId": "particle-model",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Particles and Changes of Matter.",
+      "answer": "particle model",
+      "formats": {
+        "text": "particle model"
+      }
+    },
+    {
+      "moduleId": "g7-science-04-particles-and-changes-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-04-particles-and-changes-of-matter-review-4",
+      "conceptId": "particle-model-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain particle model in one or two clear sentences.",
+      "answer": "Particle arrangement and motion explain states, diffusion, and physical or chemical change",
+      "formats": {
+        "text": "Particle arrangement and motion explain states, diffusion, and physical or chemical change."
+      }
+    },
+    {
+      "moduleId": "g7-science-04-particles-and-changes-of-matter",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-04-particles-and-changes-of-matter-review-5",
+      "conceptId": "particle-model-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Use particle drawings to compare three states.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Use particle drawings to compare three states."
+      }
+    }
+  ]
+}

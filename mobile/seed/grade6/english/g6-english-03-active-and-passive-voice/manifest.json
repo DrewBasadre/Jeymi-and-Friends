@@ -1,0 +1,120 @@
+{
+  "moduleId": "g6-english-03-active-and-passive-voice",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 6,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:bdde58bdeba663e1446052019386ee4ff25e8482ceb8a8d77ac501bee8764b1e",
+    "g6-english-03-active-and-passive-voice-quiz.json": "sha256:7e2540d9adf7d63649880d517362d64718c9be6cc989b2b260cb5bf3bb573fa1",
+    "images/concept-guide.webp": "sha256:937eb9b4a45605951d595be62d55228ed732946cfbf69abb9d7116b9ac3de34c",
+    "images/worked-example.webp": "sha256:baa17012c896ef5ce1693e08fb35e96cff5bf825c25c5609206cbf211d821075"
+  },
+  "quizId": "g6-english-03-active-and-passive-voice-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g6-english-03-active-and-passive-voice",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-03-active-and-passive-voice-review-1",
+      "conceptId": "voice",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is voice?",
+      "answer": "Active voice emphasizes the doer; passive voice emphasizes the receiver or result",
+      "formats": {
+        "text": "Active voice emphasizes the doer; passive voice emphasizes the receiver or result.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g6-english-03-active-and-passive-voice",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-03-active-and-passive-voice-review-2",
+      "conceptId": "voice-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for voice.",
+      "answer": "Scientists measured rainfall is active",
+      "formats": {
+        "text": "Scientists measured rainfall is active.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g6-english-03-active-and-passive-voice",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-03-active-and-passive-voice-review-3",
+      "conceptId": "voice",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Active and Passive Voice.",
+      "answer": "voice",
+      "formats": {
+        "text": "voice"
+      }
+    },
+    {
+      "moduleId": "g6-english-03-active-and-passive-voice",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-03-active-and-passive-voice-review-4",
+      "conceptId": "voice-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain voice in one or two clear sentences.",
+      "answer": "Active voice emphasizes the doer; passive voice emphasizes the receiver or result",
+      "formats": {
+        "text": "Active voice emphasizes the doer; passive voice emphasizes the receiver or result."
+      }
+    },
+    {
+      "moduleId": "g6-english-03-active-and-passive-voice",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-03-active-and-passive-voice-review-5",
+      "conceptId": "voice-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Rewrite sentences and discuss the change in focus.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Rewrite sentences and discuss the change in focus."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-math-02-multiplication-strategies-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains multi-digit multiplication?",
+    "options": [
+      "Partial products and place value explain multi-digit multiplication",
+      "It is only the title of the lesson Multiplication Strategies.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Partial products and place value explain multi-digit multiplication",
+    "conceptId": "multi-digit-multiplication"
+  },
+  {
+    "questionId": "g4-math-02-multiplication-strategies-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "23 x 14 combines 23 x 10 and 23 x 4",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "23 x 14 combines 23 x 10 and 23 x 4",
+    "conceptId": "multi-digit-multiplication-application"
+  },
+  {
+    "questionId": "g4-math-02-multiplication-strategies-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "multi-digit multiplication",
+    "conceptId": "multi-digit-multiplication"
+  },
+  {
+    "questionId": "g4-math-02-multiplication-strategies-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Solve one product with an area model and standard algorithm.",
+    "correctAnswer": "multi-digit multiplication",
+    "conceptId": "multi-digit-multiplication-application"
+  },
+  {
+    "questionId": "g4-math-02-multiplication-strategies-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "multi-digit-multiplication-reasoning"
+  }
+]

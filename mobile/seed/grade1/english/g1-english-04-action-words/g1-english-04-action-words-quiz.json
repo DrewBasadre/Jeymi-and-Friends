@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g1-english-04-action-words-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains verbs?",
+    "options": [
+      "An action word tells what someone or something does",
+      "It is only the title of the lesson Action Words.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "An action word tells what someone or something does",
+    "conceptId": "verbs"
+  },
+  {
+    "questionId": "g1-english-04-action-words-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Run, read, sing, and jump are action words",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Run, read, sing, and jump are action words",
+    "conceptId": "verbs-application"
+  },
+  {
+    "questionId": "g1-english-04-action-words-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "verbs",
+    "conceptId": "verbs"
+  },
+  {
+    "questionId": "g1-english-04-action-words-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Act out three action words for a partner to guess.",
+    "correctAnswer": "verbs",
+    "conceptId": "verbs-application"
+  },
+  {
+    "questionId": "g1-english-04-action-words-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "verbs-reasoning"
+  }
+]

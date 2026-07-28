@@ -1,0 +1,120 @@
+{
+  "moduleId": "g7-english-05-evaluating-informational-text",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 7,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:0cec31c381bfde7cbea66414a1b2c854de4beb9e3d15d44082f4d6d161876701",
+    "g7-english-05-evaluating-informational-text-quiz.json": "sha256:2c08bf9bd362ccd6c31de945656fb606ff4c037cbfcc633445ed1fd989676ff9",
+    "images/concept-guide.webp": "sha256:397133445ee61ccbbf0ba6b80e61cd19d1bd9593afbe9f010f5c19843af4e110",
+    "images/worked-example.webp": "sha256:58736f2fff9d5c94c3e2da5da0b4dae5bc133c96696acb6ec75a7ac6dbd90f0b"
+  },
+  "quizId": "g7-english-05-evaluating-informational-text-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g7-english-05-evaluating-informational-text",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-english-05-evaluating-informational-text-review-1",
+      "conceptId": "source-evaluation",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is source evaluation?",
+      "answer": "Readers examine claims, evidence, organization, and source credibility",
+      "formats": {
+        "text": "Readers examine claims, evidence, organization, and source credibility.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g7-english-05-evaluating-informational-text",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-english-05-evaluating-informational-text-review-2",
+      "conceptId": "source-evaluation-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for source evaluation.",
+      "answer": "A claim supported by data from a named study is stronger than an unsupported assertion",
+      "formats": {
+        "text": "A claim supported by data from a named study is stronger than an unsupported assertion.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g7-english-05-evaluating-informational-text",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-english-05-evaluating-informational-text-review-3",
+      "conceptId": "source-evaluation",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Evaluating Informational Text.",
+      "answer": "source evaluation",
+      "formats": {
+        "text": "source evaluation"
+      }
+    },
+    {
+      "moduleId": "g7-english-05-evaluating-informational-text",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-english-05-evaluating-informational-text-review-4",
+      "conceptId": "source-evaluation-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain source evaluation in one or two clear sentences.",
+      "answer": "Readers examine claims, evidence, organization, and source credibility",
+      "formats": {
+        "text": "Readers examine claims, evidence, organization, and source credibility."
+      }
+    },
+    {
+      "moduleId": "g7-english-05-evaluating-informational-text",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-english-05-evaluating-informational-text-review-5",
+      "conceptId": "source-evaluation-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Annotate claim, evidence, and source in an article.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Annotate claim, evidence, and source in an article."
+      }
+    }
+  ]
+}

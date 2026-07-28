@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-english-04-theme-and-literary-interpretation-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains theme?",
+    "options": [
+      "Theme develops through character choices, conflict, symbols, and consequences",
+      "It is only the title of the lesson Theme and Literary Interpretation.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Theme develops through character choices, conflict, symbols, and consequences",
+    "conceptId": "theme"
+  },
+  {
+    "questionId": "g8-english-04-theme-and-literary-interpretation-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A repeated image may reinforce a story central insight",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A repeated image may reinforce a story central insight",
+    "conceptId": "theme-application"
+  },
+  {
+    "questionId": "g8-english-04-theme-and-literary-interpretation-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "theme",
+    "conceptId": "theme"
+  },
+  {
+    "questionId": "g8-english-04-theme-and-literary-interpretation-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Support a theme statement with two details.",
+    "correctAnswer": "theme",
+    "conceptId": "theme-application"
+  },
+  {
+    "questionId": "g8-english-04-theme-and-literary-interpretation-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "theme-reasoning"
+  }
+]

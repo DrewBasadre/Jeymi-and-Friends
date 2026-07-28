@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-science-04-particles-and-changes-of-matter-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains particle model?",
+    "options": [
+      "Particle arrangement and motion explain states, diffusion, and physical or chemical change",
+      "It is only the title of the lesson Particles and Changes of Matter.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Particle arrangement and motion explain states, diffusion, and physical or chemical change",
+    "conceptId": "particle-model"
+  },
+  {
+    "questionId": "g7-science-04-particles-and-changes-of-matter-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Heating increases particle motion and can cause melting",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Heating increases particle motion and can cause melting",
+    "conceptId": "particle-model-application"
+  },
+  {
+    "questionId": "g7-science-04-particles-and-changes-of-matter-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "particle model",
+    "conceptId": "particle-model"
+  },
+  {
+    "questionId": "g7-science-04-particles-and-changes-of-matter-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Use particle drawings to compare three states.",
+    "correctAnswer": "particle model",
+    "conceptId": "particle-model-application"
+  },
+  {
+    "questionId": "g7-science-04-particles-and-changes-of-matter-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "particle-model-reasoning"
+  }
+]

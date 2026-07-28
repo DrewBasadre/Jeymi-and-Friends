@@ -9,6 +9,7 @@ export const MODULE_ARCHIVE_LIMITS = {
   expandedBytes: 64 * 1_024 * 1_024,
   files: 64,
   manifestBytes: 256 * 1_024,
+  quizBytes: 512 * 1_024,
   markdownBytes: 2 * 1_024 * 1_024,
   imageBytes: 8 * 1_024 * 1_024,
   audioBytes: 32 * 1_024 * 1_024,
@@ -53,13 +54,15 @@ function validateEntry(file: UnzipFileInfo): void {
   const limit =
     file.name === 'manifest.json'
       ? MODULE_ARCHIVE_LIMITS.manifestBytes
-      : lowerName.endsWith('.md')
-        ? MODULE_ARCHIVE_LIMITS.markdownBytes
-        : lowerName.endsWith('.webp')
-          ? MODULE_ARCHIVE_LIMITS.imageBytes
-          : lowerName.endsWith('.mp3')
-            ? MODULE_ARCHIVE_LIMITS.audioBytes
-            : 0;
+      : lowerName.endsWith('.json')
+        ? MODULE_ARCHIVE_LIMITS.quizBytes
+        : lowerName.endsWith('.md')
+          ? MODULE_ARCHIVE_LIMITS.markdownBytes
+          : lowerName.endsWith('.webp')
+            ? MODULE_ARCHIVE_LIMITS.imageBytes
+            : lowerName.endsWith('.mp3')
+              ? MODULE_ARCHIVE_LIMITS.audioBytes
+              : 0;
   if (!limit) {
     throw new Error(`Unsupported file in module archive: ${file.name}`);
   }

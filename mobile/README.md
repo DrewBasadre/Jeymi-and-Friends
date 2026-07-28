@@ -1,55 +1,54 @@
 # WAIS Android
 
-WAIS is an Android-first Expo React Native app for fully offline classroom
-learning. React Native renders the interface, Expo SQLite stores shared student
-and teacher data, and a Kotlin Expo module provides Android Nearby Connections
+WAIS is an Android-first Expo React Native application for offline classroom
+learning. React Native renders the interface, Expo SQLite stores student and
+teacher data, and a Kotlin Expo module provides Google Nearby Connections
 module transfer.
 
-This build intentionally has no Supabase client, Edge Functions, cloud auth,
-OTA module download, or callable AI service.
+The shipped app has no runtime AI dependency and does not require a cloud
+service.
 
-## Current offline flows
+## Current Offline Flows
 
-- Parent-guided student registration and learning-format assessment
-- Persistent student profile and canonical Profile QR
-- Local teacher profile with name, age, and faculty ID
-- Teacher sections with one authoritative active section
-- Profile QR scan into the active section roster, with update instead of
-  duplicate behavior
-- Assignment QR creation for module and quiz tasks
-- Student Assignment QR scanning with merge-only local deadlines
-- Empty first-run module library with a teacher-transfer waiting state
-- Teacher Markdown module authoring with local WebP images
-- Manual concept ID, importance, and review-item authoring
-- Native Markdown rendering with raw HTML disabled
-- Offline on-device text-to-speech
-- Multiple-choice and enumeration quiz UI, per-question timing, results, and
-  breakdown
-- Multipart Quiz Report QR generation and teacher import
-- Flashcards, SM-2 spaced repetition, retrieval practice, interleaving, custom
-  review sets, blurting, and a Pomodoro wrapper
-- Local student and class performance summaries and teacher-only leaderboard
-- Android Nearby Connections package transfer with verification, cancel, and
-  resume support
-- Disabled `AI assist coming soon` and `AI approach plan coming soon` slots
+- Parent-guided student registration and PIN-based sign-in
+- Automatic provisioning of 18 modules for the student's selected grade
+- 180 total MATATAG-aligned Quarter 1 demo modules across Grades 1-10
+- Six Science, six Math, and six English modules per grade
+- Two bundled WebP teaching aids, a quiz, and review items in every module
+- Native Markdown lesson rendering, offline text-to-speech, and inline recall
+- Multiple-choice, fill-in-the-blank, and identification quizzes
+- Per-question timing, result breakdowns, mastery, and unlimited attempts
+- Home charts for module completion, deadlines, attempts, and score trends
+- Deterministic WAIS buddy feedback after quizzes and on Home
+- Active recall, SM-2 spaced repetition, retrieval practice, interleaving,
+  custom review sets, and Pomodoro sessions
+- Parent-PIN-protected default-format editing and weekly digest access
+- Locally computed weekly score, engagement, review, and concept insights
+- Teacher sections, assignment QR codes, student profile scanning, report
+  scanning, record book, and learner support flags
+- Teacher Markdown module authoring with local WebP images and review items
+- Automatic student receive mode from Profile with checksum-verified ingestion
 
-## Module packages
-
-The only implemented module source is `teacher-bluetooth`.
+## Module Packages
 
 A `.wais-module` file is a bounded ZIP archive containing:
 
 - `manifest.json`
-- one local Markdown file
+- one local Markdown lesson
+- one quiz JSON file for seed modules
 - optional local MP3 audio
-- optional local WebP assets
+- local WebP teaching assets
 
 Every content file has a SHA-256 checksum in the manifest. Archive paths,
-expanded sizes, file counts, Markdown size, audio size, and image sizes are
-validated before installation. Attached images are converted to WebP at 80%
-quality and resized so their longest edge is at most 1080 pixels.
+expanded sizes, file counts, Markdown size, quiz size, audio size, and image
+sizes are validated before installation. Teacher images are converted to WebP
+and capped at 1080 pixels on the longest edge.
 
-## Run on Android
+Supported manifest sources are `seed-bundle`, `teacher-bluetooth`, and the
+reserved `supabase-ota` value. The current app provisions seed bundles and
+installs teacher transfers locally; OTA delivery is not active.
+
+## Run On Android
 
 Requirements:
 
@@ -62,30 +61,34 @@ npm install
 JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home" npm run android
 ```
 
-For an already-built development client, start Metro with:
+For an already-built development client:
 
 ```bash
 npm start
 ```
 
+The custom Nearby module means Expo Go is not supported.
+
 ## Validate
 
 ```bash
+npm run seed:validate
 npm run validate
 npx expo-doctor
+npx expo export --platform android
 ```
 
-The Jest suite covers adaptive learning, SM-2 review behavior, canonical QR
-envelopes and multipart reports, manifest validation, and bounded module archive
-extraction.
+`npm run seed:generate` regenerates the static seed artifacts and registry.
+Seed generation is a development-time authoring task and is never called by the
+shipped app.
 
-## Native Android transport
+## Native Android Transport
 
 `modules/wais-nearby/android` uses Google Nearby Connections with
-`P2P_POINT_TO_POINT`. Connection verification exchanges the small handshake and
-metadata payloads. Nearby selects the available Bluetooth/BLE and local Wi-Fi
-transport for the file payload. The app verifies the archive checksum before
-installing it and preserves transfer state for offset-based retry.
+`P2P_POINT_TO_POINT`. Connection verification exchanges a pairing code and
+module metadata. Nearby selects Bluetooth, BLE, and local Wi-Fi as available.
+The app validates source, manifest, archive limits, and SHA-256 checksums before
+installing a received module.
 
 Two physical Android devices remain the authoritative acceptance environment
-for radio interruption and resume behavior.
+for radio interruption and transfer resume behavior.

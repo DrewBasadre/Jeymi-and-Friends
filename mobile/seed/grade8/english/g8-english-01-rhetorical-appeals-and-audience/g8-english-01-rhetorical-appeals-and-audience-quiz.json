@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-english-01-rhetorical-appeals-and-audience-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains rhetoric?",
+    "options": [
+      "Writers use credibility, emotion, logic, and audience awareness to persuade",
+      "It is only the title of the lesson Rhetorical Appeals and Audience.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Writers use credibility, emotion, logic, and audience awareness to persuade",
+    "conceptId": "rhetoric"
+  },
+  {
+    "questionId": "g8-english-01-rhetorical-appeals-and-audience-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Reliable statistics support a logical appeal",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Reliable statistics support a logical appeal",
+    "conceptId": "rhetoric-application"
+  },
+  {
+    "questionId": "g8-english-01-rhetorical-appeals-and-audience-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "rhetoric",
+    "conceptId": "rhetoric"
+  },
+  {
+    "questionId": "g8-english-01-rhetorical-appeals-and-audience-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Identify and evaluate appeals in a short message.",
+    "correctAnswer": "rhetoric",
+    "conceptId": "rhetoric-application"
+  },
+  {
+    "questionId": "g8-english-01-rhetorical-appeals-and-audience-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "rhetoric-reasoning"
+  }
+]

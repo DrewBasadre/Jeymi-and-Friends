@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-science-06-weather-and-seasons-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains weather patterns?",
+    "options": [
+      "Daily observations reveal patterns in clouds, rain, wind, and temperature",
+      "It is only the title of the lesson Weather and Seasons.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Daily observations reveal patterns in clouds, rain, wind, and temperature",
+    "conceptId": "weather-patterns"
+  },
+  {
+    "questionId": "g2-science-06-weather-and-seasons-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Several rainy days may require umbrellas and indoor plans",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Several rainy days may require umbrellas and indoor plans",
+    "conceptId": "weather-patterns-application"
+  },
+  {
+    "questionId": "g2-science-06-weather-and-seasons-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "weather patterns",
+    "conceptId": "weather-patterns"
+  },
+  {
+    "questionId": "g2-science-06-weather-and-seasons-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Keep a seven-day picture weather record.",
+    "correctAnswer": "weather patterns",
+    "conceptId": "weather-patterns-application"
+  },
+  {
+    "questionId": "g2-science-06-weather-and-seasons-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "weather-patterns-reasoning"
+  }
+]

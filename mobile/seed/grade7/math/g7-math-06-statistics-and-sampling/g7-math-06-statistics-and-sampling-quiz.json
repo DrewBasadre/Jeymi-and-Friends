@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-math-06-statistics-and-sampling-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains sampling?",
+    "options": [
+      "Representative samples and suitable displays support responsible conclusions about populations",
+      "It is only the title of the lesson Statistics and Sampling.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Representative samples and suitable displays support responsible conclusions about populations",
+    "conceptId": "sampling"
+  },
+  {
+    "questionId": "g7-math-06-statistics-and-sampling-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A convenience sample may not represent the whole school",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A convenience sample may not represent the whole school",
+    "conceptId": "sampling-application"
+  },
+  {
+    "questionId": "g7-math-06-statistics-and-sampling-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "sampling",
+    "conceptId": "sampling"
+  },
+  {
+    "questionId": "g7-math-06-statistics-and-sampling-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Critique a survey method and improve it.",
+    "correctAnswer": "sampling",
+    "conceptId": "sampling-application"
+  },
+  {
+    "questionId": "g7-math-06-statistics-and-sampling-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "sampling-reasoning"
+  }
+]

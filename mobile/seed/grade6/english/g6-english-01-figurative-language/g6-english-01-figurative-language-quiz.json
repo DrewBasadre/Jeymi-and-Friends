@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-english-01-figurative-language-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains figurative meaning?",
+    "options": [
+      "Simile, metaphor, personification, and imagery create meaning beyond literal words",
+      "It is only the title of the lesson Figurative Language.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Simile, metaphor, personification, and imagery create meaning beyond literal words",
+    "conceptId": "figurative-meaning"
+  },
+  {
+    "questionId": "g6-english-01-figurative-language-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "The moon was a silver coin is a metaphor",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "The moon was a silver coin is a metaphor",
+    "conceptId": "figurative-meaning-application"
+  },
+  {
+    "questionId": "g6-english-01-figurative-language-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "figurative meaning",
+    "conceptId": "figurative-meaning"
+  },
+  {
+    "questionId": "g6-english-01-figurative-language-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Explain the effect of figurative language in a poem.",
+    "correctAnswer": "figurative meaning",
+    "conceptId": "figurative-meaning-application"
+  },
+  {
+    "questionId": "g6-english-01-figurative-language-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "figurative-meaning-reasoning"
+  }
+]

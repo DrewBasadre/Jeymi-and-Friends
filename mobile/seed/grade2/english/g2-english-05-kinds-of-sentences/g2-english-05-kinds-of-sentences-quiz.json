@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-english-05-kinds-of-sentences-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains sentence purpose?",
+    "options": [
+      "Statements, questions, commands, and exclamations have different purposes and punctuation",
+      "It is only the title of the lesson Kinds of Sentences.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Statements, questions, commands, and exclamations have different purposes and punctuation",
+    "conceptId": "sentence-purpose"
+  },
+  {
+    "questionId": "g2-english-05-kinds-of-sentences-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Where is my bag? asks a question",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Where is my bag? asks a question",
+    "conceptId": "sentence-purpose-application"
+  },
+  {
+    "questionId": "g2-english-05-kinds-of-sentences-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "sentence purpose",
+    "conceptId": "sentence-purpose"
+  },
+  {
+    "questionId": "g2-english-05-kinds-of-sentences-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Write one example of each sentence kind.",
+    "correctAnswer": "sentence purpose",
+    "conceptId": "sentence-purpose-application"
+  },
+  {
+    "questionId": "g2-english-05-kinds-of-sentences-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "sentence-purpose-reasoning"
+  }
+]

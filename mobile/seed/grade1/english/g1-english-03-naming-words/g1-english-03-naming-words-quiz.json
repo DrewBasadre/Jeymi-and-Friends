@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g1-english-03-naming-words-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains nouns?",
+    "options": [
+      "A naming word tells the name of a person, place, animal, or thing",
+      "It is only the title of the lesson Naming Words.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "A naming word tells the name of a person, place, animal, or thing",
+    "conceptId": "nouns"
+  },
+  {
+    "questionId": "g1-english-03-naming-words-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Teacher, park, dog, and book are naming words",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Teacher, park, dog, and book are naming words",
+    "conceptId": "nouns-application"
+  },
+  {
+    "questionId": "g1-english-03-naming-words-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "nouns",
+    "conceptId": "nouns"
+  },
+  {
+    "questionId": "g1-english-03-naming-words-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Find and list five naming words in the classroom.",
+    "correctAnswer": "nouns",
+    "conceptId": "nouns-application"
+  },
+  {
+    "questionId": "g1-english-03-naming-words-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "nouns-reasoning"
+  }
+]

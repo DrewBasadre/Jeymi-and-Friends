@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-math-02-adding-and-subtracting-fractions-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains fraction operations?",
+    "options": [
+      "Fractions need common units before numerators can be combined",
+      "It is only the title of the lesson Adding and Subtracting Fractions.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Fractions need common units before numerators can be combined",
+    "conceptId": "fraction-operations"
+  },
+  {
+    "questionId": "g5-math-02-adding-and-subtracting-fractions-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "One half plus one fourth becomes two fourths plus one fourth",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "One half plus one fourth becomes two fourths plus one fourth",
+    "conceptId": "fraction-operations-application"
+  },
+  {
+    "questionId": "g5-math-02-adding-and-subtracting-fractions-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "fraction operations",
+    "conceptId": "fraction-operations"
+  },
+  {
+    "questionId": "g5-math-02-adding-and-subtracting-fractions-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Model three fraction sums using area bars.",
+    "correctAnswer": "fraction operations",
+    "conceptId": "fraction-operations-application"
+  },
+  {
+    "questionId": "g5-math-02-adding-and-subtracting-fractions-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "fraction-operations-reasoning"
+  }
+]

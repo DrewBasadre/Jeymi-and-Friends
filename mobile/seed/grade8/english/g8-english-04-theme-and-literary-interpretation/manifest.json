@@ -1,0 +1,120 @@
+{
+  "moduleId": "g8-english-04-theme-and-literary-interpretation",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 8,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:ce870d81a02117706147e6fb01d452f310478a266fb8ec12663d1867115f2e8a",
+    "g8-english-04-theme-and-literary-interpretation-quiz.json": "sha256:2e227b1eda5b0f433d271420bc2b86f3f6903619956101da92569dd9a3e13c3d",
+    "images/concept-guide.webp": "sha256:745f84300660effedb536d186a62cf10697b2ebf8d381ebeaece7ed16a7e0e87",
+    "images/worked-example.webp": "sha256:b7c00956870b833e5705ed720782d98fa89886ebfce21abcd0c222370558e9a6"
+  },
+  "quizId": "g8-english-04-theme-and-literary-interpretation-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g8-english-04-theme-and-literary-interpretation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-04-theme-and-literary-interpretation-review-1",
+      "conceptId": "theme",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is theme?",
+      "answer": "Theme develops through character choices, conflict, symbols, and consequences",
+      "formats": {
+        "text": "Theme develops through character choices, conflict, symbols, and consequences.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g8-english-04-theme-and-literary-interpretation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-04-theme-and-literary-interpretation-review-2",
+      "conceptId": "theme-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for theme.",
+      "answer": "A repeated image may reinforce a story central insight",
+      "formats": {
+        "text": "A repeated image may reinforce a story central insight.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g8-english-04-theme-and-literary-interpretation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-04-theme-and-literary-interpretation-review-3",
+      "conceptId": "theme",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Theme and Literary Interpretation.",
+      "answer": "theme",
+      "formats": {
+        "text": "theme"
+      }
+    },
+    {
+      "moduleId": "g8-english-04-theme-and-literary-interpretation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-04-theme-and-literary-interpretation-review-4",
+      "conceptId": "theme-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain theme in one or two clear sentences.",
+      "answer": "Theme develops through character choices, conflict, symbols, and consequences",
+      "formats": {
+        "text": "Theme develops through character choices, conflict, symbols, and consequences."
+      }
+    },
+    {
+      "moduleId": "g8-english-04-theme-and-literary-interpretation",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-04-theme-and-literary-interpretation-review-5",
+      "conceptId": "theme-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Support a theme statement with two details.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Support a theme statement with two details."
+      }
+    }
+  ]
+}

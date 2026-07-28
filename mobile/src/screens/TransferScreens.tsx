@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
@@ -34,6 +34,9 @@ export function ReceiveTransferScreen({ navigation }: Props) {
     null,
   );
   const [received, setReceived] = useState<NearbyReceivedFile | null>(null);
+  const [ingesting, setIngesting] = useState(false);
+  const [startError, setStartError] = useState('');
+  const started = useRef(false);
   const available = nearby.isAvailable();
 
   useEffect(() => {
@@ -42,14 +45,19 @@ export function ReceiveTransferScreen({ navigation }: Props) {
     );
     const connectionSubscription = nearby.addConnectionListener(setConnection);
     const receivedSubscription = nearby.addReceivedFileListener((file) => {
+      setIngesting(true);
       void saveReceivedModulePackage(file)
-        .then(() => setReceived(file))
+        .then(() => {
+          setReceived(file);
+          setAdvertising(false);
+        })
         .catch((error: unknown) => {
           Alert.alert(
             'Module could not be saved',
             error instanceof Error ? error.message : 'Try receiving it again.',
           );
-        });
+        })
+        .finally(() => setIngesting(false));
     });
     return () => {
       verificationSubscription?.remove();
@@ -58,6 +66,12 @@ export function ReceiveTransferScreen({ navigation }: Props) {
       void nearby.stop();
     };
   }, []);
+
+  useEffect(() => {
+    if (!available || started.current) return;
+    started.current = true;
+    void startReceiving();
+  }, [available]);
 
   function showVerification(request: NearbyVerificationRequest) {
     Alert.alert(
@@ -80,11 +94,11 @@ export function ReceiveTransferScreen({ navigation }: Props) {
 
   async function startReceiving() {
     try {
+      setStartError('');
       await nearby.advertise(`Student ${student?.firstName ?? 'WAIS'}`);
       setAdvertising(true);
     } catch (error) {
-      Alert.alert(
-        'Nearby unavailable',
+      setStartError(
         error instanceof Error
           ? error.message
           : 'Use a physical development build.',
@@ -116,12 +130,38 @@ export function ReceiveTransferScreen({ navigation }: Props) {
           </View>
         </View>
       </Card>
-      <PrimaryButton
-        label={advertising ? 'Waiting for teacher...' : 'Make this device visible'}
-        icon={advertising ? Radio : Download}
-        disabled={!available || advertising}
-        onPress={() => void startReceiving()}
-      />
+      <Card accent={advertising ? colors.indigo : colors.amber}>
+        <View style={styles.headingRow}>
+          {advertising ? (
+            <Radio size={25} color={colors.indigo} />
+          ) : (
+            <Download size={25} color={colors.amber} />
+          )}
+          <View style={styles.flex}>
+            <Text style={styles.cardTitle}>
+              {ingesting
+                ? 'Checking and adding module...'
+                : advertising
+                  ? 'Visible and waiting'
+                  : available
+                    ? 'Starting nearby receive...'
+                    : 'Nearby receive unavailable'}
+            </Text>
+            <Text style={styles.body}>
+              {advertising
+                ? 'A teacher device can now find this student automatically.'
+                : startError || 'WAIS starts listening when this screen opens.'}
+            </Text>
+          </View>
+        </View>
+        {startError ? (
+          <PrimaryButton
+            label="Try again"
+            tone="secondary"
+            onPress={() => void startReceiving()}
+          />
+        ) : null}
+      </Card>
       {connection ? (
         <Card>
           <View style={styles.statusRow}>
@@ -144,8 +184,9 @@ export function ReceiveTransferScreen({ navigation }: Props) {
       {received ? (
         <Card accent={colors.emerald}>
           <CheckCircle2 size={28} color={colors.emerald} />
-          <Text style={styles.cardTitle}>Module saved</Text>
-          <Text style={styles.rowTitle}>{received.displayName}</Text>
+          <Text style={styles.cardTitle}>
+            Received: {received.displayName.replace(/\.wais-module$/i, '')}
+          </Text>
           <Text style={styles.body}>
             {formatBytes(received.sizeBytes)} verified with SHA-256 and added
             to this device.

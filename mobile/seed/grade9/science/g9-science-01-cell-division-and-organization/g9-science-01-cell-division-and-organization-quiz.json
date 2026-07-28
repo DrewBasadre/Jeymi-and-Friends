@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-science-01-cell-division-and-organization-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains cell division?",
+    "options": [
+      "Mitosis supports growth and repair while cellular specialization builds tissues and organs",
+      "It is only the title of the lesson Cell Division and Organization.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Mitosis supports growth and repair while cellular specialization builds tissues and organs",
+    "conceptId": "cell-division"
+  },
+  {
+    "questionId": "g9-science-01-cell-division-and-organization-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Skin cells divide to replace damaged cells",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Skin cells divide to replace damaged cells",
+    "conceptId": "cell-division-application"
+  },
+  {
+    "questionId": "g9-science-01-cell-division-and-organization-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "cell division",
+    "conceptId": "cell-division"
+  },
+  {
+    "questionId": "g9-science-01-cell-division-and-organization-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Sequence mitosis stages and connect them to growth.",
+    "correctAnswer": "cell division",
+    "conceptId": "cell-division-application"
+  },
+  {
+    "questionId": "g9-science-01-cell-division-and-organization-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "cell-division-reasoning"
+  }
+]

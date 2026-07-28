@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-english-02-common-and-proper-nouns-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains noun types?",
+    "options": [
+      "Common nouns name general people or places; proper nouns name specific ones and use capitals",
+      "It is only the title of the lesson Common and Proper Nouns.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Common nouns name general people or places; proper nouns name specific ones and use capitals",
+    "conceptId": "noun-types"
+  },
+  {
+    "questionId": "g2-english-02-common-and-proper-nouns-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "city is common, while Manila is proper",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "city is common, while Manila is proper",
+    "conceptId": "noun-types-application"
+  },
+  {
+    "questionId": "g2-english-02-common-and-proper-nouns-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "noun types",
+    "conceptId": "noun-types"
+  },
+  {
+    "questionId": "g2-english-02-common-and-proper-nouns-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Rewrite five common nouns with matching proper examples.",
+    "correctAnswer": "noun types",
+    "conceptId": "noun-types-application"
+  },
+  {
+    "questionId": "g2-english-02-common-and-proper-nouns-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "noun-types-reasoning"
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g1-math-01-numbers-to-100-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains place value?",
+    "options": [
+      "Two-digit numbers have tens and ones",
+      "It is only the title of the lesson Numbers to 100.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Two-digit numbers have tens and ones",
+    "conceptId": "place-value"
+  },
+  {
+    "questionId": "g1-math-01-numbers-to-100-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "In 47, four tens make 40 and seven ones make 7",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "In 47, four tens make 40 and seven ones make 7",
+    "conceptId": "place-value-application"
+  },
+  {
+    "questionId": "g1-math-01-numbers-to-100-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "place value",
+    "conceptId": "place-value"
+  },
+  {
+    "questionId": "g1-math-01-numbers-to-100-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Build three two-digit numbers using bundles of ten and single objects.",
+    "correctAnswer": "place value",
+    "conceptId": "place-value-application"
+  },
+  {
+    "questionId": "g1-math-01-numbers-to-100-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "place-value-reasoning"
+  }
+]

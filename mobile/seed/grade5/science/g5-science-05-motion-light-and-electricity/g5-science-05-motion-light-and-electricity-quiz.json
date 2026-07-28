@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-science-05-motion-light-and-electricity-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains energy systems?",
+    "options": [
+      "Forces affect motion, light travels and reflects, and closed circuits carry electric current",
+      "It is only the title of the lesson Motion, Light, and Electricity.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Forces affect motion, light travels and reflects, and closed circuits carry electric current",
+    "conceptId": "energy-systems"
+  },
+  {
+    "questionId": "g5-science-05-motion-light-and-electricity-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A bulb lights when wires form a complete circuit",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A bulb lights when wires form a complete circuit",
+    "conceptId": "energy-systems-application"
+  },
+  {
+    "questionId": "g5-science-05-motion-light-and-electricity-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "energy systems",
+    "conceptId": "energy-systems"
+  },
+  {
+    "questionId": "g5-science-05-motion-light-and-electricity-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Build and troubleshoot a simple low-voltage circuit model.",
+    "correctAnswer": "energy systems",
+    "conceptId": "energy-systems-application"
+  },
+  {
+    "questionId": "g5-science-05-motion-light-and-electricity-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "energy-systems-reasoning"
+  }
+]

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g1-english-03-naming-words",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 1,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:5967df30a0d1ddb334417c2f0161a8e4d9a9e6abd918e459f82509b66d72ee01",
+    "g1-english-03-naming-words-quiz.json": "sha256:6c2ce1c04efcfeb6d36ecd7836b73c404a32f513b45303cc64e5e665769890ff",
+    "images/concept-guide.webp": "sha256:be6313e70fcf340589e2c23b8c1221e6b1429c4a84b1b7f75e1f33f666e61616",
+    "images/worked-example.webp": "sha256:8e3b1ecf17709418744d388155d449466e116602bb31e04a112f3915852e3edf"
+  },
+  "quizId": "g1-english-03-naming-words-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g1-english-03-naming-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-03-naming-words-review-1",
+      "conceptId": "nouns",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is nouns?",
+      "answer": "A naming word tells the name of a person, place, animal, or thing",
+      "formats": {
+        "text": "A naming word tells the name of a person, place, animal, or thing.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g1-english-03-naming-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-03-naming-words-review-2",
+      "conceptId": "nouns-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for nouns.",
+      "answer": "Teacher, park, dog, and book are naming words",
+      "formats": {
+        "text": "Teacher, park, dog, and book are naming words.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g1-english-03-naming-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-03-naming-words-review-3",
+      "conceptId": "nouns",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Naming Words.",
+      "answer": "nouns",
+      "formats": {
+        "text": "nouns"
+      }
+    },
+    {
+      "moduleId": "g1-english-03-naming-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-03-naming-words-review-4",
+      "conceptId": "nouns-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain nouns in one or two clear sentences.",
+      "answer": "A naming word tells the name of a person, place, animal, or thing",
+      "formats": {
+        "text": "A naming word tells the name of a person, place, animal, or thing."
+      }
+    },
+    {
+      "moduleId": "g1-english-03-naming-words",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-03-naming-words-review-5",
+      "conceptId": "nouns-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Find and list five naming words in the classroom.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Find and list five naming words in the classroom."
+      }
+    }
+  ]
+}

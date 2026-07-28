@@ -1,0 +1,120 @@
+{
+  "moduleId": "g1-science-06-weather-today",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 1,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:f34cedf81fa339ec91dc7b0faa7e1013adca84d12fdc0014e783e3754d60a135",
+    "g1-science-06-weather-today-quiz.json": "sha256:0021e48d6d8589e333f69fddcf4a46180645e3613251709b7ce645fd938a8883",
+    "images/concept-guide.webp": "sha256:309a8313c3134bab9332f9670749ffbb9703b10bb4642d2b6cdaa34704cfa1c6",
+    "images/worked-example.webp": "sha256:a0f1c4c69d1427dd13a9c97bb252460214ad1caa669034f2f4f5ded667049dcd"
+  },
+  "quizId": "g1-science-06-weather-today-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g1-science-06-weather-today",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-science-06-weather-today-review-1",
+      "conceptId": "weather",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is weather?",
+      "answer": "Weather tells whether the day is sunny, cloudy, rainy, or windy",
+      "formats": {
+        "text": "Weather tells whether the day is sunny, cloudy, rainy, or windy.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g1-science-06-weather-today",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-science-06-weather-today-review-2",
+      "conceptId": "weather-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for weather.",
+      "answer": "Dark clouds and falling drops show that the weather is rainy",
+      "formats": {
+        "text": "Dark clouds and falling drops show that the weather is rainy.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g1-science-06-weather-today",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-science-06-weather-today-review-3",
+      "conceptId": "weather",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Weather Today.",
+      "answer": "weather",
+      "formats": {
+        "text": "weather"
+      }
+    },
+    {
+      "moduleId": "g1-science-06-weather-today",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-science-06-weather-today-review-4",
+      "conceptId": "weather-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain weather in one or two clear sentences.",
+      "answer": "Weather tells whether the day is sunny, cloudy, rainy, or windy",
+      "formats": {
+        "text": "Weather tells whether the day is sunny, cloudy, rainy, or windy."
+      }
+    },
+    {
+      "moduleId": "g1-science-06-weather-today",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-science-06-weather-today-review-5",
+      "conceptId": "weather-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Observe the sky and make a weather symbol for today.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Observe the sky and make a weather symbol for today."
+      }
+    }
+  ]
+}

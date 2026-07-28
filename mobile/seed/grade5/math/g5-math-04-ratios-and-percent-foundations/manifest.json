@@ -1,0 +1,120 @@
+{
+  "moduleId": "g5-math-04-ratios-and-percent-foundations",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 5,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:c650b4dd647916e198d984f4d73e7dbb7fa14f285ea798bb0a96e45647e31319",
+    "g5-math-04-ratios-and-percent-foundations-quiz.json": "sha256:dea0746b25d48abd550fa7ee4a544836d8be992186ed2a4a41cae4b0b7deb1e0",
+    "images/concept-guide.webp": "sha256:cab50263fbd15f001c8eca37175dcc8fb48242546967a71c94e48e73ac122172",
+    "images/worked-example.webp": "sha256:cfb2132dc2fb956dc4442e738c947c84032ce2e1037208374d66c0e4904a9eff"
+  },
+  "quizId": "g5-math-04-ratios-and-percent-foundations-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g5-math-04-ratios-and-percent-foundations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-math-04-ratios-and-percent-foundations-review-1",
+      "conceptId": "ratio",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is ratio?",
+      "answer": "Ratios compare quantities, while percent names a ratio out of one hundred",
+      "formats": {
+        "text": "Ratios compare quantities, while percent names a ratio out of one hundred.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g5-math-04-ratios-and-percent-foundations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-math-04-ratios-and-percent-foundations-review-2",
+      "conceptId": "ratio-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for ratio.",
+      "answer": "Three red beads to five blue beads is the ratio 3:5",
+      "formats": {
+        "text": "Three red beads to five blue beads is the ratio 3:5.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g5-math-04-ratios-and-percent-foundations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-math-04-ratios-and-percent-foundations-review-3",
+      "conceptId": "ratio",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Ratios and Percent Foundations.",
+      "answer": "ratio",
+      "formats": {
+        "text": "ratio"
+      }
+    },
+    {
+      "moduleId": "g5-math-04-ratios-and-percent-foundations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-math-04-ratios-and-percent-foundations-review-4",
+      "conceptId": "ratio-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain ratio in one or two clear sentences.",
+      "answer": "Ratios compare quantities, while percent names a ratio out of one hundred",
+      "formats": {
+        "text": "Ratios compare quantities, while percent names a ratio out of one hundred."
+      }
+    },
+    {
+      "moduleId": "g5-math-04-ratios-and-percent-foundations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-math-04-ratios-and-percent-foundations-review-5",
+      "conceptId": "ratio-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Represent one classroom ratio in three forms.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Represent one classroom ratio in three forms."
+      }
+    }
+  ]
+}

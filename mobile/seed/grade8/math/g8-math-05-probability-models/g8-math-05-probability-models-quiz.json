@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-math-05-probability-models-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains probability model?",
+    "options": [
+      "Theoretical and experimental probabilities support predictions under uncertainty",
+      "It is only the title of the lesson Probability Models.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Theoretical and experimental probabilities support predictions under uncertainty",
+    "conceptId": "probability-model"
+  },
+  {
+    "questionId": "g8-math-05-probability-models-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A sample space lists all possible outcomes",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A sample space lists all possible outcomes",
+    "conceptId": "probability-model-application"
+  },
+  {
+    "questionId": "g8-math-05-probability-models-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "probability model",
+    "conceptId": "probability-model"
+  },
+  {
+    "questionId": "g8-math-05-probability-models-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compare expected and observed results from repeated trials.",
+    "correctAnswer": "probability model",
+    "conceptId": "probability-model-application"
+  },
+  {
+    "questionId": "g8-math-05-probability-models-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "probability-model-reasoning"
+  }
+]

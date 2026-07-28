@@ -1,0 +1,120 @@
+{
+  "moduleId": "g1-math-05-flat-and-solid-shapes",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 1,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:fdbe3def976e94aa6b4bccc469c5f19b39889af0e3fc109cf02a3b13baa0e5b5",
+    "g1-math-05-flat-and-solid-shapes-quiz.json": "sha256:c300ed46452f167d43651d57209b01320e9d5fbef79a819f37e68ee062eb14e0",
+    "images/concept-guide.webp": "sha256:f22a1747603add4b0ac8088281aa632728ad572103551918b2e05544036bdbc6",
+    "images/worked-example.webp": "sha256:91972fff33c85b669edf277c4a0b3d23aca73ecae0fb08f034bfd4d3fcb1bd30"
+  },
+  "quizId": "g1-math-05-flat-and-solid-shapes-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g1-math-05-flat-and-solid-shapes",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-05-flat-and-solid-shapes-review-1",
+      "conceptId": "shapes",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is shapes?",
+      "answer": "Flat shapes have length and width; solid shapes also have depth",
+      "formats": {
+        "text": "Flat shapes have length and width; solid shapes also have depth.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g1-math-05-flat-and-solid-shapes",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-05-flat-and-solid-shapes-review-2",
+      "conceptId": "shapes-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for shapes.",
+      "answer": "A coin looks like a circle while a ball is shaped like a sphere",
+      "formats": {
+        "text": "A coin looks like a circle while a ball is shaped like a sphere.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g1-math-05-flat-and-solid-shapes",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-05-flat-and-solid-shapes-review-3",
+      "conceptId": "shapes",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Flat and Solid Shapes.",
+      "answer": "shapes",
+      "formats": {
+        "text": "shapes"
+      }
+    },
+    {
+      "moduleId": "g1-math-05-flat-and-solid-shapes",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-05-flat-and-solid-shapes-review-4",
+      "conceptId": "shapes-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain shapes in one or two clear sentences.",
+      "answer": "Flat shapes have length and width; solid shapes also have depth",
+      "formats": {
+        "text": "Flat shapes have length and width; solid shapes also have depth."
+      }
+    },
+    {
+      "moduleId": "g1-math-05-flat-and-solid-shapes",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-05-flat-and-solid-shapes-review-5",
+      "conceptId": "shapes-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Sort classroom objects by the shape they resemble.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Sort classroom objects by the shape they resemble."
+      }
+    }
+  ]
+}

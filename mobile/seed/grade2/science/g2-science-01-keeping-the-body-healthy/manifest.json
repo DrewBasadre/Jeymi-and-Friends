@@ -1,0 +1,120 @@
+{
+  "moduleId": "g2-science-01-keeping-the-body-healthy",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 2,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:8c64d357709b189177d11dd261a03ecea780679b68354dcb269e9da2c618f3b0",
+    "g2-science-01-keeping-the-body-healthy-quiz.json": "sha256:2e723b128e8c194ef63a28fe68564c962fd9048ea486eb422dc4db96c6a46f8e",
+    "images/concept-guide.webp": "sha256:fb3aa25f31ba19f87a8326dce8bfb8a73d5da02d4f4e448f7c4bcd9e403c6b93",
+    "images/worked-example.webp": "sha256:2221b697641a136f868d753c726d63af8410a61f30953c93cb8a8e05e200a15b"
+  },
+  "quizId": "g2-science-01-keeping-the-body-healthy-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g2-science-01-keeping-the-body-healthy",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-01-keeping-the-body-healthy-review-1",
+      "conceptId": "healthy-habits",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is healthy habits?",
+      "answer": "Cleanliness, nutritious food, movement, and rest help body parts work well",
+      "formats": {
+        "text": "Cleanliness, nutritious food, movement, and rest help body parts work well.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g2-science-01-keeping-the-body-healthy",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-01-keeping-the-body-healthy-review-2",
+      "conceptId": "healthy-habits-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for healthy habits.",
+      "answer": "Washing hands with soap removes dirt before eating",
+      "formats": {
+        "text": "Washing hands with soap removes dirt before eating.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g2-science-01-keeping-the-body-healthy",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-01-keeping-the-body-healthy-review-3",
+      "conceptId": "healthy-habits",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Keeping the Body Healthy.",
+      "answer": "healthy habits",
+      "formats": {
+        "text": "healthy habits"
+      }
+    },
+    {
+      "moduleId": "g2-science-01-keeping-the-body-healthy",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-01-keeping-the-body-healthy-review-4",
+      "conceptId": "healthy-habits-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain healthy habits in one or two clear sentences.",
+      "answer": "Cleanliness, nutritious food, movement, and rest help body parts work well",
+      "formats": {
+        "text": "Cleanliness, nutritious food, movement, and rest help body parts work well."
+      }
+    },
+    {
+      "moduleId": "g2-science-01-keeping-the-body-healthy",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g2-science-01-keeping-the-body-healthy-review-5",
+      "conceptId": "healthy-habits-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Make a four-part healthy-day plan.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Make a four-part healthy-day plan."
+      }
+    }
+  ]
+}

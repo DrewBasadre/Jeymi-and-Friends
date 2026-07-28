@@ -1,0 +1,120 @@
+{
+  "moduleId": "g6-math-02-ratios-rates-and-percent",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 6,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:3543b29c72b07024796d414a786578597865503eb9ec00dc243fdddc56675b4f",
+    "g6-math-02-ratios-rates-and-percent-quiz.json": "sha256:3085bc61be45b9f0701b9d0f04a90c004461f78a5e06d3757abb1aa14eb343ff",
+    "images/concept-guide.webp": "sha256:42d5bfce58870d47f5fc434a8c243c15aa29e4b678a0fd5aab55618be46ae769",
+    "images/worked-example.webp": "sha256:57cf89703628f6857d48095845b5fd57dbdd1e6ee4091d30c0c25b9a9e8811c9"
+  },
+  "quizId": "g6-math-02-ratios-rates-and-percent-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g6-math-02-ratios-rates-and-percent",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-02-ratios-rates-and-percent-review-1",
+      "conceptId": "proportional-reasoning",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is proportional reasoning?",
+      "answer": "Equivalent ratios connect rates, proportions, and percentages",
+      "formats": {
+        "text": "Equivalent ratios connect rates, proportions, and percentages.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g6-math-02-ratios-rates-and-percent",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-02-ratios-rates-and-percent-review-2",
+      "conceptId": "proportional-reasoning-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for proportional reasoning.",
+      "answer": "If 2 notebooks cost 50 pesos, the unit rate is 25 pesos each",
+      "formats": {
+        "text": "If 2 notebooks cost 50 pesos, the unit rate is 25 pesos each.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g6-math-02-ratios-rates-and-percent",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-02-ratios-rates-and-percent-review-3",
+      "conceptId": "proportional-reasoning",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Ratios, Rates, and Percent.",
+      "answer": "proportional reasoning",
+      "formats": {
+        "text": "proportional reasoning"
+      }
+    },
+    {
+      "moduleId": "g6-math-02-ratios-rates-and-percent",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-02-ratios-rates-and-percent-review-4",
+      "conceptId": "proportional-reasoning-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain proportional reasoning in one or two clear sentences.",
+      "answer": "Equivalent ratios connect rates, proportions, and percentages",
+      "formats": {
+        "text": "Equivalent ratios connect rates, proportions, and percentages."
+      }
+    },
+    {
+      "moduleId": "g6-math-02-ratios-rates-and-percent",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-math-02-ratios-rates-and-percent-review-5",
+      "conceptId": "proportional-reasoning-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Use a ratio table to solve a discount problem.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Use a ratio table to solve a discount problem."
+      }
+    }
+  ]
+}

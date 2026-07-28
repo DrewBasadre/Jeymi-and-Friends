@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-english-03-grammar-for-clear-meaning-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains grammar choices?",
+    "options": [
+      "Subject-verb agreement, modifiers, and consistent tense prevent ambiguity",
+      "It is only the title of the lesson Grammar for Clear Meaning.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Subject-verb agreement, modifiers, and consistent tense prevent ambiguity",
+    "conceptId": "grammar-choices"
+  },
+  {
+    "questionId": "g7-english-03-grammar-for-clear-meaning-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A misplaced modifier can attach a description to the wrong noun",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A misplaced modifier can attach a description to the wrong noun",
+    "conceptId": "grammar-choices-application"
+  },
+  {
+    "questionId": "g7-english-03-grammar-for-clear-meaning-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "grammar choices",
+    "conceptId": "grammar-choices"
+  },
+  {
+    "questionId": "g7-english-03-grammar-for-clear-meaning-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Edit a passage for three grammar problems.",
+    "correctAnswer": "grammar choices",
+    "conceptId": "grammar-choices-application"
+  },
+  {
+    "questionId": "g7-english-03-grammar-for-clear-meaning-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "grammar-choices-reasoning"
+  }
+]

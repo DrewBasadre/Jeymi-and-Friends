@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g1-math-02-comparing-numbers-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains greater and less?",
+    "options": [
+      "Compare tens first, then ones, to decide which number is greater",
+      "It is only the title of the lesson Comparing Numbers.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Compare tens first, then ones, to decide which number is greater",
+    "conceptId": "greater-and-less"
+  },
+  {
+    "questionId": "g1-math-02-comparing-numbers-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "63 is greater than 58 because six tens are more than five tens",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "63 is greater than 58 because six tens are more than five tens",
+    "conceptId": "greater-and-less-application"
+  },
+  {
+    "questionId": "g1-math-02-comparing-numbers-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "greater and less",
+    "conceptId": "greater-and-less"
+  },
+  {
+    "questionId": "g1-math-02-comparing-numbers-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Arrange 24, 42, and 29 from least to greatest.",
+    "correctAnswer": "greater and less",
+    "conceptId": "greater-and-less-application"
+  },
+  {
+    "questionId": "g1-math-02-comparing-numbers-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "greater-and-less-reasoning"
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-english-03-active-and-passive-voice-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains voice?",
+    "options": [
+      "Active voice emphasizes the doer; passive voice emphasizes the receiver or result",
+      "It is only the title of the lesson Active and Passive Voice.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Active voice emphasizes the doer; passive voice emphasizes the receiver or result",
+    "conceptId": "voice"
+  },
+  {
+    "questionId": "g6-english-03-active-and-passive-voice-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Scientists measured rainfall is active",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Scientists measured rainfall is active",
+    "conceptId": "voice-application"
+  },
+  {
+    "questionId": "g6-english-03-active-and-passive-voice-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "voice",
+    "conceptId": "voice"
+  },
+  {
+    "questionId": "g6-english-03-active-and-passive-voice-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Rewrite sentences and discuss the change in focus.",
+    "correctAnswer": "voice",
+    "conceptId": "voice-application"
+  },
+  {
+    "questionId": "g6-english-03-active-and-passive-voice-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "voice-reasoning"
+  }
+]

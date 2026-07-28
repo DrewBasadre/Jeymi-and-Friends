@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-science-01-cells-as-basic-units-of-life-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains cells?",
+    "options": [
+      "Cells carry out basic life functions and contain structures with specialized roles",
+      "It is only the title of the lesson Cells as Basic Units of Life.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Cells carry out basic life functions and contain structures with specialized roles",
+    "conceptId": "cells"
+  },
+  {
+    "questionId": "g5-science-01-cells-as-basic-units-of-life-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A plant cell wall supports the cell while chloroplasts capture light energy",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A plant cell wall supports the cell while chloroplasts capture light energy",
+    "conceptId": "cells-application"
+  },
+  {
+    "questionId": "g5-science-01-cells-as-basic-units-of-life-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "cells",
+    "conceptId": "cells"
+  },
+  {
+    "questionId": "g5-science-01-cells-as-basic-units-of-life-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compare labeled plant and animal cell diagrams.",
+    "correctAnswer": "cells",
+    "conceptId": "cells-application"
+  },
+  {
+    "questionId": "g5-science-01-cells-as-basic-units-of-life-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "cells-reasoning"
+  }
+]

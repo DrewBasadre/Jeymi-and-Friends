@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-math-05-coordinate-geometry-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains coordinate proof?",
+    "options": [
+      "Slope, distance, midpoint, and equations support geometric reasoning on a plane",
+      "It is only the title of the lesson Coordinate Geometry.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Slope, distance, midpoint, and equations support geometric reasoning on a plane",
+    "conceptId": "coordinate-proof"
+  },
+  {
+    "questionId": "g9-math-05-coordinate-geometry-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Equal slopes can establish parallel sides",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Equal slopes can establish parallel sides",
+    "conceptId": "coordinate-proof-application"
+  },
+  {
+    "questionId": "g9-math-05-coordinate-geometry-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "coordinate proof",
+    "conceptId": "coordinate-proof"
+  },
+  {
+    "questionId": "g9-math-05-coordinate-geometry-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Use coordinates to classify a quadrilateral.",
+    "correctAnswer": "coordinate proof",
+    "conceptId": "coordinate-proof-application"
+  },
+  {
+    "questionId": "g9-math-05-coordinate-geometry-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "coordinate-proof-reasoning"
+  }
+]

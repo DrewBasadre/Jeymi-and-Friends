@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-math-04-similarity-and-right-triangles-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains similarity?",
+    "options": [
+      "Proportional sides, angle relationships, and the Pythagorean theorem solve indirect measures",
+      "It is only the title of the lesson Similarity and Right Triangles.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Proportional sides, angle relationships, and the Pythagorean theorem solve indirect measures",
+    "conceptId": "similarity"
+  },
+  {
+    "questionId": "g9-math-04-similarity-and-right-triangles-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Similar triangles can estimate a tree height from shadows",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Similar triangles can estimate a tree height from shadows",
+    "conceptId": "similarity-application"
+  },
+  {
+    "questionId": "g9-math-04-similarity-and-right-triangles-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "similarity",
+    "conceptId": "similarity"
+  },
+  {
+    "questionId": "g9-math-04-similarity-and-right-triangles-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Design an indirect measurement investigation.",
+    "correctAnswer": "similarity",
+    "conceptId": "similarity-application"
+  },
+  {
+    "questionId": "g9-math-04-similarity-and-right-triangles-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "similarity-reasoning"
+  }
+]

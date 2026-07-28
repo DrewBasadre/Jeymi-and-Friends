@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g3-science-01-the-human-body-works-together-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains body systems?",
+    "options": [
+      "Groups of organs work together to move materials, sense changes, and support life",
+      "It is only the title of the lesson The Human Body Works Together.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Groups of organs work together to move materials, sense changes, and support life",
+    "conceptId": "body-systems"
+  },
+  {
+    "questionId": "g3-science-01-the-human-body-works-together-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "The lungs bring oxygen in while blood carries it around the body",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "The lungs bring oxygen in while blood carries it around the body",
+    "conceptId": "body-systems-application"
+  },
+  {
+    "questionId": "g3-science-01-the-human-body-works-together-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "body systems",
+    "conceptId": "body-systems"
+  },
+  {
+    "questionId": "g3-science-01-the-human-body-works-together-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Trace the path of air from the nose to the lungs.",
+    "correctAnswer": "body systems",
+    "conceptId": "body-systems-application"
+  },
+  {
+    "questionId": "g3-science-01-the-human-body-works-together-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "body-systems-reasoning"
+  }
+]

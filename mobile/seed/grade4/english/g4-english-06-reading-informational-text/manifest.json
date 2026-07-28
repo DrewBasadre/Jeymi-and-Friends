@@ -1,0 +1,120 @@
+{
+  "moduleId": "g4-english-06-reading-informational-text",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 4,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:2b6f160358ffa06cce75596c435ded0bd342c8c62f4e99cdad154b7acedc52a3",
+    "g4-english-06-reading-informational-text-quiz.json": "sha256:63b4207567892a0760bac895176cb4c0636fe5e865f870921d289df97482f58c",
+    "images/concept-guide.webp": "sha256:a596411f8ac60abc4b61bad77998abd07d7e5c642517326fda7aabed9f65d215",
+    "images/worked-example.webp": "sha256:881b476adacbb175c55b2419fe8f90e8caad21626f9d64a9a48c13ae6bde69b0"
+  },
+  "quizId": "g4-english-06-reading-informational-text-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g4-english-06-reading-informational-text",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-06-reading-informational-text-review-1",
+      "conceptId": "text-features",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is text features?",
+      "answer": "Headings, captions, diagrams, and glossaries help readers locate and interpret information",
+      "formats": {
+        "text": "Headings, captions, diagrams, and glossaries help readers locate and interpret information.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g4-english-06-reading-informational-text",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-06-reading-informational-text-review-2",
+      "conceptId": "text-features-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for text features.",
+      "answer": "A caption explains what a photograph demonstrates",
+      "formats": {
+        "text": "A caption explains what a photograph demonstrates.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g4-english-06-reading-informational-text",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-06-reading-informational-text-review-3",
+      "conceptId": "text-features",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Reading Informational Text.",
+      "answer": "text features",
+      "formats": {
+        "text": "text features"
+      }
+    },
+    {
+      "moduleId": "g4-english-06-reading-informational-text",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-06-reading-informational-text-review-4",
+      "conceptId": "text-features-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain text features in one or two clear sentences.",
+      "answer": "Headings, captions, diagrams, and glossaries help readers locate and interpret information",
+      "formats": {
+        "text": "Headings, captions, diagrams, and glossaries help readers locate and interpret information."
+      }
+    },
+    {
+      "moduleId": "g4-english-06-reading-informational-text",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-english-06-reading-informational-text-review-5",
+      "conceptId": "text-features-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Use text features to answer questions from an article.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Use text features to answer questions from an article."
+      }
+    }
+  ]
+}

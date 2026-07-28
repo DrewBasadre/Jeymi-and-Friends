@@ -1,0 +1,120 @@
+{
+  "moduleId": "g3-math-06-measurement-and-data-displays",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 3,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:9f3aeb4d94eefaa4dac25dd8c32eca69fb8affc9796bc8ec2428070aa256dfd8",
+    "g3-math-06-measurement-and-data-displays-quiz.json": "sha256:39e28cc9e0dbe12fea25bf0196c7a83a972c1c9f093f092259fb59271fa5cc45",
+    "images/concept-guide.webp": "sha256:989589087876821a208aff81272806809ac60e2e248abc8b39cbee2507f092e1",
+    "images/worked-example.webp": "sha256:2738fe380a96bd9c99f820196f2335bc35796031d5bf1ebf265baf83595baa23"
+  },
+  "quizId": "g3-math-06-measurement-and-data-displays-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g3-math-06-measurement-and-data-displays",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-06-measurement-and-data-displays-review-1",
+      "conceptId": "data",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is data?",
+      "answer": "Measurements can be organized in tables, pictographs, and bar graphs",
+      "formats": {
+        "text": "Measurements can be organized in tables, pictographs, and bar graphs.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g3-math-06-measurement-and-data-displays",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-06-measurement-and-data-displays-review-2",
+      "conceptId": "data-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for data.",
+      "answer": "A bar graph can compare the number of books read each day",
+      "formats": {
+        "text": "A bar graph can compare the number of books read each day.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g3-math-06-measurement-and-data-displays",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-06-measurement-and-data-displays-review-3",
+      "conceptId": "data",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Measurement and Data Displays.",
+      "answer": "data",
+      "formats": {
+        "text": "data"
+      }
+    },
+    {
+      "moduleId": "g3-math-06-measurement-and-data-displays",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-06-measurement-and-data-displays-review-4",
+      "conceptId": "data-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain data in one or two clear sentences.",
+      "answer": "Measurements can be organized in tables, pictographs, and bar graphs",
+      "formats": {
+        "text": "Measurements can be organized in tables, pictographs, and bar graphs."
+      }
+    },
+    {
+      "moduleId": "g3-math-06-measurement-and-data-displays",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-06-measurement-and-data-displays-review-5",
+      "conceptId": "data-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Collect class data and build a labeled bar graph.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Collect class data and build a labeled bar graph."
+      }
+    }
+  ]
+}

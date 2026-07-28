@@ -1,0 +1,120 @@
+{
+  "moduleId": "g10-math-01-sequences-and-series",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 10,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:52ff7b3046da0685c2459b8a61d05de7e53e5a33178e037092455e96e119914a",
+    "g10-math-01-sequences-and-series-quiz.json": "sha256:8a0e08d7525dd8463196204744e09fc9218a5585464e37b9238e09b0490dfa43",
+    "images/concept-guide.webp": "sha256:3eb90a8bfe60fea0a16dd5d979a46108b58d50e0805a2973571419614fda43fd",
+    "images/worked-example.webp": "sha256:020a551fab2d7594ab4e4d831b4f6b9ea3a3ed743117b3bb65ca506dcafbceaf"
+  },
+  "quizId": "g10-math-01-sequences-and-series-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g10-math-01-sequences-and-series",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-01-sequences-and-series-review-1",
+      "conceptId": "sequences",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is sequences?",
+      "answer": "Arithmetic and geometric patterns can be represented recursively and explicitly",
+      "formats": {
+        "text": "Arithmetic and geometric patterns can be represented recursively and explicitly.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g10-math-01-sequences-and-series",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-01-sequences-and-series-review-2",
+      "conceptId": "sequences-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for sequences.",
+      "answer": "An arithmetic sequence adds a constant common difference",
+      "formats": {
+        "text": "An arithmetic sequence adds a constant common difference.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g10-math-01-sequences-and-series",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-01-sequences-and-series-review-3",
+      "conceptId": "sequences",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Sequences and Series.",
+      "answer": "sequences",
+      "formats": {
+        "text": "sequences"
+      }
+    },
+    {
+      "moduleId": "g10-math-01-sequences-and-series",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-01-sequences-and-series-review-4",
+      "conceptId": "sequences-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain sequences in one or two clear sentences.",
+      "answer": "Arithmetic and geometric patterns can be represented recursively and explicitly",
+      "formats": {
+        "text": "Arithmetic and geometric patterns can be represented recursively and explicitly."
+      }
+    },
+    {
+      "moduleId": "g10-math-01-sequences-and-series",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-01-sequences-and-series-review-5",
+      "conceptId": "sequences-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Model savings growth with a sequence.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Model savings growth with a sequence."
+      }
+    }
+  ]
+}

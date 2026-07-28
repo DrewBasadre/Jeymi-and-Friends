@@ -1,0 +1,120 @@
+{
+  "moduleId": "g6-science-01-organ-systems-and-homeostasis",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 6,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:3ed3ebb362119e5b318c82b04ead14f2338e013c51504a5367cb6d3d7190a6a5",
+    "g6-science-01-organ-systems-and-homeostasis-quiz.json": "sha256:81816330d79dc7748e2a87e99d974dfc390c1ca04ce299b67e5d7a71afca6c7a",
+    "images/concept-guide.webp": "sha256:42b07f129aa039c891638654f037afb10e139d8e1c42c80f583cb1bc21a9bd99",
+    "images/worked-example.webp": "sha256:3d0f0052d334ac7c01e640fb60b578f91ff3ca875c41cb92c3035c87aad1aae4"
+  },
+  "quizId": "g6-science-01-organ-systems-and-homeostasis-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g6-science-01-organ-systems-and-homeostasis",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-01-organ-systems-and-homeostasis-review-1",
+      "conceptId": "homeostasis",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is homeostasis?",
+      "answer": "Body systems coordinate to maintain stable internal conditions during changing activity",
+      "formats": {
+        "text": "Body systems coordinate to maintain stable internal conditions during changing activity.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g6-science-01-organ-systems-and-homeostasis",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-01-organ-systems-and-homeostasis-review-2",
+      "conceptId": "homeostasis-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for homeostasis.",
+      "answer": "Sweating helps lower body temperature during exercise",
+      "formats": {
+        "text": "Sweating helps lower body temperature during exercise.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g6-science-01-organ-systems-and-homeostasis",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-01-organ-systems-and-homeostasis-review-3",
+      "conceptId": "homeostasis",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Organ Systems and Homeostasis.",
+      "answer": "homeostasis",
+      "formats": {
+        "text": "homeostasis"
+      }
+    },
+    {
+      "moduleId": "g6-science-01-organ-systems-and-homeostasis",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-01-organ-systems-and-homeostasis-review-4",
+      "conceptId": "homeostasis-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain homeostasis in one or two clear sentences.",
+      "answer": "Body systems coordinate to maintain stable internal conditions during changing activity",
+      "formats": {
+        "text": "Body systems coordinate to maintain stable internal conditions during changing activity."
+      }
+    },
+    {
+      "moduleId": "g6-science-01-organ-systems-and-homeostasis",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-science-01-organ-systems-and-homeostasis-review-5",
+      "conceptId": "homeostasis-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Explain how three systems respond during a run.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Explain how three systems respond during a run."
+      }
+    }
+  ]
+}

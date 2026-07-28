@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-english-01-world-literature-and-context-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains contextual reading?",
+    "options": [
+      "Historical, cultural, and authorial contexts inform interpretation without replacing textual evidence",
+      "It is only the title of the lesson World Literature and Context.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Historical, cultural, and authorial contexts inform interpretation without replacing textual evidence",
+    "conceptId": "contextual-reading"
+  },
+  {
+    "questionId": "g10-english-01-world-literature-and-context-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A symbol may carry different meanings across cultures",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A symbol may carry different meanings across cultures",
+    "conceptId": "contextual-reading-application"
+  },
+  {
+    "questionId": "g10-english-01-world-literature-and-context-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "contextual reading",
+    "conceptId": "contextual-reading"
+  },
+  {
+    "questionId": "g10-english-01-world-literature-and-context-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Connect one text detail to relevant context.",
+    "correctAnswer": "contextual reading",
+    "conceptId": "contextual-reading-application"
+  },
+  {
+    "questionId": "g10-english-01-world-literature-and-context-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "contextual-reading-reasoning"
+  }
+]

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-math-04-coordinate-and-analytic-geometry-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains analytic geometry?",
+    "options": [
+      "Equations and coordinates model lines, circles, distances, and loci",
+      "It is only the title of the lesson Coordinate and Analytic Geometry.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Equations and coordinates model lines, circles, distances, and loci",
+    "conceptId": "analytic-geometry"
+  },
+  {
+    "questionId": "g10-math-04-coordinate-and-analytic-geometry-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "The standard circle equation identifies center and radius",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "The standard circle equation identifies center and radius",
+    "conceptId": "analytic-geometry-application"
+  },
+  {
+    "questionId": "g10-math-04-coordinate-and-analytic-geometry-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "analytic geometry",
+    "conceptId": "analytic-geometry"
+  },
+  {
+    "questionId": "g10-math-04-coordinate-and-analytic-geometry-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Derive an equation from geometric conditions.",
+    "correctAnswer": "analytic geometry",
+    "conceptId": "analytic-geometry-application"
+  },
+  {
+    "questionId": "g10-math-04-coordinate-and-analytic-geometry-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "analytic-geometry-reasoning"
+  }
+]

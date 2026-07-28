@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-math-01-whole-number-operations-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains operation fluency?",
+    "options": [
+      "Place-value reasoning, estimation, and inverse operations support accurate computation",
+      "It is only the title of the lesson Whole-Number Operations.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Place-value reasoning, estimation, and inverse operations support accurate computation",
+    "conceptId": "operation-fluency"
+  },
+  {
+    "questionId": "g5-math-01-whole-number-operations-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Estimate 48,920 + 31,175 as about 80,000 before calculating",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Estimate 48,920 + 31,175 as about 80,000 before calculating",
+    "conceptId": "operation-fluency-application"
+  },
+  {
+    "questionId": "g5-math-01-whole-number-operations-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "operation fluency",
+    "conceptId": "operation-fluency"
+  },
+  {
+    "questionId": "g5-math-01-whole-number-operations-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Solve and check a multi-step budget problem.",
+    "correctAnswer": "operation fluency",
+    "conceptId": "operation-fluency-application"
+  },
+  {
+    "questionId": "g5-math-01-whole-number-operations-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "operation-fluency-reasoning"
+  }
+]

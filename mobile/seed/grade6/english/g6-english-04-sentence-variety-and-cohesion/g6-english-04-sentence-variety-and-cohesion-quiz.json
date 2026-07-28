@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-english-04-sentence-variety-and-cohesion-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains cohesion?",
+    "options": [
+      "Varied structures and transitions connect ideas while maintaining clarity",
+      "It is only the title of the lesson Sentence Variety and Cohesion.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Varied structures and transitions connect ideas while maintaining clarity",
+    "conceptId": "cohesion"
+  },
+  {
+    "questionId": "g6-english-04-sentence-variety-and-cohesion-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Although the road flooded, the rescue team arrived",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Although the road flooded, the rescue team arrived",
+    "conceptId": "cohesion-application"
+  },
+  {
+    "questionId": "g6-english-04-sentence-variety-and-cohesion-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "cohesion",
+    "conceptId": "cohesion"
+  },
+  {
+    "questionId": "g6-english-04-sentence-variety-and-cohesion-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Revise a paragraph with varied openings and transitions.",
+    "correctAnswer": "cohesion",
+    "conceptId": "cohesion-application"
+  },
+  {
+    "questionId": "g6-english-04-sentence-variety-and-cohesion-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "cohesion-reasoning"
+  }
+]

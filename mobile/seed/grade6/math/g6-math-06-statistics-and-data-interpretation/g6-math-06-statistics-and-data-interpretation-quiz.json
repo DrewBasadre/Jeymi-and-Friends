@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-math-06-statistics-and-data-interpretation-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains statistical reasoning?",
+    "options": [
+      "Mean, median, mode, range, and graphs summarize distributions differently",
+      "It is only the title of the lesson Statistics and Data Interpretation.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Mean, median, mode, range, and graphs summarize distributions differently",
+    "conceptId": "statistical-reasoning"
+  },
+  {
+    "questionId": "g6-math-06-statistics-and-data-interpretation-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "An outlier can pull the mean away from the median",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "An outlier can pull the mean away from the median",
+    "conceptId": "statistical-reasoning-application"
+  },
+  {
+    "questionId": "g6-math-06-statistics-and-data-interpretation-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "statistical reasoning",
+    "conceptId": "statistical-reasoning"
+  },
+  {
+    "questionId": "g6-math-06-statistics-and-data-interpretation-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compare two data sets and choose a useful center.",
+    "correctAnswer": "statistical reasoning",
+    "conceptId": "statistical-reasoning-application"
+  },
+  {
+    "questionId": "g6-math-06-statistics-and-data-interpretation-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "statistical-reasoning-reasoning"
+  }
+]

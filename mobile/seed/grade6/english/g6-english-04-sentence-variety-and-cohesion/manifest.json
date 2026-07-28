@@ -1,0 +1,120 @@
+{
+  "moduleId": "g6-english-04-sentence-variety-and-cohesion",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 6,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:e5561534b5bc934f4bcd23b1fa810a4ebeec3edd8be6e0984c8900185d86c816",
+    "g6-english-04-sentence-variety-and-cohesion-quiz.json": "sha256:430e392c5518e0efcd6320561971b49480c6a8757a313a78d33261caec5c5c3d",
+    "images/concept-guide.webp": "sha256:f5d25e2e5e7d227d09c402610548cb65f97b0194e87736d2ae1bbbce7858867f",
+    "images/worked-example.webp": "sha256:98dfb131abec5ef6620ebec2594995ab23d89ee4f849c5531d101b8addd6dd03"
+  },
+  "quizId": "g6-english-04-sentence-variety-and-cohesion-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g6-english-04-sentence-variety-and-cohesion",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-04-sentence-variety-and-cohesion-review-1",
+      "conceptId": "cohesion",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is cohesion?",
+      "answer": "Varied structures and transitions connect ideas while maintaining clarity",
+      "formats": {
+        "text": "Varied structures and transitions connect ideas while maintaining clarity.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g6-english-04-sentence-variety-and-cohesion",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-04-sentence-variety-and-cohesion-review-2",
+      "conceptId": "cohesion-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for cohesion.",
+      "answer": "Although the road flooded, the rescue team arrived",
+      "formats": {
+        "text": "Although the road flooded, the rescue team arrived.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g6-english-04-sentence-variety-and-cohesion",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-04-sentence-variety-and-cohesion-review-3",
+      "conceptId": "cohesion",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Sentence Variety and Cohesion.",
+      "answer": "cohesion",
+      "formats": {
+        "text": "cohesion"
+      }
+    },
+    {
+      "moduleId": "g6-english-04-sentence-variety-and-cohesion",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-04-sentence-variety-and-cohesion-review-4",
+      "conceptId": "cohesion-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain cohesion in one or two clear sentences.",
+      "answer": "Varied structures and transitions connect ideas while maintaining clarity",
+      "formats": {
+        "text": "Varied structures and transitions connect ideas while maintaining clarity."
+      }
+    },
+    {
+      "moduleId": "g6-english-04-sentence-variety-and-cohesion",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-04-sentence-variety-and-cohesion-review-5",
+      "conceptId": "cohesion-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Revise a paragraph with varied openings and transitions.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Revise a paragraph with varied openings and transitions."
+      }
+    }
+  ]
+}

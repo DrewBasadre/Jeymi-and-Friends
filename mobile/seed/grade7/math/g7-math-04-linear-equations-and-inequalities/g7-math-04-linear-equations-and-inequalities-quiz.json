@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-math-04-linear-equations-and-inequalities-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains linear relationships?",
+    "options": [
+      "Inverse operations solve equations, while inequality solutions represent ranges",
+      "It is only the title of the lesson Linear Equations and Inequalities.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Inverse operations solve equations, while inequality solutions represent ranges",
+    "conceptId": "linear-relationships"
+  },
+  {
+    "questionId": "g7-math-04-linear-equations-and-inequalities-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "2x + 5 < 17 gives x < 6",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "2x + 5 < 17 gives x < 6",
+    "conceptId": "linear-relationships-application"
+  },
+  {
+    "questionId": "g7-math-04-linear-equations-and-inequalities-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "linear relationships",
+    "conceptId": "linear-relationships"
+  },
+  {
+    "questionId": "g7-math-04-linear-equations-and-inequalities-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Solve and graph a practical inequality.",
+    "correctAnswer": "linear relationships",
+    "conceptId": "linear-relationships-application"
+  },
+  {
+    "questionId": "g7-math-04-linear-equations-and-inequalities-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "linear-relationships-reasoning"
+  }
+]

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g7-science-05-motion-and-forces",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 7,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:47cb4219e708ef3a313632b2eb15acbb522c263255eb5e39edce2b4847a049f5",
+    "g7-science-05-motion-and-forces-quiz.json": "sha256:2b7a1d20ac219590fe7cd3fcfec089de932d1abe76ccb610414dae100a5abcc2",
+    "images/concept-guide.webp": "sha256:9b5af554c6cc649c7bf9dfe89365d1a1cbc2de005ddec73bbc55f99d0ec2754e",
+    "images/worked-example.webp": "sha256:cd1a1c10b728475a8cc954c2ebdef67fb22667dabe0fb66045f883d893e5a47f"
+  },
+  "quizId": "g7-science-05-motion-and-forces-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g7-science-05-motion-and-forces",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-05-motion-and-forces-review-1",
+      "conceptId": "net-force",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is net force?",
+      "answer": "Speed, velocity, acceleration, and net force describe and explain changing motion",
+      "formats": {
+        "text": "Speed, velocity, acceleration, and net force describe and explain changing motion.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g7-science-05-motion-and-forces",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-05-motion-and-forces-review-2",
+      "conceptId": "net-force-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for net force.",
+      "answer": "Balanced forces produce no change in motion",
+      "formats": {
+        "text": "Balanced forces produce no change in motion.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g7-science-05-motion-and-forces",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-05-motion-and-forces-review-3",
+      "conceptId": "net-force",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Motion and Forces.",
+      "answer": "net force",
+      "formats": {
+        "text": "net force"
+      }
+    },
+    {
+      "moduleId": "g7-science-05-motion-and-forces",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-05-motion-and-forces-review-4",
+      "conceptId": "net-force-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain net force in one or two clear sentences.",
+      "answer": "Speed, velocity, acceleration, and net force describe and explain changing motion",
+      "formats": {
+        "text": "Speed, velocity, acceleration, and net force describe and explain changing motion."
+      }
+    },
+    {
+      "moduleId": "g7-science-05-motion-and-forces",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-science-05-motion-and-forces-review-5",
+      "conceptId": "net-force-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Graph position over time for a moving object.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Graph position over time for a moving object."
+      }
+    }
+  ]
+}

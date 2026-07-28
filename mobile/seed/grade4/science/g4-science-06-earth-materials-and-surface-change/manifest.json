@@ -1,0 +1,120 @@
+{
+  "moduleId": "g4-science-06-earth-materials-and-surface-change",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 4,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:578773abb8b8b17c75a6ba03adbc3a4de2bd189477ebccc189e8a6b383eb2014",
+    "g4-science-06-earth-materials-and-surface-change-quiz.json": "sha256:02264ae39acd04d22e46a8fae3197af9efd48fe3be4d7bd0eb2c4027a72f9bbb",
+    "images/concept-guide.webp": "sha256:82f06f85d76297f48efda71f35d1bfbbbca6b89b699c88769294c7c2fdda2ba2",
+    "images/worked-example.webp": "sha256:37f5b29c8f46fb154381d6842cec245fb380be222e6a8cb0d381976e9bdca41c"
+  },
+  "quizId": "g4-science-06-earth-materials-and-surface-change-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g4-science-06-earth-materials-and-surface-change",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-science-06-earth-materials-and-surface-change-review-1",
+      "conceptId": "erosion",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is erosion?",
+      "answer": "Weathering breaks rock, erosion moves sediment, and deposition drops it elsewhere",
+      "formats": {
+        "text": "Weathering breaks rock, erosion moves sediment, and deposition drops it elsewhere.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g4-science-06-earth-materials-and-surface-change",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-science-06-earth-materials-and-surface-change-review-2",
+      "conceptId": "erosion-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for erosion.",
+      "answer": "Flowing water carries soil downhill after heavy rain",
+      "formats": {
+        "text": "Flowing water carries soil downhill after heavy rain.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g4-science-06-earth-materials-and-surface-change",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-science-06-earth-materials-and-surface-change-review-3",
+      "conceptId": "erosion",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Earth Materials and Surface Change.",
+      "answer": "erosion",
+      "formats": {
+        "text": "erosion"
+      }
+    },
+    {
+      "moduleId": "g4-science-06-earth-materials-and-surface-change",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-science-06-earth-materials-and-surface-change-review-4",
+      "conceptId": "erosion-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain erosion in one or two clear sentences.",
+      "answer": "Weathering breaks rock, erosion moves sediment, and deposition drops it elsewhere",
+      "formats": {
+        "text": "Weathering breaks rock, erosion moves sediment, and deposition drops it elsewhere."
+      }
+    },
+    {
+      "moduleId": "g4-science-06-earth-materials-and-surface-change",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g4-science-06-earth-materials-and-surface-change-review-5",
+      "conceptId": "erosion-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Model erosion with soil, water, and a tray.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Model erosion with soil, water, and a tray."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-science-05-earth-systems-and-hazards-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains earth systems?",
+    "options": [
+      "The geosphere, hydrosphere, atmosphere, and biosphere interact and create hazards",
+      "It is only the title of the lesson Earth Systems and Hazards.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "The geosphere, hydrosphere, atmosphere, and biosphere interact and create hazards",
+    "conceptId": "earth-systems"
+  },
+  {
+    "questionId": "g6-science-05-earth-systems-and-hazards-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Heavy rain on a bare slope can trigger a landslide",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Heavy rain on a bare slope can trigger a landslide",
+    "conceptId": "earth-systems-application"
+  },
+  {
+    "questionId": "g6-science-05-earth-systems-and-hazards-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "earth systems",
+    "conceptId": "earth-systems"
+  },
+  {
+    "questionId": "g6-science-05-earth-systems-and-hazards-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Connect a hazard to interacting Earth systems.",
+    "correctAnswer": "earth systems",
+    "conceptId": "earth-systems-application"
+  },
+  {
+    "questionId": "g6-science-05-earth-systems-and-hazards-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "earth-systems-reasoning"
+  }
+]

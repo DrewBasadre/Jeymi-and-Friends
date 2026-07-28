@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g5-math-06-data-and-probability-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains data reasoning?",
+    "options": [
+      "Tables and graphs reveal center, spread, frequency, and possible outcomes",
+      "It is only the title of the lesson Data and Probability.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Tables and graphs reveal center, spread, frequency, and possible outcomes",
+    "conceptId": "data-reasoning"
+  },
+  {
+    "questionId": "g5-math-06-data-and-probability-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A fair coin has two equally likely outcomes",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A fair coin has two equally likely outcomes",
+    "conceptId": "data-reasoning-application"
+  },
+  {
+    "questionId": "g5-math-06-data-and-probability-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "data reasoning",
+    "conceptId": "data-reasoning"
+  },
+  {
+    "questionId": "g5-math-06-data-and-probability-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Conduct twenty trials and compare experimental results.",
+    "correctAnswer": "data reasoning",
+    "conceptId": "data-reasoning-application"
+  },
+  {
+    "questionId": "g5-math-06-data-and-probability-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "data-reasoning-reasoning"
+  }
+]

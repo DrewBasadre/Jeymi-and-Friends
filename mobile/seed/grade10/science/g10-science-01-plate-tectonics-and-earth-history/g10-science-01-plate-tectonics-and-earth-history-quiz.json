@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g10-science-01-plate-tectonics-and-earth-history-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains plate tectonics?",
+    "options": [
+      "Plate motion, rock evidence, fossils, and geologic structures explain Earth changing history",
+      "It is only the title of the lesson Plate Tectonics and Earth History.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Plate motion, rock evidence, fossils, and geologic structures explain Earth changing history",
+    "conceptId": "plate-tectonics"
+  },
+  {
+    "questionId": "g10-science-01-plate-tectonics-and-earth-history-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Matching fossils across continents support past continental connections",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Matching fossils across continents support past continental connections",
+    "conceptId": "plate-tectonics-application"
+  },
+  {
+    "questionId": "g10-science-01-plate-tectonics-and-earth-history-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "plate tectonics",
+    "conceptId": "plate-tectonics"
+  },
+  {
+    "questionId": "g10-science-01-plate-tectonics-and-earth-history-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Synthesize three evidence types for plate movement.",
+    "correctAnswer": "plate tectonics",
+    "conceptId": "plate-tectonics-application"
+  },
+  {
+    "questionId": "g10-science-01-plate-tectonics-and-earth-history-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "plate-tectonics-reasoning"
+  }
+]

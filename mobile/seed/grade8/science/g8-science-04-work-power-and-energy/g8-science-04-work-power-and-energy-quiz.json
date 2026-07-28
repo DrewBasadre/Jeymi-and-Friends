@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g8-science-04-work-power-and-energy-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains mechanical energy?",
+    "options": [
+      "Work transfers energy, power describes transfer rate, and machines trade force for distance",
+      "It is only the title of the lesson Work, Power, and Energy.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Work transfers energy, power describes transfer rate, and machines trade force for distance",
+    "conceptId": "mechanical-energy"
+  },
+  {
+    "questionId": "g8-science-04-work-power-and-energy-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Climbing the same stairs faster requires greater power",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Climbing the same stairs faster requires greater power",
+    "conceptId": "mechanical-energy-application"
+  },
+  {
+    "questionId": "g8-science-04-work-power-and-energy-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "mechanical energy",
+    "conceptId": "mechanical-energy"
+  },
+  {
+    "questionId": "g8-science-04-work-power-and-energy-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Compare work and power for two trials.",
+    "correctAnswer": "mechanical energy",
+    "conceptId": "mechanical-energy-application"
+  },
+  {
+    "questionId": "g8-science-04-work-power-and-energy-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "mechanical-energy-reasoning"
+  }
+]

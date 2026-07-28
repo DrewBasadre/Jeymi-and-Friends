@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-math-03-subtracting-three-digit-numbers-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains subtraction strategies?",
+    "options": [
+      "Regroup one larger place when a smaller place does not have enough units",
+      "It is only the title of the lesson Subtracting Three-Digit Numbers.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Regroup one larger place when a smaller place does not have enough units",
+    "conceptId": "subtraction-strategies"
+  },
+  {
+    "questionId": "g2-math-03-subtracting-three-digit-numbers-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "To subtract eight ones from two ones, regroup one ten as ten ones",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "To subtract eight ones from two ones, regroup one ten as ten ones",
+    "conceptId": "subtraction-strategies-application"
+  },
+  {
+    "questionId": "g2-math-03-subtracting-three-digit-numbers-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "subtraction strategies",
+    "conceptId": "subtraction-strategies"
+  },
+  {
+    "questionId": "g2-math-03-subtracting-three-digit-numbers-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Explain each regrouping step in 432 - 178.",
+    "correctAnswer": "subtraction strategies",
+    "conceptId": "subtraction-strategies-application"
+  },
+  {
+    "questionId": "g2-math-03-subtracting-three-digit-numbers-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "subtraction-strategies-reasoning"
+  }
+]

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g7-math-05-geometry-of-polygons",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 7,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:083b708578be481bc139702ada5855c0a6049dd03655efd240b68e3637d5c9ee",
+    "g7-math-05-geometry-of-polygons-quiz.json": "sha256:269fb3a872e1dcfc32e1dd469652dacb77f094fbe3ad5944ceb479d2023a8b64",
+    "images/concept-guide.webp": "sha256:7fa1441acdac890d302a1aed5afb60d7885809c980f9a5e390bceac5213e4095",
+    "images/worked-example.webp": "sha256:172c62010746054e7247162c2f1231c8bd2ea7ef2647850fa88413ba4b73f973"
+  },
+  "quizId": "g7-math-05-geometry-of-polygons-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g7-math-05-geometry-of-polygons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-05-geometry-of-polygons-review-1",
+      "conceptId": "polygon-relationships",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is polygon relationships?",
+      "answer": "Angle sums, congruence, and properties classify polygons and solve unknown measures",
+      "formats": {
+        "text": "Angle sums, congruence, and properties classify polygons and solve unknown measures.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g7-math-05-geometry-of-polygons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-05-geometry-of-polygons-review-2",
+      "conceptId": "polygon-relationships-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for polygon relationships.",
+      "answer": "Triangle interior angles total 180 degrees",
+      "formats": {
+        "text": "Triangle interior angles total 180 degrees.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g7-math-05-geometry-of-polygons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-05-geometry-of-polygons-review-3",
+      "conceptId": "polygon-relationships",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Geometry of Polygons.",
+      "answer": "polygon relationships",
+      "formats": {
+        "text": "polygon relationships"
+      }
+    },
+    {
+      "moduleId": "g7-math-05-geometry-of-polygons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-05-geometry-of-polygons-review-4",
+      "conceptId": "polygon-relationships-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain polygon relationships in one or two clear sentences.",
+      "answer": "Angle sums, congruence, and properties classify polygons and solve unknown measures",
+      "formats": {
+        "text": "Angle sums, congruence, and properties classify polygons and solve unknown measures."
+      }
+    },
+    {
+      "moduleId": "g7-math-05-geometry-of-polygons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g7-math-05-geometry-of-polygons-review-5",
+      "conceptId": "polygon-relationships-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Derive a quadrilateral angle sum by triangulation.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Derive a quadrilateral angle sum by triangulation."
+      }
+    }
+  ]
+}

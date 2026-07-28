@@ -1,0 +1,120 @@
+{
+  "moduleId": "g8-english-05-comparing-sources",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 8,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:63e02eb5b339d492e6cbe3e4d129db28ba627019595b0ea1e31970349129cdee",
+    "g8-english-05-comparing-sources-quiz.json": "sha256:755a67758b5da4c2ff079c9be16c26d823aa5dd3432a17acca145faa66436745",
+    "images/concept-guide.webp": "sha256:543c2d10dd4f233d65274083f2a7326a1700924d263f46d129de8d6b0feeaf0b",
+    "images/worked-example.webp": "sha256:802eeece10387b9267b9816c42091bc7ad5925176f63c6b536332676e65a3cb5"
+  },
+  "quizId": "g8-english-05-comparing-sources-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g8-english-05-comparing-sources",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-05-comparing-sources-review-1",
+      "conceptId": "source-synthesis",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is source synthesis?",
+      "answer": "Readers compare purpose, evidence, perspective, and omissions across sources",
+      "formats": {
+        "text": "Readers compare purpose, evidence, perspective, and omissions across sources.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g8-english-05-comparing-sources",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-05-comparing-sources-review-2",
+      "conceptId": "source-synthesis-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for source synthesis.",
+      "answer": "Two reports may use the same event to support different conclusions",
+      "formats": {
+        "text": "Two reports may use the same event to support different conclusions.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g8-english-05-comparing-sources",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-05-comparing-sources-review-3",
+      "conceptId": "source-synthesis",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Comparing Sources.",
+      "answer": "source synthesis",
+      "formats": {
+        "text": "source synthesis"
+      }
+    },
+    {
+      "moduleId": "g8-english-05-comparing-sources",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-05-comparing-sources-review-4",
+      "conceptId": "source-synthesis-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain source synthesis in one or two clear sentences.",
+      "answer": "Readers compare purpose, evidence, perspective, and omissions across sources",
+      "formats": {
+        "text": "Readers compare purpose, evidence, perspective, and omissions across sources."
+      }
+    },
+    {
+      "moduleId": "g8-english-05-comparing-sources",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g8-english-05-comparing-sources-review-5",
+      "conceptId": "source-synthesis-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Create a comparison matrix for two texts.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Create a comparison matrix for two texts."
+      }
+    }
+  ]
+}

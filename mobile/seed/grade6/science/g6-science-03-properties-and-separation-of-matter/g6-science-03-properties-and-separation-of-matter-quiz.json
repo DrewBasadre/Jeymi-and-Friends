@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g6-science-03-properties-and-separation-of-matter-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains separation methods?",
+    "options": [
+      "Observable properties guide filtration, evaporation, decantation, and magnetism",
+      "It is only the title of the lesson Properties and Separation of Matter.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Observable properties guide filtration, evaporation, decantation, and magnetism",
+    "conceptId": "separation-methods"
+  },
+  {
+    "questionId": "g6-science-03-properties-and-separation-of-matter-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Evaporation can recover salt dissolved in water",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Evaporation can recover salt dissolved in water",
+    "conceptId": "separation-methods-application"
+  },
+  {
+    "questionId": "g6-science-03-properties-and-separation-of-matter-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "separation methods",
+    "conceptId": "separation-methods"
+  },
+  {
+    "questionId": "g6-science-03-properties-and-separation-of-matter-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Design a sequence to separate a mixed sample.",
+    "correctAnswer": "separation methods",
+    "conceptId": "separation-methods-application"
+  },
+  {
+    "questionId": "g6-science-03-properties-and-separation-of-matter-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "separation-methods-reasoning"
+  }
+]

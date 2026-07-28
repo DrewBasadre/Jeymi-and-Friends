@@ -1,0 +1,120 @@
+{
+  "moduleId": "g1-english-06-beginning-middle-and-end",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 1,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:a58a182a668a87dc7331e99028c2f822f6f8cc28e7cf3175c48012d297b80e8f",
+    "g1-english-06-beginning-middle-and-end-quiz.json": "sha256:59107bb708a6c12ff7870d01295507e2fb9a7a5779321fc3b5a235de25c794e7",
+    "images/concept-guide.webp": "sha256:165039af208797d8ee9780940c7e553c219dd2f0d3f27f7a41736e3c457796c9",
+    "images/worked-example.webp": "sha256:f26c0ad42a5f1b4156432a6d9c755bbc561c5b9bc14d9a84b28fb4e8c873f44e"
+  },
+  "quizId": "g1-english-06-beginning-middle-and-end-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g1-english-06-beginning-middle-and-end",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-06-beginning-middle-and-end-review-1",
+      "conceptId": "story-sequence",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is story sequence?",
+      "answer": "Events in a story happen in an order: beginning, middle, and end",
+      "formats": {
+        "text": "Events in a story happen in an order: beginning, middle, and end.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g1-english-06-beginning-middle-and-end",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-06-beginning-middle-and-end-review-2",
+      "conceptId": "story-sequence-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for story sequence.",
+      "answer": "First Ana plants a seed, next she waters it, and finally a sprout appears",
+      "formats": {
+        "text": "First Ana plants a seed, next she waters it, and finally a sprout appears.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g1-english-06-beginning-middle-and-end",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-06-beginning-middle-and-end-review-3",
+      "conceptId": "story-sequence",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Beginning, Middle, and End.",
+      "answer": "story sequence",
+      "formats": {
+        "text": "story sequence"
+      }
+    },
+    {
+      "moduleId": "g1-english-06-beginning-middle-and-end",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-06-beginning-middle-and-end-review-4",
+      "conceptId": "story-sequence-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain story sequence in one or two clear sentences.",
+      "answer": "Events in a story happen in an order: beginning, middle, and end",
+      "formats": {
+        "text": "Events in a story happen in an order: beginning, middle, and end."
+      }
+    },
+    {
+      "moduleId": "g1-english-06-beginning-middle-and-end",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-english-06-beginning-middle-and-end-review-5",
+      "conceptId": "story-sequence-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Retell a short story using first, next, and last.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Retell a short story using first, next, and last."
+      }
+    }
+  ]
+}

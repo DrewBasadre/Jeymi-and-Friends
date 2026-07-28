@@ -1,0 +1,120 @@
+{
+  "moduleId": "g1-math-01-numbers-to-100",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 1,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:a9296d781f46b4479a994a43ea13ca6529ea0c16375bd34f484a2e64195a4fab",
+    "g1-math-01-numbers-to-100-quiz.json": "sha256:89b873134e1d18da37e491b93f1032a560cfb6536317056c4739539fa812474b",
+    "images/concept-guide.webp": "sha256:cc33f433855224d24b0a6beb9db7d05e1ce5d00c74b2d83f5562a72cb61a7383",
+    "images/worked-example.webp": "sha256:b690e6de9c8b3543e49098b65b719f4bf052351832efeeeaa9fe0fc28d8e1df5"
+  },
+  "quizId": "g1-math-01-numbers-to-100-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g1-math-01-numbers-to-100",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-01-numbers-to-100-review-1",
+      "conceptId": "place-value",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is place value?",
+      "answer": "Two-digit numbers have tens and ones",
+      "formats": {
+        "text": "Two-digit numbers have tens and ones.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g1-math-01-numbers-to-100",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-01-numbers-to-100-review-2",
+      "conceptId": "place-value-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for place value.",
+      "answer": "In 47, four tens make 40 and seven ones make 7",
+      "formats": {
+        "text": "In 47, four tens make 40 and seven ones make 7.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g1-math-01-numbers-to-100",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-01-numbers-to-100-review-3",
+      "conceptId": "place-value",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Numbers to 100.",
+      "answer": "place value",
+      "formats": {
+        "text": "place value"
+      }
+    },
+    {
+      "moduleId": "g1-math-01-numbers-to-100",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-01-numbers-to-100-review-4",
+      "conceptId": "place-value-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain place value in one or two clear sentences.",
+      "answer": "Two-digit numbers have tens and ones",
+      "formats": {
+        "text": "Two-digit numbers have tens and ones."
+      }
+    },
+    {
+      "moduleId": "g1-math-01-numbers-to-100",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g1-math-01-numbers-to-100-review-5",
+      "conceptId": "place-value-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Build three two-digit numbers using bundles of ten and single objects.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Build three two-digit numbers using bundles of ten and single objects."
+      }
+    }
+  ]
+}

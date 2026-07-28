@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-english-02-vocabulary-through-word-relationships-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains semantic relationships?",
+    "options": [
+      "Synonyms, antonyms, analogies, and context reveal precise relationships among words",
+      "It is only the title of the lesson Vocabulary Through Word Relationships.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Synonyms, antonyms, analogies, and context reveal precise relationships among words",
+    "conceptId": "semantic-relationships"
+  },
+  {
+    "questionId": "g7-english-02-vocabulary-through-word-relationships-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "Fragile is to breakable as sturdy is to strong",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "Fragile is to breakable as sturdy is to strong",
+    "conceptId": "semantic-relationships-application"
+  },
+  {
+    "questionId": "g7-english-02-vocabulary-through-word-relationships-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "semantic relationships",
+    "conceptId": "semantic-relationships"
+  },
+  {
+    "questionId": "g7-english-02-vocabulary-through-word-relationships-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Complete and explain five analogies.",
+    "correctAnswer": "semantic relationships",
+    "conceptId": "semantic-relationships-application"
+  },
+  {
+    "questionId": "g7-english-02-vocabulary-through-word-relationships-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "semantic-relationships-reasoning"
+  }
+]

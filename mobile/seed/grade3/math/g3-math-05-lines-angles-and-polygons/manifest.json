@@ -1,0 +1,120 @@
+{
+  "moduleId": "g3-math-05-lines-angles-and-polygons",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 3,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:c65080a10cb56554ffb754ca507c2153e5e629489800edc8ba64ed8a46829de4",
+    "g3-math-05-lines-angles-and-polygons-quiz.json": "sha256:0deec040268fe0b6700761c14404b7ce40beccc6dcd5dd21322f230027bc06da",
+    "images/concept-guide.webp": "sha256:84bd874d8ed17a4afc5b2b66a73e88a148f2c5b384c6c3a2d7889827e8336916",
+    "images/worked-example.webp": "sha256:dd7f1e1266b44302a0838df4f48a57211eb41ffc87dcb9b26e4d30f3507511fa"
+  },
+  "quizId": "g3-math-05-lines-angles-and-polygons-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g3-math-05-lines-angles-and-polygons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-05-lines-angles-and-polygons-review-1",
+      "conceptId": "geometry",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is geometry?",
+      "answer": "Geometric figures can be classified by sides, vertices, lines, and angles",
+      "formats": {
+        "text": "Geometric figures can be classified by sides, vertices, lines, and angles.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g3-math-05-lines-angles-and-polygons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-05-lines-angles-and-polygons-review-2",
+      "conceptId": "geometry-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for geometry.",
+      "answer": "A rectangle has four right angles and two pairs of parallel sides",
+      "formats": {
+        "text": "A rectangle has four right angles and two pairs of parallel sides.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g3-math-05-lines-angles-and-polygons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-05-lines-angles-and-polygons-review-3",
+      "conceptId": "geometry",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Lines, Angles, and Polygons.",
+      "answer": "geometry",
+      "formats": {
+        "text": "geometry"
+      }
+    },
+    {
+      "moduleId": "g3-math-05-lines-angles-and-polygons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-05-lines-angles-and-polygons-review-4",
+      "conceptId": "geometry-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain geometry in one or two clear sentences.",
+      "answer": "Geometric figures can be classified by sides, vertices, lines, and angles",
+      "formats": {
+        "text": "Geometric figures can be classified by sides, vertices, lines, and angles."
+      }
+    },
+    {
+      "moduleId": "g3-math-05-lines-angles-and-polygons",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g3-math-05-lines-angles-and-polygons-review-5",
+      "conceptId": "geometry-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Sort polygons and explain the rule used.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Sort polygons and explain the rule used."
+      }
+    }
+  ]
+}

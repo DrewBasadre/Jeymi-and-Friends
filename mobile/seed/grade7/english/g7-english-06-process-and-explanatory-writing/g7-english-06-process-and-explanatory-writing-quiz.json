@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g7-english-06-process-and-explanatory-writing-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains explanation?",
+    "options": [
+      "Effective explanations sequence ideas, define terms, and connect evidence to conclusions",
+      "It is only the title of the lesson Process and Explanatory Writing.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Effective explanations sequence ideas, define terms, and connect evidence to conclusions",
+    "conceptId": "explanation"
+  },
+  {
+    "questionId": "g7-english-06-process-and-explanatory-writing-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A process paragraph uses precise transitions and conditions",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A process paragraph uses precise transitions and conditions",
+    "conceptId": "explanation-application"
+  },
+  {
+    "questionId": "g7-english-06-process-and-explanatory-writing-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "explanation",
+    "conceptId": "explanation"
+  },
+  {
+    "questionId": "g7-english-06-process-and-explanatory-writing-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Write and revise a clear how-to explanation.",
+    "correctAnswer": "explanation",
+    "conceptId": "explanation-application"
+  },
+  {
+    "questionId": "g7-english-06-process-and-explanatory-writing-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "explanation-reasoning"
+  }
+]

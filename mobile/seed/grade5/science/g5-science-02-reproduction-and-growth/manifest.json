@@ -1,0 +1,120 @@
+{
+  "moduleId": "g5-science-02-reproduction-and-growth",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 5,
+  "subject": "SCIENCE",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:35cb363c3a8051419e2eb734bea043af3b96340b1162f93077be1287f8686db7",
+    "g5-science-02-reproduction-and-growth-quiz.json": "sha256:88adf4492f4669a3413cd3869f86e39341c77982c453f3aabc40ff6e05e5774c",
+    "images/concept-guide.webp": "sha256:2ae45d48bbb4e567f2a548aa2e06c40fe3c1954630b03fa31b1ca558e7d59427",
+    "images/worked-example.webp": "sha256:df3877da575b4e6fc6c6d9d33f3eca1b7fcc922faa920ef81d4928953735814b"
+  },
+  "quizId": "g5-science-02-reproduction-and-growth-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g5-science-02-reproduction-and-growth",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-02-reproduction-and-growth-review-1",
+      "conceptId": "reproduction",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is reproduction?",
+      "answer": "Living things reproduce in varied ways and pass through predictable growth stages",
+      "formats": {
+        "text": "Living things reproduce in varied ways and pass through predictable growth stages.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g5-science-02-reproduction-and-growth",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-02-reproduction-and-growth-review-2",
+      "conceptId": "reproduction-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for reproduction.",
+      "answer": "Flowering plants form seeds after pollination",
+      "formats": {
+        "text": "Flowering plants form seeds after pollination.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g5-science-02-reproduction-and-growth",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-02-reproduction-and-growth-review-3",
+      "conceptId": "reproduction",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Reproduction and Growth.",
+      "answer": "reproduction",
+      "formats": {
+        "text": "reproduction"
+      }
+    },
+    {
+      "moduleId": "g5-science-02-reproduction-and-growth",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-02-reproduction-and-growth-review-4",
+      "conceptId": "reproduction-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain reproduction in one or two clear sentences.",
+      "answer": "Living things reproduce in varied ways and pass through predictable growth stages",
+      "formats": {
+        "text": "Living things reproduce in varied ways and pass through predictable growth stages."
+      }
+    },
+    {
+      "moduleId": "g5-science-02-reproduction-and-growth",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g5-science-02-reproduction-and-growth-review-5",
+      "conceptId": "reproduction-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Sequence one plant and one animal life cycle.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Sequence one plant and one animal life cycle."
+      }
+    }
+  ]
+}

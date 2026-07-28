@@ -1,0 +1,120 @@
+{
+  "moduleId": "g10-math-04-coordinate-and-analytic-geometry",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 10,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:1ece6e7ec34bee410bef050136b7b2da30799874f721ad026dd4f13f6ee53863",
+    "g10-math-04-coordinate-and-analytic-geometry-quiz.json": "sha256:8603652f6c3b9545f53f287ef6e02a4b56d541c92d8f030e6b9a4a690a71ba6e",
+    "images/concept-guide.webp": "sha256:963ecf91e8a07a1fda6b8db6071435c67ccbe7f49d0a579349c5b5e39daeb75c",
+    "images/worked-example.webp": "sha256:e2f0646900aff0166fcd3c944999dc0041c67e0cf3f176f50722c721fa0458c5"
+  },
+  "quizId": "g10-math-04-coordinate-and-analytic-geometry-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g10-math-04-coordinate-and-analytic-geometry",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-04-coordinate-and-analytic-geometry-review-1",
+      "conceptId": "analytic-geometry",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is analytic geometry?",
+      "answer": "Equations and coordinates model lines, circles, distances, and loci",
+      "formats": {
+        "text": "Equations and coordinates model lines, circles, distances, and loci.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g10-math-04-coordinate-and-analytic-geometry",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-04-coordinate-and-analytic-geometry-review-2",
+      "conceptId": "analytic-geometry-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for analytic geometry.",
+      "answer": "The standard circle equation identifies center and radius",
+      "formats": {
+        "text": "The standard circle equation identifies center and radius.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g10-math-04-coordinate-and-analytic-geometry",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-04-coordinate-and-analytic-geometry-review-3",
+      "conceptId": "analytic-geometry",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Coordinate and Analytic Geometry.",
+      "answer": "analytic geometry",
+      "formats": {
+        "text": "analytic geometry"
+      }
+    },
+    {
+      "moduleId": "g10-math-04-coordinate-and-analytic-geometry",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-04-coordinate-and-analytic-geometry-review-4",
+      "conceptId": "analytic-geometry-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain analytic geometry in one or two clear sentences.",
+      "answer": "Equations and coordinates model lines, circles, distances, and loci",
+      "formats": {
+        "text": "Equations and coordinates model lines, circles, distances, and loci."
+      }
+    },
+    {
+      "moduleId": "g10-math-04-coordinate-and-analytic-geometry",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g10-math-04-coordinate-and-analytic-geometry-review-5",
+      "conceptId": "analytic-geometry-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Derive an equation from geometric conditions.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Derive an equation from geometric conditions."
+      }
+    }
+  ]
+}

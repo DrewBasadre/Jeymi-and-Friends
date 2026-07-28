@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g4-science-04-force-motion-and-energy-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains energy transfer?",
+    "options": [
+      "Forces change motion, while energy can be transferred through movement, heat, light, and sound",
+      "It is only the title of the lesson Force, Motion, and Energy.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Forces change motion, while energy can be transferred through movement, heat, light, and sound",
+    "conceptId": "energy-transfer"
+  },
+  {
+    "questionId": "g4-science-04-force-motion-and-energy-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A stretched rubber band stores energy that becomes motion",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A stretched rubber band stores energy that becomes motion",
+    "conceptId": "energy-transfer-application"
+  },
+  {
+    "questionId": "g4-science-04-force-motion-and-energy-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "energy transfer",
+    "conceptId": "energy-transfer"
+  },
+  {
+    "questionId": "g4-science-04-force-motion-and-energy-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Change one variable in a rolling-car investigation.",
+    "correctAnswer": "energy transfer",
+    "conceptId": "energy-transfer-application"
+  },
+  {
+    "questionId": "g4-science-04-force-motion-and-energy-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "energy-transfer-reasoning"
+  }
+]

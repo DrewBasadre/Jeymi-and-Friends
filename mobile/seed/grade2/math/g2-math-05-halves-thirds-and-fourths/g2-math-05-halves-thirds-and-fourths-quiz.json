@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g2-math-05-halves-thirds-and-fourths-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains unit fractions?",
+    "options": [
+      "Equal parts of one whole can be named with fractions",
+      "It is only the title of the lesson Halves, Thirds, and Fourths.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Equal parts of one whole can be named with fractions",
+    "conceptId": "unit-fractions"
+  },
+  {
+    "questionId": "g2-math-05-halves-thirds-and-fourths-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "One of four equal sandwich pieces is one fourth",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "One of four equal sandwich pieces is one fourth",
+    "conceptId": "unit-fractions-application"
+  },
+  {
+    "questionId": "g2-math-05-halves-thirds-and-fourths-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "unit fractions",
+    "conceptId": "unit-fractions"
+  },
+  {
+    "questionId": "g2-math-05-halves-thirds-and-fourths-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Fold paper into equal halves and fourths.",
+    "correctAnswer": "unit fractions",
+    "conceptId": "unit-fractions-application"
+  },
+  {
+    "questionId": "g2-math-05-halves-thirds-and-fourths-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "unit-fractions-reasoning"
+  }
+]

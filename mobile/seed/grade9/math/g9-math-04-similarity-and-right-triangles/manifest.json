@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-math-04-similarity-and-right-triangles",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:7e7c17224095e853742c346bff06bea3e53808141bad67c11e89690ecb9ef795",
+    "g9-math-04-similarity-and-right-triangles-quiz.json": "sha256:3dd8b5174bf64ac7d2ad9d14d5f3d627e068d5452386aa247ad692bd61ebfb42",
+    "images/concept-guide.webp": "sha256:879a15f2af8288cc81e0f82e1970ea6890273aee60372bbb98265d04194b3dea",
+    "images/worked-example.webp": "sha256:097acbefe5b297931581b83b84872a4a87e75d30addd1de37f17f68f01748af9"
+  },
+  "quizId": "g9-math-04-similarity-and-right-triangles-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-math-04-similarity-and-right-triangles",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-04-similarity-and-right-triangles-review-1",
+      "conceptId": "similarity",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is similarity?",
+      "answer": "Proportional sides, angle relationships, and the Pythagorean theorem solve indirect measures",
+      "formats": {
+        "text": "Proportional sides, angle relationships, and the Pythagorean theorem solve indirect measures.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-math-04-similarity-and-right-triangles",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-04-similarity-and-right-triangles-review-2",
+      "conceptId": "similarity-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for similarity.",
+      "answer": "Similar triangles can estimate a tree height from shadows",
+      "formats": {
+        "text": "Similar triangles can estimate a tree height from shadows.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-math-04-similarity-and-right-triangles",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-04-similarity-and-right-triangles-review-3",
+      "conceptId": "similarity",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Similarity and Right Triangles.",
+      "answer": "similarity",
+      "formats": {
+        "text": "similarity"
+      }
+    },
+    {
+      "moduleId": "g9-math-04-similarity-and-right-triangles",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-04-similarity-and-right-triangles-review-4",
+      "conceptId": "similarity-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain similarity in one or two clear sentences.",
+      "answer": "Proportional sides, angle relationships, and the Pythagorean theorem solve indirect measures",
+      "formats": {
+        "text": "Proportional sides, angle relationships, and the Pythagorean theorem solve indirect measures."
+      }
+    },
+    {
+      "moduleId": "g9-math-04-similarity-and-right-triangles",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-04-similarity-and-right-triangles-review-5",
+      "conceptId": "similarity-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Design an indirect measurement investigation.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Design an indirect measurement investigation."
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "moduleId": "g9-math-01-quadratic-expressions-and-equations",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 9,
+  "subject": "MATH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:afde3f532c2764ec3545da57465bae754ba0d57f24713edc2507220b30263a07",
+    "g9-math-01-quadratic-expressions-and-equations-quiz.json": "sha256:53a3fdfa5e40a2992f3b281a34c2781efecda4be681e1564ebccbf98d8c43f97",
+    "images/concept-guide.webp": "sha256:8bf4f00419e0b1176a19bd3e3f39ba6580a511f77aa706e2b21ffe99246decab",
+    "images/worked-example.webp": "sha256:cc6f4851a12cf9552ec46593b8dc5c956e1f65f56b2e97b30afeb71d35ae9be1"
+  },
+  "quizId": "g9-math-01-quadratic-expressions-and-equations-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g9-math-01-quadratic-expressions-and-equations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-01-quadratic-expressions-and-equations-review-1",
+      "conceptId": "quadratics",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is quadratics?",
+      "answer": "Quadratic relationships can be factored, completed as squares, graphed, or solved by formula",
+      "formats": {
+        "text": "Quadratic relationships can be factored, completed as squares, graphed, or solved by formula.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g9-math-01-quadratic-expressions-and-equations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-01-quadratic-expressions-and-equations-review-2",
+      "conceptId": "quadratics-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for quadratics.",
+      "answer": "The roots of x squared - 5x + 6 are 2 and 3",
+      "formats": {
+        "text": "The roots of x squared - 5x + 6 are 2 and 3.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g9-math-01-quadratic-expressions-and-equations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-01-quadratic-expressions-and-equations-review-3",
+      "conceptId": "quadratics",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Quadratic Expressions and Equations.",
+      "answer": "quadratics",
+      "formats": {
+        "text": "quadratics"
+      }
+    },
+    {
+      "moduleId": "g9-math-01-quadratic-expressions-and-equations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-01-quadratic-expressions-and-equations-review-4",
+      "conceptId": "quadratics-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain quadratics in one or two clear sentences.",
+      "answer": "Quadratic relationships can be factored, completed as squares, graphed, or solved by formula",
+      "formats": {
+        "text": "Quadratic relationships can be factored, completed as squares, graphed, or solved by formula."
+      }
+    },
+    {
+      "moduleId": "g9-math-01-quadratic-expressions-and-equations",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g9-math-01-quadratic-expressions-and-equations-review-5",
+      "conceptId": "quadratics-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Compare two methods for solving a quadratic.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Compare two methods for solving a quadratic."
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "questionId": "g9-english-06-media-and-information-literacy-q1",
+    "type": "multiple-choice",
+    "prompt": "Which statement best explains media literacy?",
+    "options": [
+      "Authorship, purpose, framing, algorithms, and verification affect information reliability",
+      "It is only the title of the lesson Media and Information Literacy.",
+      "It is a detail that can never be observed or tested.",
+      "It means every example must have the same answer."
+    ],
+    "correctAnswer": "Authorship, purpose, framing, algorithms, and verification affect information reliability",
+    "conceptId": "media-literacy"
+  },
+  {
+    "questionId": "g9-english-06-media-and-information-literacy-q2",
+    "type": "multiple-choice",
+    "prompt": "Which choice is the best worked example from this lesson?",
+    "options": [
+      "A cropped image can remove context and alter interpretation",
+      "A statement with no connection to the key idea.",
+      "A guess that ignores the information given.",
+      "A list of words without an explanation."
+    ],
+    "correctAnswer": "A cropped image can remove context and alter interpretation",
+    "conceptId": "media-literacy-application"
+  },
+  {
+    "questionId": "g9-english-06-media-and-information-literacy-q3",
+    "type": "fill-in-the-blank",
+    "prompt": "Complete the lesson focus: We are learning about ______.",
+    "correctAnswer": "media literacy",
+    "conceptId": "media-literacy"
+  },
+  {
+    "questionId": "g9-english-06-media-and-information-literacy-q4",
+    "type": "identification",
+    "prompt": "Name the key concept that this task practices: Verify one circulating claim using independent sources.",
+    "correctAnswer": "media literacy",
+    "conceptId": "media-literacy-application"
+  },
+  {
+    "questionId": "g9-english-06-media-and-information-literacy-q5",
+    "type": "identification",
+    "prompt": "What should you use to support an explanation after completing the task?",
+    "correctAnswer": "evidence",
+    "conceptId": "media-literacy-reasoning"
+  }
+]

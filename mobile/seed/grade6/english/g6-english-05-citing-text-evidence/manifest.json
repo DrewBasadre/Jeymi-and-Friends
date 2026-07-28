@@ -1,0 +1,120 @@
+{
+  "moduleId": "g6-english-05-citing-text-evidence",
+  "version": 1,
+  "source": "seed-bundle",
+  "gradeLevel": 6,
+  "subject": "ENGLISH",
+  "content": {
+    "markdown": "lesson.md"
+  },
+  "assets": [
+    "images/concept-guide.webp",
+    "images/worked-example.webp"
+  ],
+  "checksums": {
+    "lesson.md": "sha256:349156c795aa14fad5cda619ca5f3abebcdf43f3b9729fe66200a890cdd6d63d",
+    "g6-english-05-citing-text-evidence-quiz.json": "sha256:87b051fb8efb248ce98dd5f89ed417145bfc32fcb7031dae02ca3e95de8e51c9",
+    "images/concept-guide.webp": "sha256:fd40ac8ee2708cd6ff8cfc5d4de78d31b20922031e2d9fb44bbe9049a1def75f",
+    "images/worked-example.webp": "sha256:83955d4a61cdb707f7d78cbe3cfea1d49d94ad728af98bd0c19e5a7cc9efdb0c"
+  },
+  "quizId": "g6-english-05-citing-text-evidence-quiz",
+  "reviewItems": [
+    {
+      "moduleId": "g6-english-05-citing-text-evidence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-05-citing-text-evidence-review-1",
+      "conceptId": "text-evidence",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "What is text evidence?",
+      "answer": "Readers support inferences with accurate details and explanations from a text",
+      "formats": {
+        "text": "Readers support inferences with accurate details and explanations from a text.",
+        "visual": "images/concept-guide.webp"
+      }
+    },
+    {
+      "moduleId": "g6-english-05-citing-text-evidence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-05-citing-text-evidence-review-2",
+      "conceptId": "text-evidence-example",
+      "type": "flashcard",
+      "importance": "core",
+      "prompt": "Give the lesson example for text evidence.",
+      "answer": "A quotation is useful only when the writer explains its relevance",
+      "formats": {
+        "text": "A quotation is useful only when the writer explains its relevance.",
+        "visual": "images/worked-example.webp"
+      }
+    },
+    {
+      "moduleId": "g6-english-05-citing-text-evidence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-05-citing-text-evidence-review-3",
+      "conceptId": "text-evidence",
+      "type": "quiz-question",
+      "importance": "core",
+      "prompt": "Identify the main concept in Citing Text Evidence.",
+      "answer": "text evidence",
+      "formats": {
+        "text": "text evidence"
+      }
+    },
+    {
+      "moduleId": "g6-english-05-citing-text-evidence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-05-citing-text-evidence-review-4",
+      "conceptId": "text-evidence-summary",
+      "type": "concept-summary",
+      "importance": "supplementary",
+      "prompt": "Explain text evidence in one or two clear sentences.",
+      "answer": "Readers support inferences with accurate details and explanations from a text",
+      "formats": {
+        "text": "Readers support inferences with accurate details and explanations from a text."
+      }
+    },
+    {
+      "moduleId": "g6-english-05-citing-text-evidence",
+      "moduleVersion": 1,
+      "authoredBy": "curriculum:wais-demo-q1",
+      "tags": [
+        "demo",
+        "matatag-aligned",
+        "quarter-1"
+      ],
+      "itemId": "g6-english-05-citing-text-evidence-review-5",
+      "conceptId": "text-evidence-transfer",
+      "type": "concept-summary",
+      "importance": "stretch",
+      "prompt": "How would you complete this task and check your reasoning? Write a claim-evidence-reasoning response.",
+      "answer": "Complete the task, compare the result with the key idea, and cite evidence from the example or visual.",
+      "formats": {
+        "text": "Write a claim-evidence-reasoning response."
+      }
+    }
+  ]
+}
