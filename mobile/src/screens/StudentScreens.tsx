@@ -291,9 +291,9 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
             <Card accent={subjectColor[item.subject]} style={styles.moduleCard}>
               <View style={styles.moduleTop}>
                 <Chip label={capitalize(item.subject.replace('_', ' ').toLocaleLowerCase())} color={subjectColor[item.subject]} selected />
-                <Text style={styles.moduleCode}>{item.competencyCode}</Text>
               </View>
-              <Text style={styles.moduleTitle} numberOfLines={2}>{item.title}</Text>
+              <Text style={styles.moduleTitle} numberOfLines={2} adjustsFontSizeToFit minimumFontScale={0.85}>{item.title}</Text>
+              <Text style={styles.moduleCode} numberOfLines={1}>{item.competencyCode}</Text>
               <Text style={styles.moduleSummary} numberOfLines={3}>{item.summary}</Text>
               <View style={styles.styleTags}>
                 {item.contentStyleTags.slice(0, 3).map((tag) => (
@@ -1013,7 +1013,7 @@ function formatDuration(seconds: number): string {
 const styles = StyleSheet.create({
   flex: { flex: 1, minWidth: 0 },
   fixedHeader: { paddingHorizontal: spacing.xl, paddingTop: spacing.xl, gap: spacing.md },
-  listContent: { padding: spacing.xl, gap: spacing.md, paddingBottom: spacing.huge },
+  listContent: { padding: spacing.xl, gap: spacing.md, paddingBottom: 96 },
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, paddingRight: spacing.xl },
   metricGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
   metricSkeleton: { borderRadius: radius.lg, flexGrow: 1 },
@@ -1032,9 +1032,9 @@ const styles = StyleSheet.create({
   taskDot: { width: 10, height: 10, borderRadius: radius.round },
   taskDue: { ...text.caption, color: colors.secondary, marginTop: 1 },
   moduleCell: { flex: 1 },
-  moduleCard: { flex: 1, gap: spacing.sm },
-  moduleTitle: { ...text.bodyStrong, color: colors.ink, fontSize: 17 },
-  moduleSummary: { ...text.caption, color: colors.inkMuted, fontSize: 13, lineHeight: 19 },
+  moduleCard: { flex: 1, gap: spacing.xs },
+  moduleTitle: { ...text.bodyStrong, color: colors.ink, fontSize: 16, lineHeight: 21 },
+  moduleSummary: { ...text.caption, color: colors.inkMuted, fontSize: 13, lineHeight: 19, marginTop: spacing.xs },
   gridRow: { gap: spacing.md },
   cardAction: {
     marginTop: 'auto',
@@ -1047,7 +1047,7 @@ const styles = StyleSheet.create({
   },
   cardActionText: { ...text.label, color: colors.primary, fontWeight: '800' },
   moduleTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.md },
-  moduleCode: { ...text.caption, color: colors.inkMuted },
+  moduleCode: { ...text.caption, color: colors.inkSubtle, fontSize: 12 },
   styleTags: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   styleTag: {
     ...text.caption,
