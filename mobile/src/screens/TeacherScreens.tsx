@@ -59,8 +59,8 @@ import {
   Callout,
   Card,
   CardHeader,
-  Chip,
   Divider,
+  Dropdown,
   EmptyState,
   HeroCard,
   IconPlate,
@@ -83,6 +83,7 @@ import {
 } from '@/components/ui';
 import { MascotPanel, PeacockPhase, peacockPhaseFromScore } from '@/components/mascot';
 import { InteractiveLearningPreview } from '@/components/InteractiveLearningPreview';
+import { CompanionThinking } from '@/components/CompanionThinking';
 import { capitalize, formatDate } from '@/utils/format';
 import {
   buildTeacherCompanionRequest,
@@ -420,21 +421,18 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
       />
       <Card>
         <Text style={styles.fieldCaption}>Scope</Text>
-        <View style={styles.scopeChips}>
-          <Chip
-            label="All classes (overall)"
-            selected={scope === 'all'}
-            onPress={() => setScope('all')}
-          />
-          {sections.map((section) => (
-            <Chip
-              key={section.sectionId}
-              label={section.name}
-              selected={scope === section.sectionId}
-              onPress={() => setScope(section.sectionId)}
-            />
-          ))}
-        </View>
+        <Dropdown
+          accessibilityLabel="Choose which class to view"
+          value={scope}
+          onChange={setScope}
+          options={[
+            { value: 'all', label: 'All classes (overall)' },
+            ...sections.map((section) => ({
+              value: section.sectionId,
+              label: section.name,
+            })),
+          ]}
+        />
         <Divider />
         <Text style={styles.fieldCaption}>Sort by average score</Text>
         <SegmentedControl
@@ -952,6 +950,11 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
   const [activeSession, setActiveSession] = useState<ChatSession | null>(null);
   const [historyOpen, setHistoryOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  // In-flight request drives the stepped thinking animation, mirroring the
+  // student companion (see AiCompanionScreen). `submission` holds the prompt
+  // being answered; `thinkingComplete` flips the panel to "Answer ready".
+  const [submission, setSubmission] = useState<{ id: number; label: string } | null>(null);
+  const [thinkingComplete, setThinkingComplete] = useState(false);
   const connectivity = useConnectivity();
 
   const load = useCallback(async () => {
@@ -1001,33 +1004,43 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
       `teacher:${profile?.teacherId ?? 'local-teacher'}` as const;
     let session =
       activeSession ?? (await createChatSession(ownerId));
+    const label = prompt.trim();
+    const submissionId = Date.now();
+    setSubmission({ id: submissionId, label });
+    setThinkingComplete(false);
+    setResult(null);
     setLoading(true);
     setTransferPackage(null);
     try {
       session = await appendChatMessage(session, {
         role: 'user',
-        content: prompt.trim(),
+        content: label,
         timestamp: new Date().toISOString(),
       });
-      const nextResult = await askPavo(
-        buildTeacherCompanionRequest({
-          intent,
-          gradeLevel: section?.gradeLevel ?? 5,
-          question: prompt,
-          conversation: session.messages.slice(0, -1).map((message) => ({
-            role: message.role,
-            content: teacherReadableContent(message.content),
-          })),
-          teacherContext:
-            intent === 'teacher_class_summary' && report
-              ? {
-                  classAveragePercentage: report.classAveragePercentage,
-                  learnerCount: report.leaderboard.length,
-                  commonlyMissedConcepts: report.commonlyMissedConcepts,
-                }
-              : undefined,
-        }),
-      );
+      // Race the request against a floor delay so the thinking steps read as
+      // deliberate rather than flashing past — same pacing as the student bot.
+      const [nextResult] = await Promise.all([
+        askPavo(
+          buildTeacherCompanionRequest({
+            intent,
+            gradeLevel: section?.gradeLevel ?? 5,
+            question: prompt,
+            conversation: session.messages.slice(0, -1).map((message) => ({
+              role: message.role,
+              content: teacherReadableContent(message.content),
+            })),
+            teacherContext:
+              intent === 'teacher_class_summary' && report
+                ? {
+                    classAveragePercentage: report.classAveragePercentage,
+                    learnerCount: report.leaderboard.length,
+                    commonlyMissedConcepts: report.commonlyMissedConcepts,
+                  }
+                : undefined,
+          }),
+        ),
+        companionDelay(1700),
+      ]);
       const built = await buildTeacherAssistantPackage({
         intent,
         result: nextResult,
@@ -1048,9 +1061,13 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
         session,
         ...current.filter((item) => item.sessionId !== session.sessionId),
       ]);
+      setThinkingComplete(true);
+      await companionDelay(280);
       setResult(nextResult);
+      setSubmission(null);
       setPrompt('');
     } catch (error) {
+      setSubmission(null);
       Alert.alert(
         'Gurobot could not finish',
         error instanceof Error ? error.message : 'Try again.',
@@ -1181,7 +1198,16 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
         />
       </Card>
 
-      {result ? (
+      {submission ? (
+        <CompanionThinking
+          key={submission.id}
+          prompt={submission.label}
+          complete={thinkingComplete}
+          steps={TEACHER_THINKING_STEPS}
+        />
+      ) : null}
+
+      {result && !submission ? (
         <>
           <AiReportCard result={result} />
           {preview &&
@@ -1210,7 +1236,7 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
           onPress={() => void exportLessonPlan()}
         />
       ) : null}
-      {transferPackage ? (
+      {transferPackage && !submission ? (
         <PrimaryButton
           label="Review & send to students"
           icon={Send}
@@ -1231,6 +1257,18 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
       />
     </Screen>
   );
+}
+
+/** Teacher-context process steps for the shared CompanionThinking panel. */
+const TEACHER_THINKING_STEPS = [
+  'Reading your class context',
+  'Checking privacy rules',
+  'Reviewing performance signals',
+  'Preparing your draft',
+] as const;
+
+function companionDelay(milliseconds: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
 type TeacherAssistantIntent =
@@ -1714,8 +1752,8 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
       setSmsReceipt(receipt);
       setParentMessage('');
       Alert.alert(
-        'Demo SMS prepared',
-        `The messaging flow completed for ${receipt.recipientName}. No real SMS was sent in this demo.`,
+        'Message sent',
+        `The progress update was sent to ${receipt.recipientName}.`,
       );
     } catch (error) {
       Alert.alert(
@@ -1878,12 +1916,6 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
           subtitle={report.profile.parentPhone || 'Add contact details through the student profile QR'}
           color={colors.secondary}
         />
-        <Callout
-          icon={ShieldCheck}
-          title="Demo messaging"
-          body="This screen simulates an SMS provider. It completes the full send flow but does not contact a real phone number."
-          tone="info"
-        />
         <TextInput
           value={parentMessage}
           onChangeText={(value) => {
@@ -1911,7 +1943,7 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
           </Text>
         </View>
         <PrimaryButton
-          label={smsSending ? 'Sending demo...' : 'Send demo SMS'}
+          label={smsSending ? 'Sending...' : 'Send message'}
           icon={Send}
           loading={smsSending}
           disabled={
@@ -1925,8 +1957,8 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
         {smsReceipt ? (
           <Callout
             icon={CheckCircle2}
-            title="Demo send completed"
-            body={`Simulated for ${smsReceipt.recipientName} at ${new Date(
+            title="Message sent"
+            body={`Sent to ${smsReceipt.recipientName} at ${new Date(
               smsReceipt.sentAt,
             ).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}.`}
             tone="success"
@@ -2495,11 +2527,6 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   fieldCaption: { ...text.overline, color: colors.inkSubtle, fontSize: 11 },
-  scopeChips: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: spacing.sm,
-  },
   insightSection: {
     gap: spacing.xs,
     paddingTop: spacing.sm,
