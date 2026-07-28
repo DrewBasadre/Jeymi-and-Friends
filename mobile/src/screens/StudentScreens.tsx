@@ -49,6 +49,7 @@ import {
   Skeleton,
   SkeletonCard,
   StatusBadge,
+  useResponsiveColumns,
 } from '@/components/ui';
 import { Celebrate, MascotPanel } from '@/components/mascot';
 import { PeacockMeter } from '@/components/PeacockMeter';
@@ -261,17 +262,18 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
   );
 
   const filtered = filter === 'ALL' ? modules : modules.filter((module) => module.subject === filter);
+  const columns = useResponsiveColumns();
   return (
     <Screen scroll={false} style={styles.flex}>
       <View style={styles.fixedHeader}>
-        <ScreenHeader title="Modules" subtitle="Downloaded lessons remain available without internet." />
+        <ScreenHeader title="Modules" subtitle="Downloaded lessons stay available without internet." />
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
           {(['ALL', 'SCIENCE', 'MATH', 'ENGLISH', 'ADDED_MATERIALS'] as const).map((subject) => (
             <Chip
               key={subject}
               label={subject === 'ADDED_MATERIALS' ? 'Added' : capitalize(subject.toLocaleLowerCase())}
               selected={filter === subject}
-              color={subject === 'ALL' ? colors.indigo : subjectColor[subject]}
+              color={subject === 'ALL' ? colors.primary : subjectColor[subject]}
               onPress={() => setFilter(subject)}
             />
           ))}
@@ -279,21 +281,28 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
       </View>
       <FlatList
         data={filtered}
+        key={columns}
+        numColumns={columns}
         keyExtractor={(module) => module.id}
         contentContainerStyle={styles.listContent}
+        columnWrapperStyle={columns > 1 ? styles.gridRow : undefined}
         renderItem={({ item }) => (
-          <Pressable onPress={() => navigation.navigate('ModuleReader', { moduleId: item.id })}>
-            <Card accent={subjectColor[item.subject]}>
+          <Pressable style={styles.moduleCell} onPress={() => navigation.navigate('ModuleReader', { moduleId: item.id })}>
+            <Card accent={subjectColor[item.subject]} style={styles.moduleCard}>
               <View style={styles.moduleTop}>
-                <Chip label={item.subject.replace('_', ' ')} color={subjectColor[item.subject]} selected />
+                <Chip label={capitalize(item.subject.replace('_', ' ').toLocaleLowerCase())} color={subjectColor[item.subject]} selected />
                 <Text style={styles.moduleCode}>{item.competencyCode}</Text>
               </View>
-              <Text style={styles.cardTitle}>{item.title}</Text>
-              <Text style={styles.body}>{item.summary}</Text>
+              <Text style={styles.cardTitle} numberOfLines={2}>{item.title}</Text>
+              <Text style={styles.body} numberOfLines={3}>{item.summary}</Text>
               <View style={styles.styleTags}>
                 {item.contentStyleTags.slice(0, 3).map((tag) => (
                   <Text key={tag} style={styles.styleTag}>{capitalize(tag)}</Text>
                 ))}
+              </View>
+              <View style={styles.cardAction}>
+                <Text style={styles.cardActionText}>Open lesson</Text>
+                <ChevronRight size={18} color={colors.primary} />
               </View>
             </Card>
           </Pressable>
@@ -301,7 +310,7 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
         ListEmptyComponent={
           <EmptyState
             title="Waiting for your first lesson"
-            body="Ask your teacher to send a module from their Android device."
+            body="Ask your teacher to send a module from their device, then scan the QR to add it here."
           />
         }
       />
@@ -1022,6 +1031,19 @@ const styles = StyleSheet.create({
   taskRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md, paddingVertical: spacing.xs },
   taskDot: { width: 10, height: 10, borderRadius: radius.round },
   taskDue: { ...text.caption, color: colors.secondary, marginTop: 1 },
+  moduleCell: { flex: 1 },
+  moduleCard: { flex: 1 },
+  gridRow: { gap: spacing.md },
+  cardAction: {
+    marginTop: 'auto',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingTop: spacing.sm,
+    borderTopWidth: 1,
+    borderTopColor: colors.outline,
+  },
+  cardActionText: { ...text.label, color: colors.primary, fontWeight: '800' },
   moduleTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.md },
   moduleCode: { ...text.caption, color: colors.inkMuted },
   styleTags: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },

@@ -103,19 +103,57 @@ imported as `text.*` and spread into styles:
   (replace `'Loading…'` strings and `?? 0` fake zeros).
 - **EmptyState / LoadingScreen** — mascot-powered, encouraging.
 
-## Mascot (`mobile/src/components/mascot/`)
+## Mascot — 5-phase growth peacock (`mobile/src/components/mascot/`)
 
-Pavo the peacock is a warm guide, not decoration. Centralized SVG so real art
-can drop in later.
+Pavo the peacock is a warm guide **and** a progression indicator. It's crisp
+pixel art (axis-aligned `<Rect>` on integer coords, flat fills — no gradients,
+no anti-aliasing) and grows through **5 phases** as the learner progresses.
+Centralized + swappable: `PeacockPhase.tsx` is the single source of mascot art;
+real sprites can replace the draw functions without touching callers.
 
-- **Peacock** — inline SVG, expressions `idle | happy | encouraging`.
-- **MascotPanel** — peacock in a tinted halo + title/body; gentle idle bob
-  (reduced-motion-aware). Used in onboarding, empty states, encouragement.
+| Phase | Name | Look |
+| --- | --- | --- |
+| 1 | Hatchling | Small cream chick, no tail |
+| 2 | Fledgling | Teal starting, tiny tail nubs |
+| 3 | Plumed | Teal body, small fan with gold ocelli |
+| 4 | Brilliant | Fuller fan, rosy cheeks |
+| 5 | Radiant | Full iridescent 7-feather display + sparkles |
+
+- **`peacockPhase({ completedModules, totalModules, averageScore })`** derives
+  the phase from **real progress** (completion weighted 0.6, mastery 0.4) — no
+  invented backend state. `peacockPhaseFromScore(score)` is the compact variant
+  for leaderboard rows. A backend "growth milestone" field could later replace
+  the client blend; flagged, not faked.
+- **PeacockMeter** (`components/PeacockMeter.tsx`) — the home hero: phase name,
+  blurb, a **5-pip** growth indicator, and the performance bar.
+- **MascotPanel** — pixel peacock in a tinted halo + title/body; gentle idle
+  bob (reduced-motion-aware). Used in onboarding, empty/loading/error states.
 - **Celebrate** — skippable, non-blocking confetti burst for completion
   moments; fully suppressed under reduced motion.
 
-Use the mascot at: onboarding/role choice, empty states, and small
-celebrations (quiz complete, module finished). Keep gold sparing.
+The pixel peacock is the charming accent; the surrounding UI stays clean and
+modern (not 8-bit). Keep gold sparing.
+
+## Dates & text rules
+
+- **One date utility** — `mobile/src/utils/format.ts`. Every user-facing date
+  goes through `formatDate` → **"January 26, 2026"**; deadlines use
+  `formatDeadline` → **"Due January 26, 2026"**; ranges use `formatDateRange`.
+  Never show raw ISO or `01/26/26`.
+- **Capitalization** — every visible string starts capitalized. Headings /
+  labels / buttons in Title Case; body in Sentence case.
+
+## Cards & layout
+
+- **One card system** — `Card` (elevated, rounded, `radius.lg`) + `CardHeader`
+  (icon-chip → title → subtitle → action slot). Structured content order:
+  header → key info → progress/meta → deadline → **action footer**. The module
+  card is the reference implementation (title → summary → tags → "Open lesson →").
+- **Space-maximizing & responsive** — `Screen` caps content at `maxWidth 760`
+  centered so wide screens don't stretch text. `useResponsiveColumns()` returns
+  1 / 2 / 3 columns by viewport width; card lists (Modules, Record book) fill
+  the space as a grid on tablet instead of leaving empty gutters. Comfortable
+  rhythm via the spacing scale — density with air, no dead margins.
 
 ---
 

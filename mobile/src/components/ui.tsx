@@ -9,6 +9,7 @@ import {
   StyleSheet,
   Text,
   type TextStyle,
+  useWindowDimensions,
   View,
   type ViewStyle,
 } from 'react-native';
@@ -46,6 +47,17 @@ export function Screen({
       {children}
     </ScrollView>
   );
+}
+
+/**
+ * Number of columns to lay lists/grids out in, based on viewport width.
+ * Phones stay single-column; tablets and larger fill the space with 2–3.
+ */
+export function useResponsiveColumns(): number {
+  const { width } = useWindowDimensions();
+  if (width >= 920) return 3;
+  if (width >= 640) return 2;
+  return 1;
 }
 
 export function ScreenHeader({
@@ -436,7 +448,13 @@ function clamp01(v: number) {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
-  screenContent: { paddingHorizontal: spacing.xl, gap: spacing.lg },
+  screenContent: {
+    paddingHorizontal: spacing.xl,
+    gap: spacing.lg,
+    width: '100%',
+    maxWidth: 760,
+    alignSelf: 'center',
+  },
   header: { marginBottom: spacing.xs },
   headerRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   headerText: { flex: 1, minWidth: 0 },

@@ -48,6 +48,7 @@ import {
   SectionTitle,
   Skeleton,
   StatusBadge,
+  useResponsiveColumns,
 } from '@/components/ui';
 import { MascotPanel, PeacockPhase, peacockPhaseFromScore } from '@/components/mascot';
 import { formatDate } from '@/utils/format';
@@ -260,6 +261,7 @@ export function RecordBookScreen({ navigation }: TeacherTabProps<'RecordBook'>) 
     }, []),
   );
 
+  const columns = useResponsiveColumns();
   const learners = useMemo(() => {
     const value = query.trim().toLocaleLowerCase();
     if (!value) return dashboard?.learners ?? [];
@@ -292,11 +294,14 @@ export function RecordBookScreen({ navigation }: TeacherTabProps<'RecordBook'>) 
       </View>
       <FlatList
         data={learners}
+        key={columns}
+        numColumns={columns}
         keyExtractor={(learner) => learner.studentId}
         contentContainerStyle={styles.listContent}
+        columnWrapperStyle={columns > 1 ? styles.gridRow : undefined}
         renderItem={({ item }) => (
-          <Pressable onPress={() => navigation.navigate('LearnerDetail', { studentId: item.studentId })}>
-            <Card accent={item.struggling ? colors.warning : colors.success}>
+          <Pressable style={styles.cardCell} onPress={() => navigation.navigate('LearnerDetail', { studentId: item.studentId })}>
+            <Card accent={item.struggling ? colors.warning : colors.success} style={styles.flexCard}>
               <View style={styles.rowBetween}>
                 <View style={styles.flex}>
                   <Text style={styles.rowTitle}>{item.displayName}</Text>
@@ -785,6 +790,9 @@ const styles = StyleSheet.create({
   listContent: { padding: spacing.xl, gap: spacing.md, paddingBottom: spacing.huge },
   metricGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
   metricSkeleton: { borderRadius: radius.lg, flexGrow: 1 },
+  gridRow: { gap: spacing.md },
+  cardCell: { flex: 1 },
+  flexCard: { flex: 1 },
   cardTitle: { ...text.title, color: colors.ink },
   body: { ...text.body, color: colors.inkMuted, fontSize: 15 },
   learnerRow: {
