@@ -514,27 +514,38 @@ export function AiCompanionScreen({ navigation }: Props) {
 function CompanionResult({ result }: { result: CompanionResponse }) {
   const opacity = useRef(new Animated.Value(0)).current;
   const rise = useRef(new Animated.Value(18)).current;
+  const expansion = useRef(new Animated.Value(0)).current;
+  const [expanded, setExpanded] = useState(false);
   const [cardIndex, setCardIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [answers, setAnswers] = useState<Record<number, number>>({});
 
   useEffect(() => {
     Animated.parallel([
+      Animated.spring(expansion, {
+        toValue: 1,
+        damping: 17,
+        stiffness: 145,
+        mass: 0.9,
+        useNativeDriver: false,
+      }),
       Animated.timing(opacity, {
         toValue: 1,
         duration: 300,
         easing: Easing.out(Easing.cubic),
-        useNativeDriver: true,
+        useNativeDriver: false,
       }),
       Animated.spring(rise, {
         toValue: 0,
         damping: 15,
         stiffness: 150,
         mass: 0.9,
-        useNativeDriver: true,
+        useNativeDriver: false,
       }),
-    ]).start();
-  }, [opacity, rise]);
+    ]).start(({ finished }) => {
+      if (finished) setExpanded(true);
+    });
+  }, [expansion, opacity, rise]);
 
   const card = result.flashcards[cardIndex];
 
@@ -542,7 +553,16 @@ function CompanionResult({ result }: { result: CompanionResponse }) {
     <Animated.View
       style={[
         styles.result,
-        { opacity, transform: [{ translateY: rise }] },
+        {
+          maxHeight: expanded
+            ? undefined
+            : expansion.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0, 6500],
+              }),
+          opacity,
+          transform: [{ translateY: rise }],
+        },
       ]}
     >
       <View style={styles.resultHeader}>
@@ -826,6 +846,7 @@ const styles = StyleSheet.create({
   pressed: { opacity: 0.82 },
   result: {
     gap: spacing.lg,
+    overflow: 'hidden',
     borderTopWidth: 1,
     borderTopColor: colors.outline,
     paddingTop: spacing.xxl,
@@ -934,4 +955,3 @@ const styles = StyleSheet.create({
   },
   poweredText: { ...text.tiny, color: colors.inkSubtle },
 });
-

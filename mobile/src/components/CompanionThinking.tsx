@@ -24,12 +24,15 @@ export function CompanionThinking({
   complete: boolean;
 }) {
   const bubbleOpacity = useRef(new Animated.Value(0)).current;
-  const bubbleRise = useRef(new Animated.Value(14)).current;
+  const bubbleRise = useRef(new Animated.Value(12)).current;
   const panelHeight = useRef(new Animated.Value(218)).current;
+  const panelOpacity = useRef(new Animated.Value(1)).current;
+  const panelExit = useRef(new Animated.Value(0)).current;
   const rowAnimations = useRef(
     steps.map(() => ({
       opacity: new Animated.Value(0),
       rise: new Animated.Value(10),
+      completion: new Animated.Value(0),
     })),
   ).current;
   const pulse = useRef(new Animated.Value(0.55)).current;
@@ -49,12 +52,13 @@ export function CompanionThinking({
         useNativeDriver: true,
       }),
       Animated.stagger(
-        300,
+        140,
         rowAnimations.map((row) =>
           Animated.parallel([
             Animated.timing(row.opacity, {
               toValue: 1,
-              duration: 180,
+              duration: 210,
+              easing: Easing.out(Easing.cubic),
               useNativeDriver: true,
             }),
             Animated.spring(row.rise, {
@@ -68,7 +72,17 @@ export function CompanionThinking({
     ]).start();
 
     const timers = steps.map((_, index) =>
-      setTimeout(() => setCompletedSteps(index + 1), 420 + index * 310),
+      setTimeout(() => {
+        setCompletedSteps(index + 1);
+        const animation = rowAnimations[index];
+        if (!animation) return;
+        Animated.timing(animation.completion, {
+          toValue: 1,
+          duration: 180,
+          easing: Easing.out(Easing.cubic),
+          useNativeDriver: false,
+        }).start();
+      }, 460 + index * 300),
     );
     const pulseLoop = Animated.loop(
       Animated.sequence([
@@ -76,13 +90,13 @@ export function CompanionThinking({
           toValue: 1,
           duration: 500,
           easing: Easing.inOut(Easing.ease),
-          useNativeDriver: true,
+          useNativeDriver: false,
         }),
         Animated.timing(pulse, {
           toValue: 0.55,
           duration: 500,
           easing: Easing.inOut(Easing.ease),
-          useNativeDriver: true,
+          useNativeDriver: false,
         }),
       ]),
     );
@@ -96,13 +110,34 @@ export function CompanionThinking({
   useEffect(() => {
     if (!complete) return;
     setCompletedSteps(steps.length);
-    Animated.timing(panelHeight, {
-      toValue: 58,
-      duration: 260,
-      easing: Easing.out(Easing.cubic),
-      useNativeDriver: false,
-    }).start();
-  }, [complete, panelHeight]);
+    rowAnimations.forEach((row) => row.completion.setValue(1));
+    Animated.parallel([
+      Animated.timing(panelHeight, {
+        toValue: 0,
+        duration: 250,
+        easing: Easing.inOut(Easing.cubic),
+        useNativeDriver: false,
+      }),
+      Animated.timing(panelOpacity, {
+        toValue: 0,
+        duration: 220,
+        easing: Easing.inOut(Easing.cubic),
+        useNativeDriver: false,
+      }),
+      Animated.timing(panelExit, {
+        toValue: 8,
+        duration: 250,
+        easing: Easing.inOut(Easing.cubic),
+        useNativeDriver: false,
+      }),
+    ]).start();
+  }, [
+    complete,
+    panelExit,
+    panelHeight,
+    panelOpacity,
+    rowAnimations,
+  ]);
 
   return (
     <View style={styles.wrap}>
@@ -117,46 +152,87 @@ export function CompanionThinking({
       >
         <Text style={styles.userText}>{prompt}</Text>
       </Animated.View>
-      <Animated.View style={[styles.panel, { height: panelHeight }]}>
-        <View style={styles.panelHeader}>
-          {complete ? (
-            <Check size={18} color={colors.success} strokeWidth={3} />
-          ) : (
-            <Animated.View style={{ opacity: pulse }}>
-              <LoaderCircle size={18} color={colors.primary} />
-            </Animated.View>
-          )}
-          <Text style={styles.panelTitle}>
-            {complete ? 'Answer ready' : 'Pavo is preparing'}
-          </Text>
-        </View>
-        <View style={styles.steps}>
-          {steps.map((step, index) => {
-            const done = index < completedSteps;
-            const animation = rowAnimations[index];
-            if (!animation) return null;
-            return (
-              <Animated.View
-                key={step}
-                style={[
-                  styles.stepRow,
-                  {
-                    opacity: animation.opacity,
-                    transform: [{ translateY: animation.rise }],
-                  },
-                ]}
-              >
-                <View style={[styles.stepDot, done && styles.stepDone]}>
-                  {done ? (
-                    <Check size={11} color={colors.white} strokeWidth={3} />
-                  ) : null}
-                </View>
-                <Text style={[styles.stepText, done && styles.stepTextDone]}>
-                  {step}
-                </Text>
+      <Animated.View
+        style={[
+          styles.panelClip,
+          {
+            height: panelHeight,
+            opacity: panelOpacity,
+            transform: [{ translateY: panelExit }],
+          },
+        ]}
+      >
+        <View style={styles.panel}>
+          <View style={styles.panelHeader}>
+            {complete ? (
+              <Check size={18} color={colors.success} strokeWidth={3} />
+            ) : (
+              <Animated.View style={{ opacity: pulse }}>
+                <LoaderCircle size={18} color={colors.primary} />
               </Animated.View>
-            );
-          })}
+            )}
+            <Text style={styles.panelTitle}>
+              {complete ? 'Answer ready' : 'Pavo is preparing'}
+            </Text>
+          </View>
+          <View style={styles.steps}>
+            {steps.map((step, index) => {
+              const done = index < completedSteps;
+              const animation = rowAnimations[index];
+              if (!animation) return null;
+              const statusBackground = animation.completion.interpolate({
+                inputRange: [0, 1],
+                outputRange: [colors.surface, colors.success],
+              });
+              const statusBorder = animation.completion.interpolate({
+                inputRange: [0, 1],
+                outputRange: [colors.outlineStrong, colors.success],
+              });
+              return (
+                <Animated.View
+                  key={step}
+                  style={[
+                    styles.stepRow,
+                    {
+                      opacity: animation.opacity,
+                      transform: [{ translateY: animation.rise }],
+                    },
+                  ]}
+                >
+                  <Animated.View
+                    style={[
+                      styles.stepDot,
+                      {
+                        backgroundColor: statusBackground,
+                        borderColor: statusBorder,
+                      },
+                    ]}
+                  >
+                    <Animated.View
+                      style={[
+                        styles.stepPulse,
+                        {
+                          opacity: Animated.multiply(
+                            pulse,
+                            animation.completion.interpolate({
+                              inputRange: [0, 1],
+                              outputRange: [1, 0],
+                            }),
+                          ),
+                        },
+                      ]}
+                    />
+                    <Animated.View style={{ opacity: animation.completion }}>
+                      <Check size={11} color={colors.white} strokeWidth={3} />
+                    </Animated.View>
+                  </Animated.View>
+                  <Text style={[styles.stepText, done && styles.stepTextDone]}>
+                    {step}
+                  </Text>
+                </Animated.View>
+              );
+            })}
+          </View>
         </View>
       </Animated.View>
     </View>
@@ -175,9 +251,12 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md,
   },
   userText: { ...text.bodySm, color: colors.white },
-  panel: {
+  panelClip: {
     overflow: 'hidden',
     borderRadius: radius.md,
+  },
+  panel: {
+    minHeight: 218,
     borderWidth: 1,
     borderColor: colors.outline,
     backgroundColor: colors.surfaceSunken,
@@ -202,11 +281,13 @@ const styles = StyleSheet.create({
     borderColor: colors.outlineStrong,
     backgroundColor: colors.surface,
   },
-  stepDone: {
-    borderColor: colors.success,
-    backgroundColor: colors.success,
+  stepPulse: {
+    position: 'absolute',
+    width: 7,
+    height: 7,
+    borderRadius: radius.round,
+    backgroundColor: colors.primary,
   },
   stepText: { ...text.caption, color: colors.inkSubtle },
   stepTextDone: { color: colors.inkMuted },
 });
-

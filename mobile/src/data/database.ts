@@ -1,4 +1,5 @@
 import * as SQLite from 'expo-sqlite';
+import { removeLegacyAddedMaterialsDemoFiles } from '@/services/modulePackages';
 
 const DATABASE_NAME = 'wais-next.db';
 const SCHEMA_VERSION = 5;
@@ -361,6 +362,7 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
     DROP TABLE IF EXISTS sync_queue;
     DROP TABLE IF EXISTS privacy_consents;
   `);
+  removeLegacyAddedMaterialsDemoFiles();
   await database.execAsync(`PRAGMA user_version = ${SCHEMA_VERSION};`);
 }
 

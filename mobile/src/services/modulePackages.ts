@@ -32,6 +32,7 @@ import type {
 const modulesDirectory = new Directory(Paths.document, 'modules');
 const authoringDirectory = new Directory(Paths.cache, 'wais-authoring');
 const MANIFEST_PATH = 'manifest.json';
+const LEGACY_ADDED_MATERIALS_DEMO = /^(?:image|markdown)-demo-[a-z0-9]+(?:-v\d+)?(?:\.wais-module)?$/i;
 
 export interface TeacherModuleImage {
   packagePath: string;
@@ -55,6 +56,13 @@ export interface InstalledModulePackage {
   quizQuestions: BundledQuizQuestion[];
   directoryUri: string;
   archiveSha256: string;
+}
+
+export function removeLegacyAddedMaterialsDemoFiles(): void {
+  if (!modulesDirectory.exists) return;
+  for (const entry of modulesDirectory.list()) {
+    if (LEGACY_ADDED_MATERIALS_DEMO.test(entry.name)) entry.delete();
+  }
 }
 
 export async function pickAndProcessModuleImages(
