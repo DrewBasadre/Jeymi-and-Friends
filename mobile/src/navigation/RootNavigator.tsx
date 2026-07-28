@@ -18,7 +18,9 @@ import {
 } from 'lucide-react-native';
 import type { ComponentProps } from 'react';
 import { StyleSheet, View } from 'react-native';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { FloatingPavoButton } from '@/components/FloatingPavoButton';
 import {
   LandingScreen,
   LearningAssessmentScreen,
@@ -38,6 +40,7 @@ import {
   StudentHomeScreen,
   StudentProfileScreen,
 } from '@/screens/StudentScreens';
+import { AiCompanionScreen } from '@/screens/AiCompanionScreen';
 import { ReceiveTransferScreen } from '@/screens/TransferScreens';
 import { StudentScanScreen } from '@/screens/StudentScanScreen';
 import {
@@ -140,6 +143,7 @@ function TabIcon({
 }
 
 const tabStyles = StyleSheet.create({
+  shell: { flex: 1 },
   iconWrap: {
     width: 50,
     height: 30,
@@ -151,61 +155,66 @@ const tabStyles = StyleSheet.create({
   iconWrapActive: { backgroundColor: colors.primaryTint },
 });
 
-function StudentTabNavigator() {
+function StudentTabNavigator({
+  navigation,
+}: NativeStackScreenProps<RootStackParamList, 'StudentTabs'>) {
   const screenOptions = useTabScreenOptions();
   return (
-    <StudentTabs.Navigator screenOptions={screenOptions}>
-      <StudentTabs.Screen
-        name="StudentHome"
-        component={StudentHomeScreen}
-        options={{
-          title: 'Home',
-          tabBarIcon: (props) => <TabIcon icon={House} {...props} />,
-        }}
-      />
-      <StudentTabs.Screen
-        name="Modules"
-        component={ModulesScreen}
-        options={{
-          title: 'Modules',
-          tabBarIcon: (props) => <TabIcon icon={BookOpen} {...props} />,
-        }}
-      />
-      <StudentTabs.Screen
-        name="Study"
-        component={StudentStudyScreen}
-        options={{
-          title: 'Study',
-          tabBarIcon: (props) => <TabIcon icon={Brain} {...props} />,
-        }}
-      />
-      <StudentTabs.Screen
-        name="StudentScan"
-        component={StudentScanScreen}
-        options={{
-          title: 'Scan',
-          tabBarIcon: (props) => <TabIcon icon={ScanLine} {...props} />,
-        }}
-      />
-      <StudentTabs.Screen
-        name="Reports"
-        component={ReportsScreen}
-        options={{
-          title: 'Reports',
-          tabBarIcon: (props) => (
-            <TabIcon icon={ChartNoAxesColumnIncreasing} {...props} />
-          ),
-        }}
-      />
-      <StudentTabs.Screen
-        name="Profile"
-        component={StudentProfileScreen}
-        options={{
-          title: 'Profile',
-          tabBarIcon: (props) => <TabIcon icon={UserRound} {...props} />,
-        }}
-      />
-    </StudentTabs.Navigator>
+    <View style={tabStyles.shell}>
+      <StudentTabs.Navigator screenOptions={screenOptions}>
+        <StudentTabs.Screen
+          name="StudentHome"
+          component={StudentHomeScreen}
+          options={{
+            title: 'Home',
+            tabBarIcon: (props) => <TabIcon icon={House} {...props} />,
+          }}
+        />
+        <StudentTabs.Screen
+          name="Modules"
+          component={ModulesScreen}
+          options={{
+            title: 'Modules',
+            tabBarIcon: (props) => <TabIcon icon={BookOpen} {...props} />,
+          }}
+        />
+        <StudentTabs.Screen
+          name="Study"
+          component={StudentStudyScreen}
+          options={{
+            title: 'Study',
+            tabBarIcon: (props) => <TabIcon icon={Brain} {...props} />,
+          }}
+        />
+        <StudentTabs.Screen
+          name="StudentScan"
+          component={StudentScanScreen}
+          options={{
+            title: 'Scan',
+            tabBarIcon: (props) => <TabIcon icon={ScanLine} {...props} />,
+          }}
+        />
+        <StudentTabs.Screen
+          name="Reports"
+          component={ReportsScreen}
+          options={{
+            title: 'Reports',
+            tabBarIcon: (props) => (
+              <TabIcon icon={ChartNoAxesColumnIncreasing} {...props} />
+            ),
+          }}
+        />
+        <StudentTabs.Screen
+          name="Profile"
+          component={StudentProfileScreen}
+          options={{
+            title: 'Profile',
+            tabBarIcon: (props) => <TabIcon icon={UserRound} {...props} />,
+          }}
+        />
+      </StudentTabs.Navigator>
+      <FloatingPavoButton onPress={() => navigation.navigate('AiCompanion')} />
+    </View>
   );
 }
 
@@ -282,6 +291,7 @@ export function RootNavigator() {
           component={LearningAssessmentScreen}
         />
         <RootStack.Screen name="StudentTabs" component={StudentTabNavigator} />
+        <RootStack.Screen name="AiCompanion" component={AiCompanionScreen} />
         <RootStack.Screen name="ModuleReader" component={ModuleReaderScreen} />
         <RootStack.Screen name="Quiz" component={QuizScreen} />
         <RootStack.Screen name="QuizResult" component={QuizResultScreen} />

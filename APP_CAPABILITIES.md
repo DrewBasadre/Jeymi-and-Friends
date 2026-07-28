@@ -47,6 +47,7 @@ reporting, authoring, and transfer workflows run without a server or runtime AI.
 ## Lessons And Modules
 
 - Subject filters for Science, Math, English, and teacher-added materials
+- One full-width module per row for quick scanning on phones and tablets
 - Downloaded lesson status and best quiz score
 - Native Markdown rendering with raw HTML disabled
 - Local WebP lesson-image rendering
@@ -56,6 +57,30 @@ reporting, authoring, and transfer workflows run without a server or runtime AI.
 - Pre-tagged terms that open deterministic fill-in-the-blank recall
 - Student-selected text spans that open the same offline recall activity
 - No connectivity or model dependency for inline recall
+
+## Pavo Online Companion
+
+- Persistent bottom-right Pavo launcher throughout the student tabs
+- Mascot growth phase derived from the same real completion and score data as
+  the student dashboard
+- Dedicated companion dashboard with module completion, average score, reviews
+  due, deadlines, and a local to-do list
+- Performance-report generation from aggregate learning data
+- Review builder with subject, installed lesson, and activity selection
+- Generated review lessons, flashcards, multiple-choice quizzes, and mixed
+  practice
+- Interactive card flipping and locally checked multiple-choice responses
+- Guarded 500-character lesson question box
+- Local unsafe-request checks plus server-side input and output moderation
+- Privacy-minimized requests that omit the student's name, student number,
+  section, teacher identity, PIN, birthday, and task IDs
+- Visible preparation-status animation without exposing model chain-of-thought
+- Explicit offline and unconfigured placeholders; downloaded core learning
+  remains available
+- Supabase Edge Function boundary so the OpenAI API key never enters the
+  Android bundle
+- Strict structured JSON responses from the OpenAI Responses API
+- Server-side model selection, defaulting to GPT-5.6 Terra
 
 ## Quizzes And Reports
 
@@ -148,6 +173,7 @@ reporting, authoring, and transfer workflows run without a server or runtime AI.
 
 - Expo React Native application focused on Android
 - Expo SQLite local persistence
+- Expo Network connectivity monitoring for the optional online companion
 - Additive database migrations
 - App-private module and transfer storage
 - Static `seed-bundle` registry included by Metro
@@ -156,8 +182,11 @@ reporting, authoring, and transfer workflows run without a server or runtime AI.
 - Supported source values: `seed-bundle`, `teacher-bluetooth`, and reserved
   `supabase-ota`
 - Zod validation for manifests, quiz JSON, and QR payloads
-- No runtime LLM, image generation, or required backend
-- No student data leaves the device in the implemented core flows
+- No runtime image generation
+- No backend is required for core learning, teacher, transfer, or reporting
+  flows
+- Only privacy-minimized learning context leaves the device when the student
+  deliberately runs an online Pavo request
 
 ## Current Constraints
 
@@ -170,6 +199,11 @@ reporting, authoring, and transfer workflows run without a server or runtime AI.
   same-device notification fallback.
 - `supabase-ota` is reserved in the manifest schema but OTA delivery is not
   active.
+- Pavo generation requires a deployed `pavo-companion` Edge Function,
+  `OPENAI_API_KEY`, and the two public Expo endpoint variables documented in
+  [`mobile/supabase/functions/pavo-companion`](./mobile/supabase/functions/pavo-companion).
+- Live model responses cannot run in an unconfigured or offline build; the app
+  displays an unavailable state instead.
 
 ## Validation Commands
 

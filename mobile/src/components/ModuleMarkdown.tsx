@@ -248,8 +248,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surfaceMuted,
     borderRadius: radius.md,
     width: '100%',
-    aspectRatio: 4 / 3,
-    maxHeight: 420,
+    height: 240,
     marginBottom: spacing.md,
   },
   unavailableImage: {

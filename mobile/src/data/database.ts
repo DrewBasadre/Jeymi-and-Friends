@@ -352,6 +352,12 @@ async function migrate(database: SQLite.SQLiteDatabase): Promise<void> {
     );
     DELETE FROM module_manifests
     WHERE source NOT IN ('teacher-bluetooth', 'seed-bundle');
+    DELETE FROM module_manifests
+    WHERE module_id LIKE 'image-demo-%'
+       OR module_id LIKE 'markdown-demo-%';
+    DELETE FROM modules
+    WHERE id LIKE 'image-demo-%'
+       OR id LIKE 'markdown-demo-%';
     DROP TABLE IF EXISTS sync_queue;
     DROP TABLE IF EXISTS privacy_consents;
   `);

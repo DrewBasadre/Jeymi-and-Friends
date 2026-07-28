@@ -62,7 +62,6 @@ import {
   StatTile,
   TileGrid,
   StatusBadge,
-  useResponsiveColumns,
 } from '@/components/ui';
 import { ParentPinPrompt } from '@/components/ParentPinPrompt';
 import { MascotNote } from '@/components/MascotNote';
@@ -355,7 +354,6 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
   );
 
   const filtered = filter === 'ALL' ? modules : modules.filter((module) => module.subject === filter);
-  const columns = useResponsiveColumns(2);
   return (
     <Screen scroll={false} padded={false} style={styles.flex}>
       <View style={styles.fixedHeader}>
@@ -368,7 +366,7 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
           {(['ALL', 'SCIENCE', 'MATH', 'ENGLISH', 'ADDED_MATERIALS'] as const).map((subject) => (
             <Chip
               key={subject}
-              label={subject === 'ADDED_MATERIALS' ? 'Added' : capitalize(subject.toLocaleLowerCase())}
+              label={subject === 'ADDED_MATERIALS' ? 'Teacher' : capitalize(subject.toLocaleLowerCase())}
               selected={filter === subject}
               color={subject === 'ALL' ? colors.primary : subjectColor[subject]}
               onPress={() => setFilter(subject)}
@@ -378,11 +376,9 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
       </View>
       <FlatList
         data={filtered}
-        key={columns}
-        numColumns={columns}
+        numColumns={1}
         keyExtractor={(module) => module.id}
         contentContainerStyle={styles.listContent}
-        columnWrapperStyle={columns > 1 ? styles.gridRow : undefined}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <PressableScale
@@ -1396,7 +1392,7 @@ const styles = StyleSheet.create({
   rowDivider: { marginVertical: spacing.xs },
 
   // Module cards
-  moduleCell: { flex: 1 },
+  moduleCell: { width: '100%' },
   moduleCard: {
     flex: 1,
     flexDirection: 'row',
@@ -1430,7 +1426,6 @@ const styles = StyleSheet.create({
     borderRadius: radius.xs,
     overflow: 'hidden',
   },
-  gridRow: { gap: spacing.md },
   cardAction: {
     marginTop: 'auto',
     flexDirection: 'row',
