@@ -666,16 +666,21 @@ fun StudentDashboardScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Text(
-                    "HELLO, ${data.firstName.uppercase()}",
+                    "Hi, ${data.firstName}!",
                     style = MaterialTheme.typography.displaySmall,
                     fontWeight = FontWeight.ExtraBold,
                     color = Indigo900
                 )
                 Text(
-                    "Grade ${data.gradeLevel} - ${data.section}",
+                    "Grade ${data.gradeLevel} · ${data.section}",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = OnSurfaceVariant
+                )
+                PeacockMeter(
+                    completedModules = progress.count { it.status == "COMPLETED" },
+                    totalModules = modules.size,
+                    averageScore = averagePercent(attempts).toInt()
                 )
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     ModuleSubjectTypes.forEach { subject ->
@@ -1895,7 +1900,7 @@ private fun QrImportContent(
                     photoMessage = ""
                     onImport(decoded)
                 },
-                onError = { photoMessage = "No WAIS QR code was found in that photo." }
+                onError = { photoMessage = "No Pavo QR code was found in that photo." }
             )
         }
     }
