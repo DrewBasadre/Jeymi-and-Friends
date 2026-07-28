@@ -1,0 +1,78 @@
+{
+  "expo": {
+    "name": "WAIS",
+    "slug": "wais",
+    "scheme": "wais",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "plugins": [
+      "./plugins/withWaisNearby",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow WAIS to scan classroom QR reports and module codes.",
+          "recordAudioAndroid": false,
+          "barcodeScannerEnabled": true
+        }
+      ],
+      [
+        "expo-sqlite",
+        {
+          "enableFTS": true,
+          "useSQLCipher": false
+        }
+      ],
+      "expo-secure-store",
+      "expo-sharing",
+      [
+        "expo-document-picker",
+        {
+          "iCloudContainerEnvironment": "Production"
+        }
+      ],
+      "expo-audio",
+      "expo-asset"
+    ],
+    "experiments": {
+      "inlineModules": {
+        "watchedDirectories": [
+          "src/native"
+        ]
+      }
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "org.wais.learninghub",
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "WAIS uses nearby connectivity to transfer offline lesson packages between teachers and students.",
+        "NSLocalNetworkUsageDescription": "WAIS uses the local network for fast offline lesson package transfers.",
+        "UIFileSharingEnabled": true,
+        "LSSupportsOpeningDocumentsInPlace": true
+      }
+    },
+    "android": {
+      "package": "org.wais.learninghub",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": true,
+      "permissions": [
+        "android.permission.BLUETOOTH_ADVERTISE",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_WIFI_STATE",
+        "android.permission.CHANGE_WIFI_STATE",
+        "android.permission.INTERNET"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
