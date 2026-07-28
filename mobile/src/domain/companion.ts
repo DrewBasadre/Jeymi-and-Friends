@@ -37,6 +37,7 @@ export interface CompanionRequest {
   deadlines: Array<{
     type: StudentTask['type'];
     targetId: string;
+    title: string;
     dueDate: string;
   }>;
 }
@@ -75,6 +76,9 @@ export function buildCompanionRequest(args: {
   tasks: StudentTask[];
 }): CompanionRequest {
   const selected = new Set(args.selectedModuleIds.slice(0, 4));
+  const moduleTitles = new Map(
+    args.modules.map((module) => [module.id, module.title]),
+  );
   return {
     intent: args.intent,
     activity: args.activity,
@@ -106,6 +110,7 @@ export function buildCompanionRequest(args: {
       .map((task) => ({
         type: task.type,
         targetId: task.targetId,
+        title: moduleTitles.get(task.targetId) ?? 'Assigned learning activity',
         dueDate: task.dueDate,
       })),
   };

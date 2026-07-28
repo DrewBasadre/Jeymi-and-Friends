@@ -10,7 +10,7 @@ input and output, and asks the Responses API for strict structured JSON.
 
    ```sh
    npx supabase login
-   npx supabase link --project-ref YOUR_PROJECT_REF
+   npx supabase link --project-ref lehlstcntamlxatgkrgv
    ```
 
 2. Set server-only secrets:
@@ -25,11 +25,10 @@ input and output, and asks the Responses API for strict structured JSON.
    npx supabase functions deploy pavo-companion
    ```
 
-4. Copy `mobile/.env.example` to `mobile/.env` and set the deployed function URL
-   plus the project's public anon key. Restart Expo after changing environment
-   variables.
+4. Copy `mobile/.env.example` to `mobile/.env`. The example already contains
+   this project's function URL and public publishable key. Restart Expo after
+   changing environment variables.
 
 `OPENAI_MODEL` may be changed server-side without rebuilding Android. The default
 uses GPT-5.6 Terra for a strong quality, latency, and cost balance. Use
 `gpt-5.6-sol` when maximum answer quality matters more than latency and cost.
-

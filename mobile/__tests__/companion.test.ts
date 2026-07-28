@@ -87,6 +87,7 @@ describe('companion request privacy', () => {
     expect(serialized).not.toContain('Section Secret');
     expect(request.performance.averageScore).toBe(78);
     expect(request.modules).toHaveLength(1);
+    expect(request.deadlines[0]?.title).toBe('Fractions');
   });
 });
 
