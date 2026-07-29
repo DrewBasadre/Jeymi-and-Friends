@@ -9,6 +9,7 @@ import {
   Alert,
   FlatList,
   StyleSheet,
+  Pressable,
   Text,
   TextInput,
   View,
@@ -84,6 +85,7 @@ import {
 import { MascotPanel, PeacockPhase, peacockPhaseFromScore } from '@/components/mascot';
 import { InteractiveLearningPreview } from '@/components/InteractiveLearningPreview';
 import { CompanionThinking } from '@/components/CompanionThinking';
+import { TypewriterLine, useTypewriterSequence } from '@/components/Typewriter';
 import { capitalize, formatDate } from '@/utils/format';
 import {
   buildTeacherCompanionRequest,
@@ -508,7 +510,13 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
             disabled={classInsightLoading}
             onPress={() => void generateClassInsight()}
           />
-          {classInsight ? <AiReportCard result={classInsight} /> : null}
+          {classInsight ? (
+            <AiReportCard
+              key={`insight-${classInsight.summary.length}`}
+              result={classInsight}
+              animate
+            />
+          ) : null}
         </>
       ) : null}
 
@@ -955,6 +963,8 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
   // being answered; `thinkingComplete` flips the panel to "Answer ready".
   const [submission, setSubmission] = useState<{ id: number; label: string } | null>(null);
   const [thinkingComplete, setThinkingComplete] = useState(false);
+  // Bumped per answer so AiReportCard remounts and re-types each generation.
+  const [answerKey, setAnswerKey] = useState(0);
   const connectivity = useConnectivity();
 
   const load = useCallback(async () => {
@@ -1063,6 +1073,7 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
       ]);
       setThinkingComplete(true);
       await companionDelay(280);
+      setAnswerKey(submissionId);
       setResult(nextResult);
       setSubmission(null);
       setPrompt('');
@@ -1209,7 +1220,7 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
 
       {result && !submission ? (
         <>
-          <AiReportCard result={result} />
+          <AiReportCard key={answerKey} result={result} animate />
           {preview &&
           (preview.reviewItems.length > 0 ||
             (preview.quiz?.questions.length ?? 0) > 0) ? (
@@ -2094,7 +2105,18 @@ function timingPattern(
   return 'mixed';
 }
 
-function AiReportCard({ result }: { result: CompanionResponse }) {
+function AiReportCard({
+  result,
+  animate = false,
+}: {
+  result: CompanionResponse;
+  animate?: boolean;
+}) {
+  // Same shared typewriter as the student bot, so both reveal answers alike.
+  const typed = useTypewriterSequence(
+    [result.summary, ...result.sections.map((section) => section.body)],
+    { play: animate },
+  );
   return (
     <Card accent={colors.accentText}>
       <CardHeader
@@ -2103,19 +2125,28 @@ function AiReportCard({ result }: { result: CompanionResponse }) {
         subtitle="AI-generated suggestion · Review before acting"
         color={colors.accentText}
       />
-      <Text style={styles.body}>{result.summary}</Text>
-      {result.sections.map((section, index) => (
-        <View key={`${section.heading}-${index}`} style={styles.insightSection}>
-          <Text style={styles.rowTitle}>{section.heading}</Text>
-          <Text style={styles.body}>{section.body}</Text>
-        </View>
-      ))}
-      <Callout
-        icon={Target}
-        title="Next step"
-        body={result.nextStep}
-        tone="info"
-      />
+      <Pressable
+        accessibilityRole={animate && !typed.done ? 'button' : undefined}
+        accessibilityLabel={animate && !typed.done ? 'Reveal the full answer' : undefined}
+        onPress={animate && !typed.done ? typed.skip : undefined}
+      >
+        <TypewriterLine text={typed.textFor(0)} typing={typed.isTyping(0)} style={styles.body} />
+        {result.sections.map((section, index) =>
+          typed.isRevealed(index + 1) ? (
+            <View key={`${section.heading}-${index}`} style={styles.insightSection}>
+              <Text style={styles.rowTitle}>{section.heading}</Text>
+              <TypewriterLine
+                text={typed.textFor(index + 1)}
+                typing={typed.isTyping(index + 1)}
+                style={styles.body}
+              />
+            </View>
+          ) : null,
+        )}
+      </Pressable>
+      {typed.done ? (
+        <Callout icon={Target} title="Next step" body={result.nextStep} tone="info" />
+      ) : null}
     </Card>
   );
 }

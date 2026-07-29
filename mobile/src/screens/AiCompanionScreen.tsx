@@ -36,6 +36,7 @@ import {
 } from 'lucide-react-native';
 import * as Crypto from 'expo-crypto';
 import { CompanionThinking } from '@/components/CompanionThinking';
+import { TypewriterLine, useTypewriterSequence } from '@/components/Typewriter';
 import { PeacockPhase, peacockPhase } from '@/components/mascot/PeacockPhase';
 import {
   Callout,
@@ -611,7 +612,7 @@ export function AiCompanionScreen({ navigation }: Props) {
             </View>
           ) : null}
 
-          {turns.map((turn) => (
+          {turns.map((turn, index) => (
             <View key={turn.id} style={styles.turn}>
               <View style={styles.userBubble}>
                 <Text style={styles.userBubbleText}>{turn.prompt}</Text>
@@ -619,6 +620,7 @@ export function AiCompanionScreen({ navigation }: Props) {
               <CompanionResult
                 result={turn.result}
                 saved={Boolean(turn.producedPackageId)}
+                animate={index === turns.length - 1}
               />
             </View>
           ))}
@@ -691,9 +693,12 @@ export function AiCompanionScreen({ navigation }: Props) {
 export function CompanionResult({
   result,
   saved = false,
+  animate = false,
 }: {
   result: CompanionResponse;
   saved?: boolean;
+  /** Type the answer out progressively (used for the freshly-received turn). */
+  animate?: boolean;
 }) {
   const opacity = useRef(new Animated.Value(0)).current;
   const rise = useRef(new Animated.Value(18)).current;
@@ -702,6 +707,11 @@ export function CompanionResult({
   const [cardIndex, setCardIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [answers, setAnswers] = useState<Record<number, number>>({});
+  // Segments typed in order: the summary, then each section body.
+  const typed = useTypewriterSequence(
+    [result.summary, ...result.sections.map((section) => section.body)],
+    { play: animate },
+  );
 
   useEffect(() => {
     Animated.parallel([
@@ -757,22 +767,38 @@ export function CompanionResult({
           <Text style={styles.resultTitle}>{result.title}</Text>
         </View>
       </View>
-      <Text style={styles.resultSummary}>{result.summary}</Text>
-      {saved ? (
+      <Pressable
+        accessibilityRole={animate && !typed.done ? 'button' : undefined}
+        accessibilityLabel={animate && !typed.done ? 'Reveal the full answer' : undefined}
+        onPress={animate && !typed.done ? typed.skip : undefined}
+      >
+        <TypewriterLine
+          text={typed.textFor(0)}
+          typing={typed.isTyping(0)}
+          style={styles.resultSummary}
+        />
+        {result.sections.map((section, index) =>
+          typed.isRevealed(index + 1) ? (
+            <View key={`${section.heading}-${index}`} style={styles.resultSection}>
+              <Text style={styles.resultSectionTitle}>{section.heading}</Text>
+              <TypewriterLine
+                text={typed.textFor(index + 1)}
+                typing={typed.isTyping(index + 1)}
+                style={styles.resultBody}
+              />
+            </View>
+          ) : null,
+        )}
+      </Pressable>
+
+      {saved && typed.done ? (
         <View style={styles.savedRow}>
           <Layers size={16} color={colors.success} />
           <Text style={styles.savedText}>Saved to Study Jams</Text>
         </View>
       ) : null}
 
-      {result.sections.map((section, index) => (
-        <View key={`${section.heading}-${index}`} style={styles.resultSection}>
-          <Text style={styles.resultSectionTitle}>{section.heading}</Text>
-          <Text style={styles.resultBody}>{section.body}</Text>
-        </View>
-      ))}
-
-      {card ? (
+      {card && typed.done ? (
         <View style={styles.activityBlock}>
           <View style={styles.activityHeader}>
             <Text style={styles.activityTitle}>Flashcards</Text>
@@ -830,7 +856,7 @@ export function CompanionResult({
         </View>
       ) : null}
 
-      {result.questions.length > 0 ? (
+      {result.questions.length > 0 && typed.done ? (
         <View style={styles.activityBlock}>
           <Text style={styles.activityTitle}>Practice questions</Text>
           {result.questions.map((question, questionIndex) => {
@@ -884,12 +910,14 @@ export function CompanionResult({
         </View>
       ) : null}
 
-      <Callout
-        icon={BookOpen}
-        title="Next step"
-        body={result.nextStep}
-        tone="success"
-      />
+      {typed.done ? (
+        <Callout
+          icon={BookOpen}
+          title="Next step"
+          body={result.nextStep}
+          tone="success"
+        />
+      ) : null}
     </Animated.View>
   );
 }
