@@ -31,6 +31,7 @@ import {
 } from '@/screens/AuthScreens';
 import {
   FlashcardsScreen,
+  ModuleDetailScreen,
   ModuleReaderScreen,
   ModulesScreen,
   QuizReportScreen,
@@ -294,6 +295,7 @@ export function RootNavigator() {
         />
         <RootStack.Screen name="StudentTabs" component={StudentTabNavigator} />
         <RootStack.Screen name="AiCompanion" component={AiCompanionScreen} />
+        <RootStack.Screen name="ModuleDetail" component={ModuleDetailScreen} />
         <RootStack.Screen name="ModuleReader" component={ModuleReaderScreen} />
         <RootStack.Screen name="Quiz" component={QuizScreen} />
         <RootStack.Screen name="QuizResult" component={QuizResultScreen} />

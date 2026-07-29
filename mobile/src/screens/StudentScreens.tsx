@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Alert,
-  FlatList,
   Pressable,
   ScrollView,
+  SectionList,
   StyleSheet,
   Text,
   TextInput,
@@ -100,7 +100,6 @@ import {
 import { formatSectionLabel } from '@/domain/section';
 import {
   createInlineRecallForTerm,
-  createInlineRecallFromSelection,
   isInlineRecallAnswerCorrect,
   type InlineRecallActivity,
 } from '@/domain/inlineRecall';
@@ -373,6 +372,40 @@ const MODULE_SOURCE_META: Record<
   teacher: { label: 'Teacher-provided', color: colors.primary, tint: colors.primaryTint },
 };
 
+/** Lightweight module row — title, meta, short summary. Source is conveyed by
+ *  the group header it sits under, so the card itself stays calm and scannable. */
+function ModuleRow({
+  module,
+  onPress,
+}: {
+  module: LearningModule;
+  onPress: () => void;
+}) {
+  return (
+    <PressableScale
+      onPress={onPress}
+      accessibilityLabel={`${module.title}. ${module.competencyCode}`}
+      accessibilityHint="Opens the module"
+    >
+      <View style={styles.moduleRow}>
+        <View style={[styles.moduleRowSpine, { backgroundColor: subjectColor[module.subject] }]} />
+        <View style={styles.flex}>
+          <Text style={styles.moduleRowTitle} numberOfLines={2}>
+            {module.title}
+          </Text>
+          <Text style={styles.moduleRowMeta} numberOfLines={1}>
+            {capitalize(module.subject.replace('_', ' ').toLocaleLowerCase())} · {module.competencyCode}
+          </Text>
+          <Text style={styles.moduleRowSummary} numberOfLines={2}>
+            {module.summary}
+          </Text>
+        </View>
+        <ChevronRight size={20} color={colors.inkSubtle} />
+      </View>
+    </PressableScale>
+  );
+}
+
 export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
   const student = useSessionStore((state) => state.student);
   const [modules, setModules] = useState<LearningModule[]>([]);
@@ -384,19 +417,29 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
     }, [student]),
   );
 
-  // Filter by subject, then cluster by source so Curriculum, AI-generated, and
-  // Teacher-provided modules read as clearly separated groups (with the badges).
-  const sourceOrder: Record<ModuleSourceKind, number> = { curriculum: 0, ai: 1, teacher: 2 };
-  const filtered = (filter === 'ALL' ? modules : modules.filter((module) => module.subject === filter))
-    .slice()
-    .sort((a, b) => sourceOrder[moduleSource(a)] - sourceOrder[moduleSource(b)]);
+  const visible = filter === 'ALL' ? modules : modules.filter((module) => module.subject === filter);
+  // Group into clearly separated source sections; hide empty groups.
+  const sections = (
+    [
+      ['curriculum', 'Curriculum'],
+      ['ai', 'AI-generated'],
+      ['teacher', 'Teacher-provided'],
+    ] as const
+  )
+    .map(([kind, title]) => ({
+      kind,
+      title,
+      data: visible.filter((module) => moduleSource(module) === kind),
+    }))
+    .filter((section) => section.data.length > 0);
+
   return (
     <Screen scroll={false} padded={false} style={styles.flex}>
       <View style={styles.fixedHeader}>
         <ScreenHeader
           overline="Library"
           title="Modules"
-          subtitle="Downloaded lessons stay available without internet."
+          subtitle="Downloaded lessons work without internet."
         />
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipRow}>
           {(['ALL', 'SCIENCE', 'MATH', 'ENGLISH', 'ADDED_MATERIALS'] as const).map((subject) => (
@@ -410,67 +453,29 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
           ))}
         </ScrollView>
       </View>
-      <FlatList
-        data={filtered}
-        numColumns={1}
+      <SectionList
+        sections={sections}
         keyExtractor={(module) => module.id}
-        contentContainerStyle={styles.listContent}
+        stickySectionHeadersEnabled={false}
+        contentContainerStyle={styles.modulesListContent}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <PressableScale
-            style={styles.moduleCell}
-            accessibilityLabel={`${item.title}. ${item.competencyCode}`}
-            accessibilityHint="Opens the lesson"
-            onPress={() => navigation.navigate('ModuleReader', { moduleId: item.id })}
-          >
-            <View style={styles.moduleCard}>
-              <View
-                style={[styles.moduleSpine, { backgroundColor: subjectColor[item.subject] }]}
-              />
-              <View style={styles.moduleBody}>
-                <View style={styles.moduleTop}>
-                  <View
-                    style={[styles.subjectTag, { backgroundColor: subjectTint[item.subject] }]}
-                  >
-                    <Text style={[styles.subjectTagText, { color: subjectColor[item.subject] }]}>
-                      {capitalize(item.subject.replace('_', ' ').toLocaleLowerCase())}
-                    </Text>
-                  </View>
-                  {(() => {
-                    const src = MODULE_SOURCE_META[moduleSource(item)];
-                    return (
-                      <View style={[styles.sourceBadge, { backgroundColor: src.tint }]}>
-                        <View style={[styles.sourceDot, { backgroundColor: src.color }]} />
-                        <Text style={[styles.sourceBadgeText, { color: src.color }]}>
-                          {src.label}
-                        </Text>
-                      </View>
-                    );
-                  })()}
-                </View>
-                <Text style={styles.moduleTitle} numberOfLines={2}>
-                  {item.title}
-                </Text>
-                <Text style={styles.moduleCode} numberOfLines={1}>
-                  {item.competencyCode}
-                </Text>
-                <Text style={styles.moduleSummary} numberOfLines={3}>
-                  {item.summary}
-                </Text>
-                <View style={styles.styleTags}>
-                  {item.contentStyleTags.slice(0, 3).map((tag) => (
-                    <Text key={tag} style={styles.styleTag}>
-                      {capitalize(tag)}
-                    </Text>
-                  ))}
-                </View>
-                <View style={styles.cardAction}>
-                  <Text style={styles.cardActionText}>Open lesson</Text>
-                  <ChevronRight size={18} color={colors.primary} />
-                </View>
+        renderSectionHeader={({ section }) => {
+          const meta = MODULE_SOURCE_META[section.kind];
+          return (
+            <View style={styles.moduleGroupHeader}>
+              <View style={[styles.sourceDot, { backgroundColor: meta.color }]} />
+              <Text style={styles.moduleGroupTitle}>{section.title}</Text>
+              <View style={styles.moduleGroupCount}>
+                <Text style={styles.moduleGroupCountText}>{section.data.length}</Text>
               </View>
             </View>
-          </PressableScale>
+          );
+        }}
+        renderItem={({ item }) => (
+          <ModuleRow
+            module={item}
+            onPress={() => navigation.navigate('ModuleDetail', { moduleId: item.id })}
+          />
         )}
         ListEmptyComponent={
           <EmptyState
@@ -479,6 +484,98 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
           />
         }
       />
+    </Screen>
+  );
+}
+
+/** Calm module hub — what this module is and clear ways in (read, quiz). */
+export function ModuleDetailScreen({ navigation, route }: StackProps<'ModuleDetail'>) {
+  const [module, setModule] = useState<LearningModule | null>(null);
+  const [hasQuiz, setHasQuiz] = useState(false);
+
+  useEffect(() => {
+    void getModule(route.params.moduleId).then(setModule);
+    void getQuestions(route.params.moduleId).then((questions) => setHasQuiz(questions.length > 0));
+  }, [route.params.moduleId]);
+
+  if (!module) {
+    return (
+      <Screen>
+        <ScreenHeader title="Opening module…" onBack={navigation.goBack} />
+        <SkeletonCard />
+      </Screen>
+    );
+  }
+
+  const src = MODULE_SOURCE_META[moduleSource(module)];
+  const subjectLabel = capitalize(module.subject.replace('_', ' ').toLocaleLowerCase());
+  return (
+    <Screen>
+      <ScreenHeader
+        overline={subjectLabel}
+        title={module.title}
+        subtitle={module.competencyCode}
+        onBack={navigation.goBack}
+      />
+      <Card accent={subjectColor[module.subject]}>
+        <View style={styles.detailTags}>
+          <View style={[styles.subjectTag, { backgroundColor: subjectTint[module.subject] }]}>
+            <Text style={[styles.subjectTagText, { color: subjectColor[module.subject] }]}>
+              {subjectLabel}
+            </Text>
+          </View>
+          <View style={[styles.sourceBadge, { backgroundColor: src.tint }]}>
+            <View style={[styles.sourceDot, { backgroundColor: src.color }]} />
+            <Text style={[styles.sourceBadgeText, { color: src.color }]}>{src.label}</Text>
+          </View>
+        </View>
+        <Text style={styles.detailSummary}>{module.summary}</Text>
+        {module.contentStyleTags.length > 0 ? (
+          <View style={styles.styleTags}>
+            {module.contentStyleTags.slice(0, 4).map((tag) => (
+              <Text key={tag} style={styles.styleTag}>
+                {capitalize(tag)}
+              </Text>
+            ))}
+          </View>
+        ) : null}
+      </Card>
+
+      <Card>
+        <CardHeader icon={Sparkles} title="What you'll do" color={colors.primary} />
+        <View style={styles.taskRow}>
+          <IconPlate icon={BookOpen} color={colors.primary} size={34} />
+          <Text style={styles.focusValue}>Read the lesson at your own pace</Text>
+        </View>
+        <Divider style={styles.rowDivider} />
+        <View style={styles.taskRow}>
+          <IconPlate icon={Brain} color={colors.accentText} size={34} />
+          <Text style={styles.focusValue}>Check yourself with inline recall</Text>
+        </View>
+        {hasQuiz ? (
+          <>
+            <Divider style={styles.rowDivider} />
+            <View style={styles.taskRow}>
+              <IconPlate icon={Target} color={colors.secondary} size={34} />
+              <Text style={styles.focusValue}>Take the quiz when you're ready</Text>
+            </View>
+          </>
+        ) : null}
+      </Card>
+
+      <PrimaryButton
+        label="Read lesson"
+        icon={BookOpen}
+        onPress={() => navigation.navigate('ModuleReader', { moduleId: module.id })}
+      />
+      {hasQuiz ? (
+        <PrimaryButton
+          label="Take quiz"
+          tone="ghost"
+          icon={Play}
+          onPress={() => navigation.navigate('Quiz', { moduleId: module.id })}
+        />
+      ) : null}
     </Screen>
   );
 }
@@ -589,7 +686,7 @@ export function ModuleReaderScreen({ navigation, route }: StackProps<'ModuleRead
           icon={Brain}
           color={colors.accentText}
           title="Inline recall"
-          subtitle="Tap a highlighted term above, or select any phrase below to quiz yourself."
+          subtitle="Tap a highlighted term in the lesson to quiz yourself."
         />
         {recallActivity ? (
           <>
@@ -624,37 +721,16 @@ export function ModuleReaderScreen({ navigation, route }: StackProps<'ModuleRead
               />
             ) : null}
             <PrimaryButton
-              label="Choose another phrase"
+              label="Try another term"
               tone="secondary"
               onPress={() => openRecallActivity(null)}
             />
           </>
         ) : (
-          <TextInput
-            value={plainText}
-            editable
-            multiline
-            onChangeText={() => undefined}
-            onSelectionChange={({ nativeEvent }) => {
-              const { start, end } = nativeEvent.selection;
-              if (end > start) {
-                openRecallActivity(
-                  createInlineRecallFromSelection(plainText, start, end),
-                );
-              }
-            }}
-            selectTextOnFocus={false}
-            showSoftInputOnFocus={false}
-            style={[styles.input, styles.recallSource]}
-            textAlignVertical="top"
-          />
+          <Text style={styles.body}>
+            Highlighted terms in the lesson are tappable — try one to check what you remember.
+          </Text>
         )}
-      </Card>
-      <Card tone={colors.primaryTint}>
-        <CardHeader icon={Sparkles} title="Try it your way" color={colors.primary} />
-        <Text style={styles.body}>
-          Explain one idea aloud, sketch it, write two sentences, or demonstrate it with nearby objects.
-        </Text>
       </Card>
       <PrimaryButton label="Lesson read — start quiz" icon={Play} onPress={() => void finishLesson()} />
     </Screen>
@@ -1580,10 +1656,9 @@ function formatDuration(seconds: number): string {
 const styles = StyleSheet.create({
   flex: { flex: 1, minWidth: 0 },
   fixedHeader: { paddingHorizontal: layout.gutter, gap: spacing.md },
-  listContent: {
+  modulesListContent: {
     paddingHorizontal: layout.gutter,
-    paddingTop: spacing.md,
-    gap: spacing.md,
+    paddingTop: spacing.xs,
     paddingBottom: layout.tabBarClearance,
   },
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, paddingRight: spacing.xl },
@@ -1604,21 +1679,53 @@ const styles = StyleSheet.create({
   taskDue: { ...text.caption, color: colors.secondary, marginTop: 1 },
   rowDivider: { marginVertical: spacing.xs },
 
-  // Module cards
-  moduleCell: { width: '100%' },
-  moduleCard: {
-    flex: 1,
+  // Modules overview — source groups + light rows
+  moduleGroupHeader: {
     flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    marginTop: spacing.xl,
+    marginBottom: spacing.sm,
+  },
+  moduleGroupTitle: { ...text.overline, color: colors.ink, fontSize: 12 },
+  moduleGroupCount: {
+    minWidth: 20,
+    paddingHorizontal: 6,
+    height: 18,
+    borderRadius: radius.round,
+    backgroundColor: colors.surfaceMuted,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  moduleGroupCountText: { ...text.tiny, color: colors.inkMuted },
+  moduleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md,
     backgroundColor: colors.surface,
     borderRadius: radius.lg,
     borderWidth: 1,
     borderColor: colors.outline,
+    paddingVertical: spacing.md,
+    paddingRight: spacing.md,
+    paddingLeft: spacing.lg,
+    marginBottom: spacing.sm,
     overflow: 'hidden',
-    ...elevation.e1,
+    ...elevation.e0,
   },
-  moduleSpine: { width: 5 },
-  moduleBody: { flex: 1, padding: spacing.lg, gap: spacing.xs },
-  moduleTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: spacing.sm },
+  moduleRowSpine: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: 4,
+  },
+  moduleRowTitle: { ...text.bodyStrong, color: colors.ink },
+  moduleRowMeta: { ...text.caption, color: colors.inkSubtle, marginTop: 1 },
+  moduleRowSummary: { ...text.caption, color: colors.inkMuted, fontWeight: '500', lineHeight: 18, marginTop: spacing.xs },
+  // Module detail
+  detailTags: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: spacing.sm },
+  detailSummary: { ...text.body, color: colors.inkMuted, fontSize: 15, lineHeight: 22 },
   subjectTag: {
     alignSelf: 'flex-start',
     borderRadius: radius.round,
@@ -1636,9 +1743,7 @@ const styles = StyleSheet.create({
   },
   sourceDot: { width: 6, height: 6, borderRadius: radius.round },
   sourceBadgeText: { ...text.tiny, letterSpacing: 0.2 },
-  moduleTitle: { ...text.title, color: colors.ink, fontSize: 17, lineHeight: 22, marginTop: 2 },
   moduleCode: { ...text.caption, color: colors.inkSubtle, fontSize: 12, fontWeight: '600' },
-  moduleSummary: { ...text.caption, color: colors.inkMuted, fontWeight: '500', lineHeight: 19, marginTop: spacing.xs },
   styleTags: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.xs, marginTop: spacing.xs },
   styleTag: {
     ...text.tiny,
@@ -1649,16 +1754,6 @@ const styles = StyleSheet.create({
     borderRadius: radius.xs,
     overflow: 'hidden',
   },
-  cardAction: {
-    marginTop: 'auto',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingTop: spacing.md,
-    borderTopWidth: 1,
-    borderTopColor: colors.hairline,
-  },
-  cardActionText: { ...text.label, color: colors.primary, fontWeight: '800' },
 
   // Inputs
   input: {
@@ -1673,12 +1768,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   inputFocused: { borderColor: colors.primary },
-  recallSource: {
-    minHeight: 160,
-    lineHeight: 24,
-    backgroundColor: colors.surfaceMuted,
-    paddingVertical: spacing.md,
-  },
 
   // Quiz
   quizProgress: { gap: spacing.sm },

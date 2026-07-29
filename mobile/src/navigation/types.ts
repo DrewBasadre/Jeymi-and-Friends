@@ -8,6 +8,7 @@ export type RootStackParamList = {
   LearningAssessment: { studentId: string };
   StudentTabs: { screen?: keyof StudentTabParamList } | undefined;
   AiCompanion: undefined;
+  ModuleDetail: { moduleId: string };
   ModuleReader: { moduleId: string };
   Quiz: { moduleId: string };
   QuizResult: { module: LearningModule; attempt: QuizAttempt };
