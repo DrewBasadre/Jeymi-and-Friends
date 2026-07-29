@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { type ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Alert,
   Pressable,
@@ -452,9 +452,10 @@ function ReviewExperience({
       />
       {studyJams.length > 0 ? (
         <Card>
-          {studyJams.map((item, position) => (
-            <View key={item.packageId}>
-              {position > 0 ? <Divider style={styles.reviewDivider} /> : null}
+          <DividedList
+            items={studyJams}
+            keyOf={(item) => item.packageId}
+            render={(item) => (
               <ListRow
                 icon={Sparkles}
                 title={item.title}
@@ -466,8 +467,8 @@ function ReviewExperience({
                 color={colors.primary}
                 onPress={() => onOpenPackage(item.packageId)}
               />
-            </View>
-          ))}
+            )}
+          />
         </Card>
       ) : (
         <EmptyState
@@ -477,14 +478,15 @@ function ReviewExperience({
       )}
 
       <SectionHeader
-        title="Teacher Sent Reviewers"
+        title="Teacher reviewers"
         caption="Supplementary practice sent by your teacher."
       />
       {teacherReviewers.length > 0 ? (
         <Card>
-          {teacherReviewers.map((item, position) => (
-            <View key={item.packageId}>
-              {position > 0 ? <Divider style={styles.reviewDivider} /> : null}
+          <DividedList
+            items={teacherReviewers}
+            keyOf={(item) => item.packageId}
+            render={(item) => (
               <ListRow
                 icon={PackageOpen}
                 title={item.title}
@@ -492,8 +494,8 @@ function ReviewExperience({
                 color={colors.secondary}
                 onPress={() => onOpenPackage(item.packageId)}
               />
-            </View>
-          ))}
+            )}
+          />
         </Card>
       ) : (
         <Text style={styles.helper}>
@@ -516,27 +518,11 @@ function ReviewExperience({
 
       <SectionHeader
         title="Review sets"
-        caption="Group the items you keep forgetting."
+        caption="Filter today's queue to one topic you keep forgetting."
         actionLabel="Manage"
         onAction={onOpenSets}
       />
       <Card>
-        <CardHeader
-          icon={Layers}
-          title="Custom review sets"
-          subtitle="Narrow the queue to one topic"
-          color={colors.accentText}
-        />
-        <Text style={styles.rationale}>
-          Practicing a single tricky topic in one block is how you close a specific gap — the
-          mixed queue is better once the gap is closed.
-        </Text>
-        <View style={styles.howBlock}>
-          <Text style={styles.howLabel}>How to use it here</Text>
-          <Text style={styles.howBody}>
-            Choose a set below to filter today's queue, or build a new one from your own prompts.
-          </Text>
-        </View>
         {sets.length > 0 ? (
           <View style={styles.chipRow}>
             <Chip
@@ -561,20 +547,14 @@ function ReviewExperience({
           </View>
         ) : (
           <Text style={styles.helper}>
-            You have no sets yet — the queue is showing everything that is due.
+            No sets yet — the queue is showing everything that is due. Tap Manage to build one.
           </Text>
         )}
-          <PrimaryButton
-            label="Custom review sets"
-            icon={PencilLine}
-            tone="secondary"
-            onPress={onOpenSets}
-        />
       </Card>
 
       <SectionHeader
         title="Focus timer"
-        caption="Short timed blocks with real breaks between them."
+        caption="Short timed blocks with real breaks between them — each graded item is logged to the session."
       />
       {!pomodoro ? (
         <Card>
@@ -584,18 +564,6 @@ function ReviewExperience({
             subtitle="Work and break cycles, paired with any technique"
             color={colors.coral}
           />
-          <Text style={styles.rationale}>
-            Attention fades long before motivation does — a fixed block, then a real break, keeps
-            the second half of a session as sharp as the first.
-          </Text>
-          <View style={styles.howBlock}>
-            <Text style={styles.howLabel}>How to use it here</Text>
-            <Text style={styles.howBody}>
-              Set the block length, then review as normal — each graded item is logged against
-              the session.
-            </Text>
-          </View>
-          <Divider />
           <View style={styles.field}>
             <Text style={styles.fieldLabel}>Work</Text>
             <View style={styles.chipRow}>
@@ -712,21 +680,24 @@ function ReviewExperience({
               <Text style={styles.helper}>Correct on the first attempt</Text>
             </View>
           </Row>
-          {queue.map((item, position) => {
-            const given = retrievalAnswers[item.itemId] ?? '';
-            const matched =
-              given.trim().toLocaleLowerCase() === item.answer.trim().toLocaleLowerCase();
-            return (
-              <View key={item.itemId} style={styles.answerReview}>
-                {position > 0 ? <Divider style={styles.reviewDivider} /> : null}
-                <Text style={styles.reviewPrompt}>{item.prompt}</Text>
-                <Text style={styles.reviewGiven}>Your answer: {given || '—'}</Text>
-                <Text style={[styles.reviewReference, matched && styles.reviewReferenceOk]}>
-                  Reference: {item.answer}
-                </Text>
-              </View>
-            );
-          })}
+          <DividedList
+            items={queue}
+            keyOf={(item) => item.itemId}
+            render={(item) => {
+              const given = retrievalAnswers[item.itemId] ?? '';
+              const matched =
+                given.trim().toLocaleLowerCase() === item.answer.trim().toLocaleLowerCase();
+              return (
+                <View style={styles.answerReview}>
+                  <Text style={styles.reviewPrompt}>{item.prompt}</Text>
+                  <Text style={styles.reviewGiven}>Your answer: {given || '—'}</Text>
+                  <Text style={[styles.reviewReference, matched && styles.reviewReferenceOk]}>
+                    Reference: {item.answer}
+                  </Text>
+                </View>
+              );
+            }}
+          />
         </Card>
       ) : !current ? (
         <EmptyState
@@ -950,11 +921,12 @@ export function CustomReviewSetsScreen({ navigation }: CustomProps) {
         />
       ) : (
         <Card>
-          {sets.map((set, position) => {
-            const count = set.itemIds.length + set.createdItems.length;
-            return (
-              <View key={set.setId}>
-                {position > 0 ? <Divider style={styles.reviewDivider} /> : null}
+          <DividedList
+            items={sets}
+            keyOf={(set) => set.setId}
+            render={(set) => {
+              const count = set.itemIds.length + set.createdItems.length;
+              return (
                 <ListRow
                   icon={ListChecks}
                   color={colors.success}
@@ -972,9 +944,9 @@ export function CustomReviewSetsScreen({ navigation }: CustomProps) {
                     />
                   ) : undefined}
                 />
-              </View>
-            );
-          })}
+              );
+            }}
+          />
         </Card>
       )}
 
@@ -1174,7 +1146,7 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
               <GradientView ramp={gradients.brand} style={styles.reportRule} />
               <Text style={styles.reportEyebrow}>PAVO WEEKLY LEARNING REPORT</Text>
               <Text style={styles.reportTitle}>
-                Week of {formatDigestDate(digest.weekOf)}
+                Week of {formatDate(digest.weekOf)}
               </Text>
               <Text style={styles.reportFor}>
                 Prepared for the parent or guardian of{' '}
@@ -1193,26 +1165,6 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
                 <Chip
                   size="sm"
                   label={`Generated ${formatDate(digest.generatedAt)}`}
-                />
-                <Chip
-                  size="sm"
-                  label="Offline report ready"
-                  color={colors.success}
-                />
-                <Chip
-                  size="sm"
-                  label={
-                    analysisState === 'online'
-                      ? 'Pavo analysis online'
-                      : analysisState === 'loading'
-                        ? 'Pavo is analyzing'
-                        : 'Pavo analysis offline'
-                  }
-                  color={
-                    analysisState === 'online'
-                      ? colors.primary
-                      : colors.inkSubtle
-                  }
                 />
               </Row>
             </Card>
@@ -1258,9 +1210,10 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
             />
             <Card>
               {digest.lessons.length > 0 ? (
-                digest.lessons.map((lesson, index) => (
-                  <View key={lesson.moduleId}>
-                    {index > 0 ? <Divider style={styles.reviewDivider} /> : null}
+                <DividedList
+                  items={digest.lessons}
+                  keyOf={(lesson) => lesson.moduleId}
+                  render={(lesson) => (
                     <ListRow
                       icon={BookOpen}
                       color={colors.primary}
@@ -1269,8 +1222,8 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
                         lesson.status === 'COMPLETED' ? 'Completed' : 'Read'
                       } ${formatDate(lesson.lastActivityAt)}`}
                     />
-                  </View>
-                ))
+                  )}
+                />
               ) : (
                 <Text style={styles.reportBody}>
                   No lesson reading was recorded this week.
@@ -1284,31 +1237,34 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
             />
             <Card>
               {digest.quizResults.length > 0 ? (
-                digest.quizResults.map((quiz, index) => (
-                  <View key={quiz.attemptId}>
-                    {index > 0 ? <Divider style={styles.reviewDivider} /> : null}
-                    <ListRow
-                      icon={ListChecks}
-                      color={colors.secondary}
-                      title={quiz.moduleTitle}
-                      subtitle={`${quiz.score}/${quiz.totalItems} correct · ${capitalize(
-                        quiz.masteryLevel.toLocaleLowerCase(),
-                      )} · ${formatDate(quiz.submittedAt)}`}
-                      trailing={
-                        <Text style={styles.quizScore}>
-                          {Math.round(quiz.scorePercentage)}%
+                <DividedList
+                  items={digest.quizResults}
+                  keyOf={(quiz) => quiz.attemptId}
+                  render={(quiz) => (
+                    <>
+                      <ListRow
+                        icon={ListChecks}
+                        color={colors.secondary}
+                        title={quiz.moduleTitle}
+                        subtitle={`${quiz.score}/${quiz.totalItems} correct · ${capitalize(
+                          quiz.masteryLevel.toLocaleLowerCase(),
+                        )} · ${formatDate(quiz.submittedAt)}`}
+                        trailing={
+                          <Text style={styles.quizScore}>
+                            {Math.round(quiz.scorePercentage)}%
+                          </Text>
+                        }
+                      />
+                      {(quiz.strongTopic || quiz.weakTopic) ? (
+                        <Text style={styles.quizTopics}>
+                          {quiz.strongTopic ? `Strength: ${quiz.strongTopic}` : ''}
+                          {quiz.strongTopic && quiz.weakTopic ? ' · ' : ''}
+                          {quiz.weakTopic ? `Review: ${quiz.weakTopic}` : ''}
                         </Text>
-                      }
-                    />
-                    {(quiz.strongTopic || quiz.weakTopic) ? (
-                      <Text style={styles.quizTopics}>
-                        {quiz.strongTopic ? `Strength: ${quiz.strongTopic}` : ''}
-                        {quiz.strongTopic && quiz.weakTopic ? ' · ' : ''}
-                        {quiz.weakTopic ? `Review: ${quiz.weakTopic}` : ''}
-                      </Text>
-                    ) : null}
-                  </View>
-                ))
+                      ) : null}
+                    </>
+                  )}
+                />
               ) : (
                 <Text style={styles.reportBody}>
                   No quiz attempts were recorded this week.
@@ -1346,17 +1302,18 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
             <SectionHeader title="Top struggling concepts" />
             <Card>
               {digest.summary.topStrugglingConcepts.length > 0 ? (
-                digest.summary.topStrugglingConcepts.map((concept, index) => (
-                  <View key={concept.conceptId}>
-                    {index > 0 ? <Divider style={styles.reviewDivider} /> : null}
+                <DividedList
+                  items={digest.summary.topStrugglingConcepts}
+                  keyOf={(concept) => concept.conceptId}
+                  render={(concept) => (
                     <ListRow
                       icon={Target}
                       color={colors.warning}
                       title={friendlyConceptName(concept.conceptId)}
                       subtitle={`${concept.missCount} missed response${concept.missCount === 1 ? '' : 's'}`}
                     />
-                  </View>
-                ))
+                  )}
+                />
               ) : (
                 <Text style={styles.reportBody}>
                   No repeatedly missed concepts this week.
@@ -1364,10 +1321,7 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
               )}
             </Card>
 
-            <SectionHeader
-              title="Offline insight"
-              caption="Always available, even without internet access."
-            />
+            <SectionHeader title="Offline insight" />
             <Card accent={colors.accent}>
               <CardHeader
                 icon={Lightbulb}
@@ -1380,7 +1334,7 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
 
             <SectionHeader
               title="Pavo analysis"
-              caption="A deeper interpretation is prepared only while online."
+              caption="A deeper interpretation, prepared only while online."
             />
             <Card accent={onlineAnalysis ? colors.primary : colors.outlineStrong}>
               {onlineAnalysis ? (
@@ -1424,8 +1378,8 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
                     </Text>
                     <Text style={styles.reportBody}>
                       {analysisState === 'error'
-                        ? 'The complete offline report is still ready. Reopen this digest to try the analysis again.'
-                        : 'Connect to the internet to add Pavo’s comprehensive interpretation. Nothing in the offline report is hidden.'}
+                        ? 'The offline report above is complete. Reopen this digest to try the analysis again.'
+                        : 'Connect to the internet to add Pavo’s deeper interpretation.'}
                     </Text>
                   </View>
                 </View>
@@ -1466,6 +1420,32 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
 /* ────────────────────────────────────────────────────────────────────────
    Local building blocks
    ──────────────────────────────────────────────────────────────────────── */
+
+/**
+ * Renders a list of rows with a hairline divider between them — the single
+ * pattern behind every stacked list in these screens, so the divider logic
+ * lives in one place instead of being re-inlined per section.
+ */
+function DividedList<T>({
+  items,
+  keyOf,
+  render,
+}: {
+  items: T[];
+  keyOf: (item: T) => string;
+  render: (item: T) => ReactNode;
+}) {
+  return (
+    <>
+      {items.map((item, position) => (
+        <View key={keyOf(item)}>
+          {position > 0 ? <Divider style={styles.reviewDivider} /> : null}
+          {render(item)}
+        </View>
+      ))}
+    </>
+  );
+}
 
 function HeroPill({ icon: Icon, label }: { icon: LucideIcon; label: string }) {
   return (
@@ -1508,10 +1488,7 @@ function TechniqueCard({
         </View>
         {selected ? <CheckCircle2 size={20} color={option.color} /> : null}
       </View>
-      <View style={styles.howBlock}>
-        <Text style={styles.howLabel}>How to use it here</Text>
-        <Text style={styles.howBody}>{option.how}</Text>
-      </View>
+      <Text style={styles.techniqueHow}>{option.how}</Text>
       <View style={styles.cardAction}>
         <Text style={[styles.cardActionText, { color: option.color }]}>
           {selected ? 'Active in this session' : option.action}
@@ -1620,14 +1597,6 @@ function shortDay(value: string): string {
   });
 }
 
-function formatDigestDate(value: string): string {
-  return new Date(`${value}T12:00:00`).toLocaleDateString(undefined, {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  });
-}
-
 function friendlySubjectLabel(value: string): string {
   return capitalize(value.replaceAll('_', ' ').toLocaleLowerCase());
 }
@@ -1682,14 +1651,7 @@ const styles = StyleSheet.create({
   techniqueTop: { flexDirection: 'row', alignItems: 'flex-start', gap: spacing.md },
   techniqueTitle: { ...text.title, color: colors.ink },
   rationale: { ...text.bodySm, color: colors.inkMuted, marginTop: 2 },
-  howBlock: {
-    backgroundColor: colors.surfaceMuted,
-    borderRadius: radius.md,
-    padding: spacing.md,
-    gap: 2,
-  },
-  howLabel: { ...text.overline, color: colors.inkSubtle, fontSize: 11 },
-  howBody: { ...text.caption, color: colors.inkMuted, fontWeight: '500', lineHeight: 19 },
+  techniqueHow: { ...text.caption, color: colors.inkMuted, fontWeight: '500', lineHeight: 19 },
   cardAction: {
     flexDirection: 'row',
     alignItems: 'center',

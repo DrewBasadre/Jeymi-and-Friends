@@ -39,6 +39,9 @@ type Props = CompositeScreenProps<
 /** The four corner brackets that mark the readable area of the viewfinder. */
 const CORNERS = ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'] as const;
 
+/** One privacy line, shared across every state of the screen. */
+const PRIVACY_NOTE = 'Assignment codes are read on this device — nothing is uploaded.';
+
 export function StudentScanScreen(_props: Props) {
   const student = useSessionStore((state) => state.student);
   const [permission, requestPermission] = useCameraPermissions();
@@ -76,7 +79,7 @@ export function StudentScanScreen(_props: Props) {
         <ScreenHeader
           overline="Assignments"
           title="Scan assignment"
-          subtitle="Assignment codes are read on this device — nothing is uploaded."
+          subtitle={PRIVACY_NOTE}
         />
         <Callout
           icon={ShieldCheck}
@@ -96,7 +99,7 @@ export function StudentScanScreen(_props: Props) {
         <ScreenHeader
           overline="Assignments"
           title="Scan assignment"
-          subtitle="Assignment codes are read on this device — nothing is uploaded."
+          subtitle={PRIVACY_NOTE}
         />
         <Callout
           icon={CameraOff}
@@ -105,7 +108,7 @@ export function StudentScanScreen(_props: Props) {
           body={
             blocked
               ? 'Open your device settings and allow the camera for Pavo, then come back to this screen.'
-              : 'Pavo opens the camera only while you are scanning — no photos are stored or sent.'
+              : 'Pavo needs the camera to read your teacher’s assignment QR codes.'
           }
         />
         <EmptyState
@@ -137,7 +140,7 @@ export function StudentScanScreen(_props: Props) {
         <ScreenHeader
           overline="Assignments"
           title="Scan assignment"
-          subtitle="Point the camera at your teacher's QR code."
+          subtitle={PRIVACY_NOTE}
         />
       </View>
 

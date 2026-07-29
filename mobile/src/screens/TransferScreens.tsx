@@ -5,7 +5,6 @@ import {
   CheckCircle2,
   Download,
   Radio,
-  ShieldCheck,
   Smartphone,
   TriangleAlert,
   WifiOff,
@@ -228,7 +227,6 @@ export function ReceiveTransferScreen({ navigation }: Props) {
         <CardHeader
           icon={Radio}
           title="How it arrives"
-          subtitle="Three short steps — Pavo handles the rest."
           color={colors.secondary}
           action={
             connection ? (
@@ -264,12 +262,12 @@ export function ReceiveTransferScreen({ navigation }: Props) {
       <PrimaryButton
         label={
           ingesting
-            ? 'Checking and adding module...'
+            ? 'Checking and adding module…'
             : advertising
-              ? 'Waiting for teacher...'
+              ? 'Waiting for teacher…'
               : startError
                 ? 'Try again'
-                : 'Starting nearby receive...'
+                : 'Starting nearby receive…'
         }
         icon={advertising ? Radio : Download}
         disabled={!available || advertising || ingesting}
@@ -288,7 +286,7 @@ export function ReceiveTransferScreen({ navigation }: Props) {
       {phase === 'idle' || phase === 'unavailable' ? (
         <MascotPanel
           title="Ready when you are"
-          body="Pavo starts nearby receiving automatically. Keep this screen open while a teacher sends the module."
+          body="Pavo is listening for a nearby teacher — the module appears here the moment it arrives."
           expression="idle"
         />
       ) : null}
@@ -321,12 +319,6 @@ export function ReceiveTransferScreen({ navigation }: Props) {
           <DetailLine label="Version" value={`Version ${received.manifest.version}`} />
           <DetailLine label="Package size" value={formatBytes(received.sizeBytes)} />
           <DetailLine label="Received" value={formatDate(Date.now())} />
-          <Callout
-            icon={ShieldCheck}
-            tone="success"
-            title="Checksum verified"
-            body="The package matched its SHA-256 fingerprint, so nothing was altered in transit."
-          />
           <PrimaryButton
             label={
               received.manifest.contentCategory === 'teacherModule'
@@ -344,13 +336,6 @@ export function ReceiveTransferScreen({ navigation }: Props) {
           />
         </Card>
       ) : null}
-
-      <Callout
-        icon={ShieldCheck}
-        tone="info"
-        title="Works without internet"
-        body="Transfers run over encrypted Nearby connections — Bluetooth and local Wi-Fi only, never the open network."
-      />
     </Screen>
   );
 }
@@ -473,7 +458,7 @@ const STAGE: Record<
   },
   waiting: {
     overline: 'Waiting',
-    title: 'Listening for A teacher',
+    title: 'Listening for a teacher',
     body: 'This device is visible nearby — keep the screen open until the module arrives.',
     icon: Radio,
     progress: 0.25,

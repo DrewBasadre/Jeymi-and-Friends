@@ -15,7 +15,6 @@ import {
   Bot,
   CheckCircle2,
   FileImage,
-  FileText,
   ListChecks,
   PackageCheck,
   Plus,
@@ -269,41 +268,32 @@ export function ModuleAuthorScreen({ navigation }: Props) {
       <ScreenHeader
         overline="Teacher tools"
         title="Author module"
-        subtitle="Write in markdown, attach local photos, and share it device to device."
+        subtitle="Write in Markdown, attach local photos, and share it device to device."
         onBack={navigation.goBack}
       />
 
       <SectionHeader
         title="Module details"
-        caption="How the lesson is label={led} on a student's device"
+        caption="How the lesson is labeled on a student's device"
       />
       <Card>
-        <CardHeader
-          icon={FileText}
-          title="Identity"
-          subtitle="Title, grade level, and subject"
-        />
-        <Divider />
         <Field
           label="Module title"
-          helper="Shown on the student's module card — keep it short and specific."
+          helper="Shown on the student's module card."
           value={title}
           onChangeText={setTitle}
           placeholder="Example: subtracting fractions"
         />
         <Field
           label="Grade level"
-          helper="A whole number from 1 to 12."
+          helper="Whole number from 1 to 12."
           invalid={gradeLevel.length > 0 && !gradeValid}
-          invalidHelper="Enter a whole number between 1 and 12."
+          invalidHelper="Must be a whole number from 1 to 12."
           value={gradeLevel}
           onChangeText={setGradeLevel}
           keyboardType="number-pad"
         />
-        <FieldGroup
-          label="Subject"
-          helper="Sets the colour and grouping students see."
-        >
+        <FieldGroup label="Subject" helper="Sets the student's subject grouping.">
           {SUBJECTS.map((option) => (
             <Chip
               key={option}
@@ -318,8 +308,29 @@ export function ModuleAuthorScreen({ navigation }: Props) {
 
       <SectionHeader
         title="Lesson content"
-        caption="Markdown is stored offline and rendered on the student device"
+        caption="Written in Markdown, stored offline for the student device"
       />
+      <Card>
+        <CardHeader
+          icon={Bot}
+          title="Draft with AI"
+          subtitle="Turn the title into an editable lesson and starter flashcards."
+          color={colors.accentText}
+          action={
+            <StatusBadge
+              label={connectivity === 'online' ? 'Online' : 'Offline'}
+              status={connectivity === 'online' ? 'completed' : 'notStarted'}
+            />
+          }
+        />
+        <PrimaryButton
+          label="Draft from title with AI"
+          icon={Bot}
+          tone="secondary"
+          loading={aiBusy}
+          onPress={() => void draftWithAi()}
+        />
+      </Card>
       <Card>
         <CardHeader
           icon={BookOpen}
@@ -335,11 +346,10 @@ export function ModuleAuthorScreen({ navigation }: Props) {
         <Divider />
         <Editor value={markdown} onChangeText={setMarkdown} />
         <Text style={styles.helper}>
-          Headings, lists and emphasis are supported — images you attach are
-          appended as Markdown automatically.
+          Headings, lists, and emphasis are supported.
         </Text>
         <PrimaryButton
-          label="Attach photos as WebP"
+          label="Attach photos"
           icon={FileImage}
           loading={busy}
           tone="secondary"
@@ -377,22 +387,19 @@ export function ModuleAuthorScreen({ navigation }: Props) {
         <CardHeader
           icon={ListChecks}
           title="Add an item"
-          subtitle="Pavo never infers the concept or importance on the student device — set both here."
+          subtitle="Set the concept and importance yourself."
           color={colors.secondary}
         />
         <Divider />
         <Field
           label="Concept ID"
-          helper="A stable, lowercase key that groups related items."
+          helper="A stable lowercase key that groups related items."
           value={conceptId}
           onChangeText={setConceptId}
           autoCapitalize="none"
           placeholder="Example: fraction-subtraction"
         />
-        <FieldGroup
-          label="Item type"
-          helper="How the item is presented during review."
-        >
+        <FieldGroup label="Item type">
           {REVIEW_TYPES.map((option) => (
             <Chip
               key={option}
@@ -402,10 +409,7 @@ export function ModuleAuthorScreen({ navigation }: Props) {
             />
           ))}
         </FieldGroup>
-        <FieldGroup
-          label="Importance"
-          helper="Core items are scheduled first when review time is short."
-        >
+        <FieldGroup label="Importance" helper="Core items are reviewed first.">
           {IMPORTANCES.map((option) => (
             <Chip
               key={option}
@@ -464,27 +468,6 @@ export function ModuleAuthorScreen({ navigation }: Props) {
         </Card>
       ) : null}
 
-      <Card>
-        <CardHeader
-          icon={Bot}
-          title="AI assist"
-          subtitle="Draft directly into these editable fields."
-          color={colors.accentText}
-          action={
-            <StatusBadge
-              label={connectivity === 'online' ? 'Online' : 'Offline'}
-              status={connectivity === 'online' ? 'completed' : 'notStarted'}
-            />
-          }
-        />
-        <PrimaryButton
-          label={aiBusy ? 'Drafting module...' : 'Draft from title with AI'}
-          icon={Bot}
-          disabled={aiBusy}
-          onPress={() => void draftWithAi()}
-        />
-      </Card>
-
       <SectionHeader
         title="Publish"
         caption="Package the module, then hand it to a nearby device"
@@ -525,7 +508,7 @@ export function ModuleAuthorScreen({ navigation }: Props) {
             icon={CheckCircle2}
             tone="success"
             title="Ready to build"
-            body="Everything required is in place — build the package to share it."
+            body="Everything required is in place."
           />
         )}
         <PrimaryButton
@@ -585,7 +568,7 @@ function Field({
   );
 }
 
-/** A label={led} row of chips — the non-text sibling of `Field`. */
+/** A labeled row of chips — the non-text sibling of `Field`. */
 function FieldGroup({
   label,
   helper,

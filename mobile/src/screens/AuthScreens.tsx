@@ -87,7 +87,7 @@ export function LandingScreen({ navigation }: Props<'Landing'>) {
               Pavo
             </Text>
             <Text style={styles.landingTagline}>
-              Your friendly learning buddy — grow your peacock as you learn, online or off.
+              Grow your peacock as you learn.
             </Text>
           </View>
         </HeroCard>
@@ -107,7 +107,6 @@ export function LandingScreen({ navigation }: Props<'Landing'>) {
           loading={loadingDemo}
           onPress={() => void exploreDemo()}
         />
-        <Text style={styles.landingFoot}>Everything you do is saved on this device.</Text>
       </View>
     </Screen>
   );
@@ -125,7 +124,6 @@ export function RoleScreen({ navigation }: Props<'Role'>) {
         <Text style={styles.brandName} accessibilityRole="header">
           Pavo
         </Text>
-        <Text style={styles.brandLine}>Learning that stays with you — online or offline.</Text>
       </View>
 
       <SectionHeader
@@ -173,8 +171,8 @@ export function RoleScreen({ navigation }: Props<'Role'>) {
         title={mode === 'lightweight' ? 'Lightweight mode' : 'Full mode'}
         body={
           mode === 'lightweight'
-            ? 'Lightweight offline mode is active.'
-            : 'Full mode is active. Core learning still works offline.'
+            ? 'Trimmed to run smoothly on this device.'
+            : 'All features are available on this device.'
         }
       />
     </Screen>
@@ -202,7 +200,7 @@ export function StudentLoginScreen({ navigation }: Props<'StudentLogin'>) {
       <ScreenHeader
         overline="Student"
         title="Sign in"
-        subtitle="Your learning stays saved on this device."
+        subtitle="Pick up right where you left off."
         onBack={navigation.goBack}
       />
       <Card>
@@ -348,7 +346,6 @@ export function StudentSetupScreen({ navigation }: Props<'StudentSetup'>) {
           icon={UsersRound}
           color={colors.accentText}
           title="Parent contact"
-          subtitle="Your teacher can use this number for school updates."
         />
         <Field
           label="Parent or guardian name"
@@ -428,13 +425,13 @@ export function LearningAssessmentScreen({ navigation, route }: Props<'LearningA
         <MascotPanel
           expression="happy"
           title="You're all set!"
-          body="Pavo will show your most helpful formats first. this isn't a test — you can change it anytime."
+          body="Pavo will show your most helpful formats first — you can change this anytime."
         />
         <Callout
           tone="success"
           icon={CheckCircle2}
           title="Learning profile saved"
-          body={`All ${total} questions answered. Your profile updates as you study.`}
+          body={`All ${total} questions answered.`}
         />
         <Card accent={colors.primary}>
           <CardHeader icon={GraduationCap} title="What's next" color={colors.primary} />
@@ -479,24 +476,10 @@ export function LearningAssessmentScreen({ navigation, route }: Props<'LearningA
         onBack={step === 0 ? navigation.goBack : () => setStep((current) => current - 1)}
       />
 
-      <View style={styles.quizProgress}>
-        <ProgressBar
-          value={(step + 1) / total}
-          accessibilityLabel={`Question ${step + 1} of ${total}`}
-        />
-        <View style={styles.stepDots}>
-          {LEARNING_ASSESSMENT.map((item, dotIndex) => (
-            <View
-              key={item.id}
-              style={[
-                styles.stepDot,
-                dotIndex < step && styles.stepDotDone,
-                dotIndex === step && styles.stepDotActive,
-              ]}
-            />
-          ))}
-        </View>
-      </View>
+      <ProgressBar
+        value={(step + 1) / total}
+        accessibilityLabel={`Question ${step + 1} of ${total}`}
+      />
 
       {step === 0 ? (
         <View style={styles.guardianRow}>
@@ -557,11 +540,7 @@ export function LearningAssessmentScreen({ navigation, route }: Props<'LearningA
         })}
       </View>
 
-      <Text style={styles.helper}>
-        {saving
-          ? 'Preparing offline lessons…'
-          : 'Choose what feels most comfortable. There are no wrong answers.'}
-      </Text>
+      {saving ? <Text style={styles.helper}>Preparing offline lessons…</Text> : null}
     </Screen>
   );
 }
@@ -616,7 +595,11 @@ export function TeacherLoginScreen({ navigation }: Props<'TeacherLogin'>) {
       <ScreenHeader
         overline="Teacher"
         title={existingId ? 'Teacher profile' : 'Create teacher profile'}
-        subtitle="This profile stays only on this device."
+        subtitle={
+          existingId
+            ? 'Your saved teacher details.'
+            : 'Set up once to scan reports and send modules.'
+        }
         onBack={navigation.goBack}
       />
       <Card>
@@ -824,7 +807,6 @@ const styles = StyleSheet.create({
   },
   trustPillText: { ...text.caption, color: colors.inkMuted, fontWeight: '700' },
   landingActions: { gap: spacing.md },
-  landingFoot: { ...text.caption, color: colors.inkSubtle, textAlign: 'center', marginTop: spacing.xs },
 
   // ── Role ──────────────────────────────────────────────────────────────
   roleScreen: { gap: spacing.lg },
@@ -839,7 +821,6 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   brandName: { ...text.display, color: colors.ink, fontSize: 38 },
-  brandLine: { ...text.body, color: colors.inkMuted, textAlign: 'center', maxWidth: 320 },
   roleCard: {
     backgroundColor: colors.surface,
     borderRadius: radius.lg,
@@ -894,11 +875,6 @@ const styles = StyleSheet.create({
   deviceNoteText: { ...text.caption, color: colors.inkSubtle, fontWeight: '500', flex: 1 },
 
   // ── Assessment ────────────────────────────────────────────────────────
-  quizProgress: { gap: spacing.sm },
-  stepDots: { flexDirection: 'row', gap: 4 },
-  stepDot: { flex: 1, height: 3, borderRadius: 2, backgroundColor: colors.surfaceSunken },
-  stepDotDone: { backgroundColor: colors.primaryTint },
-  stepDotActive: { backgroundColor: colors.primary },
   guardianRow: {
     flexDirection: 'row',
     alignItems: 'center',
