@@ -89,7 +89,7 @@ import type {
   StudentTabParamList,
 } from '@/navigation/types';
 import { useSessionStore } from '@/store/session';
-import { isCompanionConfigured } from '@/services/companion';
+import { isCompanionAvailable } from '@/services/companion';
 import { askPavo } from '@/services/companion';
 import { buildTeacherCompanionRequest } from '@/domain/companion';
 import { useConnectivity } from '@/services/connectivity';
@@ -851,8 +851,8 @@ export function CustomReviewSetsScreen({ navigation }: CustomProps) {
       Alert.alert('Add a topic', 'Name the reviewer before asking for a draft.');
       return;
     }
-    if (connectivity !== 'online' || !isCompanionConfigured()) {
-      Alert.alert('Internet required', 'Connect to use inline AI assist.');
+    if (!isCompanionAvailable()) {
+      Alert.alert('AI assist unavailable', 'Inline AI assist is not available on this build.');
       return;
     }
     setAiBusy(true);
@@ -1101,7 +1101,7 @@ export function ParentDigestScreen({ navigation }: DigestProps) {
   >('offline');
   const connectivity = useConnectivity();
   const analysisAvailable =
-    connectivity === 'online' && isCompanionConfigured();
+    isCompanionAvailable();
 
   useEffect(() => {
     if (student && authorized) {

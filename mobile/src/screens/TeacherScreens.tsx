@@ -130,7 +130,11 @@ import type {
   TeacherTabParamList,
 } from '@/navigation/types';
 import { buildReviewSetPackage } from '@/services/files';
-import { askPavo, isCompanionConfigured } from '@/services/companion';
+import {
+  askPavo,
+  companionMode,
+  isCompanionAvailable,
+} from '@/services/companion';
 import { useConnectivity } from '@/services/connectivity';
 import {
   PARENT_SMS_CHARACTER_LIMIT,
@@ -223,8 +227,8 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
 
   async function generateClassInsight() {
     if (!classReport) return;
-    if (connectivity !== 'online' || !isCompanionConfigured()) {
-      Alert.alert('Internet required', 'Connect to use Gurobot class insight.');
+    if (!isCompanionAvailable()) {
+      Alert.alert('Gurobot unavailable', 'Gurobot is not available on this build.');
       return;
     }
     setClassInsightLoading(true);
@@ -1006,8 +1010,8 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
       Alert.alert('Add a request', 'Tell Gurobot what you want to prepare.');
       return;
     }
-    if (connectivity !== 'online' || !isCompanionConfigured()) {
-      Alert.alert('Internet required', 'Connect to use Gurobot.');
+    if (!isCompanionAvailable()) {
+      Alert.alert('Gurobot unavailable', 'Gurobot is not available on this build.');
       return;
     }
     const ownerId =
@@ -1117,7 +1121,7 @@ export function GurobotScreen({ navigation }: TeacherTabProps<'Gurobot'>): React
         subtitle="Draft, analyze, review, then decide what leaves your device."
         action={
           <StatusBadge
-            label={connectivity === 'online' ? 'Online' : 'Offline'}
+            label={companionMode() === 'demo' ? 'Demo mode' : connectivity === 'online' ? 'Online' : 'Offline'}
             status={connectivity === 'online' ? 'completed' : 'notStarted'}
           />
         }
@@ -1717,8 +1721,8 @@ export function LearnerDetailScreen({ navigation, route }: StackProps<'LearnerDe
 
   async function generateStudentInsight() {
     if (!report) return;
-    if (connectivity !== 'online' || !isCompanionConfigured()) {
-      Alert.alert('Internet required', 'Connect to use Gurobot insights.');
+    if (!isCompanionAvailable()) {
+      Alert.alert('Gurobot unavailable', 'Gurobot is not available on this build.');
       return;
     }
     setInsightLoading(true);

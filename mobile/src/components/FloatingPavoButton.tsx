@@ -13,7 +13,7 @@ import { useSessionStore } from '@/store/session';
 import { peacockPhase } from '@/components/mascot/PeacockPhase';
 import { PeacockPhase } from '@/components/mascot/PeacockPhase';
 import { useConnectivity } from '@/services/connectivity';
-import { isCompanionConfigured } from '@/services/companion';
+import { isCompanionAvailable } from '@/services/companion';
 import {
   colors,
   elevation,
@@ -49,7 +49,7 @@ export function FloatingPavoButton({ onPress }: { onPress: () => void }) {
       }),
     [dashboard],
   );
-  const available = connectivity === 'online' && isCompanionConfigured();
+  const available = isCompanionAvailable();
 
   return (
     <Pressable

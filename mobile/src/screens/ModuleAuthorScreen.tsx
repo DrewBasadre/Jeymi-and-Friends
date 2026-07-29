@@ -47,7 +47,7 @@ import type {
   Subject,
 } from '@/domain/types';
 import type { RootStackParamList } from '@/navigation/types';
-import { askPavo, isCompanionConfigured } from '@/services/companion';
+import { askPavo, isCompanionAvailable } from '@/services/companion';
 import { useConnectivity } from '@/services/connectivity';
 import {
   buildTeacherModulePackage,
@@ -191,8 +191,8 @@ export function ModuleAuthorScreen({ navigation }: Props) {
       Alert.alert('Add a topic', 'Enter a module title before asking for a draft.');
       return;
     }
-    if (connectivity !== 'online' || !isCompanionConfigured()) {
-      Alert.alert('Internet required', 'Connect to use inline AI assist.');
+    if (!isCompanionAvailable()) {
+      Alert.alert('AI assist unavailable', 'Inline AI assist is not available on this build.');
       return;
     }
     setAiBusy(true);

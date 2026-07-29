@@ -75,7 +75,12 @@ import type {
   Subject,
 } from '@/domain/types';
 import type { RootStackParamList } from '@/navigation/types';
-import { askPavo, isCompanionConfigured } from '@/services/companion';
+import {
+  askPavo,
+  companionMode,
+  isCompanionAvailable,
+  isCompanionConfigured,
+} from '@/services/companion';
 import { useConnectivity } from '@/services/connectivity';
 import { useSessionStore } from '@/store/session';
 import {
@@ -202,6 +207,8 @@ export function AiCompanionScreen({ navigation }: Props) {
     averageScore: dashboard?.averageScore,
   });
   const online = connectivity === 'online' && configured;
+  const available = isCompanionAvailable();
+  const demo = companionMode() === 'demo';
 
   function openSession(session: ChatSession) {
     setActiveSession(session);
@@ -240,12 +247,8 @@ export function AiCompanionScreen({ navigation }: Props) {
 
   async function generate() {
     setError(null);
-    if (!online) {
-      setError(
-        connectivity === 'offline'
-          ? 'Pavo review needs an internet connection.'
-          : 'Pavo online review is not configured on this build.',
-      );
+    if (!available) {
+      setError('Pavo is not available on this build.');
       return;
     }
     if (!student || !dashboard) {
@@ -392,13 +395,13 @@ export function AiCompanionScreen({ navigation }: Props) {
           <WifiOff size={14} color={colors.inkSubtle} />
         )}
         <Text style={styles.statusText}>
-          {online
-            ? 'Online'
-            : connectivity === 'checking'
-              ? 'Checking connection'
-              : connectivity === 'offline'
-                ? 'Offline'
-                : 'Setup required'}
+          {demo
+            ? 'Demo mode'
+            : online
+              ? 'Online'
+              : connectivity === 'checking'
+                ? 'Checking connection'
+                : 'Offline'}
         </Text>
         <View style={styles.connectionDivider} />
         <ShieldCheck size={14} color={colors.success} />
@@ -646,7 +649,7 @@ export function AiCompanionScreen({ navigation }: Props) {
         <View style={styles.composer}>
           <TextInput
             accessibilityLabel="Message Pavo"
-            editable={!loading && online}
+            editable={!loading && available}
             maxLength={500}
             multiline
             onChangeText={setQuestion}
@@ -669,18 +672,22 @@ export function AiCompanionScreen({ navigation }: Props) {
           />
           <Pressable
             accessibilityLabel={intent === 'ask' ? 'Ask Pavo' : 'Prepare review'}
-            disabled={!online || !dashboard || loading}
+            disabled={!available || !dashboard || loading}
             onPress={() => void generate()}
             style={({ pressed }) => [
               styles.sendButton,
-              (!online || !dashboard || loading) && styles.sendButtonDisabled,
+              (!available || !dashboard || loading) && styles.sendButtonDisabled,
               pressed && styles.pressed,
             ]}
           >
             <Send size={20} color={colors.white} />
           </Pressable>
         </View>
-        {!online ? (
+        {demo ? (
+          <Text style={styles.offlineHint}>
+            Demo mode — answers are simulated on this device.
+          </Text>
+        ) : !online ? (
           <Text style={styles.offlineHint}>
             Downloaded lessons still work. Reconnect to message Pavo.
           </Text>
