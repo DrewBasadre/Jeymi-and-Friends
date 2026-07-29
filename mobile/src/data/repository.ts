@@ -147,7 +147,20 @@ export async function saveStudent(
 ): Promise<Student> {
   const database = await getDatabase();
   const studentId = input.id?.trim() || id('student');
+  const studentNumber = input.studentNumber.trim();
   const displayName = [input.firstName.trim(), input.lastName.trim()].filter(Boolean).join(' ');
+  // `student_number` is UNIQUE, but the upsert below only resolves conflicts on
+  // `id`. Catch a clash with a different profile here so the setup screen can
+  // show a clear message instead of a raw SQLite constraint error.
+  const existing = await database.getFirstAsync<{ id: string }>(
+    `SELECT id FROM students WHERE lower(student_number) = lower(?) LIMIT 1`,
+    studentNumber,
+  );
+  if (existing && existing.id !== studentId) {
+    throw new Error(
+      'That student number is already registered on this device. Sign in with it instead, or use a different number.',
+    );
+  }
   await database.runAsync(
     `INSERT INTO students (
       id, student_number, first_name, last_name, middle_initial, display_name,
