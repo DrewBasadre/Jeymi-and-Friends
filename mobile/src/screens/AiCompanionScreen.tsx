@@ -589,7 +589,7 @@ export function AiCompanionScreen({ navigation }: Props) {
       ) : null}
 
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.conversation}
       >
         <ScrollView
