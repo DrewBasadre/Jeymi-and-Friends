@@ -154,19 +154,61 @@ flowchart LR
   all core lessons and study records continue offline.
 - Nearby transfer requires physical Android devices for final radio-level
   acceptance testing.
-- The repository is Android-first. iOS development is outside the current MVP
-  scope.
+- Runs on **both iOS and Android** from one React Native codebase (verified on
+  the iOS Simulator and an Android emulator at visual/functional parity).
 
-## Run The Android App
+## Tech Stack
+
+| Layer | Technology |
+| --- | --- |
+| Framework | React Native 0.86 on Expo SDK 57 (prebuild), New Architecture + Hermes |
+| Language | TypeScript (strict) |
+| Navigation | React Navigation 7 (native-stack + bottom-tabs) |
+| State | Zustand |
+| Styling | React Native StyleSheet + centralized "Peacock" design tokens (no CSS/UI lib) |
+| Graphics / animation | react-native-svg (gradients, rings, QR, pixel-art mascot) + RN Animated (typewriter, process steps) |
+| Validation | Zod |
+| Offline storage | expo-sqlite (offline-first, additive migrations) + AsyncStorage |
+| Device features | expo-camera, expo-speech, expo-notifications, expo-print, expo-sharing, expo-document-picker, expo-network |
+| Native module | `pavo-nearby` — device-to-device transfer via Google Nearby Connections (Swift on iOS, Kotlin on Android) |
+| AI | Client service with Zod-validated structured responses + on-device demo fallback → Supabase Edge Function (`pavo-companion`, Deno) → OpenAI (key stays server-side) |
+| Backend (optional) | Supabase — auth, Postgres, edge functions, migrations (the app is fully usable offline) |
+| Tooling | Jest, `tsc`, Metro; Gradle 9 / JDK 17 (Android), Xcode (iOS) |
+
+PAVO uses a custom Nearby native module, so it needs a **development build**
+(not Expo Go).
+
+## Getting Started
 
 ```bash
 cd mobile
+cp .env.example .env   # public config; the OpenAI key stays server-side
 npm install
-JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home" npm run android
 ```
 
-PAVO uses a custom Android Nearby module and therefore requires a development
-build rather than Expo Go.
+**iOS** (macOS + Xcode):
+
+```bash
+npm run ios
+```
+
+**Android** (JDK 17 + Android SDK + an emulator/AVD named `pavo`):
+
+```bash
+export ANDROID_HOME=$HOME/Library/Android/sdk   # or your SDK path
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+npm run android
+# or, to also boot the emulator window in one step:
+bash run-android-emulator.sh
+```
+
+> First-time Android setup needs JDK 17, the Android SDK (platform 36,
+> build-tools 36, an emulator system image), and an AVD. `run-android-emulator.sh`
+> respects an existing `ANDROID_HOME`/`JAVA_HOME`.
+
+The AI companion works **offline in demo mode** (answers simulated on-device).
+For live answers, keep `EXPO_PUBLIC_PAVO_API_URL` set and deploy the
+`pavo-companion` edge function with its server-side `OPENAI_API_KEY`.
 
 ## Validate
 
