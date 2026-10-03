@@ -57,9 +57,7 @@ const safePath = z
 const hex = (length: number) => z.string().regex(new RegExp(`^[a-f0-9]{${length}}$`));
 const semver = z.string().regex(/^\d+\.\d+\.\d+$/);
 
-// Loose so fields added by newer PAVO versions survive parsing and signatures still verify.
-export const packageManifestV2Schema = z
-  .looseObject({
+const manifestFields = {
     schemaVersion: z.literal(PACKAGE_SCHEMA_VERSION),
     kind: z.literal('pavo-package'),
     packageId: stableIdSchema,
@@ -111,7 +109,13 @@ export const packageManifestV2Schema = z
       })
       .nullable(),
     signature: z.object({ alg: z.literal('ed25519'), publicKey: hex(64), value: hex(128) }).optional(),
-  })
+  };
+
+const manifestObject = z.object(manifestFields);
+
+// Loose so fields added by newer PAVO versions survive parsing and signatures still verify.
+export const packageManifestV2Schema = z
+  .looseObject(manifestFields)
   .superRefine((manifest, context) => {
     const issue = (message: string, path: string) => context.addIssue({ code: 'custom', message, path: [path] });
     const paths = manifest.files.map((file) => file.path);
@@ -141,7 +145,7 @@ export const packageManifestV2Schema = z
     if (paths.includes('quiz.json') && !manifest.assessment) issue('quiz.json needs assessment metadata.', 'assessment');
   });
 
-export type PackageManifestV2 = z.infer<typeof packageManifestV2Schema>;
+export type PackageManifestV2 = z.infer<typeof manifestObject>;
 export type PackageManifestDraft = Omit<
   PackageManifestV2,
   'schemaVersion' | 'kind' | 'files' | 'contentBytes' | 'signature' | 'minPavoVersion'
