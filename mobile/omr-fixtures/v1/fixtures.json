@@ -1,0 +1,3916 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "name": "clean-upright",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "ready": true,
+        "sheetCode": "match",
+        "classNumber": 17
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "clean-50x5",
+      "templateId": "pavo-std-50x5",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 4,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 4,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 4,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 4,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 21,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 22,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 23,
+          "choice": 4,
+          "style": "solid"
+        },
+        {
+          "question": 24,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 25,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 26,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 27,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 28,
+          "choice": 4,
+          "style": "solid"
+        },
+        {
+          "question": 29,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 30,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 31,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 32,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 33,
+          "choice": 4,
+          "style": "solid"
+        },
+        {
+          "question": 34,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 35,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 36,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 37,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 38,
+          "choice": 4,
+          "style": "solid"
+        },
+        {
+          "question": 39,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 40,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 41,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 42,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 43,
+          "choice": 4,
+          "style": "solid"
+        },
+        {
+          "question": 44,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 45,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 46,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 47,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 48,
+          "choice": 4,
+          "style": "solid"
+        },
+        {
+          "question": 49,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 50,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "ready": true,
+        "sheetCode": "match"
+      },
+      "sheetCodeText": "PVS1:pavo-std-50x5:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010110001001110001000001",
+        "10111010000010001010101011101",
+        "10111010101000110101001011101",
+        "10111010011110101111001011101",
+        "10000010001011001101001000001",
+        "11111110101010101010101111111",
+        "00000000110110010101100000000",
+        "10110111011101010100101001011",
+        "11011100100111100111011110001",
+        "11001110000111000110010101100",
+        "10110100100000011011001101010",
+        "11001011010010111100110101110",
+        "10011100011110110101101000010",
+        "00101110101011001111010111111",
+        "10011100011110100011000011011",
+        "11110010001100111011000011010",
+        "01100001100000111100010101011",
+        "10001110111001111010100110000",
+        "00011100111101101110010011100",
+        "01110010111111101111111111101",
+        "00000000100010001101100010000",
+        "11111110100000100101101011110",
+        "10000010101001111001100010001",
+        "10111010000110011100111111100",
+        "10111010111000011110100111101",
+        "10111010110011100011110001101",
+        "10000010000101011011110101010",
+        "11111110110110001011100010010"
+      ]
+    },
+    {
+      "name": "rotated-90",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "rotate": 90
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "ready": true,
+        "sheetCode": "match",
+        "classNumber": 17
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "rotated-180",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "rotate": 180
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "ready": true,
+        "sheetCode": "match"
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "rotated-270",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "rotate": 270
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "sheetCode": "match"
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "tilted-9deg",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "tilt": 9
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "ready": true,
+        "sheetCode": "match"
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "perspective-moderate",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "perspective": 0.14
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "ready": true,
+        "sheetCode": "match"
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "perspective-steep",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "perspective": 0.36
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "issuesInclude": [
+          "perspective"
+        ]
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "uneven-lighting",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "lighting": 0.45
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "sheetCode": "match"
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "shadow-band",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "shadow": 0.5
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "shadow-heavy",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "shadow": 0.78
+      },
+      "expect": {
+        "allStandardMarks": false,
+        "located": true,
+        "issuesInclude": [
+          "shadow"
+        ]
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "blur-mild",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "blur": 1.1
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "ready": true
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "blur-heavy",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "blur": 6
+      },
+      "expect": {
+        "allStandardMarks": false,
+        "located": false,
+        "issuesInclude": [
+          "blurred"
+        ]
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "glare-spot",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "glare": true
+      },
+      "expect": {
+        "allStandardMarks": false,
+        "located": true,
+        "issuesInclude": [
+          "glare"
+        ]
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "curled-paper",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "curl": 14
+      },
+      "expect": {
+        "allStandardMarks": false,
+        "located": true,
+        "issuesInclude": [
+          "not_flat"
+        ]
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "far-away",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "scale": 0.42
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "issuesInclude": [
+          "too_far"
+        ]
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "marker-occluded",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "occludeMarker": "BR"
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "inferredMarker": true,
+        "issuesInclude": [
+          "missing_marker"
+        ]
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "off-frame",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85,
+        "shiftX": 0.55
+      },
+      "expect": {
+        "allStandardMarks": false,
+        "located": false,
+        "issuesInclude": [
+          "outside_frame"
+        ]
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "pencil-marks",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "pencil"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "pencil"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "pencil"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "pencil"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "pencil"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "pencil"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "pencil"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "pencil"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "pencil"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "pencil"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "pencil"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "pencil"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "pencil"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "pencil"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "pencil"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "pencil"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "pencil"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "pencil"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "pencil"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "pencil"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "ready": true
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "faint-and-partial",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 1,
+          "style": "faint"
+        },
+        {
+          "question": 2,
+          "choice": 2,
+          "style": "dot"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "check"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85
+      },
+      "expect": {
+        "allStandardMarks": false,
+        "located": true,
+        "questions": {
+          "1": {
+            "state": "ambiguous"
+          },
+          "2": {
+            "state": "not-marked"
+          },
+          "3": {
+            "state": "not-marked"
+          },
+          "4": {
+            "state": "marked",
+            "choice": 3
+          }
+        }
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "erasure-and-change",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {},
+      "marks": [
+        {
+          "question": 1,
+          "choice": 0,
+          "style": "erasure"
+        },
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 3,
+          "style": "erasure"
+        },
+        {
+          "question": 3,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85
+      },
+      "expect": {
+        "allStandardMarks": false,
+        "located": true,
+        "questions": {
+          "1": {
+            "state": "marked",
+            "choice": 2
+          },
+          "2": {
+            "state": "not-marked"
+          },
+          "3": {
+            "state": "multiple"
+          },
+          "4": {
+            "state": "blank"
+          }
+        }
+      },
+      "blank": [
+        4
+      ],
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110111101010111101111111",
+        "10000010111101001110001000001",
+        "10111010001000001010101011101",
+        "10111010101000110101001011101",
+        "10111010001110101111001011101",
+        "10000010000101001101001000001",
+        "11111110101010101010101111111",
+        "00000000111110010101100000000",
+        "10110111010011010100101001011",
+        "10011000101111100111011110001",
+        "01000111110101000110010101100",
+        "00010101101100011011001101010",
+        "11110111110110111100110101110",
+        "01000101110110110101101000010",
+        "01111010100011001111010111111",
+        "10000101011100100011000011011",
+        "00001011011000111011000011010",
+        "01111000110100111100010101011",
+        "10100010110111111010010110000",
+        "00110101111111101110001011100",
+        "01000011100001101111111111101",
+        "00000000100100001101100010000",
+        "11111110110100100101101011110",
+        "10000010110101111001100010001",
+        "10111010010000011100111111100",
+        "10111010101010011110100111101",
+        "10111010111101100011110001101",
+        "10000010010011011011110101010",
+        "11111110110110101011100010010"
+      ]
+    },
+    {
+      "name": "class-pack-prefilled",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {
+        "studentId": "student_ana"
+      },
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "sheetCode": "match",
+        "classNumber": 17
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:2:A:student_ana",
+      "qrModules": [
+        "111111100011011011111001101111111",
+        "100000100011111101000010101000001",
+        "101110101000110111110110001011101",
+        "101110101110101110011010001011101",
+        "101110101100000101100000001011101",
+        "100000101010001111001110101000001",
+        "111111101010101010101010101111111",
+        "000000001100001100000110000000000",
+        "101111100100111111001000101111100",
+        "000010001100101010110111011001111",
+        "010111111000000100101100110000000",
+        "101111010011101100000110000101101",
+        "001100101101100000100010010011101",
+        "100111011110001111001101011000110",
+        "111111111100101000010000110010010",
+        "010011001101101010011101001100100",
+        "110101110010011011011001010111000",
+        "010000000111000011010011001000111",
+        "001101101100100111000010010101000",
+        "011011001001000101110101110100110",
+        "000110111111101010011010110011010",
+        "100101011100100100100101001000010",
+        "100010100010100111101100011110010",
+        "101001000010101100100100011111100",
+        "101011101110010101101010111110100",
+        "000000001100001010110111100010101",
+        "111111100111110100100101101011110",
+        "100000101011000010001111100010101",
+        "101110101101000100100100111111000",
+        "101110101110001111001001100010111",
+        "101110101100000000010101001001100",
+        "100000100010001010011100010110100",
+        "111111101001100001011001100111010"
+      ]
+    },
+    {
+      "name": "wrong-form",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {
+        "templateId": "pavo-std-30x5"
+      },
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "sheetCode": "match",
+        "sheetMismatch": "wrong_form"
+      },
+      "sheetCodeText": "PVS1:pavo-std-30x5:1:omr-fixture:2:A",
+      "qrModules": [
+        "11111110001001010111101111111",
+        "10000010001111111000101000001",
+        "10111010100011010001101011101",
+        "10111010111110110101001011101",
+        "10111010110010011001101011101",
+        "10000010110010010110001000001",
+        "11111110101010101010101111111",
+        "00000000101110100011000000000",
+        "10111110011010001111101111100",
+        "00101001100101100111011110001",
+        "10101010011101110000100011010",
+        "11010000010111000000010110001",
+        "00000010110010111100110101110",
+        "01000001101110000011011110100",
+        "11000110101110010100001100100",
+        "00101001101000100011000011011",
+        "01011011100110001101110101100",
+        "10110001101111100111001110000",
+        "10101110110011111010110110000",
+        "10000001110111011000101101010",
+        "10111111011110110100111110110",
+        "00000000100000001101100010000",
+        "11111110010010010011101011000",
+        "10000010110010100010100011010",
+        "10111010101010011100111111100",
+        "10111010101100101000010001011",
+        "10111010100111111000101010110",
+        "10000010011110011011110101010",
+        "11111110101001111101010100100"
+      ]
+    },
+    {
+      "name": "wrong-version",
+      "templateId": "pavo-std-20x4",
+      "sheetCode": {
+        "quizVersion": 1
+      },
+      "marks": [
+        {
+          "question": 1,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 2,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 3,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 4,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 5,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 6,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 7,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 8,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 9,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 10,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 11,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 12,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 13,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 14,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 15,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 16,
+          "choice": 3,
+          "style": "solid"
+        },
+        {
+          "question": 17,
+          "choice": 2,
+          "style": "solid"
+        },
+        {
+          "question": 18,
+          "choice": 1,
+          "style": "solid"
+        },
+        {
+          "question": 19,
+          "choice": 0,
+          "style": "solid"
+        },
+        {
+          "question": 20,
+          "choice": 3,
+          "style": "solid"
+        }
+      ],
+      "classId": [
+        0,
+        1,
+        7
+      ],
+      "transform": {
+        "noise": 4,
+        "jpegQuality": 85
+      },
+      "expect": {
+        "allStandardMarks": true,
+        "located": true,
+        "sheetCode": "match",
+        "sheetMismatch": "wrong_version"
+      },
+      "sheetCodeText": "PVS1:pavo-std-20x4:1:omr-fixture:1:A",
+      "qrModules": [
+        "11111110000001010111101111111",
+        "10000010001101111000101000001",
+        "10111010101001010001101011101",
+        "10111010111010110101001011101",
+        "10111010110100011001101011101",
+        "10000010111000010110001000001",
+        "11111110101010101010101111111",
+        "00000000101000100011000000000",
+        "10111110000110001111101111100",
+        "11101100001101100111011110001",
+        "11101110110011111000100011010",
+        "10001000011001010000010110001",
+        "01100010110000111100110101110",
+        "11000101100110000011011110100",
+        "11000110000110010100001100100",
+        "00101100001000100011000011011",
+        "10101111100010001101110101100",
+        "11100001000101100111001110000",
+        "10110111011011111010010110000",
+        "10011001110111011000111101010",
+        "10101011001010110100111110110",
+        "00000000110110001101100010000",
+        "11111110001010010011101011000",
+        "10000010110000100010100011010",
+        "10111010101110011100111111100",
+        "10111010111100101000010001011",
+        "10111010110100011000101010110",
+        "10000010000101011011110101010",
+        "11111110101111011101010100100"
+      ]
+    }
+  ]
+}

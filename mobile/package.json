@@ -63,7 +63,8 @@
     "typecheck": "tsc --noEmit",
     "test": "jest --runInBand",
     "test:watch": "jest --watch",
-    "validate": "npm run typecheck && npm test"
+    "validate": "npm run typecheck && npm test",
+    "omr:fixtures": "UPDATE_OMR_FIXTURES=1 jest __tests__/omrFixtures.test.ts -t specification && OMR_WRITE_IMAGES=1 ../gradlew -p modules/pavo-omr/core test && jest __tests__/omrFixtures.test.ts"
   },
   "private": true,
   "jest": {

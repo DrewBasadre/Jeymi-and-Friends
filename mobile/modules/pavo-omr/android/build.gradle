@@ -1,0 +1,26 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+group = 'org.pavo.omr'
+version = '0.1.0'
+
+android {
+  namespace "org.pavo.omr"
+  defaultConfig {
+    versionCode 1
+    versionName "0.1.0"
+  }
+  sourceSets {
+    // The scanner core is shared with the desktop fixture suite in ../core.
+    main.java.srcDirs += '../core/src/main/kotlin'
+  }
+  lintOptions {
+    abortOnError false
+  }
+}
+
+dependencies {
+  implementation 'org.opencv:opencv:4.12.0'
+}

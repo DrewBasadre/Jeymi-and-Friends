@@ -1,0 +1,24 @@
+{
+  "imageWidth": 1500,
+  "sheetCode": null,
+  "markersFound": 2,
+  "imageHeight": 2000,
+  "orientationFound": false,
+  "inferredMarker": false,
+  "corners": [],
+  "classIdFill": [],
+  "rotationDegrees": 0,
+  "located": false,
+  "bubbleFill": [],
+  "metrics": {
+    "coverage": 0,
+    "lightingEvenness": 0,
+    "touchesEdge": false,
+    "glare": 0,
+    "gridDrift": 0,
+    "perspective": 0,
+    "markersFound": 2,
+    "sharpness": 441.82884528823917
+  },
+  "rowOffsets": []
+}

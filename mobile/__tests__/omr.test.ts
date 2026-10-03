@@ -121,7 +121,7 @@ describe('frame gating', () => {
     sharpness: 180,
     glare: 0.005,
     perspective: 0.9,
-    cornerSkew: 3,
+    gridDrift: 0.8,
     lightingEvenness: 0.8,
   };
 
@@ -132,7 +132,7 @@ describe('frame gating', () => {
     expect(assessFrame({ ...good, sharpness: 20 }).issues).toEqual(['blurred']);
     expect(assessFrame({ ...good, glare: 0.2 }).issues).toEqual(['glare']);
     expect(assessFrame({ ...good, perspective: 0.5 }).issues).toEqual(['perspective']);
-    expect(assessFrame({ ...good, cornerSkew: 20 }).issues).toEqual(['not_flat']);
+    expect(assessFrame({ ...good, gridDrift: 4.5 }).issues).toEqual(['not_flat']);
     expect(assessFrame({ ...good, lightingEvenness: 0.2 }).issues).toEqual(['shadow']);
   });
 
@@ -155,7 +155,7 @@ describe('bubble classification', () => {
       [0.3, BLANK, BLANK, FULL],
       [BLANK, 0.32, BLANK, BLANK],
       [BLANK, 0.62, 0.48, BLANK],
-      [BLANK, BLANK, 0.6, BLANK],
+      [BLANK, BLANK, 0.72, BLANK],
       ...sheetFills([0, 1, 2, 3, 0, 1]),
     ]);
     expect(lowContrast).toBe(false);

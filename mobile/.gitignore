@@ -42,3 +42,8 @@ supabase/.temp/
 # generated native folders
 /ios
 /android
+
+# OMR core desktop build
+modules/pavo-omr/core/build/
+modules/pavo-omr/core/.gradle/
+modules/pavo-omr/core/.kotlin/

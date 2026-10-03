@@ -264,8 +264,8 @@ export interface FrameMetrics {
   glare: number;
   /** Ratio of shortest to longest opposite edge pair (1 = square-on). */
   perspective: number;
-  /** Max deviation of marker-derived corner angles from 90°, in degrees. */
-  cornerSkew: number;
+  /** Largest offset (points) between printed bubble outlines and the flat-sheet model. */
+  gridDrift: number;
   /** Ratio of darkest to brightest paper-region median (1 = even light). */
   lightingEvenness: number;
 }
@@ -285,7 +285,7 @@ export const FRAME_LIMITS = {
   minSharpness: 60,
   maxGlare: 0.04,
   minPerspective: 0.72,
-  maxCornerSkew: 12,
+  maxGridDrift: 3,
   minLightingEvenness: 0.45,
 } as const;
 
@@ -297,7 +297,7 @@ export function assessFrame(metrics: FrameMetrics): { ready: boolean; issues: Fr
   if (metrics.sharpness < FRAME_LIMITS.minSharpness) issues.push('blurred');
   if (metrics.glare > FRAME_LIMITS.maxGlare) issues.push('glare');
   if (metrics.perspective < FRAME_LIMITS.minPerspective) issues.push('perspective');
-  if (metrics.cornerSkew > FRAME_LIMITS.maxCornerSkew) issues.push('not_flat');
+  if (metrics.gridDrift > FRAME_LIMITS.maxGridDrift) issues.push('not_flat');
   if (metrics.lightingEvenness < FRAME_LIMITS.minLightingEvenness) issues.push('shadow');
   return { ready: issues.length === 0, issues: [...new Set(issues)] };
 }
@@ -330,6 +330,44 @@ export function isStable(
   );
 }
 
+/** What the native OpenCV engine returns for one photo. */
+export const omrAnalysisSchema = z.object({
+  imageWidth: z.number().int().positive(),
+  imageHeight: z.number().int().positive(),
+  located: z.boolean(),
+  markersFound: z.number().int().min(0).max(4),
+  inferredMarker: z.boolean(),
+  orientationFound: z.boolean(),
+  corners: z.array(z.object({ x: z.number(), y: z.number() })).max(4),
+  rotationDegrees: z.number(),
+  metrics: z.object({
+    markersFound: z.number().int().min(0).max(4),
+    coverage: z.number(),
+    touchesEdge: z.boolean(),
+    sharpness: z.number(),
+    glare: z.number(),
+    perspective: z.number(),
+    gridDrift: z.number(),
+    lightingEvenness: z.number(),
+  }),
+  sheetCode: z.string().max(400).nullable(),
+  bubbleFill: z.array(z.array(z.number().min(0).max(1)).max(5)).max(100),
+  classIdFill: z.array(z.array(z.number().min(0).max(1)).max(10)).max(6),
+  rowOffsets: z.array(z.object({ x: z.number(), y: z.number() })),
+  warpedImageUri: z.string().nullable().optional(),
+});
+export type OmrAnalysis = z.infer<typeof omrAnalysisSchema>;
+
+/** Frame issues plus warnings that only a full analysis can reveal. */
+export function analysisIssues(analysis: OmrAnalysis): FrameIssue[] {
+  if (!analysis.located) {
+    const issues: FrameIssue[] = [analysis.markersFound < 3 ? 'outside_frame' : 'missing_marker'];
+    if (analysis.metrics.sharpness < FRAME_LIMITS.minSharpness) issues.push('blurred');
+    return issues;
+  }
+  return assessFrame(analysis.metrics).issues;
+}
+
 /* ── Bubble classification ───────────────────────────────────────────── */
 
 export type DetectionState = 'marked' | 'blank' | 'multiple' | 'ambiguous';
@@ -353,7 +391,7 @@ export interface QuestionDetection {
 }
 
 export const OMR_THRESHOLDS = {
-  marked: 0.5,
+  marked: 0.62,
   faint: 0.2,
   separation: 0.3,
   reviewConfidence: 0.6,
