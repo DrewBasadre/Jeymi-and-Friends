@@ -125,6 +125,7 @@ import type {
 } from '@/navigation/types';
 import { readModuleAloud, stopReading } from '@/services/speech';
 import { ensureDeviceIdentity } from '@/services/deviceIdentity';
+import { TeacherContentSection } from './LearnScreens';
 import { useSessionStore } from '@/store/session';
 import {
   colors,
@@ -388,6 +389,7 @@ export function ModulesScreen({ navigation }: StudentTabProps<'Modules'>) {
         keyExtractor={(module) => module.id}
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
+        ListHeaderComponent={<TeacherContentSection navigation={navigation} />}
         renderItem={({ item }) => (
           <PressableScale
             style={styles.moduleCell}

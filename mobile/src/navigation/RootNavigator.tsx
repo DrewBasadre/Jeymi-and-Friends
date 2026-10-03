@@ -8,6 +8,7 @@ import {
   Brain,
   BookOpen,
   Bot,
+  ClipboardCheck,
   ChartNoAxesColumnIncreasing,
   House,
   LayoutDashboard,
@@ -43,6 +44,10 @@ import {
 } from '@/screens/StudentScreens';
 import { AiCompanionScreen } from '@/screens/AiCompanionScreen';
 import { ReceiveTransferScreen } from '@/screens/TransferScreens';
+import { LessonScreen, MiniQuizResultScreen, MiniQuizScreen, ResultQrScreen } from '@/screens/LearnScreens';
+import { AssessmentDetailScreen, AssessmentsScreen, QuizBuilderScreen } from '@/screens/AssessmentScreens';
+import { ResultImportScreen } from '@/screens/ResultImportScreen';
+import { PaperScanScreen } from '@/screens/PaperScanScreen';
 import { StudentScanScreen } from '@/screens/StudentScanScreen';
 import {
   AssignmentBuilderScreen,
@@ -241,6 +246,14 @@ function TeacherTabNavigator() {
         }}
       />
       <TeacherTabs.Screen
+        name="Assessments"
+        component={AssessmentsScreen}
+        options={{
+          title: 'Quizzes',
+          tabBarIcon: (props) => <TabIcon icon={ClipboardCheck} {...props} />,
+        }}
+      />
+      <TeacherTabs.Screen
         name="Scanner"
         component={ScannerScreen}
         options={{
@@ -327,6 +340,14 @@ export function RootNavigator() {
           name="ReceiveTransfer"
           component={ReceiveTransferScreen}
         />
+        <RootStack.Screen name="Lesson" component={LessonScreen} />
+        <RootStack.Screen name="MiniQuiz" component={MiniQuizScreen} />
+        <RootStack.Screen name="MiniQuizResult" component={MiniQuizResultScreen} />
+        <RootStack.Screen name="ResultQr" component={ResultQrScreen} />
+        <RootStack.Screen name="AssessmentDetail" component={AssessmentDetailScreen} />
+        <RootStack.Screen name="QuizBuilder" component={QuizBuilderScreen} />
+        <RootStack.Screen name="ResultImport" component={ResultImportScreen} />
+        <RootStack.Screen name="PaperScan" component={PaperScanScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );

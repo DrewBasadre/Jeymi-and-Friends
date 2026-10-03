@@ -139,6 +139,7 @@ import {
   inspectLearningPackage,
 } from '@/services/learningPackages';
 import { buildTeacherModulePackage } from '@/services/modulePackages';
+import { isResultQr } from '@/domain/resultQr';
 import {
   nearby,
   type NearbyPeer,
@@ -784,7 +785,7 @@ function LearnerCard({
    Scanner
    ──────────────────────────────────────────────────────────────────────── */
 
-export function ScannerScreen(): ReactElement {
+export function ScannerScreen({ navigation }: TeacherTabProps<'Scanner'>): ReactElement {
   const [permission, requestPermission] = useCameraPermissions();
   const [active, setActive] = useState(true);
   const [message, setMessage] = useState('');
@@ -792,6 +793,10 @@ export function ScannerScreen(): ReactElement {
 
   async function handlePayload(payload: string) {
     if (!active) return;
+    if (isResultQr(payload)) {
+      navigation.navigate('ResultImport', { initial: payload });
+      return;
+    }
     setActive(false);
     setError('');
     try {
@@ -910,7 +915,7 @@ export function ScannerScreen(): ReactElement {
             icon={ScanLine}
             tone="info"
             title="Ready to scan"
-            body="Hold the learner's QR inside the frame — results are saved straight to your record book."
+            body="Profile QRs enroll learners. Mini-quiz result QRs open a review before anything is saved."
           />
         ) : null}
         {!active ? (

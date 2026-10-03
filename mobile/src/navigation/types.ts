@@ -25,9 +25,17 @@ export type RootStackParamList = {
   LearnerDetail: { studentId: string };
   ModuleAuthor: undefined;
   Transfer:
-    | { setId?: string; packageUri?: string; displayName?: string }
+    | { setId?: string; packageUri?: string; displayName?: string; v2PackageId?: string; v2Version?: number }
     | undefined;
   ReceiveTransfer: undefined;
+  Lesson: { packageId: string; version: number };
+  MiniQuiz: { quizId: string; version: number };
+  MiniQuizResult: { attemptId: string };
+  ResultQr: { attemptId: string };
+  AssessmentDetail: { quizId: string; version: number };
+  QuizBuilder: undefined;
+  ResultImport: { initial?: string; quizId?: string } | undefined;
+  PaperScan: { quizId: string; version: number; mode: 'grade' | 'master' };
 };
 
 export type StudentTabParamList = {
@@ -42,6 +50,7 @@ export type StudentTabParamList = {
 export type TeacherTabParamList = {
   TeacherHome: undefined;
   RecordBook: undefined;
+  Assessments: undefined;
   Scanner: undefined;
   Gurobot: undefined;
   TeacherProfile: undefined;
