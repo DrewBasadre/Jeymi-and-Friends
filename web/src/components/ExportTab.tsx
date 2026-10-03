@@ -116,7 +116,7 @@ export function ExportTab({
                 ))}
               </ul>
               <Callout tone="success" title="Next on Android">
-                Install the teacher bundle on your phone (Quizzes → Install a file), then send the student package to learners with Send nearby. No internet is needed in class.
+                Install the teacher bundle on your phone (Install a quiz or teacher bundle file), then send the student package to learners with Send nearby. No internet is needed in class.
               </Callout>
             </>
           ) : null}

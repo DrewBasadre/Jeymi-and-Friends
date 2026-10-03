@@ -55,6 +55,35 @@ making learner progress understandable to the adults helping the child.
 - Teacher-to-parent SMS composer with validation, character count, recipient
   confirmation, and simulated delivery
 
+### Offline assessment revamp
+
+- Teachers choose **paper OMR** or a **digital mini-quiz** first, then author
+  shared questions with a competency, misconception, and intervention for each.
+- **Paper quizzes:**
+  - PAVO prints original question papers and bubble answer sheets, with
+    alternate forms.
+  - The teacher's phone scans them offline with OpenCV.
+  - Unclear marks always go to teacher review, and every correction is
+    audited.
+- **Digital mini-quizzes:**
+  - The quiz runs offline and resumes if interrupted.
+  - The result returns to the teacher as one compact `PAVO_RESULT_V1` QR code
+    that lists failed and unanswered questions only.
+- **Teacher web studio** (`web/`): writes lessons and quizzes and exports
+  `module.pdf`, `adaptive-lesson.md`, `assessment-guide.md`, a manifest, and
+  student and teacher packages.
+- **SHAREit-style Nearby transfer:** the receiver must approve, interrupted
+  transfers resume, delivery is confirmed with receipts, and student sharing
+  respects the package's redistribution rules.
+- **Adaptive lessons:** hints, knowledge checks, and steps the app reorders
+  from the learner's results, each with a visible "Why?" explanation.
+- **External content providers:** an offline demo library, plus a link-only
+  Khan Academy adapter that is off by default. PAVO has no Khan Academy
+  partnership.
+
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the schemas, OMR
+confidence rules, the QR format, and the transfer protocol.
+
 > **Demo boundary:** the SMS flow is intentionally simulated. It never contacts
 > a real phone number. The transport is isolated behind a service interface so
 > a production SMS provider can replace the demo implementation later.
@@ -118,6 +147,9 @@ flowchart LR
   package orchestration
 - `mobile/src/screens` - student, teacher, parent-review, and transfer workflows
 - `mobile/modules/pavo-nearby/android` - native Nearby Connections transport
+  and foreground transfer service
+- `mobile/modules/pavo-omr` - Kotlin + OpenCV answer-sheet scanner
+- `web` - Teacher Studio for authoring and export (shares `mobile/src/domain`)
 - `mobile/supabase/functions/pavo-companion` - child-safe AI gateway
 - `mobile/seed` - static MATATAG-aligned lesson sources and `.pavo-module`
   archives
@@ -146,14 +178,36 @@ flowchart LR
    summary.
 7. Review section leaderboards and online/offline weekly learning evidence.
 
+Offline assessment walkthrough:
+
+1. In `web`, run `npm run dev` and create a lesson.
+2. Choose **Digital mini-quiz**, add questions, publish, and export the bundle.
+3. On the teacher phone, use **Install a quiz or teacher bundle file** to install the
+   teacher bundle.
+4. Send the student package to a student phone with **Send nearby**.
+5. The student completes the quiz offline and shows the result QR.
+6. The teacher taps **Scan student result** and scans the QR to see item analysis
+   and a remediation plan.
+7. To test paper mode, create a paper quiz instead and print it from the
+   paper PDFs in the export. Then use **Scan answer sheets** on the teacher phone.
+
 ## Known MVP Limits
 
 - SMS delivery is simulated and clearly labelled; no telecom provider is
   connected.
 - AI features require internet access and configured Supabase/OpenAI services;
   all core lessons and study records continue offline.
-- Nearby transfer requires physical Android devices for final radio-level
-  acceptance testing.
+- Nearby transfer and paper scanning have **not** yet been acceptance-tested on
+  physical devices. Emulators cannot validate radio transfer, throughput, or
+  camera scanning.
+- The OMR thresholds were tuned on synthetic fixtures only. Real paper, pens,
+  and cameras may need adjustment.
+- A result QR is only *authentic* when it is signed by a device key the
+  teacher enrolled. The checksum only catches damaged scans.
+- Offline self-scoring stores salted answer digests on the student phone. This
+  stops casual inspection, not a determined student. Use paper mode for
+  high-stakes tests.
+- No improvement in learning outcomes has been measured yet.
 - The repository is Android-first. iOS development is outside the current MVP
   scope.
 
@@ -177,6 +231,16 @@ npm run validate
 npx expo-doctor
 cd android
 ./gradlew :app:assembleDebug
+```
+
+Teacher Studio:
+
+```bash
+cd web
+npm install
+npm run dev
+npm test
+npm run build
 ```
 
 ## Repository
