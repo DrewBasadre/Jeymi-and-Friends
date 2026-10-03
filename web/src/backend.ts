@@ -123,7 +123,7 @@ export async function requestAiDraft(args: {
     return {
       response: companionResponseSchema.parse(payload),
       model: response.headers.get('x-pavo-model') ?? 'server-default',
-      generatedAt: new Date().toISOString(),
+      generatedAt: response.headers.get('x-pavo-generated-at') ?? new Date().toISOString(),
     };
   } catch (error) {
     if (error instanceof Error && error.name === 'AbortError') throw new Error('The AI service took too long. Try a shorter source.');

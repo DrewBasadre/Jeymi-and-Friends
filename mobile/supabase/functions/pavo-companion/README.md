@@ -14,6 +14,22 @@ The Android app never sends a learner's name, student number, section, digest
 ID, quiz-attempt ID, or module ID for parent analysis. Offline digest generation
 does not call this function.
 
+## Guardrails
+
+- Every free-text field passes through `redact.ts`, which replaces emails,
+  Philippine mobile numbers, and 10+ digit ID numbers (such as LRNs) before
+  anything reaches OpenAI. It is pattern-based and does not catch names in prose,
+  so clients still must not send names.
+- Model and moderation calls time out after 40 s and 10 s. A timeout returns a
+  friendly 504; clients keep the teacher's work and continue offline.
+- Successful responses carry `x-pavo-model` and `x-pavo-generated-at` headers.
+  The web studio stores them as draft provenance. Teachers must approve each
+  draft before publishing, and published packages record the model, time,
+  source IDs, approver, and whether the teacher edited the draft.
+- Rate limiting is 12 requests per 10 minutes per client IP, held in function
+  memory. It resets on cold start and is not shared across instances. Move it
+  to a Postgres counter if usage logs show abuse.
+
 ## Deploy
 
 1. Link the Supabase project:

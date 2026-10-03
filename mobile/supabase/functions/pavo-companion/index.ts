@@ -1,13 +1,19 @@
+import { redactPersonalData } from './redact.ts';
+
 const OPENAI_API_URL = 'https://api.openai.com/v1';
 const DEFAULT_MODEL = 'gpt-5.6-terra';
+const MODEL = Deno.env.get('OPENAI_MODEL') ?? DEFAULT_MODEL;
 const MAX_BODY_BYTES = 34_000;
 const RATE_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT = 12;
+const MODEL_TIMEOUT_MS = 40_000;
+const MODERATION_TIMEOUT_MS = 10_000;
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, apikey, content-type',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Expose-Headers': 'x-pavo-model, x-pavo-generated-at',
 };
 
 const responseSchema = {
@@ -200,12 +206,13 @@ Deno.serve(async (request) => {
 
     const modelResponse = await fetch(`${OPENAI_API_URL}/responses`, {
       method: 'POST',
+      signal: AbortSignal.timeout(MODEL_TIMEOUT_MS),
       headers: {
         Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: Deno.env.get('OPENAI_MODEL') ?? DEFAULT_MODEL,
+        model: MODEL,
         store: false,
         max_output_tokens: 3000,
         reasoning: { effort: 'low' },
@@ -247,9 +254,17 @@ Deno.serve(async (request) => {
     }
     return new Response(normalizedOutput, {
       status: 200,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'application/json',
+        'x-pavo-model': MODEL,
+        'x-pavo-generated-at': new Date().toISOString(),
+      },
     });
   } catch (error) {
+    if (error instanceof DOMException && error.name === 'TimeoutError') {
+      return json({ error: 'Pavo is taking too long. Your work is saved; try again soon.' }, 504);
+    }
     console.error('Pavo companion error', error instanceof Error ? error.message : error);
     return json({ error: 'Check the request and try again.' }, 400);
   }
@@ -385,7 +400,7 @@ function validateRequest(value: unknown): SafeRequest {
     throw new Error('Invalid grade level.');
   }
   const question =
-    typeof value.question === 'string' ? value.question.trim().slice(0, 500) : undefined;
+    typeof value.question === 'string' ? cleanString(value.question, 500) : undefined;
   const conversation = (Array.isArray(value.conversation) ? value.conversation : [])
     .slice(-6)
     .filter(isRecord)
@@ -414,7 +429,7 @@ function validateRequest(value: unknown): SafeRequest {
         Object.entries(value.performance)
           .slice(0, 10)
           .filter(([, item]) => typeof item === 'string' || typeof item === 'number')
-          .map(([key, item]) => [key.slice(0, 40), typeof item === 'string' ? item.slice(0, 160) : item]),
+          .map(([key, item]) => [key.slice(0, 40), typeof item === 'string' ? redactPersonalData(item.slice(0, 160)) : item]),
       ) as Record<string, string | number>
     : {};
   const deadlines = (Array.isArray(value.deadlines) ? value.deadlines : [])
@@ -543,6 +558,7 @@ async function isFlagged(input: string, apiKey: string): Promise<boolean> {
   if (!input.trim()) return false;
   const response = await fetch(`${OPENAI_API_URL}/moderations`, {
     method: 'POST',
+    signal: AbortSignal.timeout(MODERATION_TIMEOUT_MS),
     headers: {
       Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
@@ -570,6 +586,8 @@ function extractOutputText(payload: unknown): string | null {
   return null;
 }
 
+// ponytail: per-isolate memory, resets on cold start and is not shared across
+// regions; move to a Postgres counter if abuse shows up in usage logs.
 function withinRateLimit(request: Request): boolean {
   const key =
     request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
@@ -585,7 +603,7 @@ function withinRateLimit(request: Request): boolean {
 
 function cleanString(value: unknown, maxLength: number): string {
   if (typeof value !== 'string') throw new Error('Invalid text field.');
-  return value.trim().slice(0, maxLength);
+  return redactPersonalData(value.trim().slice(0, maxLength));
 }
 
 function cleanNumber(value: unknown, minimum: number, maximum: number): number {
