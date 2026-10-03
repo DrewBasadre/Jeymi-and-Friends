@@ -569,6 +569,24 @@ export const MIGRATIONS: Array<{ version: number; description: string; sql: stri
   },
 ];
 
+MIGRATIONS.push({
+  version: 9,
+  description: 'Offline transfer protocol sessions and receipts',
+  sql: `
+    ALTER TABLE transfer_sessions ADD COLUMN session_id TEXT;
+    ALTER TABLE transfer_sessions ADD COLUMN package_version INTEGER NOT NULL DEFAULT 1;
+    ALTER TABLE transfer_sessions ADD COLUMN manifest_digest TEXT;
+    ALTER TABLE transfer_sessions ADD COLUMN peer_role TEXT;
+    ALTER TABLE transfer_sessions ADD COLUMN offer_json TEXT;
+    ALTER TABLE transfer_sessions ADD COLUMN receipt_json TEXT;
+    ALTER TABLE transfer_sessions ADD COLUMN file_uri TEXT;
+    ALTER TABLE transfer_sessions ADD COLUMN updated_at INTEGER NOT NULL DEFAULT 0;
+    UPDATE transfer_sessions SET updated_at = COALESCE(completed_at, started_at);
+    CREATE INDEX IF NOT EXISTS idx_transfer_sessions_package
+      ON transfer_sessions(module_id, expected_sha256, status);
+  `,
+});
+
 export const LATEST_SCHEMA_VERSION = MIGRATIONS[MIGRATIONS.length - 1]!.version;
 
 export interface MigrationTarget {

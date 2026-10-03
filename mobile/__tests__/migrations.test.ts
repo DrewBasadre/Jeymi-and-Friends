@@ -49,6 +49,8 @@ function legacyDatabase(): DatabaseSync {
       'ADVANCED', 30, 1, 1);
     INSERT INTO learning_packages (package_id, owner_id, content_category, title, manifest_json, created_at)
       VALUES ('quiz_old', 'teacher:teacher_demo', 'teacherQuiz', 'Old quiz', '{}', 1);
+    INSERT INTO transfer_sessions (id, module_id, direction, peer_name, file_name, size_bytes, expected_sha256, status, started_at, completed_at)
+      VALUES ('t1', 'g5-science-plants', 'send', 'Ana', 'plants.pavo-module', 10, '${'a'.repeat(64)}', 'complete', 4, 5);
     PRAGMA user_version = 7;
   `);
   return database;
@@ -78,6 +80,9 @@ describe('SQLite migrations', () => {
     expect(database.prepare('SELECT student_id FROM section_roster').get()).toEqual({ student_id: 'student_ana' });
     expect(database.prepare('SELECT title FROM learning_packages').get()).toEqual({ title: 'Old quiz' });
     expect(database.prepare('SELECT id, position FROM quiz_questions').get()).toEqual({ id: 'q1', position: null });
+    expect(database.prepare('SELECT session_id, updated_at FROM transfer_sessions').all()).toEqual([
+      { session_id: null, updated_at: 5 },
+    ]);
     for (const column of ['parent_name', 'parent_phone']) {
       expect((database.prepare('PRAGMA table_info(students)').all() as Array<{ name: string }>).map((row) => row.name)).toContain(column);
     }

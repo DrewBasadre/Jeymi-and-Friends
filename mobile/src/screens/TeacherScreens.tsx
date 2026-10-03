@@ -23,7 +23,6 @@ import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
 import {
   Award,
-  Bluetooth,
   BookOpen,
   Camera,
   CheckCircle2,
@@ -49,10 +48,7 @@ import {
   TrendingUp,
   TriangleAlert,
   Trophy,
-  Upload,
   UsersRound,
-  WifiOff,
-  X,
 } from 'lucide-react-native';
 import {
   ActionTile,
@@ -105,11 +101,7 @@ import {
   saveLearningPackage,
 } from '@/data/learningRepository';
 import { useSessionStore } from '@/store/session';
-import {
-  listCustomReviewSets,
-  listReviewItems,
-  setStrugglingThreshold,
-} from '@/data/mvpRepository';
+import { setStrugglingThreshold } from '@/data/mvpRepository';
 import type {
   ClassPerformanceReport,
   ChatSession,
@@ -126,7 +118,6 @@ import type {
   RootStackParamList,
   TeacherTabParamList,
 } from '@/navigation/types';
-import { buildReviewSetPackage } from '@/services/files';
 import { askPavo, isCompanionConfigured } from '@/services/companion';
 import { useConnectivity } from '@/services/connectivity';
 import {
@@ -134,18 +125,9 @@ import {
   sendParentSmsDemo,
   type ParentSmsReceipt,
 } from '@/services/parentMessaging';
-import {
-  buildLearningPackage,
-  inspectLearningPackage,
-} from '@/services/learningPackages';
+import { buildLearningPackage } from '@/services/learningPackages';
 import { buildTeacherModulePackage } from '@/services/modulePackages';
 import { isResultQr } from '@/domain/resultQr';
-import {
-  nearby,
-  type NearbyPeer,
-  type NearbyTransferUpdate,
-  type NearbyVerificationRequest,
-} from '@/services/nearby';
 import {
   colors,
   gradients,
@@ -2097,318 +2079,6 @@ function AiReportCard({ result }: { result: CompanionResponse }) {
    Offline transfer
    ──────────────────────────────────────────────────────────────────────── */
 
-export function TransferScreen({ navigation, route }: StackProps<'Transfer'>) {
-  const [transferPackage, setTransferPackage] = useState<TransferPackage | null>(null);
-  const [peers, setPeers] = useState<NearbyPeer[]>([]);
-  const [update, setUpdate] = useState<NearbyTransferUpdate | null>(null);
-  const available = nearby.isAvailable();
-
-  useEffect(() => {
-    const setId = route.params?.setId;
-    const packageUri = route.params?.packageUri;
-    if (packageUri) {
-      void inspectLearningPackage(packageUri, route.params?.displayName)
-        .then(setTransferPackage)
-        .catch((error: unknown) => {
-          Alert.alert(
-            'Module package unavailable',
-            error instanceof Error ? error.message : 'Build the module again.',
-          );
-        });
-      return;
-    }
-    if (setId) {
-      void Promise.all([listCustomReviewSets(), listReviewItems()]).then(
-        async ([sets, items]) => {
-          const set = sets.find((candidate) => candidate.setId === setId);
-          if (set) setTransferPackage(await buildReviewSetPackage(set, items));
-        },
-      );
-    }
-  }, [
-    route.params?.displayName,
-    route.params?.packageUri,
-    route.params?.setId,
-  ]);
-
-  useEffect(() => {
-    const peerSubscription = nearby.addPeerListener(setPeers);
-    const transferSubscription = nearby.addTransferListener(setUpdate);
-    const verificationSubscription = nearby.addVerificationListener(
-      showVerification,
-    );
-    const connectionSubscription = nearby.addConnectionListener(
-      (connection) => {
-        setPeers((current) =>
-          current.map((peer) =>
-            peer.id === connection.peerId
-              ? { ...peer, connected: connection.state === 'connected' }
-              : peer,
-          ),
-        );
-      },
-    );
-    return () => {
-      peerSubscription?.remove();
-      transferSubscription?.remove();
-      verificationSubscription?.remove();
-      connectionSubscription?.remove();
-      void nearby.stop();
-    };
-  }, []);
-
-  function showVerification(request: NearbyVerificationRequest) {
-    Alert.alert(
-      `Connect to ${request.peerName}?`,
-      `Confirm this code appears on both devices: ${request.code}`,
-      [
-        {
-          text: 'Reject',
-          style: 'cancel',
-          onPress: () => void nearby.answerVerification(request.peerId, false),
-        },
-        {
-          text: 'Codes match',
-          onPress: () => void nearby.answerVerification(request.peerId, true),
-        },
-      ],
-      { cancelable: false },
-    );
-  }
-
-  async function findDevices() {
-    try {
-      await nearby.discover();
-    } catch (error) {
-      Alert.alert('Nearby unavailable', error instanceof Error ? error.message : 'Use a physical development build.');
-    }
-  }
-
-  async function pairOrSend(peer: NearbyPeer) {
-    try {
-      if (!peer.connected) {
-        await nearby.connect(peer.id);
-        return;
-      }
-      if (!transferPackage) return;
-      setUpdate({
-        transferId: 'pending',
-        status: 'connecting',
-        bytesTransferred: 0,
-        totalBytes: transferPackage.sizeBytes,
-      });
-      await nearby.send(peer.id, transferPackage);
-    } catch (error) {
-      Alert.alert(
-        'Transfer could not start',
-        error instanceof Error ? error.message : 'Try pairing again.',
-      );
-    }
-  }
-
-  async function resumeTransfer() {
-    if (!update) return;
-    try {
-      await nearby.retry(update.transferId);
-    } catch (error) {
-      Alert.alert(
-        'Transfer could not resume',
-        error instanceof Error
-          ? error.message
-          : 'Reconnect to the student device and try again.',
-      );
-    }
-  }
-
-  async function cancelTransfer() {
-    if (!update || update.transferId === 'pending') return;
-    try {
-      await nearby.cancel(update.transferId);
-    } catch (error) {
-      Alert.alert(
-        'Transfer could not be cancelled',
-        error instanceof Error ? error.message : 'Try again.',
-      );
-    }
-  }
-
-  const progress =
-    update && update.totalBytes > 0 ? update.bytesTransferred / update.totalBytes : 0;
-
-  return (
-    <Screen>
-      <ScreenHeader
-        overline="Share"
-        title="Offline module transfer"
-        subtitle="Curriculum and review packages, device to device."
-        onBack={navigation.goBack}
-      />
-
-      <Callout
-        icon={available ? Bluetooth : WifiOff}
-        tone={available ? 'success' : 'warning'}
-        title={available ? 'Nearby is ready' : 'Development build required'}
-        body={
-          available
-            ? 'Nearby Connections can use Bluetooth and local Wi-Fi without internet.'
-            : 'Module inspection works here — device-to-device transfer needs the native Nearby module on physical devices.'
-        }
-      />
-
-      <SectionHeader title="Package" caption="What will be handed over" />
-      {transferPackage ? (
-        <Card accent={colors.primary}>
-          <CardHeader
-            icon={FileText}
-            title={transferPackage.displayName}
-            subtitle={`${formatBytes(transferPackage.sizeBytes)} · ${
-              transferPackage.manifest.contentCategory === 'teacherModule'
-                ? `${transferPackage.manifest.assets.length} image asset${
-                    transferPackage.manifest.assets.length === 1 ? '' : 's'
-                  }`
-                : transferPackage.manifest.contentCategory === 'teacherReviewer'
-                  ? `${transferPackage.manifest.reviewItems.length} review items`
-                  : transferPackage.manifest.contentCategory === 'studentMaterial'
-                    ? `${transferPackage.manifest.reviewItems.length} Study Jam items`
-                    : `${transferPackage.manifest.quiz?.questions.length ?? 0} quiz questions`
-            } · Manifest v${transferPackage.manifest.version}`}
-            color={colors.primary}
-          />
-          <Divider />
-          <View>
-            <Text style={styles.fieldCaption}>Integrity checksum</Text>
-            <Text style={styles.hash} numberOfLines={2}>
-              SHA-256 {transferPackage.sha256}
-            </Text>
-          </View>
-        </Card>
-      ) : (
-        <Card>
-          <CardHeader
-            icon={PencilLine}
-            title="Nothing queued yet"
-            subtitle="Author a module or pick a review set, then come back to send it."
-            color={colors.secondary}
-          />
-          <PrimaryButton
-            label="Author a Markdown module"
-            icon={PencilLine}
-            tone="ghost"
-            onPress={() => navigation.replace('ModuleAuthor')}
-          />
-        </Card>
-      )}
-
-      <PrimaryButton
-        label="Find Nearby student devices"
-        icon={Search}
-        disabled={!available || !transferPackage}
-        onPress={() => void findDevices()}
-      />
-
-      {peers.length ? (
-        <>
-          <SectionHeader
-            title="Nearby devices"
-            caption={`${peers.length} ${peers.length === 1 ? 'device' : 'devices'} in range`}
-          />
-          <Card>
-            {peers.map((peer, index) => (
-              <View key={peer.id}>
-                {index > 0 ? <Divider style={styles.rowDivider} /> : null}
-                <View style={styles.peerRow}>
-                  <View
-                    style={[
-                      styles.peerDot,
-                      { backgroundColor: peer.connected ? colors.success : colors.outlineStrong },
-                    ]}
-                  />
-                  <View style={styles.flex}>
-                    <Text style={styles.rowTitle} numberOfLines={1}>
-                      {peer.name}
-                    </Text>
-                    <Text style={styles.rowMeta}>
-                      {peer.connected ? 'Paired and ready' : 'Discovered — not paired yet'}
-                    </Text>
-                  </View>
-                  <View style={styles.peerAction}>
-                    <PrimaryButton
-                      label={peer.connected ? 'Send' : 'Connect'}
-                      size="sm"
-                      icon={peer.connected ? Upload : Bluetooth}
-                      disabled={!transferPackage}
-                      onPress={() => void pairOrSend(peer)}
-                    />
-                  </View>
-                </View>
-              </View>
-            ))}
-          </Card>
-        </>
-      ) : null}
-
-      {update ? (
-        <>
-          <SectionHeader title="Transfer status" caption="Live progress on this device" />
-          <Card
-            accent={
-              update.status === 'complete'
-                ? colors.success
-                : update.status === 'failed'
-                  ? colors.error
-                  : colors.primary
-            }
-          >
-            <View style={styles.rowBetween}>
-              <StatusBadge
-                label={capitalize(update.status)}
-                status={
-                  update.status === 'complete'
-                    ? 'completed'
-                    : update.status === 'failed' || update.status === 'cancelled'
-                      ? 'notStarted'
-                      : 'inProgress'
-                }
-              />
-              <Text style={styles.progressValue}>{Math.round(progress * 100)}%</Text>
-            </View>
-            <ProgressBar
-              value={progress}
-              accessibilityLabel={`Transfer ${Math.round(progress * 100)} percent complete`}
-            />
-            <Text style={styles.body}>
-              {formatBytes(update.bytesTransferred)} of {formatBytes(update.totalBytes)}
-            </Text>
-            {update.errorMessage ? (
-              <Callout
-                icon={TriangleAlert}
-                tone="error"
-                title="Transfer interrupted"
-                body={update.errorMessage}
-              />
-            ) : null}
-            {update.status === 'queued' || update.status === 'transferring' ? (
-              <PrimaryButton
-                label="Cancel transfer"
-                icon={X}
-                tone="danger"
-                onPress={() => void cancelTransfer()}
-              />
-            ) : null}
-            {update.status === 'failed' || update.status === 'cancelled' ? (
-              <PrimaryButton
-                label="Resume transfer"
-                icon={RefreshCw}
-                onPress={() => void resumeTransfer()}
-              />
-            ) : null}
-          </Card>
-        </>
-      ) : null}
-    </Screen>
-  );
-}
-
 function formatBytes(value: number): string {
   if (value < 1_024) return `${value} B`;
   if (value < 1_048_576) return `${(value / 1_024).toFixed(1)} KB`;
@@ -2706,24 +2376,6 @@ const styles = StyleSheet.create({
     padding: spacing.xl,
     gap: spacing.md,
     backgroundColor: colors.background,
-  },
-
-  // Transfer
-  peerRow: {
-    minHeight: 56,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    paddingVertical: spacing.xs,
-  },
-  peerDot: { width: 10, height: 10, borderRadius: radius.round },
-  peerAction: { minWidth: 116 },
-  hash: {
-    color: colors.inkSubtle,
-    fontSize: 11,
-    lineHeight: 16,
-    fontFamily: 'monospace',
-    marginTop: 2,
   },
 
   signOutRow: { marginTop: spacing.sm, alignItems: 'center' },

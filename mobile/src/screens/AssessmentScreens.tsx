@@ -138,6 +138,7 @@ export function AssessmentsScreen({ navigation }: TabProps) {
         <ActionTile icon={ScanLine} label="Scan student result" caption="Mini-quiz QR" color={colors.secondary} onPress={() => navigation.navigate('ResultImport', {})} />
       </TileGrid>
       <PrimaryButton label={importing ? 'Checking package…' : 'Install a quiz or teacher bundle file'} icon={FileDown} tone="ghost" loading={importing} onPress={() => void importFile()} />
+      <PrimaryButton label="Receive from a teacher nearby" icon={Send} tone="ghost" onPress={() => navigation.navigate('ReceiveTransfer')} />
 
       <SectionHeader title="Your assessments" caption="Each version is fixed once published" />
       {assessments === null ? (

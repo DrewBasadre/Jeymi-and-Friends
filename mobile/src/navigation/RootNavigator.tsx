@@ -43,7 +43,7 @@ import {
   StudentProfileScreen,
 } from '@/screens/StudentScreens';
 import { AiCompanionScreen } from '@/screens/AiCompanionScreen';
-import { ReceiveTransferScreen } from '@/screens/TransferScreens';
+import { NearbyReceiveScreen, NearbySendScreen } from '@/screens/TransferScreens';
 import { LessonScreen, MiniQuizResultScreen, MiniQuizScreen, ResultQrScreen } from '@/screens/LearnScreens';
 import { AssessmentDetailScreen, AssessmentsScreen, QuizBuilderScreen } from '@/screens/AssessmentScreens';
 import { ResultImportScreen } from '@/screens/ResultImportScreen';
@@ -68,7 +68,6 @@ import {
   ScannerScreen,
   TeacherHomeScreen,
   TeacherProfileScreen,
-  TransferScreen,
 } from '@/screens/TeacherScreens';
 import { useSessionStore } from '@/store/session';
 import { colors, elevation, layout, radius } from '@/theme/tokens';
@@ -335,10 +334,10 @@ export function RootNavigator() {
         />
         <RootStack.Screen name="LearnerDetail" component={LearnerDetailScreen} />
         <RootStack.Screen name="ModuleAuthor" component={ModuleAuthorScreen} />
-        <RootStack.Screen name="Transfer" component={TransferScreen} />
+        <RootStack.Screen name="Transfer" component={NearbySendScreen} />
         <RootStack.Screen
           name="ReceiveTransfer"
-          component={ReceiveTransferScreen}
+          component={NearbyReceiveScreen}
         />
         <RootStack.Screen name="Lesson" component={LessonScreen} />
         <RootStack.Screen name="MiniQuiz" component={MiniQuizScreen} />

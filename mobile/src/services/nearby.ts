@@ -1,172 +1,110 @@
-import {
-  requireOptionalNativeModule,
-  type EventSubscription,
-} from 'expo-modules-core';
-import type { TransferPackage } from '@/domain/types';
-import type { LearningPackageManifest } from '@/domain/types';
-import { parseLearningPackageManifest } from '@/domain/manifest';
+import { requireOptionalNativeModule, type EventSubscription } from 'expo-modules-core';
 
 export interface NearbyPeer {
   id: string;
   name: string;
-  connected: boolean;
 }
 
-export interface NearbyTransferUpdate {
-  transferId: string;
-  status: 'queued' | 'connecting' | 'transferring' | 'complete' | 'failed' | 'cancelled';
-  bytesTransferred: number;
-  totalBytes: number;
-  errorMessage?: string;
-}
-
-export interface NearbyVerificationRequest {
+export interface NearbyVerification {
   peerId: string;
   peerName: string;
   code: string;
+  incoming: boolean;
 }
 
 export interface NearbyConnectionUpdate {
   peerId: string;
-  state: 'connecting' | 'connected' | 'disconnected' | 'rejected' | 'failed';
+  state: 'connected' | 'rejected' | 'disconnected';
+  errorMessage?: string | null;
+}
+
+export interface NearbyProgress {
+  payloadId: string;
+  peerId: string;
+  direction: 'outgoing' | 'incoming';
+  status: 'in_progress' | 'success' | 'failure' | 'canceled';
+  transferId?: string;
+  bytesTransferred: number;
+  totalBytes: number;
   errorMessage?: string;
 }
 
 export interface NearbyReceivedFile {
   transferId: string;
   peerId: string;
-  moduleId: string;
-  displayName: string;
   fileUri: string;
-  mimeType: TransferPackage['mimeType'];
   sizeBytes: number;
   sha256: string;
-  manifestJson: string;
-  manifest: LearningPackageManifest;
 }
 
-type PavoNearbyEvents = {
+type Events = {
   onPeersChanged: (event: { peers: NearbyPeer[] }) => void;
-  onVerificationCode: (event: NearbyVerificationRequest) => void;
+  onVerificationCode: (event: NearbyVerification) => void;
   onConnectionStateChanged: (event: NearbyConnectionUpdate) => void;
-  onTransferUpdate: (event: NearbyTransferUpdate) => void;
+  onTextReceived: (event: { peerId: string; text: string }) => void;
+  onTransferProgress: (event: NearbyProgress) => void;
   onFileReceived: (event: NearbyReceivedFile) => void;
+  onIncomingInterrupted: (event: { transferId: string; partialBytes: number }) => void;
+  onUnsolicitedFile: (event: { peerId: string }) => void;
+  onNotificationCancel: (event: Record<string, never>) => void;
 };
 
-interface PavoNearbyModule {
-  addListener<EventName extends keyof PavoNearbyEvents>(
-    eventName: EventName,
-    listener: PavoNearbyEvents[EventName],
-  ): EventSubscription;
+interface PavoNearbyNative {
+  addListener<Name extends keyof Events>(name: Name, listener: Events[Name]): EventSubscription;
   isAvailable(): boolean;
-  requestPermissions(): Promise<unknown>;
-  startAdvertising(displayName: string): Promise<void>;
+  gmsStatus(): 'available' | 'update_required' | 'disabled' | 'missing';
+  requestPermissions(): Promise<{ granted: boolean }>;
+  freeBytes(): number;
+  startAdvertising(name: string): Promise<void>;
   stopAdvertising(): Promise<void>;
   startDiscovery(): Promise<void>;
   stopDiscovery(): Promise<void>;
-  requestConnection(peerId: string): Promise<void>;
+  requestConnection(peerId: string, localName: string): Promise<void>;
   acceptConnection(peerId: string, accept: boolean): Promise<void>;
-  sendFile(peerId: string, metadataJson: string, fileUri: string): Promise<string>;
-  retryTransfer(transferId: string): Promise<string>;
-  cancelTransfer(transferId: string): Promise<void>;
+  disconnect(peerId: string): Promise<void>;
+  stopAll(): Promise<void>;
+  sendText(peerId: string, text: string): Promise<void>;
+  sendFile(peerId: string, fileUri: string, offset: number): Promise<string>;
+  cancelPayload(payloadId: string): Promise<void>;
+  allowIncoming(peerId: string, transferId: string, totalBytes: number, offset: number): void;
+  clearIncoming(peerId: string): void;
+  partialBytes(transferId: string): number;
+  deletePartial(transferId: string): void;
+  startForegroundTransfer(title: string, text: string): boolean;
+  updateForegroundTransfer(text: string, percent: number): void;
+  stopForegroundTransfer(): void;
 }
 
-const nativeModule = requireOptionalNativeModule<PavoNearbyModule>('PavoNearby');
+const native = requireOptionalNativeModule<PavoNearbyNative>('PavoNearby');
 
+export type NearbyAvailability =
+  | { available: true }
+  | { available: false; reason: 'no_native_module' | 'gms_missing' | 'gms_update_required' | 'gms_disabled' };
+
+/** Thin typed bridge to the Kotlin transport. The session protocol lives in nearbyTransfer.ts. */
 export const nearby = {
+  availability(): NearbyAvailability {
+    if (!native) return { available: false, reason: 'no_native_module' };
+    const status = native.gmsStatus();
+    if (status === 'available') return { available: true };
+    return { available: false, reason: status === 'update_required' ? 'gms_update_required' : status === 'disabled' ? 'gms_disabled' : 'gms_missing' };
+  },
   isAvailable(): boolean {
-    return nativeModule?.isAvailable() ?? false;
+    return this.availability().available;
   },
-
-  async advertise(displayName: string): Promise<void> {
-    if (!nativeModule) throw unavailableError();
-    await nativeModule.requestPermissions();
-    await nativeModule.startAdvertising(displayName);
+  native(): PavoNearbyNative {
+    if (!native) throw new Error('Nearby transfer needs the PAVO Android build on a physical device.');
+    return native;
   },
-
-  async discover(): Promise<void> {
-    if (!nativeModule) throw unavailableError();
-    await nativeModule.requestPermissions();
-    await nativeModule.startDiscovery();
-  },
-
-  async connect(peerId: string): Promise<void> {
-    if (!nativeModule) throw unavailableError();
-    await nativeModule.requestConnection(peerId);
-  },
-
-  async answerVerification(peerId: string, accept: boolean): Promise<void> {
-    if (!nativeModule) throw unavailableError();
-    await nativeModule.acceptConnection(peerId, accept);
-  },
-
-  async send(peerId: string, transferPackage: TransferPackage): Promise<string> {
-    if (!nativeModule) throw unavailableError();
-    return nativeModule.sendFile(
-      peerId,
-      JSON.stringify({
-        moduleId: transferPackage.moduleId,
-        displayName: transferPackage.displayName,
-        mimeType: transferPackage.mimeType,
-        sizeBytes: transferPackage.sizeBytes,
-        sha256: transferPackage.sha256,
-        manifest: transferPackage.manifest,
-      }),
-      transferPackage.fileUri,
-    );
-  },
-
-  async retry(transferId: string): Promise<string> {
-    if (!nativeModule) throw unavailableError();
-    return nativeModule.retryTransfer(transferId);
-  },
-
-  async cancel(transferId: string): Promise<void> {
-    if (!nativeModule) throw unavailableError();
-    await nativeModule.cancelTransfer(transferId);
-  },
-
-  addPeerListener(listener: (peers: NearbyPeer[]) => void): EventSubscription | null {
-    return nativeModule?.addListener('onPeersChanged', (event) => listener(event.peers)) ?? null;
-  },
-
-  addTransferListener(listener: (update: NearbyTransferUpdate) => void): EventSubscription | null {
-    return nativeModule?.addListener('onTransferUpdate', listener) ?? null;
-  },
-
-  addVerificationListener(
-    listener: (request: NearbyVerificationRequest) => void,
-  ): EventSubscription | null {
-    return nativeModule?.addListener('onVerificationCode', listener) ?? null;
-  },
-
-  addConnectionListener(
-    listener: (update: NearbyConnectionUpdate) => void,
-  ): EventSubscription | null {
-    return nativeModule?.addListener('onConnectionStateChanged', listener) ?? null;
-  },
-
-  addReceivedFileListener(
-    listener: (file: NearbyReceivedFile) => void,
-  ): EventSubscription | null {
-    return (
-      nativeModule?.addListener('onFileReceived', (file) => {
-        const manifest = parseLearningPackageManifest(
-          JSON.parse(file.manifestJson),
-        );
-        listener({ ...file, manifest });
-      }) ?? null
-    );
-  },
-
-  async stop(): Promise<void> {
-    if (!nativeModule) return;
-    await Promise.all([nativeModule.stopAdvertising(), nativeModule.stopDiscovery()]);
+  on<Name extends keyof Events>(name: Name, listener: Events[Name]): EventSubscription | null {
+    return native?.addListener(name, listener) ?? null;
   },
 };
 
-function unavailableError(): Error {
-  return new Error(
-    'Nearby transfer is unavailable in this build. Install a custom development build on physical devices.',
-  );
-}
+export const NEARBY_UNAVAILABLE_MESSAGES: Record<Exclude<NearbyAvailability, { available: true }>['reason'], string> = {
+  no_native_module: 'Nearby transfer needs the PAVO Android build on a physical device. You can still install a package file.',
+  gms_missing:
+    'This device has no Google Play services, which Nearby Connections needs. Share the .pavo-module file another way and use “Install a package file”.',
+  gms_update_required: 'Update Google Play services on this device to use Nearby transfer.',
+  gms_disabled: 'Turn Google Play services back on in Settings to use Nearby transfer.',
+};
