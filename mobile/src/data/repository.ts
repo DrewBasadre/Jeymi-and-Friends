@@ -45,7 +45,7 @@ import type {
 } from '@/domain/types';
 import { installModulePackage } from '@/services/modulePackages';
 import { keyIdFor } from '@/domain/resultQr';
-import { enrollDeviceKey } from './assessmentRepository';
+import { enrollDeviceKey } from './deviceKeyRepository';
 import { isTeacherQuizModuleId } from '@/services/learningPackages';
 import { getDatabase } from './database';
 import {

@@ -290,20 +290,6 @@ export async function listGradedResults(quizId: string, version: number): Promis
   }));
 }
 
-export async function enrollDeviceKey(studentId: string, publicKeyHex: string, keyId: string): Promise<void> {
-  const database = await getDatabase();
-  await database.runAsync(
-    `INSERT INTO enrolled_device_keys (student_id, public_key, key_id, enrolled_at)
-     VALUES (?, ?, ?, ?)
-     ON CONFLICT(student_id) DO UPDATE SET
-       public_key = excluded.public_key, key_id = excluded.key_id, enrolled_at = excluded.enrolled_at`,
-    studentId,
-    publicKeyHex,
-    keyId,
-    Date.now(),
-  );
-}
-
 /* ── Paper scans ─────────────────────────────────────────────────────── */
 
 export interface PaperScanRecord {
