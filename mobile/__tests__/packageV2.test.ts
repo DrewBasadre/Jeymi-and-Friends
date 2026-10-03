@@ -206,8 +206,13 @@ describe('teacher export bundle', () => {
     expect(teacher.manifest.packageType).toBe('teacher_bundle');
     expect(studentPackageIdFor(teacher.manifest.packageId)).toBe('plants-food');
     expect(Object.keys(teacher.files)).toEqual(
-      expect.arrayContaining(['assessment-guide.md', 'quiz-definition.json', 'module.pdf', 'adaptive-lesson.md']),
+      expect.arrayContaining(['assessment-guide.md', 'quiz-definition.json', 'module.pdf', 'adaptive-lesson.md', 'student-package.pavo-module']),
     );
+    const embedded = readPackage(teacher.files['student-package.pavo-module']!, { now: NOW, audience: 'student' });
+    expect(embedded.manifest.packageId).toBe('plants-food');
+    expect(() =>
+      buildPackage({ manifest: draft, files: { ...lessonFiles(), 'student-package.pavo-module': bundle.studentPackage!.archive } }),
+    ).toThrow('Only a teacher bundle');
     expect(() => readPackage(bundle.teacherPackage.archive, { now: NOW, audience: 'student' })).toThrow('teacher-only');
   });
 

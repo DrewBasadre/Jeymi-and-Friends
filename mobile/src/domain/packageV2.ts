@@ -22,7 +22,10 @@ export const PACKAGE_FILE_TYPES: Record<string, { mimeType: string; maxBytes: nu
   '.jpg': { mimeType: 'image/jpeg', maxBytes: 8 * MB },
   '.mp3': { mimeType: 'audio/mpeg', maxBytes: 32 * MB },
   '.pdf': { mimeType: 'application/pdf', maxBytes: 16 * MB },
+  /** A teacher bundle carries the exact signed student package it pairs with. */
+  '.pavo-module': { mimeType: 'application/vnd.pavo.package+zip', maxBytes: 40 * MB },
 };
+export const EMBEDDED_STUDENT_PACKAGE = 'student-package.pavo-module';
 export const PACKAGE_LIMITS = {
   archiveBytes: 48 * MB,
   expandedBytes: 96 * MB,
@@ -132,6 +135,9 @@ export const packageManifestV2Schema = z
       const leaked = paths.filter((path) => (TEACHER_ONLY_FILES as readonly string[]).includes(path));
       if (leaked.length) issue(`Student packages cannot contain ${leaked.join(', ')}.`, 'files');
     }
+    if (paths.some((path) => path.endsWith('.pavo-module') && (manifest.packageType !== 'teacher_bundle' || path !== EMBEDDED_STUDENT_PACKAGE))) {
+      issue(`Only a teacher bundle may embed ${EMBEDDED_STUDENT_PACKAGE}.`, 'files');
+    }
     if (manifest.packageType === 'teacher_bundle') {
       if (manifest.audience !== 'teacher') issue('Teacher bundles are teacher-only.', 'audience');
       if (manifest.redistribution.studentToStudent) issue('Teacher bundles cannot be shared between students.', 'redistribution');
@@ -161,7 +167,8 @@ export type PackageErrorCode =
   | 'integrity'
   | 'expired'
   | 'incompatible'
-  | 'unauthorized';
+  | 'unauthorized'
+  | 'duplicate';
 
 export class PackageError extends Error {
   constructor(

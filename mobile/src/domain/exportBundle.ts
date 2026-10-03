@@ -10,6 +10,7 @@ import { renderModulePdf } from './modulePdf';
 import { templateFitIssue, type AnswerSheetTemplate } from './omr';
 import { renderAnswerSheetPdf, renderQuizPaperPdf } from './paperPdf';
 import {
+  EMBEDDED_STUDENT_PACKAGE,
   buildPackage,
   teacherBundleIdFor,
   type PackageManifestDraft,
@@ -146,6 +147,7 @@ export async function buildExportBundle(input: ExportBundleInput): Promise<Expor
     teacherFiles['quiz-definition.json'] = strToU8(JSON.stringify(quiz, null, 2));
   }
   if (paper) teacherFiles['answer-sheet-template.json'] = strToU8(JSON.stringify(paper.template, null, 2));
+  if (studentPackage) teacherFiles[EMBEDDED_STUDENT_PACKAGE] = studentPackage.archive;
   const teacherBuilt = buildPackage({
     manifest: {
       ...base,

@@ -124,6 +124,7 @@ import type {
   StudentTabParamList,
 } from '@/navigation/types';
 import { readModuleAloud, stopReading } from '@/services/speech';
+import { ensureDeviceIdentity } from '@/services/deviceIdentity';
 import { useSessionStore } from '@/store/session';
 import {
   colors,
@@ -1299,7 +1300,7 @@ export function QuizReportScreen({ navigation, route }: StackProps<'QuizReport'>
         </View>
       ) : null}
       <Text style={styles.qrNote}>
-        Scan every numbered QR. Correct-answer details are omitted; only missed answers and timing for every question are included.
+        Scan every numbered QR. It lists which questions were missed and the time spent on each, never the answers.
       </Text>
     </Screen>
   );
@@ -1315,10 +1316,14 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
   const [pendingFormat, setPendingFormat] = useState<
     LearningFormat | null | undefined
   >(undefined);
+  const [devicePublicKey, setDevicePublicKey] = useState<string | null>(null);
 
   useEffect(() => {
     if (!student) return;
     void getAdaptiveFormatProfile(student.id).then(setAdaptive);
+    void ensureDeviceIdentity(`student:${student.id}`)
+      .then((identity) => setDevicePublicKey(identity.publicKeyHex))
+      .catch(() => setDevicePublicKey(null));
   }, [student]);
 
   if (!student) return null;
@@ -1326,6 +1331,7 @@ export function StudentProfileScreen({ navigation }: StudentTabProps<'Profile'>)
     student,
     currentLearningFormat:
       adaptive?.manualOverride ?? adaptive?.currentDefaultFormat ?? 'text',
+    devicePublicKey,
   });
 
   return (

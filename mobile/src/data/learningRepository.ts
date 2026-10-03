@@ -259,7 +259,7 @@ async function ensureTeacherQuizActivity(
       'DELETE FROM quiz_questions WHERE module_id = ?',
       moduleId,
     );
-    for (const question of questions) {
+    for (const [position, question] of questions.entries()) {
       const type = {
         'multiple-choice': 'MULTIPLE_CHOICE',
         'fill-in-the-blank': 'FILL_IN_THE_BLANK',
@@ -268,8 +268,8 @@ async function ensureTeacherQuizActivity(
       await database.runAsync(
         `INSERT INTO quiz_questions (
            id, module_id, type, question_text, choices_json, correct_answer,
-           topic_tag
-         ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+           topic_tag, position
+         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
         `${moduleId}:${question.questionId}`,
         moduleId,
         type,
@@ -277,6 +277,7 @@ async function ensureTeacherQuizActivity(
         JSON.stringify(question.options ?? []),
         question.correctAnswer,
         question.conceptId,
+        position + 1,
       );
     }
   });

@@ -75,7 +75,7 @@ describe('PAVO canonical QR envelopes', () => {
     });
   });
 
-  it('encodes timing for every question and answer detail only for misses', () => {
+  it('encodes timing for every question and never the answer key or answer text', () => {
     const payloads = encodeQuizReportParts({
       student,
       module: { id: 'math-1' },
@@ -117,8 +117,8 @@ describe('PAVO canonical QR envelopes', () => {
     expect(decoded.data.missedQuestions).toEqual([
       {
         questionId: 'q2',
-        chosenAnswer: 'B',
-        correctAnswer: 'A',
+        chosenAnswer: '',
+        correctAnswer: '',
         timeSeconds: 15,
       },
     ]);

@@ -44,6 +44,8 @@ import type {
   TeacherLearnerRow,
 } from '@/domain/types';
 import { installModulePackage } from '@/services/modulePackages';
+import { keyIdFor } from '@/domain/resultQr';
+import { enrollDeviceKey } from './assessmentRepository';
 import { isTeacherQuizModuleId } from '@/services/learningPackages';
 import { getDatabase } from './database';
 import {
@@ -386,7 +388,7 @@ async function saveModulePackage(input: {
   );
   await saveModuleManifest(manifest, true);
   if (installed.quizQuestions.length > 0) {
-    for (const question of installed.quizQuestions) {
+    for (const [position, question] of installed.quizQuestions.entries()) {
       const type: QuizQuestion['type'] = {
         'multiple-choice': 'MULTIPLE_CHOICE',
         'fill-in-the-blank': 'FILL_IN_THE_BLANK',
@@ -394,8 +396,8 @@ async function saveModulePackage(input: {
       }[question.type] as QuizQuestion['type'];
       await database.runAsync(
         `INSERT OR REPLACE INTO quiz_questions (
-          id, module_id, type, question_text, choices_json, correct_answer, topic_tag
-        ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+          id, module_id, type, question_text, choices_json, correct_answer, topic_tag, position
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
         question.questionId,
         moduleId,
         type,
@@ -403,6 +405,7 @@ async function saveModulePackage(input: {
         JSON.stringify(question.options ?? []),
         question.correctAnswer,
         question.conceptId,
+        position + 1,
       );
     }
   } else {
@@ -425,7 +428,7 @@ async function saveModulePackage(input: {
 export async function getQuestions(moduleId: string): Promise<QuizQuestion[]> {
   const database = await getDatabase();
   const rows = await database.getAllAsync<QuestionRow>(
-    'SELECT * FROM quiz_questions WHERE module_id = ? ORDER BY id',
+    'SELECT * FROM quiz_questions WHERE module_id = ? ORDER BY position IS NULL, position, rowid',
     moduleId,
   );
   return rows.map(mapQuestion);
@@ -933,6 +936,10 @@ export async function importQrReport(raw: string): Promise<string> {
       student.id,
       profile.currentLearningFormat,
     );
+    if (profile.devicePublicKey) {
+      await enrollDeviceKey(student.id, profile.devicePublicKey, keyIdFor(profile.devicePublicKey));
+      return `Placed ${student.displayName} in ${activeSection.name} and enrolled their device key for signed results.`;
+    }
     return `Placed ${student.displayName} in ${activeSection.name}.`;
   }
 

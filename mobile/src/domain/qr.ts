@@ -22,6 +22,8 @@ export const profileQrSchema = z.object({
   parentName: z.string().max(160).optional(),
   parentPhone: z.string().max(32).optional(),
   currentLearningFormat: z.enum(['text', 'audio', 'visual', 'kinesthetic']),
+  /** Ed25519 public key that signs this learner's result QR codes. */
+  devicePublicKey: z.string().regex(/^[a-f0-9]{64}$/).optional(),
 });
 
 export const assignmentTaskSchema = z.discriminatedUnion('type', [
@@ -186,6 +188,7 @@ export function decodeQrPayload(raw: string): DecodedQrPayload {
 export function encodeProfileQr(args: {
   student: Student;
   currentLearningFormat: LearningFormat;
+  devicePublicKey?: string | null;
 }): string {
   return JSON.stringify(
     profileQrSchema.parse({
@@ -201,6 +204,7 @@ export function encodeProfileQr(args: {
       parentName: args.student.parentName,
       parentPhone: args.student.parentPhone,
       currentLearningFormat: args.currentLearningFormat,
+      ...(args.devicePublicKey ? { devicePublicKey: args.devicePublicKey } : {}),
     }),
   );
 }
@@ -236,7 +240,6 @@ export function encodeQuizReportParts(args: {
   maxPayloadCharacters?: number;
 }): string[] {
   const maxPayloadCharacters = args.maxPayloadCharacters ?? 1_800;
-  const questionById = new Map(args.questions.map((question) => [question.id, question]));
   const reportId = reportIdForAttempt(args.attempt.id);
   const report: QuizReport = quizReportSchema.parse({
     schemaVersion: '1.0',
@@ -262,12 +265,13 @@ export function encodeQuizReportParts(args: {
         timeSeconds: Math.max(0, Math.round(response.elapsedMs / 1_000)),
       })),
     },
+    // Never put the answer key or the learner's answer text in a QR code.
     missedQuestions: args.attempt.responses
       .filter((response) => !response.isCorrect)
       .map((response) => ({
         questionId: response.questionId,
-        chosenAnswer: response.answer,
-        correctAnswer: questionById.get(response.questionId)?.correctAnswer ?? '',
+        chosenAnswer: '',
+        correctAnswer: '',
         timeSeconds: Math.max(0, Math.round(response.elapsedMs / 1_000)),
       })),
   });
