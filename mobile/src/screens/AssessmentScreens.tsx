@@ -813,7 +813,7 @@ function QuestionEditor({
                   const choices = question.choices.map((item, position) => (position === choiceIndex ? value : item));
                   set({
                     choices,
-                    answer: question.answer === choice ? value : question.answer,
+                    answer: question.answer !== '' && question.answer === choice ? value : question.answer,
                     acceptedAnswers: question.acceptedAnswers.map((accepted) => (accepted === choice ? value : accepted)),
                   });
                 }}

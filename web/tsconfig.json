@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "types": ["vite/client"],
+    "paths": {
+      "@pavo/domain/*": ["../mobile/src/domain/*"],
+      "zod": ["./node_modules/zod"],
+      "fflate": ["./node_modules/fflate"],
+      "pdf-lib": ["./node_modules/pdf-lib"],
+      "qrcode": ["./node_modules/@types/qrcode"],
+      "@noble/hashes/*": ["./node_modules/@noble/hashes/*"],
+      "@noble/curves/*": ["./node_modules/@noble/curves/*"]
+    }
+  },
+  "include": ["src", "vite.config.ts", "../mobile/src/domain"]
+}
