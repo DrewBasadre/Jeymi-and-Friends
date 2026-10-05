@@ -1,7 +1,26 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  BookOpen,
+  Eye,
+  FileArchive,
+  FilePlus2,
+  FileText,
+  FileUp,
+  ListChecks,
+  Lock,
+  PackageCheck,
+  PenLine,
+  Settings2,
+  Smartphone,
+  Sparkles,
+  Trash2,
+  Wifi,
+  WifiOff,
+  X,
+} from 'lucide-react';
 import { backend, signIn, type TeacherSession } from './backend';
 import { importFile } from './convert';
-import { newProject, newQuizDraft, nextVersion, readableError, type Project } from './project';
+import { demoProjects, newProject, newQuizDraft, nextVersion, readableError, type Project } from './project';
 import { projectStore } from './storage';
 import { Callout, Field } from './components/common';
 import { DetailsTab } from './components/DetailsTab';
@@ -9,20 +28,22 @@ import { ExportTab } from './components/ExportTab';
 import { LessonEditor } from './components/LessonEditor';
 import { PreviewTab } from './components/PreviewTab';
 import { QuizEditor } from './components/QuizEditor';
+import { Welcome } from './components/Welcome';
 
 type Tab = 'details' | 'lesson' | 'assessment' | 'preview' | 'export';
-const TABS: Array<{ id: Tab; label: string }> = [
-  { id: 'details', label: 'Details' },
-  { id: 'lesson', label: 'Lesson' },
-  { id: 'assessment', label: 'Assessment' },
-  { id: 'preview', label: 'Preview' },
-  { id: 'export', label: 'Export' },
+const TABS: Array<{ id: Tab; label: string; icon: typeof Eye }> = [
+  { id: 'details', label: 'Details', icon: Settings2 },
+  { id: 'lesson', label: 'Lesson', icon: BookOpen },
+  { id: 'assessment', label: 'Assessment', icon: ListChecks },
+  { id: 'preview', label: 'Preview', icon: Eye },
+  { id: 'export', label: 'Export', icon: FileArchive },
 ];
 const LIFECYCLE_KEYS = new Set<keyof Project>(['status', 'sync', 'publishedAt', 'exportedAt']);
 
 export function App() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [currentId, setCurrentId] = useState<string | null>(null);
+  const [loaded, setLoaded] = useState(false);
   const [tab, setTab] = useState<Tab>('details');
   const [online, setOnline] = useState(navigator.onLine);
   const [session, setSession] = useState<TeacherSession | null>(null);
@@ -35,6 +56,7 @@ export function App() {
       const sorted = items.sort((a, b) => b.updatedAt - a.updatedAt);
       setProjects(sorted);
       setCurrentId(sorted[0]?.id ?? null);
+      setLoaded(true);
     });
     const update = () => setOnline(navigator.onLine);
     window.addEventListener('online', update);
@@ -104,27 +126,53 @@ export function App() {
     }
   }
 
+  function loadDemo() {
+    const existing = new Set(projects.map((project) => project.id));
+    const demos = demoProjects(author).filter((project) => !existing.has(project.id));
+    setProjects((items) => [...demos, ...items]);
+    setCurrentId(demos[0]?.id ?? currentId);
+    setTab('preview');
+    demos.forEach((project) => void projectStore.save(project));
+    if (demos.length) setNotice({ tone: 'success', text: 'Three demo lessons are ready: one exported, one published, one still a draft.' });
+  }
+
   if (mode === 'choose') {
     return <SignIn onDemo={() => setMode('demo')} onSignedIn={(value) => { setSession(value); setMode('signed-in'); }} />;
   }
 
+  const hasDemo = projects.some((project) => project.id.startsWith('demo-'));
+  const topbar = (
+    <header className="topbar">
+      <span className="brand">
+        <PavoMark /> PAVO <small>Teacher Studio</small>
+      </span>
+      <span className="spacer" />
+      <span className={`pill ${online ? 'online' : 'offline'}`}>
+        {online ? <Wifi size={14} /> : <WifiOff size={14} />} {online ? 'Online' : 'Offline · drafts save locally'}
+      </span>
+      <span className="pill online identity">{session ? session.email : 'Demo mode · nothing leaves this browser'}</span>
+    </header>
+  );
+
+  if (loaded && projects.length === 0) {
+    return (
+      <div className="shell welcome-shell">
+        {topbar}
+        <Welcome onDemo={loadDemo} onBlank={create} onImport={(file) => void handleImport(file)} />
+      </div>
+    );
+  }
+
   return (
     <div className="shell">
-      <header className="topbar">
-        <span className="brand">
-          PAVO <small>Teacher Studio</small>
-        </span>
-        <span className="spacer" />
-        <span className={`pill ${online ? 'online' : 'offline'}`}>{online ? 'Online' : 'Offline — drafts save locally'}</span>
-        <span className="pill online">{session ? session.email : 'Demo mode · nothing leaves this browser'}</span>
-      </header>
+      {topbar}
 
       <nav className="sidebar" aria-label="Projects">
         <button type="button" className="button" onClick={create}>
-          New lesson or quiz
+          <FilePlus2 size={18} /> New lesson or quiz
         </button>
         <label className="button secondary">
-          Import a file
+          <FileUp size={18} /> Import a file
           <input
             className="visually-hidden"
             type="file"
@@ -136,49 +184,69 @@ export function App() {
             }}
           />
         </label>
-        <p className="small muted">Imports: Markdown or text lessons, quiz JSON, and PAVO teacher bundles.</p>
+        <h2 className="sidebar-heading">Your packages</h2>
         <ul className="project-list">
-          {projects.map((project) => (
-            <li key={project.id}>
-              <button type="button" className="project-item" aria-current={project.id === currentId} onClick={() => setCurrentId(project.id)}>
-                <strong>{project.title || 'Untitled'}</strong>
-                <span className="meta">
-                  v{project.version} · <span className={`pill ${project.status}`}>{project.status}</span>
-                  {project.sync === 'synced' ? ' · synced' : project.sync === 'syncing' ? ' · syncing' : ''}
-                </span>
-              </button>
-            </li>
-          ))}
+          {projects.map((project) => {
+            const Icon = projectIcon(project);
+            return (
+              <li key={project.id}>
+                <button type="button" className="project-item" aria-current={project.id === currentId} onClick={() => setCurrentId(project.id)}>
+                  <span className={`project-icon ${subjectClass(project.subject)}`}>
+                    <Icon size={18} aria-hidden="true" />
+                  </span>
+                  <span className="project-text">
+                    <strong>{project.title || 'Untitled'}</strong>
+                    <span className="meta">
+                      {project.subject} · v{project.version}
+                      {project.sync === 'synced' ? ' · synced' : project.sync === 'syncing' ? ' · syncing' : ''}
+                    </span>
+                  </span>
+                  <span className={`dot ${project.status}`} title={project.status} aria-label={project.status} />
+                </button>
+              </li>
+            );
+          })}
         </ul>
+        {!hasDemo ? (
+          <button type="button" className="button ghost small sidebar-demo" onClick={loadDemo}>
+            <Sparkles size={16} /> Add the demo library
+          </button>
+        ) : null}
       </nav>
 
       <main className="main">
         {notice ? (
-          <div role="status">
-            <Callout tone={notice.tone} title={notice.tone === 'error' ? 'Could not import' : 'Done'}>
-              {notice.text}
-            </Callout>
-            <button type="button" className="button ghost small" onClick={() => setNotice(null)}>
-              Dismiss
+          <div className={`toast ${notice.tone}`} role="status">
+            <span>{notice.text}</span>
+            <button type="button" className="icon-button" aria-label="Dismiss" onClick={() => setNotice(null)}>
+              <X size={16} />
             </button>
           </div>
         ) : null}
         {!current ? (
           <div className="card empty">
-            <h2>Create your first package</h2>
-            <p>Write a lesson, a paper quiz, a digital mini-quiz, or all three, then export a package your PAVO Android app can install offline.</p>
-            <button type="button" className="button" onClick={create}>
-              New lesson or quiz
-            </button>
+            <h2>Pick a package</h2>
+            <p>Choose one on the left, or start a new lesson.</p>
           </div>
         ) : (
           <>
-            <div className="row between">
-              <div>
-                <span className="overline">
-                  {current.status === 'draft' ? 'Draft' : current.status === 'published' ? 'Published' : 'Exported'} · version {current.version}
-                </span>
+            <div className="page-head">
+              <div className="stack tight">
                 <h1 className="title">{current.title || 'Untitled'}</h1>
+                <div className="facts">
+                  <span className={`pill ${current.status}`}>
+                    {current.status === 'draft' ? <PenLine size={13} /> : current.status === 'published' ? <PackageCheck size={13} /> : <Lock size={13} />}
+                    {STATUS_LABEL[current.status]}
+                  </span>
+                  <span>Version {current.version}</span>
+                  <span>Grade {current.gradeLevel} {current.subject}</span>
+                  {current.lesson ? <span>{current.lesson.blocks.length}-step lesson · {current.lesson.estimatedMinutes} min</span> : null}
+                  {current.quiz?.mode ? (
+                    <span>
+                      {current.quiz.mode === 'paper_omr' ? 'Paper quiz' : 'Digital mini-quiz'} · {current.quiz.questions.length} questions
+                    </span>
+                  ) : null}
+                </div>
               </div>
               <button
                 type="button"
@@ -190,7 +258,7 @@ export function App() {
                   setCurrentId(null);
                 }}
               >
-                Delete draft
+                <Trash2 size={16} /> Delete
               </button>
             </div>
             {current.status !== 'draft' ? (
@@ -199,9 +267,9 @@ export function App() {
               </Callout>
             ) : null}
             <div className="tabs" role="tablist">
-              {TABS.map((item) => (
-                <button key={item.id} type="button" role="tab" className="tab" aria-selected={tab === item.id} onClick={() => setTab(item.id)}>
-                  {item.label}
+              {TABS.map(({ id, label, icon: Icon }) => (
+                <button key={id} type="button" role="tab" className="tab" aria-selected={tab === id} onClick={() => setTab(id)}>
+                  <Icon size={16} aria-hidden="true" /> {label}
                 </button>
               ))}
             </div>
@@ -230,6 +298,34 @@ export function App() {
   );
 }
 
+const STATUS_LABEL: Record<Project['status'], string> = { draft: 'Draft', published: 'Published', exported: 'Exported' };
+
+function projectIcon(project: Project) {
+  if (project.quiz?.mode === 'paper_omr') return FileText;
+  if (project.quiz?.mode === 'digital_mini_quiz') return Smartphone;
+  return BookOpen;
+}
+
+function subjectClass(subject: string): string {
+  const key = subject.toLowerCase();
+  if (key.startsWith('math')) return 'math';
+  if (key.startsWith('english') || key.startsWith('filipino')) return 'english';
+  if (key.startsWith('science')) return 'science';
+  return 'other';
+}
+
+/** Peacock-eye mark: the brand's gold eye on a teal plume. */
+function PavoMark() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+      <ellipse cx="12" cy="12" rx="9" ry="11" fill="#0f766e" />
+      <ellipse cx="12" cy="11" rx="5.5" ry="7" fill="#0e6b93" />
+      <circle cx="12" cy="10" r="3.4" fill="#e0a11b" />
+      <circle cx="12" cy="10" r="1.4" fill="#0b3a38" />
+    </svg>
+  );
+}
+
 function SignIn({ onDemo, onSignedIn }: { onDemo: () => void; onSignedIn: (session: TeacherSession) => void }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -238,7 +334,7 @@ function SignIn({ onDemo, onSignedIn }: { onDemo: () => void; onSignedIn: (sessi
   return (
     <main className="main" style={{ margin: '48px auto', maxWidth: 440 }}>
       <div className="card">
-        <span className="overline">PAVO Teacher Studio</span>
+        <span className="brand on-light"><PavoMark /> PAVO Teacher Studio</span>
         <h1 className="title">Sign in</h1>
         <form
           className="stack"

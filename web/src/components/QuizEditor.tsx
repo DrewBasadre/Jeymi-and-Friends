@@ -1,3 +1,4 @@
+import { ArrowDown, ArrowUp, Copy, FileText, Plus, Smartphone, X } from 'lucide-react';
 import { useState } from 'react';
 import { CHOICE_LABELS, type AssessmentQuestion } from '@pavo/domain/assessmentModel';
 import { STANDARD_TEMPLATE_OPTIONS, templateFitIssue } from '@pavo/domain/omr';
@@ -35,10 +36,12 @@ export function QuizEditor({ project, onChange }: { project: Project; onChange: 
             aria-pressed={quiz.mode === 'paper_omr'}
             onClick={() => set({ mode: 'paper_omr', questions: quiz.questions.filter((question) => KINDS_FOR_MODE.paper_omr.includes(question.kind)), forms: null })}
           >
+            <span className="mode-icon"><FileText size={20} /></span>
             <strong>Paper quiz</strong>
             <span className="small muted">Printed questions and a PAVO bubble sheet, graded offline by the teacher's phone. No student device needed.</span>
           </button>
           <button type="button" className="mode-card" aria-pressed={quiz.mode === 'digital_mini_quiz'} onClick={() => set({ mode: 'digital_mini_quiz', forms: null, masterKey: null })}>
+            <span className="mode-icon"><Smartphone size={20} /></span>
             <strong>Digital mini-quiz</strong>
             <span className="small muted">A short check answered in the PAVO app and returned to you as a compact result QR.</span>
           </button>
@@ -84,7 +87,7 @@ export function QuizEditor({ project, onChange }: { project: Project; onChange: 
                   className="button secondary small"
                   onClick={() => set({ questions: [...quiz.questions, newQuestion(kind, `q${Date.now().toString(36)}`, { topic: quiz.questions.at(-1)?.topic ?? '', competency: quiz.questions.at(-1)?.competency ?? '' })], forms: null })}
                 >
-                  + {KIND_LABELS[kind]}
+                  <Plus size={16} /> {KIND_LABELS[kind]}
                 </button>
               ))}
             </div>
@@ -120,16 +123,16 @@ function QuestionCard({
   const [notes, setNotes] = useState(false);
   const set = (patch: Partial<AssessmentQuestion>) => onChange({ ...question, ...patch });
   return (
-    <div className="card accent">
+    <div className="card block-card">
       <div className="row between">
         <span className="block-label">
           Q{index + 1} · {KIND_LABELS[question.kind]} · <span className="mono">{question.id}</span>
         </span>
         <div className="row">
-          <button type="button" className="icon-button" aria-label="Move up" disabled={index === 0} onClick={() => onMove(-1)}>↑</button>
-          <button type="button" className="icon-button" aria-label="Move down" disabled={index === count - 1} onClick={() => onMove(1)}>↓</button>
-          <button type="button" className="icon-button" aria-label="Duplicate" onClick={onDuplicate}>⧉</button>
-          <button type="button" className="icon-button" aria-label="Remove" onClick={onRemove}>×</button>
+          <button type="button" className="icon-button" aria-label="Move up" disabled={index === 0} onClick={() => onMove(-1)}><ArrowUp size={16} /></button>
+          <button type="button" className="icon-button" aria-label="Move down" disabled={index === count - 1} onClick={() => onMove(1)}><ArrowDown size={16} /></button>
+          <button type="button" className="icon-button" aria-label="Duplicate" onClick={onDuplicate}><Copy size={16} /></button>
+          <button type="button" className="icon-button" aria-label="Remove" onClick={onRemove}><X size={16} /></button>
         </div>
       </div>
       <Field label="Question" value={question.prompt} onChange={(prompt) => set({ prompt })} />

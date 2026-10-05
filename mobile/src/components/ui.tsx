@@ -612,6 +612,8 @@ export function Chip({
         <Icon size={size === 'sm' ? 13 : 14} color={selected ? colors.white : colors.inkMuted} />
       ) : null}
       <Text
+        numberOfLines={1}
+        textBreakStrategy="simple"
         style={[
           styles.chipText,
           size === 'sm' && styles.chipTextSm,

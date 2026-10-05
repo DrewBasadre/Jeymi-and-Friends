@@ -264,11 +264,13 @@ export function AssessmentDetailScreen({ navigation, route }: StackProps<'Assess
           <CardHeader icon={Printer} title="Paper" subtitle={template ? `Answer sheet ${template.templateId}` : 'Answer sheet unavailable'} />
           <PrimaryButton label="Scan answer sheets" icon={ScanLine} onPress={() => navigation.navigate('PaperScan', { quizId: guide.quizId, version: guide.version, mode: 'grade' })} />
           {guide.forms.map((form) => (
-            <View key={form.code} style={styles.row}>
+            <View key={form.code}>
               <Text style={styles.formLabel}>Form {form.code}</Text>
-              <Chip size="sm" label="Quiz paper" icon={FileText} onPress={() => void run('print', () => printables('paper', form.code))} />
-              <Chip size="sm" label="Answer sheet" icon={Printer} onPress={() => void run('print', () => printables('sheet', form.code))} />
-              <Chip size="sm" label="Class pack" icon={Layers} onPress={() => void run('print', () => printables('pack', form.code))} />
+              <View style={styles.row}>
+                <Chip size="sm" label="Quiz paper" icon={FileText} onPress={() => void run('print', () => printables('paper', form.code))} />
+                <Chip size="sm" label="Answer sheet" icon={Printer} onPress={() => void run('print', () => printables('sheet', form.code))} />
+                <Chip size="sm" label="Class pack" icon={Layers} onPress={() => void run('print', () => printables('pack', form.code))} />
+              </View>
             </View>
           ))}
           <Text style={styles.caption}>
@@ -1151,7 +1153,7 @@ const styles = StyleSheet.create({
   caption: { ...text.caption, color: colors.inkMuted, fontWeight: '500' },
   warn: { ...text.caption, color: colors.warning, fontWeight: '700' },
   itemTitle: { ...text.bodyStrong, color: colors.ink, flexShrink: 1 },
-  formLabel: { ...text.label, color: colors.ink, fontWeight: '800', width: 56 },
+  formLabel: { ...text.label, color: colors.ink, fontWeight: '800', marginTop: spacing.sm, marginBottom: spacing.xs },
   barRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   barLabel: { ...text.caption, color: colors.inkMuted, width: 96 },
   barValue: { ...text.caption, color: colors.ink, fontWeight: '800', width: 40, textAlign: 'right' },

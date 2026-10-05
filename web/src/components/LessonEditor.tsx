@@ -1,3 +1,4 @@
+import { ArrowDown, ArrowUp, X } from 'lucide-react';
 import { useState } from 'react';
 import { LESSON_BLOCK_LABELS, LESSON_BLOCK_TYPES, type LessonBlock, type LessonBlockType } from '@pavo/domain/adaptiveLesson';
 import { backend, requestAiDraft } from '../backend';
@@ -131,15 +132,15 @@ export function LessonEditor({ project, onChange }: { project: Project; onChange
       </div>
 
       {lesson.blocks.map((block, index) => (
-        <div key={block.id} className="card accent">
+        <div key={block.id} className="card block-card">
           <div className="row between">
             <span className="block-label">
               {index + 1}. {LESSON_BLOCK_LABELS[block.type]}
             </span>
             <div className="row">
-              <button type="button" className="icon-button" aria-label="Move up" disabled={index === 0} onClick={() => move(index, -1)}>↑</button>
-              <button type="button" className="icon-button" aria-label="Move down" disabled={index === lesson.blocks.length - 1} onClick={() => move(index, 1)}>↓</button>
-              <button type="button" className="icon-button" aria-label="Remove block" onClick={() => setBlocks(lesson.blocks.filter((_, position) => position !== index))}>×</button>
+              <button type="button" className="icon-button" aria-label="Move up" disabled={index === 0} onClick={() => move(index, -1)}><ArrowUp size={16} /></button>
+              <button type="button" className="icon-button" aria-label="Move down" disabled={index === lesson.blocks.length - 1} onClick={() => move(index, 1)}><ArrowDown size={16} /></button>
+              <button type="button" className="icon-button" aria-label="Remove block" onClick={() => setBlocks(lesson.blocks.filter((_, position) => position !== index))}><X size={16} /></button>
             </div>
           </div>
           {block.type !== 'objective' && block.type !== 'checkpoint' ? (
@@ -225,7 +226,7 @@ function BlockBody({ block, project, onChange }: { block: LessonBlock; project: 
               onChange={(event) => onChange({ check: { ...check, choices: check.choices.map((item, position) => (position === index ? { ...item, text: event.target.value } : item)) } })}
             />
             <button type="button" className="icon-button" aria-label="Remove choice" onClick={() => onChange({ check: { ...check, choices: check.choices.filter((_, position) => position !== index) } })}>
-              ×
+              <X size={16} />
             </button>
           </div>
         ))}

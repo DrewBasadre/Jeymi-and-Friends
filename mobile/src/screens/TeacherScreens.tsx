@@ -254,7 +254,7 @@ export function TeacherHomeScreen({ navigation }: TeacherTabProps<'TeacherHome'>
           <View style={styles.heroTop}>
             <View style={styles.flex}>
               <Text style={styles.heroOverline}>
-                {scopeLabel.toUpperCase()}
+                {scope === 'all' ? 'CLASS OVERVIEW' : `GRADE ${selectedSection?.gradeLevel ?? ''} SECTION`}
               </Text>
               <Text style={styles.heroTitle} numberOfLines={2}>
                 {scopeLabel}

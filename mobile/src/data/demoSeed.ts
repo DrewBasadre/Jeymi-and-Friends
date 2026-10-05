@@ -1,5 +1,6 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
 import { getDatabase, resetDatabaseForDevelopment } from './database';
+import { seedDemoAssessments } from './demoAssessments';
 import { saveStudent } from './repository';
 import type { LearningFormat, Subject } from '@/domain/types';
 
@@ -401,6 +402,20 @@ export async function seedDemoData(): Promise<{ studentNumber: string; pin: stri
   const due = (days: number) => new Date(created + days * DAY).toISOString().slice(0, 10);
   await seedTask(db, mariaId, 'module', 'demo_sci_matter', due(2), SECTION_NAME, issuedAt);
   await seedTask(db, mariaId, 'quiz', 'demo_math_fractions', due(4), SECTION_NAME, issuedAt);
+
+  // Offline assessment demo: lessons, a digital mini-quiz Maria can take live,
+  // and a paper quiz with a scanned class set behind the analytics.
+  await seedDemoAssessments({
+    teacherId,
+    teacherName: DEMO_TEACHER.name,
+    sectionLabel: SECTION_NAME,
+    learners: LEARNERS.map((learner) => ({
+      studentId: idByKey.get(learner.key)!,
+      skill: learner.scores.reduce((sum, score) => sum + score, 0) / (learner.scores.length * 5),
+    })),
+    liveStudentId: mariaId,
+    now: created,
+  });
 
   return { studentNumber: DEMO_STUDENT.studentNumber, pin: DEMO_STUDENT.pin };
 }

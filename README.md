@@ -178,18 +178,28 @@ flowchart LR
    summary.
 7. Review section leaderboards and online/offline weekly learning evidence.
 
-Offline assessment walkthrough:
+Offline assessment walkthrough (about 5 minutes; both apps ship with matching
+demo content, so nothing has to be typed):
 
-1. In `web`, run `npm run dev` and create a lesson.
-2. Choose **Digital mini-quiz**, add questions, publish, and export the bundle.
-3. On the teacher phone, use **Install a quiz or teacher bundle file** to install the
-   teacher bundle.
-4. Send the student package to a student phone with **Send nearby**.
-5. The student completes the quiz offline and shows the result QR.
-6. The teacher taps **Scan student result** and scans the QR to see item analysis
-   and a remediation plan.
-7. To test paper mode, create a paper quiz instead and print it from the
-   paper PDFs in the export. Then use **Scan answer sheets** on the teacher phone.
+1. **Web studio.** In `web`, run `npm run dev` and choose **Explore the demo
+   library**. Three Grade 5 packages load:
+   - *How plants make food* (digital mini-quiz, exported)
+   - *Adding dissimilar fractions* (paper quiz with forms A and B, published)
+   - *Subject–verb agreement* (lesson-only draft)
+2. **Show the lesson.** Open **Preview** and step through the lesson in the
+   phone frame, including the hints and the knowledge check.
+3. **Export.** On **Export**, build the bundle and walk through what goes to
+   students, what stays with the teacher, and what gets printed.
+4. **Student phone.** On Android, **Explore a demo classroom** signs in as
+   Maria. Under **Modules → From your teacher**, open the plants lesson, then take
+   *Plants make food: mini-quiz* and show the result QR.
+5. **Teacher phone.** Sign out and continue as teacher (`T-2026`). **Quizzes**
+   already holds both assessments with a class set of results:
+   - The paper quiz shows score distribution, competencies, and likely
+     misconceptions, with stats for each form.
+   - **Scan student result** imports Maria's QR live.
+6. **Paper mode.** Print a form from the paper quiz and grade it with
+   **Scan answer sheets**.
 
 ## Known MVP Limits
 

@@ -4,6 +4,7 @@ import type { ExportBundleInput } from '@pavo/domain/exportBundle';
 import { buildAnswerSheetTemplate, standardTemplate, templateFitIssue } from '@pavo/domain/omr';
 import type { LICENSES } from '@pavo/domain/packageV2';
 import { buildQuizFromDraft, type QuizDraftInput } from '@pavo/domain/quizAuthoring';
+import { DEMO_PACKAGES } from '@pavo/domain/demoContent';
 
 export type ProjectStatus = 'draft' | 'published' | 'exported';
 export type SyncState = 'local' | 'syncing' | 'synced' | 'error';
@@ -85,6 +86,33 @@ export function newProject(author: { id: string; name: string }, now = Date.now(
     publishedAt: null,
     exportedAt: null,
   };
+}
+
+/**
+ * The shared demo library in three lifecycle states: exported (digital
+ * mini-quiz), published (paper quiz), and a draft still being written.
+ */
+export function demoProjects(author: { id: string; name: string }, now = Date.now()): Project[] {
+  const states: Array<Pick<Project, 'status' | 'publishedAt' | 'exportedAt'>> = [
+    { status: 'exported', publishedAt: now - 3 * 86_400_000, exportedAt: now - 3 * 86_400_000 },
+    { status: 'published', publishedAt: now - 86_400_000, exportedAt: null },
+    { status: 'draft', publishedAt: null, exportedAt: null },
+  ];
+  return DEMO_PACKAGES.map((demo, index) => ({
+    ...newProject(author, now),
+    id: demo.id,
+    title: demo.title,
+    gradeLevel: demo.gradeLevel,
+    subject: demo.subject,
+    competencies: demo.competencies,
+    authors: [author.name],
+    notice: 'Original PAVO demo content.',
+    lesson: demo.lesson,
+    quiz: demo.quiz,
+    paper: { sectionLabel: 'Grade 5 · Section Mabini', roster: '' },
+    updatedAt: now - index * 3_600_000,
+    ...states[index]!,
+  }));
 }
 
 export function newQuizDraft(project: Pick<Project, 'id' | 'version' | 'title' | 'gradeLevel' | 'subject'>): QuizDraftInput {

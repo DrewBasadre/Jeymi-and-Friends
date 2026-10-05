@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Square } from 'lucide-react';
 import { LESSON_BLOCK_LABELS, checkAnswer } from '@pavo/domain/adaptiveLesson';
 import { CHOICE_LABELS, buildStudentQuiz } from '@pavo/domain/assessmentModel';
 import { buildQuizFromDraft } from '@pavo/domain/quizAuthoring';
@@ -7,15 +8,21 @@ import { Callout, Markdown, imageUrl } from './common';
 
 export function PreviewTab({ project }: { project: Project }) {
   return (
-    <div className="grid-2">
-      <div className="stack">
-        <h2>Lesson as students see it</h2>
-        {project.lesson ? <LessonPreview project={project} /> : <p className="muted">No lesson in this package.</p>}
-      </div>
-      <div className="stack">
-        <h2>Assessment preview</h2>
+    <div className="preview-grid">
+      <section className="stack">
+        <div className="stack tight">
+          <h2>Lesson</h2>
+          <p className="small muted">Tap through it the way a learner would on their phone.</p>
+        </div>
+        {project.lesson ? <LessonPreview project={project} /> : <Callout tone="info" title="No lesson">This package only carries an assessment.</Callout>}
+      </section>
+      <section className="stack">
+        <div className="stack tight">
+          <h2>Assessment</h2>
+          <p className="small muted">Built from the student package, so it shows exactly what ships.</p>
+        </div>
         <QuizPreview project={project} />
-      </div>
+      </section>
     </div>
   );
 }
@@ -33,11 +40,16 @@ function LessonPreview({ project }: { project: Project }) {
     setPicked(null);
   };
   return (
-    <div className="preview" aria-label="Phone preview">
-      <span className="overline">
-        Step {step + 1} of {lesson.blocks.length} · {LESSON_BLOCK_LABELS[block.type]}
-      </span>
-      <strong>{lesson.title}</strong>
+    <div className="phone" aria-label="Phone preview of the lesson">
+      <div className="phone-bar">
+        <strong>{lesson.title}</strong>
+        <span className="small muted">
+          Step {step + 1} of {lesson.blocks.length} · {LESSON_BLOCK_LABELS[block.type]}
+        </span>
+      </div>
+      <div className="meter thin" aria-hidden="true">
+        <span style={{ width: `${((step + 1) / lesson.blocks.length) * 100}%` }} />
+      </div>
       <div className={`step ${block.type === 'check' ? 'check' : ''}`}>
         <span className="block-label">{LESSON_BLOCK_LABELS[block.type]}</span>
         {block.image ? (
@@ -77,7 +89,9 @@ function LessonPreview({ project }: { project: Project }) {
         {block.items ? (
           <ul className="checklist">
             {block.items.map((item, index) => (
-              <li key={index}>☐ {item}</li>
+              <li key={index}>
+                <Square size={16} aria-hidden="true" /> {item}
+              </li>
             ))}
           </ul>
         ) : null}
@@ -109,18 +123,20 @@ function QuizPreview({ project }: { project: Project }) {
   if (quiz.mode === 'paper_omr') {
     return (
       <Callout tone="info" title="Paper quiz">
-        Use the print buttons in the Assessment tab to open the quiz paper and answer sheet exactly as they will print.
+        Paper quizzes are printed, not shown on phones. Open Quiz paper PDF and Answer sheet PDF in the Assessment tab to see them exactly as they will print.
       </Callout>
     );
   }
   const studentQuiz = buildStudentQuiz(quiz);
   return (
-    <div className="preview">
-      <span className="overline">
-        Mini-quiz · {studentQuiz.questions.length} questions
-        {studentQuiz.policy.timeLimitMinutes ? ` · ${studentQuiz.policy.timeLimitMinutes} min` : ''}
-      </span>
-      <strong>{studentQuiz.title}</strong>
+    <div className="phone" aria-label="Phone preview of the mini-quiz">
+      <div className="phone-bar">
+        <strong>{studentQuiz.title}</strong>
+        <span className="small muted">
+          {studentQuiz.questions.length} questions
+          {studentQuiz.policy.timeLimitMinutes ? ` · ${studentQuiz.policy.timeLimitMinutes} min` : ''}
+        </span>
+      </div>
       {studentQuiz.questions.map((question) => (
         <div key={question.id} className="step check">
           <span className="small muted">

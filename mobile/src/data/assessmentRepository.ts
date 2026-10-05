@@ -260,6 +260,35 @@ export async function saveImportedResult(args: {
   });
 }
 
+/** Stores a result graded on this device (used by the demo classroom). */
+export async function saveLocalResult(guide: AssessmentGuide, packageId: string, result: GradedResult, teacherId: string): Promise<void> {
+  const database = await getDatabase();
+  await database.withTransactionAsync(async () => {
+    await database.runAsync(
+      `INSERT OR REPLACE INTO imported_results (
+         result_id, student_id, quiz_id, quiz_version, package_id, form_code, attempt_number,
+         score, total, verification, source, items_json, payload_text, completed_at, imported_at, imported_by
+       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?)`,
+      result.resultId,
+      result.studentId,
+      result.quizId,
+      result.quizVersion,
+      packageId,
+      result.formCode,
+      result.attemptNumber,
+      result.score,
+      result.total,
+      result.source === 'paper_scan' ? 'teacher_scanned' : 'signed',
+      result.source === 'paper_scan' ? 'paper_scan' : 'result_qr',
+      JSON.stringify(result.items),
+      result.completedAt,
+      result.completedAt,
+      teacherId,
+    );
+    await mirrorToRecordBook(database, guide, result);
+  });
+}
+
 export async function listGradedResults(quizId: string, version: number): Promise<GradedResult[]> {
   const database = await getDatabase();
   const rows = await database.getAllAsync<{
